@@ -1,0 +1,27 @@
+{
+  "name": "aionic-frontend",
+  "version": "1.0.0",
+  "description": "Aionic - A web application for task management",
+  "author": "Lars Wächter",
+  "repository": {
+    "url": "https://github.com/AionicApp/aionic-frotend"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "PORT=4200 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "jwt-decode": "^2.2.0",
+    "marked": "^0.4.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.0"
+  }
+}
