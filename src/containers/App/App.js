@@ -3,8 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import './App.css'
 
-import ScrollToTop from '../Misc/ScrollToTop'
-import { Routes } from '../../containers/Routes'
+import ScrollToTop from '../../components/Misc/ScrollToTop'
+import { Routes } from '../Routes'
 
 export class App extends Component {
   render() {

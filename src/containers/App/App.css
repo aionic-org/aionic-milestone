@@ -1,0 +1,15 @@
+.App {
+  padding: 10px;
+}
+
+.btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6152cf;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #6152cf !important;
+  border-color: #6c5ce7 !important;
+}
