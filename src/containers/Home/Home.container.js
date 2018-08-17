@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import './Home.container.css'
+import { Navbar } from '../../components/Navigation/Navbar/Navbar'
+import { Footer } from '../../components/Navigation/Navbar/Footer'
 
 export class HomeContainer extends Component {
   constructor(props) {
@@ -10,13 +12,15 @@ export class HomeContainer extends Component {
   render() {
     return (
       <div className="HomeContainer">
-        <div className="container">
+        <Navbar />
+        <div className="content container-fluid">
           <div className="row">
             <div className="col-12">
               <h1>Home Container</h1>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

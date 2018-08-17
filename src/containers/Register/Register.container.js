@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './Register.container.css'
 
-import { Logo } from '../../components/Logo/Logo'
+import { Logo } from '../../components/Misc/Logo'
 import { RegisterForm } from './components/Register.form'
 
 export class RegisterContainer extends Component {
@@ -30,9 +30,16 @@ export class RegisterContainer extends Component {
   }
 
   render() {
+    const logoStyle = {
+      height: '72px',
+      width: '72px',
+      marginBottom: '20px'
+    }
+
     return (
       <div className="RegisterContainer">
-        <Logo />
+        <Logo assignedStyle={logoStyle} />
+        <h1 className="h3 mb-3 font-weight-normal">Please register</h1>
         <RegisterForm handleInputChange={this.handleInputChange} handleSubmit={this.handleSubmit} />
         <a href="https://aionic.app" target="_blank" className="mt-4 text-muted d-block">
           Aionic App

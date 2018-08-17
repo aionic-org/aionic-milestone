@@ -12,7 +12,7 @@ export class App extends Component {
       <Router>
         <ScrollToTop>
           <div className="App">
-            <div className="main container-fluid">
+            <div className="main">
               <Routes />
             </div>
           </div>

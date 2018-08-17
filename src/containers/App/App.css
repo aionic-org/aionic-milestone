@@ -1,5 +1,5 @@
-.App {
-  padding: 10px;
+.App > .main > div > .content {
+  padding-top: 75px;
 }
 
 .btn-primary {
@@ -12,4 +12,16 @@
 .btn-primary:focus {
   background-color: #6152cf !important;
   border-color: #6c5ce7 !important;
+}
+
+.btn-secondary {
+  background-color: #00b894;
+  border-color: #00a585;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #00a585 !important;
+  border-color: #00b894 !important;
 }
