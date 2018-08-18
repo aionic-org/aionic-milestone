@@ -72,10 +72,13 @@ export const Navbar = props => {
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
                   <a className="dropdown-item" href="#">
+                    Invite user
+                  </a>
+                  <a className="dropdown-item" href="#">
                     Create task
                   </a>
                   <a className="dropdown-item" href="#">
-                    Invite user
+                    Create team
                   </a>
                 </div>
               </li>
@@ -99,6 +102,9 @@ export const Navbar = props => {
                     Account
                   </a>
                   <div class="dropdown-divider" />
+                  <a className="dropdown-item" href="#">
+                    Settings
+                  </a>
                   <a className="dropdown-item" href="#">
                     <i class="fas fa-sign-out-alt" /> Signout
                   </a>

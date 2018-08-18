@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from '../../assets/images/Logo.png'
+import Image from '../../assets/images/logo.png'
 
 export const Logo = props => (
   <img

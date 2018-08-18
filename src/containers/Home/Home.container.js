@@ -15,7 +15,7 @@ export class HomeContainer extends Component {
         <Navbar />
         <div className="content container-fluid">
           <div className="row">
-            <div className="col-12">
+            <div className="col-md-10 offset-md-1">
               <h1>Home Container</h1>
             </div>
           </div>
