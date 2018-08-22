@@ -51,6 +51,11 @@ export const Navbar = props => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
+                  Teams
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
                   Search
                 </a>
               </li>

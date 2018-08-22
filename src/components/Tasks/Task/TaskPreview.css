@@ -1,0 +1,7 @@
+a.TaskLink {
+  color: inherit;
+  text-decoration: none;
+}
+a.TaskLink:hover {
+  border-color: #6c5ce7;
+}

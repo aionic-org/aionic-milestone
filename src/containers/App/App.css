@@ -1,5 +1,9 @@
+.App > .main {
+  padding-bottom: 15px;
+}
+
 .App > .main > div > .content {
-  padding-top: 75px;
+  padding: 85px 15px 15px;
 }
 
 .btn-primary {
@@ -24,4 +28,8 @@
 .btn-secondary:focus {
   background-color: #00a585 !important;
   border-color: #00b894 !important;
+}
+
+.nav-pills > .nav-link.active {
+  background-color: #6c5ce7 !important;
 }

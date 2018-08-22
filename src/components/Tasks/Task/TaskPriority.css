@@ -1,0 +1,15 @@
+.TaskPriority {
+  float: right;
+}
+
+.TaskPriority > .fa-angle-double-up {
+  color: red;
+}
+
+.TaskPriority > .fa-minus {
+  color: grey;
+}
+
+.TaskPriority > .fa-angle-double-down {
+  color: green;
+}
