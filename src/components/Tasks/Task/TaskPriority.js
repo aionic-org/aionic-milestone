@@ -17,7 +17,12 @@ export const TaskPriority = props => {
   }
 
   return (
-    <span className="TaskPriority" data-toggle="tooltip" data-placement="top" title={title}>
+    <span
+      className="TaskPriority float-right"
+      data-toggle="tooltip"
+      data-placement="top"
+      title={title}
+    >
       {icon}
     </span>
   )

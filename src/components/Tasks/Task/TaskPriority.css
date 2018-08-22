@@ -1,7 +1,3 @@
-.TaskPriority {
-  float: right;
-}
-
 .TaskPriority > .fa-angle-double-up {
   color: red;
 }

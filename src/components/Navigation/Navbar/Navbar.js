@@ -20,10 +20,10 @@ export const Navbar = props => {
     <div className="Navbar">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container">
-          <NavLink to="/" className="navbar-brand font-weight-bold">
+          <Link to="/" className="navbar-brand font-weight-bold">
             <Logo assignedStyle={logoStyle} assignedClasses={logoClasses} />
             Aionic
-          </NavLink>
+          </Link>
           <a className="navbar-brand font-weight-bold" href="#" />
           <button
             className="navbar-toggler"
@@ -39,7 +39,7 @@ export const Navbar = props => {
 
           <div className="collapse navbar-collapse" id="navbarsExample07">
             <ul className="navbar-nav">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <NavLink exact to="/" className="nav-link" activeClassName="active">
                   Home
                 </NavLink>
@@ -73,15 +73,15 @@ export const Navbar = props => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="fas fa-plus" />
+                  <i className="fas fa-plus" />
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
                   <a className="dropdown-item" href="#">
                     Invite user
                   </a>
-                  <a className="dropdown-item" href="#">
+                  <NavLink to="/create/task" className="dropdown-item">
                     Create task
-                  </a>
+                  </NavLink>
                   <a className="dropdown-item" href="#">
                     Create team
                   </a>
@@ -106,12 +106,12 @@ export const Navbar = props => {
                   <a className="dropdown-item" href="#">
                     Account
                   </a>
-                  <div class="dropdown-divider" />
+                  <div className="dropdown-divider" />
                   <a className="dropdown-item" href="#">
                     Settings
                   </a>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-sign-out-alt" /> Signout
+                    <i className="fas fa-sign-out-alt" /> Signout
                   </a>
                 </div>
               </li>

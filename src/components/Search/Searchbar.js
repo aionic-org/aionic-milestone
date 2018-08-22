@@ -9,7 +9,7 @@ export const Searchbar = props => (
       aria-label="Search"
     />
 
-    <button class="btn btn-secondary my-2 my-sm-0 ml-2" type="button">
+    <button className="btn btn-secondary my-2 my-sm-0 ml-2" type="button">
       Search
     </button>
   </form>
