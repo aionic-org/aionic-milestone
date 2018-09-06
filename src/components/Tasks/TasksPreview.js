@@ -7,7 +7,7 @@ export const TasksPreview = props => (
   <div className="TasksPreview">
     <div className="card-deck">
       {props.tasks.map((task, i) => {
-        return <TaskPreview task={task} />
+        return <TaskPreview key={i} task={task} />
       })}
     </div>
   </div>

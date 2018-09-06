@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 
-import './Home.container.css'
-import { Dashboard } from '../../components/Dashboard/Dashboard'
+import './TaskCreate.container.css'
 
-export class HomeContainer extends Component {
+export class TaskCreateContainer extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <div className="HomeContainer">
+      <div className="TaskCreateContainer">
         <div className="content container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="h2">John's Dashboard</h1>
-              <Dashboard />
+              <h1 className="h2">Create task</h1>
             </div>
           </div>
         </div>

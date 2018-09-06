@@ -6,13 +6,13 @@ export const TaskPriority = props => {
   let icon = null
   let title = ''
   if (props.priority === 1) {
-    icon = <i class="fas fa-angle-double-down" />
+    icon = <i className="fas fa-angle-double-down" />
     title = 'Low priority'
   } else if (props.priority === 2) {
-    icon = <i class="fas fa-minus" />
+    icon = <i className="fas fa-minus" />
     title = 'Medium priority'
   } else if (props.priority === 3) {
-    icon = <i class="fas fa-angle-double-up" />
+    icon = <i className="fas fa-angle-double-up" />
     title = 'High priority'
   }
 

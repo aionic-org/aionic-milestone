@@ -97,14 +97,14 @@ export const Navbar = props => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Lars Wächter
+                  John Doe
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
                   <a className="dropdown-item" href="#">
-                    Action
+                    Account
                   </a>
                   <a className="dropdown-item" href="#">
-                    Account
+                    Saved tasks
                   </a>
                   <div className="dropdown-divider" />
                   <a className="dropdown-item" href="#">

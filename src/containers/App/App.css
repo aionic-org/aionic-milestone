@@ -4,6 +4,7 @@
 
 .App > .main > div > .content {
   padding: 85px 15px 15px;
+  width: 85%;
 }
 
 .btn-primary {

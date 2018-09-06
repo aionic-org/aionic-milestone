@@ -11,14 +11,14 @@ export const TaskPreview = props => (
       <span>Fix user login</span>
       <TaskPriority priority={Math.floor(Math.random() * 3 + 1)} />
     </div>
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">John Doe</h6>
-      <p class="card-text">
+    <div className="card-body">
+      <h6 className="card-subtitle mb-2 text-muted">John Doe</h6>
+      <p className="card-text">
         This is a longer card with supporting text below as a natural lead-in to additional content.
         This content is a little bit longer.
       </p>
-      <p class="card-text">
-        <small class="text-muted">Last updated 3 mins ago</small>
+      <p className="card-text">
+        <small className="text-muted">Last updated 3 mins ago</small>
       </p>
     </div>
   </Link>
