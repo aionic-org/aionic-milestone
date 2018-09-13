@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './Home.container.css'
+
 import { Dashboard } from '../../components/Dashboard/Dashboard'
 
 export class HomeContainer extends Component {

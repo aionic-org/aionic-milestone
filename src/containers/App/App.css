@@ -2,7 +2,7 @@
   padding-bottom: 15px;
 }
 
-.App > .main > div > .content {
+.App > .mainWrapper > .main > div > .content {
   padding: 85px 15px 15px;
   width: 85%;
 }

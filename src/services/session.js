@@ -2,16 +2,34 @@ import decode from 'jwt-decode'
 import { Api } from './api'
 
 export class Session {
-  static registerUser(email, username, password) {
-    return Api.postData('auth/register', {
-      email: email,
-      username: username,
-      password: password
-    })
+  static registerUser(user) {
+    // register user
+    return Api.postData('auth/register/123', user, false)
+      .then(res => {
+        // signin user
+        return this.signinUser(user)
+          .then(res => {
+            return Promise.resolve(res)
+          })
+          .catch(err => {
+            return Promise.reject(err)
+          })
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
   }
 
-  static signinUser(email, password) {
-    return Api.postData('auth/signin', { email: email, password: password })
+  static signinUser(user) {
+    return Api.postData('auth/signin', user, false)
+      .then(res => {
+        if (res.data.data.token.length) {
+          return Promise.resolve(res)
+        }
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
   }
 
   static signoutUser() {
@@ -51,7 +69,7 @@ export class Session {
       expDate.setUTCSeconds(token.exp)
 
       const validDetails =
-        expDate > new Date() && token.iss === 'techteach-api' && token.aud === 'techteach-client'
+        expDate > new Date() && token.iss === 'aionic-api' && token.aud === 'aionic-client'
 
       return validDetails ? true : false
     }

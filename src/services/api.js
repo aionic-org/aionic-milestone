@@ -1,35 +1,52 @@
+import { create } from 'axios'
 import { Session } from './session'
 
-const root = 'http://localhost:3000'
+// default config
+const axios = create({
+  baseURL: 'http://localhost:3000/api'
+})
 
 export class Api {
-  static async fetchData(endpoint) {
-    try {
-      const res = await fetch(`${root}/${endpoint}`)
-      return res.json()
-    } catch (err) {
-      throw err
+  static fetchData(endpoint) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${Session.getToken()}`
+      }
     }
+
+    return axios
+      .get(endpoint, config)
+      .then(res => {
+        if (res.data.status < 200 || res.data.status >= 300) {
+          return Promise.reject(res)
+        } else {
+          return Promise.resolve(res)
+        }
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
   }
 
-  static async postData(endpoint, data, authorize = false) {
-    try {
-      const headers = new Headers({ 'Content-Type': 'application/json' })
-
-      if (authorize === true) {
-        headers.append('Authorization', `Bearer ${Session.getToken()}`)
+  static postData(endpoint, data, authorize = true) {
+    const config = {}
+    if (authorize === true) {
+      config.headers = {
+        Authorization: `Bearer ${Session.getToken()}`
       }
-
-      const res = await fetch(`${root}/${endpoint}`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: headers,
-        body: JSON.stringify(data)
-      })
-
-      return res.json()
-    } catch (err) {
-      throw err
     }
+
+    return axios
+      .post(endpoint, data, config)
+      .then(res => {
+        if (res.data.status < 200 || res.data.status >= 300) {
+          return Promise.reject(res)
+        } else {
+          return Promise.resolve(res)
+        }
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
   }
 }
