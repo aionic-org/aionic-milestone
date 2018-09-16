@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Api } from '../../../services/api'
+import { UserList } from '../../Users/UserList'
+import { TaskStatusList } from './TaskStatusList'
 
 export const TaskDetails = props => (
   <div className="TaskDetails">
@@ -9,50 +12,35 @@ export const TaskDetails = props => (
           Assignee
         </label>
         <div className="col-sm-4">
-          <select className="form-control" name="assignee">
-            <option>Lars Wächter</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <UserList name="assignee" userList={props.userList} selectedUser={props.task.assignee} />
         </div>
         <label className="col-sm-2 col-form-label">Author</label>
         <div className="col-sm-4">
-          <select className="form-control" name="author">
-            <option>John Doe</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <UserList name="assignee" userList={props.userList} selectedUser={props.task.author} />
         </div>
       </div>
 
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Status</label>
         <div className="col-sm-4">
-          <select className="form-control" name="author">
-            <option>Open</option>
-            <option>Development</option>
-          </select>
+          <TaskStatusList statusList={props.statusList} selectedStatus={props.task.status} />
         </div>
 
         <label className="col-sm-2 col-form-label">Branch</label>
         <div className="col-sm-4">
-          <input type="text" className="form-control is-valid" value="feature-auth" />
+          <input type="text" className="form-control" value={props.task.branch} />
         </div>
       </div>
 
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Created</label>
         <div className="col-sm-4">
-          <input type="text" className="form-control" value="22.07.2018" disabled />
+          <input type="text" className="form-control" value={props.task.created} disabled />
         </div>
 
         <label className="col-sm-2 col-form-label">Updated</label>
         <div className="col-sm-4">
-          <input type="text" className="form-control" value="24.07.2018" disabled />
+          <input type="text" className="form-control" value={props.task.updated} disabled />
         </div>
       </div>
 

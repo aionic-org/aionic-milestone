@@ -6,8 +6,8 @@ export const TasksPreview = props => (
   // TODO: Max 4 cards in one row
   <div className="TasksPreview">
     <div className="card-deck">
-      {props.tasks.map((task, i) => {
-        return <TaskPreview key={i} task={task} />
+      {props.tasks.map(task => {
+        return <TaskPreview key={task.id} task={task} />
       })}
     </div>
   </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import { Navbar } from '../components/Navigation/Navbar/Navbar'
 import { Footer } from '../components/Navigation/Footer/Footer'
@@ -10,6 +10,7 @@ import { RegisterContainer } from './Register/Register.container'
 import { HomeContainer } from './Home/Home.container'
 import { TaskContainer } from './Tasks/Task.container'
 import { TaskCreateContainer } from './Tasks/Create/TaskCreate.container'
+import { Session } from '../services/session'
 
 export function Routes(props) {
   const AuthContainer = () => (
@@ -37,7 +38,9 @@ export function Routes(props) {
     <Switch>
       <Route path="/signin" component={AuthContainer} />
       <Route path="/register/:hash" component={AuthContainer} />
-      <Route component={DefaultContainer} />
+      <Route
+        render={props => (Session.isLoggedIn() ? <DefaultContainer /> : <Redirect to="/signin" />)}
+      />
     </Switch>
   )
 }

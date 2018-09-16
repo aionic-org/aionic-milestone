@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './Home.container.css'
 
 import { Dashboard } from '../../components/Dashboard/Dashboard'
+import { Session } from '../../services/session'
 
 export class HomeContainer extends Component {
   constructor(props) {
@@ -13,12 +14,8 @@ export class HomeContainer extends Component {
     return (
       <div className="HomeContainer">
         <div className="content container-fluid">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="h2">John's Dashboard</h1>
-              <Dashboard />
-            </div>
-          </div>
+          <h1 className="h2">{`${Session.getUser().firstname}'s`} Dashboard</h1>
+          <Dashboard />
         </div>
       </div>
     )

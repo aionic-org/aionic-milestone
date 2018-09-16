@@ -33,7 +33,7 @@ class SigninForm extends Component {
     Session.signinUser(this.state.user)
       .then(res => {
         Session.setToken(res.data.data.token)
-        Session.setUser(res.data.data)
+        Session.setUser(res.data.data.user)
         this.props.history.push('/')
       })
       .catch(err => {

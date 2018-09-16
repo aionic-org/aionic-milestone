@@ -1,27 +1,60 @@
-import React from 'react'
-import { Navlink } from 'react-router-dom'
+import React, { Component } from 'react'
 
-export const TasksFilter = props => (
-  <div className="TasksFilter mt-4">
-    <nav className="nav nav-pills">
-      <a className="nav-item nav-link active" href="#">
-        Open <span className="badge badge-light">4</span>
-      </a>
-      <a className="nav-item nav-link" href="#">
-        Development <span className="badge badge-light">2</span>
-      </a>
-      <a className="nav-item nav-link" href="#">
-        Code review <span className="badge badge-light">0</span>
-      </a>
-      <a className="nav-item nav-link" href="#">
-        Bugfix <span className="badge badge-light">1</span>
-      </a>
-      <a className="nav-item nav-link" href="#">
-        Testing <span className="badge badge-light">3</span>
-      </a>
-      <a className="nav-item nav-link" href="#">
-        Done <span className="badge badge-light">19</span>
-      </a>
-    </nav>
-  </div>
-)
+import { Api } from '../../services/api'
+
+export class TasksFilter extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      status: [],
+      activeStatus: 0
+    }
+  }
+
+  componentDidMount = () => {
+    Api.fetchData('task/status').then(res => {
+      const status = res.data.data
+
+      if (status.length) {
+        // use first one as default
+        this.props.handleStatusChange(status[0].id)
+
+        this.setState({
+          status: status,
+          activeStatus: status[0].id
+        })
+      } else {
+        this.props.handleStatusChange(0)
+      }
+    })
+  }
+
+  handleClick = statusID => {
+    this.setState({ activeStatus: statusID })
+
+    this.props.handleStatusChange(statusID)
+  }
+
+  render() {
+    return (
+      <div className="TasksFilter mt-4">
+        <nav className="nav nav-pills">
+          {this.state.status.map((status, i) => (
+            <a
+              className={'nav-item nav-link ' + (i === this.state.activeStatus - 1 ? 'active' : '')}
+              onClick={e => {
+                e.preventDefault()
+                this.handleClick(status.id)
+              }}
+              href="#"
+              key={status.id}
+            >
+              {status.title}
+            </a>
+          ))}
+        </nav>
+      </div>
+    )
+  }
+}
