@@ -23,9 +23,7 @@ export class Session {
   static signinUser(user) {
     return Api.postData('auth/signin', user, false)
       .then(res => {
-        if (res.data.data.token.length) {
-          return Promise.resolve(res)
-        }
+        return Promise.resolve(res)
       })
       .catch(err => {
         return Promise.reject(err)
