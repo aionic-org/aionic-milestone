@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 import './Preview.css'
 
-import { TaskPriority } from '../Priority/'
+import { TaskPriorityIcon } from '../PriorityIcon/'
 
 export const TaskPreview = props => (
   <Link to={`task/${props.task.id}`} className="TaskPreview TaskLink card">
     <div className="card-header font-weight-bold">
       <span>{props.task.title}</span>
-      <TaskPriority priority={props.task.priority.value} />
+      <TaskPriorityIcon priority={props.task.priority.value} />
     </div>
     <div className="card-body">
       <h6 className="card-subtitle mb-2 text-muted">

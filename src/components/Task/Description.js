@@ -4,9 +4,14 @@ export const TaskDescription = props => (
   <div className="TaskDescription">
     <p className="text-muted font-italic mt-5">Description</p>
     <div className="form-group">
-      <textarea className="form-control" id="exampleFormControlTextarea1" rows="3">
-        {props.task.description}
-      </textarea>
+      <textarea
+        name="description"
+        id="exampleFormControlTextarea1"
+        className="form-control"
+        rows="3"
+        onChange={props.handleInputChange}
+        defaultValue={props.task.description}
+      />
     </div>
   </div>
 )

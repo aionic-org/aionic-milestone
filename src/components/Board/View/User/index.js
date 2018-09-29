@@ -28,7 +28,7 @@ export class BoardViewUser extends Component {
       .catch(err => {
         this.setState({
           isLoading: false,
-          msg: Api.handleHttpError(err.response.status)
+          msg: Api.handleHttpError(err)
         })
       })
   }

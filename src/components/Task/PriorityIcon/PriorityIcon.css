@@ -1,0 +1,11 @@
+.TaskPriorityIcon > .fa-angle-double-up {
+  color: red;
+}
+
+.TaskPriorityIcon > .fa-minus {
+  color: grey;
+}
+
+.TaskPriorityIcon > .fa-angle-double-down {
+  color: green;
+}

@@ -2,13 +2,14 @@ import React from 'react'
 
 export const TaskStatusList = props => (
   <div className="TaskStatusList">
-    <select name="status" className="form-control">
+    <select
+      name="status"
+      className="form-control"
+      defaultValue={props.selectedStatus.id}
+      onChange={props.onChange}
+    >
       {props.statusList.map(status => (
-        <option
-          value={status.id}
-          key={status.id}
-          selected={status.id === props.selectedStatus.id ? 'selected' : ''}
-        >
+        <option value={status.id} key={status.id} name="status">
           {status.title}
         </option>
       ))}

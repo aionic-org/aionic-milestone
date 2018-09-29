@@ -14,8 +14,8 @@ class SigninForm extends Component {
   }
 
   handleInputChange = e => {
-    const value = e.target.value
     const name = e.target.name
+    const value = e.target.value
 
     this.setState(prevState => {
       return { user: { ...prevState.user, [name]: value } }

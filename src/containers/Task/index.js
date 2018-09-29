@@ -4,37 +4,25 @@ import './Task.css'
 
 import { Api } from '../../services/api'
 
+import { ContainersTaskHOC } from './HOC'
+import { TaskForm } from '../../components/Task/Form/'
 import { Spinner } from '../../components/UI/Spinner/'
 import { Error } from '../../components/UI/Error/'
-import { TaskDetails } from '../../components/Task/Details'
 import { TaskNotations } from '../../components/Task/Notations'
-import { TaskDescription } from '../../components/Task/Description'
 
 export class ContainersTask extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isLoading: true,
-      msg: '',
-      task: {},
-      userList: [],
-      statusList: []
-    }
+    this.state = { isLoading: true, msg: '', task: {} }
   }
 
   componentDidMount = () => {
     const task = Api.fetchData(`task/base/${this.props.match.params.id}`)
-    const userList = Api.fetchData('user')
-    const statusList = Api.fetchData('task/status')
-
-    Promise.all([task, userList, statusList])
       .then(res => {
         this.setState({
           isLoading: false,
-          task: res[0],
-          userList: res[1],
-          statusList: res[2]
+          task: res
         })
       })
       .catch(err => {
@@ -42,46 +30,35 @@ export class ContainersTask extends Component {
       })
   }
 
+  updateStateTask = task => {
+    this.setState({ task: task })
+  }
+
   render() {
-    const { isLoading, msg, task, userList, statusList } = this.state
+    const { isLoading, msg, task } = this.state
 
     if (isLoading) {
       return (
-        <div className="ContainersTask">
-          <div className="content container-fluid">
-            <Spinner />
-          </div>
-        </div>
+        <ContainersTaskHOC>
+          <Spinner />
+        </ContainersTaskHOC>
       )
     } else if (msg.length) {
       return (
-        <div className="ContainersTask">
-          <div className="content container-fluid">
-            <Error message={msg} />
-          </div>
-        </div>
+        <ContainersTaskHOC>
+          <Error message={msg} />
+        </ContainersTaskHOC>
       )
     } else {
       return (
-        <div className="ContainersTask">
-          <div className="content container-fluid">
-            <div className="mb-2">
-              <h1 className="h2">{task.title}</h1>
-              <hr className="featurette-divider" />
-            </div>
-            <div className="row">
-              <div className="col-xl-8">
-                <TaskDetails task={task} userList={userList} statusList={statusList} />
-                <TaskDescription task={task} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12 mt-4">
-                <TaskNotations task={task} />
-              </div>
+        <ContainersTaskHOC>
+          <TaskForm task={task} updateStateTask={this.updateStateTask} />
+          <div className="row">
+            <div className="col-md-12 mt-4">
+              <TaskNotations task={task} />
             </div>
           </div>
-        </div>
+        </ContainersTaskHOC>
       )
     }
   }
