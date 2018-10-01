@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Footer = props => (
+const Footer = props => (
   <div className="Footer">
     <div className="container">
       <hr className="featurette-divider" />
@@ -10,3 +10,5 @@ export const Footer = props => (
     </div>
   </div>
 )
+
+export default Footer

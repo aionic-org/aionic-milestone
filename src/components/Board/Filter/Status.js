@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Api } from '../../../services/api'
 
-export class BoardFilterStatus extends Component {
+export default class BoardFilterStatus extends Component {
   constructor(props) {
     super(props)
 

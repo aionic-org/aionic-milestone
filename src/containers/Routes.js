@@ -3,13 +3,14 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import { Session } from '../services/session'
 
-import { Navbar } from '../components/Navigation/Navbar/'
-import { Footer } from '../components/Navigation/Footer/'
+import Navbar from '../components/Navigation/Navbar/'
+import Footer from '../components/Navigation/Footer/'
 
-import { ContainersSignin } from './Signin/'
-import { ContainersRegister } from './Register/'
-import { ContainersHome } from './Home/'
-import { ContainersTask } from './Task/'
+import ContainersSignin from './Signin/'
+import ContainersRegister from './Register/'
+import ContainersHome from './Home/'
+import ContainersTaskMain from './Task/Main/'
+import ContainersTaskCreate from './Task/Create/'
 
 export function Routes(props) {
   const AuthContainer = () => (
@@ -33,7 +34,8 @@ export function Routes(props) {
             return <Redirect to="/signin" />
           }}
         />
-        <Route path="/task/:id" component={ContainersTask} />
+        <Route path="/task/:id" component={ContainersTaskMain} />
+        <Route path="/create/task" component={ContainersTaskCreate} />
       </div>
       <Footer />
     </div>

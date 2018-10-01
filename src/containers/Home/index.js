@@ -4,9 +4,9 @@ import './Home.css'
 
 import { Session } from '../../services/session'
 
-import { BoardViewUser } from '../../components/Board/View/User/'
+import BoardViewUser from '../../components/Board/View/User/'
 
-export class ContainersHome extends Component {
+export default class ContainersHome extends Component {
   constructor(props) {
     super(props)
   }

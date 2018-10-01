@@ -1,8 +1,8 @@
 import React from 'react'
 
-import './PriorityIcon.css'
+import './Priority.css'
 
-export const TaskPriorityIcon = props => {
+const TaskPriority = props => {
   let icon = null
   let title = ''
 
@@ -19,7 +19,7 @@ export const TaskPriorityIcon = props => {
 
   return (
     <span
-      className="TaskPriorityIcon float-right"
+      className="TaskPriority float-right"
       data-toggle="tooltip"
       data-placement="top"
       title={title}
@@ -28,3 +28,5 @@ export const TaskPriorityIcon = props => {
     </span>
   )
 }
+
+export default TaskPriority

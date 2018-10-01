@@ -1,3 +1,5 @@
 import React from 'react'
 
-export const BoardViewTeamHOC = props => {}
+const BoardViewTeamHOC = props => {}
+
+export default BoardViewTeamHOC

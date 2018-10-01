@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Form.css'
 
-export const SearchForm = props => (
+const SearchForm = props => (
   <form className={'SearchForm ' + props.assignedClasses.join(' ')}>
     <input
       className="form-control"
@@ -20,3 +20,5 @@ export const SearchForm = props => (
 SearchForm.defaultProps = {
   assignedClasses: []
 }
+
+export default SearchForm

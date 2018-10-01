@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TaskPreview } from '../Preview/'
+import TaskPreview from './Preview/'
 
-export const TaskPreviews = props => (
+const TaskPreviews = props => (
   // TODO: Max 4 cards in one row
   <div className="TasksPreview">
     <div className="card-deck">
@@ -16,3 +16,5 @@ export const TaskPreviews = props => (
 TaskPreviews.defaultProps = {
   taskList: []
 }
+
+export default TaskPreviews

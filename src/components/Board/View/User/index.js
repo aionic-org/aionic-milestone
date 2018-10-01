@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 
 import { Api } from '../../../../services/api'
 
-import { BoardViewUserHOC } from './HOC'
-import { Error } from '../../../UI/Error/'
-import { Spinner } from '../../../UI/Spinner/'
-import { TaskPreviews } from '../../../Task/Previews/'
+import BoardViewUserHOC from './HOC'
+import Error from '../../../UI/Error/'
+import Spinner from '../../../UI/Spinner/'
+import TaskPreviews from '../../../Task/Previews/'
 
-export class BoardViewUser extends Component {
+export default class BoardViewUser extends Component {
   constructor(props) {
     super(props)
 
@@ -51,9 +51,8 @@ export class BoardViewUser extends Component {
     } else {
       return (
         <BoardViewUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
-          <p className="text-muted font-weight-bold mt-4">Your focus for this week</p>
+          <p className="text-muted font-weight-bold mt-4">Number of tasks: {tasks.length}</p>
           <TaskPreviews taskList={tasks} />
-          <p className="text-muted font-weight-bold mt-5">Tasks from last week</p>
         </BoardViewUserHOC>
       )
     }

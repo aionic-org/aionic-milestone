@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class BoardFilterUser extends Component {
+export default class BoardFilterUser extends Component {
   constructor(props) {
     super(props)
   }

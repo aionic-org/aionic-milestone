@@ -2,20 +2,23 @@ import React, { Component } from 'react'
 
 import { Api } from '../../../services/api'
 
-import { TaskDetails } from '../../../components/Task/Details'
-import { TaskDescription } from '../../../components/Task/Description'
-import { Alert } from '../../UI/Alert'
-import { Spinner } from '../../UI/Spinner'
-import { Error } from '../../UI/Error'
+import Alert from '../../UI/Alert'
+import Spinner from '../../UI/Spinner'
+import Error from '../../UI/Error'
+import TaskDetails from '../../../components/Task/Details'
+import TaskDescription from '../../../components/Task/Description'
 
-export class TaskForm extends Component {
+export default class TaskForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       isLoading: true,
       msg: '',
-      updateSuccess: null,
+      taskUpdate: {
+        status: '',
+        msg: ''
+      },
       userList: [],
       statusList: [],
       priorityList: []
@@ -50,49 +53,76 @@ export class TaskForm extends Component {
     const task = { ...this.props.task, [name]: value }
 
     // TODO: Prevent multiple updates for rapid input like description
-    this.updateTask(task)
+    if (this.props.doLiveUpdate === true) {
+      this.updateTask(task)
+    } else {
+      this.props.updateStateTask(task)
+    }
+  }
+
+  createTask = () => {
+    Api.postData('task/base', { task: this.props.task })
+      .then(res => {
+        this.props.history.push(`/task/${res.id}`)
+      })
+      .catch(err => {
+        this.setState({
+          taskUpdate: {
+            status: 'Error',
+            msg: Api.handleHttpError(err)
+          }
+        })
+      })
   }
 
   updateTask = task => {
     Api.postData(`task/base/${task.id}`, { task: task })
       .then(res => {
-        this.setState(
-          {
-            updateSuccess: true
-          },
-          () => {
-            this.props.updateStateTask(task)
-            setTimeout(() => {
-              this.setState({
-                updateSuccess: null
-              })
-            }, 1500)
+        this.props.updateStateTask(task)
+        this.setState({
+          taskUpdate: {
+            status: '',
+            msg: ''
           }
-        )
+        })
       })
       .catch(err => {
         this.setState({
-          updateSuccess: false
+          taskUpdate: {
+            status: 'Error',
+            msg: 'Failed to update task!'
+          }
         })
       })
   }
 
   render() {
-    const { isLoading, msg, updateSuccess, userList, statusList, priorityList } = this.state
+    const { isLoading, msg, taskUpdate, userList, statusList, priorityList } = this.state
+
     const titleStyle = {
       border: 'none',
       padding: '10px 5px',
       background: 'transparent'
     }
 
-    let taskUpdate = null
-    if (updateSuccess !== null) {
-      taskUpdate =
-        updateSuccess === true ? (
-          <Alert assignedClass="success" title="Success" message="Task updated!" />
-        ) : (
-          <Alert assignedClass="danger" title="Error" message="Failed to update task!" />
-        )
+    let taskUpdateAlert = null
+    if (taskUpdate.status.length) {
+      taskUpdateAlert = (
+        <Alert
+          assignedClass={taskUpdate.status === 'Success' ? 'success' : 'danger'}
+          title={taskUpdate.status}
+          message={taskUpdate.msg}
+        />
+      )
+    }
+
+    let taskCreateBtn = null
+    if (this.props.isNewTask === true) {
+      taskCreateBtn = (
+        <button className="btn btn-primary btn-block" onClick={this.createTask}>
+          Create task
+        </button>
+      )
     }
 
     if (isLoading) {
@@ -116,6 +146,8 @@ export class TaskForm extends Component {
                 type="text"
                 name="title"
                 style={titleStyle}
+                placeholder="Enter task title"
+                autoComplete="off"
                 defaultValue={this.props.task.title}
                 onChange={this.handleInputChange}
               />
@@ -131,12 +163,22 @@ export class TaskForm extends Component {
                 priorityList={priorityList}
                 handleInputChange={this.handleInputChange}
               />
+
               <TaskDescription task={this.props.task} handleInputChange={this.handleInputChange} />
             </div>
-            <div className="col-xl-4">{taskUpdate}</div>
+            <div className="col-xl-4">{taskUpdateAlert}</div>
+          </div>
+          <div className="row">
+            <div className="col-xl-8">{taskCreateBtn}</div>
           </div>
         </div>
       )
     }
   }
+}
+
+TaskForm.defaultProps = {
+  doLiveUpdate: true,
+  isNewTask: false,
+  updateStateTask: () => {}
 }

@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom'
 import './Form.css'
 
 import { Session } from '../../../../services/session'
-import { Spinner } from '../../../../components/UI/Spinner/'
+
+import Spinner from '../../../../components/UI/Spinner/'
 
 class SigninForm extends Component {
   constructor(props) {

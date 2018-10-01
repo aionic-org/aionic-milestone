@@ -3,9 +3,9 @@ import React from 'react'
 import './Signin.css'
 
 import SigninForm from './components/Form/'
-import { UILogo } from '../../components/UI/Logo'
+import UILogo from '../../components/UI/Logo'
 
-export const ContainersSignin = props => {
+const ContainersSignin = props => {
   const logoStyle = {
     height: '72px',
     width: '72px',
@@ -23,3 +23,5 @@ export const ContainersSignin = props => {
     </div>
   )
 }
+
+export default ContainersSignin

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TaskNotations = props => (
+const TaskNotations = props => (
   <div className="TaskNotations">
     <nav className="nav nav-pills nav-justified">
       <a className="nav-link active" href="#">
@@ -18,3 +18,5 @@ export const TaskNotations = props => (
     </nav>
   </div>
 )
+
+export default TaskNotations

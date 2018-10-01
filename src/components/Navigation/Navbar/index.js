@@ -3,11 +3,12 @@ import { NavLink, Link } from 'react-router-dom'
 
 import './Navbar.css'
 
-import { UILogo } from '../../UI/Logo'
 import { Session } from '../../../services/session'
-import { SearchForm } from '../../Search/Form'
 
-export const Navbar = props => {
+import UILogo from '../../UI/Logo'
+import SearchForm from '../../Search/Form'
+
+const Navbar = props => {
   const logoStyle = {
     height: '30px',
     width: '30px',
@@ -122,3 +123,5 @@ export const Navbar = props => {
     </div>
   )
 }
+
+export default Navbar

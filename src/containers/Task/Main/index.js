@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 
-import './Task.css'
+import { Api } from '../../../services/api'
 
-import { Api } from '../../services/api'
+import ContainersTaskHOC from '../HOC'
+import Error from '../../../components/UI/Error/'
+import Spinner from '../../../components/UI/Spinner/'
+import TaskForm from '../../../components/Task/Form/'
+import TaskNotations from '../../../components/Task/Notations'
 
-import { ContainersTaskHOC } from './HOC'
-import { TaskForm } from '../../components/Task/Form/'
-import { Spinner } from '../../components/UI/Spinner/'
-import { Error } from '../../components/UI/Error/'
-import { TaskNotations } from '../../components/Task/Notations'
-
-export class ContainersTask extends Component {
+export default class ContainersTaskMain extends Component {
   constructor(props) {
     super(props)
 

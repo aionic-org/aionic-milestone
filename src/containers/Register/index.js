@@ -4,10 +4,10 @@ import './Register.css'
 
 import { Api } from '../../services/api'
 
-import { UILogo } from '../../components/UI/Logo'
+import Logo from '../../components/UI/Logo'
 import RegisterForm from './components/Form/'
 
-export class ContainersRegister extends Component {
+export default class ContainersRegister extends Component {
   constructor(props) {
     super(props)
   }
@@ -32,7 +32,7 @@ export class ContainersRegister extends Component {
 
     return (
       <div className="ContainersRegister">
-        <UILogo assignedStyle={logoStyle} />
+        <Logo assignedStyle={logoStyle} />
         <h1 className="h3 mb-3 font-weight-normal">Please register</h1>
         <RegisterForm />
         <a href="https://aionic.app" target="_blank" className="mt-4 text-muted d-block">

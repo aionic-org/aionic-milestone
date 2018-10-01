@@ -2,7 +2,7 @@ import React from 'react'
 
 import Image from '../../assets/images/logo.png'
 
-export const UILogo = props => (
+const Logo = props => (
   <img
     src={Image}
     alt="Logo"
@@ -11,7 +11,9 @@ export const UILogo = props => (
   />
 )
 
-UILogo.defaultProps = {
+Logo.defaultProps = {
   assignedStyle: {},
   assignedClasses: []
 }
+
+export default Logo

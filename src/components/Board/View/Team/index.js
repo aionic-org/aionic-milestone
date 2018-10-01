@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class BoardViewTeam extends Component {
+export default class BoardViewTeam extends Component {
   constructor(props) {
     super(props)
   }
