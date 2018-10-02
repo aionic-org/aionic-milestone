@@ -15,7 +15,7 @@ const TaskDetails = props => (
         <UserList
           name="assignee"
           userList={props.userList}
-          defaultValue={props.isNewTask === false ? props.task.assignee.id : undefined}
+          defaultValue={props.task.assignee ? props.task.assignee.id : undefined}
           onChange={props.handleInputChange}
         />
       </div>
@@ -24,7 +24,7 @@ const TaskDetails = props => (
         <UserList
           name="author"
           userList={props.userList}
-          defaultValue={props.isNewTask === false ? props.task.author.id : Session.getUser().id}
+          defaultValue={props.task.author ? props.task.author.id : Session.getUser().id}
           onChange={props.handleInputChange}
         />
       </div>
@@ -35,7 +35,7 @@ const TaskDetails = props => (
       <div className="col-sm-4">
         <TaskStatusList
           statusList={props.statusList}
-          defaultValue={props.isNewTask === false ? props.task.status.id : undefined}
+          defaultValue={props.task.status ? props.task.status.id : undefined}
           onChange={props.handleInputChange}
         />
       </div>
@@ -46,8 +46,8 @@ const TaskDetails = props => (
           type="text"
           name="branch"
           className="form-control"
-          value={props.task.branch || ''}
-          onChange={props.handleInputChange}
+          defaultValue={props.task.branch ? props.task.branch : ''}
+          onBlur={props.handleInputChange}
         />
       </div>
     </div>
@@ -59,7 +59,7 @@ const TaskDetails = props => (
           type="text"
           name="created"
           className="form-control"
-          value={props.task.created || ''}
+          value={props.task.created ? props.task.created : ''}
           disabled
         />
       </div>
@@ -70,7 +70,7 @@ const TaskDetails = props => (
           type="text"
           name="updated"
           className="form-control"
-          value={props.task.updated || ''}
+          value={props.task.updated ? props.task.updated : ''}
           disabled
         />
       </div>
@@ -84,6 +84,7 @@ const TaskDetails = props => (
             <InputRadio
               value={priority.value}
               title={priority.title}
+              key={priority.id}
               defaultChecked={props.isNewTask === false ? props.task.priority.value : undefined}
               onChange={props.handleInputChange}
             />

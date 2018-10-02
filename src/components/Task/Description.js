@@ -9,7 +9,7 @@ const TaskDescription = props => (
         id="exampleFormControlTextarea1"
         className="form-control"
         rows="3"
-        onChange={props.handleInputChange}
+        onBlur={props.handleInputChange}
         defaultValue={props.task.description}
       />
     </div>

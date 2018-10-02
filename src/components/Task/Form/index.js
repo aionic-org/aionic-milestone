@@ -50,13 +50,15 @@ export default class TaskForm extends Component {
     const name = e.target.name
     const value = e.target.value
 
-    const task = { ...this.props.task, [name]: value }
+    if (this.props.task[name] !== value) {
+      const task = { ...this.props.task, [name]: value }
 
-    // TODO: Prevent multiple updates for rapid input like description
-    if (this.props.doLiveUpdate === true) {
-      this.updateTask(task)
-    } else {
-      this.props.updateStateTask(task)
+      // TODO: Prevent multiple updates for rapid input like description
+      if (this.props.doLiveUpdate === true) {
+        this.updateTask(task)
+      } else {
+        this.props.updateStateTask(task)
+      }
     }
   }
 
@@ -81,10 +83,19 @@ export default class TaskForm extends Component {
         this.props.updateStateTask(task)
         this.setState({
           taskUpdate: {
-            status: '',
-            msg: ''
+            status: 'Success',
+            msg: 'Task updated'
           }
         })
+
+        setTimeout(() => {
+          this.setState({
+            taskUpdate: {
+              status: '',
+              msg: ''
+            }
+          })
+        }, 1500)
       })
       .catch(err => {
         this.setState({
@@ -149,7 +160,7 @@ export default class TaskForm extends Component {
                 placeholder="Enter task title"
                 autoComplete="off"
                 defaultValue={this.props.task.title}
-                onChange={this.handleInputChange}
+                onBlur={this.handleInputChange}
               />
             </h1>
             <hr className="featurette-divider" />
