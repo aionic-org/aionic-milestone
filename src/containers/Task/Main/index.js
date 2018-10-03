@@ -6,7 +6,8 @@ import ContainersTaskHOC from '../HOC'
 import Error from '../../../components/UI/Error/'
 import Spinner from '../../../components/UI/Spinner/'
 import TaskForm from '../../../components/Task/Form/'
-import TaskNotations from '../../../components/Task/Notations'
+
+import ContainersTaskMainTabs from './components/Tabs/'
 
 export default class ContainersTaskMain extends Component {
   constructor(props) {
@@ -16,15 +17,15 @@ export default class ContainersTaskMain extends Component {
   }
 
   componentDidMount = () => {
-    const task = Api.fetchData(`task/base/${this.props.match.params.id}`)
+    Api.fetchData(`task/${this.props.match.params.id}`)
       .then(res => {
-        this.setState({
-          isLoading: false,
-          task: res
-        })
+        this.setState({ isLoading: false, task: res })
       })
       .catch(err => {
-        this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
       })
   }
 
@@ -52,8 +53,8 @@ export default class ContainersTaskMain extends Component {
         <ContainersTaskHOC>
           <TaskForm task={task} updateStateTask={this.updateStateTask} />
           <div className="row">
-            <div className="col-md-12 mt-4">
-              <TaskNotations task={task} />
+            <div className="col-xl-8 mt-4">
+              <ContainersTaskMainTabs task={task} />
             </div>
           </div>
         </ContainersTaskHOC>

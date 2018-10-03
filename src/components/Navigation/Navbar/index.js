@@ -48,7 +48,7 @@ const Navbar = props => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Feed
+                  Projects
                 </a>
               </li>
               <li className="nav-item">

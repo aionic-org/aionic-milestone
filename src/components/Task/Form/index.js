@@ -27,9 +27,9 @@ export default class TaskForm extends Component {
 
   componentDidMount = () => {
     const requests = new Array(
-      Api.fetchData('user'),
-      Api.fetchData('task/status'),
-      Api.fetchData('task/priority')
+      Api.fetchData('user/'),
+      Api.fetchData('taskStatus/'),
+      Api.fetchData('taskPriority/')
     )
 
     Promise.all(requests)
@@ -48,7 +48,7 @@ export default class TaskForm extends Component {
 
   handleInputChange = e => {
     const name = e.target.name
-    const value = e.target.value
+    const value = e.target.value.length ? e.target.value : null
 
     if (this.props.task[name] !== value) {
       const task = { ...this.props.task, [name]: value }
@@ -78,7 +78,7 @@ export default class TaskForm extends Component {
   }
 
   updateTask = task => {
-    Api.postData(`task/base/${task.id}`, { task: task })
+    Api.postData(`task/${task.id}`, { task: task })
       .then(res => {
         this.props.updateStateTask(task)
         this.setState({

@@ -4,7 +4,7 @@ import TaskPreview from './Preview/'
 
 const TaskPreviews = props => (
   // TODO: Max 4 cards in one row
-  <div className="TasksPreview">
+  <div className="TaskPreviews">
     <div className="card-deck">
       {props.taskList.map(task => {
         return <TaskPreview key={task.id} task={task} />

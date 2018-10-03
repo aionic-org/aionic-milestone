@@ -21,7 +21,7 @@ export default class BoardViewUser extends Component {
   fetchTasks = statusID => {
     this.setState({ isLoading: true })
 
-    Api.fetchData(`task/user/${this.props.user.id}/status/${statusID}`)
+    Api.fetchData(`user/${this.props.user.id}/tasks/status/${statusID}`)
       .then(res => {
         this.setState({ isLoading: false, tasks: res })
       })

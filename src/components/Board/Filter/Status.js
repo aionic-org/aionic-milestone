@@ -19,29 +19,17 @@ export default class BoardFilterStatus extends Component {
       isLoading: true
     })
 
-    Api.fetchData('task/status')
+    Api.fetchData('taskStatus/')
       .then(res => {
         if (res.length) {
-          this.setState(
-            {
-              isLoading: false,
-              status: res,
-              activeStatus: res[0].id
-            },
-            () => {
-              // use first one as default
-              this.props.handleStatusChange(res[0].id)
-            }
-          )
+          this.setState({ isLoading: false, status: res, activeStatus: res[0].id }, () => {
+            // use first one as default
+            this.props.handleStatusChange(res[0].id)
+          })
         } else {
-          this.setState(
-            {
-              isLoading: false
-            },
-            () => {
-              this.props.handleStatusChange(0)
-            }
-          )
+          this.setState({ isLoading: false }, () => {
+            this.props.handleStatusChange(0)
+          })
         }
       })
       .catch(err => {
