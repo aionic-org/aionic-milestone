@@ -31,14 +31,13 @@ class SigninForm extends Component {
     })
 
     // signin user
-    Session.signinUser(this.state.user)
+    Session.signinUser({ user: this.state.user })
       .then(res => {
         Session.setToken(res.token)
         Session.setUser(res.user)
         this.props.history.push('/')
       })
       .catch(err => {
-        console.log(err)
         switch (err.response.status) {
           case 401:
             this.setState({ isLoading: false, msg: 'Wrong email or password!' })
@@ -75,10 +74,10 @@ class SigninForm extends Component {
           {this.state.isLoading ? (
             <Spinner />
           ) : (
-            <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
-              <i className="fas fa-sign-in-alt" /> Sign in
+              <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
+                <i className="fas fa-sign-in-alt" /> Sign in
             </button>
-          )}
+            )}
 
           {this.state.msg.length ? <p className="mt-3 text-danger">{this.state.msg}</p> : null}
         </form>

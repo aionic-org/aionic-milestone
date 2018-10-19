@@ -31,16 +31,21 @@ class RegisterForm extends Component {
     })
 
     // register user
-    Session.registerUser(this.state.user)
+    Session.registerUser({ user: this.state.user }, this.props.match.params.hash)
       .then(res => {
-        if (res.data.data.token.length) {
-          Session.setToken(res.data.data.token)
-          Session.setUser(res.data.data)
-          this.props.history.push('/')
-        }
+        Session.setToken(res.token)
+        Session.setUser(res.user)
+        this.props.history.push('/')
       })
       .catch(err => {
-        this.setState({ isLoading: false, isValid: false, msg: 'Failed to register!' })
+        switch (err.response.status) {
+          case 400:
+            this.setState({ isLoading: false, msg: 'Email is already taken!' })
+            break
+          default:
+            this.setState({ isLoading: false, msg: 'Internal server error!' })
+            break
+        }
       })
   }
 
@@ -87,10 +92,10 @@ class RegisterForm extends Component {
           {this.props.isLoading ? (
             <Spinner />
           ) : (
-            <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
-              <i className="fas fa-sign-in-alt" /> Register
+              <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
+                <i className="fas fa-sign-in-alt" /> Register
             </button>
-          )}
+            )}
 
           {this.state.msg.length ? <p className="mt-3 text-danger">{this.state.msg}</p> : null}
         </form>

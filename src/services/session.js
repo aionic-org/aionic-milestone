@@ -2,9 +2,9 @@ import decode from 'jwt-decode'
 import { Api } from './api'
 
 export class Session {
-  static registerUser(user) {
+  static registerUser(user, registerHash) {
     // register user
-    return Api.postData('auth/register/123', user, false)
+    return Api.postData(`auth/register/${registerHash}`, user, false)
       .then(res => {
         // signin user
         return this.signinUser(user)
