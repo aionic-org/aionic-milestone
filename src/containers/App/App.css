@@ -1,0 +1,36 @@
+.App {
+  padding-bottom: 15px;
+}
+
+.App > .mainWrapper > .main > div > .content {
+  padding: 85px 15px 15px;
+  width: 85%;
+}
+
+.btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6152cf;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #6152cf !important;
+  border-color: #6c5ce7 !important;
+}
+
+.btn-secondary {
+  background-color: #00b894;
+  border-color: #00a585;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: #00a585 !important;
+  border-color: #00b894 !important;
+}
+
+.nav-pills > .nav-link.active {
+  background-color: #6c5ce7 !important;
+}

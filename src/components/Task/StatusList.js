@@ -1,0 +1,26 @@
+import React from 'react'
+import InputSelect from '../UI/Input/Select'
+
+const TaskStatusList = props => {
+  const status = props.statusList.map(status => {
+    return { ...status, optionTitle: status.title }
+  })
+
+  return (
+    <div className="TaskStatusList">
+      <InputSelect
+        optionList={status}
+        name="status"
+        defaultValue={props.defaultValue}
+        onChange={props.onChange}
+      />
+    </div>
+  )
+}
+
+TaskStatusList.defaultProps = {
+  statusList: [],
+  defaultValue: ''
+}
+
+export default TaskStatusList
