@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { Api } from '../../../../../services/api'
 
 import ContainersTaskMainTabsNav from './Nav'
+import Error from '../../../../../components/UI/Error/'
+import Spinner from '../../../../../components/UI/Spinner/'
 import TaskComments from '../../../../../components/Task/Comments'
+import TaskCommentsForm from '../../../../../components/Task/Comments/Form'
 
 export default class ContainersTaskMainTabs extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { tab: '', data: [] }
+    this.state = { isLoading: false, msg: '', tab: '', data: [] }
   }
 
   handleClick = tab => {
@@ -17,14 +20,27 @@ export default class ContainersTaskMainTabs extends Component {
         this.fetchData(tab)
       })
     } else {
-      this.setState({ tab: null })
+      this.setState({ tab: null, msg: '' })
     }
   }
 
   fetchData = tab => {
-    Api.fetchData(`task/${this.props.task.id}/${tab.toLowerCase()}`).then(res => {
-      this.setState({ data: res })
+    const tmpTab = tab || this.state.tab
+
+    this.setState({
+      isLoading: true
     })
+
+    Api.fetchData(`task/${this.props.task.id}/${tmpTab.toLowerCase()}`)
+      .then(res => {
+        this.setState({ isLoading: false, msg: '', data: res })
+      })
+      .catch(err => {
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
+      })
   }
 
   rerender = () => {
@@ -33,13 +49,29 @@ export default class ContainersTaskMainTabs extends Component {
 
   render() {
     let content = null
-    switch (this.state.tab) {
-      case 'Comments':
-        content = <TaskComments commentList={this.state.data} showForm={true} />
-        break
 
-      default:
-        break
+    if (this.state.isLoading) {
+      content = <Spinner />
+    } else if (this.state.msg) {
+      content = <Error message={this.state.msg} />
+    } else {
+      switch (this.state.tab) {
+        case 'Comments':
+          content = (
+            <div>
+              <TaskComments commentList={this.state.data} />
+              <TaskCommentsForm
+                updateParentState={this.fetchData}
+                task={this.props.task}
+                assignedClasses={['mt-4']}
+              />
+            </div>
+          )
+          break
+
+        default:
+          break
+      }
     }
 
     return (

@@ -7,17 +7,34 @@ const axios = create({
 })
 
 export class Api {
+  static validateResponse(res) {
+    if (res.data.status < 200 || res.data.status >= 300) {
+      return Promise.reject(res)
+    } else {
+      return Promise.resolve(res.data.data)
+    }
+  }
+
   static fetchData(endpoint) {
     const config = { headers: { Authorization: `Bearer ${Session.getToken()}` } }
 
     return axios
       .get(endpoint, config)
       .then(res => {
-        if (res.data.status < 200 || res.data.status >= 300) {
-          return Promise.reject(res)
-        } else {
-          return Promise.resolve(res.data.data)
-        }
+        return this.validateResponse(res)
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
+  }
+
+  static deleteData(endpoint) {
+    const config = { headers: { Authorization: `Bearer ${Session.getToken()}` } }
+
+    return axios
+      .delete(endpoint, config)
+      .then(res => {
+        return this.validateResponse(res)
       })
       .catch(err => {
         return Promise.reject(err)
@@ -33,11 +50,7 @@ export class Api {
     return axios
       .post(endpoint, data, config)
       .then(res => {
-        if (res.data.status < 200 || res.data.status >= 300) {
-          return Promise.reject(res)
-        } else {
-          return Promise.resolve(res.data.data)
-        }
+        return this.validateResponse(res)
       })
       .catch(err => {
         return Promise.reject(err)

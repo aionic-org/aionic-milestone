@@ -1,24 +1,41 @@
-import React from 'react'
-
-import './Comments.css'
+import React, { Component } from 'react'
 
 import TaskComment from './Comment/'
-import TaskCommentsForm from './Form'
 
-const TaskComments = props => (
-  // TODO: Max 4 cards in one row
-  <div className="TaskComments">
-    {props.commentList.map(comment => {
-      return <TaskComment key={comment.id} comment={comment} />
-    })}
+class TaskComments extends Component {
+  constructor(props) {
+    super()
 
-    {props.showForm ? <TaskCommentsForm assignedClasses={['mt-5']} /> : null}
-  </div>
-)
+    this.state = {
+      commentList: props.commentList
+    }
+  }
+
+  removeComment = id => {
+    const comments = this.state.commentList.filter(comment => {
+      return comment.id != id
+    })
+
+    this.setState({
+      commentList: comments
+    })
+  }
+
+  render() {
+    return (
+      <div className="TaskComments">
+        {this.state.commentList.map(comment => {
+          return (
+            <TaskComment key={comment.id} comment={comment} removeComment={this.removeComment} />
+          )
+        })}
+      </div>
+    )
+  }
+}
 
 TaskComments.defaultProps = {
-  commentList: [],
-  showForm: false
+  commentList: []
 }
 
 export default TaskComments

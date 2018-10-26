@@ -53,7 +53,6 @@ export default class TaskForm extends Component {
     if (this.props.task[name] !== value) {
       const task = { ...this.props.task, [name]: value }
 
-      // TODO: Prevent multiple updates for rapid input like description
       if (this.props.doLiveUpdate === true) {
         this.updateTask(task)
       } else {
@@ -63,7 +62,7 @@ export default class TaskForm extends Component {
   }
 
   createTask = () => {
-    Api.postData('task/base', { task: this.props.task })
+    Api.postData('task', { task: this.props.task })
       .then(res => {
         this.props.history.push(`/task/${res.id}`)
       })
@@ -156,6 +155,7 @@ export default class TaskForm extends Component {
               <input
                 type="text"
                 name="title"
+                className="w-100"
                 style={titleStyle}
                 placeholder="Enter task title"
                 autoComplete="off"

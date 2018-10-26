@@ -85,7 +85,7 @@ const TaskDetails = props => (
               value={priority.value}
               title={priority.title}
               key={priority.id}
-              defaultChecked={props.isNewTask === false ? props.task.priority.value : undefined}
+              defaultChecked={props.task.priority ? props.task.priority.value : undefined}
               onChange={props.handleInputChange}
             />
           ))}
