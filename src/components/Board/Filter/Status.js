@@ -53,7 +53,9 @@ export default class BoardFilterStatus extends Component {
         <nav className="nav nav-pills">
           {this.state.status.map((status, i) => (
             <a
-              className={'nav-item nav-link ' + (i === this.state.activeStatus - 1 ? 'active' : '')}
+              className={
+                'nav-item nav-link ' + (status.id === this.state.activeStatus ? 'active' : '')
+              }
               onClick={e => {
                 e.preventDefault()
                 this.handleClick(status.id)
