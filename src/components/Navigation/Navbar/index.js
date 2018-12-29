@@ -81,7 +81,7 @@ const Navbar = props => {
                   <a className="dropdown-item" href="#">
                     Invite user
                   </a>
-                  <NavLink to="/create/task" className="dropdown-item">
+                  <NavLink to="/task" className="dropdown-item">
                     Create task
                   </NavLink>
                   <a className="dropdown-item" href="#">

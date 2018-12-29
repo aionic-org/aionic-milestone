@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ContainersTaskMainTabsNav extends Component {
+class TaskTabsNavigation extends Component {
   constructor(props) {
     super(props)
 
@@ -41,3 +41,5 @@ export default class ContainersTaskMainTabsNav extends Component {
     )
   }
 }
+
+export default TaskTabsNavigation

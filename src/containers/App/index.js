@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import './App.css'
 
 import ScrollToTop from './components/ScrollToTop'
-import { Routes } from '../Routes'
+import Routes from '../Routes'
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <Router>
@@ -21,3 +21,5 @@ export class App extends Component {
     )
   }
 }
+
+export default App
