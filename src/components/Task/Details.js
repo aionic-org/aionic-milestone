@@ -78,7 +78,11 @@ class TaskDetails extends Component {
                 name="author"
                 userList={userList}
                 defaultValue={
-                  this.props.task.author ? this.props.task.author.id : Session.getUser().id
+                  this.props.task.author
+                    ? this.props.task.author.id
+                    : this.props.isNewTask
+                    ? Session.getUser().id
+                    : ''
                 }
                 onChange={this.props.handleInputChange}
               />
