@@ -51,14 +51,16 @@ class BoardUser extends Component {
       )
     } else {
       const content = tasks.length ? (
-        <TaskPreviews taskList={tasks} />
+        <div>
+          <p className="text-muted font-weight-bold mt-4">Number of tasks: {tasks.length}</p>
+          <TaskPreviews taskList={tasks} />
+        </div>
       ) : (
         <Icon assignedClasses={['fa-check-circle']} text="Done!" />
       )
 
       return (
         <BoardUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
-          <p className="text-muted font-weight-bold mt-4">Number of tasks: {tasks.length}</p>
           {content}
         </BoardUserHOC>
       )

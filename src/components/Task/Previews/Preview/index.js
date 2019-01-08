@@ -10,7 +10,7 @@ const TaskPreview = props => {
     props.task.priority !== null ? <TaskPriorityIcon priority={props.task.priority.value} /> : null
 
   return (
-    <Link to={`task/${props.task.id}`} className="TaskPreview TaskLink card">
+    <Link to={`/task/${props.task.id}`} className="TaskPreview TaskLink card">
       <div className="card-header font-weight-bold">
         <span>{props.task.title}</span>
         {priorityIcon}

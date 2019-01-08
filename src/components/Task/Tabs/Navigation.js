@@ -4,7 +4,7 @@ class TaskTabsNavigation extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { tabs: ['Comments', 'Commits'], activeTab: null }
+    this.state = { tabs: ['Comments', 'Commits', 'Links'], activeTab: null }
   }
 
   handleClick = tabPos => {

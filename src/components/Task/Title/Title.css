@@ -3,3 +3,7 @@
   padding: 10px 5px;
   background: transparent;
 }
+
+.TaskTitle > h1 > input:focus {
+  background: white;
+}

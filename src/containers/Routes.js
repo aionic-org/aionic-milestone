@@ -10,6 +10,7 @@ import ContainersSignin from './Signin/'
 import ContainersRegister from './Register/'
 import ContainersHome from './Home/'
 import ContainersTask from './Task/'
+import ContainersSearch from './Search'
 
 function Routes(props) {
   const AuthContainer = () => (
@@ -35,6 +36,7 @@ function Routes(props) {
         />
         <Route exact path="/task" component={ContainersTask} />
         <Route exact path="/task/:id" component={ContainersTask} />
+        <Route exact path="/search/:searchTerm" component={ContainersSearch} />
       </div>
       <Footer />
     </div>
