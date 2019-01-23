@@ -20,6 +20,8 @@ const TaskPreview = props => {
           {props.task.author ? props.task.author.firstname + ' ' + props.task.author.lastname : '-'}
         </h6>
         <p className="card-text">{props.task.description}</p>
+      </div>
+      <div className="card-footer">
         <p className="card-text">
           <small className="text-muted">Last update: {props.task.updated} </small>
         </p>

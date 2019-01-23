@@ -36,7 +36,7 @@ function Routes(props) {
         />
         <Route exact path="/task" component={ContainersTask} />
         <Route exact path="/task/:id" component={ContainersTask} />
-        <Route exact path="/search/:searchTerm" component={ContainersSearch} />
+        <Route path="/search/:searchTerm" component={ContainersSearch} />
       </div>
       <Footer />
     </div>
