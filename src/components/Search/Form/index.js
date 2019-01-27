@@ -1,24 +1,53 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import './Form.css'
 
-const SearchForm = props => (
-  <form className={'SearchForm ' + props.assignedClasses.join(' ')}>
-    <input
-      className="form-control"
-      type="text"
-      placeholder="Enter search term"
-      aria-label="Search"
-    />
+class SearchForm extends Component {
+  constructor(props) {
+    super(props)
 
-    <button className="btn btn-secondary my-2 my-sm-0 ml-2" type="button">
-      Search
-    </button>
-  </form>
-)
+    this.state = { searchTerm: '' }
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      searchTerm: e.target.value
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+
+    if (this.state.searchTerm.length) {
+      this.props.history.push(`/search/${this.state.searchTerm}`)
+    }
+  }
+
+  render() {
+    return (
+      <form
+        className={'SearchForm ' + this.props.assignedClasses.join(' ')}
+        onSubmit={this.handleSubmit}
+      >
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Enter search term"
+          aria-label="Search"
+          onChange={this.handleInputChange}
+        />
+
+        <button className="btn btn-secondary my-2 my-sm-0 ml-2" type="submit">
+          Search
+        </button>
+      </form>
+    )
+  }
+}
 
 SearchForm.defaultProps = {
   assignedClasses: []
 }
 
-export default SearchForm
+export default withRouter(SearchForm)

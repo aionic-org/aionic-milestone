@@ -9,10 +9,11 @@ import Footer from '../components/Navigation/Footer/'
 import ContainersSignin from './Signin/'
 import ContainersRegister from './Register/'
 import ContainersHome from './Home/'
-import ContainersTaskMain from './Task/Main/'
-import ContainersTaskCreate from './Task/Create/'
+import ContainersTask from './Task/'
+import ContainersSearch from './Search'
+import ContainersSettings from './Settings'
 
-export function Routes(props) {
+function Routes(props) {
   const AuthContainer = () => (
     <div className="mainWrapper">
       <div className="main">
@@ -34,8 +35,10 @@ export function Routes(props) {
             return <Redirect to="/signin" />
           }}
         />
-        <Route path="/task/:id" component={ContainersTaskMain} />
-        <Route path="/create/task" component={ContainersTaskCreate} />
+        <Route exact path="/task" component={ContainersTask} />
+        <Route exact path="/task/:id" component={ContainersTask} />
+        <Route path="/search/:searchTerm" component={ContainersSearch} />
+        <Route path="/settings" component={ContainersSettings} />
       </div>
       <Footer />
     </div>
@@ -51,3 +54,5 @@ export function Routes(props) {
     </Switch>
   )
 }
+
+export default Routes

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../../../services/api'
+import { Api } from '../../../services/api'
 
-import BoardViewUserHOC from './HOC'
-import Error from '../../../UI/Error/'
-import Spinner from '../../../UI/Spinner/'
-import TaskPreviews from '../../../Task/Previews/'
+import BoardUserHOC from './HOC'
+import Error from '../../UI/Error/'
+import Spinner from '../../UI/Spinner/'
+import Icon from '../../UI/Icon'
+import Deck from '../../UI/Deck'
 
-export default class BoardViewUser extends Component {
+class BoardUser extends Component {
   constructor(props) {
     super(props)
 
@@ -38,23 +39,33 @@ export default class BoardViewUser extends Component {
 
     if (isLoading) {
       return (
-        <BoardViewUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
+        <BoardUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
           <Spinner />
-        </BoardViewUserHOC>
+        </BoardUserHOC>
       )
     } else if (msg.length) {
       return (
-        <BoardViewUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
+        <BoardUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
           <Error message={msg} />
-        </BoardViewUserHOC>
+        </BoardUserHOC>
       )
     } else {
-      return (
-        <BoardViewUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
+      const content = tasks.length ? (
+        <div>
           <p className="text-muted font-weight-bold mt-4">Number of tasks: {tasks.length}</p>
-          <TaskPreviews taskList={tasks} />
-        </BoardViewUserHOC>
+          <Deck itemList={tasks} deckType={'tasks'} />
+        </div>
+      ) : (
+        <Icon assignedClasses={['fa-check-circle']} text="Done!" />
+      )
+
+      return (
+        <BoardUserHOC handleStatusChange={this.handleStatusChange} user={this.props.user}>
+          {content}
+        </BoardUserHOC>
       )
     }
   }
 }
+
+export default BoardUser

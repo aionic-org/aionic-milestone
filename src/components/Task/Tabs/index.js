@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Api } from '../../../../../services/api'
 
-import ContainersTaskMainTabsNav from './Nav'
-import Error from '../../../../../components/UI/Error/'
-import Spinner from '../../../../../components/UI/Spinner/'
-import TaskComments from '../../../../../components/Task/Comments'
-import TaskCommentsForm from '../../../../../components/Task/Comments/Form'
+import { Api } from '../../../services/api'
 
-export default class ContainersTaskMainTabs extends Component {
+import TaskTabsNavigation from './Navigation'
+import Error from '../../UI/Error/'
+import Spinner from '../../UI/Spinner/'
+import TaskComments from '../../Task/Comments'
+import TaskCommentsForm from '../../Task/Comments/Form'
+
+class TaskTabs extends Component {
   constructor(props) {
     super(props)
 
@@ -75,10 +76,12 @@ export default class ContainersTaskMainTabs extends Component {
     }
 
     return (
-      <div className="ContainersTaskMainTabs">
-        <ContainersTaskMainTabsNav handleClick={this.handleClick} />
+      <div className="TaskTabs">
+        <TaskTabsNavigation handleClick={this.handleClick} />
         {content}
       </div>
     )
   }
 }
+
+export default TaskTabs

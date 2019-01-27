@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Api } from '../../../services/api'
 
-export default class BoardFilterStatus extends Component {
+class FilterStatus extends Component {
   constructor(props) {
     super(props)
 
@@ -49,9 +49,9 @@ export default class BoardFilterStatus extends Component {
 
   render() {
     return (
-      <div className="TaskFilterStatus mt-4">
+      <div className="FilterStatus mt-4">
         <nav className="nav nav-pills">
-          {this.state.status.map((status, i) => (
+          {this.state.status.map(status => (
             <a
               className={
                 'nav-item nav-link ' + (status.id === this.state.activeStatus ? 'active' : '')
@@ -71,3 +71,5 @@ export default class BoardFilterStatus extends Component {
     )
   }
 }
+
+export default FilterStatus

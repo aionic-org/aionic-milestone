@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class ContainersTaskMainTabsNav extends Component {
+class TaskTabsNavigation extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { tabs: ['Comments', 'Commits'], activeTab: null }
+    this.state = { tabs: ['Comments', 'Commits', 'Links'], activeTab: null }
   }
 
   handleClick = tabPos => {
@@ -41,3 +41,5 @@ export default class ContainersTaskMainTabsNav extends Component {
     )
   }
 }
+
+export default TaskTabsNavigation

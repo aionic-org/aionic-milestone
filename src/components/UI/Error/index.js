@@ -10,7 +10,7 @@ const Error = props => {
   return (
     <div className={`Error ${props.assignedClasses.join(' ')}`}>
       {icon}
-      <p className="text-center text-danger mt-3">{props.message}</p>
+      <p className="text-center text-danger mt-2">{props.message}</p>
     </div>
   )
 }

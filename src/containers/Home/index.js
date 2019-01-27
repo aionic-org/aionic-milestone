@@ -4,7 +4,7 @@ import './Home.css'
 
 import { Session } from '../../services/session'
 
-import BoardViewUser from '../../components/Board/View/User/'
+import BoardUser from '../../components/Board/User/'
 
 export default class ContainersHome extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class ContainersHome extends Component {
     return (
       <div className="ContainersHome">
         <div className="content container-fluid">
-          <BoardViewUser user={Session.getUser()} />
+          <BoardUser user={Session.getUser()} />
         </div>
       </div>
     )

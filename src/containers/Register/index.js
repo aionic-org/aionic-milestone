@@ -7,7 +7,7 @@ import { Api } from '../../services/api'
 import Logo from '../../components/UI/Logo'
 import RegisterForm from './components/Form/'
 
-export default class ContainersRegister extends Component {
+export class ContainersRegister extends Component {
   constructor(props) {
     super(props)
   }
@@ -42,3 +42,5 @@ export default class ContainersRegister extends Component {
     )
   }
 }
+
+export default ContainersRegister
