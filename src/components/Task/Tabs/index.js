@@ -60,7 +60,7 @@ class TaskTabs extends Component {
         case 'Comments':
           content = (
             <div>
-              <TaskComments commentList={this.state.data} />
+              <TaskComments commentList={this.state.data} taskId={this.props.task.id} />
               <TaskCommentsForm
                 updateParentState={this.fetchData}
                 task={this.props.task}

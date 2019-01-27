@@ -5,7 +5,7 @@ import { Session } from '../../../../services/session'
 
 class TaskComment extends Component {
   deleteComment = id => {
-    Api.deleteData(`task/comments/${id}`)
+    Api.deleteData(`task/${this.props.taskId}/comments/${id}`)
       .then(res => {
         this.props.removeComment(id)
       })

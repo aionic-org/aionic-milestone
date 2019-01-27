@@ -21,7 +21,6 @@ class SettingsUsers extends Component {
   componentDidMount = props => {
     Api.fetchData('user')
       .then(res => {
-        console.log(res)
         this.setState({
           isLoading: false,
           users: res
