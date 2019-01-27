@@ -5,8 +5,8 @@ import { Api } from '../../../services/api'
 import BoardUserHOC from './HOC'
 import Error from '../../UI/Error/'
 import Spinner from '../../UI/Spinner/'
-import TaskPreviews from '../../Task/Previews/'
 import Icon from '../../UI/Icon'
+import Deck from '../../UI/Deck'
 
 class BoardUser extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class BoardUser extends Component {
       const content = tasks.length ? (
         <div>
           <p className="text-muted font-weight-bold mt-4">Number of tasks: {tasks.length}</p>
-          <TaskPreviews taskList={tasks} />
+          <Deck itemList={tasks} deckType={'tasks'} />
         </div>
       ) : (
         <Icon assignedClasses={['fa-check-circle']} text="Done!" />

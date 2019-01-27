@@ -113,9 +113,9 @@ class Navbar extends Component {
                       Saved tasks
                     </a>
                     <div className="dropdown-divider" />
-                    <a className="dropdown-item" href="#">
+                    <NavLink to="/settings" className="dropdown-item">
                       Settings
-                    </a>
+                    </NavLink>
                     <Link to="/signout" className="dropdown-item">
                       <i className="fas fa-sign-out-alt" /> Signout
                     </Link>

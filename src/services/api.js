@@ -61,6 +61,8 @@ export class Api {
     if (error.response !== undefined) {
       switch (error.response.status) {
         case 401:
+          return 'Not authorized!'
+        case 403:
           return 'Missing user rights!'
         case 404:
           return 'Resource not found!'

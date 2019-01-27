@@ -7,8 +7,7 @@ import { Api } from '../../services/api'
 import ContainersSearchHOC from './HOC'
 import Spinner from '../../components/UI/Spinner'
 import Error from '../../components/UI/Error'
-
-import TaskPreviews from '../../components/Task/Previews/'
+import Deck from '../../components/UI/Deck'
 
 export default class ContainersSearch extends Component {
   constructor(props) {
@@ -67,7 +66,7 @@ export default class ContainersSearch extends Component {
           <h3 className="mb-4">
             {searchResult.length} results found: <span className="font-italic">{searchTerm}</span>
           </h3>
-          <TaskPreviews taskList={searchResult} />
+          <Deck itemList={searchResult} deckType={'tasks'} />
         </ContainersSearchHOC>
       )
     }

@@ -1,7 +1,7 @@
 {
   "name": "aionic-frontend",
   "version": "0.0.1",
-  "description": "Aionic - A web application for task management",
+  "description": "Aionic Frontend - Software products for project management",
   "author": "Lars Wächter",
   "repository": {
     "url": "https://github.com/AionicApp/aionic-frotend"

@@ -42,7 +42,11 @@ class ContainersTask extends Component {
       // fetch existing task
       Api.fetchData(`task/${taskID}`)
         .then(res => {
-          this.setState({ isLoading: false, task: res })
+          if (res) {
+            this.setState({ isLoading: false, task: res })
+          } else {
+            this.setState({ isLoading: false, msg: 'Resource not found!' })
+          }
         })
         .catch(err => {
           this.setState({
@@ -101,6 +105,8 @@ class ContainersTask extends Component {
 
   createTask = task => {
     const _task = task || this.state.task
+    console.log(task, this.state.task)
+
     Api.postData('task', { task: _task })
       .then(res => {
         this.props.history.push(`/task/${res.id}`)
@@ -142,7 +148,12 @@ class ContainersTask extends Component {
       const taskFooter = isNewTask ? (
         <div className="row">
           <div className="col-xl-8">
-            <button className="btn btn-primary btn-block" onClick={this.createTask}>
+            <button
+              className="btn btn-primary btn-block"
+              onClick={() => {
+                this.createTask()
+              }}
+            >
               Create task
             </button>
           </div>
