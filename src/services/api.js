@@ -3,7 +3,7 @@ import { Session } from './session'
 
 // default config
 const axios = create({
-  baseURL: 'http://localhost:3000/api'
+  baseURL: 'http://localhost:3000/api/v1'
 })
 
 export class Api {
