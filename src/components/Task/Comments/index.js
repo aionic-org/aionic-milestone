@@ -26,7 +26,12 @@ class TaskComments extends Component {
       <div className="TaskComments">
         {this.state.commentList.map(comment => {
           return (
-            <TaskComment key={comment.id} comment={comment} removeComment={this.removeComment} />
+            <TaskComment
+              key={comment.id}
+              comment={comment}
+              taskId={this.props.taskId}
+              removeComment={this.removeComment}
+            />
           )
         })}
       </div>
