@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../../../services/api'
+import { Api } from 'services/api'
 
-import Spinner from '../../../../components/UI/Spinner'
-import Error from '../../../../components/UI/Error'
-import Deck from '../../../../components/UI/Deck'
-import UserInvitation from '../../../../components/User/Invitation'
+import Spinner from 'components/UI/Spinner'
+import Error from 'components/UI/Error'
+import Deck from 'components/UI/Deck'
+
+import UserInvitation from 'components/User/Invitation'
 
 class SettingsUsers extends Component {
   constructor(props) {

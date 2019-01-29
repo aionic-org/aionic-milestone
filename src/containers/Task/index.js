@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
-import { Session } from '../../services/session'
-import { Api } from '../../services/api'
+import { Session } from 'services/session'
+import { Api } from 'services/api'
+
+import Alert from 'components/UI/Alert'
+import Error from 'components/UI/Error'
+import Spinner from 'components/UI/Spinner'
+
+import ContainersTaskMainTabs from 'components/Task/Tabs'
+import TaskTitle from 'components/Task/Title'
+import TaskDetails from 'components/Task/Details'
+import TaskDescription from 'components/Task/Description'
 
 import ContainersTaskHOC from './HOC'
-import Error from '../../components/UI/Error'
-import Spinner from '../../components/UI/Spinner'
-import ContainersTaskMainTabs from '../../components/Task/Tabs'
-import TaskTitle from '../../components/Task/Title'
-import TaskDetails from '../../components/Task/Details'
-import Alert from '../../components/UI/Alert'
-import TaskDescription from '../../components/Task/Description'
 
 class ContainersTask extends Component {
   constructor(props) {
@@ -105,7 +107,6 @@ class ContainersTask extends Component {
 
   createTask = task => {
     const _task = task || this.state.task
-    console.log(task, this.state.task)
 
     Api.postData('task', { task: _task })
       .then(res => {

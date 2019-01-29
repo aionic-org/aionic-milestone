@@ -2,8 +2,9 @@ import React from 'react'
 
 import './Signin.css'
 
+import UILogo from 'components/UI/Logo'
+
 import SigninForm from './components/Form/'
-import UILogo from '../../components/UI/Logo'
 
 const ContainersSignin = props => {
   const logoStyle = {

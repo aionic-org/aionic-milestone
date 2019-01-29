@@ -2,8 +2,8 @@ import React from 'react'
 
 import './Deck.css'
 
-import TaskPreview from '../../Task/Preview'
-import UserPreview from '../../User/Preview'
+import TaskPreview from 'components/Task/Preview'
+import UserPreview from 'components/User/Preview'
 
 const Deck = props => {
   const tmpArr = []
@@ -28,6 +28,8 @@ const Deck = props => {
                   return <TaskPreview key={item.id} task={item} />
                 case 'users':
                   return <UserPreview key={item.id} user={item} />
+                default:
+                  return
               }
             })}
           </div>

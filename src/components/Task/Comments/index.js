@@ -13,7 +13,7 @@ class TaskComments extends Component {
 
   removeComment = id => {
     const comments = this.state.commentList.filter(comment => {
-      return comment.id != id
+      return comment.id !== id
     })
 
     this.setState({

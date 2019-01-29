@@ -3,7 +3,7 @@ import { Session } from './session'
 
 // default config
 const axios = create({
-  baseURL: 'http://localhost:3000/api/v1'
+  baseURL: process.env.REACT_APP_BASE_URL
 })
 
 export class Api {

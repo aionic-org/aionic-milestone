@@ -1,5 +1,5 @@
 import React from 'react'
-import InputSelect from '../UI/Input/Select'
+import InputSelect from 'components/UI/Input/Select'
 
 const UserList = props => {
   const users = props.userList.map(user => {

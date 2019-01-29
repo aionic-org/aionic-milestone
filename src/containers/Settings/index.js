@@ -5,10 +5,6 @@ import SettingsGeneral from './components/general'
 import SettingsUsers from './components/users'
 
 class ContainersSettings extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div className="ContainersSettings">

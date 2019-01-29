@@ -2,22 +2,16 @@ import React, { Component } from 'react'
 
 import './Register.css'
 
-import { Api } from '../../services/api'
+import { Api } from 'services/api'
 
-import Logo from '../../components/UI/Logo'
+import Logo from 'components/UI/Logo'
 import RegisterForm from './components/Form/'
 
 export class ContainersRegister extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount = () => {
     // validate register hash
     Api.fetchData(`auth/register/${this.props.match.params.hash}`)
-      .then(res => {
-        console.log(res)
-      })
+      .then(res => {})
       .catch(err => {
         this.props.history.push('/signin')
       })

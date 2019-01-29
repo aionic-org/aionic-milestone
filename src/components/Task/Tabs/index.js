@@ -3,10 +3,12 @@ import React, { Component } from 'react'
 import { Api } from '../../../services/api'
 
 import TaskTabsNavigation from './Navigation'
-import Error from '../../UI/Error/'
-import Spinner from '../../UI/Spinner/'
-import TaskComments from '../../Task/Comments'
-import TaskCommentsForm from '../../Task/Comments/Form'
+
+import Error from 'components/UI/Error/'
+import Spinner from 'components/UI/Spinner/'
+
+import TaskComments from 'components/Task/Comments'
+import TaskCommentsForm from 'components/Task/Comments/Form'
 
 class TaskTabs extends Component {
   constructor(props) {

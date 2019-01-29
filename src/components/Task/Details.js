@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
-import { Session } from '../../services/session'
-import { Api } from '../../services/api'
+import { Session } from 'services/session'
+import { Api } from 'services/api'
 
-import UserList from '../User/UserList'
+import InputRadio from 'components/UI/Input/Radio'
+import Spinner from 'components/UI/Spinner'
+import Error from 'components/UI/Error'
+
+import UserList from 'components/User/UserList'
 import TaskStatusList from './StatusList'
-import InputRadio from '../UI/Input/Radio'
-import Spinner from '../UI/Spinner'
-import Error from '../UI/Error'
 
 class TaskDetails extends Component {
   constructor(props) {
@@ -23,11 +24,11 @@ class TaskDetails extends Component {
   }
 
   componentDidMount = () => {
-    const requests = new Array(
+    const requests = [
       Api.fetchData('user/'),
       Api.fetchData('taskStatus/'),
       Api.fetchData('taskPriority/')
-    )
+    ]
 
     Promise.all(requests)
       .then(res => {
