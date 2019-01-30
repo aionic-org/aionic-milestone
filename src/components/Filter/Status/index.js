@@ -62,7 +62,7 @@ class FilterStatus extends Component {
 
   render() {
     return (
-      <div className="FilterStatus mt-4">
+      <div className="FilterStatus">
         <nav className="nav nav-pills">
           {this.state.status.map(status => (
             <a

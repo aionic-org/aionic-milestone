@@ -49,9 +49,9 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <NavLink to="/project" className="nav-link" activeClassName="active">
                     Projects
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
@@ -83,7 +83,7 @@ class Navbar extends Component {
                     <NavLink to="/settings/users" className="dropdown-item">
                       Invite user
                     </NavLink>
-                    <NavLink to="/task" className="dropdown-item">
+                    <NavLink exact to="/task" className="dropdown-item">
                       Create task
                     </NavLink>
                     <a className="dropdown-item" href="#">

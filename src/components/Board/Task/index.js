@@ -5,7 +5,7 @@ import Deck from 'components/UI/Deck'
 
 import FilterStatus from 'components/Filter/Status'
 
-class BoardTask extends Component {
+class BoardTasks extends Component {
   constructor(props) {
     super(props)
 
@@ -39,14 +39,14 @@ class BoardTask extends Component {
             onClick={this.props.updateParent}
           />
         </p>
-        <Deck itemList={itemList} deckType={'tasks'} />
+        <Deck itemList={itemList} deckType={'task'} />
       </div>
     ) : (
       <Icon assignedClasses={['fa-check-circle']} text="Done!" />
     )
 
     return (
-      <div className="BoardTask">
+      <div className="BoardTasks">
         {title}
         <FilterStatus handleStatusChange={this.filterTasks} />
         {content}
@@ -55,9 +55,9 @@ class BoardTask extends Component {
   }
 }
 
-BoardTask.defaultProps = {
+BoardTasks.defaultProps = {
   title: 'Tasks:',
   updateParent: () => {}
 }
 
-export default BoardTask
+export default BoardTasks
