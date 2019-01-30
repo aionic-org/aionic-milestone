@@ -1,5 +1,5 @@
 import React from 'react'
-import InputSelect from '../UI/Input/Select'
+import InputSelect from 'components/UI/Input/Select'
 
 const TaskStatusList = props => {
   const status = props.statusList.map(status => {

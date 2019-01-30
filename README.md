@@ -41,8 +41,8 @@ We try to help other people / companies realizing their ideas by offering highly
 ## Community
 
 - [Website](https://aionic.app)
-- [GitHub](https://github.com/Aionic-App)
+- [GitHub](https://github.com/Aionic-Apps)
 
 ## License
 
-[MIT](https://github.com/Aionic-App/aionic-frontend/blob/master/LICENSE)
+[MIT](https://github.com/Aionic-Apps/aionic-frontend/blob/master/LICENSE)

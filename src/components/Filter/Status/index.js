@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../../services/api'
+import { Api } from 'services/api'
 
 class FilterStatus extends Component {
   constructor(props) {
@@ -22,10 +22,19 @@ class FilterStatus extends Component {
     Api.fetchData('taskStatus/')
       .then(res => {
         if (res.length) {
-          this.setState({ isLoading: false, status: res, activeStatus: res[0].id }, () => {
-            // use first one as default
-            this.props.handleStatusChange(res[0].id)
-          })
+          this.setState(
+            {
+              isLoading: false,
+              status: res,
+              activeStatus: this.props.autoActive ? res[0].id : 0
+            },
+            () => {
+              // Set first element as active
+              if (this.props.autoActive) {
+                this.props.handleStatusChange(res[0].id)
+              }
+            }
+          )
         } else {
           this.setState({ isLoading: false }, () => {
             this.props.handleStatusChange(0)
@@ -42,14 +51,18 @@ class FilterStatus extends Component {
   handleClick = statusID => {
     if (statusID !== this.state.activeStatus) {
       this.setState({ activeStatus: statusID }, () => {
-        this.props.handleStatusChange(statusID)
+        this.props.handleStatusChange(statusID, true)
+      })
+    } else if (!this.props.autoActive) {
+      this.setState({ activeStatus: 0 }, () => {
+        this.props.handleStatusChange(0, false)
       })
     }
   }
 
   render() {
     return (
-      <div className="FilterStatus mt-4">
+      <div className="FilterStatus">
         <nav className="nav nav-pills">
           {this.state.status.map(status => (
             <a
@@ -67,9 +80,14 @@ class FilterStatus extends Component {
             </a>
           ))}
         </nav>
+        <hr className="featurette-divider" />
       </div>
     )
   }
+}
+
+FilterStatus.defaultProps = {
+  autoActive: false
 }
 
 export default FilterStatus

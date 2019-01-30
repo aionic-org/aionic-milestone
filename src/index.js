@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 
 import './index.css'
 
-import App from './containers/App/'
+import App from './sites/App/'
+
+require('dotenv').config()
 
 render(<App />, document.getElementById('root'))

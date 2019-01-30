@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
-import { NavLink, Link, withRouter } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import './Navbar.css'
 
-import { Session } from '../../../services/session'
+import { Session } from 'services/session'
 
-import UILogo from '../../UI/Logo'
-import SearchForm from '../../Search/Form'
+import UILogo from 'components/UI/Logo'
+
+import SearchForm from 'components/Search/Form'
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const logoStyle = {
       height: '30px',
@@ -52,9 +49,9 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <NavLink to="/project" className="nav-link" activeClassName="active">
                     Projects
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
@@ -83,10 +80,10 @@ class Navbar extends Component {
                     <i className="fas fa-plus" />
                   </a>
                   <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-                    <a className="dropdown-item" href="#">
+                    <NavLink to="/settings/users" className="dropdown-item">
                       Invite user
-                    </a>
-                    <NavLink to="/task" className="dropdown-item">
+                    </NavLink>
+                    <NavLink exact to="/task" className="dropdown-item">
                       Create task
                     </NavLink>
                     <a className="dropdown-item" href="#">

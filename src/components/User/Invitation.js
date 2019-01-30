@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../services/api'
+import { Api } from 'services/api'
 
 class UserInvitation extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class UserInvitation extends Component {
     return (
       <div className="UserInvitation">
         <form onSubmit={this.handleSubmit}>
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               type="email"
               name="email"

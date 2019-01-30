@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../../../services/api'
-import { Session } from '../../../../services/session'
+import { Api } from 'services/api'
+import { Session } from 'services/session'
 
 class TaskComment extends Component {
   deleteComment = id => {

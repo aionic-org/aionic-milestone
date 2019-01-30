@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Api } from '../../../../services/api'
-import Error from '../../../UI/Error'
+import { Api } from 'services/api'
+import Error from 'components/UI/Error'
 
 class TaskCommentsForm extends Component {
   constructor(props) {
