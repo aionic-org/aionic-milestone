@@ -95,6 +95,13 @@ const TaskDetails = props => {
               />
             ))}
           </div>
+
+          <div className="col-sm-2">Closed</div>
+          <div className="col-sm-4">
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" name="closed" onChange={handleInputChange} />
+            </div>
+          </div>
         </div>
       </fieldset>
 
@@ -108,6 +115,8 @@ const TaskDetails = props => {
             </label>
           </div>
         </div>
+
+
       </div>
     </div>
   )

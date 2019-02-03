@@ -59,9 +59,9 @@ class Navbar extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <NavLink to="/search" className="nav-link" activeClassName="active">
                     Search
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
 

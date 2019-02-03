@@ -8,40 +8,46 @@ import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
 
-export default class BoardSearch extends Component {
+class BoardTaskContainersSearch extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       isLoading: false,
       msg: '',
-      searchTerm: props.searchTerm,
       searchResult: []
     }
   }
 
   componentDidMount = () => {
-    if (this.state.searchTerm.length) {
-      this.setState({
-        isLoading: true
-      })
-
-      Api.fetchData(`/search/task/${this.state.searchTerm}`)
-        .then(res => {
-          this.setState({ isLoading: false, searchResult: res })
-        })
-        .catch(err => {
-          this.setState({
-            isLoading: false,
-            msg: Api.handleHttpError(err)
-          })
-        })
-    } else {
-      this.setState({
-        isLoading: false,
-        msg: 'Please enter a search term'
-      })
+    if (this.props.searchParams.searchTerm.length) {
+      this.doSearch()
     }
+  }
+
+  componentDidUpdate = prevProps => {
+    if (JSON.stringify(this.props.searchParams) !== JSON.stringify(prevProps.searchParams)) {
+      this.doSearch()
+    }
+  }
+
+  doSearch = () => {
+    const params = this.props.searchParams
+
+    this.setState({
+      isLoading: true
+    })
+
+    Api.fetchData(`/search/task`, params)
+      .then(res => {
+        this.setState({ isLoading: false, searchResult: res })
+      })
+      .catch(err => {
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
+      })
   }
 
   render() {
@@ -49,13 +55,13 @@ export default class BoardSearch extends Component {
 
     if (isLoading) {
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <Error message={msg} />
         </div>
       )
@@ -67,14 +73,17 @@ export default class BoardSearch extends Component {
       )
 
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <BoardTasks
             taskList={searchResult}
             title={<Title title={title} />}
             highlightAssignee={true}
+            showFilters={false}
           />
         </div>
       )
     }
   }
 }
+
+export default BoardTaskContainersSearch

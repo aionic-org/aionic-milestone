@@ -7,6 +7,12 @@
   width: 85%;
 }
 
+@media only screen and (max-device-width: 1024px) {
+  .App > .mainWrapper > .main .content.container-fluid {
+    width: 100%;
+  }
+}
+
 a.CardLink {
   color: inherit;
   text-decoration: none;

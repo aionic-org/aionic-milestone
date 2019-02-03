@@ -29,6 +29,6 @@
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
-    "prettier": "^1.15.3"
+    "prettier": "^1.16.3"
   }
 }

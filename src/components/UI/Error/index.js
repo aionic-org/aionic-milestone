@@ -19,7 +19,7 @@ const Error = props => {
   if (props.wrapContent) {
     return <Content>{content}</Content>
   } else {
-    return { content }
+    return content
   }
 }
 

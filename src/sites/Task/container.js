@@ -54,8 +54,9 @@ class SitesTaskContainer extends Component {
   }
 
   handleInputChange = e => {
-    const name = e.target.name
-    const value = e.target.value.length ? e.target.value : null
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     if (this.state.task[name] !== value) {
       const task = { ...this.state.task, [name]: value }
