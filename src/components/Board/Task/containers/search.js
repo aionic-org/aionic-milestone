@@ -4,7 +4,6 @@ import { Api } from 'services/api'
 
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
-import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
 
@@ -51,7 +50,8 @@ class BoardTaskContainersSearch extends Component {
   }
 
   render() {
-    const { isLoading, msg, searchTerm, searchResult } = this.state
+    const { searchParams } = this.props
+    const { isLoading, msg, searchResult } = this.state
 
     if (isLoading) {
       return (
@@ -67,18 +67,20 @@ class BoardTaskContainersSearch extends Component {
       )
     } else {
       const title = (
-        <div>
-          {searchResult.length} results found: <span className="font-italic">{searchTerm}</span>
-        </div>
+        <p class="font-weight-bold">
+          {searchResult.length} results found:{' '}
+          <span className="font-italic">{searchParams.searchTerm}</span>
+        </p>
       )
 
       return (
         <div className="BoardTaskContainersSearch">
           <BoardTasks
             taskList={searchResult}
-            title={<Title title={title} />}
+            title={title}
             highlightAssignee={true}
             showFilters={false}
+            itemsPerRow={3}
           />
         </div>
       )

@@ -25,26 +25,30 @@ class BoardTask extends Component {
 
   render() {
     const { taskListFiltered, isFiltered } = this.state
-    const { taskList, title, showFilters, updateParent } = this.props
+    const { taskList, title, showFilters, updateParent, itemsPerRow } = this.props
 
     const itemList = isFiltered ? taskListFiltered : taskList
 
+    const deck = <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
+    const filters = showFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null
+    const taskNumber = (
+      <div>
+        <p className="text-muted font-weight-bold mt-4">
+          Number of tasks: {itemList.length}
+          <i
+            className="fas fa-sync-alt float-right"
+            style={{ cursor: 'pointer' }}
+            onClick={updateParent}
+          />
+        </p>
+      </div>
+    )
+
     const content = itemList.length ? (
-      showFilters ? (
-        <div>
-          <p className="text-muted font-weight-bold mt-4">
-            Number of tasks: {itemList.length}
-            <i
-              className="fas fa-sync-alt float-right"
-              style={{ cursor: 'pointer' }}
-              onClick={updateParent}
-            />
-          </p>
-          <Deck itemList={itemList} deckType={'task'} />
-        </div>
-      ) : (
-        <Deck itemList={itemList} deckType={'task'} />
-      )
+      <div>
+        {showFilters ? taskNumber : null}
+        {deck}
+      </div>
     ) : (
       <Icon assignedClasses={['fa-check-circle']} text="Done!" />
     )
@@ -52,7 +56,7 @@ class BoardTask extends Component {
     return (
       <div className="BoardTask">
         {title}
-        {showFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null}
+        {filters}
         {content}
       </div>
     )
@@ -62,6 +66,7 @@ class BoardTask extends Component {
 BoardTask.defaultProps = {
   title: 'Tasks:',
   showFilters: true,
+  itemsPerRow: 4,
   updateParent: () => {}
 }
 

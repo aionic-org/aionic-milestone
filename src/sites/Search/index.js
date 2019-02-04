@@ -6,6 +6,7 @@ import Content from 'components/UI/Content'
 
 import BoardTaskContainersFilter from 'components/Board/Task/containers/filter'
 import BoardTaskContainersSearch from 'components/Board/Task/containers/search'
+import Title from '../../components/UI/Title'
 
 class SitesSearch extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class SitesSearch extends Component {
     return (
       <div className="SitesSearch">
         <Content>
+          <Title title={'Search'} />
           <div className="row">
             <div className="col-3">
               <BoardTaskContainersFilter
