@@ -56,7 +56,7 @@ class SitesTaskContainer extends Component {
   handleInputChange = e => {
     const target = e.target
     const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value
 
     if (this.state.task[name] !== value) {
       const task = { ...this.state.task, [name]: value }
@@ -74,6 +74,7 @@ class SitesTaskContainer extends Component {
 
     Api.postData(`task/${_task.id}`, { task: _task })
       .then(res => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
           taskUpdate: {
             status: 'Success',

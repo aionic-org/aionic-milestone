@@ -6,9 +6,9 @@ import InputTitle from 'components/UI/Input/Title'
 import TaskDetailsContainer from 'components/Task/Details/container'
 
 import Content from 'components/UI/Content'
-import InputMarkdown from 'components/UI/Input/Markdown'
 
 import SitesTaskTabs from './components/Tabs'
+import TaskDescription from 'components/Task/Description'
 
 const SitesTask = props => {
   const { task, taskUpdate, isNewTask, handleInputChange, createTask } = props
@@ -61,13 +61,7 @@ const SitesTask = props => {
         </div>
         <div className="row">
           <div className="col-xl-8">
-            <p className="text-muted font-italic mt-5">Description</p>
-            <InputMarkdown
-              content={task.description}
-              name={'description'}
-              onBlurCb={handleInputChange}
-              rows={10}
-            />
+            <TaskDescription task={task} handleInputChange={handleInputChange} />
           </div>
         </div>
         {taskFooter}
