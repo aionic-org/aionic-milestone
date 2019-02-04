@@ -10,7 +10,9 @@ const SitesProjects = props => (
   <div className="SitesProjects">
     <Content>
       <Title title={'Projects'} />
-      <CardDeck deckType={'project'} itemList={props.projects} itemsPerRow={2} />
+      <div className="col-8">
+        <CardDeck deckType={'project'} itemList={props.projects} itemsPerRow={2} />
+      </div>
     </Content>
   </div>
 )

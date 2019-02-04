@@ -38,9 +38,13 @@ function Routes(props) {
           }}
         />
         <Route exact path="/task" component={SitesTask} />
-        <Route exact path="/task/:id" component={SitesTask} />
+        <Route path="/task/:id" component={SitesTask} />
+
+        <Route exact path="/search" component={SitesSearch} />
         <Route path="/search/:searchTerm" component={SitesSearch} />
+
         <Route path="/settings" component={SitesSettings} />
+
         <Route exact path="/project" component={SitesProjects} />
         <Route exact path="/project/:id" component={SitesProject} />
       </div>

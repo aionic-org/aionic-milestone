@@ -4,77 +4,88 @@ import { Api } from 'services/api'
 
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
-import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
 
-export default class BoardSearch extends Component {
+class BoardTaskContainersSearch extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       isLoading: false,
       msg: '',
-      searchTerm: props.searchTerm,
       searchResult: []
     }
   }
 
   componentDidMount = () => {
-    if (this.state.searchTerm.length) {
-      this.setState({
-        isLoading: true
-      })
-
-      Api.fetchData(`/search/task/${this.state.searchTerm}`)
-        .then(res => {
-          this.setState({ isLoading: false, searchResult: res })
-        })
-        .catch(err => {
-          this.setState({
-            isLoading: false,
-            msg: Api.handleHttpError(err)
-          })
-        })
-    } else {
-      this.setState({
-        isLoading: false,
-        msg: 'Please enter a search term'
-      })
+    if (this.props.searchParams.searchTerm.length) {
+      this.doSearch()
     }
   }
 
+  componentDidUpdate = prevProps => {
+    if (JSON.stringify(this.props.searchParams) !== JSON.stringify(prevProps.searchParams)) {
+      this.doSearch()
+    }
+  }
+
+  doSearch = () => {
+    const params = this.props.searchParams
+
+    this.setState({
+      isLoading: true
+    })
+
+    Api.fetchData(`/search/task`, params)
+      .then(res => {
+        this.setState({ isLoading: false, searchResult: res })
+      })
+      .catch(err => {
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
+      })
+  }
+
   render() {
-    const { isLoading, msg, searchTerm, searchResult } = this.state
+    const { searchParams } = this.props
+    const { isLoading, msg, searchResult } = this.state
 
     if (isLoading) {
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <Error message={msg} />
         </div>
       )
     } else {
       const title = (
-        <div>
-          {searchResult.length} results found: <span className="font-italic">{searchTerm}</span>
-        </div>
+        <p class="font-weight-bold">
+          {searchResult.length} results found:{' '}
+          <span className="font-italic">{searchParams.searchTerm}</span>
+        </p>
       )
 
       return (
-        <div className="BoardSearch">
+        <div className="BoardTaskContainersSearch">
           <BoardTasks
             taskList={searchResult}
-            title={<Title title={title} />}
+            title={title}
             highlightAssignee={true}
+            showFilters={false}
+            itemsPerRow={3}
           />
         </div>
       )
     }
   }
 }
+
+export default BoardTaskContainersSearch

@@ -5,7 +5,7 @@ import Deck from 'components/UI/Deck'
 
 import FilterStatus from 'components/Filter/Status'
 
-class BoardTasks extends Component {
+class BoardTask extends Component {
   constructor(props) {
     super(props)
 
@@ -25,39 +25,49 @@ class BoardTasks extends Component {
 
   render() {
     const { taskListFiltered, isFiltered } = this.state
-    const { taskList, title } = this.props
+    const { taskList, title, showFilters, updateParent, itemsPerRow } = this.props
 
     const itemList = isFiltered ? taskListFiltered : taskList
 
-    const content = itemList.length ? (
+    const deck = <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
+    const filters = showFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null
+    const taskNumber = (
       <div>
         <p className="text-muted font-weight-bold mt-4">
           Number of tasks: {itemList.length}
           <i
             className="fas fa-sync-alt float-right"
             style={{ cursor: 'pointer' }}
-            onClick={this.props.updateParent}
+            onClick={updateParent}
           />
         </p>
-        <Deck itemList={itemList} deckType={'task'} />
+      </div>
+    )
+
+    const content = itemList.length ? (
+      <div>
+        {showFilters ? taskNumber : null}
+        {deck}
       </div>
     ) : (
       <Icon assignedClasses={['fa-check-circle']} text="Done!" />
     )
 
     return (
-      <div className="BoardTasks">
+      <div className="BoardTask">
         {title}
-        <FilterStatus handleStatusChange={this.filterTasks} />
+        {filters}
         {content}
       </div>
     )
   }
 }
 
-BoardTasks.defaultProps = {
+BoardTask.defaultProps = {
   title: 'Tasks:',
+  showFilters: true,
+  itemsPerRow: 4,
   updateParent: () => {}
 }
 
-export default BoardTasks
+export default BoardTask

@@ -3,14 +3,57 @@ import React, { Component } from 'react'
 import './Search.css'
 
 import Content from 'components/UI/Content'
-import BoardSearch from 'components/Board/Task/containers/search'
+
+import BoardTaskContainersFilter from 'components/Board/Task/containers/filter'
+import BoardTaskContainersSearch from 'components/Board/Task/containers/search'
+import Title from '../../components/UI/Title'
 
 class SitesSearch extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      searchParams: {
+        searchTerm: this.props.match.params.searchTerm || ''
+      }
+    }
+  }
+
+  handleFilterChange = e => {
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    if (this.state.searchParams[name] !== value) {
+      const searchParams = { ...this.state.searchParams, [name]: value }
+
+      this.setState({ searchParams })
+    }
+  }
+
+  resetFilters = e => {
+    this.setState({ searchParams: {} })
+  }
+
   render() {
+    const { searchParams } = this.state
+
     return (
       <div className="SitesSearch">
         <Content>
-          <BoardSearch searchTerm={this.props.match.params.searchTerm || ''} />
+          <Title title={'Search'} />
+          <div className="row">
+            <div className="col-3">
+              <BoardTaskContainersFilter
+                searchParams={searchParams}
+                handleFilterChange={this.handleFilterChange}
+                resetFilters={this.resetFilters}
+              />
+            </div>
+            <div className="col-9">
+              <BoardTaskContainersSearch searchParams={searchParams} />
+            </div>
+          </div>
         </Content>
       </div>
     )

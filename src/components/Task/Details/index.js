@@ -95,20 +95,20 @@ const TaskDetails = props => {
               />
             ))}
           </div>
-        </div>
-      </fieldset>
 
-      <div className="form-group row">
-        <div className="col-sm-2">More</div>
-        <div className="col-sm-4">
-          <div className="form-check">
-            <input className="form-check-input" type="checkbox" id="gridCheck1" />
-            <label className="form-check-label" htmlFor="gridCheck1">
-              Remember
-            </label>
+          <div className="col-sm-2">Closed</div>
+          <div className="col-sm-4">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                name="closed"
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </fieldset>
     </div>
   )
 }

@@ -61,7 +61,7 @@ class BoardUser extends Component {
           <BoardTasks
             taskList={tasks}
             handleStatusChange={this.handleStatusChange}
-            title={<Title title={`${this.props.user.firstname}'s Board`} />}
+            title={<Title title={`${this.props.user.firstname}'s Board`} showDivider={false} />}
             updateParent={this.updateParent}
           />
         </div>

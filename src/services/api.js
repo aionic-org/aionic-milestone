@@ -15,8 +15,8 @@ export class Api {
     }
   }
 
-  static fetchData(endpoint) {
-    const config = { headers: { Authorization: `Bearer ${Session.getToken()}` } }
+  static fetchData(endpoint, params = {}) {
+    const config = { headers: { Authorization: `Bearer ${Session.getToken()}` }, params }
 
     return axios
       .get(endpoint, config)
