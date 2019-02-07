@@ -58,6 +58,8 @@ export class Api {
   }
 
   static handleHttpError(error) {
+    console.log(error)
+
     if (error.response !== undefined) {
       switch (error.response.status) {
         case 401:

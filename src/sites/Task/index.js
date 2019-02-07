@@ -45,14 +45,11 @@ const SitesTask = props => {
   return (
     <div className="SitesTask">
       <Content>
-        <div className="mb-2">
-          <InputTitle
-            defaultValue={task.title}
-            onBlur={handleInputChange}
-            placeholder={'Enter task title'}
-          />
-          <hr className="featurette-divider" />
-        </div>
+        <InputTitle
+          defaultValue={task.title}
+          onBlur={handleInputChange}
+          placeholder={'Enter task title'}
+        />
         <div className="row">
           <div className="col-xl-8">
             <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />

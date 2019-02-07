@@ -49,7 +49,7 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink to="/project" className="nav-link" activeClassName="active">
+                  <NavLink exact to="/project" className="nav-link" activeClassName="active">
                     Projects
                   </NavLink>
                 </li>

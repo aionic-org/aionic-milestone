@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Comment.css'
+
 import { Api } from 'services/api'
 import { Session } from 'services/session'
 
@@ -28,17 +30,16 @@ class TaskComment extends Component {
       ) : null
 
     return (
-      <div className="TaskComment mt-3">
+      <div className="TaskComment">
         <div className="card">
-          <div className="card-header font-weight-bold">
-            <span>
-              {`${this.props.comment.author.firstname} ${this.props.comment.author.lastname}`}
-            </span>
-          </div>
           <div className="card-body">
             <p className="card-text">{this.props.comment.comment}</p>
             <p className="card-text">
-              <small className="text-muted">Created: {this.props.comment.created} </small>
+              <small className="text-muted">
+                {`${this.props.comment.author.firstname} ${this.props.comment.author.lastname}`}
+                {' @'}
+                {this.props.comment.created}{' '}
+              </small>
               {deleteBtn}
             </p>
           </div>

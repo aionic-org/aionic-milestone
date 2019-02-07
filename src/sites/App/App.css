@@ -21,6 +21,14 @@ a.CardLink:hover {
   border-color: #6c5ce7;
 }
 
+.nav-pills > .nav-link.active {
+  background-color: #6c5ce7 !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.3);
+}
+
 .btn-primary {
   background-color: #6c5ce7;
   border-color: #6152cf;
@@ -43,8 +51,4 @@ a.CardLink:hover {
 .btn-secondary:focus {
   background-color: #00a585 !important;
   border-color: #00b894 !important;
-}
-
-.nav-pills > .nav-link.active {
-  background-color: #6c5ce7 !important;
 }

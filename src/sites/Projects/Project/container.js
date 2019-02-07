@@ -16,7 +16,11 @@ class SitesProjectContainer extends Component {
     this.state = {
       isLoading: true,
       msg: '',
-      project: {}
+      project: {},
+      projectUpdate: {
+        status: '',
+        msg: ''
+      }
     }
   }
 
@@ -40,8 +44,62 @@ class SitesProjectContainer extends Component {
       })
   }
 
+  handleInputChange = e => {
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    if (this.state.project[name] !== value) {
+      const project = { ...this.state.project, [name]: value }
+
+      this.setState({ project }, () => {
+        this.updateProject()
+      })
+    }
+  }
+
+  handleBtnClick = e => {
+    const project = { ...this.state.project, finished: !this.state.project.finished }
+
+    this.setState({ project }, () => {
+      this.updateProject()
+    })
+  }
+
+  updateProject = () => {
+    const project = this.state.project
+
+    Api.postData(`project/${project.id}`, { project })
+      .then(res => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        this.setState({
+          projectUpdate: {
+            status: 'Success',
+            msg: 'Project updated'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            projectUpdate: {
+              status: '',
+              msg: ''
+            }
+          })
+        }, 1500)
+      })
+      .catch(err => {
+        this.setState({
+          projectUpdate: {
+            status: 'Error',
+            msg: 'Failed to update task!'
+          }
+        })
+      })
+  }
+
   render() {
-    const { isLoading, msg, project } = this.state
+    const { isLoading, msg, project, projectUpdate } = this.state
 
     if (isLoading) {
       return (
@@ -56,7 +114,14 @@ class SitesProjectContainer extends Component {
         </div>
       )
     } else {
-      return <SitesProject project={project} />
+      return (
+        <SitesProject
+          project={project}
+          handleInputChange={this.handleInputChange}
+          handleBtnClick={this.handleBtnClick}
+          projectUpdate={projectUpdate}
+        />
+      )
     }
   }
 }
