@@ -37,9 +37,9 @@ class SitesTaskContainer extends Component {
     } else {
       // Fetch existing task
       Api.fetchData(`task/${taskId}`)
-        .then(res => {
-          if (res) {
-            this.setState({ isLoading: false, task: res })
+        .then(task => {
+          if (task) {
+            this.setState({ isLoading: false, task })
           } else {
             this.setState({ isLoading: false, msg: 'Resource not found!' })
           }

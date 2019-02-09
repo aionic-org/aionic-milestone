@@ -49,8 +49,8 @@ class TaskCommentsForm extends Component {
             onChange={this.handleInputChange}
           />
 
-          <button className="btn btn-md btn-primary btn-block mt-2" type="submit">
-            <i className="fas fa-sign-in-alt" /> Post
+          <button className="btn btn-md btn-primary mt-2 btn-block btn-sm" type="submit">
+            <i className="fas fa-sign-in-alt" /> Submit
           </button>
           {msg}
         </form>

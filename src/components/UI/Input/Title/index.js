@@ -3,7 +3,7 @@ import React from 'react'
 import './Title.css'
 
 const InputTitle = props => (
-  <div className="InputTitle">
+  <div className="InputTitle mb-4">
     <h1 className="h2">
       <input
         type="text"
@@ -15,11 +15,13 @@ const InputTitle = props => (
         onBlur={props.onBlur}
       />
     </h1>
+    {props.showDivider ? <hr className="featurette-divider" /> : null}
   </div>
 )
 
 InputTitle.defaultProps = {
-  placeholder: ''
+  placeholder: '',
+  showDivider: true
 }
 
 export default InputTitle

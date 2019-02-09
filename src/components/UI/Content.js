@@ -1,5 +1,9 @@
 import React from 'react'
 
-const Content = props => <div className="content container-fluid">{props.children}</div>
+const Content = props => (
+  <div className="content container-fluid" id="content">
+    {props.children}
+  </div>
+)
 
 export default Content

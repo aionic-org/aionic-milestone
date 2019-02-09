@@ -22,13 +22,14 @@
     "dotenv": "^6.2.0",
     "jwt-decode": "^2.2.0",
     "marked": "^0.4.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-markdown": "^4.0.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
   "devDependencies": {
-    "prettier": "^1.16.3"
+    "prettier": "^1.16.4",
+    "react-modal": "^3.8.1"
   }
 }

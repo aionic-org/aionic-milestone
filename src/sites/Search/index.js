@@ -43,14 +43,14 @@ class SitesSearch extends Component {
         <Content>
           <Title title={'Search'} />
           <div className="row">
-            <div className="col-3">
+            <div className="col-12 col-md-3">
               <BoardTaskContainersFilter
                 searchParams={searchParams}
                 handleFilterChange={this.handleFilterChange}
                 resetFilters={this.resetFilters}
               />
             </div>
-            <div className="col-9">
+            <div className="col-12 col-md-9 mt-4 mt-md-0">
               <BoardTaskContainersSearch searchParams={searchParams} />
             </div>
           </div>

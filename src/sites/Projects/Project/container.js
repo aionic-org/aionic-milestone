@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 
 import './Project.css'
 
@@ -16,7 +17,11 @@ class SitesProjectContainer extends Component {
     this.state = {
       isLoading: true,
       msg: '',
-      project: {}
+      project: {},
+      projectUpdate: {
+        status: '',
+        msg: ''
+      }
     }
   }
 
@@ -25,9 +30,9 @@ class SitesProjectContainer extends Component {
 
     // Fetch projects
     Api.fetchData(`project/${projectId}`)
-      .then(res => {
-        if (res) {
-          this.setState({ isLoading: false, project: res })
+      .then(project => {
+        if (project) {
+          this.setState({ isLoading: false, project })
         } else {
           this.setState({ isLoading: false, msg: 'Resource not found!' })
         }
@@ -40,8 +45,82 @@ class SitesProjectContainer extends Component {
       })
   }
 
+  handleInputChange = e => {
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    if (this.state.project[name] !== value) {
+      const project = { ...this.state.project, [name]: value }
+
+      this.setState({ project }, () => {
+        this.updateProject()
+      })
+    }
+  }
+
+  toggleStatus = e => {
+    const project = { ...this.state.project, finished: !this.state.project.finished }
+
+    this.setState({ project }, () => {
+      this.updateProject()
+    })
+  }
+
+  updateProject = _project => {
+    const project = _project || this.state.project
+
+    Api.postData(`project/${project.id}`, { project })
+      .then(project => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        this.setState({
+          project,
+          projectUpdate: {
+            status: 'Success',
+            msg: 'Project updated'
+          }
+        })
+
+        setTimeout(() => {
+          this.setState({
+            projectUpdate: {
+              status: '',
+              msg: ''
+            }
+          })
+        }, 1500)
+      })
+      .catch(err => {
+        this.setState({
+          projectUpdate: {
+            status: 'Error',
+            msg: 'Failed to update task!'
+          }
+        })
+      })
+  }
+
+  deleteProject = () => {
+    Api.deleteData(`project/${this.state.project.id}`)
+      .then(() => {
+        this.props.history.push('/project')
+      })
+      .catch(err => {
+        this.setState({
+          projectUpdate: {
+            status: 'Error',
+            msg: 'Failed to delete task!'
+          }
+        })
+      })
+  }
+
+  updateProjectTasks = tasks => {
+    this.updateProject({ ...this.state.project, tasks })
+  }
+
   render() {
-    const { isLoading, msg, project } = this.state
+    const { isLoading, msg, project, projectUpdate } = this.state
 
     if (isLoading) {
       return (
@@ -56,9 +135,18 @@ class SitesProjectContainer extends Component {
         </div>
       )
     } else {
-      return <SitesProject project={project} />
+      return (
+        <SitesProject
+          project={project}
+          handleInputChange={this.handleInputChange}
+          toggleStatus={this.toggleStatus}
+          updateProjectTasks={this.updateProjectTasks}
+          deleteProject={this.deleteProject}
+          projectUpdate={projectUpdate}
+        />
+      )
     }
   }
 }
 
-export default SitesProjectContainer
+export default withRouter(SitesProjectContainer)

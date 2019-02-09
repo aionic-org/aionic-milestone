@@ -28,15 +28,15 @@ class SitesTaskTabs extends Component {
   }
 
   fetchData = tab => {
-    const tmpTab = tab || this.state.tab
+    const _tab = tab || this.state.tab
 
     this.setState({
       isLoading: true
     })
 
-    Api.fetchData(`task/${this.props.task.id}/${tmpTab.toLowerCase()}`)
-      .then(res => {
-        this.setState({ isLoading: false, msg: '', data: res })
+    Api.fetchData(`task/${this.props.task.id}/${_tab.toLowerCase()}`)
+      .then(data => {
+        this.setState({ isLoading: false, msg: '', data })
       })
       .catch(err => {
         this.setState({
@@ -46,23 +46,20 @@ class SitesTaskTabs extends Component {
       })
   }
 
-  rerender = () => {
-    this.forceUpdate()
-  }
-
   render() {
+    const { isLoading, msg, tab, data } = this.state
     let content = null
 
-    if (this.state.isLoading) {
+    if (isLoading) {
       content = <Spinner />
-    } else if (this.state.msg) {
-      content = <Error message={this.state.msg} />
+    } else if (msg) {
+      content = <Error message={msg} />
     } else {
-      switch (this.state.tab) {
+      switch (tab) {
         case 'Comments':
           content = (
             <div>
-              <TaskComments commentList={this.state.data} taskId={this.props.task.id} />
+              <TaskComments commentList={data} taskId={this.props.task.id} />
               <TaskCommentsForm
                 updateParentState={this.fetchData}
                 task={this.props.task}
@@ -79,8 +76,12 @@ class SitesTaskTabs extends Component {
 
     return (
       <div className="SitesTaskTabs">
-        <SitesTaskTabNav handleClick={this.handleClick} />
-        {content}
+        <div className="row">
+          <div className="col-12 col-md-10">
+            <SitesTaskTabNav handleClick={this.handleClick} />
+            {content}
+          </div>
+        </div>
       </div>
     )
   }

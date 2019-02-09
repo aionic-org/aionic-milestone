@@ -104,6 +104,7 @@ const TaskDetails = props => {
                 type="checkbox"
                 name="closed"
                 onChange={handleInputChange}
+                checked={task.closed ? true : false}
               />
             </div>
           </div>

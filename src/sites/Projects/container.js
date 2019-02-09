@@ -23,9 +23,9 @@ class SitesProjectsContainer extends Component {
   componentDidMount = () => {
     // Fetch projects
     Api.fetchData(`project`)
-      .then(res => {
-        if (res) {
-          this.setState({ isLoading: false, projects: res })
+      .then(projects => {
+        if (projects) {
+          this.setState({ isLoading: false, projects })
         } else {
           this.setState({ isLoading: false, msg: 'Resource not found!' })
         }

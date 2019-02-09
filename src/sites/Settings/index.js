@@ -13,7 +13,7 @@ class SitesSettings extends Component {
         <Content>
           <Title title={'Settings'} />
           <div className="row">
-            <div className="col-3">
+            <div className="col-12 col-xl-3">
               <div
                 className="nav flex-column nav-pills"
                 id="v-pills-tab"
@@ -28,7 +28,7 @@ class SitesSettings extends Component {
                 </NavLink>
               </div>
             </div>
-            <div className="col-9">
+            <div className="col-12 col-xl-9">
               <Switch>
                 <Route exact path="/settings" component={SettingsGeneral} />
                 <Route path="/settings/users" component={SettingsUsers} />

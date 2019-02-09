@@ -21,10 +21,10 @@ class SettingsUsers extends Component {
 
   componentDidMount = props => {
     Api.fetchData('user')
-      .then(res => {
+      .then(users => {
         this.setState({
           isLoading: false,
-          users: res
+          users
         })
       })
       .catch(err => {
@@ -41,21 +41,27 @@ class SettingsUsers extends Component {
     if (isLoading) {
       return (
         <div className="SettingsUsers">
-          <UserInvitation />
+          <div className="mt-2 mt-xl-0">
+            <UserInvitation />
+          </div>
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
         <div className="SettingsUsers">
-          <UserInvitation />
+          <div className="mt-4 mt-xl-0">
+            <UserInvitation />
+          </div>
           <Error message={msg} />
         </div>
       )
     } else {
       return (
         <div className="SettingsUsers">
-          <UserInvitation />
+          <div className="mt-4 mt-xl-0">
+            <UserInvitation />
+          </div>
           <Deck itemList={users} deckType={'user'} />
         </div>
       )

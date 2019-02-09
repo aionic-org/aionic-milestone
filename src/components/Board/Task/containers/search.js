@@ -38,8 +38,8 @@ class BoardTaskContainersSearch extends Component {
     })
 
     Api.fetchData(`/search/task`, params)
-      .then(res => {
-        this.setState({ isLoading: false, searchResult: res })
+      .then(searchResult => {
+        this.setState({ isLoading: false, searchResult })
       })
       .catch(err => {
         this.setState({
@@ -67,7 +67,7 @@ class BoardTaskContainersSearch extends Component {
       )
     } else {
       const title = (
-        <p class="font-weight-bold">
+        <p className="font-weight-bold">
           {searchResult.length} results found:{' '}
           <span className="font-italic">{searchParams.searchTerm}</span>
         </p>

@@ -29,8 +29,8 @@ class BoardUser extends Component {
     })
 
     Api.fetchData(`user/${this.props.user.id}/tasks/`)
-      .then(res => {
-        this.setState({ isLoading: false, tasks: res })
+      .then(tasks => {
+        this.setState({ isLoading: false, tasks })
       })
       .catch(err => {
         this.setState({
