@@ -7,10 +7,47 @@
   width: 85%;
 }
 
-@media only screen and (max-device-width: 1024px) {
+@media (max-device-width: 1024px) {
   .App > .mainWrapper > .main .content.container-fluid {
     width: 100%;
   }
+}
+
+.Modal {
+  max-width: 500px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 6rem;
+  opacity: 1;
+  -webkit-animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  -ms-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+
+@media (max-device-width: 768px) {
+  .Modal {
+    max-width: 350px;
+  }
+}
+
+.Modal-Overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 a.CardLink {
@@ -51,4 +88,43 @@ a.CardLink:hover {
 .btn-secondary:focus {
   background-color: #00a585 !important;
   border-color: #00b894 !important;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

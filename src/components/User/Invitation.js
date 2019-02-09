@@ -51,13 +51,13 @@ class UserInvitation extends Component {
               placeholder="Invitation email"
               autoComplete="off"
             />
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+            <div className="input-group-append">
+              <button className="btn btn-outline-secondary" type="button" id="button-addon2">
                 Submit
               </button>
             </div>
-            <div class="valid-feedback">User invited!</div>
-            <div class="invalid-feedback">{this.state.msg}</div>
+            <div className="valid-feedback">User invited!</div>
+            <div className="invalid-feedback">{this.state.msg}</div>
           </div>
         </form>
       </div>

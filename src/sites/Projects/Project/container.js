@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 
 import './Project.css'
 
@@ -29,9 +30,9 @@ class SitesProjectContainer extends Component {
 
     // Fetch projects
     Api.fetchData(`project/${projectId}`)
-      .then(res => {
-        if (res) {
-          this.setState({ isLoading: false, project: res })
+      .then(project => {
+        if (project) {
+          this.setState({ isLoading: false, project })
         } else {
           this.setState({ isLoading: false, msg: 'Resource not found!' })
         }
@@ -58,7 +59,7 @@ class SitesProjectContainer extends Component {
     }
   }
 
-  handleBtnClick = e => {
+  toggleStatus = e => {
     const project = { ...this.state.project, finished: !this.state.project.finished }
 
     this.setState({ project }, () => {
@@ -66,13 +67,14 @@ class SitesProjectContainer extends Component {
     })
   }
 
-  updateProject = () => {
-    const project = this.state.project
+  updateProject = _project => {
+    const project = _project || this.state.project
 
     Api.postData(`project/${project.id}`, { project })
-      .then(res => {
+      .then(project => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
+          project,
           projectUpdate: {
             status: 'Success',
             msg: 'Project updated'
@@ -98,6 +100,25 @@ class SitesProjectContainer extends Component {
       })
   }
 
+  deleteProject = () => {
+    Api.deleteData(`project/${this.state.project.id}`)
+      .then(() => {
+        this.props.history.push('/project')
+      })
+      .catch(err => {
+        this.setState({
+          projectUpdate: {
+            status: 'Error',
+            msg: 'Failed to delete task!'
+          }
+        })
+      })
+  }
+
+  updateProjectTasks = tasks => {
+    this.updateProject({ ...this.state.project, tasks })
+  }
+
   render() {
     const { isLoading, msg, project, projectUpdate } = this.state
 
@@ -118,7 +139,9 @@ class SitesProjectContainer extends Component {
         <SitesProject
           project={project}
           handleInputChange={this.handleInputChange}
-          handleBtnClick={this.handleBtnClick}
+          toggleStatus={this.toggleStatus}
+          updateProjectTasks={this.updateProjectTasks}
+          deleteProject={this.deleteProject}
           projectUpdate={projectUpdate}
         />
       )
@@ -126,4 +149,4 @@ class SitesProjectContainer extends Component {
   }
 }
 
-export default SitesProjectContainer
+export default withRouter(SitesProjectContainer)

@@ -35,8 +35,8 @@ class SitesTaskTabs extends Component {
     })
 
     Api.fetchData(`task/${this.props.task.id}/${_tab.toLowerCase()}`)
-      .then(res => {
-        this.setState({ isLoading: false, msg: '', data: res })
+      .then(data => {
+        this.setState({ isLoading: false, msg: '', data })
       })
       .catch(err => {
         this.setState({

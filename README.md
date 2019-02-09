@@ -19,13 +19,17 @@ Some of the technologies we trust: _NodeJS, ReactJS, MySQL_
 Some of the features this service offers:
 
 - Login / Registration
-- Task Management
-- User Management
+- User / Task Management
 - Dashboard
+- Projects
 
 ## Installation
 
-Simply run the following commands
+First of all, rename the following files and enter your credentials / infos:
+
+- .env.example -> .env
+
+Afterward, run the following commands to start the application
 
 ```
 npm install

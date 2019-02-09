@@ -1,3 +1,5 @@
-.Deck .card-deck:not(:first-child) {
-  margin-top: 20px;
+@media only screen and (min-device-width: 1024px) {
+  .Deck .card-deck:not(:first-child) {
+    margin-top: 20px;
+  }
 }

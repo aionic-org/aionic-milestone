@@ -70,7 +70,7 @@ class BoardTaskFilter extends Component {
             />
           </div>
 
-          <button type="button" class="btn btn-primary btn-block" onClick={this.handleReset}>
+          <button type="button" className="btn btn-primary btn-block" onClick={this.handleReset}>
             Reset
           </button>
         </form>
