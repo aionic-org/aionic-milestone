@@ -94,7 +94,7 @@ class SitesProjectContainer extends Component {
         this.setState({
           projectUpdate: {
             status: 'Error',
-            msg: 'Failed to update task!'
+            msg: 'Failed to update project!'
           }
         })
       })
@@ -109,7 +109,7 @@ class SitesProjectContainer extends Component {
         this.setState({
           projectUpdate: {
             status: 'Error',
-            msg: 'Failed to delete task!'
+            msg: 'Failed to delete project!'
           }
         })
       })
