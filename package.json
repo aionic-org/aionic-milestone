@@ -2,14 +2,9 @@
   "name": "aionic-frontend",
   "version": "0.0.1",
   "description": "Aionic Frontend - Software products for project management",
-  "author": {
-    "name": "Lars Wächter",
-    "email": "lars97.waechter@gmail.com"
-  },
+  "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": {
-    "url": "https://github.com/AionicApp/aionic-frotend"
-  },
+  "repository": "https://github.com/AionicApp/aionic-frotend",
   "license": "MIT",
   "scripts": {
     "start": "PORT=4200 react-scripts start",
@@ -31,5 +26,6 @@
   "devDependencies": {
     "prettier": "^1.16.4",
     "react-modal": "^3.8.1"
-  }
+  },
+  "main": "index.js"
 }

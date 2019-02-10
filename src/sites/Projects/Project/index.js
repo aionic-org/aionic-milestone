@@ -4,9 +4,10 @@ import './Project.css'
 
 import Alert from 'components/UI/Alert'
 import Content from 'components/UI/Content'
-import CardDeck from 'components/UI/Deck'
-
 import InputTitle from 'components/UI/Input/Title/'
+
+import CardDeck from 'components/Deck'
+
 import SitesProjectOverview from './components/Overview'
 
 const SitesProject = props => {

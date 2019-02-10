@@ -7,7 +7,7 @@ import Error from 'components/UI/Error'
 
 import BoardTasks from '../'
 
-class BoardTaskContainersSearch extends Component {
+class BoardTaskContainerSearch extends Component {
   constructor(props) {
     super(props)
 
@@ -33,20 +33,23 @@ class BoardTaskContainersSearch extends Component {
   doSearch = () => {
     const params = this.props.searchParams
 
-    this.setState({
-      isLoading: true
-    })
-
-    Api.fetchData(`/search/task`, params)
-      .then(searchResult => {
-        this.setState({ isLoading: false, searchResult })
-      })
-      .catch(err => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        })
-      })
+    this.setState(
+      {
+        isLoading: true
+      },
+      () => {
+        Api.fetchData(`/search/task`, params)
+          .then(searchResult => {
+            this.setState({ isLoading: false, searchResult })
+          })
+          .catch(err => {
+            this.setState({
+              isLoading: false,
+              msg: Api.handleHttpError(err)
+            })
+          })
+      }
+    )
   }
 
   render() {
@@ -55,37 +58,24 @@ class BoardTaskContainersSearch extends Component {
 
     if (isLoading) {
       return (
-        <div className="BoardTaskContainersSearch">
+        <div className="BoardTaskContainerSearch">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardTaskContainersSearch">
+        <div className="BoardTaskContainerSearch">
           <Error message={msg} />
         </div>
       )
     } else {
-      const title = (
-        <p className="font-weight-bold">
-          {searchResult.length} results found:{' '}
-          <span className="font-italic">{searchParams.searchTerm}</span>
-        </p>
-      )
-
       return (
-        <div className="BoardTaskContainersSearch">
-          <BoardTasks
-            taskList={searchResult}
-            title={title}
-            highlightAssignee={true}
-            showFilters={false}
-            itemsPerRow={3}
-          />
+        <div className="BoardTaskContainerSearch">
+          <BoardTasks taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
         </div>
       )
     }
   }
 }
 
-export default BoardTaskContainersSearch
+export default BoardTaskContainerSearch

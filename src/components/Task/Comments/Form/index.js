@@ -24,7 +24,7 @@ class TaskCommentsForm extends Component {
     e.preventDefault()
 
     if (this.state.comment.comment && this.state.comment.comment.length) {
-      Api.postData(`task/${this.props.task.id}/comments`, { comment: this.state.comment })
+      Api.postData(`task/${this.props.taskId}/comments`, { comment: this.state.comment })
         .then(res => {
           this.props.updateParentState()
         })
@@ -40,7 +40,7 @@ class TaskCommentsForm extends Component {
     ) : null
 
     return (
-      <div className={`TaskCommentsForm ${this.props.assignedClasses.join(' ')}`}>
+      <div className="TaskCommentsForm">
         <form onSubmit={this.handleSubmit}>
           <textarea
             className="form-control"
@@ -60,7 +60,6 @@ class TaskCommentsForm extends Component {
 }
 
 TaskCommentsForm.defaultProps = {
-  assignedClasses: [],
   updateParentState: () => {}
 }
 
