@@ -4,7 +4,9 @@ import './Projects.css'
 
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
-import CardDeck from 'components/UI/Deck'
+
+import CardDeck from 'components/Deck'
+
 import SitesProjectsOverview from './components/Overview'
 
 const SitesProjects = props => {

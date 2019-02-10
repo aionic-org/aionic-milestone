@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import Icon from 'components/UI/Icon'
-import Deck from 'components/UI/Deck'
+
+import Deck from 'components/Deck'
 
 import FilterStatus from 'components/Filter/Status'
 

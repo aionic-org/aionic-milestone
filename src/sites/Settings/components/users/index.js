@@ -4,7 +4,8 @@ import { Api } from 'services/api'
 
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
-import Deck from 'components/UI/Deck'
+
+import Deck from 'components/Deck'
 
 import UserInvitation from 'components/User/Invitation'
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactModal from 'react-modal'
 
-import ProjectForm from 'components/Project/Form'
+import ProjectForm from '../Form'
 
 class SitesProjectsOverview extends Component {
   constructor(props) {

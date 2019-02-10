@@ -135,7 +135,7 @@ class TaskSuggestion extends Component {
           type="text"
           className="form-control"
           name="title"
-          placeholder="Enter title"
+          placeholder="Enter task title"
           autoComplete="off"
           onChange={this.handleInputChange}
           onKeyDown={e => {

@@ -4,7 +4,7 @@ import './Deck.css'
 
 import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
-import ProjectPreview from '../../Project/Preview'
+import ProjectPreview from 'components/Project/Preview'
 
 const Deck = props => {
   const tmpArr = []
