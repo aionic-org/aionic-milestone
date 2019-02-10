@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
 import { Api } from 'services/api'
+import { Session } from 'services/session'
 
 import Error from 'components/UI/Error/'
 import Spinner from 'components/UI/Spinner/'
 import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
-import { Session } from '../../../../services/session'
 
-class BoardTaskUser extends Component {
+class BoardTaskContainerUser extends Component {
   constructor(props) {
     super(props)
 
@@ -20,25 +20,24 @@ class BoardTaskUser extends Component {
     this.fetchTasks()
   }
 
-  updateParent = () => {
-    this.fetchTasks()
-  }
-
   fetchTasks = () => {
-    this.setState({
-      isLoading: true
-    })
-
-    Api.fetchData(`user/${this.props.user.id}/tasks/`)
-      .then(tasks => {
-        this.setState({ isLoading: false, tasks })
-      })
-      .catch(err => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        })
-      })
+    this.setState(
+      {
+        isLoading: true
+      },
+      () => {
+        Api.fetchData(`user/${this.props.user.id}/tasks/`)
+          .then(tasks => {
+            this.setState({ isLoading: false, tasks })
+          })
+          .catch(err => {
+            this.setState({
+              isLoading: false,
+              msg: Api.handleHttpError(err)
+            })
+          })
+      }
+    )
   }
 
   render() {
@@ -47,13 +46,13 @@ class BoardTaskUser extends Component {
 
     if (isLoading) {
       return (
-        <div className="BoardTaskUser">
+        <div className="BoardTaskContainerUser">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardTaskUser">
+        <div className="BoardTaskContainerUser">
           <Error message={msg} />
         </div>
       )
@@ -63,22 +62,17 @@ class BoardTaskUser extends Component {
       ) : null
 
       return (
-        <div className="BoardTaskUser">
-          <BoardTasks
-            taskList={tasks}
-            handleStatusChange={this.handleStatusChange}
-            title={title}
-            updateParent={this.updateParent}
-          />
+        <div className="BoardTaskContainerUser">
+          <BoardTasks taskList={tasks} title={title} updateParent={this.fetchTasks} />
         </div>
       )
     }
   }
 }
 
-BoardTaskUser.defaultProps = {
+BoardTaskContainerUser.defaultProps = {
   user: Session.getUser(),
   showTitle: true
 }
 
-export default BoardTaskUser
+export default BoardTaskContainerUser

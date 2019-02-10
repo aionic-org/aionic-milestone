@@ -5,9 +5,9 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import BoardTaskFilter from '../filter'
+import BoardTaskFilter from '.'
 
-class BoardTaskContainersFilter extends Component {
+class TaskFilterContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -40,20 +40,24 @@ class BoardTaskContainersFilter extends Component {
 
     if (isLoading) {
       return (
-        <div className="BoardTaskContainersFilter">
+        <div className="TaskFilterContainer">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardTaskContainersFilter">
+        <div className="TaskFilterContainer">
           <Error message={msg} />
         </div>
       )
     } else {
-      return <BoardTaskFilter userList={userList} statusList={statusList} {...this.props} />
+      return (
+        <div className="TaskFilterContainer">
+          <BoardTaskFilter userList={userList} statusList={statusList} {...this.props} />
+        </div>
+      )
     }
   }
 }
 
-export default BoardTaskContainersFilter
+export default TaskFilterContainer

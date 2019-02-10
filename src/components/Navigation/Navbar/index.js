@@ -103,12 +103,14 @@ class Navbar extends Component {
                     {`${Session.getUser().firstname} ${Session.getUser().lastname}`}
                   </a>
                   <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-                    <a className="dropdown-item" href="#">
+                    <NavLink to="/user/me" className="dropdown-item">
                       Account
-                    </a>
-                    <NavLink to="/administration" className="dropdown-item">
-                      Administration
                     </NavLink>
+                    {Session.isAdmin() ? (
+                      <NavLink to="/administration" className="dropdown-item">
+                        Administration
+                      </NavLink>
+                    ) : null}
                     <div className="dropdown-divider" />
                     <Link to="/signout" className="dropdown-item">
                       <i className="fas fa-sign-out-alt" /> Signout

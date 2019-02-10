@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import './Form.css'
-
 class SearchForm extends Component {
   constructor(props) {
     super(props)

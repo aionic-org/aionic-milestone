@@ -3,9 +3,9 @@ import { withRouter } from 'react-router-dom'
 
 import './Form.css'
 
-import { Session } from '../../../../services/session'
+import { Session } from 'services/session'
 
-import Spinner from '../../../../components/UI/Spinner/'
+import Spinner from 'components/UI/Spinner/'
 
 class SigninForm extends Component {
   constructor(props) {
@@ -74,10 +74,10 @@ class SigninForm extends Component {
           {this.state.isLoading ? (
             <Spinner />
           ) : (
-              <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
-                <i className="fas fa-sign-in-alt" /> Sign in
+            <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
+              <i className="fas fa-sign-in-alt" /> Sign in
             </button>
-            )}
+          )}
 
           {this.state.msg.length ? <p className="mt-3 text-danger">{this.state.msg}</p> : null}
         </form>

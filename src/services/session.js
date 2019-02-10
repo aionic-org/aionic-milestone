@@ -51,6 +51,10 @@ export class Session {
     localStorage.setItem('user', JSON.stringify(user))
   }
 
+  static isAdmin() {
+    return Session.getUser().userRole.name === 'Admin'
+  }
+
   static isLoggedIn() {
     const token = this.getToken()
 
@@ -67,7 +71,7 @@ export class Session {
       expDate.setUTCSeconds(token.exp)
 
       const validDetails =
-        expDate > new Date() && token.iss === 'aionic-api' && token.aud === 'aionic-client'
+        expDate > new Date() && token.iss === 'aionic-core' && token.aud === 'aionic-client'
 
       return validDetails ? true : false
     }

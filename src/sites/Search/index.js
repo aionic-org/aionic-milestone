@@ -3,11 +3,10 @@ import React, { Component } from 'react'
 import './Search.css'
 
 import Content from 'components/UI/Content'
-
-import BoardTaskContainersFilter from 'components/Board/Task/containers/filter'
-import BoardTaskContainersSearch from 'components/Board/Task/containers/search'
-
 import Title from 'components/UI/Title'
+
+import BoardTaskContainerSearch from 'components/Board/Task/containers/search'
+import TaskFilterContainer from 'components/Task/Filter/container'
 
 class SitesSearch extends Component {
   constructor(props) {
@@ -27,7 +26,6 @@ class SitesSearch extends Component {
 
     if (this.state.searchParams[name] !== value) {
       const searchParams = { ...this.state.searchParams, [name]: value }
-
       this.setState({ searchParams })
     }
   }
@@ -45,14 +43,14 @@ class SitesSearch extends Component {
           <Title title={'Search'} />
           <div className="row">
             <div className="col-12 col-md-3">
-              <BoardTaskContainersFilter
+              <TaskFilterContainer
                 searchParams={searchParams}
                 handleFilterChange={this.handleFilterChange}
                 resetFilters={this.resetFilters}
               />
             </div>
             <div className="col-12 col-md-9 mt-4 mt-md-0">
-              <BoardTaskContainersSearch searchParams={searchParams} />
+              <BoardTaskContainerSearch searchParams={searchParams} />
             </div>
           </div>
         </Content>

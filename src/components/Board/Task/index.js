@@ -4,7 +4,7 @@ import Icon from 'components/UI/Icon'
 
 import Deck from 'components/Deck'
 
-import FilterStatus from 'components/Filter/Status'
+import FilterStatus from 'components/Task/Filter/Status/'
 
 class BoardTask extends Component {
   constructor(props) {
@@ -16,25 +16,30 @@ class BoardTask extends Component {
     }
   }
 
-  filterTasks = (statusId, isFiltered) => {
-    const tasksFiltered = this.props.taskList.filter(res => {
-      return res.status && res.status.id === statusId
-    })
-
-    this.setState({ taskListFiltered: tasksFiltered, isFiltered })
+  filterTasks = statusId => {
+    if (statusId !== null) {
+      const taskListFiltered = this.props.taskList.filter(res => {
+        return res.status && res.status.id === statusId
+      })
+      this.setState({ taskListFiltered, isFiltered: true })
+    } else {
+      this.setState({ taskListFiltered: [], isFiltered: false })
+    }
   }
 
   render() {
     const { taskListFiltered, isFiltered } = this.state
-    const { taskList, title, showFilters, updateParent, itemsPerRow } = this.props
+    const { taskList, title, showStatusFilters, updateParent, itemsPerRow } = this.props
 
     const itemList = isFiltered ? taskListFiltered : taskList
 
-    const deck = <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
-    const filters = showFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null
-    const taskNumber = (
-      <div>
-        <p className="text-muted font-weight-bold mt-4">
+    return (
+      <div className="BoardTask">
+        {title}
+
+        {showStatusFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null}
+
+        <p className={`text-muted font-weight-bold ${showStatusFilters ? 'mt-4' : ''} `}>
           Number of tasks: {itemList.length}
           <i
             className="fas fa-sync-alt float-right"
@@ -42,31 +47,20 @@ class BoardTask extends Component {
             onClick={updateParent}
           />
         </p>
-      </div>
-    )
 
-    const content = itemList.length ? (
-      <div>
-        {showFilters ? taskNumber : null}
-        {deck}
-      </div>
-    ) : (
-      <Icon assignedClasses={['fa-check-circle']} text="Done!" />
-    )
-
-    return (
-      <div className="BoardTask">
-        {title}
-        {filters}
-        {content}
+        {itemList.length ? (
+          <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
+        ) : (
+          <Icon assignedClasses={['fa-check-circle']} text="Done!" />
+        )}
       </div>
     )
   }
 }
 
 BoardTask.defaultProps = {
-  title: 'Tasks:',
-  showFilters: true,
+  title: '',
+  showStatusFilters: true,
   itemsPerRow: 4,
   updateParent: () => {}
 }

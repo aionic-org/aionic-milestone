@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './Preview.css'
-
 import { Session } from 'services/session'
 
-import TaskPriorityIcon from '../Priority/'
+import TaskPriorityIcon from './Priority'
 
 const TaskPreview = props => {
   const priorityIcon =

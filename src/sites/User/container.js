@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Api } from 'services/api'
+import { Session } from 'services/session'
 
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
@@ -19,7 +20,10 @@ class SitesUserContainer extends Component {
   }
 
   componentDidMount = () => {
-    Api.fetchData(`user/${this.props.match.params.id}`)
+    const id =
+      this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id
+
+    Api.fetchData(`user/${id}`)
       .then(user => {
         if (user) {
           this.setState({ isLoading: false, user })

@@ -21,7 +21,7 @@ const UserDetails = props => {
           <input
             type="text"
             className="form-control"
-            placeholder="Firstname"
+            placeholder="Lastname"
             defaultValue={user.lastname}
           />
         </div>
@@ -31,7 +31,7 @@ const UserDetails = props => {
         <label className="col-sm-2 col-form-label">Email</label>
         <div className="col-sm-4">
           <input
-            type="text"
+            type="email"
             className="form-control"
             placeholder="Email"
             defaultValue={user.email}
@@ -42,8 +42,30 @@ const UserDetails = props => {
           <input
             type="text"
             className="form-control"
-            placeholder="Firstname"
+            placeholder="Role"
             defaultValue={user.userRole.name}
+          />
+        </div>
+      </div>
+
+      <div className="form-group row">
+        <label className="col-sm-2 col-form-label">ID</label>
+        <div className="col-sm-4">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="ID"
+            defaultValue={user.id}
+            disabled
+          />
+        </div>
+        <label className="col-sm-2 col-form-label">Active</label>
+        <div className="col-sm-4">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Active"
+            defaultValue={user.active}
           />
         </div>
       </div>
