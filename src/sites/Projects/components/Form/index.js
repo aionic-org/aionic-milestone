@@ -47,7 +47,6 @@ class ProjectForm extends Component {
 
     Api.postData(`project`, { project })
       .then(res => {
-        console.log(res)
         this.props.history.push(`/project/${res.id}`)
       })
       .catch(err => {

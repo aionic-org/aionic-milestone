@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-class SitesTaskTabNav extends Component {
+class Tabs extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { tabs: ['Comments', 'Commits', 'Links'], activeTab: null }
+    this.state = { tabs: this.props.tabs, activeTab: null }
   }
 
   handleClick = tabPos => {
@@ -20,12 +20,14 @@ class SitesTaskTabNav extends Component {
   }
 
   render() {
+    const { activeTab } = this.state
+
     return (
-      <div className="ContainersTaskMainTabsNav">
+      <div className="Tabs">
         <nav className="nav nav-pills">
           {this.state.tabs.map((tab, i) => (
             <a
-              className={'nav-item nav-link ' + (i === this.state.activeTab ? 'active' : '')}
+              className={'nav-item nav-link ' + (i === activeTab ? 'active' : '')}
               onClick={e => {
                 e.preventDefault()
                 this.handleClick(i)
@@ -42,4 +44,9 @@ class SitesTaskTabNav extends Component {
   }
 }
 
-export default SitesTaskTabNav
+Tabs.defaultProps = {
+  tabs: [],
+  handleClick: () => {}
+}
+
+export default Tabs

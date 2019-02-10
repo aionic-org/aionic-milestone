@@ -7,8 +7,9 @@ import Spinner from 'components/UI/Spinner/'
 import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
+import { Session } from '../../../../services/session'
 
-class BoardUser extends Component {
+class BoardTaskUser extends Component {
   constructor(props) {
     super(props)
 
@@ -42,26 +43,31 @@ class BoardUser extends Component {
 
   render() {
     const { isLoading, msg, tasks } = this.state
+    const { user, showTitle } = this.props
 
     if (isLoading) {
       return (
-        <div className="BoardUser">
+        <div className="BoardTaskUser">
           <Spinner />
         </div>
       )
     } else if (msg.length) {
       return (
-        <div className="BoardUser">
+        <div className="BoardTaskUser">
           <Error message={msg} />
         </div>
       )
     } else {
+      const title = showTitle ? (
+        <Title title={`${user.firstname}'s Board`} showDivider={false} />
+      ) : null
+
       return (
-        <div className="BoardUser">
+        <div className="BoardTaskUser">
           <BoardTasks
             taskList={tasks}
             handleStatusChange={this.handleStatusChange}
-            title={<Title title={`${this.props.user.firstname}'s Board`} showDivider={false} />}
+            title={title}
             updateParent={this.updateParent}
           />
         </div>
@@ -70,4 +76,9 @@ class BoardUser extends Component {
   }
 }
 
-export default BoardUser
+BoardTaskUser.defaultProps = {
+  user: Session.getUser(),
+  showTitle: true
+}
+
+export default BoardTaskUser

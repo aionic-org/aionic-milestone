@@ -14,6 +14,7 @@ import SitesSearch from './Search'
 import SitesAdministration from './Administration'
 import SitesProjects from './Projects/container'
 import SitesProject from './Projects/Project/container'
+import SitesUser from './User/container'
 
 function Routes(props) {
   const AuthContainer = () => (
@@ -44,6 +45,7 @@ function Routes(props) {
         <Route path="/administration" component={SitesAdministration} />
         <Route exact path="/project" component={SitesProjects} />
         <Route exact path="/project/:id" component={SitesProject} />
+        <Route exact path="/user/:id" component={SitesUser} />
       </div>
       <Footer />
     </div>
