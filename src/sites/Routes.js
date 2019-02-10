@@ -11,7 +11,7 @@ import SitesRegister from './Register/'
 import SitesHome from './Home/'
 import SitesTask from './Task/container'
 import SitesSearch from './Search'
-import SitesSettings from './Settings'
+import SitesAdministration from './Administration'
 import SitesProjects from './Projects/container'
 import SitesProject from './Projects/Project/container'
 
@@ -39,12 +39,9 @@ function Routes(props) {
         />
         <Route exact path="/task" component={SitesTask} />
         <Route path="/task/:id" component={SitesTask} />
-
         <Route exact path="/search" component={SitesSearch} />
         <Route path="/search/:searchTerm" component={SitesSearch} />
-
-        <Route path="/settings" component={SitesSettings} />
-
+        <Route path="/administration" component={SitesAdministration} />
         <Route exact path="/project" component={SitesProjects} />
         <Route exact path="/project/:id" component={SitesProject} />
       </div>

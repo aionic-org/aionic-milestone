@@ -38,15 +38,8 @@ class ProjectForm extends Component {
     this.createProject()
   }
 
-  updateProjectTasks = taskList => {
-    const tasks = taskList.map(task => {
-      return {
-        id: task.id
-      }
-    })
-
-    const project = { ...this.state.project, tasks }
-    this.setState({ project })
+  updateProjectTasks = tasks => {
+    this.setState({ ...this.state.project, tasks })
   }
 
   createProject = () => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
 
 import './Suggestion.css'
 
@@ -73,10 +72,6 @@ class TaskSuggestion extends Component {
     }
   }
 
-  handleTaskLink = e => {
-    this.props.history.push(`/task/${e.target.dataset.id}`)
-  }
-
   render() {
     const { taskList, taskListSelected, showSuggestion } = this.state
 
@@ -115,12 +110,6 @@ class TaskSuggestion extends Component {
                 <span className="text-muted">
                   {task.author.firstname} {task.author.lastname}
                 </span>
-                <i
-                  className="fas fa-external-link-square-alt ml-2"
-                  data-id={task.id}
-                  onClick={this.handleTaskLink}
-                  style={{ cursor: 'pointer' }}
-                />
               </div>
             </li>
           ))}
@@ -155,4 +144,4 @@ TaskSuggestion.defaultProps = {
   updateParentState: () => {}
 }
 
-export default withRouter(TaskSuggestion)
+export default TaskSuggestion

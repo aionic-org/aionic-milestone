@@ -80,7 +80,7 @@ class Navbar extends Component {
                     <i className="fas fa-plus" />
                   </a>
                   <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-                    <NavLink to="/settings/users" className="dropdown-item">
+                    <NavLink to="/administration/user" className="dropdown-item">
                       Invite user
                     </NavLink>
                     <NavLink exact to="/task" className="dropdown-item">
@@ -106,13 +106,10 @@ class Navbar extends Component {
                     <a className="dropdown-item" href="#">
                       Account
                     </a>
-                    <a className="dropdown-item" href="#">
-                      Saved tasks
-                    </a>
-                    <div className="dropdown-divider" />
-                    <NavLink to="/settings" className="dropdown-item">
-                      Settings
+                    <NavLink to="/administration" className="dropdown-item">
+                      Administration
                     </NavLink>
+                    <div className="dropdown-divider" />
                     <Link to="/signout" className="dropdown-item">
                       <i className="fas fa-sign-out-alt" /> Signout
                     </Link>

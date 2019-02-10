@@ -9,7 +9,7 @@ import Deck from 'components/Deck'
 
 import UserInvitation from 'components/User/Invitation'
 
-class SettingsUsers extends Component {
+class AdministrationUser extends Component {
   constructor(props) {
     super(props)
 
@@ -41,7 +41,7 @@ class SettingsUsers extends Component {
 
     if (isLoading) {
       return (
-        <div className="SettingsUsers">
+        <div className="AdministrationUser">
           <div className="mt-2 mt-xl-0">
             <UserInvitation />
           </div>
@@ -50,7 +50,7 @@ class SettingsUsers extends Component {
       )
     } else if (msg.length) {
       return (
-        <div className="SettingsUsers">
+        <div className="AdministrationUser">
           <div className="mt-4 mt-xl-0">
             <UserInvitation />
           </div>
@@ -59,7 +59,7 @@ class SettingsUsers extends Component {
       )
     } else {
       return (
-        <div className="SettingsUsers">
+        <div className="AdministrationUser">
           <div className="mt-4 mt-xl-0">
             <UserInvitation />
           </div>
@@ -70,4 +70,4 @@ class SettingsUsers extends Component {
   }
 }
 
-export default SettingsUsers
+export default AdministrationUser

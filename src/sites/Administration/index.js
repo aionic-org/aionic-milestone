@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { NavLink, Route, Switch } from 'react-router-dom'
 
-import SettingsGeneral from './components/general'
-import SettingsUsers from './components/users'
-import Title from '../../components/UI/Title'
-import Content from '../../components/UI/Content'
+import AdministrationGeneral from './components/general'
+import AdministrationUser from './components/user'
 
-class SitesSettings extends Component {
+import Title from 'components/UI/Title'
+import Content from 'components/UI/Content'
+
+class SitesAdministration extends Component {
   render() {
     return (
-      <div className="SitesSettings">
+      <div className="SitesAdministration">
         <Content>
-          <Title title={'Settings'} />
+          <Title title={'Administration'} />
           <div className="row">
             <div className="col-12 col-xl-3">
               <div
@@ -20,18 +21,18 @@ class SitesSettings extends Component {
                 role="tablist"
                 aria-orientation="vertical"
               >
-                <NavLink exact to="/settings" className="nav-link" activeClassName="active">
+                <NavLink exact to="/administration" className="nav-link" activeClassName="active">
                   General
                 </NavLink>
-                <NavLink to="/settings/users" className="nav-link" activeClassName="active">
+                <NavLink to="/administration/user" className="nav-link" activeClassName="active">
                   Users
                 </NavLink>
               </div>
             </div>
             <div className="col-12 col-xl-9">
               <Switch>
-                <Route exact path="/settings" component={SettingsGeneral} />
-                <Route path="/settings/users" component={SettingsUsers} />
+                <Route exact path="/administration" component={AdministrationGeneral} />
+                <Route path="/administration/user" component={AdministrationUser} />
               </Switch>
             </div>
           </div>
@@ -41,4 +42,4 @@ class SitesSettings extends Component {
   }
 }
 
-export default SitesSettings
+export default SitesAdministration
