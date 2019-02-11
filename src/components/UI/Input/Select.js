@@ -7,6 +7,7 @@ const InputSelect = props => (
       className="form-control"
       defaultValue={props.defaultValue}
       onChange={props.onChange}
+      disabled={props.disabled}
     >
       {props.showDefault ? <option value="">-</option> : null}
       {props.optionList.map(option => (
@@ -19,7 +20,8 @@ const InputSelect = props => (
 )
 
 InputSelect.defaultProps = {
-  showDefault: true
+  showDefault: true,
+  disabled: false
 }
 
 export default InputSelect

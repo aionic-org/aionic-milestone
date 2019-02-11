@@ -1,9 +1,13 @@
 import React from 'react'
 
+import { Session } from 'services/session'
+
 import InputSelect from 'components/UI/Input/Select'
 
 const UserDetails = props => {
   const { user, roles, handleInputChange } = props
+
+  const allowEdit = Session.isAdmin() || user.id === Session.getUser().id
 
   const _roles = roles.map(role => {
     return { id: role.id, optionTitle: role.name }
@@ -22,6 +26,7 @@ const UserDetails = props => {
             placeholder="Firstname"
             defaultValue={user.firstname}
             onBlur={handleInputChange}
+            disabled={!allowEdit}
           />
         </div>
         <label className="col-sm-2 col-form-label">Lastname</label>
@@ -33,6 +38,7 @@ const UserDetails = props => {
             placeholder="Lastname"
             defaultValue={user.lastname}
             onBlur={handleInputChange}
+            disabled={!allowEdit}
           />
         </div>
       </div>
@@ -47,6 +53,7 @@ const UserDetails = props => {
             placeholder="Email"
             defaultValue={user.email}
             onBlur={handleInputChange}
+            disabled={!allowEdit}
           />
         </div>
         <label className="col-sm-2 col-form-label">Role</label>
@@ -57,6 +64,7 @@ const UserDetails = props => {
             defaultValue={user.userRole.id}
             showDefault={false}
             onChange={handleInputChange}
+            disabled={!allowEdit}
           />
         </div>
       </div>
@@ -81,6 +89,7 @@ const UserDetails = props => {
             defaultValue={user.active ? 1 : 0}
             showDefault={false}
             onChange={handleInputChange}
+            disabled={!allowEdit}
           />
         </div>
       </div>

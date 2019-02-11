@@ -60,33 +60,35 @@ class SitesUserContainer extends Component {
   updateUser = () => {
     const user = this.state.user
 
-    Api.putData(`user/${user.id}`, { user })
-      .then(user => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        this.setState({
-          userUpdate: {
-            status: 'Success',
-            msg: 'User updated'
-          }
-        })
-
-        setTimeout(() => {
+    if (Session.isAdmin() || user.id === Session.getUser().id) {
+      Api.putData(`user/${user.id}`, { user })
+        .then(user => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
           this.setState({
             userUpdate: {
-              status: '',
-              msg: ''
+              status: 'Success',
+              msg: 'User updated'
             }
           })
-        }, 1500)
-      })
-      .catch(err => {
-        this.setState({
-          userUpdate: {
-            status: 'Error',
-            msg: 'Failed to update user!'
-          }
+
+          setTimeout(() => {
+            this.setState({
+              userUpdate: {
+                status: '',
+                msg: ''
+              }
+            })
+          }, 1500)
         })
-      })
+        .catch(err => {
+          this.setState({
+            userUpdate: {
+              status: 'Error',
+              msg: 'Failed to update user!'
+            }
+          })
+        })
+    }
   }
 
   render() {
