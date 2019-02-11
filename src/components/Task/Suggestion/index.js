@@ -87,7 +87,7 @@ class TaskSuggestion extends Component {
             >
               {task.title}
               <span className="float-right text-muted">
-                {task.author.firstname} {task.author.lastname}
+                {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
               </span>
             </li>
           ))}
@@ -108,7 +108,7 @@ class TaskSuggestion extends Component {
               {task.title}
               <div className="float-right">
                 <span className="text-muted">
-                  {task.author.firstname} {task.author.lastname}
+                  {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
                 </span>
               </div>
             </li>

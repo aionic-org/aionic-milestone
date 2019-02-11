@@ -42,7 +42,7 @@ const SitesProjectOverview = props => {
       <small className="text-muted d-block text-right mt-3">Last update: {project.updated} </small>
       <button
         className={`btn btn-block mt-3 btn-${finished ? 'secondary' : 'primary'}`}
-        onClick={(toggleStatus, deleteProject)}
+        onClick={toggleStatus}
       >
         {finished ? 'Reopen' : 'Mark as finished'}
       </button>

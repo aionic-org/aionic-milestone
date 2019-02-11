@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 
 import { Api } from 'services/api'
 import { Session } from 'services/session'
@@ -60,7 +61,7 @@ class SitesUserContainer extends Component {
   updateUser = () => {
     const user = this.state.user
 
-    if (Session.isAdmin() || user.id === Session.getUser().id) {
+    if (Session.isAdmin()) {
       Api.putData(`user/${user.id}`, { user })
         .then(user => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -79,6 +80,25 @@ class SitesUserContainer extends Component {
               }
             })
           }, 1500)
+        })
+        .catch(err => {
+          this.setState({
+            userUpdate: {
+              status: 'Error',
+              msg: 'Failed to update user!'
+            }
+          })
+        })
+    }
+  }
+
+  deleteUser = () => {
+    const confirmDelete = window.confirm('Are you sure?')
+
+    if (confirmDelete && Session.isAdmin()) {
+      Api.deleteData(`user/${this.state.user.id}`)
+        .then(res => {
+          this.props.history.push('/administration/user')
         })
         .catch(err => {
           this.setState({
@@ -112,6 +132,7 @@ class SitesUserContainer extends Component {
           <SitesUser
             user={user}
             handleInputChange={this.handleInputChange}
+            deleteUser={this.deleteUser}
             userUpdate={userUpdate}
           />
         </div>
@@ -120,4 +141,4 @@ class SitesUserContainer extends Component {
   }
 }
 
-export default SitesUserContainer
+export default withRouter(SitesUserContainer)
