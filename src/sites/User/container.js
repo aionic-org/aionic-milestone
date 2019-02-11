@@ -15,7 +15,11 @@ class SitesUserContainer extends Component {
     this.state = {
       isLoading: true,
       msg: '',
-      user: {}
+      user: {},
+      userUpdate: {
+        status: '',
+        msg: ''
+      }
     }
   }
 
@@ -39,8 +43,56 @@ class SitesUserContainer extends Component {
       })
   }
 
+  handleInputChange = e => {
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    if (this.state.user[name] !== value) {
+      const user = { ...this.state.user, [name]: value }
+
+      this.setState({ user }, () => {
+        this.updateUser()
+      })
+    }
+  }
+
+  updateUser = () => {
+    const user = this.state.user
+
+    if (Session.isAdmin() || user.id === Session.getUser().id) {
+      Api.putData(`user/${user.id}`, { user })
+        .then(user => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          this.setState({
+            userUpdate: {
+              status: 'Success',
+              msg: 'User updated'
+            }
+          })
+
+          setTimeout(() => {
+            this.setState({
+              userUpdate: {
+                status: '',
+                msg: ''
+              }
+            })
+          }, 1500)
+        })
+        .catch(err => {
+          this.setState({
+            userUpdate: {
+              status: 'Error',
+              msg: 'Failed to update user!'
+            }
+          })
+        })
+    }
+  }
+
   render() {
-    const { isLoading, msg, user } = this.state
+    const { isLoading, msg, user, userUpdate } = this.state
 
     if (isLoading) {
       return (
@@ -57,7 +109,11 @@ class SitesUserContainer extends Component {
     } else {
       return (
         <div className="SitesUserContainer">
-          <SitesUser user={user} />
+          <SitesUser
+            user={user}
+            handleInputChange={this.handleInputChange}
+            userUpdate={userUpdate}
+          />
         </div>
       )
     }

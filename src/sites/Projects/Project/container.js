@@ -70,7 +70,7 @@ class SitesProjectContainer extends Component {
   updateProject = _project => {
     const project = _project || this.state.project
 
-    Api.postData(`project/${project.id}`, { project })
+    Api.putData(`project/${project.id}`, { project })
       .then(project => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
@@ -94,7 +94,7 @@ class SitesProjectContainer extends Component {
         this.setState({
           projectUpdate: {
             status: 'Error',
-            msg: 'Failed to update task!'
+            msg: 'Failed to update project!'
           }
         })
       })
@@ -109,7 +109,7 @@ class SitesProjectContainer extends Component {
         this.setState({
           projectUpdate: {
             status: 'Error',
-            msg: 'Failed to delete task!'
+            msg: 'Failed to delete project!'
           }
         })
       })
