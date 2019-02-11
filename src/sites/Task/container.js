@@ -72,10 +72,11 @@ class SitesTaskContainer extends Component {
   updateTask = task => {
     const _task = task || this.state.task
 
-    Api.postData(`task/${_task.id}`, { task: _task })
-      .then(res => {
+    Api.putData(`task/${_task.id}`, { task: _task })
+      .then(task => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
+          task,
           taskUpdate: {
             status: 'Success',
             msg: 'Task updated'

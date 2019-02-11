@@ -60,7 +60,7 @@ class SitesUserContainer extends Component {
   updateUser = () => {
     const user = this.state.user
 
-    Api.postData(`user/${user.id}`, { user })
+    Api.putData(`user/${user.id}`, { user })
       .then(user => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({

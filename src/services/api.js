@@ -57,6 +57,22 @@ export class Api {
       })
   }
 
+  static putData(endpoint, data, authorize = true) {
+    const config = {}
+    if (authorize === true) {
+      config.headers = { Authorization: `Bearer ${Session.getToken()}` }
+    }
+
+    return axios
+      .put(endpoint, data, config)
+      .then(res => {
+        return this.validateResponse(res)
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
+  }
+
   static handleHttpError(error) {
     console.log(error)
 
