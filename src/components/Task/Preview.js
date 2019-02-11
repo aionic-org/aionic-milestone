@@ -4,35 +4,27 @@ import { Link } from 'react-router-dom'
 import { Session } from 'services/session'
 
 import TaskPriorityIcon from './Priority'
+import TaskLabel from './Label'
 
 const TaskPreview = props => {
-  const priorityIcon =
-    props.task.priority !== null ? <TaskPriorityIcon priority={props.task.priority.value} /> : null
-
-  const isAssignee =
-    props.highlightAssignee &&
-    props.task.assignee !== null &&
-    props.task.assignee.id === Session.getUser().id
-      ? 'isAssignee'
-      : ''
+  const { task } = props
 
   return (
-    <Link to={`/task/${props.task.id}`} className={`TaskPreview CardLink card ${isAssignee}`}>
+    <Link to={`/task/${task.id}`} className="TaskPreview CardLink card">
       <div className="card-header font-weight-bold">
-        <span>{props.task.title}</span>
-        {priorityIcon}
+        <span>{task.title}</span>
+        <TaskLabel task={task} />
+        <TaskPriorityIcon task={task} />
       </div>
       <div className="card-body">
         <h6 className="card-subtitle text-muted">
-          {props.task.assignee
-            ? props.task.assignee.firstname + ' ' + props.task.assignee.lastname
-            : '-'}
+          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'}
         </h6>
       </div>
 
       <div className="card-footer">
         <p className="card-text">
-          <small className="text-muted">Last update: {props.task.updated} </small>
+          <small className="text-muted">Last update: {task.updated} </small>
         </p>
       </div>
     </Link>

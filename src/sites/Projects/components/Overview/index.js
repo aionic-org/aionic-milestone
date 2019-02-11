@@ -23,7 +23,7 @@ class SitesProjectsOverview extends Component {
   render() {
     const { projects } = this.props
 
-    const finishedProjects = projects.filter(project => project.finished).length
+    const finishedProjects = projects.filter(project => project.done).length
     const openProjects = projects.length - finishedProjects
 
     return (

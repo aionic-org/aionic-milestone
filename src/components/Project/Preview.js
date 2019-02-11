@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import ProjectLabel from './Label'
+
 const ProjectPreview = props => {
   const { project } = props
 
   return (
-    <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card">
+    <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card ">
       <div className="card-body">
         <h5 className="card-title">
-          {project.title} ({project.tasks.length})
+          {project.title} ({project.tasks.length}) <ProjectLabel project={project} />
         </h5>
         <h6 className="card-subtitle mb-2 text-muted">
           {project.author.firstname} {project.author.lastname}

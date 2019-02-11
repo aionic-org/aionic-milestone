@@ -89,3 +89,7 @@ a.CardLink:hover {
   background-color: #00a585 !important;
   border-color: #00b894 !important;
 }
+
+.badge-primary {
+  background-color: #6c5ce7;
+}

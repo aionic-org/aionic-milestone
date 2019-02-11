@@ -60,7 +60,7 @@ class SitesProjectContainer extends Component {
   }
 
   toggleStatus = e => {
-    const project = { ...this.state.project, finished: !this.state.project.finished }
+    const project = { ...this.state.project, done: !this.state.project.done }
 
     this.setState({ project }, () => {
       this.updateProject()
