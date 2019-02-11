@@ -7,7 +7,7 @@ import InputSelect from 'components/UI/Input/Select'
 const UserDetails = props => {
   const { user, roles, handleInputChange } = props
 
-  const allowEdit = Session.isAdmin() || user.id === Session.getUser().id
+  const allowEdit = Session.isAdmin() ? true : false
 
   const _roles = roles.map(role => {
     return { id: role.id, optionTitle: role.name }

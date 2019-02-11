@@ -13,7 +13,10 @@ const TaskDetails = props => {
 
   return (
     <div className="TaskDetails">
-      <p className="text-muted font-italic">Details</p>
+      <p className="text-muted font-italic">
+        Details
+        {task.closed ? <span class="badge badge-primary float-right">Closed</span> : null}
+      </p>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Assignee</label>
         <div className="col-sm-4">

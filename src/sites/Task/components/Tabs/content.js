@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Tabs from 'components/UI/Tabs'
 
 import TaskCommentsContainer from 'components/Task/Comments/container'
-import TaskCommentsForm from 'components/Task/Comments/Form'
+import TaskProjectsContainer from 'components/Task/Projects/container'
 
 class SitesTaskTabsContent extends Component {
   constructor(props) {
@@ -32,18 +32,17 @@ class SitesTaskTabsContent extends Component {
 
     switch (tab) {
       case 'Comments':
-        content = (
-          <div>
-            <TaskCommentsContainer taskId={task.id} />
-          </div>
-        )
+        content = <TaskCommentsContainer taskId={task.id} />
+        break
+      case 'Projects':
+        content = <TaskProjectsContainer taskId={task.id} />
         break
     }
     return (
       <div className="SitesTaskTabsContent">
         <div className="row">
           <div className="col-12 col-md-10">
-            <Tabs handleClick={this.handleClick} tabs={['Comments', 'Commits', 'Links']} />
+            <Tabs handleClick={this.handleClick} tabs={['Comments', 'Commits', 'Projects']} />
             <div className="SitesTaskTabContent mt-3">{content}</div>
           </div>
         </div>
