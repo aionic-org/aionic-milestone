@@ -15,7 +15,7 @@ const ProjectCommentsContainer = props => (
           <Comments type="Project" typeId={projectId} commentList={comments} />
           {showForm ? (
             <div className="mt-4">
-              <ProjectCommentsFormContainer projectId={projectId} updateParentState={fetchData} />
+              <ProjectCommentsFormContainer projectId={projectId} updateParent={fetchData} />
             </div>
           ) : null}
         </div>

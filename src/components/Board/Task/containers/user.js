@@ -8,7 +8,7 @@ import BoardTasks from '../'
 import Fetcher from 'components/Utility/Fetcher'
 
 const BoardTaskContainerUser = props => (
-  <Fetcher url={`user/${props.user.id}/tasks/`}>
+  <Fetcher url={`user/${props.user.id}/tasks`}>
     {(tasks, fetchData) => {
       const { user, showTitle } = props
 

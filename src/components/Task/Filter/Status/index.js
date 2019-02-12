@@ -1,80 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import { Api } from 'services/api'
+import Fetcher from 'components/Utility/Fetcher'
 
-import Spinner from 'components/UI/Spinner'
-import Error from 'components/UI/Error'
 import Tabs from 'components/UI/Tabs'
 
-class TaskFilterStatus extends Component {
-  constructor(props) {
-    super(props)
+const TaskFilterStatus = props => (
+  <Fetcher url="taskStatus">
+    {status => {
+      const { handleStatusChange } = props
 
-    this.state = {
-      isLoading: true,
-      msg: '',
-      status: [],
-      activeStatus: 0
-    }
-  }
-
-  componentDidMount = () => {
-    Api.fetchData('taskStatus/')
-      .then(status => {
-        this.setState({
-          isLoading: false,
-          status
-        })
-      })
-      .catch(err => {
-        this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
-      })
-  }
-
-  handleClick = statusTitle => {
-    if (statusTitle) {
-      const statusId = this.getStatusByTitle(statusTitle).id || 0
-
-      if (statusId !== this.state.activeStatus) {
-        this.setState({ activeStatus: statusId }, () => {
-          this.props.handleStatusChange(statusId)
-        })
+      const handleClick = title => {
+        if (title) {
+          const id = status.find(status => status.title === title).id
+          handleStatusChange(id)
+        } else {
+          handleStatusChange(null)
+        }
       }
-    } else {
-      this.setState({ activeStatus: null }, () => {
-        this.props.handleStatusChange(null)
-      })
-    }
-  }
 
-  getStatusByTitle = title => {
-    return this.state.status.find(status => status.title === title)
-  }
-
-  render() {
-    const { isLoading, msg, status } = this.state
-    const tabs = status.map(status => status.title)
-
-    if (isLoading) {
+      const tabTitles = status.map(status => status.title)
       return (
         <div className="TaskFilterStatus">
-          <Spinner />
+          <Tabs tabs={tabTitles} handleClick={handleClick} />
         </div>
       )
-    } else if (msg.length) {
-      return (
-        <div className="TaskFilterStatus">
-          <Error message={msg} />
-        </div>
-      )
-    } else {
-      return (
-        <div className="TaskFilterStatus">
-          <Tabs tabs={tabs} handleClick={this.handleClick} />
-        </div>
-      )
-    }
-  }
-}
+    }}
+  </Fetcher>
+)
 
 export default TaskFilterStatus

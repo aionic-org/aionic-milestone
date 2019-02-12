@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import './Search.css'
 
@@ -8,55 +8,45 @@ import Title from 'components/UI/Title'
 import BoardTaskContainerSearch from 'components/Board/Task/containers/search'
 import TaskFilterContainer from 'components/Task/Filter/container'
 
-class SitesSearch extends Component {
-  constructor(props) {
-    super(props)
+const SitesSearch = props => {
+  const { match } = props
+  const [params, setParams] = useState({
+    searchTerm: match.params.searchTerm || ''
+  })
 
-    this.state = {
-      searchParams: {
-        searchTerm: this.props.match.params.searchTerm || ''
-      }
-    }
-  }
-
-  handleFilterChange = e => {
+  const handleFilterChange = e => {
     const target = e.target
     const name = target.name
     const value = target.type === 'checkbox' ? target.checked : target.value
 
-    if (this.state.searchParams[name] !== value) {
-      const searchParams = { ...this.state.searchParams, [name]: value }
-      this.setState({ searchParams })
+    if (params[name] !== value) {
+      setParams({ ...params, [name]: value })
     }
   }
 
-  resetFilters = e => {
-    this.setState({ searchParams: {} })
+  const resetFilters = e => {
+    setParams({})
   }
 
-  render() {
-    const { searchParams } = this.state
-
-    return (
-      <div className="SitesSearch">
-        <Content>
-          <Title title={'Search'} />
-          <div className="row">
-            <div className="col-12 col-md-3">
-              <TaskFilterContainer
-                searchParams={searchParams}
-                handleFilterChange={this.handleFilterChange}
-                resetFilters={this.resetFilters}
-              />
-            </div>
-            <div className="col-12 col-md-9 mt-4 mt-md-0">
-              <BoardTaskContainerSearch searchParams={searchParams} />
-            </div>
+  return (
+    <div className="SitesSearch">
+      <Content>
+        <Title title={'Search'} />
+        <div className="row">
+          <div className="col-12 col-md-3">
+            <TaskFilterContainer
+              searchParams={params}
+              handleFilterChange={handleFilterChange}
+              resetFilters={resetFilters}
+            />
           </div>
-        </Content>
-      </div>
-    )
-  }
+          <div className="col-12 col-md-9 mt-4 mt-md-0">
+            <BoardTaskContainerSearch searchParams={params} />
+          </div>
+        </div>
+      </Content>
+    </div>
+  )
 }
 
 export default SitesSearch

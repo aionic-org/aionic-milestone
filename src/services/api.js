@@ -84,6 +84,8 @@ export class Api {
           return 'Missing user rights!'
         case 404:
           return 'Resource not found!'
+        case 500:
+          return 'Internal server error!'
         default:
           return 'Failed to fetch data from server!'
       }

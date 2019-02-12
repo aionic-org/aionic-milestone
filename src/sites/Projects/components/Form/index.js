@@ -91,7 +91,7 @@ class ProjectForm extends Component {
 
           <div className="form-group">
             <label for="exampleInputPassword1">Tasks</label>
-            <TaskSuggestion updateParentState={this.updateProjectTasks} />
+            <TaskSuggestion updateParent={this.updateProjectTasks} />
           </div>
 
           <button type="submit" className="btn btn-primary float-right">

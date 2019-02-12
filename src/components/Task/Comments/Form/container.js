@@ -14,11 +14,11 @@ class TaskCommentsFormContainer extends Component {
   }
 
   handleInputChange = e => {
-    const value = e.target.value
+    const text = e.target.value
 
     this.setState({
       comment: {
-        comment: value
+        text
       }
     })
   }
@@ -26,10 +26,10 @@ class TaskCommentsFormContainer extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    if (this.state.comment.comment && this.state.comment.comment.length) {
+    if (this.state.comment.text && this.state.comment.text.length) {
       Api.postData(`task/${this.props.taskId}/comment`, { comment: this.state.comment })
         .then(res => {
-          this.props.updateParentState()
+          this.props.updateParent()
         })
         .catch(err => {
           this.setState({ msg: Api.handleHttpError(err) })
@@ -52,7 +52,7 @@ class TaskCommentsFormContainer extends Component {
 }
 
 TaskCommentsFormContainer.defaultProps = {
-  updateParentState: () => {}
+  updateParent: () => {}
 }
 
 export default TaskCommentsFormContainer

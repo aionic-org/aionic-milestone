@@ -9,7 +9,7 @@ const Comment = props => {
     <div className="Comment">
       <div className="card">
         <div className="card-body">
-          <p className="card-text">{comment.comment}</p>
+          <p className="card-text">{comment.text}</p>
           <p className="card-text">
             <small className="text-muted">
               {`${comment.author.firstname} ${comment.author.lastname}`}
