@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Session } from 'services/session'
-
 import TaskPriorityIcon from './Priority'
 import TaskLabel from './Label'
 

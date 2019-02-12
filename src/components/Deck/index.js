@@ -32,7 +32,7 @@ const Deck = props => {
                 case 'project':
                   return <ProjectPreview key={item.id} project={item} />
                 default:
-                  return
+                  return null
               }
             })}
           </div>

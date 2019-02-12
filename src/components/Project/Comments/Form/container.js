@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { Api } from 'services/api'
 import Error from 'components/UI/Error'
 
-class TaskCommentsForm extends Component {
+import CommentForm from 'components/Comments/Comment/Form'
+
+class ProjectCommentsFormContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -24,7 +26,7 @@ class TaskCommentsForm extends Component {
     e.preventDefault()
 
     if (this.state.comment.comment && this.state.comment.comment.length) {
-      Api.postData(`task/${this.props.taskId}/comments`, { comment: this.state.comment })
+      Api.postData(`project/${this.props.projectId}/comment`, { comment: this.state.comment })
         .then(res => {
           this.props.updateParentState()
         })
@@ -40,27 +42,16 @@ class TaskCommentsForm extends Component {
     ) : null
 
     return (
-      <div className="TaskCommentsForm">
-        <form onSubmit={this.handleSubmit}>
-          <textarea
-            className="form-control"
-            name="comment"
-            rows="3"
-            onChange={this.handleInputChange}
-          />
-
-          <button className="btn btn-md btn-primary mt-2 btn-block btn-sm" type="submit">
-            <i className="fas fa-sign-in-alt" /> Submit
-          </button>
-          {msg}
-        </form>
+      <div className="ProjectCommentsFormContainer">
+        <CommentForm handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} />
+        {msg}
       </div>
     )
   }
 }
 
-TaskCommentsForm.defaultProps = {
+ProjectCommentsFormContainer.defaultProps = {
   updateParentState: () => {}
 }
 
-export default TaskCommentsForm
+export default ProjectCommentsFormContainer

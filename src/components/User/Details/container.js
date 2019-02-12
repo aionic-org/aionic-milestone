@@ -36,17 +36,9 @@ class UserDetailsContainer extends Component {
     const { user, handleInputChange } = this.props
 
     if (isLoading) {
-      return (
-        <div className="UserDetailsContainer">
-          <Spinner />
-        </div>
-      )
+      return <Spinner />
     } else if (msg.length) {
-      return (
-        <div className="UserDetailsContainer">
-          <Error message={msg} />
-        </div>
-      )
+      return <Error message={msg} />
     } else {
       return (
         <div className="UserDetailsContainer">

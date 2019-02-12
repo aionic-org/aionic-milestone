@@ -53,21 +53,12 @@ class BoardTaskContainerSearch extends Component {
   }
 
   render() {
-    const { searchParams } = this.props
     const { isLoading, msg, searchResult } = this.state
 
     if (isLoading) {
-      return (
-        <div className="BoardTaskContainerSearch">
-          <Spinner />
-        </div>
-      )
+      return <Spinner />
     } else if (msg.length) {
-      return (
-        <div className="BoardTaskContainerSearch">
-          <Error message={msg} />
-        </div>
-      )
+      return <Error message={msg} />
     } else {
       return (
         <div className="BoardTaskContainerSearch">
