@@ -123,17 +123,9 @@ class SitesTaskContainer extends Component {
     const { isLoading, isNewTask, msg, task, taskUpdate } = this.state
 
     if (isLoading) {
-      return (
-        <div className="SitesTaskContainer">
-          <Spinner wrapContent={true} />
-        </div>
-      )
+      return <Spinner wrapContent={true} />
     } else if (msg.length) {
-      return (
-        <div className="SitesTaskContainer">
-          <Error message={msg} wrapContent={true} />
-        </div>
-      )
+      return <Error message={msg} wrapContent={true} />
     } else {
       return (
         <SitesTask

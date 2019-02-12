@@ -39,17 +39,9 @@ class TaskFilterContainer extends Component {
     const { isLoading, msg, userList, statusList } = this.state
 
     if (isLoading) {
-      return (
-        <div className="TaskFilterContainer">
-          <Spinner />
-        </div>
-      )
+      return <Spinner />
     } else if (msg.length) {
-      return (
-        <div className="TaskFilterContainer">
-          <Error message={msg} />
-        </div>
-      )
+      return <Error message={msg} />
     } else {
       return (
         <div className="TaskFilterContainer">

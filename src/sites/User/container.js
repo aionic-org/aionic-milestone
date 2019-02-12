@@ -115,17 +115,9 @@ class SitesUserContainer extends Component {
     const { isLoading, msg, user, userUpdate } = this.state
 
     if (isLoading) {
-      return (
-        <div className="SitesUserContainer">
-          <Spinner wrapContent={true} />
-        </div>
-      )
+      return <Spinner wrapContent={true} />
     } else if (msg.length) {
-      return (
-        <div className="SitesUserContainer">
-          <Error message={msg} wrapContent={true} />
-        </div>
-      )
+      return <Error message={msg} wrapContent={true} />
     } else {
       return (
         <div className="SitesUserContainer">

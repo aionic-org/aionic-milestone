@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 
 import Tabs from 'components/UI/Tabs'
 
-import TaskCommentsContainer from 'components/Task/Comments/container'
-import TaskProjectsContainer from 'components/Task/Projects/container'
+import ProjectCommentsContainer from 'components/Project/Comments/container'
 
-class SitesTaskTabsContent extends Component {
+class SitesProjectTabsContent extends Component {
   constructor(props) {
     super(props)
 
@@ -26,26 +25,22 @@ class SitesTaskTabsContent extends Component {
 
   render() {
     const { tab } = this.state
-    const { task } = this.props
+    const { project } = this.props
 
     let content = null
 
     switch (tab) {
       case 'Comments':
-        content = <TaskCommentsContainer taskId={task.id} />
-        break
-      case 'Projects':
-        content = <TaskProjectsContainer taskId={task.id} />
-        break
+        content = <ProjectCommentsContainer projectId={project.id} />
       default:
         break
     }
     return (
-      <div className="SitesTaskTabsContent">
+      <div className="SitesProjectTabsContent">
         <div className="row">
           <div className="col-12 col-md-10">
-            <Tabs handleClick={this.handleClick} tabs={['Comments', 'Commits', 'Projects']} />
-            <div className="SitesTaskTabContent mt-3">{content}</div>
+            <Tabs handleClick={this.handleClick} tabs={['Comments']} />
+            <div className="SitesProjectTabContent mt-3">{content}</div>
           </div>
         </div>
       </div>
@@ -53,4 +48,4 @@ class SitesTaskTabsContent extends Component {
   }
 }
 
-export default SitesTaskTabsContent
+export default SitesProjectTabsContent

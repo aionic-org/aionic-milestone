@@ -123,17 +123,9 @@ class SitesProjectContainer extends Component {
     const { isLoading, msg, project, projectUpdate } = this.state
 
     if (isLoading) {
-      return (
-        <div className="SitesProjectContainer">
-          <Spinner wrapContent={true} />
-        </div>
-      )
+      return <Spinner wrapContent={true} />
     } else if (msg.length) {
-      return (
-        <div className="SitesProjectContainer">
-          <Error message={msg} wrapContent={true} />
-        </div>
-      )
+      return <Error message={msg} wrapContent={true} />
     } else {
       return (
         <SitesProject

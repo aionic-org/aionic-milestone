@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import './Projects.css'
-
 import { Api } from 'services/api'
 
 import Error from 'components/UI/Error'
@@ -42,17 +40,9 @@ class SitesProjectsContainer extends Component {
     const { isLoading, msg, projects } = this.state
 
     if (isLoading) {
-      return (
-        <div className="SitesProjectsContainer">
-          <Spinner wrapContent={true} />
-        </div>
-      )
+      return <Spinner wrapContent={true} />
     } else if (msg.length) {
-      return (
-        <div className="SitesProjectsContainer">
-          <Error message={msg} wrapContent={true} />
-        </div>
-      )
+      return <Error message={msg} wrapContent={true} />
     } else {
       return (
         <div className="SitesProjectsContainer">

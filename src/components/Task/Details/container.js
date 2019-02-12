@@ -45,17 +45,9 @@ class TaskDetailsContainer extends Component {
     const { isLoading, msg, userList, statusList, priorityList } = this.state
 
     if (isLoading) {
-      return (
-        <div className="TaskDetailsContainer">
-          <Spinner />
-        </div>
-      )
+      return <Spinner />
     } else if (msg.length) {
-      return (
-        <div className="TaskDetailsContainer">
-          <Error message={msg} />
-        </div>
-      )
+      return <Error message={msg} />
     } else {
       return (
         <div className="TaskDetailsContainer">

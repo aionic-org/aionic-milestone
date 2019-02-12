@@ -5,10 +5,10 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import TaskCommentsFormContainer from './Form/container'
+import ProjectCommentsFormContainer from './Form/container'
 import Comments from '../../Comments'
 
-class TaskCommentsContainer extends Component {
+class ProjectCommentsContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -25,7 +25,7 @@ class TaskCommentsContainer extends Component {
 
   fetchData = () => {
     this.setState({ isLoading: true })
-    Api.fetchData(`task/${this.props.taskId}/comment`)
+    Api.fetchData(`project/${this.props.projectId}/comment`)
       .then(comments => {
         this.setState({ isLoading: false, comments })
       })
@@ -36,7 +36,7 @@ class TaskCommentsContainer extends Component {
 
   render() {
     const { isLoading, msg, comments } = this.state
-    const { taskId, showForm } = this.props
+    const { projectId, showForm } = this.props
 
     if (isLoading) {
       return <Spinner />
@@ -45,13 +45,13 @@ class TaskCommentsContainer extends Component {
     } else {
       const form = showForm ? (
         <div className="mt-4">
-          <TaskCommentsFormContainer taskId={taskId} updateParentState={this.fetchData} />
+          <ProjectCommentsFormContainer projectId={projectId} updateParentState={this.fetchData} />
         </div>
       ) : null
 
       return (
-        <div className="TaskCommentsContainer">
-          <Comments type="Task" typeId={taskId} commentList={comments} />
+        <div className="ProjectCommentsContainer">
+          <Comments type="Project" typeId={projectId} commentList={comments} />
           {form}
         </div>
       )
@@ -59,8 +59,8 @@ class TaskCommentsContainer extends Component {
   }
 }
 
-TaskCommentsContainer.defaultProps = {
+ProjectCommentsContainer.defaultProps = {
   showForm: true
 }
 
-export default TaskCommentsContainer
+export default ProjectCommentsContainer

@@ -45,17 +45,9 @@ class BoardTaskContainerUser extends Component {
     const { user, showTitle } = this.props
 
     if (isLoading) {
-      return (
-        <div className="BoardTaskContainerUser">
-          <Spinner />
-        </div>
-      )
+      return <Spinner />
     } else if (msg.length) {
-      return (
-        <div className="BoardTaskContainerUser">
-          <Error message={msg} />
-        </div>
-      )
+      return <Error message={msg} />
     } else {
       const title = showTitle ? (
         <Title title={`${user.firstname}'s Board`} showDivider={false} />

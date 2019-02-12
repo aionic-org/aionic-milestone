@@ -32,6 +32,8 @@ const SitesProjectOverview = props => {
           <span className="badge badge-primary badge-pill">{closedTasks}</span>
         </li>
       </ul>
+
+      <p className="text-muted font-weight-bold mt-4">Description</p>
       <textarea
         name="description"
         className="form-control mt-2"
@@ -39,11 +41,14 @@ const SitesProjectOverview = props => {
         defaultValue={project.description}
         onBlur={handleInputChange}
       />
+
+      <p className="text-muted font-weight-bold mt-4">Progress</p>
       <Progress progress={progress} />
-      <div className="mt-3">
-        <TaskSuggestion taskListSelected={project.tasks} updateParentState={updateProjectTasks} />
-      </div>
+
+      <p className="text-muted font-weight-bold mt-4">Tasks</p>
+      <TaskSuggestion taskListSelected={project.tasks} updateParentState={updateProjectTasks} />
       <small className="text-muted d-block text-right mt-3">Last update: {project.updated} </small>
+
       <button
         className={`btn btn-block mt-3 btn-${done ? 'secondary' : 'primary'}`}
         onClick={toggleStatus}

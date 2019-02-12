@@ -9,6 +9,7 @@ import InputTitle from 'components/UI/Input/Title/'
 import CardDeck from 'components/Deck'
 
 import SitesProjectOverview from './components/Overview'
+import SitesProjectTabsContent from './components/Tabs/content'
 
 const SitesProject = props => {
   const {
@@ -40,6 +41,9 @@ const SitesProject = props => {
           <div className="col-12 col-xl-8 order-last order-xl-first mt-4 mt-xl-0">
             <p className="text-muted font-weight-bold">Tasks</p>
             <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
+            <div className="mt-4">
+              <SitesProjectTabsContent project={project} />
+            </div>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
             <SitesProjectOverview
