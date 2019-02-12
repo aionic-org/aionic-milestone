@@ -1,52 +1,42 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-class Tabs extends Component {
-  constructor(props) {
-    super(props)
+const Tabs = props => {
+  const { tabs, handleClick } = props
+  const [activeTab, setActiveTab] = useState(null)
 
-    this.state = { tabs: this.props.tabs, activeTab: null }
-  }
+  const handleTabChange = e => {
+    const pos = Number(e.target.dataset.pos)
 
-  handleClick = tabPos => {
-    if (tabPos === this.state.activeTab) {
-      this.setState({ activeTab: null }, () => {
-        this.props.handleClick(null)
-      })
+    if (pos === activeTab) {
+      setActiveTab(null)
+      props.handleClick(null)
     } else {
-      this.setState({ activeTab: tabPos }, () => {
-        this.props.handleClick(this.state.tabs[tabPos])
-      })
+      setActiveTab(pos)
+      handleClick(tabs[pos])
     }
   }
 
-  render() {
-    const { activeTab } = this.state
-
-    return (
-      <div className="Tabs">
-        <nav className="nav nav-pills">
-          {this.state.tabs.map((tab, i) => (
-            <a
-              className={'nav-item nav-link ' + (i === activeTab ? 'active' : '')}
-              onClick={e => {
-                e.preventDefault()
-                this.handleClick(i)
-              }}
-              href="#"
-              key={i}
-            >
-              {tab}
-            </a>
-          ))}
-        </nav>
-      </div>
-    )
-  }
+  return (
+    <div className="Tabs">
+      <nav className="nav nav-pills">
+        {tabs.map((tab, i) => (
+          <button
+            className={'btn btn-link nav-item nav-link ' + (i === activeTab ? 'active' : '')}
+            onClick={handleTabChange}
+            type="button"
+            key={i}
+            data-pos={i}
+          >
+            {tab}
+          </button>
+        ))}
+      </nav>
+    </div>
+  )
 }
 
 Tabs.defaultProps = {
-  tabs: [],
-  handleClick: () => {}
+  tabs: []
 }
 
 export default Tabs

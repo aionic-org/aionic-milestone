@@ -1,75 +1,61 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import ReactModal from 'react-modal'
 
 import ProjectForm from '../Form'
 
-class SitesProjectsOverview extends Component {
-  constructor(props) {
-    super(props)
+const SitesProjectsOverview = props => {
+  const { projects } = props
+  const [showModal, setShowModal] = useState(false)
 
-    this.state = {
-      showModal: false
-    }
+  const handleOpenModal = () => {
+    setShowModal(true)
   }
 
-  handleOpenModal = () => {
-    this.setState({ showModal: true })
+  const handleCloseModal = () => {
+    setShowModal(false)
   }
 
-  handleCloseModal = () => {
-    this.setState({ showModal: false })
-  }
+  const finishedProjects = projects.filter(project => project.done).length
+  const openProjects = projects.length - finishedProjects
 
-  render() {
-    const { projects } = this.props
+  return (
+    <div className="SitesProjectsOverview">
+      <p className="text-muted font-weight-bold">Overview</p>
+      <ul className="list-group">
+        <li className="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
+          Projects
+          <span className="badge badge-primary badge-pill">{projects.length}</span>
+        </li>
+        <li className="list-group-item d-flex justify-content-between align-items-center">
+          Open projects
+          <span className="badge badge-primary badge-pill">{openProjects}</span>
+          Finished projects
+          <span className="badge badge-primary badge-pill">{finishedProjects}</span>
+        </li>
+      </ul>
 
-    const finishedProjects = projects.filter(project => project.done).length
-    const openProjects = projects.length - finishedProjects
+      <button className="btn btn-block mt-3 btn-primary" onClick={handleOpenModal}>
+        Create project
+      </button>
 
-    return (
-      <div className="SitesProjectsOverview">
-        <p className="text-muted font-weight-bold">Overview</p>
-        <ul className="list-group">
-          <li className="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
-            Projects
-            <span className="badge badge-primary badge-pill">{projects.length}</span>
-          </li>
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            Open projects
-            <span className="badge badge-primary badge-pill">{openProjects}</span>
-            Finished projects
-            <span className="badge badge-primary badge-pill">{finishedProjects}</span>
-          </li>
-        </ul>
-
-        <button className="btn btn-block mt-3 btn-primary" onClick={this.handleOpenModal}>
-          Create project
-        </button>
-
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
-          className="Modal"
-          overlayClassName="Modal-Overlay"
-        >
-          <div className="modal-header">
-            <h5 className="modal-title">Create Project</h5>
-            <button
-              type="button"
-              className="close"
-              aria-label="Close"
-              onClick={this.handleCloseModal}
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <ProjectForm />
-          </div>
-        </ReactModal>
-      </div>
-    )
-  }
+      <ReactModal
+        isOpen={showModal}
+        contentLabel="Minimal Modal Example"
+        className="Modal"
+        overlayClassName="Modal-Overlay"
+      >
+        <div className="modal-header">
+          <h5 className="modal-title">Create Project</h5>
+          <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div className="modal-body">
+          <ProjectForm />
+        </div>
+      </ReactModal>
+    </div>
+  )
 }
 
 export default SitesProjectsOverview

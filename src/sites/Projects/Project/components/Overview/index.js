@@ -46,7 +46,7 @@ const SitesProjectOverview = props => {
       <Progress progress={progress} />
 
       <p className="text-muted font-weight-bold mt-4">Tasks</p>
-      <TaskSuggestion taskListSelected={project.tasks} updateParentState={updateProjectTasks} />
+      <TaskSuggestion taskListSelected={project.tasks} updateParent={updateProjectTasks} />
       <small className="text-muted d-block text-right mt-3">Last update: {project.updated} </small>
 
       <button

@@ -1,59 +1,48 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import './Comments.css'
 
 import TaskCommentContainer from '../Task/Comments/Comment/container'
 import ProjectCommentContainer from '../Project/Comments/Comment/container'
 
-class Comments extends Component {
-  constructor(props) {
-    super()
+const Comments = props => {
+  const { type, typeId, commentList } = props
+  const [comments, setComments] = useState(commentList)
 
-    this.state = {
-      commentList: props.commentList
-    }
-  }
-
-  removeComment = id => {
-    const comments = this.state.commentList.filter(comment => {
+  const removeComment = id => {
+    const newComments = comments.filter(comment => {
       return comment.id !== id
     })
 
-    this.setState({
-      commentList: comments
-    })
+    setComments(newComments)
   }
 
-  render() {
-    const { type, typeId } = this.props
-
-    return (
-      <div className="Comments">
-        {this.state.commentList.map(comment => {
-          switch (type) {
-            case 'Task':
-              return (
-                <TaskCommentContainer
-                  comment={comment}
-                  taskId={typeId}
-                  removeComment={this.removeComment}
-                />
-              )
-            case 'Project':
-              return (
-                <ProjectCommentContainer
-                  comment={comment}
-                  taskId={typeId}
-                  removeComment={this.removeComment}
-                />
-              )
-            default:
-              break
-          }
-        })}
-      </div>
-    )
-  }
+  return (
+    <div className="Comments">
+      {comments.map(comment => {
+        switch (type) {
+          case 'Task':
+            return (
+              <TaskCommentContainer
+                comment={comment}
+                taskId={typeId}
+                removeComment={removeComment}
+              />
+            )
+          case 'Project':
+            return (
+              <ProjectCommentContainer
+                comment={comment}
+                taskId={typeId}
+                removeComment={removeComment}
+              />
+            )
+          default:
+            break
+        }
+      })}
+    </div>
+  )
 }
 
 Comments.defaultProps = {

@@ -50,7 +50,7 @@ class TaskSuggestion extends Component {
       taskListSelected.push(newTask)
 
       this.setState({ taskListSelected, showSuggestion: false }, () => {
-        this.props.updateParentState(taskListSelected)
+        this.props.updateParent(taskListSelected)
       })
     } else {
       this.setState({ showSuggestion: false })
@@ -67,7 +67,7 @@ class TaskSuggestion extends Component {
     if (taskIdx >= 0) {
       taskListSelected.splice(taskIdx, 1)
       this.setState({ taskListSelected }, () => {
-        this.props.updateParentState(taskListSelected)
+        this.props.updateParent(taskListSelected)
       })
     }
   }
@@ -141,7 +141,7 @@ class TaskSuggestion extends Component {
 
 TaskSuggestion.defaultProps = {
   taskListSelected: [],
-  updateParentState: () => {}
+  updateParent: () => {}
 }
 
 export default TaskSuggestion

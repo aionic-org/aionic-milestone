@@ -4,7 +4,7 @@ import Icon from 'components/UI/Icon'
 
 import Deck from 'components/Deck'
 
-import FilterStatus from 'components/Task/Filter/Status/'
+import TaskFilterStatus from 'components/Task/Filter/Status/'
 
 class BoardTask extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class BoardTask extends Component {
       <div className="BoardTask">
         {title}
 
-        {showStatusFilters ? <FilterStatus handleStatusChange={this.filterTasks} /> : null}
+        {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterTasks} /> : null}
 
         <p className={`text-muted font-weight-bold ${showStatusFilters ? 'mt-4' : ''} `}>
           Number of tasks: {itemList.length}

@@ -1,70 +1,54 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import ReactMarkdown from 'react-markdown'
 
 import './Markdown.css'
 
-class InputMarkdown extends Component {
-  constructor(props) {
-    super(props)
+const InputMarkdown = props => {
+  const { content, name, rows, onBlurCb } = props
+  const [edit, setEdit] = useState(false)
 
-    this.state = {
-      editMode: false
+  const toggleEdit = (e, cb) => {
+    setEdit(!edit)
+
+    if (typeof cb === 'function') {
+      cb(e)
     }
   }
 
-  toggleEditMode = (e, cb) => {
-    e.persist()
+  const output = edit ? (
+    <div className="EditMode form-group">
+      <textarea
+        name={name}
+        className="form-control"
+        rows={rows}
+        defaultValue={content}
+        autoFocus={true}
+        onBlur={e => {
+          toggleEdit(e, onBlurCb)
+        }}
+      />
+    </div>
+  ) : (
+    <div className="PreviewMode form-group" style={{ cursor: 'text' }}>
+      <ReactMarkdown source={content} />
+    </div>
+  )
 
-    this.setState(
-      {
-        editMode: !this.state.editMode
-      },
-      () => {
-        if (typeof cb === 'function') {
-          cb(e)
-        }
-      }
-    )
-  }
-
-  render() {
-    const { content, name, rows, onBlurCb } = this.props
-
-    const output = this.state.editMode ? (
-      <div className="EditMode form-group">
-        <textarea
-          name={name}
-          className="form-control"
-          rows={rows}
-          defaultValue={content}
-          autoFocus={true}
-          onBlur={e => {
-            this.toggleEditMode(e, onBlurCb)
-          }}
-        />
-      </div>
-    ) : (
-      <div className="PreviewMode form-group" style={{ cursor: 'text' }}>
-        <ReactMarkdown source={content} />
-      </div>
-    )
-
-    return (
-      <div className="InputMarkdown">
-        <p
-          className="text-muted font-weight-bold text-right"
-          onClick={this.toggleEditMode}
-          style={{ cursor: 'pointer' }}
-        >
-          Edit
-        </p>
-        <hr className="featurette-divider" />
-        {output}
-        <hr className="featurette-divider" />
-      </div>
-    )
-  }
+  return (
+    <div className="InputMarkdown">
+      <p
+        className="text-muted font-weight-bold text-right"
+        onClick={toggleEdit}
+        style={{ cursor: 'pointer' }}
+      >
+        Edit
+      </p>
+      <hr className="featurette-divider" />
+      {output}
+      <hr className="featurette-divider" />
+    </div>
+  )
 }
 
 InputMarkdown.defaultProps = {

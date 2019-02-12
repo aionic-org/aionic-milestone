@@ -1,47 +1,36 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
-class SearchForm extends Component {
-  constructor(props) {
-    super(props)
+const SearchForm = props => {
+  const { history, assignedClasses } = props
+  const [term, setTerm] = useState('')
 
-    this.state = { searchTerm: '' }
+  const handleInputChange = e => {
+    setTerm(e.target.value)
   }
 
-  handleInputChange = e => {
-    this.setState({
-      searchTerm: e.target.value
-    })
-  }
-
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault()
 
-    if (this.state.searchTerm.length) {
-      this.props.history.push(`/search/${this.state.searchTerm}`)
+    if (term.length) {
+      history.push(`search/${term}`)
     }
   }
 
-  render() {
-    return (
-      <form
-        className={'SearchForm ' + this.props.assignedClasses.join(' ')}
-        onSubmit={this.handleSubmit}
-      >
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Enter search term"
-          aria-label="Search"
-          onChange={this.handleInputChange}
-        />
-
-        <button className="btn btn-secondary my-2 my-sm-0 ml-2" type="submit">
-          Search
-        </button>
-      </form>
-    )
-  }
+  return (
+    <form className={`SearchForm ${assignedClasses.join(' ')}`} onSubmit={handleSubmit}>
+      <input
+        className="form-control"
+        type="text"
+        placeholder="Enter search term"
+        aria-label="Search"
+        onChange={handleInputChange}
+      />
+      <button className="btn btn-secondary my-2 my-sm-0 ml-2" type="submit">
+        Search
+      </button>
+    </form>
+  )
 }
 
 SearchForm.defaultProps = {
