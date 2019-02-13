@@ -21,7 +21,7 @@ function Routes(props) {
     <div className="mainWrapper">
       <div className="main">
         <Route path="/signin" component={SitesSignin} />
-        <Route path="/register/:hash" component={SitesRegister} />
+        <Route path="/register/:hash/:email" component={SitesRegister} />
       </div>
     </div>
   )
@@ -34,7 +34,7 @@ function Routes(props) {
         <Route
           path="/signout"
           render={() => {
-            Session.signoutUser()
+            Session.clearUser()
             return <Redirect to="/signin" />
           }}
         />

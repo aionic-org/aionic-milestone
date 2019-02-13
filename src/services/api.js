@@ -78,16 +78,10 @@ export class Api {
 
     if (error.response !== undefined) {
       switch (error.response.status) {
-        case 401:
-          return 'Not authorized!'
-        case 403:
-          return 'Missing user rights!'
-        case 404:
-          return 'Resource not found!'
         case 500:
           return 'Internal server error!'
         default:
-          return 'Failed to fetch data from server!'
+          return error.response.data.error || 'Failed to fetch data from server!'
       }
     } else if (error.message !== undefined) {
       return error.message

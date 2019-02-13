@@ -52,9 +52,7 @@ class UserInvitation extends Component {
               autoComplete="off"
             />
             <div className="input-group-append">
-              <button className="btn btn-primary" type="button" id="button-addon2">
-                Submit
-              </button>
+              <button className="btn btn-primary">Submit</button>
             </div>
             <div className="valid-feedback">User invited!</div>
             <div className="invalid-feedback">{this.state.msg}</div>
