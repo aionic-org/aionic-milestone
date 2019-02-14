@@ -25,7 +25,7 @@ class BoardTaskFilter extends Component {
               placeholder="Enter search term"
               name="searchTerm"
               onBlur={handleFilterChange}
-              defaultValue={searchParams.searchTerm}
+              defaultValue={searchParams.searchTerm ? searchParams.searchTerm : ''}
             />
           </div>
 
