@@ -27,6 +27,7 @@ const Comments = props => {
                 comment={comment}
                 taskId={typeId}
                 removeComment={removeComment}
+                key={comment.id}
               />
             )
           case 'Project':
@@ -35,6 +36,7 @@ const Comments = props => {
                 comment={comment}
                 taskId={typeId}
                 removeComment={removeComment}
+                key={comment.id}
               />
             )
           default:

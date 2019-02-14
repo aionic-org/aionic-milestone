@@ -11,7 +11,7 @@ const TaskPreview = props => {
     <Link to={`/task/${task.id}`} className="TaskPreview CardLink card">
       <div className="card-header font-weight-bold">
         <span>{task.title}</span>
-        <TaskLabel task={task} />
+        <TaskLabel task={task} assignedClasses={['ml-3', 'mt-1']} />
         <TaskPriorityIcon task={task} />
       </div>
       <div className="card-body">
