@@ -40,7 +40,7 @@ const Comments = props => {
               />
             )
           default:
-            break
+            return null
         }
       })}
     </div>

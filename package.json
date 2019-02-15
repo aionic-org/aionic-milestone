@@ -17,6 +17,7 @@
     "dotenv": "^6.2.0",
     "jwt-decode": "^2.2.0",
     "marked": "^0.4.0",
+    "query-string": "^6.2.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-markdown": "^4.0.6",

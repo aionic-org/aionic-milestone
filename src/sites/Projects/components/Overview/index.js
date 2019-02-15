@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router'
+
 import ReactModal from 'react-modal'
+import queryString from 'query-string'
 
 import ProjectForm from '../Form'
 
 const SitesProjectsOverview = props => {
+  const { createProject } = queryString.parse(props.location.search)
+
   const { projects } = props
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(createProject === 'true') // query param is of type string
 
   const handleOpenModal = () => {
     setShowModal(true)
@@ -58,4 +63,4 @@ const SitesProjectsOverview = props => {
   )
 }
 
-export default SitesProjectsOverview
+export default withRouter(SitesProjectsOverview)

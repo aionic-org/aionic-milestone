@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import queryString from 'query-string'
+
 import './Form.css'
 
 import { Api } from 'services/api'
@@ -47,7 +49,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { match } = this.props
+    const { email } = queryString.parse(this.props.location.search)
     const { isLoading, msg } = this.state
 
     return (
@@ -59,7 +61,7 @@ class RegisterForm extends Component {
             className="form-control"
             placeholder="Email address"
             onChange={this.handleInputChange}
-            defaultValue={match.params.email}
+            defaultValue={email}
             autocomplete="off"
             required
           />

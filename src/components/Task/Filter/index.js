@@ -63,7 +63,7 @@ class BoardTaskFilter extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter GIT branch"
+              placeholder="Enter Git branch"
               name="branch"
               onBlur={handleFilterChange}
               defaultValue={searchParams.branch}

@@ -29,6 +29,8 @@ class SitesUserTabsContent extends Component {
       case 'Dashboard':
         content = <BoardTaskUser user={user} showTitle={false} />
         break
+      default:
+        break
     }
 
     return (
