@@ -14,6 +14,7 @@ const SitesProjectTabsContent = props => {
   switch (tab) {
     case 'Comments':
       content = <ProjectCommentsContainer projectId={project.id} />
+      break
     default:
       break
   }

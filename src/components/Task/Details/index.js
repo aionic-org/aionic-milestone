@@ -7,6 +7,7 @@ import InputRadio from 'components/UI/Input/Radio'
 import UserList from 'components/User/UserList'
 
 import TaskStatusList from 'components/Task/StatusList'
+import TaskLabel from '../Label'
 
 const TaskDetails = props => {
   const { userList, statusList, priorityList, task, isNewTask, handleInputChange } = props
@@ -15,7 +16,7 @@ const TaskDetails = props => {
     <div className="TaskDetails">
       <p className="text-muted font-italic">
         Details
-        {task.closed ? <span class="badge badge-primary float-right">Closed</span> : null}
+        <TaskLabel task={task} />
       </p>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Assignee</label>

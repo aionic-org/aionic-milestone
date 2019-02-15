@@ -13,7 +13,7 @@ const SearchForm = props => {
     e.preventDefault()
 
     if (term.length) {
-      history.push(`search/${term}`)
+      history.push(`/search/${term}`)
     }
   }
 

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import './Form.css'
 
+import { Api } from 'services/api'
 import { Session } from 'services/session'
 
 import Spinner from 'components/UI/Spinner/'
@@ -27,29 +28,28 @@ class SigninForm extends Component {
     e.preventDefault()
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      msg: ''
     })
 
-    // signin user
     Session.signinUser({ user: this.state.user })
       .then(res => {
+        Session.clearUser()
         Session.setToken(res.token)
         Session.setUser(res.user)
         this.props.history.push('/')
       })
       .catch(err => {
-        switch (err.response.status) {
-          case 401:
-            this.setState({ isLoading: false, msg: 'Wrong email or password!' })
-            break
-          default:
-            this.setState({ isLoading: false, msg: 'Internal server error!' })
-            break
-        }
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
       })
   }
 
   render() {
+    const { isLoading, msg } = this.state
+
     return (
       <div className="SigninForm">
         <form onSubmit={this.handleSubmit}>
@@ -71,7 +71,7 @@ class SigninForm extends Component {
             required
           />
 
-          {this.state.isLoading ? (
+          {isLoading ? (
             <Spinner />
           ) : (
             <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
@@ -79,7 +79,7 @@ class SigninForm extends Component {
             </button>
           )}
 
-          {this.state.msg.length ? <p className="mt-3 text-danger">{this.state.msg}</p> : null}
+          {msg.length ? <p className="mt-3 text-danger">{msg}</p> : null}
         </form>
       </div>
     )

@@ -10,7 +10,7 @@ class TaskCommentsFormContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { comment: {}, isLoading: false, msg: '' }
+    this.state = { comment: {}, msg: '' }
   }
 
   handleInputChange = e => {

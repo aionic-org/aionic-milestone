@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import './Navbar.css'
@@ -85,9 +85,9 @@ const Navbar = () => {
                   <NavLink exact to="/task" className="dropdown-item">
                     Create task
                   </NavLink>
-                  <a className="dropdown-item" href="#">
-                    Create team
-                  </a>
+                  <NavLink to="/project?createProject=true" className="dropdown-item">
+                    Create project
+                  </NavLink>
                 </div>
               </li>
 

@@ -70,7 +70,7 @@ class ProjectForm extends Component {
       <div className="ProjectForm">
         <form onSubmit={this.handleSubmit} method="POST">
           <div className="form-group">
-            <label for="exampleInputEmail1">Project title</label>
+            <label>Project title</label>
             <input
               type="text"
               className="form-control"
@@ -80,7 +80,7 @@ class ProjectForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Description</label>
+            <label>Description</label>
             <textarea
               className="form-control"
               name="description"
@@ -90,7 +90,7 @@ class ProjectForm extends Component {
           </div>
 
           <div className="form-group">
-            <label for="exampleInputPassword1">Tasks</label>
+            <label>Tasks</label>
             <TaskSuggestion updateParent={this.updateProjectTasks} />
           </div>
 

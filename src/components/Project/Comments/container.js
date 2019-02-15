@@ -3,7 +3,8 @@ import React from 'react'
 import Fetcher from 'components/Utility/Fetcher'
 
 import ProjectCommentsFormContainer from './Form/container'
-import Comments from '../../Comments'
+
+import Comments from 'components/Comments'
 
 const ProjectCommentsContainer = props => (
   <Fetcher url={`project/${props.projectId}/comment`}>

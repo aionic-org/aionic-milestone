@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import queryString from 'query-string'
+
 import './Form.css'
 
+import { Api } from 'services/api'
 import { Session } from 'services/session'
 
 import Spinner from 'components/UI/Spinner/'
@@ -11,7 +14,7 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { user: {}, isLoading: false, msg: '' }
+    this.state = { user: { email: this.props.match.params.email }, isLoading: false, msg: '' }
   }
 
   handleInputChange = e => {
@@ -30,26 +33,25 @@ class RegisterForm extends Component {
       isLoading: true
     })
 
-    // register user
     Session.registerUser({ user: this.state.user }, this.props.match.params.hash)
       .then(res => {
+        Session.clearUser()
         Session.setToken(res.token)
         Session.setUser(res.user)
         this.props.history.push('/')
       })
       .catch(err => {
-        switch (err.response.status) {
-          case 400:
-            this.setState({ isLoading: false, msg: 'Email is already taken!' })
-            break
-          default:
-            this.setState({ isLoading: false, msg: 'Internal server error!' })
-            break
-        }
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
       })
   }
 
   render() {
+    const { email } = queryString.parse(this.props.location.search)
+    const { isLoading, msg } = this.state
+
     return (
       <div className="RegisterForm">
         <form className="sigin-form" onSubmit={this.handleSubmit}>
@@ -59,6 +61,8 @@ class RegisterForm extends Component {
             className="form-control"
             placeholder="Email address"
             onChange={this.handleInputChange}
+            defaultValue={email}
+            autocomplete="off"
             required
           />
 
@@ -86,18 +90,19 @@ class RegisterForm extends Component {
             className="form-control"
             placeholder="Password"
             onChange={this.handleInputChange}
+            autocomplete="off"
             required
           />
 
-          {this.props.isLoading ? (
+          {isLoading ? (
             <Spinner />
           ) : (
-            <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
+            <button className="btn btn-lg btn-primary btn-block mt-3">
               <i className="fas fa-sign-in-alt" /> Register
             </button>
           )}
 
-          {this.state.msg.length ? <p className="mt-3 text-danger">{this.state.msg}</p> : null}
+          {msg.length ? <p className="mt-3 text-danger">{msg}</p> : null}
         </form>
       </div>
     )

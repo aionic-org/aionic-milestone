@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { Session } from 'services/session'
-
 import Title from 'components/UI/Title'
 
 import BoardTasks from '../'
@@ -26,7 +24,6 @@ const BoardTaskContainerUser = props => (
 )
 
 BoardTaskContainerUser.defaultProps = {
-  user: Session.getUser(),
   showTitle: true
 }
 

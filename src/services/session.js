@@ -30,11 +30,6 @@ export class Session {
       })
   }
 
-  static signoutUser() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-  }
-
   static getToken() {
     return localStorage.getItem('token')
   }
@@ -49,6 +44,11 @@ export class Session {
 
   static setUser(user) {
     localStorage.setItem('user', JSON.stringify(user))
+  }
+
+  static clearUser() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   }
 
   static isAdmin() {

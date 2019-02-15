@@ -25,7 +25,7 @@ class BoardTaskFilter extends Component {
               placeholder="Enter search term"
               name="searchTerm"
               onBlur={handleFilterChange}
-              defaultValue={searchParams.searchTerm}
+              defaultValue={searchParams.searchTerm ? searchParams.searchTerm : ''}
             />
           </div>
 
@@ -63,7 +63,7 @@ class BoardTaskFilter extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter GIT branch"
+              placeholder="Enter Git branch"
               name="branch"
               onBlur={handleFilterChange}
               defaultValue={searchParams.branch}
