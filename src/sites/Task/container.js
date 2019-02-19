@@ -59,7 +59,10 @@ class SitesTaskContainer extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value
 
     if (this.state.task[name] !== value) {
-      const task = { ...this.state.task, [name]: value }
+      const task = {
+        ...this.state.task,
+        [name]: value.length || target.type == 'checkbox' ? value : null
+      }
 
       this.setState({ task: task }, () => {
         if (!this.state.isNewTask) {

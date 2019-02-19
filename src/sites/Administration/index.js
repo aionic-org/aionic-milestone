@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink, Route, Switch } from 'react-router-dom'
 
-import AdministrationGeneral from './components/general'
-import AdministrationUser from './components/user'
-
 import Title from 'components/UI/Title'
 import Content from 'components/UI/Content'
+
+import AdministrationGeneral from './components/general'
+import AdministrationUser from './components/user'
+import AdministrationGitHub from './components/github'
 
 const SitesAdministration = props => {
   return (
@@ -26,12 +27,16 @@ const SitesAdministration = props => {
               <NavLink to="/administration/user" className="nav-link" activeClassName="active">
                 Users
               </NavLink>
+              <NavLink to="/administration/github" className="nav-link" activeClassName="active">
+                GitHub
+              </NavLink>
             </div>
           </div>
           <div className="col-12 col-xl-9">
             <Switch>
               <Route exact path="/administration" component={AdministrationGeneral} />
               <Route path="/administration/user" component={AdministrationUser} />
+              <Route path="/administration/github" component={AdministrationGitHub} />
             </Switch>
           </div>
         </div>

@@ -76,13 +76,8 @@ export class Api {
   static handleHttpError(error) {
     console.log(error)
 
-    if (error.response !== undefined) {
-      switch (error.response.status) {
-        case 500:
-          return 'Internal server error!'
-        default:
-          return error.response.data.error || 'Failed to fetch data from server!'
-      }
+    if (error.response !== undefined && error.response.data.error !== undefined) {
+      return error.response.data.error
     } else if (error.message !== undefined) {
       return error.message
     } else {

@@ -10,10 +10,10 @@ const AdministrationUser = props => (
   <Fetcher url="user">
     {users => (
       <div className="AdministrationUser">
-        <div className="mt-4 mt-xl-0">
+        <div className="mt-md-4">
           <UserInvitation />
         </div>
-        <Deck itemList={users} deckType={'user'} />
+        <Deck itemList={users} deckType="user" />
       </div>
     )}
   </Fetcher>

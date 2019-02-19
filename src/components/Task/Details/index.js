@@ -8,9 +8,10 @@ import UserList from 'components/User/UserList'
 
 import TaskStatusList from 'components/Task/StatusList'
 import TaskLabel from '../Label'
+import GitRepositoryList from '../../Git/Repository/List'
 
 const TaskDetails = props => {
-  const { userList, statusList, priorityList, task, isNewTask, handleInputChange } = props
+  const { userList, statusList, priorityList, repoList, task, isNewTask, handleInputChange } = props
 
   return (
     <div className="TaskDetails">
@@ -49,8 +50,15 @@ const TaskDetails = props => {
           />
         </div>
 
-        <label className="col-sm-2 col-form-label">Branch</label>
-        <div className="col-sm-4">
+        <label className="col-sm-2 col-form-label">Repository / Branch</label>
+        <div className="col-sm-2">
+          <GitRepositoryList
+            repoList={repoList}
+            defaultValue={task.repository ? task.repository.id : undefined}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="col-sm-2">
           <input
             type="text"
             name="branch"
