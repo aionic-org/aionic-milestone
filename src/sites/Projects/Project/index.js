@@ -30,7 +30,7 @@ const SitesProject = props => {
               <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
             </Card>
 
-            <Card title="More" icon="fas fa-ellipsis-h" doMargin={true}>
+            <Card title="More" icon="fas fa-ellipsis-h" showMargin={true}>
               <SitesProjectTabsContent project={project} />
             </Card>
           </div>

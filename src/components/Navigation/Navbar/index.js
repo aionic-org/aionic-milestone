@@ -18,9 +18,12 @@ const Navbar = props => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
-      <button className="btn btn-dark mr-3" onClick={props.toggleSidebar}>
-        <i className="fas fa-chevron-right" />
-        <i className="fas fa-chevron-left" />
+      <button
+        className="btn btn-link mr-3"
+        onClick={props.toggleSidebar}
+        style={{ color: '#858796' }}
+      >
+        <i className="fa fa-bars" />
       </button>
 
       <button

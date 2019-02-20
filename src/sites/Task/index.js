@@ -24,7 +24,7 @@ const SitesTask = props => {
       Create task
     </button>
   ) : (
-    <Card title="More" icon="fas fa-ellipsis-h" doMargin={true}>
+    <Card title="More" icon="fas fa-ellipsis-h" showMargin={true}>
       <SitesTaskTabsContent task={task} />
     </Card>
   )
@@ -44,7 +44,7 @@ const SitesTask = props => {
               <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />
             </Card>
 
-            <Card title="Description" icon="fas fa-map" doMargin={true}>
+            <Card title="Description" icon="fas fa-map" showMargin={true}>
               <TaskDescription task={task} handleInputChange={handleInputChange} />
             </Card>
             {taskFooter}

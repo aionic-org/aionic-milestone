@@ -36,7 +36,7 @@ const SitesSearch = props => {
         <Title title="Search" />
         <div className="row">
           <div className="col-12 col-md-3">
-            <Card title="Filters" icon="fas fa-filter">
+            <Card title="Filters" icon="fas fa-filter" showLastUpdate={false}>
               <TaskFilterContainer
                 searchParams={params}
                 handleFilterChange={handleFilterChange}

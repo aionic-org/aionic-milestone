@@ -9,8 +9,8 @@ import UILogo from 'components/UI/Logo'
 
 const Sidebar = props => {
   const logoStyle = {
-    height: '40px',
-    width: '40px'
+    height: '50px',
+    width: '50px'
   }
 
   const logoClasses = ['d-inline-block', 'align-top']
@@ -18,7 +18,9 @@ const Sidebar = props => {
   return (
     <div className="Sidebar" id="sidebar-wrapper">
       <div className="sidebar-heading text-center">
-        <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
+        <NavLink to="/">
+          <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
+        </NavLink>
       </div>
       <hr className="sidebar-divider" />
 
@@ -26,28 +28,28 @@ const Sidebar = props => {
         <NavLink exact to="/" className="list-group-item list-group-item-action">
           <i className="fas fa-fw fa-tachometer-alt" />
           Dashboard
-          <i className="fa fa-minus float-right mt-1" />
+          <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
           <i className="fas fa-project-diagram" />
           Projects
-          <i className="fa fa-minus float-right mt-1" />
+          <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink exact to="/teams" className="list-group-item list-group-item-action">
           <i className="fas fa-users" />
           Teams
-          <i className="fa fa-minus float-right mt-1" />
+          <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink to="/search" className="list-group-item list-group-item-action">
           <i className="fas fa-search" />
           Search
-          <i className="fa fa-minus float-right mt-1" />
+          <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         {Session.isAdmin() ? (
@@ -56,7 +58,7 @@ const Sidebar = props => {
             <NavLink to="/administration" className="list-group-item list-group-item-action">
               <i className="fas fa-toolbox" />
               Administration
-              <i className="fa fa-minus float-right mt-1" />
+              <i className="fa fa-chevron-right float-right mt-1" />
             </NavLink>
           </div>
         ) : null}

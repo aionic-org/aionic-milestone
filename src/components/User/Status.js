@@ -65,7 +65,7 @@ class UserStatus extends Component {
     } else {
       return (
         <div className="UserStatus">
-          <div className="form-group">
+          <div className="form-group mb-0">
             <textarea
               className="form-control"
               name="status"

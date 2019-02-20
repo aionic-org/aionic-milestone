@@ -9,7 +9,9 @@ import Title from 'components/UI/Title'
 
 import BoardTaskContainerUser from 'components/Board/Task/containers/user'
 import Card from 'components/Card'
-import UserStatus from '../../components/User/Status'
+
+import UserStatus from 'components/User/Status'
+import AnnouncementList from 'components/Announcements/List'
 
 const SitesDashboard = props => {
   return (
@@ -17,22 +19,18 @@ const SitesDashboard = props => {
       <Content>
         <Title title={`Welcome, ${Session.getUser().firstname}!`} />
         <div className="row">
-          <div className="col-md-9 col-12">
+          <div className="col-xl-9 col-12">
             <Card title="Your task board" icon="fas fa-clipboard-list">
               <BoardTaskContainerUser user={Session.getUser()} />
             </Card>
           </div>
-          <div className="col-md-3 col-12">
-            <Card title="Your status" icon="fas fa-edit">
+          <div className="col-xl-3 col-12 mt-3 mt-xl-0">
+            <Card title="Your status" icon="fas fa-edit" showLastUpdate={false}>
               <UserStatus user={Session.getUser()} />
             </Card>
 
-            <Card title="Announcements" icon="fas fa-bullhorn" doMargin={true} wrapBody={false}>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">Cras justo odio</li>
-                <li className="list-group-item">Dapibus ac facilisis in</li>
-                <li className="list-group-item">Vestibulum at eros</li>
-              </ul>
+            <Card title="Announcements" icon="fas fa-bullhorn" showMargin={true} wrapBody={false}>
+              <AnnouncementList announcementList={[1, 2, 3]} />
             </Card>
           </div>
         </div>

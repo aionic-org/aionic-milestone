@@ -17,7 +17,7 @@
 }
 
 .Sidebar .sidebar-heading {
-  padding: 0.875rem 1.25rem;
+  padding: 0.5rem 0rem;
   font-size: 1.2rem;
 }
 
@@ -27,7 +27,7 @@
 
 .Sidebar .list-group a {
   background-color: #6c5ce7;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.6);
   border: none;
 }
 
@@ -39,11 +39,11 @@
   color: white;
 }
 
-.Sidebar .list-group a:not(.active) .fa-minus {
+.Sidebar .list-group a:not(.active) .fa-chevron-right {
   display: none;
 }
 
-.Sidebar .list-group a > i:not(.fa-minus) {
+.Sidebar .list-group a > i:not(.fa-chevron-right) {
   margin-right: 10px;
 }
 
