@@ -20,7 +20,7 @@ const SitesUser = props => {
         <Title title={`${user.firstname}`} />
         <div className="row">
           <div className="col-12 col-xl-8">
-            <Card title="Details">
+            <Card title="Details" icon="fas fa-info-circle">
               <UserDetailsContainer user={user} handleInputChange={handleInputChange} />
 
               {Session.isAdmin() ? (
@@ -34,7 +34,7 @@ const SitesUser = props => {
 
         <div className="row">
           <div className="col-xl-8 mt-4">
-            <Card title="More">
+            <Card title="More" icon="fas fa-ellipsis-h">
               <SitesUserTabsContent user={user} />
             </Card>
           </div>

@@ -19,8 +19,8 @@ const Navbar = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
       <button className="btn btn-dark mr-3" onClick={props.toggleSidebar}>
-        <i class="fas fa-chevron-right" />
-        <i class="fas fa-chevron-left" />
+        <i className="fas fa-chevron-right" />
+        <i className="fas fa-chevron-left" />
       </button>
 
       <button
@@ -71,9 +71,12 @@ const Navbar = props => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {`${Session.getUser().firstname} ${Session.getUser().lastname}`}
+              <i className="fas fa-user-tie" />
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
+              <div className="dropdown-header">
+                {`${Session.getUser().firstname} ${Session.getUser().lastname}`}
+              </div>
               <NavLink to="/user/me" className="dropdown-item">
                 Account
               </NavLink>

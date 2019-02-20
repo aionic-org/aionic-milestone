@@ -26,16 +26,16 @@ const SitesProject = props => {
         />
         <div className="row">
           <div className="col-12 col-xl-8 order-last order-xl-first mt-4 mt-xl-0">
-            <Card title="Tasks">
+            <Card title="Tasks" icon="fas fa-clipboard-list">
               <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
             </Card>
 
-            <Card title="More" doMargin={true}>
+            <Card title="More" icon="fas fa-ellipsis-h" doMargin={true}>
               <SitesProjectTabsContent project={project} />
             </Card>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Card title="Details">
+            <Card title="Details" icon="fas fa-info-circle">
               <SitesProjectOverview
                 project={project}
                 handleInputChange={handleInputChange}

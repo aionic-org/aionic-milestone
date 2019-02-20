@@ -16,14 +16,9 @@ const SitesAdministration = props => {
       <Content>
         <Title title={'Administration'} />
         <div className="row">
-          <div className="col-12 col-xl-3">
-            <Card title="Category" wrapBody={false}>
-              <div
-                className="nav flex-column nav-pills p-1"
-                id="v-pills-tab"
-                role="tablist"
-                aria-orientation="vertical"
-              >
+          <div className="col-12 col-xl-4">
+            <Card title="Category" wrapBody={false} icon="fas fa-sliders-h">
+              <div className="nav nav-pills p-2" role="tablist" aria-orientation="vertical">
                 <NavLink exact to="/administration" className="nav-link" activeClassName="active">
                   General
                 </NavLink>
@@ -36,7 +31,7 @@ const SitesAdministration = props => {
               </div>
             </Card>
           </div>
-          <div className="col-12 col-xl-9">
+          <div className="col-12 col-xl-12 mt-3">
             <Switch>
               <Route exact path="/administration" component={AdministrationGeneral} />
               <Route path="/administration/user" component={AdministrationUser} />

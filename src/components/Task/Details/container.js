@@ -23,7 +23,9 @@ class TaskDetailsContainer extends Component {
       Api.fetchData('user/'),
       Api.fetchData('taskStatus/'),
       Api.fetchData('taskPriority/'),
-      Api.fetchData('git/56/repositories')
+
+      // TODO: Fix this
+      Api.fetchData('git/0/repositories')
     ]
 
     Promise.all(requests)

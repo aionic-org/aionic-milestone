@@ -13,7 +13,7 @@ class BoardTaskContainerSearch extends Component {
 
     this.state = {
       isLoading: false,
-      msg: '',
+      msg: null,
       searchResult: []
     }
   }
@@ -57,17 +57,12 @@ class BoardTaskContainerSearch extends Component {
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg.length) {
+    } else if (msg) {
       return <Error message={msg} />
     } else {
       return (
         <div className="BoardTaskContainerSearch">
-          <BoardTasks
-            taskList={searchResult}
-            showStatusFilters={false}
-            itemsPerRow={3}
-            title="Search results"
-          />
+          <BoardTasks taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
         </div>
       )
     }

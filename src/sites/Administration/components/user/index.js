@@ -12,7 +12,7 @@ const AdministrationUser = props => (
   <Fetcher url="user">
     {users => (
       <div className="AdministrationUser">
-        <Card title="Users">
+        <Card title="Users" icon="fas fa-users-cog">
           <UserInvitation />
           <Deck itemList={users} deckType="user" />
         </Card>

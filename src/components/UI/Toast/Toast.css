@@ -7,6 +7,6 @@
   width: 16rem;
   z-index: 2;
   position: fixed;
-  top: 6rem;
+  bottom: 3rem;
   right: 1rem;
 }

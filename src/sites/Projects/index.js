@@ -23,7 +23,7 @@ const SitesProjects = props => {
             </Card>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Card title="Overview">
+            <Card title="Overview" icon="fas fa-chart-bar">
               <SitesProjectsOverview projects={projects} />
             </Card>
           </div>

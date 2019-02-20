@@ -71,7 +71,7 @@ export class AdministrationGitHub extends Component {
     } else {
       return (
         <div className="AdministrationGitHub">
-          <Card title="GitHub">
+          <Card title="GitHub" icon="fab fa-github">
             <GitOrganizationForm updateParent={this.addOrganization} />
             <div className="GitOrganizationContainer">
               <Deck

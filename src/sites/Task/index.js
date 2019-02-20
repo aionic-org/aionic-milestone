@@ -24,7 +24,7 @@ const SitesTask = props => {
       Create task
     </button>
   ) : (
-    <Card title="More" doMargin={true}>
+    <Card title="More" icon="fas fa-ellipsis-h" doMargin={true}>
       <SitesTaskTabsContent task={task} />
     </Card>
   )
@@ -40,11 +40,11 @@ const SitesTask = props => {
         />
         <div className="row">
           <div className="col-xl-10">
-            <Card title="Details">
+            <Card title="Details" icon="fas fa-info-circle">
               <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />
             </Card>
 
-            <Card title="Description" doMargin={true}>
+            <Card title="Description" icon="fas fa-map" doMargin={true}>
               <TaskDescription task={task} handleInputChange={handleInputChange} />
             </Card>
             {taskFooter}
