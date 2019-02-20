@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 export class AdministrationAnnouncement extends Component {
   constructor(props) {
@@ -26,9 +26,9 @@ export class AdministrationAnnouncement extends Component {
     } else {
       return (
         <div className="AdministrationAnnouncement">
-          <Card title="Announcements" icon="fas fa-bullhorn">
+          <Widget title="Announcements" icon="fas fa-bullhorn">
             <p>Placeholder</p>
-          </Card>
+          </Widget>
         </div>
       )
     }

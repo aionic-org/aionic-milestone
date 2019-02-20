@@ -16,7 +16,7 @@ class SitesTaskContainer extends Component {
     this.state = {
       isLoading: true,
       isNewTask: false,
-      msg: '',
+      msg: null,
       task: {},
       taskUpdate: {
         success: null,
@@ -65,7 +65,7 @@ class SitesTaskContainer extends Component {
         [name]: value.length || target.type == 'checkbox' ? value : null
       }
 
-      this.setState({ task: task }, () => {
+      this.setState({ task }, () => {
         if (!this.state.isNewTask) {
           this.updateTask()
         }
@@ -115,7 +115,7 @@ class SitesTaskContainer extends Component {
       .catch(err => {
         this.setState({
           taskUpdate: {
-            status: 'Error',
+            success: false,
             msg: Api.handleHttpError(err)
           }
         })
@@ -130,9 +130,9 @@ class SitesTaskContainer extends Component {
     ) : null
 
     if (isLoading) {
-      return <Spinner wrapContent={true} />
-    } else if (msg.length) {
-      return <Error message={msg} wrapContent={true} />
+      return <Spinner />
+    } else if (msg) {
+      return <Error message={msg} />
     } else {
       return (
         <div className="SitesTaskContainer">

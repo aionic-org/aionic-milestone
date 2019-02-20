@@ -2,13 +2,13 @@ import React from 'react'
 
 import InputTitle from 'components/UI/Input/Title'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 import TaskDetailsContainer from 'components/Task/Details/container'
 
 import Content from 'components/UI/Content'
 
-import SitesTaskTabsContent from './components/Tabs/content'
+import SitesTaskTabs from './components/Tabs/'
 import TaskDescription from 'components/Task/Description'
 
 const SitesTask = props => {
@@ -24,9 +24,9 @@ const SitesTask = props => {
       Create task
     </button>
   ) : (
-    <Card title="More" icon="fas fa-ellipsis-h" showMargin={true}>
-      <SitesTaskTabsContent task={task} />
-    </Card>
+    <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
+      <SitesTaskTabs task={task} />
+    </Widget>
   )
 
   return (
@@ -35,18 +35,17 @@ const SitesTask = props => {
         <InputTitle
           defaultValue={task.title}
           onBlur={handleInputChange}
-          showDivider={false}
           placeholder={'Enter task title'}
         />
         <div className="row">
           <div className="col-xl-10">
-            <Card title="Details" icon="fas fa-info-circle">
+            <Widget title="Details" icon="fas fa-info-circle">
               <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />
-            </Card>
+            </Widget>
 
-            <Card title="Description" icon="fas fa-map" showMargin={true}>
+            <Widget title="Description" icon="fas fa-map" showMargin={true}>
               <TaskDescription task={task} handleInputChange={handleInputChange} />
-            </Card>
+            </Widget>
             {taskFooter}
           </div>
         </div>

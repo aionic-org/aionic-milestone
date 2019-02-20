@@ -19,7 +19,6 @@ const UserList = props => {
 }
 
 UserList.defaultProps = {
-  name: 'UserList',
   optionList: [],
   onChange: () => {},
   defaultValue: ''

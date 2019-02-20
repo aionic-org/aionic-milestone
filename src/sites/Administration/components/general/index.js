@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 const AdministationGeneral = props => (
   <div className="AdministationGeneral">
-    <Card title="General" icon="fas fa-cog">
+    <Widget title="General" icon="fas fa-cog">
       <p>Placeholder</p>
-    </Card>
+    </Widget>
   </div>
 )
 

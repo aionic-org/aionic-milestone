@@ -119,9 +119,9 @@ class SitesUserContainer extends Component {
     ) : null
 
     if (isLoading) {
-      return <Spinner wrapContent={true} />
+      return <Spinner />
     } else if (msg.length) {
-      return <Error message={msg} wrapContent={true} />
+      return <Error message={msg} />
     } else {
       return (
         <div className="SitesUserContainer">

@@ -4,12 +4,12 @@
 */
 
 .Spinner {
-  margin: 4rem auto 2rem;
   text-align: center;
+  margin: 0;
 }
 
-.Spinner.small {
-  margin: 0;
+.container-fluid > .Spinner {
+  margin: 4rem auto 2rem;
 }
 
 .Spinner > div {

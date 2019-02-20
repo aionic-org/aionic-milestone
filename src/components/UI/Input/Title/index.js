@@ -15,13 +15,11 @@ const InputTitle = props => (
         onBlur={props.onBlur}
       />
     </h1>
-    {props.showDivider ? <hr className="featurette-divider" /> : null}
   </div>
 )
 
 InputTitle.defaultProps = {
-  placeholder: '',
-  showDivider: true
+  placeholder: ''
 }
 
 export default InputTitle

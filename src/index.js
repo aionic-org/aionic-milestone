@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker'
 
 import './index.css'
 
-import App from './sites/App/'
+import App from './app'
 
 require('dotenv').config()
 

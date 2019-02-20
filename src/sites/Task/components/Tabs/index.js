@@ -7,7 +7,7 @@ import Tabs from 'components/UI/Tabs'
 import TaskCommentsContainer from 'components/Task/Comments/container'
 import TaskProjectsContainer from 'components/Task/Projects/container'
 
-const SitesTaskTabsContent = props => {
+const SitesTaskTabs = props => {
   const { task } = props
   const [tab, changeTab] = useTab('')
 
@@ -24,7 +24,7 @@ const SitesTaskTabsContent = props => {
   }
 
   return (
-    <div className="SitesTaskTabsContent">
+    <div className="SitesTaskTabs">
       <div className="row">
         <div className="col-12 col-md-10">
           <Tabs handleClick={changeTab} tabs={['Comments', 'Commits', 'Projects']} />
@@ -35,4 +35,4 @@ const SitesTaskTabsContent = props => {
   )
 }
 
-export default SitesTaskTabsContent
+export default SitesTaskTabs

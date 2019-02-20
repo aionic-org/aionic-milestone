@@ -5,7 +5,7 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import BoardTaskFilter from '.'
+import TaskFilter from '.'
 
 class TaskFilterContainer extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class TaskFilterContainer extends Component {
 
     this.state = {
       isLoading: true,
-      msg: '',
+      msg: null,
       userList: [],
       statusList: []
     }
@@ -40,12 +40,12 @@ class TaskFilterContainer extends Component {
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg.length) {
+    } else if (msg) {
       return <Error message={msg} />
     } else {
       return (
         <div className="TaskFilterContainer">
-          <BoardTaskFilter userList={userList} statusList={statusList} {...this.props} />
+          <TaskFilter userList={userList} statusList={statusList} {...this.props} />
         </div>
       )
     }

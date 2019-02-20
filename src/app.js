@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import ReactModal from 'react-modal'
 
-import './App.css'
+import './app.css'
 
-import ScrollToTop from './components/ScrollToTop'
-import Routes from '../Routes'
-import ErrorBoundary from './components/ErrorBoundary'
+import Routes from './sites/Routes'
+
+import ErrorBoundary from 'components/Utility/ErrorBoundary'
 
 class App extends Component {
   componentDidMount = () => {
@@ -17,13 +17,11 @@ class App extends Component {
     return (
       <ErrorBoundary>
         <Router>
-          <Switch>
-            <ScrollToTop>
-              <div className="App" id="App">
-                <Routes />
-              </div>
-            </ScrollToTop>
-          </Switch>
+          <div id="App">
+            <Switch>
+              <Routes />
+            </Switch>
+          </div>
         </Router>
       </ErrorBoundary>
     )

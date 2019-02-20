@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Content from '../../../components/UI/Content'
+import Content from '../UI/Content'
 
 class ErrorBoundary extends Component {
   constructor(props) {

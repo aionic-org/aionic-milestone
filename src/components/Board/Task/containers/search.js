@@ -33,23 +33,20 @@ class BoardTaskContainerSearch extends Component {
   doSearch = () => {
     const params = this.props.searchParams
 
-    this.setState(
-      {
-        isLoading: true
-      },
-      () => {
-        Api.fetchData(`/search/task`, params)
-          .then(searchResult => {
-            this.setState({ isLoading: false, searchResult })
-          })
-          .catch(err => {
-            this.setState({
-              isLoading: false,
-              msg: Api.handleHttpError(err)
-            })
-          })
-      }
-    )
+    this.setState({
+      isLoading: true
+    })
+
+    Api.fetchData(`/search/task`, params)
+      .then(searchResult => {
+        this.setState({ isLoading: false, searchResult })
+      })
+      .catch(err => {
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
+        })
+      })
   }
 
   render() {

@@ -59,7 +59,7 @@ class UserStatus extends Component {
     const { isLoading, msg, user } = this.state
 
     if (isLoading) {
-      return <Spinner small={true} />
+      return <Spinner />
     } else if (msg) {
       return <Error message={msg} />
     } else {

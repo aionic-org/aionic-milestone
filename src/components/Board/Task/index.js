@@ -47,7 +47,7 @@ class BoardTask extends Component {
         </p>
 
         {itemList.length ? (
-          <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
+          <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
         ) : (
           <Icon assignedClasses={['fa-check-circle']} text="Done!" />
         )}

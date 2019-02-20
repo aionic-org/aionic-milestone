@@ -4,8 +4,11 @@ import { withRouter } from 'react-router-dom'
 import './Form.css'
 
 const SearchForm = props => {
-  const { history, assignedClasses } = props
+  const { history, location, assignedClasses } = props
   const [term, setTerm] = useState('')
+
+  const path = location.pathname.split('/')
+  const termFromUrl = path[1] === 'search' ? path[2] : ''
 
   const handleInputChange = e => {
     setTerm(e.target.value)
@@ -14,8 +17,10 @@ const SearchForm = props => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    if (term.length) {
-      history.push(`/search/${term}`)
+    const _term = term || document.querySelector('.SearchForm input').value
+
+    if (_term.length) {
+      history.push(`/search/${_term}`)
     }
   }
 
@@ -28,6 +33,7 @@ const SearchForm = props => {
           placeholder="Search for..."
           aria-label="Search"
           onChange={handleInputChange}
+          defaultValue={termFromUrl}
         />
         <div className="input-group-append">
           <button className="btn btn-secondary" type="submit">

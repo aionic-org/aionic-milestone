@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import UserList from 'components/User/UserList'
+import UserList from 'components/User/List'
 import TaskStatusList from 'components/Task/StatusList'
 
-class BoardTaskFilter extends Component {
+class TaskFilter extends Component {
   handleReset = e => {
     document.getElementById('filterForm').reset()
     this.props.resetFilters()
@@ -13,7 +13,7 @@ class BoardTaskFilter extends Component {
     const { searchParams, handleFilterChange, userList, statusList } = this.props
 
     return (
-      <div className="BoardTaskFilter">
+      <div className="TaskFilter">
         <form id="filterForm">
           <div className="form-group">
             <label>Seach term</label>
@@ -77,4 +77,4 @@ class BoardTaskFilter extends Component {
   }
 }
 
-export default BoardTaskFilter
+export default TaskFilter

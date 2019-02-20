@@ -4,7 +4,7 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import Title from 'components/UI/Title'
 import Content from 'components/UI/Content'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 import AdministrationGeneral from './components/general'
 import AdministrationUser from './components/user'
@@ -18,7 +18,12 @@ const SitesAdministration = props => {
         <Title title={'Administration'} />
         <div className="row">
           <div className="col-12 col-xl-4">
-            <Card title="Category" wrapBody={false} icon="fas fa-sliders-h" showLastUpdate={false}>
+            <Widget
+              title="Category"
+              wrapBody={false}
+              icon="fas fa-sliders-h"
+              showLastUpdate={false}
+            >
               <div className="nav nav-pills p-2" role="tablist" aria-orientation="vertical">
                 <NavLink exact to="/administration" className="nav-link" activeClassName="active">
                   General
@@ -37,7 +42,7 @@ const SitesAdministration = props => {
                   Announcements
                 </NavLink>
               </div>
-            </Card>
+            </Widget>
           </div>
           <div className="col-12 col-xl-12 mt-3">
             <Switch>

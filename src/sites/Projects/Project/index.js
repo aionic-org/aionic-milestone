@@ -1,15 +1,13 @@
 import React from 'react'
 
-import './Project.css'
-
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 import CardDeck from 'components/Deck'
 
-import SitesProjectOverview from './components/Overview'
+import SitesProjectDetails from './components/Details'
 import SitesProjectTabsContent from './components/Tabs/content'
 
 const SitesProject = props => {
@@ -21,29 +19,28 @@ const SitesProject = props => {
         <InputTitle
           defaultValue={project.title}
           placeholder={'Enter project title'}
-          showDivider={false}
           onBlur={handleInputChange}
         />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-4 mt-xl-0">
-            <Card title="Tasks" icon="fas fa-clipboard-list">
-              <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
-            </Card>
+          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
+            <Widget title="Tasks" icon="fas fa-clipboard-list">
+              <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
+            </Widget>
 
-            <Card title="More" icon="fas fa-ellipsis-h" showMargin={true}>
+            <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
               <SitesProjectTabsContent project={project} />
-            </Card>
+            </Widget>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Card title="Details" icon="fas fa-info-circle">
-              <SitesProjectOverview
+            <Widget title="Details" icon="fas fa-info-circle">
+              <SitesProjectDetails
                 project={project}
                 handleInputChange={handleInputChange}
                 toggleStatus={toggleStatus}
                 deleteProject={deleteProject}
                 updateProjectTasks={updateProjectTasks}
               />
-            </Card>
+            </Widget>
           </div>
         </div>
       </Content>

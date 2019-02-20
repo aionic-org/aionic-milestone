@@ -22,7 +22,7 @@ const TaskPreview = props => {
 
       <div className="card-footer">
         <p className="card-text">
-          <small className="text-muted">Last update: {task.updated} </small>
+          <small className="text-muted">Updated: {task.updated} </small>
         </p>
       </div>
     </Link>

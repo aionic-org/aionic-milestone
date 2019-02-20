@@ -5,7 +5,7 @@ import { Api } from 'services/api'
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 import GitOrganizationForm from 'components/Git/Organization/Form'
 import Deck from 'components/Deck'
@@ -71,18 +71,18 @@ export class AdministrationGitHub extends Component {
     } else {
       return (
         <div className="AdministrationGitHub">
-          <Card title="GitHub" icon="fab fa-github">
+          <Widget title="GitHub" icon="fab fa-github">
             <GitOrganizationForm updateParent={this.addOrganization} />
             <div className="GitOrganizationContainer">
               <Deck
                 itemList={organizations}
-                deckType="organization"
+                deckType="Organization"
                 itemsPerRow="2"
                 handleDelete={this.removeOrganization}
                 handleSync={this.updateOrganization}
               />
             </div>
-          </Card>
+          </Widget>
         </div>
       )
     }

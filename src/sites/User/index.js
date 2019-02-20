@@ -5,7 +5,7 @@ import { Session } from 'services/session'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import Card from 'components/Card'
+import Widget from 'components/Widget'
 
 import UserDetailsContainer from 'components/User/Details/container'
 
@@ -20,7 +20,7 @@ const SitesUser = props => {
         <Title title={`${user.firstname}`} />
         <div className="row">
           <div className="col-12 col-xl-8">
-            <Card title="Details" icon="fas fa-info-circle">
+            <Widget title="Details" icon="fas fa-info-circle">
               <UserDetailsContainer user={user} handleInputChange={handleInputChange} />
 
               {Session.isAdmin() ? (
@@ -28,15 +28,15 @@ const SitesUser = props => {
                   Remove
                 </button>
               ) : null}
-            </Card>
+            </Widget>
           </div>
         </div>
 
         <div className="row">
-          <div className="col-xl-8 mt-4">
-            <Card title="More" icon="fas fa-ellipsis-h">
+          <div className="col-xl-8 mt-3">
+            <Widget title="More" icon="fas fa-ellipsis-h">
               <SitesUserTabsContent user={user} />
-            </Card>
+            </Widget>
           </div>
         </div>
       </Content>

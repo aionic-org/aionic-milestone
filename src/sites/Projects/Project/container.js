@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 
-import './Project.css'
-
 import { Api } from 'services/api'
 
 import Error from 'components/UI/Error'
@@ -128,9 +126,9 @@ class SitesProjectContainer extends Component {
     ) : null
 
     if (isLoading) {
-      return <Spinner wrapContent={true} />
+      return <Spinner />
     } else if (msg.length) {
-      return <Error message={msg} wrapContent={true} />
+      return <Error message={msg} />
     } else {
       return (
         <div className="SitesProjectContainer">

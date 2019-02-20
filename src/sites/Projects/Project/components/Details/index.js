@@ -5,7 +5,7 @@ import Progress from 'components/UI/Progress'
 import TaskSuggestion from 'components/Task/Suggestion'
 import ProjectLabel from '../../../../../components/Project/Label'
 
-const SitesProjectOverview = props => {
+const SitesProjectDetails = props => {
   const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props
 
   const closedTasks = project.tasks.filter(task => task.closed).length
@@ -15,7 +15,7 @@ const SitesProjectOverview = props => {
   const progress = (closedTasks / project.tasks.length) * 100
 
   return (
-    <div className="SitesProjectOverview">
+    <div className="SitesProjectDetails">
       <p className="text-muted font-weight-bold">
         Overview
         <ProjectLabel project={project} />
@@ -62,4 +62,4 @@ const SitesProjectOverview = props => {
   )
 }
 
-export default SitesProjectOverview
+export default SitesProjectDetails
