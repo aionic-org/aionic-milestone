@@ -14,8 +14,6 @@ class BoardTaskFilter extends Component {
 
     return (
       <div className="BoardTaskFilter">
-        <p className="text-muted font-weight-bold">Filters</p>
-
         <form id="filterForm">
           <div className="form-group">
             <label>Seach term</label>

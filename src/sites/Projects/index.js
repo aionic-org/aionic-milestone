@@ -3,6 +3,8 @@ import React from 'react'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
+import Card from 'components/Card'
+
 import CardDeck from 'components/Deck'
 
 import SitesProjectsOverview from './components/Overview'
@@ -13,13 +15,17 @@ const SitesProjects = props => {
   return (
     <div className="SitesProjects">
       <Content>
-        <Title title={'Projects'} />
+        <Title title="Projects" />
         <div className="row">
           <div className="col-12 col-xl-8 order-last order-xl-first mt-4 mt-xl-0">
-            <CardDeck deckType={'project'} itemList={projects} itemsPerRow={3} />
+            <Card title="List">
+              <CardDeck deckType={'project'} itemList={projects} itemsPerRow={3} />
+            </Card>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
-            <SitesProjectsOverview projects={projects} />
+            <Card title="Overview">
+              <SitesProjectsOverview projects={projects} />
+            </Card>
           </div>
         </div>
       </Content>

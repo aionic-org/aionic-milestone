@@ -10,13 +10,9 @@ const BoardTaskContainerUser = props => (
     {(tasks, fetchData) => {
       const { user, showTitle } = props
 
-      const title = showTitle ? (
-        <Title title={`${user.firstname}'s Board`} showDivider={false} />
-      ) : null
-
       return (
         <div className="BoardTaskContainerUser">
-          <BoardTasks taskList={tasks} title={title} updateParent={fetchData} />
+          <BoardTasks taskList={tasks} title="Your task board" updateParent={fetchData} />
         </div>
       )
     }}

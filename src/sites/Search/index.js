@@ -5,6 +5,8 @@ import './Search.css'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
+import Card from 'components/Card'
+
 import BoardTaskContainerSearch from 'components/Board/Task/containers/search'
 import TaskFilterContainer from 'components/Task/Filter/container'
 
@@ -31,14 +33,16 @@ const SitesSearch = props => {
   return (
     <div className="SitesSearch">
       <Content>
-        <Title title={'Search'} />
+        <Title title="Search" />
         <div className="row">
           <div className="col-12 col-md-3">
-            <TaskFilterContainer
-              searchParams={params}
-              handleFilterChange={handleFilterChange}
-              resetFilters={resetFilters}
-            />
+            <Card title="Filters">
+              <TaskFilterContainer
+                searchParams={params}
+                handleFilterChange={handleFilterChange}
+                resetFilters={resetFilters}
+              />
+            </Card>
           </div>
           <div className="col-12 col-md-9 mt-4 mt-md-0">
             <BoardTaskContainerSearch searchParams={params} />

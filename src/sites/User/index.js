@@ -6,6 +6,8 @@ import Alert from 'components/UI/Alert'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
+import Card from 'components/Card'
+
 import UserDetailsContainer from 'components/User/Details/container'
 
 import SitesUserTabsContent from './components/Tabs/content'
@@ -27,26 +29,24 @@ const SitesUser = props => {
         <Title title={`${user.firstname}`} />
         <div className="row">
           <div className="col-12 col-xl-8">
-            <UserDetailsContainer user={user} handleInputChange={handleInputChange} />
+            <Card title="Details">
+              <UserDetailsContainer user={user} handleInputChange={handleInputChange} />
+
+              {Session.isAdmin() ? (
+                <button className="btn btn-danger float-right" onClick={deleteUser}>
+                  Remove
+                </button>
+              ) : null}
+            </Card>
           </div>
           <div className="col-xl-4">{userUpdateAlert}</div>
         </div>
 
-        {Session.isAdmin() ? (
-          <div className="row mt-2">
-            <div className="col-8">
-              <div className="float-right">
-                <button className="btn btn-danger" onClick={deleteUser}>
-                  Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
-
         <div className="row">
           <div className="col-xl-8 mt-4">
-            <SitesUserTabsContent user={user} />
+            <Card title="More">
+              <SitesUserTabsContent user={user} />
+            </Card>
           </div>
         </div>
       </Content>

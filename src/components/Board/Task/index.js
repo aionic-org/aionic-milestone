@@ -5,6 +5,7 @@ import Icon from 'components/UI/Icon'
 import Deck from 'components/Deck'
 
 import TaskFilterStatus from 'components/Task/Filter/Status/'
+import Card from '../../Card'
 
 class BoardTask extends Component {
   constructor(props) {
@@ -34,25 +35,25 @@ class BoardTask extends Component {
     const itemList = isFiltered ? taskListFiltered : taskList
 
     return (
-      <div className="BoardTask">
-        {title}
+      <div className="BoardTask card shadow">
+        <Card title={title}>
+          {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterTasks} /> : null}
 
-        {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterTasks} /> : null}
+          <p className={`text-muted font-weight-bold ${showStatusFilters ? 'mt-4' : ''} `}>
+            Number of tasks: {itemList.length}
+            <i
+              className="fas fa-sync-alt float-right"
+              style={{ cursor: 'pointer' }}
+              onClick={updateParent}
+            />
+          </p>
 
-        <p className={`text-muted font-weight-bold ${showStatusFilters ? 'mt-4' : ''} `}>
-          Number of tasks: {itemList.length}
-          <i
-            className="fas fa-sync-alt float-right"
-            style={{ cursor: 'pointer' }}
-            onClick={updateParent}
-          />
-        </p>
-
-        {itemList.length ? (
-          <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
-        ) : (
-          <Icon assignedClasses={['fa-check-circle']} text="Done!" />
-        )}
+          {itemList.length ? (
+            <Deck itemList={itemList} deckType={'task'} itemsPerRow={itemsPerRow} />
+          ) : (
+            <Icon assignedClasses={['fa-check-circle']} text="Done!" />
+          )}
+        </Card>
       </div>
     )
   }

@@ -1,18 +1,3 @@
-.App {
-  padding-bottom: 15px;
-}
-
-.App > .mainWrapper > .main .content.container-fluid {
-  padding: 85px 15px 15px;
-  width: 85%;
-}
-
-@media (max-device-width: 1024px) {
-  .App > .mainWrapper > .main .content.container-fluid {
-    width: 100%;
-  }
-}
-
 .Modal {
   max-width: 500px;
   position: relative;
@@ -48,6 +33,7 @@
   right: 0px;
   bottom: 0px;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 a.CardLink {

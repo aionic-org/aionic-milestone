@@ -4,16 +4,18 @@ import Fetcher from 'components/Utility/Fetcher'
 
 import Deck from 'components/Deck'
 
+import Card from 'components/Card'
+
 import UserInvitation from 'components/User/Invitation'
 
 const AdministrationUser = props => (
   <Fetcher url="user">
     {users => (
       <div className="AdministrationUser">
-        <div className="mt-md-4">
+        <Card title="Users">
           <UserInvitation />
-        </div>
-        <Deck itemList={users} deckType="user" />
+          <Deck itemList={users} deckType="user" />
+        </Card>
       </div>
     )}
   </Fetcher>

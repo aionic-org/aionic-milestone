@@ -6,6 +6,8 @@ import Alert from 'components/UI/Alert'
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
+import Card from 'components/Card'
+
 import CardDeck from 'components/Deck'
 
 import SitesProjectOverview from './components/Overview'
@@ -35,25 +37,30 @@ const SitesProject = props => {
         <InputTitle
           defaultValue={project.title}
           placeholder={'Enter project title'}
+          showDivider={false}
           onBlur={handleInputChange}
         />
         <div className="row">
           <div className="col-12 col-xl-8 order-last order-xl-first mt-4 mt-xl-0">
-            <p className="text-muted font-weight-bold">Tasks</p>
-            <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
-            <div className="mt-4">
+            <Card title="Tasks">
+              <CardDeck deckType={'task'} itemList={project.tasks} itemsPerRow={3} />
+            </Card>
+
+            <Card title="More" doMargin={true}>
               <SitesProjectTabsContent project={project} />
-            </div>
+            </Card>
           </div>
           <div className="col-12 col-xl-4 order-first order-xl-last">
-            <SitesProjectOverview
-              project={project}
-              handleInputChange={handleInputChange}
-              toggleStatus={toggleStatus}
-              deleteProject={deleteProject}
-              updateProjectTasks={updateProjectTasks}
-            />
-            <div className="mt-2">{projectUpdateAlert}</div>
+            <Card title="Details">
+              <SitesProjectOverview
+                project={project}
+                handleInputChange={handleInputChange}
+                toggleStatus={toggleStatus}
+                deleteProject={deleteProject}
+                updateProjectTasks={updateProjectTasks}
+              />
+              <div className="mt-2">{projectUpdateAlert}</div>
+            </Card>
           </div>
         </div>
       </Content>

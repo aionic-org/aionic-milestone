@@ -1,0 +1,5 @@
+@media (min-width: 992px) {
+  .SearchForm .input-group {
+    width: 25rem;
+  }
+}

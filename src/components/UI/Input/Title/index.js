@@ -4,7 +4,7 @@ import './Title.css'
 
 const InputTitle = props => (
   <div className="InputTitle mb-4">
-    <h1 className="h2">
+    <h1 className="h3">
       <input
         type="text"
         name="title"

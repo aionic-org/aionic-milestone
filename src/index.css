@@ -1,7 +1,23 @@
 body {
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
   background-color: #f8f9fa;
+}
+
+@media (min-width: 768px) {
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.shadow {
+  -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 
 @keyframes fadein {

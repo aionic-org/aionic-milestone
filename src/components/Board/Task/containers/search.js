@@ -62,7 +62,12 @@ class BoardTaskContainerSearch extends Component {
     } else {
       return (
         <div className="BoardTaskContainerSearch">
-          <BoardTasks taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
+          <BoardTasks
+            taskList={searchResult}
+            showStatusFilters={false}
+            itemsPerRow={3}
+            title="Search results"
+          />
         </div>
       )
     }
