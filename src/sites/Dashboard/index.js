@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Home.css'
+import './Dashboard.css'
 
 import { Session } from 'services/session'
 
@@ -9,28 +9,27 @@ import Title from 'components/UI/Title'
 
 import BoardTaskContainerUser from 'components/Board/Task/containers/user'
 import Card from 'components/Card'
+import UserStatus from '../../components/User/Status'
 
-const SitesHome = props => {
+const SitesDashboard = props => {
   return (
-    <div className="SitesHome">
+    <div className="SitesDashboard">
       <Content>
         <Title title="Dashboard" />
         <div className="row">
-          <div className="col-9">
+          <div className="col-md-9 col-12">
             <BoardTaskContainerUser user={Session.getUser()} />
           </div>
-          <div className="col-3">
+          <div className="col-md-3 col-12">
             <Card title="Your status">
-              <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" />
-              </div>
+              <UserStatus user={Session.getUser()} />
             </Card>
 
             <Card title="Announcements" doMargin={true} wrapBody={false}>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Cras justo odio</li>
+                <li className="list-group-item">Dapibus ac facilisis in</li>
+                <li className="list-group-item">Vestibulum at eros</li>
               </ul>
             </Card>
           </div>
@@ -40,4 +39,4 @@ const SitesHome = props => {
   )
 }
 
-export default SitesHome
+export default SitesDashboard

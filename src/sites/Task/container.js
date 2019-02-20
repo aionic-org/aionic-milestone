@@ -5,6 +5,7 @@ import { Api } from 'services/api'
 
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
+import Toast from 'components/UI/Toast'
 
 import SitesTask from '.'
 
@@ -18,8 +19,8 @@ class SitesTaskContainer extends Component {
       msg: '',
       task: {},
       taskUpdate: {
-        status: '',
-        msg: ''
+        success: null,
+        msg: null
       }
     }
   }
@@ -77,20 +78,19 @@ class SitesTaskContainer extends Component {
 
     Api.putData(`task/${_task.id}`, { task: _task })
       .then(task => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
           task,
           taskUpdate: {
-            status: 'Success',
-            msg: 'Task updated'
+            success: true,
+            msg: 'Task successfully updated!'
           }
         })
 
         setTimeout(() => {
           this.setState({
             taskUpdate: {
-              status: '',
-              msg: ''
+              success: null,
+              msg: null
             }
           })
         }, 1500)
@@ -98,7 +98,7 @@ class SitesTaskContainer extends Component {
       .catch(err => {
         this.setState({
           taskUpdate: {
-            status: 'Error',
+            success: false,
             msg: 'Failed to update task!'
           }
         })
@@ -125,19 +125,25 @@ class SitesTaskContainer extends Component {
   render() {
     const { isLoading, isNewTask, msg, task, taskUpdate } = this.state
 
+    const alert = taskUpdate.msg ? (
+      <Toast msg={taskUpdate.msg} success={taskUpdate.success} />
+    ) : null
+
     if (isLoading) {
       return <Spinner wrapContent={true} />
     } else if (msg.length) {
       return <Error message={msg} wrapContent={true} />
     } else {
       return (
-        <SitesTask
-          isNewTask={isNewTask}
-          task={task}
-          taskUpdate={taskUpdate}
-          createTask={this.createTask}
-          handleInputChange={this.handleInputChange}
-        />
+        <div className="SitesTaskContainer">
+          {alert}
+          <SitesTask
+            isNewTask={isNewTask}
+            task={task}
+            createTask={this.createTask}
+            handleInputChange={this.handleInputChange}
+          />
+        </div>
       )
     }
   }

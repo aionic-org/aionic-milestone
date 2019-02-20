@@ -60,7 +60,7 @@ class GitOrganizationForm extends Component {
             />
             <div className="input-group-append">
               <button className="btn btn-primary">
-                {isLoading ? <Spinner small={true} /> : 'Submit'}
+                {isLoading ? <Spinner small={true} white={true} /> : 'Submit'}
               </button>
             </div>
             <div className="valid-feedback">Organization added!</div>

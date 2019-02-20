@@ -2,7 +2,6 @@ import React from 'react'
 
 import './Project.css'
 
-import Alert from 'components/UI/Alert'
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
@@ -14,22 +13,7 @@ import SitesProjectOverview from './components/Overview'
 import SitesProjectTabsContent from './components/Tabs/content'
 
 const SitesProject = props => {
-  const {
-    project,
-    handleInputChange,
-    toggleStatus,
-    deleteProject,
-    updateProjectTasks,
-    projectUpdate
-  } = props
-
-  const projectUpdateAlert = !projectUpdate.status.length ? null : (
-    <Alert
-      assignedClass={projectUpdate.status === 'Success' ? 'success' : 'danger'}
-      title={projectUpdate.status}
-      message={projectUpdate.msg}
-    />
-  )
+  const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props
 
   return (
     <div className="SitesProject">
@@ -59,7 +43,6 @@ const SitesProject = props => {
                 deleteProject={deleteProject}
                 updateProjectTasks={updateProjectTasks}
               />
-              <div className="mt-2">{projectUpdateAlert}</div>
             </Card>
           </div>
         </div>

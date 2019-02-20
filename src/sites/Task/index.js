@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Alert from 'components/UI/Alert'
 import InputTitle from 'components/UI/Input/Title'
 
 import Card from 'components/Card'
@@ -13,15 +12,7 @@ import SitesTaskTabsContent from './components/Tabs/content'
 import TaskDescription from 'components/Task/Description'
 
 const SitesTask = props => {
-  const { task, taskUpdate, isNewTask, handleInputChange, createTask } = props
-
-  const taskUpdateAlert = !taskUpdate.status.length ? null : (
-    <Alert
-      assignedClass={taskUpdate.status === 'Success' ? 'success' : 'danger'}
-      title={taskUpdate.status}
-      message={taskUpdate.msg}
-    />
-  )
+  const { task, isNewTask, handleInputChange, createTask } = props
 
   const taskFooter = isNewTask ? (
     <button
@@ -58,7 +49,6 @@ const SitesTask = props => {
             </Card>
             {taskFooter}
           </div>
-          <div className="col-xl-2">{taskUpdateAlert}</div>
         </div>
       </Content>
     </div>

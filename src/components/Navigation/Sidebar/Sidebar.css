@@ -39,11 +39,11 @@
   color: white;
 }
 
-.Sidebar .list-group a:not(.active) .fa-chevron-right {
+.Sidebar .list-group a:not(.active) .fa-minus {
   display: none;
 }
 
-.Sidebar .list-group a > i:not(.fa-chevron-right) {
+.Sidebar .list-group a > i:not(.fa-minus) {
   margin-right: 10px;
 }
 

@@ -25,7 +25,6 @@ const SitesProjectsOverview = props => {
 
   return (
     <div className="SitesProjectsOverview">
-      <p className="text-muted font-weight-bold">Overview</p>
       <ul className="list-group">
         <li className="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
           Projects

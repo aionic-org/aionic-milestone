@@ -4,19 +4,21 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { Session } from 'services/session'
 
 import Navbar from 'components/Navigation/Navbar/'
+import Sidebar from '../components/Navigation/Sidebar'
 import Footer from 'components/Navigation/Footer/'
 
 import SitesSignin from './Auth/Signin/'
 import SitesRegister from './Auth/Register/'
-import SitesHome from './Home/'
+
+import SitesDashboard from './Dashboard/'
 import SitesTask from './Task/container'
 import SitesSearch from './Search'
 import SitesAdministration from './Administration'
 import SitesProjects from './Projects/container'
 import SitesProject from './Projects/Project/container'
 import SitesUser from './User/container'
+
 import NotFound from './NotFound'
-import Sidebar from '../components/Navigation/Sidebar'
 
 const Routes = props => {
   const toggleSidebar = () => {
@@ -39,9 +41,9 @@ const Routes = props => {
       <div id="page-content-wrapper">
         <Navbar toggleSidebar={toggleSidebar} />
 
-        <div class="container-fluid">
+        <div className="container-fluid">
           <Switch>
-            <Route exact path="/" component={SitesHome} />
+            <Route exact path="/" component={SitesDashboard} />
             <Route
               path="/signout"
               render={() => {

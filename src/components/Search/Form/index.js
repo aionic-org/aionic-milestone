@@ -21,7 +21,7 @@ const SearchForm = props => {
 
   return (
     <form className={`SearchForm ${assignedClasses.join(' ')}`} onSubmit={handleSubmit}>
-      <div class="input-group">
+      <div className="input-group">
         <input
           className="form-control"
           type="text"
@@ -29,9 +29,9 @@ const SearchForm = props => {
           aria-label="Search"
           onChange={handleInputChange}
         />
-        <div class="input-group-append">
-          <button class="btn btn-secondary" type="submit">
-            <i class="fas fa-search fa-sm" />
+        <div className="input-group-append">
+          <button className="btn btn-secondary" type="submit">
+            <i className="fas fa-search fa-sm" />
           </button>
         </div>
       </div>

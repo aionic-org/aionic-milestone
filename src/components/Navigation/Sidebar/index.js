@@ -3,6 +3,8 @@ import { NavLink, Link } from 'react-router-dom'
 
 import './Sidebar.css'
 
+import { Session } from 'services/session'
+
 import UILogo from 'components/UI/Logo'
 
 const Sidebar = props => {
@@ -14,39 +16,50 @@ const Sidebar = props => {
   const logoClasses = ['d-inline-block', 'align-top']
 
   return (
-    <div class="Sidebar border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading text-center">
+    <div className="Sidebar" id="sidebar-wrapper">
+      <div className="sidebar-heading text-center">
         <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
       </div>
-      <hr class="sidebar-divider" />
+      <hr className="sidebar-divider" />
 
-      <div class="list-group list-group-flush mt-4">
+      <div className="list-group list-group-flush mt-4">
         <NavLink exact to="/" className="list-group-item list-group-item-action">
-          <i class="fas fa-fw fa-tachometer-alt" />
+          <i className="fas fa-fw fa-tachometer-alt" />
           Dashboard
-          <i class="fas fa-chevron-right float-right mt-1" />
+          <i className="fa fa-minus float-right mt-1" />
         </NavLink>
-        <hr class="sidebar-divider" />
 
+        <hr className="sidebar-divider" />
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
-          <i class="fas fa-project-diagram" />
+          <i className="fas fa-project-diagram" />
           Projects
-          <i class="fas fa-chevron-right float-right mt-1" />
+          <i className="fa fa-minus float-right mt-1" />
         </NavLink>
-        <hr class="sidebar-divider" />
 
+        <hr className="sidebar-divider" />
         <NavLink exact to="/teams" className="list-group-item list-group-item-action">
-          <i class="fas fa-users" />
+          <i className="fas fa-users" />
           Teams
-          <i class="fas fa-chevron-right float-right mt-1" />
+          <i className="fa fa-minus float-right mt-1" />
         </NavLink>
-        <hr class="sidebar-divider" />
 
-        <NavLink exact to="/search" className="list-group-item list-group-item-action">
-          <i class="fas fa-search" />
+        <hr className="sidebar-divider" />
+        <NavLink to="/search" className="list-group-item list-group-item-action">
+          <i className="fas fa-search" />
           Search
-          <i class="fas fa-chevron-right float-right mt-1" />
+          <i className="fa fa-minus float-right mt-1" />
         </NavLink>
+
+        {Session.isAdmin() ? (
+          <div>
+            <hr className="sidebar-divider" />
+            <NavLink to="/administration" className="list-group-item list-group-item-action">
+              <i className="fas fa-toolbox" />
+              Administration
+              <i className="fa fa-minus float-right mt-1" />
+            </NavLink>
+          </div>
+        ) : null}
       </div>
     </div>
   )

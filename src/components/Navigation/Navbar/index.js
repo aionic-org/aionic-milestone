@@ -5,8 +5,6 @@ import './Navbar.css'
 
 import { Session } from 'services/session'
 
-import UILogo from 'components/UI/Logo'
-
 import SearchForm from 'components/Search/Form'
 
 const Navbar = props => {
@@ -16,17 +14,17 @@ const Navbar = props => {
     marginRight: '8px'
   }
 
-  const logoClasses = ['d-inline-block', 'align-top']
   const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0']
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <button class="btn btn-primary mr-3" onClick={props.toggleSidebar}>
-        Toggle
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
+      <button className="btn btn-dark mr-3" onClick={props.toggleSidebar}>
+        <i class="fas fa-chevron-right" />
+        <i class="fas fa-chevron-left" />
       </button>
 
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -34,10 +32,10 @@ const Navbar = props => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon" />
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <SearchForm assignedClasses={searchbarClasses} />
 
         <ul className="navbar-nav ml-auto">

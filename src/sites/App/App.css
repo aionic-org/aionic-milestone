@@ -76,6 +76,18 @@ a.CardLink:hover {
   border-color: #00b894 !important;
 }
 
+.btn-dark {
+  background-color: #858796;
+  border-color: #777987;
+}
+
+.btn-dark:hover,
+.btn-dark:active,
+.btn-dark:focus {
+  background-color: #777987 !important;
+  border-color: #858796 !important;
+}
+
 .badge-primary {
   background-color: #6c5ce7;
 }

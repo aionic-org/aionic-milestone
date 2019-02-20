@@ -5,10 +5,10 @@ import './Spinner.css'
 import Content from '../Content'
 
 const Spinner = props => {
-  const { wrapContent, small } = props
+  const { wrapContent, small, white } = props
 
   const content = (
-    <div className={`Spinner ${small ? 'small' : ''}`}>
+    <div className={`Spinner ${small ? 'small' : ''} ${white ? 'white' : ''}`}>
       <div className="bounce1" />
       <div className="bounce2" />
       <div className="bounce3" />
@@ -24,7 +24,8 @@ const Spinner = props => {
 
 Spinner.defaultProps = {
   wrapContent: false,
-  small: false
+  small: false,
+  white: false
 }
 
 export default Spinner

@@ -3,3 +3,11 @@
   background-color: white !important;
   min-height: 4.375rem;
 }
+
+#wrapper.toggled .navbar .fa-chevron-left {
+  display: none;
+}
+
+#wrapper:not(.toggled) .navbar .fa-chevron-right {
+  display: none;
+}
