@@ -22,13 +22,10 @@
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
-.Spinner.small > div {
-  width: 12px;
-  height: 12px;
-}
-
-.Spinner.white > div {
+.Spinner.onBtn > div {
   background-color: white;
+  width: 10px;
+  height: 10px;
 }
 
 .Spinner .bounce1 {

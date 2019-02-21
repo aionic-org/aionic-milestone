@@ -79,7 +79,7 @@ class SitesUserContainer extends Component {
                 msg: null
               }
             })
-          }, 1500)
+          }, 2000)
         })
         .catch(err => {
           this.setState({

@@ -21,10 +21,6 @@ import SitesUser from './User/container'
 import NotFound from './NotFound'
 
 const Routes = props => {
-  const toggleSidebar = () => {
-    document.getElementById('wrapper').classList.toggle('toggled')
-  }
-
   const AuthContainer = () => (
     <div className="mainWrapper">
       <div className="main">
@@ -39,7 +35,7 @@ const Routes = props => {
       <Sidebar />
 
       <div id="page-content-wrapper">
-        <Navbar toggleSidebar={toggleSidebar} />
+        <Navbar toggleSidebar={props.toggleSidebar} />
 
         <div className="container-fluid">
           <Switch>

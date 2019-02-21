@@ -13,13 +13,17 @@ class App extends Component {
     ReactModal.setAppElement('body')
   }
 
+  toggleSidebar = () => {
+    document.getElementById('App').classList.toggle('toggled')
+  }
+
   render() {
     return (
       <ErrorBoundary>
         <Router>
           <div id="App">
             <Switch>
-              <Routes />
+              <Routes toggleSidebar={this.toggleSidebar} />
             </Switch>
           </div>
         </Router>

@@ -47,7 +47,7 @@
   margin-right: 10px;
 }
 
-#wrapper.toggled #sidebar-wrapper {
+#App.toggled #sidebar-wrapper {
   margin-left: 0;
 }
 
@@ -56,7 +56,7 @@
     margin-left: 0;
   }
 
-  #wrapper.toggled #sidebar-wrapper {
+  #App.toggled #sidebar-wrapper {
     margin-left: -14rem;
   }
 }

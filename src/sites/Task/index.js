@@ -32,13 +32,17 @@ const SitesTask = props => {
   return (
     <div className="SitesTask">
       <Content>
-        <InputTitle
-          defaultValue={task.title}
-          onBlur={handleInputChange}
-          placeholder={'Enter task title'}
-        />
         <div className="row">
-          <div className="col-xl-10">
+          <div className="col-12">
+            <InputTitle
+              defaultValue={task.title}
+              onBlur={handleInputChange}
+              placeholder={'Enter task title'}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
             <Widget title="Details" icon="fas fa-info-circle">
               <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />
             </Widget>

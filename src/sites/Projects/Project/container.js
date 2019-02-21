@@ -15,7 +15,7 @@ class SitesProjectContainer extends Component {
 
     this.state = {
       isLoading: true,
-      msg: '',
+      msg: null,
       project: {},
       projectUpdate: {
         success: null,
@@ -83,11 +83,11 @@ class SitesProjectContainer extends Component {
         setTimeout(() => {
           this.setState({
             projectUpdate: {
-              success: '',
-              msg: ''
+              success: null,
+              msg: null
             }
           })
-        }, 1500)
+        }, 2000)
       })
       .catch(err => {
         this.setState({
@@ -127,7 +127,7 @@ class SitesProjectContainer extends Component {
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg.length) {
+    } else if (msg) {
       return <Error message={msg} />
     } else {
       return (

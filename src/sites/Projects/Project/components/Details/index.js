@@ -47,7 +47,7 @@ const SitesProjectDetails = props => {
 
       <p className="text-muted font-weight-bold mt-4">Tasks</p>
       <TaskSuggestion taskListSelected={project.tasks} updateParent={updateProjectTasks} />
-      <small className="text-muted d-block text-right mt-3">Last update: {project.updated} </small>
+      <small className="text-muted d-block text-right mt-3">Updated: {project.updated} </small>
 
       <button
         className={`btn btn-block mt-3 btn-${done ? 'secondary' : 'primary'}`}
