@@ -15,7 +15,6 @@ const UserDetails = props => {
 
   return (
     <div className="UserDetails">
-      <p className="text-muted font-italic">Details</p>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Firstname</label>
         <div className="col-sm-4">
@@ -90,6 +89,19 @@ const UserDetails = props => {
             showDefault={false}
             onChange={handleInputChange}
             disabled={!allowEdit}
+          />
+        </div>
+      </div>
+
+      <div className="form-group row">
+        <label className="col-sm-2 col-form-label">Status</label>
+        <div className="col-sm-10">
+          <textarea
+            className="form-control"
+            name="status"
+            rows="2"
+            defaultValue={user.status}
+            onBlur={handleInputChange}
           />
         </div>
       </div>

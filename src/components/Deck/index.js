@@ -5,6 +5,7 @@ import './Deck.css'
 import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
 import ProjectPreview from 'components/Project/Preview'
+import GitOrganizationPreview from 'components/Git/Organization/Preview'
 
 const Deck = props => {
   const tmpArr = []
@@ -25,12 +26,14 @@ const Deck = props => {
           <div className="card-deck" key={i}>
             {itemArr.map(item => {
               switch (props.deckType) {
-                case 'task':
+                case 'Task':
                   return <TaskPreview key={item.id} task={item} />
-                case 'user':
+                case 'User':
                   return <UserPreview key={item.id} user={item} />
-                case 'project':
+                case 'Project':
                   return <ProjectPreview key={item.id} project={item} />
+                case 'Organization':
+                  return <GitOrganizationPreview key={item.id} org={item} {...props} />
                 default:
                   return null
               }

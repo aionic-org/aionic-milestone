@@ -8,7 +8,7 @@ const TaskProjectsContainer = props => (
   <Fetcher url={`task/${props.taskId}/projects`}>
     {projects => (
       <div className="TaskProjectsContainer">
-        <CardDeck deckType={'project'} itemList={projects} itemsPerRow={3} />
+        <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
       </div>
     )}
   </Fetcher>

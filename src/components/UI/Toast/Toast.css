@@ -1,0 +1,14 @@
+.toast-wrapper {
+  position: relative;
+  min-height: 200px;
+}
+
+.toast {
+  width: 16rem;
+  z-index: 2;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5;
+}

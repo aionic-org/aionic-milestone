@@ -13,10 +13,8 @@ class TaskDetailsContainer extends Component {
 
     this.state = {
       isLoading: true,
-      msg: '',
-      userList: [],
-      statusList: [],
-      priorityList: []
+      msg: null,
+      lists: {}
     }
   }
 
@@ -24,16 +22,22 @@ class TaskDetailsContainer extends Component {
     const requests = [
       Api.fetchData('user/'),
       Api.fetchData('taskStatus/'),
-      Api.fetchData('taskPriority/')
+      Api.fetchData('taskPriority/'),
+
+      // TODO: Fix this
+      Api.fetchData('git/0/repositories')
     ]
 
     Promise.all(requests)
       .then(res => {
         this.setState({
           isLoading: false,
-          userList: res[0],
-          statusList: res[1],
-          priorityList: res[2]
+          lists: {
+            userList: res[0],
+            statusList: res[1],
+            priorityList: res[2],
+            repoList: res[3]
+          }
         })
       })
       .catch(err => {
@@ -42,21 +46,16 @@ class TaskDetailsContainer extends Component {
   }
 
   render() {
-    const { isLoading, msg, userList, statusList, priorityList } = this.state
+    const { isLoading, msg, lists } = this.state
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg.length) {
+    } else if (msg) {
       return <Error message={msg} />
     } else {
       return (
         <div className="TaskDetailsContainer">
-          <TaskDetails
-            userList={userList}
-            statusList={statusList}
-            priorityList={priorityList}
-            {...this.props}
-          />
+          <TaskDetails lists={lists} {...this.props} />
         </div>
       )
     }

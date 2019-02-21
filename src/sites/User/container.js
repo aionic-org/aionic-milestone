@@ -6,6 +6,7 @@ import { Session } from 'services/session'
 
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
+import Toast from 'components/UI/Toast'
 
 import SitesUser from '.'
 
@@ -18,8 +19,8 @@ class SitesUserContainer extends Component {
       msg: '',
       user: {},
       userUpdate: {
-        status: '',
-        msg: ''
+        success: null,
+        msg: null
       }
     }
   }
@@ -64,27 +65,26 @@ class SitesUserContainer extends Component {
     if (Session.isAdmin()) {
       Api.putData(`user/${user.id}`, { user })
         .then(user => {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
           this.setState({
             userUpdate: {
-              status: 'Success',
-              msg: 'User updated'
+              success: true,
+              msg: 'User successfully updated!'
             }
           })
 
           setTimeout(() => {
             this.setState({
               userUpdate: {
-                status: '',
-                msg: ''
+                success: null,
+                msg: null
               }
             })
-          }, 1500)
+          }, 2000)
         })
         .catch(err => {
           this.setState({
             userUpdate: {
-              status: 'Error',
+              success: false,
               msg: 'Failed to update user!'
             }
           })
@@ -114,18 +114,22 @@ class SitesUserContainer extends Component {
   render() {
     const { isLoading, msg, user, userUpdate } = this.state
 
+    const alert = userUpdate.msg ? (
+      <Toast msg={userUpdate.msg} success={userUpdate.success} />
+    ) : null
+
     if (isLoading) {
-      return <Spinner wrapContent={true} />
+      return <Spinner />
     } else if (msg.length) {
-      return <Error message={msg} wrapContent={true} />
+      return <Error message={msg} />
     } else {
       return (
         <div className="SitesUserContainer">
+          {alert}
           <SitesUser
             user={user}
             handleInputChange={this.handleInputChange}
             deleteUser={this.deleteUser}
-            userUpdate={userUpdate}
           />
         </div>
       )

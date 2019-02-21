@@ -4,7 +4,7 @@
   "description": "Aionic Frontend - Software products for project management",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": "https://github.com/AionicApp/aionic-frotend",
+  "repository": "https://github.com/Aionic-Apps/aionic-frontend",
   "license": "MIT",
   "scripts": {
     "start": "PORT=4200 react-scripts start",

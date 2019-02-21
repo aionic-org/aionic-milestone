@@ -46,7 +46,6 @@ const InputMarkdown = props => {
       </p>
       <hr className="featurette-divider" />
       {output}
-      <hr className="featurette-divider" />
     </div>
   )
 }

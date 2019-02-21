@@ -1,0 +1,18 @@
+body {
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  background-color: #f8f9fa;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  background-color: #f8f9fa;
+  padding-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+}

@@ -6,7 +6,7 @@ const NotFound = props => {
   return (
     <div className="NotFound">
       <Content>
-        <h3 className="text-center">Page not found</h3>
+        <h3 className="text-center mt-5">Page not found</h3>
       </Content>
     </div>
   )

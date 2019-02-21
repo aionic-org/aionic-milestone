@@ -31,7 +31,7 @@ class SitesRegister extends Component {
         <h1 className="h3 mb-3 font-weight-normal">Registration</h1>
         <RegisterForm />
         <a href="https://aionic.app" target="_blank" className="mt-4 text-muted d-block">
-          Aionic Software
+          Aionic Apps
         </a>
       </div>
     )

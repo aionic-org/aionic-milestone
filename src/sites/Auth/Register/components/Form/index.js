@@ -94,13 +94,15 @@ class RegisterForm extends Component {
             required
           />
 
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <button className="btn btn-lg btn-primary btn-block mt-3">
-              <i className="fas fa-sign-in-alt" /> Register
-            </button>
-          )}
+          <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
+            {isLoading ? (
+              <Spinner onBtn={true} />
+            ) : (
+              <div>
+                <i className="fas fa-sign-in-alt" /> Register
+              </div>
+            )}
+          </button>
 
           {msg.length ? <p className="mt-3 text-danger">{msg}</p> : null}
         </form>
