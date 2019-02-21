@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 
-import './Project.css'
-
 import { Api } from 'services/api'
 
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
+import Toast from 'components/UI/Toast'
 
 import SitesProject from '.'
 
@@ -16,11 +15,11 @@ class SitesProjectContainer extends Component {
 
     this.state = {
       isLoading: true,
-      msg: '',
+      msg: null,
       project: {},
       projectUpdate: {
-        status: '',
-        msg: ''
+        success: null,
+        msg: null
       }
     }
   }
@@ -72,28 +71,28 @@ class SitesProjectContainer extends Component {
 
     Api.putData(`project/${project.id}`, { project })
       .then(project => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        // window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
           project,
           projectUpdate: {
-            status: 'Success',
-            msg: 'Project updated'
+            success: true,
+            msg: 'Project successfully updated!'
           }
         })
 
         setTimeout(() => {
           this.setState({
             projectUpdate: {
-              status: '',
-              msg: ''
+              success: null,
+              msg: null
             }
           })
-        }, 1500)
+        }, 2000)
       })
       .catch(err => {
         this.setState({
           projectUpdate: {
-            status: 'Error',
+            success: false,
             msg: 'Failed to update project!'
           }
         })
@@ -108,7 +107,7 @@ class SitesProjectContainer extends Component {
       .catch(err => {
         this.setState({
           projectUpdate: {
-            status: 'Error',
+            success: false,
             msg: 'Failed to delete project!'
           }
         })
@@ -122,20 +121,26 @@ class SitesProjectContainer extends Component {
   render() {
     const { isLoading, msg, project, projectUpdate } = this.state
 
+    const alert = projectUpdate.msg ? (
+      <Toast msg={projectUpdate.msg} success={projectUpdate.success} />
+    ) : null
+
     if (isLoading) {
-      return <Spinner wrapContent={true} />
-    } else if (msg.length) {
-      return <Error message={msg} wrapContent={true} />
+      return <Spinner />
+    } else if (msg) {
+      return <Error message={msg} />
     } else {
       return (
-        <SitesProject
-          project={project}
-          handleInputChange={this.handleInputChange}
-          toggleStatus={this.toggleStatus}
-          updateProjectTasks={this.updateProjectTasks}
-          deleteProject={this.deleteProject}
-          projectUpdate={projectUpdate}
-        />
+        <div className="SitesProjectContainer">
+          {alert}
+          <SitesProject
+            project={project}
+            handleInputChange={this.handleInputChange}
+            toggleStatus={this.toggleStatus}
+            updateProjectTasks={this.updateProjectTasks}
+            deleteProject={this.deleteProject}
+          />
+        </div>
       )
     }
   }

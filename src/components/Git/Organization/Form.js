@@ -33,6 +33,7 @@ class GitOrganizationForm extends Component {
       this.setState({
         isLoading: true
       })
+
       Api.postData('git/organization', { name: this.state.name })
         .then(res => {
           this.setState({ isLoading: false, status: 'is-valid' })
@@ -60,7 +61,7 @@ class GitOrganizationForm extends Component {
             />
             <div className="input-group-append">
               <button className="btn btn-primary">
-                {isLoading ? <Spinner small={true} /> : 'Submit'}
+                {isLoading ? <Spinner onBtn={true} /> : 'Submit'}
               </button>
             </div>
             <div className="valid-feedback">Organization added!</div>

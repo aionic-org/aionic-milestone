@@ -4,9 +4,12 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import Title from 'components/UI/Title'
 import Content from 'components/UI/Content'
 
-import AdministrationGeneral from './components/general'
-import AdministrationUser from './components/user'
-import AdministrationGitHub from './components/github'
+import Widget from 'components/Widget'
+
+import AdministrationGeneral from './sub/General'
+import AdministrationUser from './sub/User'
+import AdministrationGitHub from './sub/GitHub'
+import AdministrationAnnouncement from './sub/Announcement'
 
 const SitesAdministration = props => {
   return (
@@ -14,29 +17,39 @@ const SitesAdministration = props => {
       <Content>
         <Title title={'Administration'} />
         <div className="row">
-          <div className="col-12 col-xl-3">
-            <div
-              className="nav flex-column nav-pills"
-              id="v-pills-tab"
-              role="tablist"
-              aria-orientation="vertical"
+          <div className="col-12 col-xl-4">
+            <Widget
+              title="Categories"
+              wrapBody={false}
+              icon="fas fa-sliders-h"
+              showLastUpdate={false}
             >
-              <NavLink exact to="/administration" className="nav-link" activeClassName="active">
-                General
-              </NavLink>
-              <NavLink to="/administration/user" className="nav-link" activeClassName="active">
-                Users
-              </NavLink>
-              <NavLink to="/administration/github" className="nav-link" activeClassName="active">
-                GitHub
-              </NavLink>
-            </div>
+              <div className="nav nav-pills p-2" role="tablist" aria-orientation="vertical">
+                <NavLink exact to="/administration" className="nav-link" activeClassName="active">
+                  General
+                </NavLink>
+                <NavLink to="/administration/user" className="nav-link" activeClassName="active">
+                  Users
+                </NavLink>
+                <NavLink to="/administration/github" className="nav-link" activeClassName="active">
+                  GitHub
+                </NavLink>
+                <NavLink
+                  to="/administration/announcement"
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  Announcements
+                </NavLink>
+              </div>
+            </Widget>
           </div>
-          <div className="col-12 col-xl-9">
+          <div className="col-12 col-xl-12 mt-3">
             <Switch>
               <Route exact path="/administration" component={AdministrationGeneral} />
               <Route path="/administration/user" component={AdministrationUser} />
               <Route path="/administration/github" component={AdministrationGitHub} />
+              <Route path="/administration/announcement" component={AdministrationAnnouncement} />
             </Switch>
           </div>
         </div>

@@ -4,21 +4,19 @@ import { Session } from 'services/session'
 
 import InputRadio from 'components/UI/Input/Radio'
 
-import UserList from 'components/User/UserList'
+import UserList from 'components/User/List'
 
 import TaskStatusList from 'components/Task/StatusList'
-import TaskLabel from '../Label'
-import GitRepositoryList from '../../Git/Repository/List'
+import TaskLabel from 'components/Task/Label'
+
+import GitRepositoryList from 'components/Git/Repository/List'
 
 const TaskDetails = props => {
-  const { userList, statusList, priorityList, repoList, task, isNewTask, handleInputChange } = props
+  const { lists, task, isNewTask, handleInputChange } = props
+  const { userList, statusList, priorityList, repoList } = lists
 
   return (
     <div className="TaskDetails">
-      <p className="text-muted font-italic">
-        Details
-        <TaskLabel task={task} />
-      </p>
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Assignee</label>
         <div className="col-sm-4">
@@ -118,6 +116,7 @@ const TaskDetails = props => {
                 onChange={handleInputChange}
                 checked={task.closed ? true : false}
               />
+              <TaskLabel task={task} assignedClasses={['mt-1']} />
             </div>
           </div>
         </div>

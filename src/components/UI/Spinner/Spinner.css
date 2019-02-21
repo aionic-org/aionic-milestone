@@ -4,29 +4,28 @@
 */
 
 .Spinner {
-  margin: 4rem auto 2rem;
   text-align: center;
+  margin: 0;
 }
 
-.Spinner.small {
-  margin: 0;
+.container-fluid > .Spinner {
+  margin: 4rem auto 2rem;
 }
 
 .Spinner > div {
   width: 18px;
   height: 18px;
   background-color: #1abc9c;
-
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
-.Spinner.small > div {
-  width: 12px;
-  height: 12px;
+.Spinner.onBtn > div {
   background-color: white;
+  width: 10px;
+  height: 10px;
 }
 
 .Spinner .bounce1 {

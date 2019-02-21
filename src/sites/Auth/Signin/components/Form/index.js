@@ -73,7 +73,7 @@ class SigninForm extends Component {
 
           <button className="btn btn-lg btn-primary btn-block mt-3" type="submit">
             {isLoading ? (
-              <Spinner small={true} />
+              <Spinner onBtn={true} />
             ) : (
               <div>
                 <i className="fas fa-sign-in-alt" /> Sign in

@@ -13,7 +13,7 @@ class TaskDetailsContainer extends Component {
 
     this.state = {
       isLoading: true,
-      msg: '',
+      msg: null,
       lists: {}
     }
   }
@@ -23,7 +23,9 @@ class TaskDetailsContainer extends Component {
       Api.fetchData('user/'),
       Api.fetchData('taskStatus/'),
       Api.fetchData('taskPriority/'),
-      Api.fetchData('git/56/repositories')
+
+      // TODO: Fix this
+      Api.fetchData('git/0/repositories')
     ]
 
     Promise.all(requests)
@@ -48,12 +50,12 @@ class TaskDetailsContainer extends Component {
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg.length) {
+    } else if (msg) {
       return <Error message={msg} />
     } else {
       return (
         <div className="TaskDetailsContainer">
-          <TaskDetails {...lists} {...this.props} />
+          <TaskDetails lists={lists} {...this.props} />
         </div>
       )
     }

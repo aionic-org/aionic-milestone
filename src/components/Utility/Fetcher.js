@@ -34,20 +34,15 @@ class Fetcher extends Component {
 
   render() {
     const { isLoading, msg, data } = this.state
-    const { wrapContent } = this.props
 
     if (isLoading) {
-      return <Spinner wrapContent={wrapContent} />
+      return <Spinner />
     } else if (msg) {
-      return <Error message={msg} wrapContent={wrapContent} />
+      return <Error message={msg} />
     }
 
     return this.props.children(data, this.fetchData)
   }
-}
-
-Fetcher.defaultProps = {
-  wrapContent: false
 }
 
 export default Fetcher

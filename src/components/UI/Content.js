@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Content = props => (
-  <div className="content container-fluid" id="content">
+  <div className="content p-2 pt-3" id="content">
     {props.children}
   </div>
 )

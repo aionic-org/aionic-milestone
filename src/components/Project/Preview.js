@@ -7,7 +7,7 @@ const ProjectPreview = props => {
   const { project } = props
 
   return (
-    <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card ">
+    <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card">
       <div className="card-body">
         <h5 className="card-title">
           {project.title} ({project.tasks.length}) <ProjectLabel project={project} />

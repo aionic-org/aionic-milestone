@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import './Search.css'
-
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import BoardTaskContainerSearch from 'components/Board/Task/containers/search'
+import Widget from 'components/Widget'
+
+import SearchBoardTaskContainer from 'components/Search/Board/TaskContainer'
 import TaskFilterContainer from 'components/Task/Filter/container'
 
 const SitesSearch = props => {
@@ -31,17 +31,21 @@ const SitesSearch = props => {
   return (
     <div className="SitesSearch">
       <Content>
-        <Title title={'Search'} />
+        <Title title="Search" />
         <div className="row">
           <div className="col-12 col-md-3">
-            <TaskFilterContainer
-              searchParams={params}
-              handleFilterChange={handleFilterChange}
-              resetFilters={resetFilters}
-            />
+            <Widget title="Filters" icon="fas fa-filter" showLastUpdate={false}>
+              <TaskFilterContainer
+                searchParams={params}
+                handleFilterChange={handleFilterChange}
+                resetFilters={resetFilters}
+              />
+            </Widget>
           </div>
-          <div className="col-12 col-md-9 mt-4 mt-md-0">
-            <BoardTaskContainerSearch searchParams={params} />
+          <div className="col-12 col-md-9 mt-3 mt-md-0">
+            <Widget title="Results" icon="fas fa-clipboard-list">
+              <SearchBoardTaskContainer searchParams={params} />
+            </Widget>
           </div>
         </div>
       </Content>
