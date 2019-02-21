@@ -8,7 +8,7 @@ import TaskDetailsContainer from 'components/Task/Details/container'
 
 import Content from 'components/UI/Content'
 
-import SitesTaskTabs from './components/Tabs/'
+import SitesTaskTabs from './components/Tabs'
 import TaskDescription from 'components/Task/Description'
 
 const SitesTask = props => {

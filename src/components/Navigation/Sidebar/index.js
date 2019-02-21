@@ -56,7 +56,7 @@ const Sidebar = props => {
           <div>
             <hr className="sidebar-divider" />
             <NavLink to="/administration" className="list-group-item list-group-item-action">
-              <i className="fas fa-toolbox" />
+              <i className="fas fa-wrench" />
               Administration
               <i className="fa fa-chevron-right float-right mt-1" />
             </NavLink>

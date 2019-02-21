@@ -3,7 +3,7 @@ import React from 'react'
 import Progress from 'components/UI/Progress'
 
 import TaskSuggestion from 'components/Task/Suggestion'
-import ProjectLabel from '../../../../../components/Project/Label'
+import ProjectLabel from '../../../../components/Project/Label'
 
 const SitesProjectDetails = props => {
   const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props

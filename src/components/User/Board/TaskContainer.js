@@ -1,13 +1,13 @@
 import React from 'react'
 
-import BoardTasks from '../'
+import BoardTasks from '../../Board/Tasks'
 import Fetcher from 'components/Utility/Fetcher'
 
-const BoardTaskContainerUser = props => (
+const UserBoardTaskContainer = props => (
   <Fetcher url={`user/${props.user.id}/tasks`}>
     {(tasks, fetchData) => {
       return (
-        <div className="BoardTaskContainerUser">
+        <div className="UserBoardTaskContainer">
           <BoardTasks taskList={tasks} updateParent={fetchData} />
         </div>
       )
@@ -15,4 +15,4 @@ const BoardTaskContainerUser = props => (
   </Fetcher>
 )
 
-export default BoardTaskContainerUser
+export default UserBoardTaskContainer

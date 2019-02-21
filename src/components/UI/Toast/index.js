@@ -7,7 +7,7 @@ const Toast = props => (
     role="alert"
     aria-live="assertive"
     aria-atomic="true"
-    class="toast shadow show"
+    class="toast shadow show fadeInRight"
     data-autohide="false"
   >
     <div class="toast-header">

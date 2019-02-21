@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Tabs from 'components/UI/Tabs'
 
-import BoardTaskUser from 'components/Board/Task/containers/user'
+import BoardTaskUser from 'components/User/Board/TaskContainer'
 
 class SitesUserTabsContent extends Component {
   constructor(props) {
@@ -34,11 +34,11 @@ class SitesUserTabsContent extends Component {
     }
 
     return (
-      <div className="SitesUserTabsContent">
+      <div className="SitesUserTabs">
         <div className="row">
           <div className="col-12">
             <Tabs tabs={['Dashboard']} handleClick={this.handleClick} />
-            <div className="SitesUserTabContent mt-3">{content}</div>
+            <div className={`SitesUserTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
           </div>
         </div>
       </div>

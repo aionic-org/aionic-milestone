@@ -7,7 +7,7 @@ import { Session } from 'services/session'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import BoardTaskContainerUser from 'components/Board/Task/containers/user'
+import UserBoardTaskContainer from 'components/User/Board/TaskContainer'
 import Widget from 'components/Widget'
 
 import UserStatus from 'components/User/Status'
@@ -20,8 +20,8 @@ const SitesDashboard = props => {
         <Title title={`Welcome, ${Session.getUser().firstname}!`} />
         <div className="row">
           <div className="col-xl-9 col-12">
-            <Widget title="Task board" icon="fas fa-clipboard-list">
-              <BoardTaskContainerUser user={Session.getUser()} />
+            <Widget title="Tasks" icon="fas fa-clipboard-list">
+              <UserBoardTaskContainer user={Session.getUser()} />
             </Widget>
           </div>
           <div className="col-xl-3 col-12 mt-3 mt-xl-0">

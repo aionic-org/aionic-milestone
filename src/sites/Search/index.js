@@ -5,7 +5,7 @@ import Title from 'components/UI/Title'
 
 import Widget from 'components/Widget'
 
-import BoardTaskContainerSearch from 'components/Board/Task/containers/search'
+import SearchBoardTaskContainer from 'components/Search/Board/TaskContainer'
 import TaskFilterContainer from 'components/Task/Filter/container'
 
 const SitesSearch = props => {
@@ -44,7 +44,7 @@ const SitesSearch = props => {
           </div>
           <div className="col-12 col-md-9 mt-3 mt-md-0">
             <Widget title="Results" icon="fas fa-clipboard-list">
-              <BoardTaskContainerSearch searchParams={params} />
+              <SearchBoardTaskContainer searchParams={params} />
             </Widget>
           </div>
         </div>

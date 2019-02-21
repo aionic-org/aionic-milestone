@@ -22,11 +22,9 @@ import NotFound from './NotFound'
 
 const Routes = props => {
   const AuthContainer = () => (
-    <div className="mainWrapper">
-      <div className="main">
-        <Route path="/signin" component={SitesSignin} />
-        <Route path="/register/:hash" component={SitesRegister} />
-      </div>
+    <div className="authentication">
+      <Route path="/signin" component={SitesSignin} />
+      <Route path="/register/:hash" component={SitesRegister} />
     </div>
   )
 

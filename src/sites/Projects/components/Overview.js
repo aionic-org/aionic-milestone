@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import ReactModal from 'react-modal'
 import queryString from 'query-string'
 
-import ProjectForm from '../Form'
+import ProjectForm from './Form'
 
 const SitesProjectsOverview = props => {
   const { createProject } = queryString.parse(props.location.search)

@@ -1,6 +1,7 @@
 body {
   overflow-x: hidden;
   font-family: 'Lato', sans-serif;
+  background-color: #f8f9fa;
 }
 
 #page-content-wrapper {

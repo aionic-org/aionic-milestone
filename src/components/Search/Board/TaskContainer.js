@@ -5,9 +5,9 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import BoardTasks from '../'
+import BoardTasks from '../../Board/Tasks'
 
-class BoardTaskContainerSearch extends Component {
+class SearchBoardTaskContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -58,7 +58,7 @@ class BoardTaskContainerSearch extends Component {
       return <Error message={msg} />
     } else {
       return (
-        <div className="BoardTaskContainerSearch">
+        <div className="SearchBoardTaskContainer">
           <BoardTasks taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
         </div>
       )
@@ -66,4 +66,4 @@ class BoardTaskContainerSearch extends Component {
   }
 }
 
-export default BoardTaskContainerSearch
+export default SearchBoardTaskContainer

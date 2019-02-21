@@ -9,7 +9,7 @@ import Widget from 'components/Widget'
 
 import UserDetailsContainer from 'components/User/Details/container'
 
-import SitesUserTabsContent from './components/Tabs/content'
+import SitesUserTabsContent from './components/Tabs'
 
 const SitesUser = props => {
   const { user, handleInputChange, deleteUser } = props

@@ -6,10 +6,10 @@ import Content from 'components/UI/Content'
 
 import Widget from 'components/Widget'
 
-import AdministrationGeneral from './components/general'
-import AdministrationUser from './components/user'
-import AdministrationGitHub from './components/github'
-import AdministrationAnnouncement from './components/announcement'
+import AdministrationGeneral from './sub/General'
+import AdministrationUser from './sub/User'
+import AdministrationGitHub from './sub/GitHub'
+import AdministrationAnnouncement from './sub/Announcement'
 
 const SitesAdministration = props => {
   return (
@@ -19,7 +19,7 @@ const SitesAdministration = props => {
         <div className="row">
           <div className="col-12 col-xl-4">
             <Widget
-              title="Category"
+              title="Categories"
               wrapBody={false}
               icon="fas fa-sliders-h"
               showLastUpdate={false}

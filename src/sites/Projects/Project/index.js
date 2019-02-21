@@ -8,7 +8,7 @@ import Widget from 'components/Widget'
 import CardDeck from 'components/Deck'
 
 import SitesProjectDetails from './components/Details'
-import SitesProjectTabsContent from './components/Tabs/content'
+import SitesProjectTabsContent from './components/Tabs'
 
 const SitesProject = props => {
   const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props
