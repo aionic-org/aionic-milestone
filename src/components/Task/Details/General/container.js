@@ -5,9 +5,9 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import TaskDetails from '.'
+import TaskDetailsGeneral from '.'
 
-class TaskDetailsContainer extends Component {
+class TaskDetailsGeneralContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -20,12 +20,9 @@ class TaskDetailsContainer extends Component {
 
   componentDidMount = () => {
     const requests = [
-      Api.fetchData('user/'),
-      Api.fetchData('taskStatus/'),
-      Api.fetchData('taskPriority/'),
-
-      // TODO: Fix this
-      Api.fetchData('git/0/repositories')
+      Api.fetchData('user'),
+      Api.fetchData('taskStatus'),
+      Api.fetchData('taskPriority')
     ]
 
     Promise.all(requests)
@@ -35,8 +32,7 @@ class TaskDetailsContainer extends Component {
           lists: {
             userList: res[0],
             statusList: res[1],
-            priorityList: res[2],
-            repoList: res[3]
+            priorityList: res[2]
           }
         })
       })
@@ -54,12 +50,12 @@ class TaskDetailsContainer extends Component {
       return <Error message={msg} />
     } else {
       return (
-        <div className="TaskDetailsContainer">
-          <TaskDetails lists={lists} {...this.props} />
+        <div className="TaskDetailsGeneralContainer">
+          <TaskDetailsGeneral lists={lists} {...this.props} />
         </div>
       )
     }
   }
 }
 
-export default TaskDetailsContainer
+export default TaskDetailsGeneralContainer

@@ -29,6 +29,7 @@
   background-color: #6c5ce7;
   color: rgba(255, 255, 255, 0.6);
   border: none;
+  font-weight: bold;
 }
 
 .Sidebar .list-group a.active {
@@ -45,6 +46,10 @@
 
 .Sidebar .list-group a > i:not(.fa-chevron-right) {
   margin-right: 10px;
+}
+
+.Sidebar .list-group a .fas {
+  font-size: 1.2em;
 }
 
 #App.toggled #sidebar-wrapper {

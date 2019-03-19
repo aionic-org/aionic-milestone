@@ -142,6 +142,7 @@ class SitesTaskContainer extends Component {
             task={task}
             createTask={this.createTask}
             handleInputChange={this.handleInputChange}
+            updateTask={this.updateTask}
           />
         </div>
       )

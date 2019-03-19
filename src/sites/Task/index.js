@@ -4,7 +4,7 @@ import InputTitle from 'components/UI/Input/Title'
 
 import Widget from 'components/Widget'
 
-import TaskDetailsContainer from 'components/Task/Details/container'
+import TaskDetails from 'components/Task/Details/'
 
 import Content from 'components/UI/Content'
 
@@ -12,7 +12,7 @@ import SitesTaskTabs from './components/Tabs'
 import TaskDescription from 'components/Task/Description'
 
 const SitesTask = props => {
-  const { task, isNewTask, handleInputChange, createTask } = props
+  const { task, isNewTask, handleInputChange, createTask, updateTask } = props
 
   const taskFooter = isNewTask ? (
     <button
@@ -44,7 +44,11 @@ const SitesTask = props => {
         <div className="row">
           <div className="col-12">
             <Widget title="Details" icon="fas fa-info-circle">
-              <TaskDetailsContainer handleInputChange={handleInputChange} task={task} />
+              <TaskDetails
+                handleInputChange={handleInputChange}
+                updateTask={updateTask}
+                task={task}
+              />
             </Widget>
 
             <Widget title="Description" icon="fas fa-map" showMargin={true}>

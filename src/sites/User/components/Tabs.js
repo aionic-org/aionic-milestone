@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Tabs from 'components/UI/Tabs'
 
-import BoardTaskUser from 'components/User/Board/TaskContainer'
+import UserBoardTaskContainer from 'components/User/Board/TaskContainer'
 
 class SitesUserTabsContent extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class SitesUserTabsContent extends Component {
 
     switch (tab) {
       case 'Dashboard':
-        content = <BoardTaskUser user={user} showTitle={false} />
+        content = <UserBoardTaskContainer user={user} showTitle={false} />
         break
       default:
         break
