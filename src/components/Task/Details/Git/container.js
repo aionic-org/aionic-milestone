@@ -27,20 +27,19 @@ class TaskDetailsGitContainer extends Component {
         const organization = this.props.task.organization
 
         if (organization && organization.id) {
-          '/repositories',
-            Api.fetchData(`git/${organization.id}/repositories`)
-              .then(repoList => {
-                this.setState({
-                  isLoading: false,
-                  lists: {
-                    orgList,
-                    repoList
-                  }
-                })
+          Api.fetchData(`git/${organization.id}/repository`)
+            .then(repoList => {
+              this.setState({
+                isLoading: false,
+                lists: {
+                  orgList,
+                  repoList
+                }
               })
-              .catch(err => {
-                this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
-              })
+            })
+            .catch(err => {
+              this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
+            })
         } else {
           this.setState({
             isLoading: false,
@@ -59,7 +58,7 @@ class TaskDetailsGitContainer extends Component {
     const orgId = e.target.value
 
     if (orgId) {
-      Api.fetchData(`git/${orgId}/repositories`)
+      Api.fetchData(`git/${orgId}/repository`)
         .then(repoList => {
           this.setState({
             isLoading: false,

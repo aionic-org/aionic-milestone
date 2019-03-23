@@ -6,6 +6,7 @@ import Tabs from 'components/UI/Tabs'
 
 import TaskCommentsContainer from 'components/Task/Comments/container'
 import TaskProjectsContainer from 'components/Task/Projects/container'
+import GitCommitsContainer from 'components/Git/Commits/container'
 
 const SitesTaskTabs = props => {
   const { task } = props
@@ -19,6 +20,8 @@ const SitesTaskTabs = props => {
     case 'Projects':
       content = <TaskProjectsContainer taskId={task.id} />
       break
+    case 'Commits':
+      content = <GitCommitsContainer task={task} />
     default:
       break
   }
