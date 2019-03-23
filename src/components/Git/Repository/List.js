@@ -13,6 +13,7 @@ const GitRepositoryList = props => {
         name="repository"
         defaultValue={props.defaultValue}
         onChange={props.onChange}
+        disabled={props.disabled}
       />
     </div>
   )

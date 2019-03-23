@@ -18,11 +18,14 @@ const SitesProjectTabsContent = props => {
     default:
       break
   }
+
+  const tabs = [{ name: 'Comments' }]
+
   return (
     <div className="SitesProjectTabs">
       <div className="row">
         <div className="col-12 col-md-10">
-          <Tabs handleClick={changeTab} tabs={['Comments']} />
+          <Tabs handleClick={changeTab} tabs={tabs} />
           <div className={`SitesProjectTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
         </div>
       </div>
