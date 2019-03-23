@@ -4,7 +4,7 @@ import GitOrganizationList from 'components/Git/Organization/List'
 import GitRepositoryList from 'components/Git/Repository/List'
 
 const TaskDetailsGit = props => {
-  const { lists, task, handleOrgChange, handleInputChange } = props
+  const { lists, task, handleOrgChange, handleRepoChange, handleInputChange } = props
   const { orgList, repoList } = lists
 
   return (
@@ -28,7 +28,7 @@ const TaskDetailsGit = props => {
           <GitRepositoryList
             repoList={repoList}
             defaultValue={task.repository ? task.repository.id : undefined}
-            onChange={handleInputChange}
+            onChange={handleRepoChange}
           />
         </div>
         <div className="col-sm-2">

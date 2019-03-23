@@ -88,6 +88,12 @@ class TaskDetailsGitContainer extends Component {
     }
   }
 
+  handleRepoChange = e => {
+    const repoId = e.target.value
+
+    this.props.updateTask({ ...this.props.task, repository: { id: repoId } })
+  }
+
   render() {
     const { isLoading, msg, lists } = this.state
 
@@ -98,7 +104,12 @@ class TaskDetailsGitContainer extends Component {
     } else {
       return (
         <div className="TaskDetailsGitContainer">
-          <TaskDetails handleOrgChange={this.handleOrgChange} lists={lists} {...this.props} />
+          <TaskDetails
+            handleOrgChange={this.handleOrgChange}
+            handleRepoChange={this.handleRepoChange}
+            lists={lists}
+            {...this.props}
+          />
         </div>
       )
     }
