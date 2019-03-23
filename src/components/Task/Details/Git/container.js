@@ -67,9 +67,10 @@ class TaskDetailsGitContainer extends Component {
               repoList
             }
           })
+
           this.props.updateTask({
             ...this.props.task,
-            organization: orgId,
+            organization: { id: orgId },
             repository: null
           })
         })

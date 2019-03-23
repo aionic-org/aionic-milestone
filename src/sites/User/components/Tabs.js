@@ -33,11 +33,13 @@ class SitesUserTabsContent extends Component {
         break
     }
 
+    const tabs = [{ name: 'Dashboard' }]
+
     return (
       <div className="SitesUserTabs">
         <div className="row">
           <div className="col-12">
-            <Tabs tabs={['Dashboard']} handleClick={this.handleClick} />
+            <Tabs tabs={tabs} handleClick={this.handleClick} />
             <div className={`SitesUserTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
           </div>
         </div>

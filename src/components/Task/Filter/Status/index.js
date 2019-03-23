@@ -18,7 +18,12 @@ const TaskFilterStatus = props => (
         }
       }
 
-      const tabTitles = status.map(status => status.title)
+      const tabTitles = status.map(status => {
+        return {
+          name: status.title
+        }
+      })
+
       return (
         <div className="TaskFilterStatus">
           <Tabs tabs={tabTitles} handleClick={handleClick} />
