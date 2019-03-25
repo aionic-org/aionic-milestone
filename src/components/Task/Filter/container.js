@@ -14,20 +14,30 @@ class TaskFilterContainer extends Component {
     this.state = {
       isLoading: true,
       msg: null,
-      userList: [],
-      statusList: []
+      lists: {
+        userList: [],
+        statusList: [],
+        orgList: []
+      }
     }
   }
 
   componentDidMount = () => {
-    const requests = [Api.fetchData('user/'), Api.fetchData('taskStatus/')]
+    const requests = [
+      Api.fetchData('user'),
+      Api.fetchData('taskStatus'),
+      Api.fetchData('git/organization')
+    ]
 
     Promise.all(requests)
       .then(res => {
         this.setState({
           isLoading: false,
-          userList: res[0],
-          statusList: res[1]
+          lists: {
+            userList: res[0],
+            statusList: res[1],
+            orgList: res[2]
+          }
         })
       })
       .catch(err => {
@@ -36,7 +46,7 @@ class TaskFilterContainer extends Component {
   }
 
   render() {
-    const { isLoading, msg, userList, statusList } = this.state
+    const { isLoading, msg, lists } = this.state
 
     if (isLoading) {
       return <Spinner />
@@ -45,7 +55,7 @@ class TaskFilterContainer extends Component {
     } else {
       return (
         <div className="TaskFilterContainer">
-          <TaskFilter userList={userList} statusList={statusList} {...this.props} />
+          <TaskFilter lists={lists} {...this.props} />
         </div>
       )
     }

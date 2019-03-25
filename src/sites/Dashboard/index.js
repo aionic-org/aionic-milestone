@@ -11,7 +11,7 @@ import UserBoardTaskContainer from 'components/User/Board/TaskContainer'
 import Widget from 'components/Widget'
 
 import UserStatus from 'components/User/Status'
-import AnnouncementList from 'components/Announcements/List'
+import AnnouncementContainer from 'components/Announcements/container'
 
 const SitesDashboard = props => {
   return (
@@ -30,7 +30,7 @@ const SitesDashboard = props => {
             </Widget>
 
             <Widget title="Announcements" icon="fas fa-bullhorn" showMargin={true} wrapBody={false}>
-              <AnnouncementList announcementList={[1, 2, 3]} />
+              <AnnouncementContainer />
             </Widget>
           </div>
         </div>
