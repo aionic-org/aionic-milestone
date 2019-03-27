@@ -37,7 +37,7 @@ class SearchBoardTaskContainer extends Component {
       isLoading: true
     })
 
-    Api.fetchData(`/search/task`, params)
+    Api.fetchData(`tasks`, params)
       .then(searchResult => {
         this.setState({ isLoading: false, searchResult })
       })

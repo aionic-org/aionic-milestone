@@ -6,7 +6,7 @@ import Comment from 'components/Comments/Comment/Preview'
 
 class TaskCommentContainer extends Component {
   deleteComment = id => {
-    Api.deleteData(`task/${this.props.taskId}/comment/${id}`)
+    Api.deleteData(`tasks/${this.props.taskId}/comments/${id}`)
       .then(res => {
         this.props.removeComment(id)
       })

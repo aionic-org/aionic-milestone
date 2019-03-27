@@ -7,7 +7,7 @@ import ProjectCommentsFormContainer from './Form/container'
 import Comments from 'components/Comments'
 
 const ProjectCommentsContainer = props => (
-  <Fetcher url={`project/${props.projectId}/comment`}>
+  <Fetcher url={`projects/${props.projectId}/comments`}>
     {(comments, fetchData) => {
       const { projectId, showForm } = props
 

@@ -17,7 +17,7 @@ class UserStatus extends Component {
   }
 
   componentDidMount = () => {
-    Api.fetchData(`user/${this.props.user.id}`)
+    Api.fetchData(`users/${this.props.user.id}`)
       .then(user => {
         if (user) {
           this.setState({ isLoading: false, user })
@@ -40,7 +40,7 @@ class UserStatus extends Component {
       const user = { ...this.state.user, status: value }
 
       this.setState({ user }, () => {
-        Api.putData(`user/${user.id}`, { user })
+        Api.putData(`users/${user.id}`, { user })
           .then(_user => {
             this.setState({
               user: _user

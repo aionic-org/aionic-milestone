@@ -6,7 +6,7 @@ const AnnouncementPreview = props => {
   const { announcement, handleDelete } = props
 
   const deleteAnnouncement = () => {
-    Api.deleteData(`announcement/${announcement.id}`)
+    Api.deleteData(`announcements/${announcement.id}`)
       .then(res => {
         handleDelete(announcement)
       })

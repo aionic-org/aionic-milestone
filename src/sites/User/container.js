@@ -29,7 +29,7 @@ class SitesUserContainer extends Component {
     const id =
       this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id
 
-    Api.fetchData(`user/${id}`)
+    Api.fetchData(`users/${id}`)
       .then(user => {
         if (user) {
           this.setState({ isLoading: false, user })
@@ -63,7 +63,7 @@ class SitesUserContainer extends Component {
     const user = this.state.user
 
     if (Session.isAdmin()) {
-      Api.putData(`user/${user.id}`, { user })
+      Api.putData(`users/${user.id}`, { user })
         .then(user => {
           this.setState({
             userUpdate: {
@@ -96,7 +96,7 @@ class SitesUserContainer extends Component {
     const confirmDelete = window.confirm('Are you sure?')
 
     if (confirmDelete && Session.isAdmin()) {
-      Api.deleteData(`user/${this.state.user.id}`)
+      Api.deleteData(`users/${this.state.user.id}`)
         .then(res => {
           this.props.history.push('/administration/user')
         })

@@ -4,7 +4,7 @@ import BoardTasks from '../../Board/Tasks'
 import Fetcher from 'components/Utility/Fetcher'
 
 const UserBoardTaskContainer = props => (
-  <Fetcher url={`user/${props.user.id}/tasks`}>
+  <Fetcher url={`users/${props.user.id}/tasks`}>
     {(tasks, fetchData) => {
       return (
         <div className="UserBoardTaskContainer">

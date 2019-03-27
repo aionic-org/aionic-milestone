@@ -5,7 +5,7 @@ import Fetcher from 'components/Utility/Fetcher'
 import AnnouncementList from './List'
 
 const AnnouncementContainer = props => (
-  <Fetcher url="announcement">
+  <Fetcher url="announcements">
     {announcements => {
       return (
         <div className="AnnouncementContainer">

@@ -40,7 +40,7 @@ class AnnouncementForm extends Component {
         isLoading: true
       })
 
-      Api.postData('announcement', { announcement: this.state.announcement })
+      Api.postData('announcements', { announcement: this.state.announcement })
         .then(res => {
           this.setState({ isLoading: false, status: '' })
           this.props.updateParent(res)

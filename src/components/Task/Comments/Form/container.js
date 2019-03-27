@@ -27,7 +27,7 @@ class TaskCommentsFormContainer extends Component {
     e.preventDefault()
 
     if (this.state.comment.text && this.state.comment.text.length) {
-      Api.postData(`task/${this.props.taskId}/comment`, { comment: this.state.comment })
+      Api.postData(`tasks/${this.props.taskId}/comments`, { comment: this.state.comment })
         .then(res => {
           this.props.updateParent()
         })

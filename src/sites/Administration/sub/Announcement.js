@@ -23,7 +23,7 @@ export class AdministrationAnnouncement extends Component {
   }
 
   componentDidMount = () => {
-    Api.fetchData('announcement')
+    Api.fetchData('announcements')
       .then(announcements => {
         this.setState({ isLoading: false, announcements })
       })
