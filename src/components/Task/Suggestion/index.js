@@ -25,7 +25,7 @@ class TaskSuggestion extends Component {
         searchTerm
       })
 
-      Api.fetchData(`/search/task`, { title: searchTerm })
+      Api.fetchData(`tasks`, { title: searchTerm })
         .then(taskList => {
           this.setState({ taskList, showSuggestion: taskList.length ? true : false })
         })

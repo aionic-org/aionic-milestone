@@ -28,7 +28,7 @@ class SitesProjectContainer extends Component {
     const projectId = this.props.match.params.id
 
     // Fetch projects
-    Api.fetchData(`project/${projectId}`)
+    Api.fetchData(`projects/${projectId}`)
       .then(project => {
         if (project) {
           this.setState({ isLoading: false, project })
@@ -69,7 +69,7 @@ class SitesProjectContainer extends Component {
   updateProject = _project => {
     const project = _project || this.state.project
 
-    Api.putData(`project/${project.id}`, { project })
+    Api.putData(`projects/${project.id}`, { project })
       .then(project => {
         // window.scrollTo({ top: 0, behavior: 'smooth' })
         this.setState({
@@ -100,7 +100,7 @@ class SitesProjectContainer extends Component {
   }
 
   deleteProject = () => {
-    Api.deleteData(`project/${this.state.project.id}`)
+    Api.deleteData(`projects/${this.state.project.id}`)
       .then(() => {
         this.props.history.push('/project')
       })

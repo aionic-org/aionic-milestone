@@ -6,7 +6,7 @@ import TaskCommentsFormContainer from './Form/container'
 import Comments from '../../Comments'
 
 const TaskCommentsContainer = props => (
-  <Fetcher url={`task/${props.taskId}/comment`}>
+  <Fetcher url={`tasks/${props.taskId}/comments`}>
     {(comments, fetchData) => {
       const { taskId, showForm } = props
 

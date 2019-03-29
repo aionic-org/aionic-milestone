@@ -37,7 +37,7 @@ class SitesTaskContainer extends Component {
       })
     } else {
       // Fetch existing task
-      Api.fetchData(`task/${taskId}`)
+      Api.fetchData(`tasks/${taskId}`)
         .then(task => {
           if (task) {
             this.setState({ isLoading: false, task })
@@ -76,7 +76,7 @@ class SitesTaskContainer extends Component {
   updateTask = task => {
     const _task = task || this.state.task
 
-    Api.putData(`task/${_task.id}`, { task: _task })
+    Api.putData(`tasks/${_task.id}`, { task: _task })
       .then(task => {
         this.setState({
           task,
@@ -108,7 +108,7 @@ class SitesTaskContainer extends Component {
   createTask = task => {
     const _task = task || this.state.task
 
-    Api.postData('task', { task: _task })
+    Api.postData('tasks', { task: _task })
       .then(res => {
         this.props.history.push(`/task/${res.id}`)
       })

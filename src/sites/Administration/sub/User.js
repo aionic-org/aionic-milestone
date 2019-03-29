@@ -9,7 +9,7 @@ import Widget from 'components/Widget'
 import UserInvitation from 'components/User/Invitation'
 
 const AdministrationUser = props => (
-  <Fetcher url="user">
+  <Fetcher url="users">
     {users => (
       <div className="AdministrationUser">
         <Widget title="Users" icon="fas fa-users-cog">

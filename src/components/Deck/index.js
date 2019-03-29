@@ -6,6 +6,7 @@ import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
 import ProjectPreview from 'components/Project/Preview'
 import GitOrganizationPreview from 'components/Git/Organization/Preview'
+import AnnouncementPreview from 'components/Announcements/Preview'
 
 const Deck = props => {
   const tmpArr = []
@@ -34,6 +35,8 @@ const Deck = props => {
                   return <ProjectPreview key={item.id} project={item} />
                 case 'Organization':
                   return <GitOrganizationPreview key={item.id} org={item} {...props} />
+                case 'Announcement':
+                  return <AnnouncementPreview key={item.id} announcement={item} {...props} />
                 default:
                   return null
               }

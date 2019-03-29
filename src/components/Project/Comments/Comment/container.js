@@ -5,7 +5,7 @@ import Comment from '../../../Comments/Comment/Preview'
 
 class ProjectCommentContainer extends Component {
   deleteComment = id => {
-    Api.deleteData(`project/${this.props.taskId}/comment/${id}`)
+    Api.deleteData(`projects/${this.props.taskId}/comments/${id}`)
       .then(res => {
         this.props.removeComment(id)
       })

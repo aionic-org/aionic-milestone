@@ -26,7 +26,7 @@ class ProjectCommentsFormContainer extends Component {
     e.preventDefault()
 
     if (this.state.comment.text && this.state.comment.text.length) {
-      Api.postData(`project/${this.props.projectId}/comment`, { comment: this.state.comment })
+      Api.postData(`projects/${this.props.projectId}/comments`, { comment: this.state.comment })
         .then(res => {
           this.props.updateParent()
         })

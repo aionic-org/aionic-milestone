@@ -1,4 +1,4 @@
-# Aionic (Frontend)
+# Aionic (Milestone)
 
 ![alt text](https://avatars0.githubusercontent.com/u/42389304?s=100&v=4 'Aionic Logo')
 
@@ -14,7 +14,7 @@ Some of the technologies we trust: _NodeJS, ReactJS, MySQL_
 
 ## Features
 
-**Aionic Frontend** is the main service for managing projects. It's a SPA based on ReactJS written in JavaScript.
+**Aionic Milestone** is the main service for managing projects. It's a SPA based on ReactJS written in JavaScript.
 
 Some of the features this service offers:
 

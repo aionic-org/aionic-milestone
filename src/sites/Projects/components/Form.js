@@ -46,7 +46,7 @@ class ProjectForm extends Component {
   createProject = () => {
     const project = this.state.project
 
-    Api.postData(`project`, { project })
+    Api.postData(`projects`, { project })
       .then(res => {
         this.props.history.push(`/project/${res.id}`)
       })

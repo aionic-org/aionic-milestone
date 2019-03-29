@@ -1,10 +1,10 @@
 {
-  "name": "aionic-frontend",
+  "name": "aionic-milestone",
   "version": "0.0.1",
-  "description": "Aionic Frontend - Software products for project management",
+  "description": "Aionic Milestone - Software products for project management",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": "https://github.com/Aionic-Apps/aionic-frontend",
+  "repository": "https://github.com/Aionic-Apps/aionic-milestone",
   "license": "MIT",
   "scripts": {
     "start": "PORT=4200 react-scripts start",

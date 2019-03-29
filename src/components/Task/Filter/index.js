@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import UserList from 'components/User/List'
 import TaskStatusList from 'components/Task/StatusList'
+import GitOrganizationList from 'components/Git/Organization/List'
 
 class TaskFilter extends Component {
   handleReset = e => {
@@ -10,7 +11,8 @@ class TaskFilter extends Component {
   }
 
   render() {
-    const { searchParams, handleFilterChange, userList, statusList } = this.props
+    const { searchParams, handleFilterChange, lists } = this.props
+    const { userList, statusList, orgList } = lists
 
     return (
       <div className="TaskFilter">
@@ -26,7 +28,6 @@ class TaskFilter extends Component {
               defaultValue={searchParams.searchTerm ? searchParams.searchTerm : ''}
             />
           </div>
-
           <div className="form-group">
             <label>Status</label>
             <TaskStatusList
@@ -35,7 +36,6 @@ class TaskFilter extends Component {
               onChange={handleFilterChange}
             />
           </div>
-
           <div className="form-group">
             <label>Assignee</label>
             <UserList
@@ -45,7 +45,6 @@ class TaskFilter extends Component {
               onChange={handleFilterChange}
             />
           </div>
-
           <div className="form-group">
             <label>Author</label>
             <UserList
@@ -57,7 +56,15 @@ class TaskFilter extends Component {
           </div>
 
           <div className="form-group">
-            <label>Branch</label>
+            <label>Git Organization</label>
+            <GitOrganizationList
+              orgList={orgList}
+              defaultValue={searchParams.organization ? searchParams.organization : undefined}
+              onChange={handleFilterChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Git Branch</label>
             <input
               type="text"
               className="form-control"
@@ -67,7 +74,6 @@ class TaskFilter extends Component {
               defaultValue={searchParams.branch}
             />
           </div>
-
           <button type="button" className="btn btn-primary btn-block" onClick={this.handleReset}>
             Reset
           </button>
