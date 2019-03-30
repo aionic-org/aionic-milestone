@@ -8,10 +8,22 @@ import UserList from 'components/User/List'
 
 import TaskStatusList from 'components/Task/StatusList'
 import TaskLabel from 'components/Task/Label'
+import InputSuggestion from '../../../UI/Input/Suggestion'
 
 const TaskDetailsGeneral = props => {
-  const { lists, task, isNewTask, handleInputChange } = props
+  const { lists, task, isNewTask, handleInputChange, updateTask } = props
   const { userList, statusList, priorityList } = lists
+
+  const userListPrepared = userList.map(user => {
+    return {
+      id: user.id,
+      text: `${user.firstname} ${user.lastname}`
+    }
+  })
+
+  const updateParent = element => {
+    updateTask({ ...task, [element.name]: element.id })
+  }
 
   return (
     <div className="TaskDetailsGeneral">
@@ -20,19 +32,21 @@ const TaskDetailsGeneral = props => {
       <div className="form-group row">
         <label className="col-sm-2 col-form-label">Assignee / Author</label>
         <div className="col-sm-2">
-          <UserList
+          <InputSuggestion
+            elementList={userListPrepared}
             name="assignee"
-            userList={userList}
+            placeholder="Enter username"
             defaultValue={task.assignee ? task.assignee.id : undefined}
-            onChange={handleInputChange}
+            updateParent={updateParent}
           />
         </div>
         <div className="col-sm-2">
-          <UserList
+          <InputSuggestion
+            elementList={userListPrepared}
             name="author"
-            userList={userList}
+            placeholder="Enter username"
             defaultValue={task.author ? task.author.id : isNewTask ? Session.getUser().id : ''}
-            onChange={handleInputChange}
+            updateParent={updateParent}
           />
         </div>
 
@@ -71,7 +85,7 @@ const TaskDetailsGeneral = props => {
       </div>
 
       <div className="form-group row">
-        <legend className="col-form-label col-sm-2 pt-0">Priority</legend>
+        <label className="col-sm-2 col-form-label">Priority</label>
         <div className="col-sm-4">
           {priorityList.map(priority => (
             <InputRadio
@@ -84,7 +98,14 @@ const TaskDetailsGeneral = props => {
           ))}
         </div>
 
-        <div className="col-sm-2">Closed</div>
+        <label className="col-sm-2 col-form-label">Tags</label>
+        <div className="col-sm-4">
+          <input type="text" name="tags" className="form-control" />
+        </div>
+      </div>
+
+      <div className="form-group row">
+        <label className="col-sm-2 col-form-label">Closed</label>
         <div className="col-sm-4">
           <div className="form-check">
             <input
