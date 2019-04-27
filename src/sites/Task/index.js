@@ -52,7 +52,7 @@ const SitesTask = props => {
             </Widget>
 
             <Widget title="Description" icon="fas fa-map" showMargin={true}>
-              <TaskDescription task={task} handleInputChange={handleInputChange} />
+              <TaskDescription task={task} updateTask={updateTask} />
             </Widget>
             {taskFooter}
           </div>

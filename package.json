@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
+    "draft-js": "^0.10.5",
     "jwt-decode": "^2.2.0",
     "marked": "^0.4.0",
     "query-string": "^6.2.0",

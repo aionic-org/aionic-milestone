@@ -76,33 +76,37 @@ class SitesTaskContainer extends Component {
   updateTask = task => {
     const _task = task || this.state.task
 
-    Api.putData(`tasks/${_task.id}`, { task: _task })
-      .then(task => {
-        this.setState({
-          task,
-          taskUpdate: {
-            success: true,
-            msg: 'Task successfully updated!'
-          }
-        })
-
-        setTimeout(() => {
+    if (!this.state.isNewTask) {
+      Api.putData(`tasks/${_task.id}`, { task: _task })
+        .then(task => {
           this.setState({
+            task,
             taskUpdate: {
-              success: null,
-              msg: null
+              success: true,
+              msg: 'Task successfully updated!'
             }
           })
-        }, 2000)
-      })
-      .catch(err => {
-        this.setState({
-          taskUpdate: {
-            success: false,
-            msg: 'Failed to update task!'
-          }
+
+          setTimeout(() => {
+            this.setState({
+              taskUpdate: {
+                success: null,
+                msg: null
+              }
+            })
+          }, 2000)
         })
-      })
+        .catch(err => {
+          this.setState({
+            taskUpdate: {
+              success: false,
+              msg: 'Failed to update task!'
+            }
+          })
+        })
+    } else {
+      this.setState({ task: _task })
+    }
   }
 
   createTask = task => {

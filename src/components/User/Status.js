@@ -12,6 +12,7 @@ class UserStatus extends Component {
     this.state = {
       isLoading: true,
       msg: null,
+      status: null,
       user: {}
     }
   }
@@ -28,7 +29,8 @@ class UserStatus extends Component {
       .catch(err => {
         this.setState({
           isLoading: false,
-          msg: Api.handleHttpError(err)
+          msg: Api.handleHttpError(err),
+          status: 'is-invalid'
         })
       })
   }
@@ -43,12 +45,14 @@ class UserStatus extends Component {
         Api.putData(`users/${user.id}`, { user })
           .then(_user => {
             this.setState({
-              user: _user
+              user: _user,
+              status: 'is-valid'
             })
           })
           .catch(err => {
             this.setState({
-              msg: Api.handleHttpError(err)
+              msg: Api.handleHttpError(err),
+              status: 'is-invalid'
             })
           })
       })
@@ -56,23 +60,23 @@ class UserStatus extends Component {
   }
 
   render() {
-    const { isLoading, msg, user } = this.state
+    const { isLoading, msg, user, status } = this.state
 
     if (isLoading) {
       return <Spinner />
-    } else if (msg) {
-      return <Error message={msg} />
     } else {
       return (
         <div className="UserStatus">
           <div className="form-group mb-0">
             <textarea
-              className="form-control"
+              className={`form-control ${status}`}
               name="status"
               rows="2"
               defaultValue={user.status}
               onBlur={this.handleInputChange}
             />
+            <div className="valid-feedback">Status updated!</div>
+            <div className="invalid-feedback">{msg}</div>
           </div>
         </div>
       )
