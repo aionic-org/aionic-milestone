@@ -4,7 +4,7 @@ import { Api } from 'services/api'
 
 import Spinner from 'components/UI/Spinner'
 
-class UserStatus extends Component {
+class TaskScratchpad extends Component {
   constructor(props) {
     super(props)
 
@@ -12,15 +12,18 @@ class UserStatus extends Component {
       isLoading: true,
       msg: null,
       status: null,
-      user: {}
+      scratchpad: {
+        author: this.props.user,
+        task: this.props.task
+      }
     }
   }
 
   componentDidMount = () => {
-    Api.fetchData(`users/${this.props.user.id}`)
-      .then(user => {
-        if (user) {
-          this.setState({ isLoading: false, user })
+    Api.fetchData(`tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`)
+      .then(scratchpad => {
+        if (scratchpad) {
+          this.setState({ isLoading: false, scratchpad })
         } else {
           this.setState({ isLoading: false, msg: 'Resource not found!' })
         }
@@ -37,14 +40,16 @@ class UserStatus extends Component {
   handleInputChange = e => {
     const value = e.target.value
 
-    if (this.state.user.status !== value) {
-      const user = { ...this.state.user, status: value }
+    if (this.state.scratchpad.text !== value) {
+      const scratchpad = { ...this.state.scratchpad, text: value }
 
-      this.setState({ user }, () => {
-        Api.putData(`users/${user.id}`, { user })
-          .then(_user => {
+      this.setState({ scratchpad }, () => {
+        Api.postData(`tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`, {
+          scratchpad
+        })
+          .then(_scratchpad => {
             this.setState({
-              user: _user,
+              scratchpad: _scratchpad,
               status: 'is-valid'
             })
             setTimeout(() => {
@@ -64,7 +69,7 @@ class UserStatus extends Component {
   }
 
   render() {
-    const { isLoading, msg, user, status } = this.state
+    const { isLoading, msg, scratchpad, status } = this.state
 
     if (isLoading) {
       return <Spinner />
@@ -75,11 +80,11 @@ class UserStatus extends Component {
             <textarea
               className={`form-control ${status}`}
               name="status"
-              rows="2"
-              defaultValue={user.status}
+              rows="3"
+              defaultValue={scratchpad.text}
               onBlur={this.handleInputChange}
             />
-            <div className="valid-feedback">Status updated!</div>
+            <div className="valid-feedback">Scratchpad updated!</div>
             <div className="invalid-feedback">{msg}</div>
           </div>
         </div>
@@ -88,4 +93,4 @@ class UserStatus extends Component {
   }
 }
 
-export default UserStatus
+export default TaskScratchpad

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Session } from 'services/session'
+
 import InputTitle from 'components/UI/Input/Title'
 
 import Widget from 'components/Widget'
@@ -10,6 +12,7 @@ import Content from 'components/UI/Content'
 
 import SitesTaskTabs from './components/Tabs'
 import TaskDescription from 'components/Task/Description'
+import TaskScratchpad from 'components/Task/Scratchpad'
 
 const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
@@ -54,7 +57,19 @@ const SitesTask = props => {
             <Widget title="Description" icon="fas fa-map" showMargin={true}>
               <TaskDescription task={task} updateTask={updateTask} />
             </Widget>
-            {taskFooter}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-8">{taskFooter}</div>
+          <div className="col-4">
+            <Widget
+              title="My Scratchpad"
+              icon="fas fa-sticky-note"
+              showMargin={true}
+              showLastUpdate={false}
+            >
+              <TaskScratchpad task={task} user={Session.getUser()} />
+            </Widget>
           </div>
         </div>
       </Content>
