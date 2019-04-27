@@ -1,16 +1,17 @@
 import React from 'react'
 
-import InputMarkdown from 'components/UI/Input/Markdown'
+import RichEditor from 'components/UI/Input/RichEditor/'
 
-const TaskDescription = props => (
-  <div className="TaskDescription">
-    <InputMarkdown
-      content={props.task.description}
-      name={'description'}
-      onBlurCb={props.handleInputChange}
-      rows={10}
-    />
-  </div>
-)
+const TaskDescription = props => {
+  const updateDescription = description => {
+    props.updateTask({ ...props.task, description })
+  }
+
+  return (
+    <div className="TaskDescription">
+      <RichEditor content={props.task.description} updateParent={updateDescription} />
+    </div>
+  )
+}
 
 export default TaskDescription

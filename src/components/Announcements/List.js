@@ -3,18 +3,22 @@ import React from 'react'
 const AnnouncementList = props => {
   const { announcementList } = props
 
+  const content = announcementList.length ? (
+    announcementList.map((announcement, i) => (
+      <li key={i} className="list-group-item">
+        <p className="mb-0">{announcement.description}</p>
+        <small>
+          {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}
+        </small>
+      </li>
+    ))
+  ) : (
+    <li className="list-group-item text-center font-italic">There are no announcements yet!</li>
+  )
+
   return (
     <div className="AnnouncementList">
-      <ul className="list-group list-group-flush">
-        {announcementList.map((announcement, i) => (
-          <li key={i} className="list-group-item">
-            <p className="mb-0">{announcement.description}</p>
-            <small>
-              {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}
-            </small>
-          </li>
-        ))}
-      </ul>
+      <ul className="list-group list-group-flush">{content}</ul>
     </div>
   )
 }

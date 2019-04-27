@@ -26,12 +26,15 @@ const SitesProjectDetails = props => {
           <span className="badge badge-primary badge-pill">{project.tasks.length}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
-          Open tasks
+          Open
           <span className="badge badge-primary badge-pill">{openTasks}</span>
-          Closed tasks
+          Closed
           <span className="badge badge-primary badge-pill">{closedTasks}</span>
         </li>
       </ul>
+
+      <p className="text-muted font-weight-bold mt-4">Progress</p>
+      <Progress progress={progress} />
 
       <p className="text-muted font-weight-bold mt-4">Description</p>
       <textarea
@@ -41,9 +44,6 @@ const SitesProjectDetails = props => {
         defaultValue={project.description}
         onBlur={handleInputChange}
       />
-
-      <p className="text-muted font-weight-bold mt-4">Progress</p>
-      <Progress progress={progress} />
 
       <p className="text-muted font-weight-bold mt-4">Tasks</p>
       <TaskSuggestion taskListSelected={project.tasks} updateParent={updateProjectTasks} />
