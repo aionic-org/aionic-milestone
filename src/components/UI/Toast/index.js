@@ -20,9 +20,9 @@ const Toast = props => (
         focusable="false"
         role="img"
       >
-        <rect fill={`${props.success ? '#28a745' : '#dc3545'}`} width="100%" height="100%" />
+        <rect fill={`${props.success ? '#00b894' : '#d63031'}`} width="100%" height="100%" />
       </svg>
-      <strong className="mr-auto">Aionic</strong>
+      <strong className="mr-auto">Aionic - Milestone</strong>
       <small>Just now</small>
     </div>
     <div className="toast-body">{props.msg}</div>

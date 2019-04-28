@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+.Spinner.showPadding {
+  padding: 1.25rem;
+}
+
 .container-fluid > .Spinner {
   margin: 4rem auto 2rem;
 }
@@ -15,7 +19,7 @@
 .Spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #1abc9c;
+  background-color: #00b894;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

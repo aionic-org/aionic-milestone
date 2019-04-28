@@ -23,13 +23,13 @@ const SitesProjectDetails = props => {
       <ul className="list-group">
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Tasks
-          <span className="badge badge-primary badge-pill">{project.tasks.length}</span>
+          <span className="badge badge-secondary badge-pill">{project.tasks.length}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
           Open
-          <span className="badge badge-primary badge-pill">{openTasks}</span>
+          <span className="badge badge-secondary badge-pill">{openTasks}</span>
           Closed
-          <span className="badge badge-primary badge-pill">{closedTasks}</span>
+          <span className="badge badge-secondary badge-pill">{closedTasks}</span>
         </li>
       </ul>
 

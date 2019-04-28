@@ -18,8 +18,9 @@ class AnnouncementForm extends Component {
   }
 
   handleInputChange = e => {
-    const name = e.target.name
-    const value = e.target.value
+    const target = e.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
 
     if (this.state.announcement[name] !== value) {
       const announcement = { ...this.state.announcement, [name]: value }
@@ -61,6 +62,17 @@ class AnnouncementForm extends Component {
       <div className="AnnouncementForm">
         <form onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <div className="input-group-text">
+                <input
+                  type="checkbox"
+                  className="mr-1"
+                  name="important"
+                  onChange={this.handleInputChange}
+                />
+                Important
+              </div>
+            </div>
             <input
               type="text"
               name="description"

@@ -27,9 +27,23 @@ const SitesTask = props => {
       Create task
     </button>
   ) : (
-    <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
-      <SitesTaskTabs task={task} />
-    </Widget>
+    <div className="row">
+      <div className="col-8">
+        <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
+          <SitesTaskTabs task={task} />
+        </Widget>
+      </div>
+      <div className="col-4">
+        <Widget
+          title="My Scratchpad"
+          icon="fas fa-sticky-note"
+          showMargin={true}
+          showLastUpdate={false}
+        >
+          <TaskScratchpad task={task} user={Session.getUser()} />
+        </Widget>
+      </div>
+    </div>
   )
 
   return (
@@ -59,19 +73,7 @@ const SitesTask = props => {
             </Widget>
           </div>
         </div>
-        <div className="row">
-          <div className="col-8">{taskFooter}</div>
-          <div className="col-4">
-            <Widget
-              title="My Scratchpad"
-              icon="fas fa-sticky-note"
-              showMargin={true}
-              showLastUpdate={false}
-            >
-              <TaskScratchpad task={task} user={Session.getUser()} />
-            </Widget>
-          </div>
-        </div>
+        {taskFooter}
       </Content>
     </div>
   )

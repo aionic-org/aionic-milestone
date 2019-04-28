@@ -3,10 +3,10 @@ import React from 'react'
 import './Spinner.css'
 
 const Spinner = props => {
-  const { onBtn } = props
+  const { onBtn, showPadding } = props
 
   return (
-    <div className={`Spinner ${onBtn ? 'onBtn' : ''}`}>
+    <div className={`Spinner ${onBtn ? 'onBtn' : ''} ${showPadding ? 'showPadding' : ''}`}>
       <div className="bounce1" />
       <div className="bounce2" />
       <div className="bounce3" />
@@ -15,7 +15,8 @@ const Spinner = props => {
 }
 
 Spinner.defaultProps = {
-  onBtn: false
+  onBtn: false,
+  showPadding: false
 }
 
 export default Spinner
