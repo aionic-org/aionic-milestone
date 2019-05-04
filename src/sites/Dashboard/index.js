@@ -20,12 +20,12 @@ const SitesDashboard = props => {
         <Title title={`Welcome, ${Session.getUser().firstname}!`} />
         <div className="row">
           <div className="col-xl-9 col-12">
-            <Widget title="Tasks" icon="fas fa-clipboard-list">
+            <Widget title="My tasks" icon="fas fa-tasks fa-fw">
               <UserBoardTaskContainer user={Session.getUser()} />
             </Widget>
           </div>
           <div className="col-xl-3 col-12 mt-3 mt-xl-0">
-            <Widget title="Your status" icon="fas fa-edit" showLastUpdate={false}>
+            <Widget title="How you're doing?" icon="fas fa-edit" showLastUpdate={false}>
               <UserStatus user={Session.getUser()} />
             </Widget>
 

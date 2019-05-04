@@ -5,30 +5,25 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import TaskDetailsGeneral from '.'
+import TaskSidebar from '.'
 
-class TaskDetailsGeneralContainer extends Component {
+class TaskSidebarContainer extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       isLoading: true,
       msg: null,
-      lists: {}
+      userList: []
     }
   }
 
   componentDidMount = () => {
-    const requests = [Api.fetchData('task-status'), Api.fetchData('task-priorities')]
-
-    Promise.all(requests)
-      .then(res => {
+    Api.fetchData('users')
+      .then(users => {
         this.setState({
           isLoading: false,
-          lists: {
-            statusList: res[0],
-            priorityList: res[1]
-          }
+          userList: users
         })
       })
       .catch(err => {
@@ -37,7 +32,7 @@ class TaskDetailsGeneralContainer extends Component {
   }
 
   render() {
-    const { isLoading, msg, lists } = this.state
+    const { isLoading, msg, userList } = this.state
 
     if (isLoading) {
       return <Spinner />
@@ -45,12 +40,12 @@ class TaskDetailsGeneralContainer extends Component {
       return <Error message={msg} />
     } else {
       return (
-        <div className="TaskDetailsGeneralContainer">
-          <TaskDetailsGeneral lists={lists} {...this.props} />
+        <div className="TaskSidebarContainer">
+          <TaskSidebar userList={userList} {...this.props} />
         </div>
       )
     }
   }
 }
 
-export default TaskDetailsGeneralContainer
+export default TaskSidebarContainer

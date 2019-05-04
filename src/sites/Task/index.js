@@ -13,6 +13,7 @@ import Content from 'components/UI/Content'
 import SitesTaskTabs from './components/Tabs'
 import TaskDescription from 'components/Task/Description'
 import TaskScratchpad from 'components/Task/Scratchpad'
+import TaskSidebarContainer from '../../components/Task/Sidebar/container'
 
 const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
@@ -28,19 +29,9 @@ const SitesTask = props => {
     </button>
   ) : (
     <div className="row">
-      <div className="col-8">
+      <div className="col-9">
         <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
           <SitesTaskTabs task={task} />
-        </Widget>
-      </div>
-      <div className="col-4">
-        <Widget
-          title="My Scratchpad"
-          icon="fas fa-sticky-note"
-          showMargin={true}
-          showLastUpdate={false}
-        >
-          <TaskScratchpad task={task} user={Session.getUser()} />
         </Widget>
       </div>
     </div>
@@ -59,7 +50,7 @@ const SitesTask = props => {
           </div>
         </div>
         <div className="row">
-          <div className="col-12">
+          <div className="col-9">
             <Widget title="Details" icon="fas fa-info-circle">
               <TaskDetails
                 handleInputChange={handleInputChange}
@@ -67,9 +58,21 @@ const SitesTask = props => {
                 task={task}
               />
             </Widget>
-
             <Widget title="Description" icon="fas fa-map" showMargin={true}>
               <TaskDescription task={task} updateTask={updateTask} />
+            </Widget>
+          </div>
+          <div className="col-3">
+            <Widget title="Assignment" icon="fas fa-user-tag">
+              <TaskSidebarContainer task={task} updateTask={updateTask} />
+            </Widget>
+            <Widget
+              title="My Scratchpad"
+              icon="fas fa-sticky-note"
+              showMargin={true}
+              showLastUpdate={false}
+            >
+              <TaskScratchpad task={task} user={Session.getUser()} />
             </Widget>
           </div>
         </div>

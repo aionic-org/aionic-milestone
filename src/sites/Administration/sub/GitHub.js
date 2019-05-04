@@ -77,7 +77,7 @@ export class AdministrationGitHub extends Component {
               <Deck
                 itemList={organizations}
                 deckType="Organization"
-                itemsPerRow="2"
+                itemsPerRow="1"
                 handleDelete={this.removeOrganization}
                 handleSync={this.updateOrganization}
               />

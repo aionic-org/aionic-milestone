@@ -22,6 +22,7 @@ const SitesTaskTabs = props => {
       break
     case 'Commits':
       content = <GitCommitsContainer task={task} />
+      break
     default:
       break
   }

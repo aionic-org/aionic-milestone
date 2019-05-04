@@ -7,7 +7,12 @@ const AnnouncementList = props => {
 
   const content = announcementList.length ? (
     announcementList.map((announcement, i) => (
-      <li key={i} className={`list-group-item ${announcement.important ? 'important' : ''}`}>
+      <li
+        key={i}
+        className={`list-group-item list-group-item-action ${
+          announcement.important ? 'important' : ''
+        }`}
+      >
         <p className="mb-0">{announcement.description}</p>
         <small>
           {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}

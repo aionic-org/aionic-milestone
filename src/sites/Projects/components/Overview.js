@@ -31,9 +31,9 @@ const SitesProjectsOverview = props => {
           <span className="badge badge-secondary badge-pill">{projects.length}</span>
         </li>
         <li className="list-group-item d-flex justify-content-between align-items-center">
-          Open projects
+          Open
           <span className="badge badge-secondary badge-pill">{openProjects}</span>
-          Finished projects
+          Finished
           <span className="badge badge-secondary badge-pill">{finishedProjects}</span>
         </li>
       </ul>

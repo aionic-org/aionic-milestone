@@ -10,6 +10,7 @@ import Widget from 'components/Widget'
 import UserDetailsContainer from 'components/User/Details/container'
 
 import SitesUserTabsContent from './components/Tabs'
+import GitHubAuthenticate from '../../components/Git/Authenticate'
 
 const SitesUser = props => {
   const { user, handleInputChange, deleteUser } = props
@@ -24,10 +25,11 @@ const SitesUser = props => {
               <UserDetailsContainer user={user} handleInputChange={handleInputChange} />
 
               {Session.isAdmin() ? (
-                <button className="btn btn-danger float-right" onClick={deleteUser}>
+                <button className="btn btn-danger float-right ml-2" onClick={deleteUser}>
                   Remove
                 </button>
               ) : null}
+              <GitHubAuthenticate />
             </Widget>
           </div>
         </div>
