@@ -10,7 +10,6 @@ import Widget from 'components/Widget'
 import UserDetailsContainer from 'components/User/Details/container'
 
 import SitesUserTabsContent from './components/Tabs'
-import GitHubAuthenticate from '../../components/Git/Authenticate'
 
 const SitesUser = props => {
   const { user, handleInputChange, deleteUser } = props
@@ -29,7 +28,6 @@ const SitesUser = props => {
                   Remove
                 </button>
               ) : null}
-              <GitHubAuthenticate />
             </Widget>
           </div>
         </div>
