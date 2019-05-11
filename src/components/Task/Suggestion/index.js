@@ -8,6 +8,8 @@ class TaskSuggestion extends Component {
   constructor(props) {
     super(props)
 
+    console.log(props.taskListSelected)
+
     this.state = {
       searchTerm: '',
       taskList: [],
@@ -38,27 +40,32 @@ class TaskSuggestion extends Component {
   }
 
   handleSelect = e => {
-    const target = e.target
+    const target = e.currentTarget
     const newTask = this.state.taskList[Number(target.dataset.pos)]
 
-    const taskListSelected = this.state.taskListSelected.slice()
-    const taskIdx = taskListSelected.findIndex(task => task.id === newTask.id)
+    if (newTask) {
+      const taskListSelected = this.state.taskListSelected.slice()
+      const taskIdx = taskListSelected.findIndex(task => task.id === newTask.id)
 
-    document.getElementById('suggestionInput').value = ''
+      document.getElementById('suggestionInput').value = ''
 
-    if (taskIdx === -1) {
-      taskListSelected.push(newTask)
+      if (taskIdx === -1) {
+        taskListSelected.push(newTask)
 
-      this.setState({ taskListSelected, showSuggestion: false }, () => {
-        this.props.updateParent(taskListSelected)
-      })
+        this.setState({ taskListSelected, showSuggestion: false }, () => {
+          this.props.updateParent(taskListSelected)
+        })
+      } else {
+        this.setState({ showSuggestion: false })
+      }
     } else {
+      document.getElementById('suggestionInput').value = ''
       this.setState({ showSuggestion: false })
     }
   }
 
   handleRemove = e => {
-    const target = e.target
+    const target = e.currentTarget
     const taskToRemove = this.state.taskListSelected[Number(target.dataset.pos)]
 
     const taskListSelected = this.state.taskListSelected.slice()
@@ -85,10 +92,22 @@ class TaskSuggestion extends Component {
               data-pos={i}
               onClick={this.handleSelect}
             >
-              {task.title}
-              <span className="float-right text-muted">
-                {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-              </span>
+              <div className="row" data-pos={i}>
+                <div className="col-7">{task.title}</div>
+                <div className="col-5">
+                  <span className="text-muted float-right">
+                    {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
+                    <a
+                      className="fas fa-external-link-square-alt ml-2 fa-sm"
+                      href={`/task/${task.id}`}
+                      target="_blank"
+                      onClick={e => {
+                        e.stopPropagation()
+                      }}
+                    />
+                  </span>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
@@ -105,12 +124,22 @@ class TaskSuggestion extends Component {
               data-pos={i}
               onClick={this.handleRemove}
             >
-              {task.title}
-              <div className="float-right">
-                <span className="text-muted">
-                  {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-                </span>
+              <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-0">{task.title}</h5>
+                <small className="mt-1">
+                  <a
+                    className="fas fa-external-link-square-alt"
+                    href={`/task/${task.id}`}
+                    target="_blank"
+                    onClick={e => {
+                      e.stopPropagation()
+                    }}
+                  />
+                </small>
               </div>
+              <small>
+                {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
+              </small>
             </li>
           ))}
         </ul>

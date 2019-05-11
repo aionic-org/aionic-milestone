@@ -17,14 +17,18 @@ const SitesAdministration = props => {
       <Content>
         <Title title={'Administration'} />
         <div className="row">
-          <div className="col-12 col-xl-4">
+          <div className="col-12 col-xl-3">
             <Widget
               title="Categories"
               wrapBody={false}
               icon="fas fa-sliders-h"
               showLastUpdate={false}
             >
-              <div className="nav nav-pills p-2" role="tablist" aria-orientation="vertical">
+              <div
+                className="nav nav-pills flex-column p-2"
+                role="tablist"
+                aria-orientation="vertical"
+              >
                 <NavLink exact to="/administration" className="nav-link" activeClassName="active">
                   General
                 </NavLink>
@@ -44,7 +48,7 @@ const SitesAdministration = props => {
               </div>
             </Widget>
           </div>
-          <div className="col-12 col-xl-12 mt-3">
+          <div className="col-12 col-xl-9 mt-3 mt-xl-0">
             <Switch>
               <Route exact path="/administration" component={AdministrationGeneral} />
               <Route path="/administration/user" component={AdministrationUser} />

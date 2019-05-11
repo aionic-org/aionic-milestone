@@ -13,7 +13,8 @@ import Content from 'components/UI/Content'
 import SitesTaskTabs from './components/Tabs'
 import TaskDescription from 'components/Task/Description'
 import TaskScratchpad from 'components/Task/Scratchpad'
-import TaskSidebarContainer from '../../components/Task/Sidebar/container'
+import TaskSidebarContainer from 'components/Task/Sidebar/container'
+import TaskLinks from 'components/Task/Links'
 
 const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
@@ -65,6 +66,9 @@ const SitesTask = props => {
           <div className="col-3">
             <Widget title="Assignment" icon="fas fa-user-tag">
               <TaskSidebarContainer task={task} updateTask={updateTask} />
+            </Widget>
+            <Widget title="Linked tasks" icon="fas fa-tasks fa-fw" showMargin={true}>
+              <TaskLinks task={task} updateTask={updateTask} />
             </Widget>
             <Widget
               title="My Scratchpad"

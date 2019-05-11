@@ -15,8 +15,9 @@ const TaskPreview = props => {
         <TaskPriorityIcon task={task} />
       </div>
       <div className="card-body">
-        <h6 className="card-subtitle">
-          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'}
+        <h6 className="card-subtitle text-muted">
+          {task.status ? task.status.title : ''} (
+          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'})
         </h6>
       </div>
       <div className="card-footer text-muted">

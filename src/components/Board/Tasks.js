@@ -12,44 +12,90 @@ class BoardTasks extends Component {
 
     this.state = {
       taskListFiltered: [],
-      isFiltered: false
+      isFiltered: false,
+      showTextFilter: false,
+      statusFilter: null,
+      textFilter: null
     }
   }
 
-  filterTasks = statusId => {
-    if (statusId !== null) {
-      const taskListFiltered = this.props.taskList.filter(res => {
-        return res.status && res.status.id === statusId
+  toggleTextFilter = e => {
+    e.preventDefault()
+    this.setState(
+      {
+        showTextFilter: !this.state.showTextFilter,
+        textFilter: null
+      },
+      () => {
+        this.filterTasks()
+      }
+    )
+  }
+
+  filterTasks = () => {
+    if (this.state.statusFilter !== null || this.state.textFilter !== null) {
+      const taskListFiltered = this.props.taskList.filter(task => {
+        const condStatus =
+          this.state.statusFilter !== null
+            ? task.status && task.status.id === this.state.statusFilter
+            : true
+        const condText =
+          this.state.textFilter !== null
+            ? task.title.toLowerCase().includes(this.state.textFilter.toLowerCase())
+            : true
+
+        return condStatus && condText ? true : false
       })
+
       this.setState({ taskListFiltered, isFiltered: true })
     } else {
       this.setState({ taskListFiltered: [], isFiltered: false })
     }
   }
 
+  filterByStatus = statusId => {
+    this.setState({ statusFilter: statusId }, this.filterTasks)
+  }
+
+  filterByText = e => {
+    const textSearch = e.target.value
+    this.setState({ textFilter: textSearch.length ? textSearch : null }, this.filterTasks)
+  }
+
   render() {
-    const { taskListFiltered, isFiltered } = this.state
-    const { taskList, showStatusFilters, updateParent, itemsPerRow } = this.props
+    const { taskListFiltered, isFiltered, showTextFilter } = this.state
+    const { taskList, showStatusFilters, itemsPerRow } = this.props
 
     const itemList = isFiltered ? taskListFiltered : taskList
 
     return (
       <div className="BoardTasks">
-        {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterTasks} /> : null}
+        {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterByStatus} /> : null}
 
-        <p className={`text-muted font-weight-bold ${showStatusFilters ? 'mt-4' : ''} `}>
-          Number of tasks: {itemList.length}
-          <i
-            className="fas fa-sync-alt float-right"
-            style={{ cursor: 'pointer' }}
-            onClick={updateParent}
-          />
-        </p>
+        <div className={`${showStatusFilters ? 'mt-4' : ''} `}>
+          <p className="d-inline-block text-muted font-weight-bold">
+            Number of tasks: {itemList.length}
+          </p>
+          <a href="#" className="d-inline-block float-right" onClick={this.toggleTextFilter}>
+            Toggle filters
+          </a>
+        </div>
+
+        {showTextFilter ? (
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control form-control-sm"
+              placeholder="Filter tasks..."
+              onChange={this.filterByText}
+            />
+          </div>
+        ) : null}
 
         {itemList.length ? (
           <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
         ) : (
-          <Icon assignedClasses={['fa-check-circle']} text="Done!" />
+          <Icon assignedClasses={['fa-check-circle']} text="No tasks found!" />
         )}
       </div>
     )

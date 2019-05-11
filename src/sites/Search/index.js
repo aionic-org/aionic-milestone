@@ -33,7 +33,7 @@ const SitesSearch = props => {
       <Content>
         <Title title="Search" />
         <div className="row">
-          <div className="col-12 col-md-3">
+          <div className="col-12 col-xl-3">
             <Widget title="Filters" icon="fas fa-filter" showLastUpdate={false}>
               <TaskFilterContainer
                 searchParams={params}
@@ -42,7 +42,7 @@ const SitesSearch = props => {
               />
             </Widget>
           </div>
-          <div className="col-12 col-md-9 mt-3 mt-md-0">
+          <div className="col-12 col-xl-9 mt-3 mt-md-0">
             <Widget title="Results" icon="fas fa-clipboard-list">
               <SearchBoardTaskContainer searchParams={params} />
             </Widget>
