@@ -8,8 +8,6 @@ class TaskSuggestion extends Component {
   constructor(props) {
     super(props)
 
-    console.log(props.taskListSelected)
-
     this.state = {
       searchTerm: '',
       taskList: [],
@@ -118,26 +116,24 @@ class TaskSuggestion extends Component {
       <div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
         <ul className="list-group">
           {taskListSelected.map((task, i) => (
-            <li
-              className="list-group-item list-group-item-action"
-              key={task.id}
-              data-pos={i}
-              onClick={this.handleRemove}
-            >
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-0">{task.title}</h5>
-                <small className="mt-1">
-                  <a
-                    className="fas fa-external-link-square-alt"
-                    href={`/task/${task.id}`}
-                    target="_blank"
-                    onClick={e => {
-                      e.stopPropagation()
-                    }}
-                  />
-                </small>
+            <li className="list-group-item list-group-item-action" key={task.id}>
+              <div className="row">
+                <div className="col-9">{task.title}</div>
+                <div className="col-3">
+                  <small className="float-right mt-1">
+                    <a
+                      className="fas fa-external-link-square-alt"
+                      href={`/task/${task.id}`}
+                      target="_blank"
+                      onClick={e => {
+                        e.stopPropagation()
+                      }}
+                    />
+                    <i className="fas fa-times ml-2" data-pos={i} onClick={this.handleRemove} />
+                  </small>
+                </div>
               </div>
-              <small>
+              <small className="text-muted">
                 {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
               </small>
             </li>

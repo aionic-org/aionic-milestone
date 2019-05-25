@@ -17,7 +17,7 @@ const SitesUser = props => {
   return (
     <div className="SitesUser">
       <Content>
-        <Title title={`${user.firstname}`} />
+        <Title title={`About ${user.firstname}`} />
         <div className="row">
           <div className="col-12 col-xl-8">
             <Widget title="Details" icon="fas fa-info-circle">

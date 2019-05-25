@@ -20,14 +20,18 @@ const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
 
   const taskFooter = isNewTask ? (
-    <button
-      className="btn btn-primary btn-block mt-2"
-      onClick={() => {
-        createTask()
-      }}
-    >
-      Create task
-    </button>
+    <div className="row">
+      <div className="col-9">
+        <button
+          className="btn btn-primary btn-block mt-2"
+          onClick={() => {
+            createTask()
+          }}
+        >
+          Create task
+        </button>
+      </div>
+    </div>
   ) : (
     <div className="row">
       <div className="col-9">
