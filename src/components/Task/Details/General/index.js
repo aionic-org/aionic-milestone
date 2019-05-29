@@ -1,55 +1,33 @@
 import React from 'react'
 
-import { Session } from 'services/session'
-
 import InputRadio from 'components/UI/Input/Radio'
-
-import UserList from 'components/User/List'
 
 import TaskStatusList from 'components/Task/StatusList'
 import TaskLabel from 'components/Task/Label'
-import InputSuggestion from '../../../UI/Input/Suggestion'
 
 const TaskDetailsGeneral = props => {
-  const { lists, task, isNewTask, handleInputChange, updateTask } = props
-  const { userList, statusList, priorityList } = lists
-
-  const userListPrepared = userList.map(user => {
-    return {
-      id: user.id,
-      text: `${user.firstname} ${user.lastname}`
-    }
-  })
-
-  const updateParent = element => {
-    updateTask({ ...task, [element.name]: element.id })
-  }
+  const { lists, task, handleInputChange } = props
+  const { statusList, priorityList } = lists
 
   return (
     <div className="TaskDetailsGeneral">
       <p className="text-muted">General</p>
       <hr className="featurette-divider" />
       <div className="form-group row">
-        <label className="col-sm-2 col-form-label">Assignee / Author</label>
-        <div className="col-sm-2">
-          <InputSuggestion
-            elementList={userListPrepared}
-            name="assignee"
-            placeholder="Enter username"
-            defaultValue={task.assignee ? task.assignee.id : undefined}
-            updateParent={updateParent}
+        <label className="col-sm-2 col-form-label">Status</label>
+        <div className="col-sm-4">
+          <TaskStatusList
+            statusList={statusList}
+            defaultValue={task.status ? task.status.id : undefined}
+            onChange={handleInputChange}
           />
         </div>
-        <div className="col-sm-2">
-          <InputSuggestion
-            elementList={userListPrepared}
-            name="author"
-            placeholder="Enter username"
-            defaultValue={task.author ? task.author.id : isNewTask ? Session.getUser().id : ''}
-            updateParent={updateParent}
-          />
+        <label className="col-sm-2 col-form-label">Tags</label>
+        <div className="col-sm-4">
+          <input type="text" name="tags" className="form-control" />
         </div>
-
+      </div>
+      <div className="form-group row">
         <label className="col-sm-2 col-form-label">Created</label>
         <div className="col-sm-4">
           <input
@@ -60,18 +38,6 @@ const TaskDetailsGeneral = props => {
             disabled
           />
         </div>
-      </div>
-
-      <div className="form-group row">
-        <label className="col-sm-2 col-form-label">Status</label>
-        <div className="col-sm-4">
-          <TaskStatusList
-            statusList={statusList}
-            defaultValue={task.status ? task.status.id : undefined}
-            onChange={handleInputChange}
-          />
-        </div>
-
         <label className="col-sm-2 col-form-label">Updated</label>
         <div className="col-sm-4">
           <input
@@ -96,11 +62,6 @@ const TaskDetailsGeneral = props => {
               onChange={handleInputChange}
             />
           ))}
-        </div>
-
-        <label className="col-sm-2 col-form-label">Tags</label>
-        <div className="col-sm-4">
-          <input type="text" name="tags" className="form-control" />
         </div>
       </div>
 

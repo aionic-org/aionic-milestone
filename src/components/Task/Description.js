@@ -3,8 +3,10 @@ import React from 'react'
 import RichEditor from 'components/UI/Input/RichEditor/'
 
 const TaskDescription = props => {
+  const { updateTask } = props
+
   const updateDescription = description => {
-    props.updateTask({ ...props.task, description })
+    updateTask({ ...props.task, description })
   }
 
   return (

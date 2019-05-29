@@ -3,7 +3,7 @@ import React from 'react'
 import './Icon.css'
 
 const Icon = props => {
-  const text = props.text.length ? <p className="text-center mt-2">{props.text}</p> : null
+  const text = props.text.length ? <p className="text-center mt-1 mb-0">{props.text}</p> : null
 
   return (
     <div className="Icon">

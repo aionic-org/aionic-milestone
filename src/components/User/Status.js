@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import { Api } from 'services/api'
 
-import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
 class UserStatus extends Component {
@@ -48,6 +47,11 @@ class UserStatus extends Component {
               user: _user,
               status: 'is-valid'
             })
+            setTimeout(() => {
+              this.setState({
+                status: null
+              })
+            }, 2000)
           })
           .catch(err => {
             this.setState({

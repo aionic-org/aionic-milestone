@@ -3,9 +3,10 @@
 }
 
 .InputTitle > h1 > input {
-  border: none;
-  padding: 5px 5px;
   background: transparent;
+  border: none;
+  color: #2d3436;
+  padding: 5px 5px;
 }
 
 .InputTitle > h1 > input:focus {

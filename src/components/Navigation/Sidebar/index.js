@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './Sidebar.css'
 
@@ -26,28 +26,28 @@ const Sidebar = props => {
 
       <div className="list-group list-group-flush mt-4">
         <NavLink exact to="/" className="list-group-item list-group-item-action">
-          <i className="fas fa-fw fa-tachometer-alt" />
-          Dashboard
+          <i className="fas fa-fw fa-home fa-fw" />
+          Home
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
-          <i className="fas fa-project-diagram" />
+          <i className="fas fa-table fa-fw" />
           Projects
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
-        <NavLink exact to="/teams" className="list-group-item list-group-item-action">
-          <i className="fas fa-users" />
-          Teams
+        <NavLink exact to="/board" className="list-group-item list-group-item-action">
+          <i className="fas fa-chalkboard-teacher" />
+          Boards
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink to="/search" className="list-group-item list-group-item-action">
-          <i className="fas fa-search" />
+          <i className="fas fa-search fa-fw" />
           Search
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
@@ -56,7 +56,7 @@ const Sidebar = props => {
           <div>
             <hr className="sidebar-divider" />
             <NavLink to="/administration" className="list-group-item list-group-item-action">
-              <i className="fas fa-wrench" />
+              <i className="fas fa-wrench fa-fw" />
               Administration
               <i className="fa fa-chevron-right float-right mt-1" />
             </NavLink>

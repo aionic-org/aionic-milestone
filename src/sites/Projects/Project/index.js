@@ -23,7 +23,7 @@ const SitesProject = props => {
         />
         <div className="row">
           <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="Tasks" icon="fas fa-clipboard-list">
+            <Widget title="Project tasks" icon="fas fa-tasks">
               <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
             </Widget>
 

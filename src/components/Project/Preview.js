@@ -8,17 +8,17 @@ const ProjectPreview = props => {
 
   return (
     <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card">
+      <div className="card-header font-weight-bold">
+        {project.title} ({project.tasks.length}) <ProjectLabel project={project} />
+      </div>
       <div className="card-body">
-        <h5 className="card-title">
-          {project.title} ({project.tasks.length}) <ProjectLabel project={project} />
-        </h5>
         <h6 className="card-subtitle mb-2 text-muted">
           {project.author.firstname} {project.author.lastname}
         </h6>
         <p className="card-text">{project.description}</p>
-        <p className="card-text">
-          <small className="text-muted">Created: {project.created}</small>
-        </p>
+      </div>
+      <div className="card-footer text-muted">
+        <small>Created: {project.created}</small>
       </div>
     </Link>
   )

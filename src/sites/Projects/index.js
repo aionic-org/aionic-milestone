@@ -18,7 +18,7 @@ const SitesProjects = props => {
         <Title title="Projects" />
         <div className="row">
           <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="All projects" icon="fas fa-project-diagram">
+            <Widget title="All projects" icon="fas fa-table">
               <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
             </Widget>
           </div>

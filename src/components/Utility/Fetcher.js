@@ -33,16 +33,21 @@ class Fetcher extends Component {
   }
 
   render() {
+    const { showSpinnerPadding } = this.props
     const { isLoading, msg, data } = this.state
 
     if (isLoading) {
-      return <Spinner />
+      return <Spinner showPadding={showSpinnerPadding} />
     } else if (msg) {
       return <Error message={msg} />
     }
 
     return this.props.children(data, this.fetchData)
   }
+}
+
+Fetcher.defaultProps = {
+  showSpinnerPadding: false
 }
 
 export default Fetcher

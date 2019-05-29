@@ -8,12 +8,6 @@ import { Session } from 'services/session'
 import SearchForm from 'components/Search/Form'
 
 const Navbar = props => {
-  const logoStyle = {
-    height: '30px',
-    width: '30px',
-    marginRight: '8px'
-  }
-
   const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0']
 
   return (
@@ -45,8 +39,7 @@ const Navbar = props => {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="https://example.com"
-              id="dropdown07"
+              href="#"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
@@ -54,13 +47,25 @@ const Navbar = props => {
               <i className="fas fa-plus" />
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
+              <div className="dropdown-header">Users & Boards</div>
               <NavLink to="/administration/user" className="dropdown-item">
+                <i className="far fa-envelope fa-fw mr-2" />
                 Invite user
               </NavLink>
+              <NavLink exact to="/board?create=true" className="dropdown-item">
+                <i className="fas fa-chalkboard-teacher mr-2" />
+                Create board
+              </NavLink>
+              <div className="dropdown-divider" />
+
+              <div className="dropdown-header">Tasks & Projects</div>
+
               <NavLink exact to="/task" className="dropdown-item">
+                <i className="fas fa-tasks fa-fw mr-2" />
                 Create task
               </NavLink>
-              <NavLink to="/project?createProject=true" className="dropdown-item">
+              <NavLink to="/project?create=true" className="dropdown-item">
+                <i className="fas fa-table fa-fw mr-2" />
                 Create project
               </NavLink>
             </div>
@@ -81,16 +86,18 @@ const Navbar = props => {
                 {`${Session.getUser().firstname} ${Session.getUser().lastname}`}
               </div>
               <NavLink to="/user/me" className="dropdown-item">
+                <i className="far fa-user-circle fa-fw mr-2" />
                 Account
               </NavLink>
               {Session.isAdmin() ? (
                 <NavLink to="/administration" className="dropdown-item">
+                  <i className="fas fa-wrench fa-fw mr-2" />
                   Administration
                 </NavLink>
               ) : null}
               <div className="dropdown-divider" />
               <Link to="/signout" className="dropdown-item">
-                <i className="fas fa-sign-out-alt" /> Signout
+                <i className="fas fa-sign-out-alt fa-fw mr-2" /> Signout
               </Link>
             </div>
           </li>

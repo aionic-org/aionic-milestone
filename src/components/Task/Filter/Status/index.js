@@ -9,9 +9,8 @@ const TaskFilterStatus = props => (
     {status => {
       const { handleStatusChange } = props
 
-      const handleClick = title => {
-        if (title) {
-          const id = status.find(status => status.title === title).id
+      const handleClick = (title, id) => {
+        if (id) {
           handleStatusChange(id)
         } else {
           handleStatusChange(null)
@@ -20,6 +19,7 @@ const TaskFilterStatus = props => (
 
       const tabTitles = status.map(status => {
         return {
+          id: status.id,
           name: status.title
         }
       })

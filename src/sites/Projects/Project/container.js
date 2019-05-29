@@ -79,7 +79,6 @@ class SitesProjectContainer extends Component {
             msg: 'Project successfully updated!'
           }
         })
-
         setTimeout(() => {
           this.setState({
             projectUpdate: {

@@ -19,20 +19,15 @@ class TaskDetailsGeneralContainer extends Component {
   }
 
   componentDidMount = () => {
-    const requests = [
-      Api.fetchData('users'),
-      Api.fetchData('task-status'),
-      Api.fetchData('task-priorities')
-    ]
+    const requests = [Api.fetchData('task-status'), Api.fetchData('task-priorities')]
 
     Promise.all(requests)
       .then(res => {
         this.setState({
           isLoading: false,
           lists: {
-            userList: res[0],
-            statusList: res[1],
-            priorityList: res[2]
+            statusList: res[0],
+            priorityList: res[1]
           }
         })
       })

@@ -16,14 +16,12 @@ const TaskPreview = props => {
       </div>
       <div className="card-body">
         <h6 className="card-subtitle text-muted">
-          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'}
+          {task.status ? task.status.title : ''} (
+          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'})
         </h6>
       </div>
-
-      <div className="card-footer">
-        <p className="card-text">
-          <small className="text-muted">Updated: {task.updated} </small>
-        </p>
+      <div className="card-footer text-muted">
+        <small>Updated: {task.updated} </small>
       </div>
     </Link>
   )

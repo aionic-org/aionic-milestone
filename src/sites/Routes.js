@@ -10,13 +10,15 @@ import Footer from 'components/Navigation/Footer/'
 import SitesSignin from './Auth/Signin/'
 import SitesRegister from './Auth/Register/'
 
-import SitesDashboard from './Dashboard/'
-import SitesTask from './Task/container'
+import SitesHome from './Home/'
+import SitesTaskContainer from './Task/container'
 import SitesSearch from './Search'
 import SitesAdministration from './Administration'
-import SitesProjects from './Projects/container'
-import SitesProject from './Projects/Project/container'
-import SitesUser from './User/container'
+import SitesProjectsContainer from './Projects/container'
+import SitesProjectContainer from './Projects/Project/container'
+import SitesBoardsContainer from './Boards/container'
+import SitesBoardContainer from './Boards/Board/container'
+import SitesUserContainer from './User/container'
 
 import NotFound from './NotFound'
 
@@ -37,7 +39,7 @@ const Routes = props => {
 
         <div className="container-fluid">
           <Switch>
-            <Route exact path="/" component={SitesDashboard} />
+            <Route exact path="/" component={SitesHome} />
             <Route
               path="/signout"
               render={() => {
@@ -45,14 +47,16 @@ const Routes = props => {
                 return <Redirect to="/signin" />
               }}
             />
-            <Route exact path="/task" component={SitesTask} />
-            <Route path="/task/:id" component={SitesTask} />
+            <Route exact path="/task" component={SitesTaskContainer} />
+            <Route path="/task/:id" component={SitesTaskContainer} />
             <Route exact path="/search" component={SitesSearch} />
             <Route path="/search/:searchTerm" component={SitesSearch} />
             <Route path="/administration" component={SitesAdministration} />
-            <Route exact path="/project" component={SitesProjects} />
-            <Route exact path="/project/:id" component={SitesProject} />
-            <Route exact path="/user/:id" component={SitesUser} />
+            <Route exact path="/project" component={SitesProjectsContainer} />
+            <Route exact path="/project/:id" component={SitesProjectContainer} />
+            <Route exact path="/board" component={SitesBoardsContainer} />
+            <Route exact path="/board/:id" component={SitesBoardContainer} />
+            <Route exact path="/user/:id" component={SitesUserContainer} />
             <Route exact path="*" component={NotFound} />
           </Switch>
         </div>
