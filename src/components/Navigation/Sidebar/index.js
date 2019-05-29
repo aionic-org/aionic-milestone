@@ -26,21 +26,22 @@ const Sidebar = props => {
 
       <div className="list-group list-group-flush mt-4">
         <NavLink exact to="/" className="list-group-item list-group-item-action">
-          <i className="fas fa-fw fa-tachometer-alt fa-fw" />
-          Dashboard
+          <i className="fas fa-fw fa-home fa-fw" />
+          Home
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
-          <i className="fas fa-table fa-fw" /> Projects
+          <i className="fas fa-table fa-fw" />
+          Projects
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 
         <hr className="sidebar-divider" />
-        <NavLink exact to="/teams" className="list-group-item list-group-item-action">
-          <i className="fas fa-users fa-fw" />
-          Teams
+        <NavLink exact to="/board" className="list-group-item list-group-item-action">
+          <i className="fas fa-chalkboard-teacher" />
+          Boards
           <i className="fa fa-chevron-right float-right mt-1" />
         </NavLink>
 

@@ -6,8 +6,9 @@ import { Api } from 'services/api'
 
 import useSuggestion from '../../Utility/Hooks/useSuggestion'
 
-const TaskSuggestion = props => {
-  const { taskListSelected, updateParent } = props
+const UserSuggestion = props => {
+  const { userListSelected, updateParent } = props
+
   const [
     itemList,
     itemListSelected,
@@ -16,13 +17,13 @@ const TaskSuggestion = props => {
     setShowSuggestion,
     handleSelect,
     handleRemove
-  ] = useSuggestion(taskListSelected, updateParent)
+  ] = useSuggestion(userListSelected, updateParent)
 
   const handleInputChange = e => {
     const searchTerm = e.target.value
 
     if (searchTerm.length) {
-      Api.fetchData('tasks', { title: searchTerm })
+      Api.fetchData('users/search', { username: searchTerm })
         .then(itemList => {
           setItemList(itemList)
           setShowSuggestion(itemList.length ? true : false)
@@ -38,29 +39,14 @@ const TaskSuggestion = props => {
   const suggestion = showSuggestion ? (
     <div className="suggestionList">
       <ul className="list-group">
-        {itemList.map((task, i) => (
+        {itemList.map((user, i) => (
           <li
             className="list-group-item list-group-item-action"
-            key={task.id}
+            key={user.id}
             data-pos={i}
             onClick={handleSelect}
           >
-            <div className="row" data-pos={i}>
-              <div className="col-7">{task.title}</div>
-              <div className="col-5">
-                <span className="text-muted float-right">
-                  {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-                  <a
-                    className="fas fa-external-link-square-alt ml-2 fa-sm"
-                    href={`/task/${task.id}`}
-                    target="_blank"
-                    onClick={e => {
-                      e.stopPropagation()
-                    }}
-                  />
-                </span>
-              </div>
-            </div>
+            {user.firstname} {user.lastname}
           </li>
         ))}
       </ul>
@@ -70,27 +56,18 @@ const TaskSuggestion = props => {
   const selected = itemListSelected.length ? (
     <div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
       <ul className="list-group">
-        {itemListSelected.map((task, i) => (
-          <li className="list-group-item list-group-item-action" key={task.id}>
+        {itemListSelected.map((user, i) => (
+          <li className="list-group-item list-group-item-action" key={user.id}>
             <div className="row">
-              <div className="col-9">{task.title}</div>
+              <div className="col-9">
+                {user.firstname} {user.lastname}
+              </div>
               <div className="col-3">
                 <small className="float-right mt-1">
-                  <a
-                    className="fas fa-external-link-square-alt"
-                    href={`/task/${task.id}`}
-                    target="_blank"
-                    onClick={e => {
-                      e.stopPropagation()
-                    }}
-                  />
                   <i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
                 </small>
               </div>
             </div>
-            <small className="text-muted">
-              {task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-            </small>
           </li>
         ))}
       </ul>
@@ -99,12 +76,12 @@ const TaskSuggestion = props => {
   ) : null
 
   return (
-    <div className="TaskSuggestion">
+    <div className="UserSuggestion">
       <input
         type="text"
         className="form-control"
         name="title"
-        placeholder="Enter task"
+        placeholder="Enter username"
         autoComplete="off"
         onChange={handleInputChange}
         onKeyDown={e => {
@@ -118,9 +95,9 @@ const TaskSuggestion = props => {
   )
 }
 
-TaskSuggestion.defaultProps = {
-  taskListSelected: [],
+UserSuggestion.defaultProps = {
+  userListSelected: [],
   updateParent: () => {}
 }
 
-export default TaskSuggestion
+export default UserSuggestion

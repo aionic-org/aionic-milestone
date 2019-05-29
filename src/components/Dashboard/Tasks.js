@@ -6,7 +6,7 @@ import Deck from 'components/Deck'
 
 import TaskFilterStatus from 'components/Task/Filter/Status/'
 
-class BoardTasks extends Component {
+class DashboardTasks extends Component {
   constructor(props) {
     super(props)
 
@@ -69,7 +69,7 @@ class BoardTasks extends Component {
     const itemList = isFiltered ? taskListFiltered : taskList
 
     return (
-      <div className="BoardTasks">
+      <div className="DashboardTasks">
         {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterByStatus} /> : null}
 
         <div className={`${showStatusFilters ? 'mt-4' : ''} `}>
@@ -102,10 +102,10 @@ class BoardTasks extends Component {
   }
 }
 
-BoardTasks.defaultProps = {
+DashboardTasks.defaultProps = {
   showStatusFilters: true,
   itemsPerRow: 4,
   updateParent: () => {}
 }
 
-export default BoardTasks
+export default DashboardTasks

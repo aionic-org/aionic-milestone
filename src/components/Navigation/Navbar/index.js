@@ -47,14 +47,14 @@ const Navbar = props => {
               <i className="fas fa-plus" />
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-              <div className="dropdown-header">Users & Teams</div>
+              <div className="dropdown-header">Users & Boards</div>
               <NavLink to="/administration/user" className="dropdown-item">
                 <i className="far fa-envelope fa-fw mr-2" />
                 Invite user
               </NavLink>
-              <NavLink to="/teams" className="dropdown-item">
-                <i className="fas fa-users fa-fw mr-2" />
-                Create team
+              <NavLink exact to="/board?create=true" className="dropdown-item">
+                <i className="fas fa-chalkboard-teacher mr-2" />
+                Create board
               </NavLink>
               <div className="dropdown-divider" />
 
@@ -64,7 +64,7 @@ const Navbar = props => {
                 <i className="fas fa-tasks fa-fw mr-2" />
                 Create task
               </NavLink>
-              <NavLink to="/project?createProject=true" className="dropdown-item">
+              <NavLink to="/project?create=true" className="dropdown-item">
                 <i className="fas fa-table fa-fw mr-2" />
                 Create project
               </NavLink>

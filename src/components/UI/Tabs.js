@@ -12,7 +12,7 @@ const Tabs = props => {
       props.handleClick(null)
     } else {
       setActiveTab(pos)
-      handleClick(tabs[pos].name)
+      handleClick(tabs[pos].name, tabs[pos].id)
     }
   }
 
@@ -26,6 +26,7 @@ const Tabs = props => {
             type="button"
             key={i}
             data-pos={i}
+            data-id={tab.id}
             disabled={tab.disabled === undefined ? false : tab.disabled}
           >
             {tab.name}
