@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import './Form.css'
+import './Bar.css'
 
-const SearchForm = props => {
+const SearchBar = props => {
   const { history, location, assignedClasses } = props
   const [term, setTerm] = useState('')
 
@@ -17,7 +17,7 @@ const SearchForm = props => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    const _term = term || document.querySelector('.SearchForm input').value
+    const _term = term || document.querySelector('.SearchBar input').value
 
     if (_term.length) {
       history.push(`/search/${_term}`)
@@ -25,7 +25,7 @@ const SearchForm = props => {
   }
 
   return (
-    <form className={`SearchForm ${assignedClasses.join(' ')}`} onSubmit={handleSubmit}>
+    <form className={`SearchBar ${assignedClasses.join(' ')}`} onSubmit={handleSubmit}>
       <div className="input-group">
         <input
           className="form-control"
@@ -45,8 +45,8 @@ const SearchForm = props => {
   )
 }
 
-SearchForm.defaultProps = {
+SearchBar.defaultProps = {
   assignedClasses: []
 }
 
-export default withRouter(SearchForm)
+export default withRouter(SearchBar)

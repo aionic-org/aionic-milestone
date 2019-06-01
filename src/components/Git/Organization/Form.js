@@ -50,13 +50,14 @@ class GitOrganizationForm extends Component {
     return (
       <div className="GitOrganizationForm">
         <form onSubmit={this.handleSubmit}>
+          <label for="exampleInputEmail1">Add new organization</label>
           <div className="input-group mb-3">
             <input
               type="text"
               name="name"
               className={`form-control ${status}`}
               onChange={this.handleInputChange}
-              placeholder="Organization name"
+              placeholder="Enter organization name"
               autoComplete="off"
             />
             <div className="input-group-append">

@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Api } from 'services/api'
-import Comment from '../../../Comments/Comment/Preview'
 
-class ProjectCommentContainer extends Component {
-  deleteComment = id => {
-    Api.deleteData(`projects/${this.props.taskId}/comments/${id}`)
+import Comment from 'components/Comments/Comment/Preview'
+
+const ProjectCommentContainer = props => {
+  const { comment, projectId, removeComment } = props
+
+  const deleteComment = id => {
+    Api.deleteData(`projects/${projectId}/comments/${id}`)
       .then(res => {
-        this.props.removeComment(id)
+        removeComment(id)
       })
       .catch(err => {
         console.log(err)
       })
   }
 
-  render() {
-    const { comment } = this.props
-    return (
-      <div className="ProjectCommentContainer">
-        <Comment comment={comment} deleteComment={this.deleteComment} />
-      </div>
-    )
-  }
+  return (
+    <div className="ProjectCommentContainer">
+      <Comment comment={comment} deleteComment={deleteComment} />
+    </div>
+  )
 }
 
 export default ProjectCommentContainer

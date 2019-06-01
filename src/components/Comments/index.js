@@ -34,7 +34,7 @@ const Comments = props => {
             return (
               <ProjectCommentContainer
                 comment={comment}
-                taskId={typeId}
+                projectId={typeId}
                 removeComment={removeComment}
                 key={comment.id}
               />

@@ -18,17 +18,16 @@ const AnnouncementPreview = props => {
   return (
     <div className="AnnouncementPreview card">
       <div className="card-body">
-        <h5 className="card-title">
-          {announcement.author.firstname} {announcement.author.lastname}
-        </h5>
-        <p className="card-text">{announcement.description}</p>
-        <p className="card-text">
-          <small className="text-muted">{announcement.created}</small>
-        </p>
+        <h5 className="card-title">{announcement.description}</h5>
 
-        <button className="btn btn-danger" onClick={deleteAnnouncement}>
-          Remove
-        </button>
+        <p className="card-text">
+          <small className="text-muted">
+            {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}
+          </small>
+          <button className="btn btn-danger float-right" onClick={deleteAnnouncement}>
+            Remove
+          </button>
+        </p>
       </div>
     </div>
   )

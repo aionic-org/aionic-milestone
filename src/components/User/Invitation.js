@@ -42,13 +42,14 @@ class UserInvitation extends Component {
     return (
       <div className="UserInvitation">
         <form onSubmit={this.handleSubmit}>
+          <label for="exampleInputEmail1">Invite new user</label>
           <div className="input-group mb-3">
             <input
               type="email"
               name="email"
               className={`form-control ${this.state.status}`}
               onChange={this.handleInputChange}
-              placeholder="Invitation email"
+              placeholder="Enter email"
               autoComplete="off"
             />
             <div className="input-group-append">

@@ -5,7 +5,7 @@ import './Navbar.css'
 
 import { Session } from 'services/session'
 
-import SearchForm from 'components/Search/Form'
+import SearchBar from 'components/Search/Bar'
 
 const Navbar = props => {
   const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0']
@@ -33,7 +33,7 @@ const Navbar = props => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <SearchForm assignedClasses={searchbarClasses} />
+        <SearchBar assignedClasses={searchbarClasses} />
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item dropdown">

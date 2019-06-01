@@ -104,7 +104,7 @@ class DashboardTasks extends Component {
 
 DashboardTasks.defaultProps = {
   showStatusFilters: true,
-  itemsPerRow: 4,
+  itemsPerRow: 3,
   updateParent: () => {}
 }
 

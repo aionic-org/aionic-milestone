@@ -61,6 +61,7 @@ class AnnouncementForm extends Component {
     return (
       <div className="AnnouncementForm">
         <form onSubmit={this.handleSubmit}>
+          <label for="exampleInputEmail1">Make new announcement</label>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <div className="input-group-text">
@@ -78,7 +79,7 @@ class AnnouncementForm extends Component {
               name="description"
               className={`form-control ${status}`}
               onChange={this.handleInputChange}
-              placeholder="Announcement"
+              placeholder="Enter announcement"
               autoComplete="off"
             />
             <div className="input-group-append">

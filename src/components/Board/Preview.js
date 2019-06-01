@@ -12,7 +12,9 @@ const BoardPreview = props => {
         </span>
       </div>
       <div className="card-body">
-        <h5 className="card-title">Lars Wächter</h5>
+        <h5 className="card-title">
+          {board.author.firstname} {board.author.lastname}
+        </h5>
         <p className="card-text">{board.description}</p>
       </div>
       <div className="card-footer text-muted">

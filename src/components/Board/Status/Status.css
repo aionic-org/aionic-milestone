@@ -1,3 +1,7 @@
+.BoardStatus {
+  position: relative;
+}
+
 .BoardStatus > h6 {
   font-weight: bold;
   background: #dfe6e9;

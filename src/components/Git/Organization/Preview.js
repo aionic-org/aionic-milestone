@@ -38,7 +38,7 @@ const GitOrganizationPreview = props => {
     <div target="_blank" className="GitOrganizationPreview  card">
       <div className="card-body">
         <h5 className="card-title">{org.name}</h5>
-        <p className="card-text">{org.description}</p>
+        <p className="card-text">{org.description ? org.description : '- no description -'}</p>
         <button className="btn btn-primary" onClick={syncOrganization}>
           {isLoading ? <Spinner onBtn={true} /> : 'Synchronize'}
         </button>
