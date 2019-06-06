@@ -14,7 +14,7 @@ const AdministrationUser = props => (
       <div className="AdministrationUser">
         <Widget title="Users" icon="fas fa-users-cog">
           <UserInvitation />
-          <hr class="featurette-divider" />
+          <hr className="featurette-divider" />
           <Deck itemList={users} deckType="User" />
         </Widget>
       </div>

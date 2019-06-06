@@ -73,7 +73,7 @@ export class AdministrationGitHub extends Component {
         <div className="AdministrationGitHub">
           <Widget title="GitHub" icon="fab fa-github">
             <GitOrganizationForm updateParent={this.addOrganization} />
-            <hr class="featurette-divider" />
+            <hr className="featurette-divider" />
             <div className="GitOrganizationContainer">
               <Deck
                 itemList={organizations}

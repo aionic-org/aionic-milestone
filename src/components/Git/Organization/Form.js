@@ -50,7 +50,7 @@ class GitOrganizationForm extends Component {
     return (
       <div className="GitOrganizationForm">
         <form onSubmit={this.handleSubmit}>
-          <label for="exampleInputEmail1">Add new organization</label>
+          <label>Add new organization</label>
           <div className="input-group mb-3">
             <input
               type="text"

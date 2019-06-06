@@ -61,7 +61,7 @@ class AnnouncementForm extends Component {
     return (
       <div className="AnnouncementForm">
         <form onSubmit={this.handleSubmit}>
-          <label for="exampleInputEmail1">Make new announcement</label>
+          <label>Make new announcement</label>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <div className="input-group-text">

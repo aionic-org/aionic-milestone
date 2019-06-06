@@ -42,7 +42,7 @@ class UserInvitation extends Component {
     return (
       <div className="UserInvitation">
         <form onSubmit={this.handleSubmit}>
-          <label for="exampleInputEmail1">Invite new user</label>
+          <label>Invite new user</label>
           <div className="input-group mb-3">
             <input
               type="email"

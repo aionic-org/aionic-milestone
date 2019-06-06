@@ -24,7 +24,7 @@ const SitesProjectTabsContent = props => {
   return (
     <div className="SitesProjectTabs">
       <div className="row">
-        <div className="col-12 col-md-10">
+        <div className="col-12 col-md-9">
           <Tabs handleClick={changeTab} tabs={tabs} />
           <div className={`SitesProjectTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
         </div>

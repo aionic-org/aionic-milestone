@@ -64,7 +64,7 @@ export class AdministrationAnnouncement extends Component {
         <div className="AdministrationAnnouncement">
           <Widget title="Announcements" icon="fas fa-bullhorn" wrapBody={true}>
             <AnnouncementForm updateParent={this.addAnnouncement} />
-            <hr class="featurette-divider" />
+            <hr className="featurette-divider" />
             <div className="GitOrganizationContainer">
               <Deck
                 itemList={announcements}
