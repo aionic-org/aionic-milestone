@@ -1,6 +1,6 @@
 .SearchBar input {
-  background-color: #f8f9fa;
-  border: none;
+  background-color: white;
+  border: 1px solid #b2bec3;
 }
 
 @media (min-width: 992px) {

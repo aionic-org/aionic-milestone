@@ -7,7 +7,7 @@ import { Api } from 'services/api'
 import useSuggestion from '../../Utility/Hooks/useSuggestion'
 
 const TaskSuggestion = props => {
-  const { taskListSelected, updateParent } = props
+  const { taskListSelected, updateParent, maxHeight } = props
   const [
     itemList,
     itemListSelected,
@@ -68,7 +68,10 @@ const TaskSuggestion = props => {
   ) : null
 
   const selected = itemListSelected.length ? (
-    <div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
+    <div
+      className={`selectedList ${maxHeight ? ' max-height' : ``}`}
+      style={{ opacity: showSuggestion ? 0.3 : 1 }}
+    >
       <ul className="list-group">
         {itemListSelected.map((task, i) => (
           <li className="list-group-item list-group-item-action" key={task.id}>
@@ -94,7 +97,7 @@ const TaskSuggestion = props => {
           </li>
         ))}
       </ul>
-      <span className="text-muted mt-2 d-block text-right">Count: {itemListSelected.length}</span>
+      <span className="text-muted mt-2 d-block text-center">Total: {itemListSelected.length}</span>
     </div>
   ) : null
 
@@ -120,7 +123,8 @@ const TaskSuggestion = props => {
 
 TaskSuggestion.defaultProps = {
   taskListSelected: [],
-  updateParent: () => {}
+  updateParent: () => {},
+  maxHeight: false
 }
 
 export default TaskSuggestion

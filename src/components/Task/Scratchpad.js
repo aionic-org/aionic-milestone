@@ -72,7 +72,7 @@ class TaskScratchpad extends Component {
     const { isLoading, msg, scratchpad, status } = this.state
 
     if (isLoading) {
-      return <Spinner />
+      return <Spinner showPadding={true} />
     } else {
       return (
         <div className="UserStatus">
@@ -84,6 +84,10 @@ class TaskScratchpad extends Component {
               defaultValue={scratchpad.text}
               onBlur={this.handleInputChange}
             />
+            <small className="form-text text-muted">
+              Your personal scratchpad for this task (only visible for you).
+            </small>
+
             <div className="valid-feedback">Scratchpad updated!</div>
             <div className="invalid-feedback">{msg}</div>
           </div>

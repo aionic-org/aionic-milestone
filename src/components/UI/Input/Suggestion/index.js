@@ -59,11 +59,7 @@ class InputSuggestion extends Component {
   getDefaultValue = () => {
     const { defaultValue, elementList } = this.props
 
-    if (defaultValue) {
-      return elementList.filter(element => element.id === defaultValue)[0].text
-    } else {
-      return ''
-    }
+    return defaultValue ? elementList.filter(element => element.id === defaultValue)[0].text : ''
   }
 
   render() {

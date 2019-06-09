@@ -1,14 +1,26 @@
-.InputTitle > h1 {
-  margin: -5px;
+.InputTitle {
+  display: table;
+  height: 100%;
+  width: 100%;
 }
 
-.InputTitle > h1 > input {
+.InputTitle > .color {
+  display: table-cell;
+  height: 100%;
+  width: 8px;
+  border-radius: 8px;
+}
+
+.InputTitle > input {
+  display: table-cell;
   background: transparent;
   border: none;
   color: #2d3436;
+  margin-left: 8px;
   padding: 5px 5px;
+  width: 100%;
 }
 
-.InputTitle > h1 > input:focus {
+.InputTitle > input:focus {
   background: white;
 }

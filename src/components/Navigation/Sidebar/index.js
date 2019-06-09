@@ -18,47 +18,30 @@ const Sidebar = props => {
   return (
     <div className="Sidebar" id="sidebar-wrapper">
       <div className="sidebar-heading text-center">
-        <NavLink to="/">
-          <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
-        </NavLink>
+        <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
       </div>
-      <hr className="sidebar-divider" />
-
-      <div className="list-group list-group-flush mt-4">
+      <div className="list-group list-group-flush">
         <NavLink exact to="/" className="list-group-item list-group-item-action">
-          <i className="fas fa-fw fa-home fa-fw" />
-          Home
-          <i className="fa fa-chevron-right float-right mt-1" />
+          <i className="fas fa-home fa-fw mr-2" /> Home
         </NavLink>
 
-        <hr className="sidebar-divider" />
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
-          <i className="fas fa-table fa-fw" />
-          Projects
-          <i className="fa fa-chevron-right float-right mt-1" />
+          <i className="fas fa-table fa-fw mr-2" /> Projects
         </NavLink>
 
-        <hr className="sidebar-divider" />
         <NavLink exact to="/board" className="list-group-item list-group-item-action">
-          <i className="fas fa-chalkboard-teacher" />
-          Boards
-          <i className="fa fa-chevron-right float-right mt-1" />
+          <i className="fas fa-chalkboard-teacher fa-fw mr-2" /> Boards
         </NavLink>
 
-        <hr className="sidebar-divider" />
         <NavLink to="/search" className="list-group-item list-group-item-action">
-          <i className="fas fa-search fa-fw" />
-          Search
-          <i className="fa fa-chevron-right float-right mt-1" />
+          <i className="fas fa-search fa-fw mr-2" /> Search
         </NavLink>
 
         {Session.isAdmin() ? (
           <div>
             <hr className="sidebar-divider" />
             <NavLink to="/administration" className="list-group-item list-group-item-action">
-              <i className="fas fa-wrench fa-fw" />
-              Administration
-              <i className="fa fa-chevron-right float-right mt-1" />
+              <i className="fas fa-wrench fa-fw mr-2" /> Admin
             </NavLink>
           </div>
         ) : null}

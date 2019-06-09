@@ -3,10 +3,12 @@
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 
+.btn-link,
 a {
   color: #e84393;
 }
 
+.btn-link:hover,
 a:hover {
   color: #d03c84;
 }
@@ -78,14 +80,10 @@ a.CardLink:hover {
   border-color: #c02b2c !important;
 }
 
-.btn-link,
 .nav-link {
   color: #0984e3;
 }
 
-.btn-link:hover,
-.btn-link:active,
-.btn-link:focus,
 .nav-link:hover,
 .nav-link:active,
 .nav-link:focus {

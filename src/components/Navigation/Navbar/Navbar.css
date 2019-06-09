@@ -1,7 +1,7 @@
 .navbar {
-  background-color: #363946 !important;
-  background-color: white !important;
+  background-color: #f8f9fa;
   min-height: 4.375rem;
+  border-bottom: 1px solid #dfe6e9;
 }
 
 #wrapper.toggled .navbar .fa-chevron-left {

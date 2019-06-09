@@ -11,7 +11,7 @@ const Navbar = props => {
   const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0']
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <button
         className="btn btn-link mr-3"
         onClick={props.toggleSidebar}
@@ -79,7 +79,7 @@ const Navbar = props => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i className="fas fa-user-tie" />
+              <i className="fas fa-user-tie mr-1" /> {Session.getUser().firstname}
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
               <div className="dropdown-header">

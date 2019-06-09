@@ -6,18 +6,14 @@ import TaskCommentsFormContainer from './Form/container'
 import Comments from '../../Comments'
 
 const TaskCommentsContainer = props => (
-  <Fetcher url={`tasks/${props.taskId}/comments`}>
+  <Fetcher url={`tasks/${props.taskId}/comments`} showSpinnerPadding={true}>
     {(comments, fetchData) => {
       const { taskId, showForm } = props
 
       return (
         <div className="TaskCommentsContainer">
+          {showForm ? <TaskCommentsFormContainer taskId={taskId} updateParent={fetchData} /> : null}
           <Comments type="Task" typeId={taskId} commentList={comments} />
-          {showForm ? (
-            <div className="mt-4">
-              <TaskCommentsFormContainer taskId={taskId} updateParent={fetchData} />
-            </div>
-          ) : null}
         </div>
       )
     }}

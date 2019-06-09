@@ -5,9 +5,9 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import TaskDetailsGeneral from '.'
+import TaskSummary from '.'
 
-class TaskDetailsGeneralContainer extends Component {
+class TaskSummaryContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -19,7 +19,11 @@ class TaskDetailsGeneralContainer extends Component {
   }
 
   componentDidMount = () => {
-    const requests = [Api.fetchData('task-status'), Api.fetchData('task-priorities')]
+    const requests = [
+      Api.fetchData('task-status'),
+      Api.fetchData('task-priorities'),
+      Api.fetchData('users')
+    ]
 
     Promise.all(requests)
       .then(res => {
@@ -27,7 +31,8 @@ class TaskDetailsGeneralContainer extends Component {
           isLoading: false,
           lists: {
             statusList: res[0],
-            priorityList: res[1]
+            priorityList: res[1],
+            userList: res[2]
           }
         })
       })
@@ -45,12 +50,12 @@ class TaskDetailsGeneralContainer extends Component {
       return <Error message={msg} />
     } else {
       return (
-        <div className="TaskDetailsGeneralContainer">
-          <TaskDetailsGeneral lists={lists} {...this.props} />
+        <div className="TaskSummaryContainer">
+          <TaskSummary lists={lists} {...this.props} />
         </div>
       )
     }
   }
 }
 
-export default TaskDetailsGeneralContainer
+export default TaskSummaryContainer

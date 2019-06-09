@@ -1,3 +1,7 @@
-.Comments > div:not(:first-child) {
+.Comments > div {
   margin-top: 10px;
+}
+
+.Comments > div:first-child {
+  margin-top: 20px;
 }

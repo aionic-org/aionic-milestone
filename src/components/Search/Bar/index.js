@@ -30,14 +30,14 @@ const SearchBar = props => {
         <input
           className="form-control"
           type="text"
-          placeholder="Search for..."
+          placeholder="Enter task title..."
           aria-label="Search"
           onChange={handleInputChange}
           defaultValue={termFromUrl}
         />
         <div className="input-group-append">
           <button className="btn btn-secondary" type="submit">
-            <i className="fas fa-search fa-sm" />
+            <i className="fas fa-search fa-sm" /> Search
           </button>
         </div>
       </div>

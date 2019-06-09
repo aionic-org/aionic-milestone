@@ -5,10 +5,13 @@ const CommentForm = props => {
   return (
     <div className="CommentForm">
       <form onSubmit={handleSubmit}>
+        <label>Write a comment</label>
         <textarea className="form-control" name="comment" rows="3" onChange={handleInputChange} />
-        <button className="btn btn-md btn-primary mt-2 btn-block btn-sm" type="submit">
-          <i className="fas fa-sign-in-alt" /> Submit
-        </button>
+        <div className="d-flex justify-content-end">
+          <button className="btn btn-md btn-primary mt-2" type="submit">
+            <i className="fas fa-sign-in-alt" /> Post comment
+          </button>
+        </div>
       </form>
     </div>
   )

@@ -10,7 +10,10 @@ const TaskDescription = props => {
   }
 
   return (
-    <div className="TaskDescription">
+    <div className="TaskDescription mt-5">
+      <p className="text-muted">Description</p>
+      <hr className="featurette-divider" />
+
       <RichEditor content={props.task.description} updateParent={updateDescription} />
     </div>
   )

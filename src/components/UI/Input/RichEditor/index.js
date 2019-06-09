@@ -71,7 +71,6 @@ class RichEditor extends React.Component {
     return (
       <div className="RichEditor-root">
         <BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType} />
-        <InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle} />
         <div className={className} onClick={this.focus}>
           <Editor
             blockStyleFn={getBlockStyle}
@@ -138,6 +137,9 @@ const BLOCK_TYPES = [
   { label: 'H2', style: 'header-two' },
   { label: 'H3', style: 'header-three' },
   { label: 'H4', style: 'header-four' },
+  { label: <i className="fas fa-bold" />, style: 'BOLD' },
+  { label: <i className="fas fa-italic" />, style: 'ITALIC' },
+  { label: <i className="fas fa-underline" />, style: 'UNDERLINE' },
   { label: <i className="fas fa-quote-right" />, style: 'blockquote' },
   { label: <i className="fas fa-list-ul" />, style: 'unordered-list-item' },
   { label: <i className="fas fa-list-ol" />, style: 'ordered-list-item' },
@@ -158,29 +160,6 @@ const BlockStyleControls = props => {
         <StyleButton
           key={i}
           active={type.style === blockType}
-          label={type.label}
-          onToggle={props.onToggle}
-          style={type.style}
-        />
-      ))}
-    </div>
-  )
-}
-
-var INLINE_STYLES = [
-  { label: <i className="fas fa-bold" />, style: 'BOLD' },
-  { label: <i className="fas fa-italic" />, style: 'ITALIC' },
-  { label: <i className="fas fa-underline" />, style: 'UNDERLINE' }
-]
-
-const InlineStyleControls = props => {
-  var currentStyle = props.editorState.getCurrentInlineStyle()
-  return (
-    <div className="RichEditor-controls">
-      {INLINE_STYLES.map((type, i) => (
-        <StyleButton
-          key={i}
-          active={currentStyle.has(type.style)}
           label={type.label}
           onToggle={props.onToggle}
           style={type.style}

@@ -1,8 +1,9 @@
 .Sidebar {
-  background-color: #6c5ce7;
+  background-color: #f8f9fa;
   color: white;
   min-height: 100vh;
-  margin-left: -14rem;
+  margin-left: -7rem;
+  border-right: 1px solid #dfe6e9;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
@@ -17,35 +18,35 @@
 }
 
 .Sidebar .sidebar-heading {
-  padding: 0.5rem 0rem;
+  padding: 1rem 0rem;
   font-size: 1.2rem;
 }
 
 .Sidebar .list-group {
-  width: 14rem;
+  width: 15rem;
 }
 
 .Sidebar .list-group a {
-  background-color: #6c5ce7;
-  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  background-color: inherit;
+  color: #636e72;
   border: none;
-  font-weight: bold;
 }
 
 .Sidebar .list-group a.active {
-  color: white;
+  color: #6c5ce7;
 }
 
 .Sidebar .list-group a:hover {
-  color: white;
+  color: #6c5ce7;
 }
 
-.Sidebar .list-group a:not(.active) .fa-chevron-right {
-  display: none;
-}
-
-.Sidebar .list-group a > i:not(.fa-chevron-right) {
-  margin-right: 10px;
+.Sidebar .list-group a.active::after {
+  display: block;
+  content: '\f054';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-left: auto;
 }
 
 .Sidebar .list-group a .fas {
@@ -62,6 +63,6 @@
   }
 
   #App.toggled #sidebar-wrapper {
-    margin-left: -14rem;
+    margin-left: -15rem;
   }
 }

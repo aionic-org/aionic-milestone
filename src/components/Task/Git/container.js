@@ -5,9 +5,9 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import TaskDetails from '.'
+import TaskGit from '.'
 
-class TaskDetailsGitContainer extends Component {
+class TaskGitContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -95,21 +95,27 @@ class TaskDetailsGitContainer extends Component {
     this.props.updateTask({ ...this.props.task, repository: { id: repoId } })
   }
 
+  handleBranchChange = e => {
+    this.props.updateTask({ ...this.props.task, branch: e.target.value })
+  }
+
   render() {
+    const { task } = this.props
     const { isLoading, msg, lists } = this.state
 
     if (isLoading) {
-      return <Spinner />
+      return <Spinner showPadding={true} />
     } else if (msg) {
       return <Error message={msg} />
     } else {
       return (
-        <div className="TaskDetailsGitContainer">
-          <TaskDetails
+        <div className="TaskGitContainer">
+          <TaskGit
+            task={task}
             handleOrgChange={this.handleOrgChange}
             handleRepoChange={this.handleRepoChange}
+            handleBranchChange={this.handleBranchChange}
             lists={lists}
-            {...this.props}
           />
         </div>
       )
@@ -117,4 +123,4 @@ class TaskDetailsGitContainer extends Component {
   }
 }
 
-export default TaskDetailsGitContainer
+export default TaskGitContainer
