@@ -1,0 +1,7 @@
+.TaskTag {
+  color: #e84393;
+}
+
+.TaskTag.list-inline-item {
+  margin-right: 1rem;
+}

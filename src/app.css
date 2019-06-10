@@ -7,19 +7,35 @@
 body {
   overflow-x: hidden;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: #f8f9fa;
 }
 
 #page-content-wrapper {
-  min-width: 100vw;
   background-color: white;
   padding-bottom: 15px;
+  margin-left: 0;
+  -webkit-transition: margin 0.25s ease;
+  -moz-transition: margin 0.25s ease;
+  -o-transition: margin 0.25s ease;
+  transition: margin 0.25s ease;
+}
+
+#App.toggled #page-content-wrapper {
+  margin-left: 250px;
 }
 
 @media (min-width: 768px) {
   #page-content-wrapper {
     min-width: 0;
     width: 100%;
+    margin-left: 250px;
+  }
+
+  #App.toggled #page-content-wrapper {
+    margin-left: 0;
+    -webkit-transition: margin 0.25s ease;
+    -moz-transition: margin 0.25s ease;
+    -o-transition: margin 0.25s ease;
+    transition: margin 0.25s ease;
   }
 }
 

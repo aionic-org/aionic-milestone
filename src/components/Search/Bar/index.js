@@ -37,7 +37,7 @@ const SearchBar = props => {
         />
         <div className="input-group-append">
           <button className="btn btn-secondary" type="submit">
-            <i className="fas fa-search fa-sm" /> Search
+            <i className="fas fa-search fa-sm" />
           </button>
         </div>
       </div>

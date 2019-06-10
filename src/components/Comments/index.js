@@ -19,30 +19,32 @@ const Comments = props => {
 
   return (
     <div className="Comments">
-      {comments.map(comment => {
-        switch (type) {
-          case 'Task':
-            return (
-              <TaskCommentContainer
-                comment={comment}
-                taskId={typeId}
-                removeComment={removeComment}
-                key={comment.id}
-              />
-            )
-          case 'Project':
-            return (
-              <ProjectCommentContainer
-                comment={comment}
-                projectId={typeId}
-                removeComment={removeComment}
-                key={comment.id}
-              />
-            )
-          default:
-            return null
-        }
-      })}
+      <div className="list-group">
+        {comments.map(comment => {
+          switch (type) {
+            case 'Task':
+              return (
+                <TaskCommentContainer
+                  comment={comment}
+                  taskId={typeId}
+                  removeComment={removeComment}
+                  key={comment.id}
+                />
+              )
+            case 'Project':
+              return (
+                <ProjectCommentContainer
+                  comment={comment}
+                  projectId={typeId}
+                  removeComment={removeComment}
+                  key={comment.id}
+                />
+              )
+            default:
+              return null
+          }
+        })}
+      </div>
       <p className="text-muted text-center mt-2">Total: {comments.length}</p>
     </div>
   )

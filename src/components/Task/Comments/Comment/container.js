@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Api } from 'services/api'
 
-import Comment from 'components/Comments/Comment/Preview'
+import Comment from 'components/Comments/Comment/'
 
 const TaskCommentContainer = props => {
   const { taskId, comment, removeComment } = props

@@ -1,0 +1,8 @@
+.TaskTags {
+  margin-top: 25px;
+}
+
+.TaskTags .fa-plus {
+  color: #e84393;
+  cursor: pointer;
+}

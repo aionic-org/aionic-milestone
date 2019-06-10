@@ -2,7 +2,7 @@ import React from 'react'
 
 import Error from 'components/UI/Error'
 
-import CommentForm from 'components/Comments/Comment/Form'
+import CommentForm from 'components/Comments/Form'
 import useCommentForm from '../../../Utility/Hooks/useCommentForm'
 
 const ProjectCommentsFormContainer = props => {

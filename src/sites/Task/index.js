@@ -6,6 +6,8 @@ import Tabs from './components/Tabs'
 import TaskTitle from 'components/Task/Title'
 import TaskSummaryContainer from 'components/Task/Summary/container'
 import TaskDescription from 'components/Task/Description'
+import TaskActionButtons from '../../components/Task/ActionButtons'
+import TaskTags from '../../components/Task/Tags'
 
 const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
@@ -14,43 +16,22 @@ const SitesTask = props => {
     <div className="SitesTask">
       <Content>
         <div className="row">
-          <div className="col-8">
+          <div className="col-12 col-md-7 col-xl-8">
             <TaskTitle task={task} onBlur={handleInputChange} />
           </div>
-          <div className="offset-1 col-3">
-            <div className="float-right">
-              <div className="btn-group ">
-                <button
-                  type="button"
-                  className="btn btn-primary dropdown-toggle"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  More
-                </button>
-                <div className="dropdown-menu dropdown-menu-right">
-                  <a className="dropdown-item" href="#">
-                    <i className="fas fa-share fa-fw mr-2" /> Share
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="fas fa-print fa-fw mr-2" /> Print
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="fas fa-archive fa-fw mr-2" /> Archive
-                  </a>
-                  <div className="dropdown-divider" />
-                  <a className="dropdown-item text-danger" href="#">
-                    <i className="fas fa-trash fa-fw mr-2" /> Delete
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="col-12 col-md-5 offset-xl-1 col-xl-3 mt-3 mt-md-0">
+            <TaskActionButtons task={task} updateTask={updateTask} />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-12">
+            <TaskTags task={task} updateTask={updateTask} />
           </div>
         </div>
 
         <div className="row mt-4">
-          <div className="col-8">
+          <div className="col-12 col-xl-8">
             <TaskSummaryContainer
               handleInputChange={handleInputChange}
               updateTask={updateTask}
@@ -58,7 +39,7 @@ const SitesTask = props => {
             />
             <TaskDescription task={task} updateTask={updateTask} />
           </div>
-          <div className="col-4">
+          <div className="col-12 col-xl-4 mt-3 mt-xl-0">
             <Tabs task={task} updateTask={updateTask} />
           </div>
         </div>

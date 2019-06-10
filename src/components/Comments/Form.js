@@ -9,7 +9,7 @@ const CommentForm = props => {
         <textarea className="form-control" name="comment" rows="3" onChange={handleInputChange} />
         <div className="d-flex justify-content-end">
           <button className="btn btn-md btn-primary mt-2" type="submit">
-            <i className="fas fa-sign-in-alt" /> Post comment
+            <i className="fas fa-sign-in-alt mr-1" /> Post
           </button>
         </div>
       </form>

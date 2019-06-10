@@ -1,13 +1,17 @@
 .Sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
   background-color: #f8f9fa;
   color: white;
-  min-height: 100vh;
-  margin-left: -7rem;
+  width: 100%;
+  max-width: 250px;
   border-right: 1px solid #dfe6e9;
-  -webkit-transition: margin 0.25s ease-out;
-  -moz-transition: margin 0.25s ease-out;
-  -o-transition: margin 0.25s ease-out;
-  transition: margin 0.25s ease-out;
+  -webkit-transition: margin 0.25s ease;
+  -moz-transition: margin 0.25s ease;
+  -o-transition: margin 0.25s ease;
+  transition: margin 0.25s ease;
 }
 
 .Sidebar .sidebar-divider {
@@ -18,16 +22,16 @@
 }
 
 .Sidebar .sidebar-heading {
-  padding: 1rem 0rem;
+  padding: 0.8rem 0rem;
   font-size: 1.2rem;
 }
 
 .Sidebar .list-group {
-  width: 15rem;
+  margin-top: 15px;
 }
 
 .Sidebar .list-group a {
-  display: flex;
+  display: block;
   background-color: inherit;
   color: #636e72;
   border: none;
@@ -43,26 +47,30 @@
 
 .Sidebar .list-group a.active::after {
   display: block;
+  float: right;
   content: '\f054';
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  margin-left: auto;
 }
 
-.Sidebar .list-group a .fas {
-  font-size: 1.2em;
+.Sidebar {
+  margin-left: -250px;
 }
 
-#App.toggled #sidebar-wrapper {
+#App.toggled .Sidebar {
   margin-left: 0;
 }
 
 @media (min-width: 768px) {
-  #sidebar-wrapper {
+  .Sidebar {
     margin-left: 0;
   }
 
-  #App.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+  #App.toggled .Sidebar {
+    margin-left: -250px;
+    -webkit-transition: margin 0.25s ease;
+    -moz-transition: margin 0.25s ease;
+    -o-transition: margin 0.25s ease;
+    transition: margin 0.25s ease;
   }
 }

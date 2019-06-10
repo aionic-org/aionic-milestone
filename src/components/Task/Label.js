@@ -3,7 +3,7 @@ import React from 'react'
 const TaskLabel = props => {
   const { task, assignedClasses } = props
 
-  return task.closed ? (
+  return task.completed ? (
     <span className={`TaskLabel badge badge-primary float-right ${assignedClasses.join(' ')}`}>
       Closed
     </span>

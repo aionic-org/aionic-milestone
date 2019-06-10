@@ -31,7 +31,7 @@ const TaskSummary = props => {
       <hr className="featurette-divider" />
 
       <div className="form-group row">
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Status</label>
           <div className="col-12">
             <TaskStatusList
@@ -42,7 +42,7 @@ const TaskSummary = props => {
           </div>
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Assignee</label>
           <div className="col-12">
             <InputSuggestion
@@ -55,7 +55,7 @@ const TaskSummary = props => {
           </div>
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Author</label>
           <div className="col-12">
             <InputSuggestion
@@ -70,7 +70,7 @@ const TaskSummary = props => {
       </div>
 
       <div className="form-group row">
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Created</label>
           <div className="col-12">
             <input
@@ -83,7 +83,7 @@ const TaskSummary = props => {
           </div>
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Priority</label>
           <div className="col-12">
             <TaskPriorityList
@@ -94,7 +94,7 @@ const TaskSummary = props => {
           </div>
         </div>
 
-        <div className="col-4">
+        <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Label</label>
           <div className="col-12">
             <TaskLabelList

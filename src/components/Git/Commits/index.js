@@ -9,9 +9,11 @@ const GitCommits = props => {
 
   return (
     <div className="GitCommits">
-      {commitList.map((commit, i) => (
-        <GitCommit key={i} commit={commit} />
-      ))}
+      <div className="list-group">
+        {commitList.map((commit, i) => (
+          <GitCommit key={i} commit={commit} />
+        ))}
+      </div>
     </div>
   )
 }

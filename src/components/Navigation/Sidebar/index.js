@@ -16,9 +16,11 @@ const Sidebar = props => {
   const logoClasses = ['d-inline-block', 'align-top']
 
   return (
-    <div className="Sidebar" id="sidebar-wrapper">
+    <div className="Sidebar">
       <div className="sidebar-heading text-center">
-        <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
+        <NavLink to="/">
+          <UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />
+        </NavLink>
       </div>
       <div className="list-group list-group-flush">
         <NavLink exact to="/" className="list-group-item list-group-item-action">
