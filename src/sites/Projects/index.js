@@ -3,29 +3,26 @@ import React from 'react'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import Widget from 'components/Widget'
-
 import CardDeck from 'components/Deck'
 
-import SitesProjectsOverview from './components/Overview'
+import ProjectsActionbar from './components/Actionbar'
+import ProjectsWidgetbar from './components/Widgetbar'
 
 const SitesProjects = props => {
-  const { projects } = props
+  const { projects, allProjects, updateSearchParams, filterByText } = props
 
   return (
     <div className="SitesProjects">
       <Content>
         <Title title="Projects" />
+        <ProjectsWidgetbar allProjects={allProjects} />
+        <ProjectsActionbar updateSearchParams={updateSearchParams} filterByText={filterByText} />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="All projects" icon="fas fa-table">
-              <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
-            </Widget>
-          </div>
-          <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Widget title="Overview" icon="fas fa-chart-bar">
-              <SitesProjectsOverview projects={projects} />
-            </Widget>
+          <div className="col-12">
+            <p className="d-inline-block text-muted font-weight-bold mt-3">
+              Number of projects: {projects.length}
+            </p>
+            <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
           </div>
         </div>
       </Content>

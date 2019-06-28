@@ -3,17 +3,11 @@ import React from 'react'
 import './Title.css'
 
 const InputTitle = props => (
-  <div className="InputTitle">
-    <div
-      className="color"
-      style={{
-        background: 'blue'
-      }}
-    />
+  <div className="InputTitle mb-4">
     <input
       type="text"
       name="title"
-      className="h3 mb-0"
+      className="h3 w-100"
       placeholder={props.placeholder}
       autoComplete="off"
       defaultValue={props.defaultValue}

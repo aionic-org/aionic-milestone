@@ -9,7 +9,7 @@ import TaskCommentsContainer from 'components/Task/Comments/container'
 import TaskGitContainer from 'components/Task/Git/container'
 import TaskScratchpad from 'components/Task/Scratchpad'
 import TaskProjectsContainer from 'components/Task/Projects/container'
-import TaskLinks from '../../../components/Task/Links'
+import TaskLinks from 'components/Task/Links'
 
 const SitesTaskTabs = props => {
   const { task, updateTask } = props
@@ -47,7 +47,7 @@ const SitesTaskTabs = props => {
   return (
     <div className="SitesTaskTabs">
       <Navs handleClick={changeTab} tabs={tabs} />
-      <div className={`SitesTaskTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
+      <div className={`SitesTaskTabs ${content ? 'mt-3' : ''}`}>{content}</div>
     </div>
   )
 }

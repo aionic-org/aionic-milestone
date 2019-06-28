@@ -23,7 +23,7 @@ class Fetcher extends Component {
   fetchData = params => {
     this.setState({ isLoading: true })
 
-    Api.fetchData(this.props.url, params)
+    Api.fetchData(this.props.url, this.props.params)
       .then(data => {
         this.setState({ isLoading: false, data })
       })
@@ -33,7 +33,7 @@ class Fetcher extends Component {
   }
 
   render() {
-    const { showSpinnerPadding } = this.props
+    const { showSpinnerPadding, params } = this.props
     const { isLoading, msg, data } = this.state
 
     if (isLoading) {
@@ -47,7 +47,8 @@ class Fetcher extends Component {
 }
 
 Fetcher.defaultProps = {
-  showSpinnerPadding: false
+  showSpinnerPadding: false,
+  params: {}
 }
 
 export default Fetcher

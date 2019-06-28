@@ -2,6 +2,17 @@
   margin-top: 25px;
 }
 
+.TaskTags ul {
+  padding: 3px 15px;
+  background-color: #e3ebf6;
+  border-radius: 0.25rem;
+  width: max-content;
+}
+
+.TaskTags > ul > li:not(:first-child).add-tag {
+  margin-left: 1.5rem;
+}
+
 .TaskTags .fa-plus {
   color: #e84393;
   cursor: pointer;

@@ -20,7 +20,7 @@ const SearchBar = props => {
     const _term = term || document.querySelector('.SearchBar input').value
 
     if (_term.length) {
-      history.push(`/search/${_term}`)
+      history.push(`/search?term=${_term}`)
     }
   }
 

@@ -136,6 +136,7 @@ class SitesProjectContainer extends Component {
             project={project}
             handleInputChange={this.handleInputChange}
             toggleStatus={this.toggleStatus}
+            updateProject={this.updateProject}
             updateProjectTasks={this.updateProjectTasks}
             deleteProject={this.deleteProject}
           />

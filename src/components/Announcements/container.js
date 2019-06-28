@@ -9,6 +9,7 @@ const AnnouncementContainer = props => (
     {announcements => {
       return (
         <div className="AnnouncementContainer">
+          <p>Announcements</p>
           <AnnouncementList announcementList={announcements} />
         </div>
       )

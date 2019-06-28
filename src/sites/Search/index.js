@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import queryString from 'query-string'
 
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
@@ -9,10 +10,9 @@ import SearchDashboardTaskContainer from 'components/Search/Dashboard/TaskContai
 import TaskFilterContainer from 'components/Task/Filter/container'
 
 const SitesSearch = props => {
-  const { match } = props
-  const [params, setParams] = useState({
-    searchTerm: match.params.searchTerm || ''
-  })
+  const { location } = props
+
+  const [params, setParams] = useState({ ...queryString.parse(location.search) })
 
   const handleFilterChange = e => {
     const target = e.target

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import Content from 'components/UI/Content'
-import Tabs from './components/Tabs'
+import SitesTaskTabs from './components/Tabs'
 
 import TaskTitle from 'components/Task/Title'
+import TaskTags from 'components/Task/Tags'
 import TaskSummaryContainer from 'components/Task/Summary/container'
 import TaskDescription from 'components/Task/Description'
-import TaskActionButtons from '../../components/Task/ActionButtons'
-import TaskTags from '../../components/Task/Tags'
+import TaskOptionButtons from 'components/Task/OptionButtons'
 
 const SitesTask = props => {
   const { task, isNewTask, handleInputChange, createTask, updateTask } = props
@@ -19,8 +19,8 @@ const SitesTask = props => {
           <div className="col-12 col-md-7 col-xl-8">
             <TaskTitle task={task} onBlur={handleInputChange} />
           </div>
-          <div className="col-12 col-md-5 offset-xl-1 col-xl-3 mt-3 mt-md-0">
-            <TaskActionButtons task={task} updateTask={updateTask} />
+          <div className="col-12 col-md-5 col-xl-4 mt-4 mt-md-0">
+            <TaskOptionButtons task={task} updateTask={updateTask} />
           </div>
         </div>
 
@@ -40,7 +40,7 @@ const SitesTask = props => {
             <TaskDescription task={task} updateTask={updateTask} />
           </div>
           <div className="col-12 col-xl-4 mt-3 mt-xl-0">
-            <Tabs task={task} updateTask={updateTask} />
+            <SitesTaskTabs task={task} updateTask={updateTask} />
           </div>
         </div>
       </Content>

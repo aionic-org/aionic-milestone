@@ -25,7 +25,7 @@ class TaskFilter extends Component {
               placeholder="Enter search term"
               name="searchTerm"
               onBlur={handleFilterChange}
-              defaultValue={searchParams.searchTerm ? searchParams.searchTerm : ''}
+              defaultValue={searchParams.term ? searchParams.term : ''}
             />
           </div>
           <div className="form-group">
@@ -52,6 +52,18 @@ class TaskFilter extends Component {
               userList={userList}
               defaultValue={searchParams.author ? searchParams.author : undefined}
               onChange={handleFilterChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Tag</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter tag"
+              name="tag"
+              onBlur={handleFilterChange}
+              defaultValue={searchParams.tag}
             />
           </div>
 

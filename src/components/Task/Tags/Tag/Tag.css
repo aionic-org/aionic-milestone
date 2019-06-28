@@ -4,4 +4,6 @@
 
 .TaskTag.list-inline-item {
   margin-right: 1rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

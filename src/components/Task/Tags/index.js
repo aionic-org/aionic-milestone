@@ -29,11 +29,11 @@ const TaskTags = props => {
         {tagList.map((tag, i) => (
           <TaskTag key={i} tag={tag} tagList={tagList} updateTagList={updateTagList} />
         ))}
-        <li className="list-inline-item">
+        <li className="list-inline-item add-tag">
           {showForm ? (
             <TaskTagForm tagList={tagList} updateTagList={updateTagList} toggleForm={toggleForm} />
           ) : (
-            <i className="fas fa-plus ml-2" onClick={toggleForm} />
+            <i className="fas fa-plus" onClick={toggleForm} />
           )}
         </li>
       </ul>

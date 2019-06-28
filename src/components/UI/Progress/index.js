@@ -3,7 +3,7 @@ import React from 'react'
 import './Progress.css'
 
 const Progress = props => {
-  const { progress } = props
+  const { progress, showPercent } = props
 
   return (
     <div className="progress">
@@ -14,9 +14,15 @@ const Progress = props => {
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
-      />
+      >
+        {showPercent ? `${progress}%` : null}
+      </div>
     </div>
   )
+}
+
+Progress.defaultProps = {
+  showPercent: false
 }
 
 export default Progress

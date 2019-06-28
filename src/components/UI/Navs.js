@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 const Navs = props => {
-  const { tabs, handleClick } = props
-  const [activeTab, setActiveTab] = useState(null)
+  const { tabs, handleClick, preselectTabIdx } = props
+  const [activeTab, setActiveTab] = useState(preselectTabIdx)
 
   const handleTabChange = e => {
     const pos = Number(e.target.dataset.pos)
@@ -43,7 +43,8 @@ const Navs = props => {
 }
 
 Navs.defaultProps = {
-  tabs: []
+  tabs: [],
+  preselectTabIdx: null
 }
 
 export default Navs

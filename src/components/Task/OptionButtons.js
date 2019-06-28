@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TaskActionButtons = props => {
+const TaskOptionButtons = props => {
   const { task, updateTask } = props
 
   const toggleComplete = () => {
@@ -14,13 +14,13 @@ const TaskActionButtons = props => {
   ) : (
     <button type="button" className="btn btn-secondary" onClick={toggleComplete}>
       <i className="fas fa-check mr-2" />
-      Mark Complete
+      Mark complete
     </button>
   )
 
   return (
-    <div className="TaskActionButtons">
-      <div className="float-right">
+    <div className="TaskOptionButtons">
+      <div className="float-md-right">
         {completeBtn}
         <div className="btn-group ml-2">
           <button
@@ -53,8 +53,8 @@ const TaskActionButtons = props => {
   )
 }
 
-TaskActionButtons.defaultProps = {
+TaskOptionButtons.defaultProps = {
   assignedClasses: []
 }
 
-export default TaskActionButtons
+export default TaskOptionButtons

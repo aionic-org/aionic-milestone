@@ -27,6 +27,10 @@ const Sidebar = props => {
           <i className="fas fa-home fa-fw mr-2" /> Home
         </NavLink>
 
+        <NavLink exact to="/feed" className="list-group-item list-group-item-action">
+          <i className="fas fa-newspaper fa-fw mr-2" /> Feed
+        </NavLink>
+
         <NavLink exact to="/project" className="list-group-item list-group-item-action">
           <i className="fas fa-table fa-fw mr-2" /> Projects
         </NavLink>

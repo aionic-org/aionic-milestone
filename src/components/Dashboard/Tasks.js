@@ -88,6 +88,7 @@ class DashboardTasks extends Component {
               className="form-control form-control-sm"
               placeholder="Filter tasks..."
               onChange={this.filterByText}
+              autoFocus={true}
             />
           </div>
         ) : null}
@@ -95,7 +96,10 @@ class DashboardTasks extends Component {
         {itemList.length ? (
           <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
         ) : (
-          <Icon assignedClasses={['fa-check-circle']} text="No tasks found!" />
+          <div>
+            <i className="d-block text-center fas fa-check-circle fa-lg" />
+            <p className="text-center mt-1 mb-0">No tasks found!</p>
+          </div>
         )}
       </div>
     )

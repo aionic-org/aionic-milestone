@@ -6,36 +6,30 @@ const TaskTagForm = props => {
   const addTag = e => {
     e.preventDefault()
 
-    const value = document.querySelector('.tag-value').value
-    if (value.length) {
+    const value = document.querySelector('.tag-value').value.toLowerCase()
+    if (value.length && !tagList.includes(value)) {
       const tagListCopy = tagList.slice()
-      tagListCopy.push(value.toLowerCase())
+      tagListCopy.push(value)
 
       const newTagList = tagListCopy
 
       updateTagList(newTagList, true)
+    } else {
+      toggleForm()
     }
   }
 
   return (
     <div className="TaskTagForm">
       <form onSubmit={addTag}>
-        <div className="input-group input-group-sm">
-          <input
-            className="form-control tag-value"
-            type="text"
-            placeholder="Enter tag..."
-            autoFocus
-          />
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="submit">
-              <i className="fas fa-sign-in-alt fa-sm" />
-            </button>
-          </div>
-          <button className="btn btn-link btn-sm" onClick={toggleForm}>
-            Cancel
-          </button>
-        </div>
+        <input
+          className="form-control form-control-sm tag-value"
+          type="text"
+          placeholder="Enter tag..."
+          autoFocus
+          onBlur={addTag}
+          style={{ height: '30px' }}
+        />
       </form>
     </div>
   )

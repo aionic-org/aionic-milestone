@@ -19,8 +19,12 @@ class SearchDashboardTaskContainer extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.searchParams.searchTerm.length) {
-      this.doSearch()
+    const searchParams = this.props.searchParams
+    for (const key in searchParams) {
+      if (searchParams.hasOwnProperty(key) && searchParams[key].length) {
+        this.doSearch()
+        break
+      }
     }
   }
 
@@ -31,13 +35,13 @@ class SearchDashboardTaskContainer extends Component {
   }
 
   doSearch = () => {
-    const params = this.props.searchParams
+    const searchParams = this.props.searchParams
 
     this.setState({
       isLoading: true
     })
 
-    Api.fetchData(`tasks`, params)
+    Api.fetchData(`tasks`, searchParams)
       .then(searchResult => {
         this.setState({ isLoading: false, searchResult })
       })

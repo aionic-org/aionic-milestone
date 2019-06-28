@@ -7,7 +7,7 @@ const TaskBadgeCompleted = props => {
     <span
       className={`TaskBadge TaskBadgeCompleted badge badge-primary ${assignedClasses.join(' ')}`}
     >
-      Closed
+      Completed
     </span>
   ) : null
 }

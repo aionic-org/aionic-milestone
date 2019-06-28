@@ -19,7 +19,7 @@ const SitesSignin = props => {
       <h1 className="h3 mb-0">Milestone</h1>
       <p className="text-muted">Please sign in</p>
       <SigninForm />
-      <a href="https://aionic.app" target="_blank" className="mt-4 text-muted d-block">
+      <a href="https://aionic-apps.com" target="_blank" className="mt-4 text-muted d-block">
         Aionic Apps
       </a>
     </div>

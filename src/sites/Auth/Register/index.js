@@ -30,7 +30,7 @@ class SitesRegister extends Component {
         <Logo assignedStyle={logoStyle} />
         <h1 className="h4 mb-3 font-weight-normal">Registration</h1>
         <RegisterForm />
-        <a href="https://aionic.app" target="_blank" className="mt-4 text-muted d-block">
+        <a href="https://aionic-apps.com" target="_blank" className="mt-4 text-muted d-block">
           Aionic Apps
         </a>
       </div>

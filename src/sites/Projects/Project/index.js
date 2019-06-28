@@ -9,38 +9,44 @@ import CardDeck from 'components/Deck'
 
 import SitesProjectDetails from './components/Details'
 import SitesProjectTabsContent from './components/Tabs'
+import ProjectWidgetbar from './components/Widgetbar'
+import ProjectOptionButtons from 'components/Project/OptionButtons'
+import SitesProjectTabs from './components/Tabs'
 
 const SitesProject = props => {
-  const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props
+  const {
+    project,
+    handleInputChange,
+    toggleStatus,
+    deleteProject,
+    updateProjectTasks,
+    updateProject
+  } = props
 
   return (
     <div className="SitesProject">
       <Content>
-        <InputTitle
-          defaultValue={project.title}
-          placeholder={'Enter project title'}
-          onBlur={handleInputChange}
-        />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="Project tasks" icon="fas fa-tasks">
-              <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
-            </Widget>
-
-            <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
-              <SitesProjectTabsContent project={project} />
-            </Widget>
+          <div className="col-12 col-md-7 col-xl-8">
+            <InputTitle
+              defaultValue={project.title}
+              placeholder={'Enter project title'}
+              onBlur={handleInputChange}
+            />
           </div>
-          <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Widget title="Details" icon="fas fa-info-circle">
-              <SitesProjectDetails
-                project={project}
-                handleInputChange={handleInputChange}
-                toggleStatus={toggleStatus}
-                deleteProject={deleteProject}
-                updateProjectTasks={updateProjectTasks}
-              />
-            </Widget>
+          <div className="col-12 col-md-5 col-xl-4">
+            <ProjectOptionButtons project={project} updateProject={updateProject} />
+          </div>
+        </div>
+
+        <ProjectWidgetbar project={project} />
+
+        <div className="row">
+          <div className="col-12 col-xl-8">
+            <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
+          </div>
+          <div className="col-12 col-xl-4 mt-3 mt-xl-0">
+            <SitesProjectTabs project={project} handleInputChange={handleInputChange} />
           </div>
         </div>
       </Content>

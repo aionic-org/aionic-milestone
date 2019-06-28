@@ -25,7 +25,7 @@ const AnnouncementList = props => {
 
   return (
     <div className="AnnouncementList">
-      <ul className="list-group list-group-flush">{content}</ul>
+      <ul className="list-group">{content}</ul>
     </div>
   )
 }

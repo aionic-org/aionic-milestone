@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import TaskPriorityIcon from './Priority'
-import TaskLabel from './Label'
+import TaskBadgeCompleted from './Badges/Completed'
 
 const TaskPreview = props => {
   const { task } = props
@@ -10,9 +10,15 @@ const TaskPreview = props => {
   return (
     <Link to={`/task/${task.id}`} className="TaskPreview CardLink card">
       <div className="card-header font-weight-bold">
-        <span>{task.title}</span>
-        <TaskLabel task={task} assignedClasses={['ml-3', 'mt-1']} />
-        <TaskPriorityIcon task={task} />
+        <div className="row">
+          <div className="col">
+            <span>{task.title}</span>
+          </div>
+          <div className="col-auto">
+            <TaskBadgeCompleted task={task} assignedClasses={['float-right', 'ml-3', 'mt-1']} />
+            <TaskPriorityIcon task={task} />
+          </div>
+        </div>
       </div>
       <div className="card-body">
         <h6 className="card-subtitle text-muted">
