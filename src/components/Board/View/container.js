@@ -7,11 +7,11 @@ import Board from '.'
 const BoardContainer = props => (
   <Fetcher url="task-status">
     {status => {
-      const { userList, showDetails } = props
+      const { userList } = props
 
       return (
         <div className="BoardContainer">
-          <Board userList={userList} showDetails={showDetails} statusList={status} />
+          <Board userList={userList} statusList={status} />
         </div>
       )
     }}

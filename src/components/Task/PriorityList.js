@@ -4,7 +4,7 @@ import InputSelect from 'components/UI/Input/Select'
 
 const TaskPriorityList = props => {
   const priorities = props.priorityList.map(priority => {
-    return { ...priority, id: priority.value, optionTitle: priority.title }
+    return { value: priority.value, title: priority.title }
   })
 
   return (

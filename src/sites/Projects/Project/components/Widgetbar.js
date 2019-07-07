@@ -11,7 +11,7 @@ const ProjectWidgetbar = props => {
   const finishedTasks = tasks.filter(task => task.completed)
 
   return (
-    <div className="ProjectWidgetbar">
+    <div className="ProjectWidgetbar mb-5">
       <div className="row">
         <div className="col-12 col-xl-3 mt-3 mt-xl-0">
           <Widget title={tasks.length} subtitle="Total tasks" icon="fas fa-table" />
@@ -35,7 +35,7 @@ const ProjectWidgetbar = props => {
           <Widget title={project.updated} subtitle="Last update" icon="fas fa-history" />
         </div>
       </div>
-      <hr class="featurette-divider mb-5" />
+      <hr className="featurette-divider" />
     </div>
   )
 }

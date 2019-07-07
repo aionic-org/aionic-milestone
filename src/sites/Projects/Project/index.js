@@ -3,25 +3,18 @@ import React from 'react'
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
-import Widget from 'components/Widget'
-
 import CardDeck from 'components/Deck'
 
-import SitesProjectDetails from './components/Details'
-import SitesProjectTabsContent from './components/Tabs'
 import ProjectWidgetbar from './components/Widgetbar'
 import ProjectOptionButtons from 'components/Project/OptionButtons'
 import SitesProjectTabs from './components/Tabs'
 
 const SitesProject = props => {
-  const {
-    project,
-    handleInputChange,
-    toggleStatus,
-    deleteProject,
-    updateProjectTasks,
-    updateProject
-  } = props
+  const { project, handleInputChange, deleteProject, updateProject } = props
+
+  const updateProjectTasks = tasks => {
+    updateProject({ ...project, tasks })
+  }
 
   return (
     <div className="SitesProject">
@@ -38,15 +31,17 @@ const SitesProject = props => {
             <ProjectOptionButtons project={project} updateProject={updateProject} />
           </div>
         </div>
-
         <ProjectWidgetbar project={project} />
-
         <div className="row">
           <div className="col-12 col-xl-8">
             <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
           </div>
           <div className="col-12 col-xl-4 mt-3 mt-xl-0">
-            <SitesProjectTabs project={project} handleInputChange={handleInputChange} />
+            <SitesProjectTabs
+              project={project}
+              handleInputChange={handleInputChange}
+              updateProjectTasks={updateProjectTasks}
+            />
           </div>
         </div>
       </Content>

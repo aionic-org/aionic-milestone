@@ -4,7 +4,7 @@ import InputSelect from 'components/UI/Input/Select'
 
 const GitOrganizationList = props => {
   const organizations = props.orgList.map(organization => {
-    return { ...organization, optionTitle: organization.name }
+    return { value: organization.id, title: organization.name }
   })
 
   return (

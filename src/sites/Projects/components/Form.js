@@ -70,7 +70,7 @@ class ProjectForm extends Component {
       <div className="ProjectForm">
         <form onSubmit={this.handleSubmit} method="POST">
           <div className="form-group">
-            <label>Project title</label>
+            <label>Title</label>
             <input
               type="text"
               className="form-control"

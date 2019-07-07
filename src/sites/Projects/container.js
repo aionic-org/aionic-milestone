@@ -14,11 +14,15 @@ class SitesProjectsContainer extends Component {
     this.state = {
       isLoading: true,
       msg: null,
-      projects: [],
-      allProjects: [],
-      projectsFiltered: [],
-      searchParams: {},
-      textFilter: ''
+      projects: {
+        all: [],
+        fetched: [],
+        filtered: []
+      },
+      filters: {
+        params: {},
+        text: ''
+      }
     }
   }
 
@@ -26,19 +30,23 @@ class SitesProjectsContainer extends Component {
     this.fetchProjects(null, true)
   }
 
-  fetchProjects = (params, initial) => {
+  fetchProjects = (_params, initial) => {
+    const params = _params || this.state.filters.params
+
     Api.fetchData('projects', params)
       .then(projects => {
-        let newState = { isLoading: false, projects }
+        let newState = {
+          isLoading: false,
+          filters: { ...this.state.filters, params },
+          projects: { ...this.state.projects, fetched: projects, filtered: [] }
+        }
 
         if (initial) {
-          newState = { ...newState, allProjects: projects }
+          newState = { ...newState, projects: { ...newState.projects, all: projects } }
         }
 
         this.setState(newState, () => {
-          if (this.state.textFilter.length) {
-            this.filterByText(this.state.textFilter)
-          }
+          this.filterProjectsByText(this.state.filters.text)
         })
       })
       .catch(err => {
@@ -49,24 +57,33 @@ class SitesProjectsContainer extends Component {
       })
   }
 
-  updateSearchParams = params => {
-    this.setState({ searchParams: { ...this.state.searchParams, ...params } }, () => {
-      this.fetchProjects(this.state.searchParams)
-    })
+  filterProjectsByParams = params => {
+    const newParams = {
+      ...this.state.filters.params,
+      ...(!Object.keys(params).length ? {} : params)
+    }
+
+    this.fetchProjects(newParams)
   }
 
-  filterByText = textFilter => {
-    this.setState({ textFilter })
+  filterProjectsByText = text => {
+    const filters = { ...this.state.filters, text }
 
-    const projectsFiltered = this.state.projects.filter(project =>
-      project.title.toLowerCase().includes(textFilter.toLowerCase())
-    )
+    const projectsFiltered = text.length
+      ? this.state.projects.fetched.filter(projects =>
+          projects.title.toLowerCase().includes(text.toLowerCase())
+        )
+      : this.state.projects.fetched
 
-    this.setState({ projectsFiltered })
+    this.setState({ filters, projects: { ...this.state.projects, filtered: projectsFiltered } })
+  }
+
+  resetFilters = () => {
+    this.setState({ filters: { params: {}, text: '' } }, () => this.fetchBoards)
   }
 
   render() {
-    const { isLoading, msg, projects, allProjects, projectsFiltered, textFilter } = this.state
+    const { isLoading, msg, projects, filters } = this.state
 
     if (isLoading) {
       return <Spinner />
@@ -76,10 +93,11 @@ class SitesProjectsContainer extends Component {
       return (
         <div className="SitesProjectsContainer">
           <SitesProjects
-            projects={textFilter.length ? projectsFiltered : projects}
-            allProjects={allProjects}
-            updateSearchParams={this.updateSearchParams}
-            filterByText={this.filterByText}
+            projects={projects}
+            filters={filters}
+            filterProjectsByParams={this.filterProjectsByParams}
+            filterProjectsByText={this.filterProjectsByText}
+            resetFilters={this.resetFilters}
           />
         </div>
       )

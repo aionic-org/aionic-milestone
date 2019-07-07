@@ -3,26 +3,49 @@ import React from 'react'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import CardDeck from 'components/Deck'
-
-import ProjectsActionbar from './components/Actionbar'
 import ProjectsWidgetbar from './components/Widgetbar'
 
+import CardDeck from 'components/Deck'
+import Filters from 'components/Filters/'
+
+import ProjectCreate from './components/Create'
+
 const SitesProjects = props => {
-  const { projects, allProjects, updateSearchParams, filterByText } = props
+  const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props
+  const { all, fetched, filtered } = projects
+
+  const projectsToShow = filters.text.length ? filtered : fetched
+
+  const orderByList = [
+    { value: '', title: 'Order by' },
+    { value: 'created', title: 'Created' },
+    { value: 'finished', title: 'Finished' },
+    { value: 'title', title: 'Title' },
+    { value: 'updated', title: 'Updated' }
+  ]
 
   return (
     <div className="SitesProjects">
       <Content>
         <Title title="Projects" />
-        <ProjectsWidgetbar allProjects={allProjects} />
-        <ProjectsActionbar updateSearchParams={updateSearchParams} filterByText={filterByText} />
+        <ProjectsWidgetbar allProjects={projects.all} />
+        <div className="row">
+          <div className="col-12 col-xl-10">
+            <Filters
+              filters={filters}
+              filterItemsByParams={filterProjectsByParams}
+              filterItemsByText={filterProjectsByText}
+              resetFilters={resetFilters}
+              orderByList={orderByList}
+            />
+          </div>
+          <div className="col-12 col-xl-2">
+            <ProjectCreate />
+          </div>
+        </div>{' '}
         <div className="row">
           <div className="col-12">
-            <p className="d-inline-block text-muted font-weight-bold mt-3">
-              Number of projects: {projects.length}
-            </p>
-            <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
+            <CardDeck deckType="Project" itemList={projectsToShow} itemsPerRow={3} />
           </div>
         </div>
       </Content>

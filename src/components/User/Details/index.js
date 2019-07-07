@@ -10,7 +10,7 @@ const UserDetails = props => {
   const allowEdit = Session.isAdmin() ? true : false
 
   const _roles = roles.map(role => {
-    return { id: role.id, optionTitle: role.name }
+    return { value: role.id, title: role.name }
   })
 
   return (

@@ -1,4 +1,5 @@
 .BoardStatus {
+  border: 1px solid transparent;
   position: relative;
 }
 
@@ -15,5 +16,5 @@
 .BoardStatus:hover {
   background-color: rgba(223, 230, 233, 0.1);
   border-radius: 4px;
-  border: 1px solid #dfe6e9;
+  border-color: #dfe6e9;
 }

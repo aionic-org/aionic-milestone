@@ -6,9 +6,10 @@ import Navs from 'components/UI/Navs'
 
 import ProjectCommentsContainer from 'components/Project/Comments/container'
 import ProjectDescription from 'components/Project/Description'
+import TaskSuggestion from 'components/Task/Suggestion'
 
 const SitesProjectTabs = props => {
-  const { project, handleInputChange } = props
+  const { project, handleInputChange, updateProjectTasks } = props
   const [tab, changeTab] = useTab('Description')
 
   const tabs = [{ name: 'Description' }, { name: 'Tasks' }, { name: 'Comments' }]
@@ -19,7 +20,9 @@ const SitesProjectTabs = props => {
       content = <ProjectDescription project={project} handleInputChange={handleInputChange} />
       break
     case 'Tasks':
-      content = null
+      content = (
+        <TaskSuggestion taskListSelected={project.tasks} updateParent={updateProjectTasks} />
+      )
       break
     case 'Comments':
       content = <ProjectCommentsContainer projectId={project.id} />

@@ -25,7 +25,7 @@ const TaskTags = props => {
 
   return (
     <div className="TaskTags">
-      <ul className="list-inline">
+      <ul className="TaskTags list-inline d-flex align-items-center flex-wrap">
         {tagList.map((tag, i) => (
           <TaskTag key={i} tag={tag} tagList={tagList} updateTagList={updateTagList} />
         ))}

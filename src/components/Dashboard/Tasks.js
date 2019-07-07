@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import Icon from 'components/UI/Icon'
-
 import Deck from 'components/Deck'
 
 import TaskFilterStatus from 'components/Task/Filter/Status/'
@@ -92,15 +90,7 @@ class DashboardTasks extends Component {
             />
           </div>
         ) : null}
-
-        {itemList.length ? (
-          <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
-        ) : (
-          <div>
-            <i className="d-block text-center fas fa-check-circle fa-lg" />
-            <p className="text-center mt-1 mb-0">No tasks found!</p>
-          </div>
-        )}
+        <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
       </div>
     )
   }

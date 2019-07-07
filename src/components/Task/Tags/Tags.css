@@ -3,14 +3,13 @@
 }
 
 .TaskTags ul {
-  padding: 3px 15px;
+  padding: 0px 10px;
   background-color: #e3ebf6;
   border-radius: 0.25rem;
-  width: max-content;
 }
 
 .TaskTags > ul > li:not(:first-child).add-tag {
-  margin-left: 1.5rem;
+  margin-left: 1em;
 }
 
 .TaskTags .fa-plus {

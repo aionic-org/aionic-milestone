@@ -11,12 +11,12 @@ const Widget = props => {
         <div className="card-body">
           <div className="row align-items-center">
             <div className={subcontent ? 'col-auto' : 'col'}>
-              <h6 class="mb-1 text-muted text-uppercase">{subtitle}</h6>
-              <h4 class="card-title mb-0">{title}</h4>
+              <h6 className="mb-1 text-muted text-uppercase">{subtitle}</h6>
+              <h4 className="card-title mb-0">{title}</h4>
             </div>
             {subcontent ? subcontent : null}
             <div className="col-auto">
-              <i class={`${icon} fa-lg mt-3`} />
+              <i className={`${icon} fa-lg mt-3`} />
             </div>
           </div>
         </div>

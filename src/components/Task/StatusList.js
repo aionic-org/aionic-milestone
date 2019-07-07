@@ -3,7 +3,7 @@ import InputSelect from 'components/UI/Input/Select'
 
 const TaskStatusList = props => {
   const status = props.statusList.map(status => {
-    return { ...status, optionTitle: status.title }
+    return { value: status.id, title: status.title }
   })
 
   return (

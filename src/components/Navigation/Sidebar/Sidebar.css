@@ -38,6 +38,7 @@
 }
 
 .Sidebar .list-group a.active {
+  background-color: #eee;
   color: #6c5ce7;
 }
 

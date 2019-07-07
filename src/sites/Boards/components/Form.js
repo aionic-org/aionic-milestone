@@ -9,7 +9,7 @@ import Error from 'components/UI/Error'
 
 import UserSuggestion from 'components/User/Suggestion'
 
-class BoardForm extends Component {
+class BoardsForm extends Component {
   constructor(props) {
     super(props)
 
@@ -60,17 +60,17 @@ class BoardForm extends Component {
 
     if (msg.length) {
       return (
-        <div className="BoardForm">
+        <div className="BoardsForm">
           <Error message={msg} />
         </div>
       )
     }
 
     return (
-      <div className="BoardForm">
+      <div className="BoardsForm">
         <form onSubmit={this.handleSubmit} method="POST">
           <div className="form-group">
-            <label>Board title</label>
+            <label>Title</label>
             <input
               type="text"
               className="form-control"
@@ -103,4 +103,4 @@ class BoardForm extends Component {
   }
 }
 
-export default withRouter(BoardForm)
+export default withRouter(BoardsForm)

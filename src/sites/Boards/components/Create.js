@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { withRouter } from 'react-router'
 
+import { withRouter } from 'react-router'
 import ReactModal from 'react-modal'
 import queryString from 'query-string'
 
-import BoardForm from './Form'
+import BoardsForm from './Form'
 
-const SitesBoardOverview = props => {
-  const { create } = queryString.parse(props.location.search)
+const BoardsCreate = props => {
+  const { location } = props
 
-  const { boards } = props
+  const { create } = queryString.parse(location.search)
   const [showModal, setShowModal] = useState(create === 'true') // query param is of type string
 
   const handleOpenModal = () => {
@@ -21,17 +21,13 @@ const SitesBoardOverview = props => {
   }
 
   return (
-    <div className="SitesBoardOverview">
-      <ul className="list-group">
-        <li className="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
-          Boards
-          <span className="badge badge-secondary badge-pill">{boards.length}</span>
-        </li>
-      </ul>
-
-      <button className="btn btn-block mt-3 btn-primary" onClick={handleOpenModal}>
-        Create board
-      </button>
+    <div className="BoardsCreate">
+      <div className="form-group">
+        <button type="button" className="btn btn-primary btn-block" onClick={handleOpenModal}>
+          <i className="fas fa-plus mr-2" />
+          Create board
+        </button>
+      </div>
 
       <ReactModal
         isOpen={showModal}
@@ -40,17 +36,17 @@ const SitesBoardOverview = props => {
         overlayClassName="Modal-Overlay"
       >
         <div className="modal-header">
-          <h5 className="modal-title">Create Board</h5>
+          <h5 className="modal-title">Create board</h5>
           <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div className="modal-body">
-          <BoardForm />
+          <BoardsForm />
         </div>
       </ReactModal>
     </div>
   )
 }
 
-export default withRouter(SitesBoardOverview)
+export default withRouter(BoardsCreate)

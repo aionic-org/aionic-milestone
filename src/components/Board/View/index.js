@@ -8,7 +8,7 @@ import Tabs from 'components/UI/Tabs'
 import BoardStatus from './Status'
 
 const Board = props => {
-  const { userList, showDetails, statusList } = props
+  const { userList, statusList } = props
 
   const [userTasks, setUserTasks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -36,10 +36,8 @@ const Board = props => {
   }
 
   const fetchUserTasks = userId => {
-    setIsLoading(true)
     Api.fetchData(`users/${userId}/tasks`)
       .then(taskList => {
-        setIsLoading(false)
         setUserTasks(taskList)
       })
       .catch(err => {
@@ -59,10 +57,6 @@ const Board = props => {
     } else {
       setUserTasksFiltered([])
     }
-  }
-
-  const showModal = () => {
-    showDetails(true)
   }
 
   const content = isLoading ? (
@@ -88,15 +82,8 @@ const Board = props => {
   return (
     <div className="Board">
       <div className="row">
-        <div className="col-11">
+        <div className="col-auto">
           <Tabs tabs={tabTitles} handleClick={handleClick} />
-        </div>
-        <div className="col-1">
-          <i
-            className="float-right mt-2 fas fa-cog"
-            onClick={showModal}
-            style={{ cursor: 'pointer' }}
-          />
         </div>
         <div className="col-12">
           <div className="form-group mt-4 mb-0">

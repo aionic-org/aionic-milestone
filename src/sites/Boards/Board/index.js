@@ -9,7 +9,7 @@ import Widget from 'components/Widget'
 
 import SitesBoardDetails from './components/Details'
 
-import BoardContainer from 'components/Board/container'
+import BoardContainer from 'components/Board/View/container'
 
 const SitesBoard = props => {
   const { board, handleInputChange, deleteBoard, updateBoardUsers } = props
@@ -23,16 +23,49 @@ const SitesBoard = props => {
   return (
     <div className="SitesBoard">
       <Content>
-        <InputTitle
-          defaultValue={board.title}
-          placeholder={'Enter board title'}
-          onBlur={handleInputChange}
-        />
+        <div className="row">
+          <div className="col">
+            <InputTitle
+              defaultValue={board.title}
+              placeholder={'Enter board title'}
+              onBlur={handleInputChange}
+            />
+          </div>
+          <div className="col-auto">
+            <button type="button" className="btn btn-secondary">
+              <i className="fas fa-cog" />
+            </button>
+            <div className="btn-group ml-2">
+              <button
+                type="button"
+                className="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                More
+              </button>
+              <div className="dropdown-menu dropdown-menu-right">
+                <a className="dropdown-item" href="#">
+                  <i className="fas fa-share fa-fw mr-2" /> Share
+                </a>
+                <a className="dropdown-item" href="#">
+                  <i className="fas fa-print fa-fw mr-2" /> Print
+                </a>
+                <a className="dropdown-item" href="#">
+                  <i className="fas fa-archive fa-fw mr-2" /> Archive
+                </a>
+                <div className="dropdown-divider" />
+                <a className="dropdown-item text-danger" href="#">
+                  <i className="fas fa-trash fa-fw mr-2" /> Delete
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-12">
-            <Widget title="Board" icon="fas fa-tasks">
-              <BoardContainer userList={board.users} showDetails={setShowModal} />
-            </Widget>
+            <BoardContainer userList={board.users} showDetails={setShowModal} />
           </div>
         </div>
 

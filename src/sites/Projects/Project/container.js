@@ -58,14 +58,6 @@ class SitesProjectContainer extends Component {
     }
   }
 
-  toggleStatus = e => {
-    const project = { ...this.state.project, done: !this.state.project.done }
-
-    this.setState({ project }, () => {
-      this.updateProject()
-    })
-  }
-
   updateProject = _project => {
     const project = _project || this.state.project
 
@@ -113,10 +105,6 @@ class SitesProjectContainer extends Component {
       })
   }
 
-  updateProjectTasks = tasks => {
-    this.updateProject({ ...this.state.project, tasks })
-  }
-
   render() {
     const { isLoading, msg, project, projectUpdate } = this.state
 
@@ -131,15 +119,13 @@ class SitesProjectContainer extends Component {
     } else {
       return (
         <div className="SitesProjectContainer">
-          {alert}
           <SitesProject
             project={project}
             handleInputChange={this.handleInputChange}
-            toggleStatus={this.toggleStatus}
             updateProject={this.updateProject}
-            updateProjectTasks={this.updateProjectTasks}
             deleteProject={this.deleteProject}
           />
+          {alert}
         </div>
       )
     }

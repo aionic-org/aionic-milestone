@@ -25,7 +25,7 @@ const SitesTask = props => {
         </div>
 
         <div className="row">
-          <div className="col-12">
+          <div className="col-auto">
             <TaskTags task={task} updateTask={updateTask} />
           </div>
         </div>

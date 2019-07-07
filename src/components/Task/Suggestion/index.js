@@ -107,7 +107,7 @@ const TaskSuggestion = props => {
         type="text"
         className="form-control"
         name="title"
-        placeholder="Enter task"
+        placeholder="Enter task title..."
         autoComplete="off"
         onChange={handleInputChange}
         onKeyDown={e => {

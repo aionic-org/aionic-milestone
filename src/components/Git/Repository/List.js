@@ -5,7 +5,7 @@ const GitRepositoryList = props => {
   const { repoList, onChange, disabled, defaultValue } = props
 
   const repos = repoList.map(repo => {
-    return { ...repo, optionTitle: repo.name }
+    return { value: repo.id, title: repo.name }
   })
 
   return (
