@@ -6,8 +6,8 @@ import Title from 'components/UI/Title'
 
 import Widget from 'components/Widget'
 
-import SearchDashboardTaskContainer from 'components/Search/Dashboard/TaskContainer'
-import TaskFilterContainer from 'components/Task/Filter/container'
+import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer'
+import SitesSearchFilter from './components/Filters/container'
 
 const SitesSearch = props => {
   const { location } = props
@@ -35,7 +35,7 @@ const SitesSearch = props => {
         <div className="row">
           <div className="col-12 col-xl-3">
             <Widget title="Filters" icon="fas fa-filter" showLastUpdate={false}>
-              <TaskFilterContainer
+              <SitesSearchFilter
                 searchParams={params}
                 handleFilterChange={handleFilterChange}
                 resetFilters={resetFilters}

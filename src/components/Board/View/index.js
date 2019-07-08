@@ -36,8 +36,10 @@ const Board = props => {
   }
 
   const fetchUserTasks = userId => {
+    setIsLoading(true)
     Api.fetchData(`users/${userId}/tasks`)
       .then(taskList => {
+        setIsLoading(false)
         setUserTasks(taskList)
       })
       .catch(err => {
@@ -59,25 +61,13 @@ const Board = props => {
     }
   }
 
-  const content = isLoading ? (
-    <div className="col-12 mt-4">
-      <Spinner />
+  const loadingSpinner = isLoading ? (
+    <div className="row mt-3">
+      <div className="col-12">
+        <Spinner />
+      </div>
     </div>
-  ) : (
-    statusList.map(status => {
-      const tasks = (userTasksFiltered.length ? userTasksFiltered : userTasks).filter(
-        task => task.status.id === status.id
-      )
-      return (
-        <BoardStatus
-          key={status.id}
-          status={status}
-          tasks={tasks}
-          maxWidth={100 / statusList.length}
-        />
-      )
-    })
-  )
+  ) : null
 
   return (
     <div className="Board">
@@ -97,7 +87,22 @@ const Board = props => {
         </div>
       </div>
       <div />
-      <div className="row mt-2">{content}</div>
+      <div className="row mt-2">
+        {statusList.map(status => {
+          const tasks = (userTasksFiltered.length ? userTasksFiltered : userTasks).filter(
+            task => task.status.id === status.id
+          )
+          return (
+            <BoardStatus
+              key={status.id}
+              status={status}
+              tasks={tasks}
+              maxWidth={100 / statusList.length}
+            />
+          )
+        })}
+      </div>
+      {loadingSpinner}
     </div>
   )
 }

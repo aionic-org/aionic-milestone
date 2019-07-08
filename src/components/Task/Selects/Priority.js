@@ -2,13 +2,13 @@ import React from 'react'
 
 import InputSelect from 'components/UI/Input/Select'
 
-const TaskPriorityList = props => {
+const TaskSelectsPriority = props => {
   const priorities = props.priorityList.map(priority => {
     return { value: priority.value, title: priority.title }
   })
 
   return (
-    <div className="TaskPriorityList">
+    <div className="TaskSelectsPriority">
       <InputSelect
         optionList={priorities}
         name="priority"
@@ -19,9 +19,9 @@ const TaskPriorityList = props => {
   )
 }
 
-TaskPriorityList.defaultProps = {
+TaskSelectsPriority.defaultProps = {
   priorityList: [],
   defaultValue: ''
 }
 
-export default TaskPriorityList
+export default TaskSelectsPriority

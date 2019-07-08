@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import GitOrganizationList from 'components/Git/Organization/List'
-import GitRepositoryList from 'components/Git/Repository/List'
+import GitOrganizationSelect from 'components/Git/Organization/Select'
+import GitRepositorySelect from 'components/Git/Repository/Select'
 import GitCommitsContainer from 'components/Git/Commits/container'
 
 const TaskGit = props => {
@@ -25,7 +25,7 @@ const TaskGit = props => {
       <div className="form-group row">
         <div className="col-4">
           <label>Organization</label>
-          <GitOrganizationList
+          <GitOrganizationSelect
             orgList={orgList}
             defaultValue={task.organization ? task.organization.id : undefined}
             onChange={handleOrgChange}
@@ -34,7 +34,7 @@ const TaskGit = props => {
 
         <div className="col-4">
           <label>Repository</label>
-          <GitRepositoryList
+          <GitRepositorySelect
             repoList={repoList}
             defaultValue={task.repository ? task.repository.id : undefined}
             onChange={handleRepoChange}

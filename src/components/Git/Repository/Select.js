@@ -1,7 +1,7 @@
 import React from 'react'
 import InputSelect from 'components/UI/Input/Select'
 
-const GitRepositoryList = props => {
+const GitRepositorySelect = props => {
   const { repoList, onChange, disabled, defaultValue } = props
 
   const repos = repoList.map(repo => {
@@ -9,7 +9,7 @@ const GitRepositoryList = props => {
   })
 
   return (
-    <div className="GitRepositoryList">
+    <div className="GitRepositorySelect">
       <InputSelect
         optionList={repos}
         name="repository"
@@ -21,9 +21,9 @@ const GitRepositoryList = props => {
   )
 }
 
-GitRepositoryList.defaultProps = {
+GitRepositorySelect.defaultProps = {
   repoList: [],
   defaultValue: ''
 }
 
-export default GitRepositoryList
+export default GitRepositorySelect

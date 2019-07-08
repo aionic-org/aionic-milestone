@@ -1,7 +1,13 @@
 import React from 'react'
 
 const ProjectDescription = props => {
-  const { project, handleInputChange } = props
+  const { project, updateParentProjectState } = props
+
+  const handleInputChange = e => {
+    if (e.target.value !== project.description) {
+      updateParentProjectState({ ...project, description: e.target.value })
+    }
+  }
 
   return (
     <div className="ProjectDescription">

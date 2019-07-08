@@ -1,13 +1,13 @@
 import React from 'react'
 import InputSelect from 'components/UI/Input/Select'
 
-const UserList = props => {
+const UserSelect = props => {
   const users = props.userList.map(user => {
     return { id: user.id, title: `${user.firstname} ${user.lastname}` }
   })
 
   return (
-    <div className="UserList">
+    <div className="UserSelect">
       <InputSelect
         optionList={users}
         name={props.name}
@@ -18,10 +18,10 @@ const UserList = props => {
   )
 }
 
-UserList.defaultProps = {
+UserSelect.defaultProps = {
   userList: [],
   onChange: () => {},
   defaultValue: ''
 }
 
-export default UserList
+export default UserSelect

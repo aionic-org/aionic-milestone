@@ -7,7 +7,7 @@ import Error from 'components/UI/Error'
 
 import TaskFilter from '.'
 
-class TaskFilterContainer extends Component {
+class SitesSearchFiltersContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -54,7 +54,7 @@ class TaskFilterContainer extends Component {
       return <Error message={msg} />
     } else {
       return (
-        <div className="TaskFilterContainer">
+        <div className="SitesSearchFiltersContainer">
           <TaskFilter lists={lists} {...this.props} />
         </div>
       )
@@ -62,4 +62,4 @@ class TaskFilterContainer extends Component {
   }
 }
 
-export default TaskFilterContainer
+export default SitesSearchFiltersContainer

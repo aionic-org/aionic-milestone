@@ -44,20 +44,6 @@ class SitesBoardContainer extends Component {
       })
   }
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.board[name] !== value) {
-      const board = { ...this.state.board, [name]: value }
-
-      this.setState({ board }, () => {
-        this.updateBoard()
-      })
-    }
-  }
-
   updateBoard = _board => {
     const board = _board || this.state.board
 
@@ -105,8 +91,8 @@ class SitesBoardContainer extends Component {
       })
   }
 
-  updateBoardUsers = users => {
-    this.updateBoard({ ...this.state.board, users })
+  updateParentBoardState = board => {
+    this.updateBoard(board)
   }
 
   render() {
@@ -126,8 +112,7 @@ class SitesBoardContainer extends Component {
           {alert}
           <SitesBoard
             board={board}
-            handleInputChange={this.handleInputChange}
-            updateBoardUsers={this.updateBoardUsers}
+            updateParentBoardState={this.updateParentBoardState}
             deleteBoard={this.deleteBoard}
           />
         </div>

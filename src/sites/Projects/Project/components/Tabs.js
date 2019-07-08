@@ -9,15 +9,21 @@ import ProjectDescription from 'components/Project/Description'
 import TaskSuggestion from 'components/Task/Suggestion'
 
 const SitesProjectTabs = props => {
-  const { project, handleInputChange, updateProjectTasks } = props
+  const { project, updateParentProjectState } = props
   const [tab, changeTab] = useTab('Description')
 
   const tabs = [{ name: 'Description' }, { name: 'Tasks' }, { name: 'Comments' }]
 
+  const updateProjectTasks = tasks => {
+    updateParentProjectState({ ...project, tasks })
+  }
+
   let content = <p className="text-muted text-center font-italic mt-2">No tab selected</p>
   switch (tab) {
     case 'Description':
-      content = <ProjectDescription project={project} handleInputChange={handleInputChange} />
+      content = (
+        <ProjectDescription project={project} updateParentProjectState={updateParentProjectState} />
+      )
       break
     case 'Tasks':
       content = (

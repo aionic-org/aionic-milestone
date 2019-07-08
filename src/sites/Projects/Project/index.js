@@ -1,19 +1,22 @@
 import React from 'react'
 
+import ProjectWidgetbar from './components/Widgetbar'
+import SitesProjectTabs from './components/Tabs'
+
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
 import CardDeck from 'components/Deck'
 
-import ProjectWidgetbar from './components/Widgetbar'
 import ProjectOptionButtons from 'components/Project/OptionButtons'
-import SitesProjectTabs from './components/Tabs'
 
 const SitesProject = props => {
-  const { project, handleInputChange, deleteProject, updateProject } = props
+  const { project, updateParentProjectState, deleteProject } = props
 
-  const updateProjectTasks = tasks => {
-    updateProject({ ...project, tasks })
+  const handleTitleChange = e => {
+    if (e.target.value !== project.title) {
+      updateParentProjectState({ ...project, title: e.target.value })
+    }
   }
 
   return (
@@ -24,11 +27,14 @@ const SitesProject = props => {
             <InputTitle
               defaultValue={project.title}
               placeholder={'Enter project title'}
-              onBlur={handleInputChange}
+              onBlur={handleTitleChange}
             />
           </div>
           <div className="col-12 col-md-5 col-xl-4">
-            <ProjectOptionButtons project={project} updateProject={updateProject} />
+            <ProjectOptionButtons
+              project={project}
+              updateParentProjectState={updateParentProjectState}
+            />
           </div>
         </div>
         <ProjectWidgetbar project={project} />
@@ -39,8 +45,7 @@ const SitesProject = props => {
           <div className="col-12 col-xl-4 mt-3 mt-xl-0">
             <SitesProjectTabs
               project={project}
-              handleInputChange={handleInputChange}
-              updateProjectTasks={updateProjectTasks}
+              updateParentProjectState={updateParentProjectState}
             />
           </div>
         </div>

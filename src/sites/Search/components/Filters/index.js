@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import UserList from 'components/User/List'
-import TaskStatusList from 'components/Task/StatusList'
-import GitOrganizationList from 'components/Git/Organization/List'
+import UserSelect from 'components/User/Select'
+import TaskSelectsStatus from 'components/Task/Selects/Status'
+import GitOrganizationSelect from 'components/Git/Organization/Select'
 
-class TaskFilter extends Component {
+class SitesSearchFilter extends Component {
   handleReset = e => {
     document.getElementById('filterForm').reset()
     this.props.resetFilters()
@@ -15,7 +15,7 @@ class TaskFilter extends Component {
     const { userList, statusList, orgList } = lists
 
     return (
-      <div className="TaskFilter">
+      <div className="SitesSearchFilter">
         <form id="filterForm">
           <div className="form-group">
             <label>Seach term</label>
@@ -30,7 +30,7 @@ class TaskFilter extends Component {
           </div>
           <div className="form-group">
             <label>Status</label>
-            <TaskStatusList
+            <TaskSelectsStatus
               statusList={statusList}
               defaultValue={searchParams.status ? searchParams.status.id : undefined}
               onChange={handleFilterChange}
@@ -38,7 +38,7 @@ class TaskFilter extends Component {
           </div>
           <div className="form-group">
             <label>Assignee</label>
-            <UserList
+            <UserSelect
               name="assignee"
               userList={userList}
               defaultValue={searchParams.assignee ? searchParams.assignee : undefined}
@@ -47,7 +47,7 @@ class TaskFilter extends Component {
           </div>
           <div className="form-group">
             <label>Author</label>
-            <UserList
+            <UserSelect
               name="author"
               userList={userList}
               defaultValue={searchParams.author ? searchParams.author : undefined}
@@ -69,7 +69,7 @@ class TaskFilter extends Component {
 
           <div className="form-group">
             <label>Git Organization</label>
-            <GitOrganizationList
+            <GitOrganizationSelect
               orgList={orgList}
               defaultValue={searchParams.organization ? searchParams.organization : undefined}
               onChange={handleFilterChange}
@@ -95,4 +95,4 @@ class TaskFilter extends Component {
   }
 }
 
-export default TaskFilter
+export default SitesSearchFilter

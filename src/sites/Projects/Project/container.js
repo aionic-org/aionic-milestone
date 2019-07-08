@@ -105,6 +105,10 @@ class SitesProjectContainer extends Component {
       })
   }
 
+  updateParentProjectState = project => {
+    this.updateProject(project)
+  }
+
   render() {
     const { isLoading, msg, project, projectUpdate } = this.state
 
@@ -121,8 +125,8 @@ class SitesProjectContainer extends Component {
         <div className="SitesProjectContainer">
           <SitesProject
             project={project}
+            updateParentProjectState={this.updateParentProjectState}
             handleInputChange={this.handleInputChange}
-            updateProject={this.updateProject}
             deleteProject={this.deleteProject}
           />
           {alert}

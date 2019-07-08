@@ -1,23 +1,18 @@
-import React, { useState } from 'react'
-
-import ReactModal from 'react-modal'
+import React from 'react'
 
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
-import Widget from 'components/Widget'
-
-import SitesBoardDetails from './components/Details'
-
 import BoardContainer from 'components/Board/View/container'
+import BoardDetails from 'components/Board/Details'
 
 const SitesBoard = props => {
-  const { board, handleInputChange, deleteBoard, updateBoardUsers } = props
+  const { board, updateParentBoardState, deleteBoard } = props
 
-  const [showModal, setShowModal] = useState(false)
-
-  const handleCloseModal = () => {
-    setShowModal(false)
+  const handleTitleChange = e => {
+    if (e.target.value !== board.title) {
+      updateParentBoardState({ ...board, title: e.target.value })
+    }
   }
 
   return (
@@ -28,13 +23,16 @@ const SitesBoard = props => {
             <InputTitle
               defaultValue={board.title}
               placeholder={'Enter board title'}
-              onBlur={handleInputChange}
+              onBlur={handleTitleChange}
             />
           </div>
           <div className="col-auto">
-            <button type="button" className="btn btn-secondary">
-              <i className="fas fa-cog" />
-            </button>
+            <BoardDetails
+              board={board}
+              updateParentBoardState={updateParentBoardState}
+              deleteBoard={deleteBoard}
+              classes={['d-inline-block']}
+            />
             <div className="btn-group ml-2">
               <button
                 type="button"
@@ -65,31 +63,9 @@ const SitesBoard = props => {
         </div>
         <div className="row">
           <div className="col-12">
-            <BoardContainer userList={board.users} showDetails={setShowModal} />
+            <BoardContainer userList={board.users} />
           </div>
         </div>
-
-        <ReactModal
-          isOpen={showModal}
-          contentLabel="Minimal Modal Example"
-          className="Modal"
-          overlayClassName="Modal-Overlay"
-        >
-          <div className="modal-header">
-            <h5 className="modal-title">{board.title} Details</h5>
-            <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <SitesBoardDetails
-              board={board}
-              handleInputChange={handleInputChange}
-              deleteBoard={deleteBoard}
-              updateBoardUsers={updateBoardUsers}
-            />
-          </div>
-        </ReactModal>
       </Content>
     </div>
   )

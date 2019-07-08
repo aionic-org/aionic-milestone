@@ -1,10 +1,10 @@
 import React from 'react'
 
 const ProjectOptionButtons = props => {
-  const { project, updateProject } = props
+  const { project, updateParentProjectState } = props
 
   const toggleComplete = () => {
-    updateProject({ ...project, completed: !project.completed })
+    updateParentProjectState({ ...project, completed: !project.completed })
   }
 
   const completeBtn = project.completed ? (

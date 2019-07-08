@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import Deck from 'components/Deck'
 
-import TaskFilterStatus from 'components/Task/Filter/Status/'
+import TaskDashboardFilters from './Filters/'
 
-class DashboardTasks extends Component {
+class TaskDashboard extends Component {
   constructor(props) {
     super(props)
 
@@ -67,17 +67,14 @@ class DashboardTasks extends Component {
     const itemList = isFiltered ? taskListFiltered : taskList
 
     return (
-      <div className="DashboardTasks">
-        {showStatusFilters ? <TaskFilterStatus handleStatusChange={this.filterByStatus} /> : null}
+      <div className="TaskDashboard">
+        {showStatusFilters ? (
+          <TaskDashboardFilters handleStatusChange={this.filterByStatus} />
+        ) : null}
 
-        <div className={`${showStatusFilters ? 'mt-4' : ''} `}>
-          <p className="d-inline-block text-muted font-weight-bold">
-            Number of tasks: {itemList.length}
-          </p>
-          <a href="#" className="d-inline-block float-right" onClick={this.toggleTextFilter}>
-            Toggle filters
-          </a>
-        </div>
+        <a href="#" className="d-inline-block float-right mb-2" onClick={this.toggleTextFilter}>
+          Toggle filters
+        </a>
 
         {showTextFilter ? (
           <div className="form-group">
@@ -90,16 +87,21 @@ class DashboardTasks extends Component {
             />
           </div>
         ) : null}
-        <Deck itemList={itemList} deckType="Task" itemsPerRow={itemsPerRow} />
+        <Deck
+          itemList={itemList}
+          deckType="Task"
+          itemsPerRow={itemsPerRow}
+          showItemsNumber={true}
+        />
       </div>
     )
   }
 }
 
-DashboardTasks.defaultProps = {
+TaskDashboard.defaultProps = {
   showStatusFilters: true,
   itemsPerRow: 3,
   updateParent: () => {}
 }
 
-export default DashboardTasks
+export default TaskDashboard

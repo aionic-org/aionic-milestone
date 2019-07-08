@@ -2,13 +2,13 @@ import React from 'react'
 
 import InputSelect from 'components/UI/Input/Select'
 
-const GitOrganizationList = props => {
+const GitOrganizationSelect = props => {
   const organizations = props.orgList.map(organization => {
     return { value: organization.id, title: organization.name }
   })
 
   return (
-    <div className="GitOrganizationList">
+    <div className="GitOrganizationSelect">
       <InputSelect
         optionList={organizations}
         name="organization"
@@ -19,10 +19,10 @@ const GitOrganizationList = props => {
   )
 }
 
-GitOrganizationList.defaultProps = {
+GitOrganizationSelect.defaultProps = {
   orgList: [],
   onChange: () => {},
   defaultValue: ''
 }
 
-export default GitOrganizationList
+export default GitOrganizationSelect

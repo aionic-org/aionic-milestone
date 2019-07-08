@@ -2,7 +2,7 @@ import React from 'react'
 
 import InputSelect from 'components/UI/Input/Select'
 
-const TaskLabelList = props => {
+const TaskSelectsLabel = props => {
   // https://flatuicolors.com/palette/us
   const labels = [
     { value: '#0984e3', title: 'Blue' },
@@ -15,7 +15,7 @@ const TaskLabelList = props => {
   ]
 
   return (
-    <div className="TaskLabelList">
+    <div className="TaskSelectsLabel">
       <InputSelect
         optionList={labels}
         name="label"
@@ -26,8 +26,8 @@ const TaskLabelList = props => {
   )
 }
 
-TaskLabelList.defaultProps = {
+TaskSelectsLabel.defaultProps = {
   defaultValue: ''
 }
 
-export default TaskLabelList
+export default TaskSelectsLabel

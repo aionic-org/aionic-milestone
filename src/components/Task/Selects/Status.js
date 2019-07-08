@@ -1,13 +1,13 @@
 import React from 'react'
 import InputSelect from 'components/UI/Input/Select'
 
-const TaskStatusList = props => {
+const TaskSelectsStatus = props => {
   const status = props.statusList.map(status => {
     return { value: status.id, title: status.title }
   })
 
   return (
-    <div className="TaskStatusList">
+    <div className="TaskSelectsStatus">
       <InputSelect
         optionList={status}
         name="status"
@@ -18,9 +18,9 @@ const TaskStatusList = props => {
   )
 }
 
-TaskStatusList.defaultProps = {
+TaskSelectsStatus.defaultProps = {
   statusList: [],
   defaultValue: ''
 }
 
-export default TaskStatusList
+export default TaskSelectsStatus

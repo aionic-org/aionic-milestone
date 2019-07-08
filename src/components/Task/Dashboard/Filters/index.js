@@ -4,7 +4,7 @@ import Fetcher from 'components/Utility/Fetcher'
 
 import Tabs from 'components/UI/Tabs'
 
-const TaskFilterStatus = props => (
+const TaskDashboardFilters = props => (
   <Fetcher url="task-status">
     {status => {
       const { handleStatusChange } = props
@@ -25,7 +25,7 @@ const TaskFilterStatus = props => (
       })
 
       return (
-        <div className="TaskFilterStatus">
+        <div className="TaskDashboardFilters mb-4">
           <Tabs tabs={tabTitles} handleClick={handleClick} />
         </div>
       )
@@ -33,4 +33,4 @@ const TaskFilterStatus = props => (
   </Fetcher>
 )
 
-export default TaskFilterStatus
+export default TaskDashboardFilters

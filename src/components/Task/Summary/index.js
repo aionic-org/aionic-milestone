@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Session } from 'services/session'
 
-import TaskStatusList from 'components/Task/StatusList'
-import TaskPriorityList from 'components/Task/PriorityList'
-import TaskLabelList from 'components/Task/LabelList'
+import TaskSelectsStatus from 'components/Task/Selects/Status'
+import TaskSelectsPriority from 'components/Task/Selects/Priority'
+import TaskSelectsLabel from 'components/Task/Selects/Label'
 
 import InputSuggestion from 'components/UI/Input/Suggestion'
 
@@ -34,7 +34,7 @@ const TaskSummary = props => {
         <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Status</label>
           <div className="col-12">
-            <TaskStatusList
+            <TaskSelectsStatus
               statusList={statusList}
               defaultValue={task.status ? task.status.id : undefined}
               onChange={handleInputChange}
@@ -86,7 +86,7 @@ const TaskSummary = props => {
         <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Priority</label>
           <div className="col-12">
-            <TaskPriorityList
+            <TaskSelectsPriority
               priorityList={priorityList}
               defaultValue={task.priority ? task.priority.value : undefined}
               onChange={handleInputChange}
@@ -97,7 +97,7 @@ const TaskSummary = props => {
         <div className="col-12 col-md-4">
           <label className="col-12 col-form-label">Label</label>
           <div className="col-12">
-            <TaskLabelList
+            <TaskSelectsLabel
               defaultValue={task.label ? task.label : undefined}
               onChange={handleInputChange}
             />

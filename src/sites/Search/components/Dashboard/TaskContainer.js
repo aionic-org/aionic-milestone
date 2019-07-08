@@ -5,7 +5,7 @@ import { Api } from 'services/api'
 import Spinner from 'components/UI/Spinner'
 import Error from 'components/UI/Error'
 
-import DashboardTasks from 'components/Dashboard/Tasks'
+import TaskDashboard from 'components/Task/Dashboard/'
 
 class SearchDashboardTaskContainer extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class SearchDashboardTaskContainer extends Component {
     } else {
       return (
         <div className="SearchDashboardTaskContainer">
-          <DashboardTasks taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
+          <TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
         </div>
       )
     }
