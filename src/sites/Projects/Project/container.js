@@ -44,20 +44,6 @@ class SitesProjectContainer extends Component {
       })
   }
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.project[name] !== value) {
-      const project = { ...this.state.project, [name]: value }
-
-      this.setState({ project }, () => {
-        this.updateProject()
-      })
-    }
-  }
-
   updateProject = _project => {
     const project = _project || this.state.project
 
@@ -126,7 +112,6 @@ class SitesProjectContainer extends Component {
           <SitesProject
             project={project}
             updateParentProjectState={this.updateParentProjectState}
-            handleInputChange={this.handleInputChange}
             deleteProject={this.deleteProject}
           />
           {alert}

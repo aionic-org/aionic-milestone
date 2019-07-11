@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Helper } from 'services/helper'
 import { Session } from 'services/session'
 
 import TaskSelectsStatus from 'components/Task/Selects/Status'
@@ -9,7 +10,7 @@ import TaskSelectsLabel from 'components/Task/Selects/Label'
 import InputSuggestion from 'components/UI/Input/Suggestion'
 
 const TaskSummary = props => {
-  const { lists, task, updateTask, handleInputChange, isNewTask } = props
+  const { lists, task, updateParentTaskState, isNewTask } = props
   const { statusList, priorityList, userList } = lists
 
   const userListPrepared = userList.map(user => {
@@ -19,8 +20,12 @@ const TaskSummary = props => {
     }
   })
 
-  const updateParent = element => {
-    updateTask({ ...task, [element.name]: element.id })
+  const handleInputSuggestion = element => {
+    updateParentTaskState({ ...task, [element.name]: element.id })
+  }
+
+  const handleInputChange = e => {
+    Helper.updateObjectPropByEvent(task, e, updateParentTaskState)
   }
 
   return (
@@ -50,7 +55,7 @@ const TaskSummary = props => {
               name="assignee"
               placeholder="Enter username"
               defaultValue={task.assignee ? task.assignee.id : undefined}
-              updateParent={updateParent}
+              updateParent={handleInputSuggestion}
             />
           </div>
         </div>
@@ -63,7 +68,7 @@ const TaskSummary = props => {
               name="author"
               placeholder="Enter username"
               defaultValue={task.author ? task.author.id : isNewTask ? Session.getUser().id : ''}
-              updateParent={updateParent}
+              updateParent={handleInputSuggestion}
             />
           </div>
         </div>

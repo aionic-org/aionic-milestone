@@ -12,11 +12,9 @@ const AdministrationUser = props => (
   <Fetcher url="users">
     {users => (
       <div className="AdministrationUser">
-        <Widget title="Users" icon="fas fa-users-cog">
-          <UserInvitation />
-          <hr className="featurette-divider" />
-          <Deck itemList={users} deckType="User" />
-        </Widget>
+        <UserInvitation />
+        <hr className="featurette-divider" />
+        <Deck itemList={users} deckType="User" />
       </div>
     )}
   </Fetcher>

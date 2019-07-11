@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Helper } from 'services/helper'
+
 import Content from 'components/UI/Content'
 import InputTitle from 'components/UI/Input/Title/'
 
@@ -10,9 +12,7 @@ const SitesBoard = props => {
   const { board, updateParentBoardState, deleteBoard } = props
 
   const handleTitleChange = e => {
-    if (e.target.value !== board.title) {
-      updateParentBoardState({ ...board, title: e.target.value })
-    }
+    Helper.updateObjectPropByEvent(board, e, updateParentBoardState)
   }
 
   return (

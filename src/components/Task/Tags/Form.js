@@ -11,9 +11,7 @@ const TaskTagForm = props => {
       const tagListCopy = tagList.slice()
       tagListCopy.push(value)
 
-      const newTagList = tagListCopy
-
-      updateTagList(newTagList, true)
+      updateTagList(tagListCopy, true)
     } else {
       toggleForm()
     }

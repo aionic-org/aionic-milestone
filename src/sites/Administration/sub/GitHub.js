@@ -71,19 +71,17 @@ export class AdministrationGitHub extends Component {
     } else {
       return (
         <div className="AdministrationGitHub">
-          <Widget title="GitHub" icon="fab fa-github">
-            <GitOrganizationForm updateParent={this.addOrganization} />
-            <hr className="featurette-divider" />
-            <div className="GitOrganizationContainer">
-              <Deck
-                itemList={organizations}
-                deckType="Organization"
-                itemsPerRow="1"
-                handleDelete={this.removeOrganization}
-                handleSync={this.updateOrganization}
-              />
-            </div>
-          </Widget>
+          <GitOrganizationForm updateParent={this.addOrganization} />
+          <hr className="featurette-divider" />
+          <div className="GitOrganizationContainer">
+            <Deck
+              itemList={organizations}
+              deckType="Organization"
+              itemsPerRow="1"
+              handleDelete={this.removeOrganization}
+              handleSync={this.updateOrganization}
+            />
+          </div>
         </div>
       )
     }

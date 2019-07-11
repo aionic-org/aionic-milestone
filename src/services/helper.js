@@ -12,4 +12,14 @@ export class Helper {
       now.getSeconds()
     )
   }
+
+  static updateObjectPropByEvent(object, event, cb) {
+    const target = event.target
+    const name = target.name
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    if (object[name] !== value) {
+      cb({ ...object, [name]: value })
+    }
+  }
 }

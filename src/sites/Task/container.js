@@ -109,21 +109,12 @@ class SitesTaskContainer extends Component {
     }
   }
 
-  createTask = task => {
-    const _task = task || this.state.task
-
-    Api.postData('tasks', { task: _task })
-      .then(res => {
-        this.props.history.push(`/task/${res.id}`)
-      })
-      .catch(err => {
-        this.setState({
-          taskUpdate: {
-            success: false,
-            msg: Api.handleHttpError(err)
-          }
-        })
-      })
+  updateParentTaskState = task => {
+    if (this.state.isNewTask) {
+      this.setState({ task })
+    } else {
+      this.updateTask(task)
+    }
   }
 
   render() {
@@ -144,6 +135,7 @@ class SitesTaskContainer extends Component {
           <SitesTask
             isNewTask={isNewTask}
             task={task}
+            updateParentTaskState={this.updateParentTaskState}
             createTask={this.createTask}
             handleInputChange={this.handleInputChange}
             updateTask={this.updateTask}

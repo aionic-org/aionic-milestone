@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import ReactModal from 'react-modal'
 
+import { Helper } from 'services/helper'
+
 import UserSuggestion from 'components/User/Suggestion'
 
 const BoardDetails = props => {
@@ -22,13 +24,7 @@ const BoardDetails = props => {
   }
 
   const handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (board[name] !== value) {
-      updateParentBoardState({ ...board, [name]: value })
-    }
+    Helper.updateObjectPropByEvent(board, e, updateParentBoardState)
   }
 
   return (

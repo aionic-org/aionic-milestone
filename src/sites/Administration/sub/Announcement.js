@@ -62,18 +62,16 @@ export class AdministrationAnnouncement extends Component {
     } else {
       return (
         <div className="AdministrationAnnouncement">
-          <Widget title="Announcements" icon="fas fa-bullhorn" wrapBody={true}>
-            <AnnouncementForm updateParent={this.addAnnouncement} />
-            <hr className="featurette-divider" />
-            <div className="GitOrganizationContainer">
-              <Deck
-                itemList={announcements}
-                deckType="Announcement"
-                itemsPerRow="1"
-                handleDelete={this.removeAnnouncement}
-              />
-            </div>
-          </Widget>
+          <AnnouncementForm updateParent={this.addAnnouncement} />
+          <hr className="featurette-divider" />
+          <div className="GitOrganizationContainer">
+            <Deck
+              itemList={announcements}
+              deckType="Announcement"
+              itemsPerRow="1"
+              handleDelete={this.removeAnnouncement}
+            />
+          </div>
         </div>
       )
     }

@@ -1,40 +1,46 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import Fetcher from 'components/Utility/Fetcher'
+import useFetcher from 'components/Utility/Hooks/useFetcher'
+import useTextFilter from 'components/Utility/Hooks/useTextFilter'
+
+import Spinner from 'components/UI/Spinner'
+import Error from 'components/UI/Error'
 
 import GitCommits from '.'
 
-const GitCommitsContainer = props => (
-  <Fetcher
-    url={`git/${props.task.organization.id}/repository/${props.task.repository.id}/${
-      props.task.branch
-    }/commits`}
-  >
-    {commits => {
-      /*      const [commitList, setCommitList] = useState(commits)
+const GitCommitsContainer = props => {
+  const { task } = props
+  const { organization, repository, branch } = task
 
-      const handleInputChange = e => {
-        const value = e.target.value
+  const [commits, isLoading, error] = useFetcher(
+    `git/${organization.id}/repository/${repository.id}/${branch}/commits`
+  )
 
-        if (value.length) {
-          const commitsFiltered = commits.filter(commit => {
-            return commit.text === value
-          })
+  const [commitsFiltered, setCommitsFiltered, filterText] = useTextFilter('message', commits)
 
-          setCommitList(commitsFiltered)
-        } else {
-          setCommitList(commits)
-        }
-      }*/
+  const filterCommits = e => {
+    setCommitsFiltered(e.target.value)
+  }
 
-      return (
-        <div className="GitCommitsContainer">
-          <input type="text" className="form-control" placeholder="Filter commits..." />
-          <GitCommits commitList={commits} />
-        </div>
-      )
-    }}
-  </Fetcher>
-)
+  if (isLoading) {
+    return <Spinner showPadding={true} />
+  } else if (error) {
+    return <Error message={error} />
+  } else {
+    const commitsToShow = filterText.length ? commitsFiltered : commits
+    return (
+      <div className="GitCommitsContainer">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Filter commits..."
+          onChange={filterCommits}
+        />
+        <GitCommits commitList={commitsToShow} />
+        <p class="text-muted text-center mt-2">Total: {commitsToShow.length}</p>
+      </div>
+    )
+  }
+}
 
 export default GitCommitsContainer

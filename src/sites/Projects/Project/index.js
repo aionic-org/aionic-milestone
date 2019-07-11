@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { Helper } from 'services/helper'
+
+import useTextFilter from 'components/Utility/Hooks/useTextFilter'
+
 import ProjectWidgetbar from './components/Widgetbar'
 import SitesProjectTabs from './components/Tabs'
 
@@ -12,12 +16,17 @@ import ProjectOptionButtons from 'components/Project/OptionButtons'
 
 const SitesProject = props => {
   const { project, updateParentProjectState, deleteProject } = props
+  const [tasksFiltered, setTasksFiltered, filterText] = useTextFilter('title', project.tasks)
 
   const handleTitleChange = e => {
-    if (e.target.value !== project.title) {
-      updateParentProjectState({ ...project, title: e.target.value })
-    }
+    Helper.updateObjectPropByEvent(project, e, updateParentProjectState)
   }
+
+  const filterTasks = e => {
+    setTasksFiltered(e.target.value)
+  }
+
+  const tasksToShow = filterText.length ? tasksFiltered : project.tasks
 
   return (
     <div className="SitesProject">
@@ -40,7 +49,15 @@ const SitesProject = props => {
         <ProjectWidgetbar project={project} />
         <div className="row">
           <div className="col-12 col-xl-8">
-            <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Filter tasks..."
+                onChange={filterTasks}
+              />
+            </div>
+            <CardDeck deckType="Task" itemList={tasksToShow} itemsPerRow={3} />
           </div>
           <div className="col-12 col-xl-4 mt-3 mt-xl-0">
             <SitesProjectTabs

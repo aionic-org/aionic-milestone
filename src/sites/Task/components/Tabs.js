@@ -12,7 +12,7 @@ import TaskProjectsContainer from 'components/Task/Projects/container'
 import TaskLinks from 'components/Task/Links'
 
 const SitesTaskTabs = props => {
-  const { task, updateTask } = props
+  const { task, updateParentTaskState } = props
   const [tab, changeTab] = useTab('')
 
   const tabs = [
@@ -29,7 +29,7 @@ const SitesTaskTabs = props => {
       content = <TaskCommentsContainer taskId={task.id} />
       break
     case 'GitHub':
-      content = <TaskGitContainer task={task} updateTask={updateTask} />
+      content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />
       break
     case 'Scratchpad':
       content = <TaskScratchpad task={task} user={Session.getUser()} />
@@ -38,7 +38,7 @@ const SitesTaskTabs = props => {
       content = <TaskProjectsContainer taskId={task.id} showDescription={true} />
       break
     case 'Links':
-      content = <TaskLinks task={task} updateTask={updateTask} />
+      content = <TaskLinks task={task} updateTask={updateParentTaskState} />
       break
     default:
       break

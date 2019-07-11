@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { Api } from 'services/api'
 
+import useTextFilter from 'components/Utility/Hooks/useTextFilter'
+
 import Spinner from 'components/UI/Spinner'
 import Tabs from 'components/UI/Tabs'
 
@@ -12,7 +14,7 @@ const Board = props => {
 
   const [userTasks, setUserTasks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [userTasksFiltered, setUserTasksFiltered] = useState([])
+  const [userTasksFiltered, setUserTasksFiltered] = useTextFilter('title', userTasks)
 
   const tabTitles = userList.map(user => {
     var userNameDuplicates = userList.filter(user2 => {
@@ -48,17 +50,7 @@ const Board = props => {
   }
 
   const filterTasks = e => {
-    const searchTerm = e.target.value
-
-    if (searchTerm.length) {
-      const tasks = userTasks.filter(task => {
-        return task.title.toLowerCase().includes(e.target.value.toLowerCase()) ? true : false
-      })
-
-      setUserTasksFiltered(tasks)
-    } else {
-      setUserTasksFiltered([])
-    }
+    setUserTasksFiltered(e.target.value)
   }
 
   const loadingSpinner = isLoading ? (

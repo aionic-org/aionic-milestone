@@ -34,18 +34,14 @@ const SitesSearch = props => {
         <Title title="Search" />
         <div className="row">
           <div className="col-12 col-xl-3">
-            <Widget title="Filters" icon="fas fa-filter" showLastUpdate={false}>
-              <SitesSearchFilter
-                searchParams={params}
-                handleFilterChange={handleFilterChange}
-                resetFilters={resetFilters}
-              />
-            </Widget>
+            <SitesSearchFilter
+              searchParams={params}
+              handleFilterChange={handleFilterChange}
+              resetFilters={resetFilters}
+            />
           </div>
           <div className="col-12 col-xl-9 mt-3 mt-md-0">
-            <Widget title="Results" icon="fas fa-clipboard-list">
-              <SearchDashboardTaskContainer searchParams={params} />
-            </Widget>
+            <SearchDashboardTaskContainer searchParams={params} />
           </div>
         </div>
       </Content>

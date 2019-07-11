@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-
 import { withRouter } from 'react-router'
 
+import { Helper } from 'services/helper'
 import { Api } from 'services/api'
 import { Session } from 'services/session'
 
@@ -22,15 +22,9 @@ class ProjectForm extends Component {
   }
 
   handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.project[name] !== value) {
-      const project = { ...this.state.project, [name]: value }
-
+    Helper.updateObjectPropByEvent(this.state.project, e, project => {
       this.setState({ project })
-    }
+    })
   }
 
   handleSubmit = e => {
