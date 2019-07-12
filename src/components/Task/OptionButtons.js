@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { Api } from 'services/api'
+import TaskCreate from './Create'
 
 const TaskOptionButtons = props => {
   const { task, isNewTask, updateTask, history } = props
@@ -10,25 +10,10 @@ const TaskOptionButtons = props => {
     updateTask({ ...task, completed: !task.completed })
   }
 
-  const createTask = () => {
-    Api.postData('tasks', { task })
-      .then(res => {
-        props.history.push(`/task/${res.id}`)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
   let statusBtn = null
   let moreBtn = null
   if (isNewTask) {
-    statusBtn = (
-      <button type="button" className="btn btn-primary" onClick={createTask}>
-        <i className="fas fa-plus mr-2" />
-        Create and save
-      </button>
-    )
+    statusBtn = <TaskCreate task={task} />
   } else {
     statusBtn = task.completed ? (
       <button type="button" className="btn btn-warning" onClick={toggleComplete}>

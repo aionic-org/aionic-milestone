@@ -24,7 +24,7 @@ const TaskTag = props => {
     <li className="TaskTag list-inline-item">
       <Link to={`/search?tag=${tag}`} className="">
         {tag}
-        <i className="fas fa-times ml-1" data-tag={tag} onClick={removeTag} />
+        <i className="fas fa-times ml-2" data-tag={tag} onClick={removeTag} />
       </Link>
     </li>
   )

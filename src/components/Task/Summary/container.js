@@ -20,8 +20,9 @@ class TaskSummaryContainer extends Component {
 
   componentDidMount = () => {
     const requests = [
-      Api.fetchData('task-status'),
       Api.fetchData('task-priorities'),
+      Api.fetchData('task-status'),
+      Api.fetchData('task-type'),
       Api.fetchData('users')
     ]
 
@@ -30,9 +31,10 @@ class TaskSummaryContainer extends Component {
         this.setState({
           isLoading: false,
           lists: {
-            statusList: res[0],
-            priorityList: res[1],
-            userList: res[2]
+            priorityList: res[0],
+            statusList: res[1],
+            typeList: res[2],
+            userList: res[3]
           }
         })
       })

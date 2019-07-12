@@ -10,6 +10,7 @@ import TaskTags from 'components/Task/Tags'
 import TaskSummaryContainer from 'components/Task/Summary/container'
 import TaskDescription from 'components/Task/Description'
 import TaskOptionButtons from 'components/Task/OptionButtons'
+import TaskDates from '../../components/Task/Dates'
 
 const SitesTask = props => {
   const { task, updateParentTaskState, isNewTask, createTask } = props
@@ -43,6 +44,7 @@ const SitesTask = props => {
         <div className="row mt-4">
           <div className="col-12 col-xl-8">
             <TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
+            <TaskDates task={task} updateParentTaskState={updateParentTaskState} />
             <TaskDescription task={task} updateTask={updateParentTaskState} />
           </div>
           <div className="col-12 col-xl-4 mt-3 mt-xl-0">

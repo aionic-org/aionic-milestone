@@ -54,25 +54,6 @@ class SitesTaskContainer extends Component {
     }
   }
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.task[name] !== value) {
-      const task = {
-        ...this.state.task,
-        [name]: value.length || target.type === 'checkbox' ? value : null
-      }
-
-      this.setState({ task }, () => {
-        if (!this.state.isNewTask) {
-          this.updateTask()
-        }
-      })
-    }
-  }
-
   updateTask = task => {
     const _task = task || this.state.task
 
@@ -137,7 +118,6 @@ class SitesTaskContainer extends Component {
             task={task}
             updateParentTaskState={this.updateParentTaskState}
             createTask={this.createTask}
-            handleInputChange={this.handleInputChange}
             updateTask={this.updateTask}
           />
         </div>

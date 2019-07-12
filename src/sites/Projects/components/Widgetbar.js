@@ -13,10 +13,10 @@ const ProjectsWidgetbar = props => {
     <div className="ProjectsWidgetbar mb-5">
       <div className="row">
         <div className="col-12 col-xl-4 mt-xl-0">
-          <Widget title={allProjects.length} subtitle="Total projects" icon="fas fa-table" />
+          <Widget title={openProjects.length} subtitle="Open projects" icon="fas fa-list" />
         </div>
         <div className="col-12 col-xl-4 mt-2 mt-xl-0">
-          <Widget title={openProjects.length} subtitle="Open projects" icon="fas fa-list" />
+          <Widget title={allProjects.length} subtitle="Total projects" icon="fas fa-table" />
         </div>
         <div className="col-12 col-xl-4 mt-2 mt-xl-0">
           <Widget

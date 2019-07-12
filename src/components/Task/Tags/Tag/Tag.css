@@ -3,7 +3,10 @@
 }
 
 .TaskTag.list-inline-item {
-  margin-right: 1rem;
+  background-color: #e3ebf6;
+  border-radius: 4px;
+  margin-right: 0.75rem;
   margin-top: 4px;
   margin-bottom: 4px;
+  padding: 2px 10px;
 }

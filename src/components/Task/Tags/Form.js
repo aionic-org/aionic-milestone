@@ -26,7 +26,6 @@ const TaskTagForm = props => {
           placeholder="Enter tag..."
           autoFocus
           onBlur={addTag}
-          style={{ height: '22px' }}
         />
       </form>
     </div>
