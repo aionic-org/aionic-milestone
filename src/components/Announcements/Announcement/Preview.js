@@ -24,7 +24,7 @@ const AnnouncementPreview = props => {
           <small className="text-muted">
             {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}
           </small>
-          <button className="btn btn-danger float-right" onClick={deleteAnnouncement}>
+          <button className="btn btn-danger btn-sm float-right" onClick={deleteAnnouncement}>
             Remove
           </button>
         </p>

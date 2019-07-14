@@ -6,7 +6,7 @@ import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
 import ProjectPreview from 'components/Project/Preview'
 import GitOrganizationPreview from 'components/Git/Organization/Preview'
-import AnnouncementPreview from 'components/Announcements/Preview'
+import AnnouncementPreview from 'components/Announcements/Announcement/Preview'
 import BoardPreview from 'components/Board/Preview'
 
 const Deck = props => {
@@ -53,10 +53,10 @@ const Deck = props => {
       )
     })
   ) : (
-    <div className="mt-4">
-      <i className="d-block text-center fas fa-check-circle fa-lg" />
-      <p className="text-center mt-1 mb-0">No results!</p>
-    </div>
+    <i
+      className="mt-3 d-block text-center fas fa-check-circle"
+      style={{ color: '#00b894', fontSize: '1.5rem' }}
+    />
   )
 
   return (

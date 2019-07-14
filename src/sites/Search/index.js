@@ -4,8 +4,6 @@ import queryString from 'query-string'
 import Content from 'components/UI/Content'
 import Title from 'components/UI/Title'
 
-import Widget from 'components/Widget'
-
 import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer'
 import SitesSearchFilter from './components/Filters/container'
 

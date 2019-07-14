@@ -1,23 +1,29 @@
 import React from 'react'
 
-import Fetcher from 'components/Utility/Fetcher'
+import useFetcher from 'components/Utility/Hooks/useFetcher'
 
-import Deck from 'components/Deck'
-
-import Widget from 'components/Widget'
+import Error from 'components/UI/Error'
+import Spinner from 'components/UI/Spinner'
 
 import UserInvitation from 'components/User/Invitation'
+import UserTable from 'components/User/Table'
 
-const AdministrationUser = props => (
-  <Fetcher url="users">
-    {users => (
+const AdministrationUser = props => {
+  const [users, isLoading, error] = useFetcher('users')
+
+  if (isLoading) {
+    return <Spinner />
+  } else if (error) {
+    return <Error message={error} />
+  } else {
+    return (
       <div className="AdministrationUser">
         <UserInvitation />
         <hr className="featurette-divider" />
-        <Deck itemList={users} deckType="User" />
+        <UserTable users={users} />
       </div>
-    )}
-  </Fetcher>
-)
+    )
+  }
+}
 
 export default AdministrationUser

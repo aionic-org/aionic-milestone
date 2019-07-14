@@ -9,8 +9,8 @@ const InputSelect = props => (
     disabled={props.disabled}
   >
     {props.showDefault ? <option value="">-</option> : null}
-    {props.optionList.map(option => (
-      <option value={option.value} key={option.value}>
+    {props.optionList.map((option, i) => (
+      <option value={option.value} key={option.id || i}>
         {option.title}
       </option>
     ))}

@@ -5,8 +5,6 @@ import { Api } from 'services/api'
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
-import Widget from 'components/Widget'
-
 import GitOrganizationForm from 'components/Git/Organization/Form'
 import Deck from 'components/Deck'
 

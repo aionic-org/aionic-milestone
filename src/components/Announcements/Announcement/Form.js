@@ -44,7 +44,7 @@ class AnnouncementForm extends Component {
       Api.postData('announcements', { announcement: this.state.announcement })
         .then(res => {
           this.setState({ isLoading: false, status: '' })
-          this.props.updateParent(res)
+          this.props.addParentAnnouncement(res)
         })
         .catch(err => {
           this.setState({

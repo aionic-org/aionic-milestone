@@ -1,80 +1,43 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import { Api } from 'services/api'
+import useFetcher from 'components/Utility/Hooks/useFetcher'
 
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
-import Widget from 'components/Widget'
-
-import Deck from 'components/Deck'
-
 import AnnouncementForm from 'components/Announcements/Announcement/Form'
+import AnnouncementsTable from 'components/Announcements/Table'
 
-export class AdministrationAnnouncement extends Component {
-  constructor(props) {
-    super(props)
+const AdministrationAnnouncement = () => {
+  const [announcements, isLoading, error, setAnnouncements] = useFetcher('announcements')
 
-    this.state = {
-      isLoading: false,
-      msg: '',
-      announcements: []
-    }
+  const addAnnouncement = announcement => {
+    const announcementsCopy = announcements.slice()
+    announcementsCopy.push(announcement)
+
+    setAnnouncements(announcementsCopy)
   }
 
-  componentDidMount = () => {
-    Api.fetchData('announcements')
-      .then(announcements => {
-        this.setState({ isLoading: false, announcements })
-      })
-      .catch(err => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        })
-      })
+  const removeAnnouncement = id => {
+    const newAnnouncements = announcements.slice().filter(announcement => announcement.id !== id)
+    setAnnouncements(newAnnouncements)
   }
 
-  addAnnouncement = announcement => {
-    const announcements = this.state.announcements.slice()
-    announcements.push(announcement)
-
-    this.setState({ announcements })
-  }
-
-  removeAnnouncement = announcement => {
-    const announcementIdx = this.state.announcements.findIndex(org => org.id === announcement.id)
-
-    if (announcementIdx >= 0) {
-      const announcements = this.state.announcements.slice()
-      announcements.splice(announcementIdx, 1)
-      this.setState({ announcements })
-    }
-  }
-
-  render() {
-    const { isLoading, msg, announcements } = this.state
-
-    if (isLoading) {
-      return <Spinner />
-    } else if (msg.length) {
-      return <Error message={msg} />
-    } else {
-      return (
-        <div className="AdministrationAnnouncement">
-          <AnnouncementForm updateParent={this.addAnnouncement} />
-          <hr className="featurette-divider" />
-          <div className="GitOrganizationContainer">
-            <Deck
-              itemList={announcements}
-              deckType="Announcement"
-              itemsPerRow="1"
-              handleDelete={this.removeAnnouncement}
-            />
-          </div>
-        </div>
-      )
-    }
+  if (isLoading) {
+    return <Spinner />
+  } else if (error) {
+    return <Error message={error} />
+  } else {
+    return (
+      <div className="AdministrationAnnouncement">
+        <AnnouncementForm addParentAnnouncement={addAnnouncement} />
+        <hr className="featurette-divider" />
+        <AnnouncementsTable
+          announcements={announcements}
+          removeParentAnnouncement={removeAnnouncement}
+        />
+      </div>
+    )
   }
 }
 

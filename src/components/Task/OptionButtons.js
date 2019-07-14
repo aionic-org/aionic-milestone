@@ -4,10 +4,10 @@ import { withRouter } from 'react-router-dom'
 import TaskCreate from './Create'
 
 const TaskOptionButtons = props => {
-  const { task, isNewTask, updateTask, history } = props
+  const { task, isNewTask, updateParentTaskState, history } = props
 
   const toggleComplete = () => {
-    updateTask({ ...task, completed: !task.completed })
+    updateParentTaskState({ ...task, completed: !task.completed })
   }
 
   let statusBtn = null
@@ -29,7 +29,7 @@ const TaskOptionButtons = props => {
       <div className="btn-group ml-2">
         <button
           type="button"
-          className="btn btn-primary dropdown-toggle"
+          className="btn btn-primary dropdown-toggle disabled"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"

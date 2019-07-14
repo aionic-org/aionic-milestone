@@ -4,8 +4,6 @@ import { NavLink, Route, Switch } from 'react-router-dom'
 import Title from 'components/UI/Title'
 import Content from 'components/UI/Content'
 
-import Widget from 'components/Widget'
-
 import AdministrationGeneral from './sub/General'
 import AdministrationUser from './sub/User'
 import AdministrationGitHub from './sub/GitHub'

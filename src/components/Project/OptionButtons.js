@@ -25,7 +25,7 @@ const ProjectOptionButtons = props => {
         <div className="btn-group ml-2">
           <button
             type="button"
-            className="btn btn-primary dropdown-toggle"
+            className="btn btn-primary dropdown-toggle disabled"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"

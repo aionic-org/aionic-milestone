@@ -1,6 +1,20 @@
+.card-header {
+  flex: 1 1 auto;
+}
+
+.card-body {
+  flex: 0 1 auto;
+  padding: 1rem;
+}
+
 .shadow {
   -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+.shadow-small {
+  -webkit-box-shadow: 0 0.2rem 0.8rem 0 rgba(58, 59, 69, 0.15) !important;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 
 .btn-link,
@@ -44,7 +58,8 @@ a.CardLink:hover {
   background-color: #0984e3;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary.disabled {
   background-color: #0984e3;
   border-color: #0984e3;
 }

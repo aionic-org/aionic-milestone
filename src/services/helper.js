@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export class Helper {
   static getCurrentTime() {
     const now = new Date()
@@ -21,5 +23,15 @@ export class Helper {
     if (object[name] !== value) {
       cb({ ...object, [name]: value })
     }
+  }
+
+  static formatDateTime(_date) {
+    const date = _date ? moment(_date) : ''
+    return date ? date.format('YYYY-MM-DD / hh:mm a') : '-'
+  }
+
+  static formatDate(_date) {
+    const date = _date ? moment(_date) : ''
+    return date ? date.format('YYYY-MM-DD') : '-'
   }
 }

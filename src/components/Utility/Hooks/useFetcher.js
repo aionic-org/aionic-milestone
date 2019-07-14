@@ -24,7 +24,7 @@ function useFetcher(url) {
     fetchData()
   }, [])
 
-  return [data, isLoading, error]
+  return [data, isLoading, error, setData]
 }
 
 export default useFetcher

@@ -1,13 +1,11 @@
 import React from 'react'
-import moment from 'moment'
 
-import InputDate from '../UI/Input/Date/'
+import { Helper } from 'services/helper'
+
+import InputDate from 'components/UI/Input/Date/'
 
 const TaskDates = props => {
   const { task, updateParentTaskState } = props
-
-  const created = task.created ? moment(task.created) : ''
-  const updated = task.updated ? moment(task.updated) : ''
 
   const updateDeadline = deadline => {
     updateParentTaskState({ ...task, deadline })
@@ -26,7 +24,7 @@ const TaskDates = props => {
               type="text"
               name="created"
               className="form-control"
-              value={created ? created.format('YYYY-MM-DD / hh:mm a') : ''}
+              value={Helper.formatDateTime(task.created || Date.now())}
               disabled
             />
           </div>
@@ -39,7 +37,7 @@ const TaskDates = props => {
               type="text"
               name="updated"
               className="form-control"
-              value={updated ? updated.format('YYYY-MM-DD / hh:mm a') : ''}
+              value={Helper.formatDateTime(task.updated)}
               disabled
             />
           </div>

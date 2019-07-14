@@ -4,6 +4,10 @@
   border-bottom: 1px solid #dfe6e9;
 }
 
+.navbar .navbar-nav a.nav-link {
+  padding: 10px 15px;
+}
+
 #wrapper.toggled .navbar .fa-chevron-left {
   display: none;
 }

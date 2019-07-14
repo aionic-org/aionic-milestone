@@ -15,7 +15,6 @@ const InputDate = props => {
     updateParent(date)
   }
 
-  console.log(date)
   return (
     <div className="InputDate">
       <DatePicker

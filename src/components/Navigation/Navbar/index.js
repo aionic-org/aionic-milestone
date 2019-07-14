@@ -44,7 +44,7 @@ const Navbar = props => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i className="fas fa-plus" />
+              <i className="fas fa-plus mr-1" /> Create
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
               <div className="dropdown-header">Users & Boards</div>

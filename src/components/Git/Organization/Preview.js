@@ -39,15 +39,15 @@ const GitOrganizationPreview = props => {
       <div className="card-body">
         <h5 className="card-title">{org.name}</h5>
         <p className="card-text">{org.description ? org.description : '- no description -'}</p>
-        <button className="btn btn-primary" onClick={syncOrganization}>
+        <button className="btn btn-primary btn-sm" onClick={syncOrganization}>
           {isLoading ? <Spinner onBtn={true} /> : 'Synchronize'}
         </button>
 
-        <button className="btn btn-danger ml-2" onClick={deleteOrganization}>
+        <button className="btn btn-danger btn-sm ml-2" onClick={deleteOrganization}>
           Remove
         </button>
 
-        <a href={org.htmlUrl} target="_blank" className="card-link ml-2">
+        <a href={org.htmlUrl} target="_blank" className="card-link ml-3">
           Open
         </a>
 
