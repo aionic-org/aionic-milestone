@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './Suggestion.css'
+import './Suggestion.scss'
 
 import { Api } from 'services/api'
 
-import useSuggestion from '../../Utility/Hooks/useSuggestion'
+import useSuggestion from 'components/Utility/Hooks/useSuggestion'
 
 const TaskSuggestion = props => {
   const { taskListSelected, updateParent, maxHeight } = props

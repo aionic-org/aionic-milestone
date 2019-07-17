@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import './Form.css'
+import './Form.scss'
 
 import { Api } from 'services/api'
 import { Session } from 'services/session'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Widget.css'
+import './Widget.scss'
 
 const Widget = props => {
   const { title, subtitle, icon, iconColor, subcontent } = props

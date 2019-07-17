@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './Suggestion.css'
+import './Suggestion.scss'
 
 class InputSuggestion extends Component {
   constructor(props) {

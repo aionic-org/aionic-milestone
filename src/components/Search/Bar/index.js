@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import './Bar.css'
+import './Bar.scss'
 
 const SearchBar = props => {
   const { history, location, assignedClasses } = props

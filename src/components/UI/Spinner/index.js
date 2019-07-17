@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Spinner.css'
+import './Spinner.scss'
 
 const Spinner = props => {
   const { onBtn, showPadding } = props

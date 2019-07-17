@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Status.css'
+import './Status.scss'
 
 import TaskPreview from 'components/Task/Preview'
 

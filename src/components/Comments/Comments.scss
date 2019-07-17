@@ -1,0 +1,9 @@
+.Comments {
+  .list-group > div {
+    margin-top: 10px;
+  }
+
+  .list-group > div:first-child {
+    margin-top: 20px;
+  }
+}

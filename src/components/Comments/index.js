@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import './Comments.css'
+import './Comments.scss'
 
 import TaskCommentContainer from '../Task/Comments/Comment/container'
 import ProjectCommentContainer from '../Project/Comments/Comment/container'

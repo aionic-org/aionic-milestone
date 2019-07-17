@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import queryString from 'query-string'
 
-import './Form.css'
+import './Form.scss'
 
 import { Api } from 'services/api'
 import { Session } from 'services/session'

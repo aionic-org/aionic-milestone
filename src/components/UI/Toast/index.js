@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Toast.css'
+import './Toast.scss'
 
 const Toast = props => (
   <div

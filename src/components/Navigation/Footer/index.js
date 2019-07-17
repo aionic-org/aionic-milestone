@@ -1,8 +1,6 @@
 import React from 'react'
 
-import './Footer.css'
-
-const Footer = props => (
+const Footer = () => (
   <div className="Footer mt-5">
     <div className="container">
       <hr className="featurette-divider" />

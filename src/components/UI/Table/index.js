@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Table.css'
+import './Table.scss'
 
 const Table = props => {
   const { columns, rowData } = props

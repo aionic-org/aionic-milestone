@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Title.css'
+import './Title.scss'
 
 const InputTitle = props => (
   <div className="InputTitle mb-4">

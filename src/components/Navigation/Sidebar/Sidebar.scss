@@ -1,0 +1,67 @@
+.Sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: #f8f9fa;
+  color: white;
+  width: 100%;
+  max-width: 250px;
+  margin-left: -250px;
+  border-right: 1px solid #dfe6e9;
+  -webkit-transition: margin 0.25s ease;
+  -moz-transition: margin 0.25s ease;
+  -o-transition: margin 0.25s ease;
+  transition: margin 0.25s ease;
+
+  .sidebar-heading {
+    padding: 0.8rem 0rem;
+    font-size: 1.2rem;
+  }
+
+  .list-group {
+    margin-top: 15px;
+  }
+
+  .list-group a {
+    display: block;
+    background-color: inherit;
+    color: #636e72;
+    border: none;
+  }
+
+  .list-group a.active {
+    background-color: #eee;
+    color: #6c5ce7;
+  }
+
+  .list-group a:hover {
+    color: #6c5ce7;
+  }
+
+  .list-group a.active::after {
+    display: block;
+    float: right;
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+}
+
+#App.toggled .Sidebar {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .Sidebar {
+    margin-left: 0;
+  }
+
+  #App.toggled .Sidebar {
+    margin-left: -250px;
+    -webkit-transition: margin 0.25s ease;
+    -moz-transition: margin 0.25s ease;
+    -o-transition: margin 0.25s ease;
+    transition: margin 0.25s ease;
+  }
+}

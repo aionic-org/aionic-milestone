@@ -1,0 +1,10 @@
+.AnnouncementList {
+  ul {
+    max-height: 300px;
+    overflow-y: scroll;
+
+    li.important {
+      border-left: 3px solid #e17055;
+    }
+  }
+}

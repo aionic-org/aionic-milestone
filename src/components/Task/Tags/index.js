@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import TaskTag from './Tag'
 
-import './Tags.css'
+import './Tags.scss'
+
+import TaskTag from './Tag'
 import TaskTagForm from './Form'
 
 const TaskTags = props => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './Tag.css'
+import './Tag.scss'
 
 const TaskTag = props => {
   const { tag, tagList, updateTagList } = props

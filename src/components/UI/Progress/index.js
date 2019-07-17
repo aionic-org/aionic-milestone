@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Progress.css'
+import './Progress.scss'
 
 const Progress = props => {
   const { progress, showPercent } = props

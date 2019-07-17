@@ -1,7 +1,7 @@
 import React from 'react'
 import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js'
 
-import './RichEditor.css'
+import './RichEditor.scss'
 
 class RichEditor extends React.Component {
   constructor(props) {

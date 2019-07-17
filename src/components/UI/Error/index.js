@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Error.css'
+import './Error.scss'
 
 const Error = props => {
   const icon = props.showIcon ? (

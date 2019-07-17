@@ -1,0 +1,47 @@
+@import 'variables';
+
+.btn-primary,
+.btn-primary.disabled {
+  background-color: $blue;
+  border-color: $blue;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: $blue-dark !important;
+  border-color: $blue-dark !important;
+}
+
+.btn-secondary,
+.btn-secondary.disabled {
+  background-color: $mint;
+  border-color: $mint;
+}
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus {
+  background-color: $mint-dark !important;
+  border-color: $mint-dark !important;
+}
+
+.btn-danger,
+.btn-danger.disabled {
+  background-color: $red;
+  border-color: $red;
+}
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus {
+  background-color: $red-dark !important;
+  border-color: $red-dark !important;
+}
+
+a,
+.btn-link {
+  color: $purple;
+}
+
+a:hover,
+.btn-link:hover {
+  color: $purple-dark;
+}

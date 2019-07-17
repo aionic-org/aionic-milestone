@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import ReactModal from 'react-modal'
 
-import './app.css'
-
 import Routes from './sites/Routes'
 
 import ErrorBoundary from 'components/Utility/ErrorBoundary'

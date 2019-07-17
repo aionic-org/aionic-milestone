@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Commits.css'
+import './Commits.scss'
 
 import GitCommit from './Commit/'
 

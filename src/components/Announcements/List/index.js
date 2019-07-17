@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './List.css'
+import './List.scss'
 
 const AnnouncementList = props => {
   const { announcementList } = props

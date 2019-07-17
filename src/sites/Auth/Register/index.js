@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './Register.css'
+import './Register.scss'
 
 import { Api } from 'services/api'
 

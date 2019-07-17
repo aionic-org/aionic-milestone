@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Priority.css'
+import './Priority.scss'
 
 const TaskPriority = props => {
   const { task } = props

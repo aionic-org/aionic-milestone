@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Signin.css'
+import './Signin.scss'
 
 import UILogo from 'components/UI/Logo'
 

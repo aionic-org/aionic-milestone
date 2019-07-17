@@ -1,16 +1,16 @@
 .BoardStatus {
   border: 1px solid transparent;
   position: relative;
-}
 
-.BoardStatus > h6 {
-  font-weight: bold;
-  background: #dfe6e9;
-  padding: 8px;
-}
+  h6 {
+    font-weight: bold;
+    background: #dfe6e9;
+    padding: 8px;
+  }
 
-.BoardStatus .TaskPreview:not(:first-child) {
-  margin-top: 10px;
+  .TaskPreview:not(:first-child) {
+    margin-top: 10px;
+  }
 }
 
 .BoardStatus:hover {

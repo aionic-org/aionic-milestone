@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import ReactMarkdown from 'react-markdown'
 
-import './Markdown.css'
+import './Markdown.scss'
 
 const InputMarkdown = props => {
   const { content, name, rows, onBlurCb } = props

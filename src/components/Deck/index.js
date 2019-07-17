@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Deck.css'
+import './Deck.scss'
 
 import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
