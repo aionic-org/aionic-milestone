@@ -29,16 +29,16 @@ const Board = (props) => {
     };
   });
 
-  const fetchUserTasks = (userId) => {
-    setIsLoading(true);
-    Api.fetchData(`users/${userId}/tasks`)
-      .then((taskList) => {
-        setIsLoading(false);
-        setUserTasks(taskList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const fetchUserTasks = async (userId) => {
+    try {
+      setIsLoading(true);
+      const taskList = await Api.fetchData(`users/${userId}/tasks`);
+
+      setIsLoading(false);
+      setUserTasks(taskList);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleClick = (firstname, userId) => {

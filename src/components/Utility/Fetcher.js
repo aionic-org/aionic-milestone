@@ -20,16 +20,15 @@ class Fetcher extends Component {
     this.fetchData();
   };
 
-  fetchData = () => {
-    this.setState({ isLoading: true });
+  fetchData = async () => {
+    try {
+      this.setState({ isLoading: true });
 
-    Api.fetchData(this.props.url, this.props.params)
-      .then((data) => {
-        this.setState({ isLoading: false, data });
-      })
-      .catch((err) => {
-        this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
-      });
+      const data = await Api.fetchData(this.props.url, this.props.params);
+      this.setState({ isLoading: false, data });
+    } catch (err) {
+      this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+    }
   };
 
   render() {

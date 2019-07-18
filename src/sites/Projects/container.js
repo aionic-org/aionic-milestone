@@ -30,31 +30,30 @@ class SitesProjectsContainer extends Component {
     this.fetchProjects(null, true);
   };
 
-  fetchProjects = (_params, initial) => {
-    const params = _params || this.state.filters.params;
+  fetchProjects = async (_params, initial) => {
+    try {
+      const params = _params || this.state.filters.params;
+      const projects = await Api.fetchData('projects', params);
 
-    Api.fetchData('projects', params)
-      .then((projects) => {
-        let newState = {
-          isLoading: false,
-          filters: { ...this.state.filters, params },
-          projects: { ...this.state.projects, fetched: projects, filtered: [] }
-        };
+      let newState = {
+        isLoading: false,
+        filters: { ...this.state.filters, params },
+        projects: { ...this.state.projects, fetched: projects, filtered: [] }
+      };
 
-        if (initial) {
-          newState = { ...newState, projects: { ...newState.projects, all: projects } };
-        }
+      if (initial) {
+        newState = { ...newState, projects: { ...newState.projects, all: projects } };
+      }
 
-        this.setState(newState, () => {
-          this.filterProjectsByText(this.state.filters.text);
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      this.setState(newState, () => {
+        this.filterProjectsByText(this.state.filters.text);
       });
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
+      });
+    }
   };
 
   filterProjectsByParams = (params) => {

@@ -27,24 +27,24 @@ class SitesUserContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const id =
-      this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id;
+  componentDidMount = async () => {
+    try {
+      const id =
+        this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id;
 
-    Api.fetchData(`users/${id}`)
-      .then((user) => {
-        if (user) {
-          this.setState({ isLoading: false, user });
-        } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' });
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      const user = await Api.fetchData(`users/${id}`);
+
+      if (user) {
+        this.setState({ isLoading: false, user });
+      } else {
+        this.setState({ isLoading: false, msg: 'Resource not found!' });
+      }
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
       });
+    }
   };
 
   handleInputChange = (e) => {

@@ -20,22 +20,24 @@ class TaskScratchpad extends Component {
     };
   }
 
-  componentDidMount = () => {
-    Api.fetchData(`tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`)
-      .then((scratchpad) => {
-        if (scratchpad) {
-          this.setState({ isLoading: false, scratchpad });
-        } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' });
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err),
-          status: 'is-invalid'
-        });
+  componentDidMount = async () => {
+    try {
+      const scratchpad = await Api.fetchData(
+        `tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`
+      );
+
+      if (scratchpad) {
+        this.setState({ isLoading: false, scratchpad });
+      } else {
+        this.setState({ isLoading: false, msg: 'Resource not found!' });
+      }
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err),
+        status: 'is-invalid'
       });
+    }
   };
 
   handleInputChange = (e) => {

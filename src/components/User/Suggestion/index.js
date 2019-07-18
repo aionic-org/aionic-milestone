@@ -19,20 +19,20 @@ const UserSuggestion = (props) => {
     handleRemove
   ] = useSuggestion(userListSelected, updateParent);
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
+  const handleInputChange = async (e) => {
+    try {
+      const searchTerm = e.target.value;
 
-    if (searchTerm.length) {
-      Api.fetchData('users/search', { username: searchTerm })
-        .then((updatedItemList) => {
-          setItemList(updatedItemList);
-          setShowSuggestion(updatedItemList.length);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      setShowSuggestion(false);
+      if (searchTerm.length) {
+        const updatedItemList = await Api.fetchData('users/search', { username: searchTerm });
+
+        setItemList(updatedItemList);
+        setShowSuggestion(updatedItemList.length);
+      } else {
+        setShowSuggestion(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

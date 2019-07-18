@@ -19,17 +19,16 @@ class AdministrationGitHub extends Component {
     };
   }
 
-  componentDidMount = () => {
-    Api.fetchData('git/organization')
-      .then((organizations) => {
-        this.setState({ isLoading: false, organizations });
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+  componentDidMount = async () => {
+    try {
+      const organizations = await Api.fetchData('git/organization');
+      this.setState({ isLoading: false, organizations });
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
       });
+    }
   };
 
   addOrganization = (organization) => {

@@ -17,22 +17,22 @@ class UserStatus extends Component {
     };
   }
 
-  componentDidMount = () => {
-    Api.fetchData(`users/${this.props.user.id}`)
-      .then((user) => {
-        if (user) {
-          this.setState({ isLoading: false, user });
-        } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' });
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err),
-          status: 'is-invalid'
-        });
+  componentDidMount = async () => {
+    try {
+      const user = await Api.fetchData(`users/${this.props.user.id}`);
+
+      if (user) {
+        this.setState({ isLoading: false, user });
+      } else {
+        this.setState({ isLoading: false, msg: 'Resource not found!' });
+      }
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err),
+        status: 'is-invalid'
       });
+    }
   };
 
   handleInputChange = (e) => {

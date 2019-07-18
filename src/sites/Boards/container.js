@@ -29,27 +29,27 @@ class SitesBoardsContainer extends Component {
     this.fetchBoards({});
   };
 
-  fetchBoards = (_params) => {
-    const params = _params || this.state.filters.params;
+  fetchBoards = async (_params) => {
+    try {
+      const params = _params || this.state.filters.params;
 
-    Api.fetchData('boards', params)
-      .then((boards) => {
-        const newState = {
-          isLoading: false,
-          filters: { ...this.state.filters, params },
-          boards: { all: boards, filtered: [] }
-        };
+      const boards = await Api.fetchData('boards', params);
 
-        this.setState(newState, () => {
-          this.filterBoardsByText(this.state.filters.text);
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      const newState = {
+        isLoading: false,
+        filters: { ...this.state.filters, params },
+        boards: { all: boards, filtered: [] }
+      };
+
+      this.setState(newState, () => {
+        this.filterBoardsByText(this.state.filters.text);
       });
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
+      });
+    }
   };
 
   filterBoardsByParams = (params) => {
@@ -92,6 +92,7 @@ class SitesBoardsContainer extends Component {
     if (msg) {
       return <Error message={msg} />;
     }
+
     return (
       <div className="SitesBoardsContainer">
         <SitesBoards

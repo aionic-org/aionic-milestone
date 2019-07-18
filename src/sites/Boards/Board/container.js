@@ -24,24 +24,21 @@ class SitesBoardContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const boardId = this.props.match.params.id;
+  componentDidMount = async () => {
+    try {
+      const board = await Api.fetchData(`boards/${this.props.match.params.id}`);
 
-    // Fetch board
-    Api.fetchData(`boards/${boardId}`)
-      .then((board) => {
-        if (board) {
-          this.setState({ isLoading: false, board });
-        } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' });
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      if (board) {
+        this.setState({ isLoading: false, board });
+      } else {
+        this.setState({ isLoading: false, msg: 'Resource not found!' });
+      }
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
       });
+    }
   };
 
   updateBoard = (_board) => {

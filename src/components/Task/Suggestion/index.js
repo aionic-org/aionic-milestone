@@ -18,20 +18,20 @@ const TaskSuggestion = (props) => {
     handleRemove
   ] = useSuggestion(taskListSelected, updateParent);
 
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
+  const handleInputChange = async (e) => {
+    try {
+      const searchTerm = e.target.value;
 
-    if (searchTerm.length) {
-      Api.fetchData('tasks', { title: searchTerm })
-        .then((itemListFiltered) => {
-          setItemList(itemListFiltered);
-          setShowSuggestion(itemListFiltered.length);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      setShowSuggestion(false);
+      if (searchTerm.length) {
+        const itemListFiltered = await Api.fetchData('tasks', { title: searchTerm });
+
+        setItemList(itemListFiltered);
+        setShowSuggestion(itemListFiltered.length);
+      } else {
+        setShowSuggestion(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

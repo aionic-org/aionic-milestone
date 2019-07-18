@@ -24,10 +24,13 @@ class UserForm extends Component {
     };
   }
 
-  componentDidMount = () => {
-    Api.fetchData('user-roles').then((userRoles) => {
+  componentDidMount = async () => {
+    try {
+      const userRoles = await Api.fetchData('user-roles');
       this.setState({ isLoading: false, userRoles });
-    });
+    } catch (err) {
+      this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+    }
   };
 
   handleInputChange = (e) => {

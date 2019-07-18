@@ -24,24 +24,22 @@ class SitesProjectContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    const projectId = this.props.match.params.id;
+  componentDidMount = async () => {
+    try {
+      const projectId = this.props.match.params.id;
+      const project = await Api.fetchData(`projects/${projectId}`);
 
-    // Fetch projects
-    Api.fetchData(`projects/${projectId}`)
-      .then((project) => {
-        if (project) {
-          this.setState({ isLoading: false, project });
-        } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' });
-        }
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      if (project) {
+        this.setState({ isLoading: false, project });
+      } else {
+        this.setState({ isLoading: false, msg: 'Resource not found!' });
+      }
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
       });
+    }
   };
 
   updateProject = (_project) => {

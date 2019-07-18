@@ -37,23 +37,23 @@ class SearchDashboardTaskContainer extends Component {
     }
   };
 
-  doSearch = () => {
-    const { searchParams } = this.props;
+  doSearch = async () => {
+    try {
+      const { searchParams } = this.props;
 
-    this.setState({
-      isLoading: true
-    });
-
-    Api.fetchData(`tasks`, searchParams)
-      .then((searchResult) => {
-        this.setState({ isLoading: false, searchResult });
-      })
-      .catch((err) => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        });
+      this.setState({
+        isLoading: true
       });
+
+      const searchResult = await Api.fetchData(`tasks`, searchParams);
+
+      this.setState({ isLoading: false, searchResult });
+    } catch (err) {
+      this.setState({
+        isLoading: false,
+        msg: Api.handleHttpError(err)
+      });
+    }
   };
 
   render() {

@@ -25,7 +25,7 @@ class SitesTaskContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const taskId = this.props.match.params.id;
 
     // New task
@@ -37,20 +37,21 @@ class SitesTaskContainer extends Component {
       });
     } else {
       // Fetch existing task
-      Api.fetchData(`tasks/${taskId}`)
-        .then((task) => {
-          if (task) {
-            this.setState({ isLoading: false, task });
-          } else {
-            this.setState({ isLoading: false, msg: 'Resource not found!' });
-          }
-        })
-        .catch((err) => {
-          this.setState({
-            isLoading: false,
-            msg: Api.handleHttpError(err)
-          });
+
+      try {
+        const task = await Api.fetchData(`tasks/${taskId}`);
+
+        if (task) {
+          this.setState({ isLoading: false, task });
+        } else {
+          this.setState({ isLoading: false, msg: 'Resource not found!' });
+        }
+      } catch (err) {
+        this.setState({
+          isLoading: false,
+          msg: Api.handleHttpError(err)
         });
+      }
     }
   };
 

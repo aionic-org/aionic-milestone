@@ -21,79 +21,81 @@ class TaskGitContainer extends Component {
     };
   }
 
-  componentDidMount = () => {
-    Api.fetchData('git/organization')
-      .then((orgList) => {
-        const { task } = this.props;
-        const { organization } = task;
+  componentDidMount = async () => {
+    try {
+      const { task } = this.props;
+      const { organization } = task;
 
-        if (organization && organization.id) {
-          Api.fetchData(`git/${organization.id}/repository`)
-            .then((repoList) => {
-              this.setState({
-                isLoading: false,
-                lists: {
-                  orgList,
-                  repoList
-                }
-              });
-            })
-            .catch((err) => {
-              this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
-            });
-        } else {
-          this.setState({
-            isLoading: false,
-            lists: {
-              orgList
-            }
-          });
-        }
-      })
-      .catch((err) => {
-        this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
-      });
+      const orgList = await Api.fetchData('git/organization');
+
+      if (organization) {
+        const repoList = await Api.fetchData(`git/${organization.id}/repository`);
+
+        this.setState({
+          isLoading: false,
+          lists: {
+            orgList,
+            repoList
+          }
+        });
+      } else {
+        this.setState({
+          isLoading: false,
+          lists: {
+            orgList
+          }
+        });
+      }
+    } catch (err) {
+      this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+    }
   };
 
-  handleOrgChange = (e) => {
-    const orgId = e.target.value;
+  handleOrgChange = async (e) => {
+    try {
+      const orgId = e.target.value;
 
-    if (orgId) {
-      Api.fetchData(`git/${orgId}/repository`)
-        .then((repoList) => {
-          this.setState((prevState) => ({
-            isLoading: false,
-            lists: {
-              ...prevState.lists,
-              repoList
-            }
-          }));
+      if (orgId) {
+        const repoList = await Api.fetchData(`git/${orgId}/repository`);
 
-          this.props.updateTask({
-            ...this.props.task,
-            organization: { id: orgId },
-            repository: null
-          });
-        })
-        .catch((err) => {
-          this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+        this.setState((prevState) => ({
+          isLoading: false,
+          lists: {
+            ...prevState.lists,
+            repoList
+          }
+        }));
+
+        this.props.updateTask({
+          ...this.props.task,
+          organization: { id: orgId },
+          repository: null,
+          branch: null
         });
-    } else {
-      this.setState((prevState) => ({
-        lists: {
-          ...prevState.lists,
-          repoList: []
-        }
-      }));
+      } else {
+        this.setState((prevState) => ({
+          lists: {
+            ...prevState.lists,
+            repoList: []
+          }
+        }));
 
-      this.props.updateTask({ ...this.props.task, organization: null, repository: null });
+        this.props.updateTask({
+          ...this.props.task,
+          organization: null,
+          repository: null,
+          branch: null
+        });
+      }
+    } catch (err) {
+      this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
     }
   };
 
   handleRepoChange = (e) => {
-    const repoId = e.target.value;
+    const repoId = e.target.value || null;
 
-    this.props.updateTask({ ...this.props.task, repository: { id: repoId } });
+    this.props.updateTask({ ...this.props.task, repository: { id: repoId }, branch: null });
   };
 
   handleBranchChange = (e) => {

@@ -47,7 +47,7 @@ const TaskGit = (props) => {
             type="text"
             name="branch"
             className="form-control"
-            defaultValue={task.branch ? task.branch : ''}
+            defaultValue={task.branch ? task.branch : undefined}
             onBlur={handleBranchChange}
           />
         </div>
