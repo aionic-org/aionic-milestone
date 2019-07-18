@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-import InputDate from 'components/UI/Input/Date/'
+import InputDate from 'components/UI/Input/Date/';
 
-const TaskDates = props => {
-  const { task, updateParentTaskState } = props
+const TaskDates = (props) => {
+  const { task, updateParentTaskState } = props;
 
-  const updateDeadline = deadline => {
-    updateParentTaskState({ ...task, deadline })
-  }
+  const updateDeadline = (deadline) => {
+    updateParentTaskState({ ...task, deadline });
+  };
 
   return (
     <div className="TaskDates mt-5">
@@ -51,7 +51,7 @@ const TaskDates = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TaskDates
+export default TaskDates;

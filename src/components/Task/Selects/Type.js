@@ -1,10 +1,10 @@
-import React from 'react'
-import InputSelect from 'components/UI/Input/Select'
+import React from 'react';
+import InputSelect from 'components/UI/Input/Select';
 
-const TaskSelectsType = props => {
-  const types = props.typeList.map(type => {
-    return { value: type.id, title: type.title }
-  })
+const TaskSelectsType = (props) => {
+  const types = props.typeList.map((type) => {
+    return { value: type.id, title: type.title };
+  });
 
   return (
     <div className="TaskSelectsType">
@@ -15,12 +15,12 @@ const TaskSelectsType = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 TaskSelectsType.defaultProps = {
   typeList: [],
   defaultValue: ''
-}
+};
 
-export default TaskSelectsType
+export default TaskSelectsType;

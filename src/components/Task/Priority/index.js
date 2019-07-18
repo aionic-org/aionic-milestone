@@ -1,24 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-import './Priority.scss'
+import './Priority.scss';
 
-const TaskPriority = props => {
-  const { task } = props
+const TaskPriority = (props) => {
+  const { task } = props;
+  const { priority } = task;
 
-  let icon = null
-  let title = ''
+  let icon = null;
+  let title = '';
 
-  if (!task.priority) {
-    return null
-  } else if (task.priority.value === 1) {
-    icon = <i className="fas fa-angle-double-down" />
-    title = 'Low priority'
-  } else if (task.priority.value === 2) {
-    icon = <i className="fas fa-minus" />
-    title = 'Medium priority'
-  } else if (task.priority.value === 3) {
-    icon = <i className="fas fa-angle-double-up" />
-    title = 'High priority'
+  if (!priority) {
+    return null;
+  }
+
+  if (priority.value === 1) {
+    icon = <i className="fas fa-angle-double-down" />;
+    title = 'Low priority';
+  } else if (priority.value === 2) {
+    icon = <i className="fas fa-minus" />;
+    title = 'Medium priority';
+  } else if (priority.value === 3) {
+    icon = <i className="fas fa-angle-double-up" />;
+    title = 'High priority';
   }
 
   return (
@@ -30,7 +33,7 @@ const TaskPriority = props => {
     >
       {icon}
     </span>
-  )
-}
+  );
+};
 
-export default TaskPriority
+export default TaskPriority;

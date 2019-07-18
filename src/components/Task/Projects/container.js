@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher'
+import Fetcher from 'components/Utility/Fetcher';
 
-import CardDeck from 'components/Deck'
+import CardDeck from 'components/Deck';
 
-const TaskProjectsContainer = props => (
+const TaskProjectsContainer = (props) => (
   <Fetcher url={`tasks/${props.taskId}/projects`} showSpinnerPadding={true}>
-    {projects => (
+    {(projects) => (
       <div className="TaskProjectsContainer">
         {props.showDescription ? (
           <p className="text-muted">This task is part of the following projects:</p>
@@ -15,10 +15,10 @@ const TaskProjectsContainer = props => (
       </div>
     )}
   </Fetcher>
-)
+);
 
 TaskProjectsContainer.defaultProps = {
   showDescription: false
-}
+};
 
-export default TaskProjectsContainer
+export default TaskProjectsContainer;

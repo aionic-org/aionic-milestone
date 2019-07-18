@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import InputSelect from 'components/UI/Input/Select'
+import InputSelect from 'components/UI/Input/Select';
 
-const TaskSelectsLabel = props => {
+const TaskSelectsLabel = (props) => {
   // https://flatuicolors.com/palette/us
   const labels = [
     { value: '#0984e3', title: 'Blue' },
@@ -12,7 +12,7 @@ const TaskSelectsLabel = props => {
     { value: '#6c5ce7', title: 'Purple' },
     { value: '#d63031', title: 'Red' },
     { value: '#fdcb6e', title: 'Yellow' }
-  ]
+  ];
 
   return (
     <div className="TaskSelectsLabel">
@@ -23,11 +23,11 @@ const TaskSelectsLabel = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 TaskSelectsLabel.defaultProps = {
   defaultValue: ''
-}
+};
 
-export default TaskSelectsLabel
+export default TaskSelectsLabel;

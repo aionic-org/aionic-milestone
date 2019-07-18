@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './Progress.scss'
+import './Progress.scss';
 
-const Progress = props => {
-  const { progress, showPercent } = props
+const Progress = (props) => {
+  const { progress, showPercent } = props;
 
   return (
     <div className="progress">
@@ -18,11 +18,11 @@ const Progress = props => {
         {showPercent ? `${progress}%` : null}
       </div>
     </div>
-  )
-}
+  );
+};
 
 Progress.defaultProps = {
   showPercent: false
-}
+};
 
-export default Progress
+export default Progress;

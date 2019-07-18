@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import DatePicker from 'react-datepicker'
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 
 // hotfix for not loaded css: https://github.com/Hacker0x01/react-datepicker/issues/882
-import 'react-datepicker/dist/react-datepicker-cssmodules.css'
-import './Date.scss'
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import './Date.scss';
 
-const InputDate = props => {
-  const { startDate, name, updateParent } = props
+const InputDate = (props) => {
+  const { startDate, name, updateParent } = props;
 
-  const [date, setDate] = useState(startDate)
+  const [date, setDate] = useState(startDate);
 
-  const handleChange = date => {
-    setDate(date)
-    updateParent(date)
-  }
+  const handleChange = (newDate) => {
+    setDate(newDate);
+    updateParent(newDate);
+  };
 
   return (
     <div className="InputDate">
@@ -28,11 +28,11 @@ const InputDate = props => {
         name={name}
       />
     </div>
-  )
-}
+  );
+};
 
 InputDate.defaultProps = {
   startDate: new Date()
-}
+};
 
-export default InputDate
+export default InputDate;

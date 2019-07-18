@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const TaskBadgeCompleted = props => {
-  const { task, assignedClasses } = props
+const TaskBadgeCompleted = (props) => {
+  const { task, assignedClasses } = props;
 
   return task.completed ? (
     <span
@@ -9,11 +9,11 @@ const TaskBadgeCompleted = props => {
     >
       Completed
     </span>
-  ) : null
-}
+  ) : null;
+};
 
 TaskBadgeCompleted.defaultProps = {
   assignedClasses: []
-}
+};
 
-export default TaskBadgeCompleted
+export default TaskBadgeCompleted;

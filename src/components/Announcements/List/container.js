@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher'
+import Fetcher from 'components/Utility/Fetcher';
 
-import AnnouncementList from '.'
+import AnnouncementList from '.';
 
-const AnnouncementListContainer = props => (
+const AnnouncementListContainer = () => (
   <Fetcher url="announcements" showSpinnerPadding={true}>
-    {announcements => {
+    {(announcements) => {
       return (
         <div className="AnnouncementListContainer">
           <p>Announcements</p>
           <AnnouncementList announcementList={announcements} />
         </div>
-      )
+      );
     }}
   </Fetcher>
-)
+);
 
-export default AnnouncementListContainer
+export default AnnouncementListContainer;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import InputSelect from 'components/UI/Input/Select'
+import InputSelect from 'components/UI/Input/Select';
 
-const TaskSelectsPriority = props => {
-  const priorities = props.priorityList.map(priority => {
-    return { value: priority.value, title: priority.title }
-  })
+const TaskSelectsPriority = (props) => {
+  const priorities = props.priorityList.map((priority) => {
+    return { value: priority.value, title: priority.title };
+  });
 
   return (
     <div className="TaskSelectsPriority">
@@ -16,12 +16,12 @@ const TaskSelectsPriority = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 TaskSelectsPriority.defaultProps = {
   priorityList: [],
   defaultValue: ''
-}
+};
 
-export default TaskSelectsPriority
+export default TaskSelectsPriority;

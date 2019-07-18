@@ -1,69 +1,63 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom';
 
-import { Api } from 'services/api'
-import { Session } from 'services/session'
+import Api from 'services/api';
+import Helper from 'services/helper';
+import Session from 'services/session';
 
-import Error from 'components/UI/Error'
+import Error from 'components/UI/Error';
 
-import UserSuggestion from 'components/User/Suggestion'
+import UserSuggestion from 'components/User/Suggestion';
 
 class BoardsForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       msg: '',
       board: {
         author: Session.getUser()
       }
-    }
+    };
   }
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
+  handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(this.state.board, e, (board) => {
+      this.setState({ board });
+    });
+  };
 
-    if (this.state.board[name] !== value) {
-      const board = { ...this.state.board, [name]: value }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.createBoard();
+  };
 
-      this.setState({ board })
-    }
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    this.createBoard()
-  }
-
-  updateProjectTasks = users => {
-    const board = { ...this.state.board, users }
-    this.setState({ board })
-  }
+  updateBoardUsers = (users) => {
+    this.setState((prevState) => ({ board: { ...prevState.board, users } }));
+  };
 
   createBoard = () => {
-    const board = this.state.board
+    const { board } = this.state;
 
     Api.postData(`boards`, { board })
-      .then(res => {
-        this.props.history.push(`/board/${res.id}`)
+      .then((res) => {
+        this.props.history.push(`/board/${res.id}`);
       })
-      .catch(err => {
-        this.setState({ msg: Api.handleHttpError(err) })
-      })
-  }
+      .catch((err) => {
+        this.setState({ msg: Api.handleHttpError(err) });
+      });
+  };
 
   render() {
-    const { msg } = this.state
+    const { msg } = this.state;
 
     if (msg.length) {
       return (
         <div className="BoardsForm">
           <Error message={msg} />
         </div>
-      )
+      );
     }
 
     return (
@@ -91,7 +85,7 @@ class BoardsForm extends Component {
 
           <div className="form-group">
             <label>Users</label>
-            <UserSuggestion updateParent={this.updateProjectTasks} />
+            <UserSuggestion updateParent={this.updateBoardUsers} />
           </div>
 
           <button type="submit" className="btn btn-primary float-right">
@@ -99,8 +93,8 @@ class BoardsForm extends Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(BoardsForm)
+export default withRouter(BoardsForm);

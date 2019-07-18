@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import './Suggestion.scss'
+import './Suggestion.scss';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import useSuggestion from 'components/Utility/Hooks/useSuggestion'
+import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 
-const TaskSuggestion = props => {
-  const { taskListSelected, updateParent, maxHeight } = props
+const TaskSuggestion = (props) => {
+  const { taskListSelected, updateParent, maxHeight } = props;
   const [
     itemList,
     itemListSelected,
@@ -16,24 +16,24 @@ const TaskSuggestion = props => {
     setShowSuggestion,
     handleSelect,
     handleRemove
-  ] = useSuggestion(taskListSelected, updateParent)
+  ] = useSuggestion(taskListSelected, updateParent);
 
-  const handleInputChange = e => {
-    const searchTerm = e.target.value
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value;
 
     if (searchTerm.length) {
       Api.fetchData('tasks', { title: searchTerm })
-        .then(itemList => {
-          setItemList(itemList)
-          setShowSuggestion(itemList.length ? true : false)
+        .then((itemListFiltered) => {
+          setItemList(itemListFiltered);
+          setShowSuggestion(itemListFiltered.length);
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      setShowSuggestion(false)
+      setShowSuggestion(false);
     }
-  }
+  };
 
   const suggestion = showSuggestion ? (
     <div className="suggestionList">
@@ -54,8 +54,9 @@ const TaskSuggestion = props => {
                     className="fas fa-external-link-square-alt ml-2 fa-sm"
                     href={`/task/${task.id}`}
                     target="_blank"
-                    onClick={e => {
-                      e.stopPropagation()
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
                     }}
                   />
                 </span>
@@ -65,7 +66,7 @@ const TaskSuggestion = props => {
         ))}
       </ul>
     </div>
-  ) : null
+  ) : null;
 
   const selected = itemListSelected.length ? (
     <div
@@ -83,8 +84,9 @@ const TaskSuggestion = props => {
                     className="fas fa-external-link-square-alt"
                     href={`/task/${task.id}`}
                     target="_blank"
-                    onClick={e => {
-                      e.stopPropagation()
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
                     }}
                   />
                   <i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
@@ -99,7 +101,7 @@ const TaskSuggestion = props => {
       </ul>
       <span className="text-muted mt-2 d-block text-center">Total: {itemListSelected.length}</span>
     </div>
-  ) : null
+  ) : null;
 
   return (
     <div className="TaskSuggestion">
@@ -110,21 +112,21 @@ const TaskSuggestion = props => {
         placeholder="Enter task title..."
         autoComplete="off"
         onChange={handleInputChange}
-        onKeyDown={e => {
-          if (e.keyCode === 27) setShowSuggestion(false)
+        onKeyDown={(e) => {
+          if (e.keyCode === 27) setShowSuggestion(false);
         }}
         id="suggestionInput"
       />
       {suggestion}
       {selected}
     </div>
-  )
-}
+  );
+};
 
 TaskSuggestion.defaultProps = {
   taskListSelected: [],
   updateParent: () => {},
   maxHeight: false
-}
+};
 
-export default TaskSuggestion
+export default TaskSuggestion;

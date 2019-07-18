@@ -1,19 +1,19 @@
-import React from 'react'
-import { NavLink, Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom';
 
-import Title from 'components/UI/Title'
-import Content from 'components/UI/Content'
+import Title from 'components/UI/Title';
+import Content from 'components/UI/Content';
 
-import AdministrationGeneral from './sub/General'
-import AdministrationUser from './sub/User'
-import AdministrationGitHub from './sub/GitHub'
-import AdministrationAnnouncement from './sub/Announcement'
+import AdministrationGeneral from './sub/General';
+import AdministrationUser from './sub/User';
+import AdministrationGitHub from './sub/GitHub';
+import AdministrationAnnouncement from './sub/Announcement';
 
-const SitesAdministration = props => {
+const SitesAdministration = () => {
   return (
     <div className="SitesAdministration">
       <Content>
-        <Title title={'Administration'} />
+        <Title title="Administration" />
         <div className="row">
           <div className="col-12 col-xl-2">
             <div
@@ -50,7 +50,7 @@ const SitesAdministration = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesAdministration
+export default SitesAdministration;

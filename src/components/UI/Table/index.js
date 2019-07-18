@@ -1,16 +1,17 @@
-import React from 'react'
+/* eslint-disable react/no-array-index-key */
+import React from 'react';
 
-import './Table.scss'
+import './Table.scss';
 
-const Table = props => {
-  const { columns, rowData } = props
+const Table = (props) => {
+  const { columns, rowData } = props;
 
   return (
     <div className="Table">
       <table className="table table-striped">
         <thead>
           <tr>
-            {columns.map(col => (
+            {columns.map((col) => (
               <th scope="col">{col}</th>
             ))}
           </tr>
@@ -26,11 +27,11 @@ const Table = props => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 Table.defaultProps = {
   columns: []
-}
+};
 
-export default Table
+export default Table;

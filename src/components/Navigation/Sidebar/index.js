@@ -1,19 +1,19 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-import './Sidebar.scss'
+import './Sidebar.scss';
 
-import { Session } from 'services/session'
+import Session from 'services/session';
 
-import UILogo from 'components/UI/Logo'
+import UILogo from 'components/UI/Logo';
 
-const Sidebar = props => {
+const Sidebar = () => {
   const logoStyle = {
     height: '50px',
     width: '50px'
-  }
+  };
 
-  const logoClasses = ['d-inline-block', 'align-top']
+  const logoClasses = ['d-inline-block', 'align-top'];
 
   return (
     <div className="Sidebar">
@@ -58,7 +58,7 @@ const Sidebar = props => {
         ) : null}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

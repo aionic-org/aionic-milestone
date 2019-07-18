@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
+import Helper from 'services/helper';
 
-import Spinner from 'components/UI/Spinner'
+import Spinner from 'components/UI/Spinner';
 
 class TaskScratchpad extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isLoading: true,
@@ -16,85 +17,81 @@ class TaskScratchpad extends Component {
         author: this.props.user,
         task: this.props.task
       }
-    }
+    };
   }
 
   componentDidMount = () => {
     Api.fetchData(`tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`)
-      .then(scratchpad => {
+      .then((scratchpad) => {
         if (scratchpad) {
-          this.setState({ isLoading: false, scratchpad })
+          this.setState({ isLoading: false, scratchpad });
         } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' })
+          this.setState({ isLoading: false, msg: 'Resource not found!' });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           isLoading: false,
           msg: Api.handleHttpError(err),
           status: 'is-invalid'
-        })
-      })
-  }
+        });
+      });
+  };
 
-  handleInputChange = e => {
-    const value = e.target.value
-
-    if (this.state.scratchpad.text !== value) {
-      const scratchpad = { ...this.state.scratchpad, text: value }
-
+  handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(this.state.scratchpad, e, (scratchpad) => {
       this.setState({ scratchpad }, () => {
         Api.postData(`tasks/${this.props.task.id}/scratchpads/users/${this.props.user.id}`, {
           scratchpad
         })
-          .then(_scratchpad => {
+          .then((_scratchpad) => {
             this.setState({
               scratchpad: _scratchpad,
               status: 'is-valid'
-            })
+            });
             setTimeout(() => {
               this.setState({
                 status: null
-              })
-            }, 2000)
+              });
+            }, 2000);
           })
-          .catch(err => {
+          .catch((err) => {
             this.setState({
               msg: Api.handleHttpError(err),
               status: 'is-invalid'
-            })
-          })
-      })
-    }
-  }
+            });
+          });
+      });
+    });
+  };
 
   render() {
-    const { isLoading, msg, scratchpad, status } = this.state
+    const { isLoading, msg, scratchpad, status } = this.state;
 
     if (isLoading) {
-      return <Spinner showPadding={true} />
-    } else {
-      return (
-        <div className="UserStatus">
-          <div className="form-group mb-0">
-            <textarea
-              className={`form-control ${status}`}
-              name="status"
-              rows="3"
-              defaultValue={scratchpad.text}
-              onBlur={this.handleInputChange}
-            />
-            <small className="form-text text-muted">
-              Your personal scratchpad for this task (only visible for you).
-            </small>
-
-            <div className="valid-feedback">Scratchpad updated!</div>
-            <div className="invalid-feedback">{msg}</div>
-          </div>
-        </div>
-      )
+      return <Spinner showPadding={true} />;
     }
+
+    return (
+      <div className="UserStatus">
+        <div className="form-group mb-0">
+          <textarea
+            className={`form-control ${status}`}
+            name="text"
+            rows="3"
+            defaultValue={scratchpad.text}
+            onBlur={this.handleInputChange}
+          />
+          <small className="form-text text-muted">
+            Your personal scratchpad for this task (only visible for you).
+          </small>
+
+          <div className="valid-feedback">Scratchpad updated!</div>
+          <div className="invalid-feedback">{msg}</div>
+        </div>
+      </div>
+    );
   }
 }
 
-export default TaskScratchpad
+export default TaskScratchpad;

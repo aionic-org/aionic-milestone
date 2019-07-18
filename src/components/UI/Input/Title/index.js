@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import './Title.scss'
+import './Title.scss';
 
-const InputTitle = props => (
+const InputTitle = (props) => (
   <div className="InputTitle mb-4">
     <input
       type="text"
@@ -14,10 +14,10 @@ const InputTitle = props => (
       onBlur={props.onBlur}
     />
   </div>
-)
+);
 
 InputTitle.defaultProps = {
   placeholder: ''
-}
+};
 
-export default InputTitle
+export default InputTitle;

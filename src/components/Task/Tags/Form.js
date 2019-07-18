@@ -1,21 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-const TaskTagForm = props => {
-  const { tagList, updateTagList, toggleForm } = props
+const TaskTagForm = (props) => {
+  const { tagList, updateTagList, toggleForm } = props;
 
-  const addTag = e => {
-    e.preventDefault()
+  const addTag = (e) => {
+    e.preventDefault();
 
-    const value = document.querySelector('.tag-value').value.toLowerCase()
+    // eslint-disable-next-line no-undef
+    const value = document.querySelector('.tag-value').value.toLowerCase();
     if (value.length && !tagList.includes(value)) {
-      const tagListCopy = tagList.slice()
-      tagListCopy.push(value)
+      const tagListCopy = tagList.slice();
+      tagListCopy.push(value);
 
-      updateTagList(tagListCopy, true)
+      updateTagList(tagListCopy, true);
     } else {
-      toggleForm()
+      toggleForm();
     }
-  }
+  };
 
   return (
     <div className="TaskTagForm">
@@ -24,12 +25,13 @@ const TaskTagForm = props => {
           className="form-control form-control-sm tag-value"
           type="text"
           placeholder="Enter tag..."
-          autoFocus
           onBlur={addTag}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={true}
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default TaskTagForm
+export default TaskTagForm;

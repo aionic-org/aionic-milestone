@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const UserPreview = props => {
-  const { user } = props
+const UserPreview = (props) => {
+  const { user } = props;
 
   return (
     <Link to={`/user/${props.user.id}`} className="UserPreview CardLink card">
@@ -16,7 +16,7 @@ const UserPreview = props => {
         <li className="list-group-item">ID: {props.user.id}</li>
       </ul>
     </Link>
-  )
-}
+  );
+};
 
-export default UserPreview
+export default UserPreview;

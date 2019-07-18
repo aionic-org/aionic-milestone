@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-import Content from 'components/UI/Content'
-import InputTitle from 'components/UI/Input/Title/'
+import Content from 'components/UI/Content';
+import InputTitle from 'components/UI/Input/Title/';
 
-import BoardContainer from 'components/Board/View/container'
-import BoardDetails from 'components/Board/Details'
+import BoardContainer from 'components/Board/View/container';
+import BoardDetails from 'components/Board/Details';
 
-const SitesBoard = props => {
-  const { board, updateParentBoardState, deleteBoard } = props
+const SitesBoard = (props) => {
+  const { board, updateParentBoardState, deleteBoard } = props;
 
-  const handleTitleChange = e => {
-    Helper.updateObjectPropByEvent(board, e, updateParentBoardState)
-  }
+  const handleTitleChange = (e) => {
+    Helper.updateObjectPropByEvent(board, e, updateParentBoardState);
+  };
 
   return (
     <div className="SitesBoard">
@@ -22,7 +22,7 @@ const SitesBoard = props => {
           <div className="col">
             <InputTitle
               defaultValue={board.title}
-              placeholder={'Enter board title'}
+              placeholder="Enter board title"
               onBlur={handleTitleChange}
             />
           </div>
@@ -36,7 +36,7 @@ const SitesBoard = props => {
             <div className="btn-group ml-2">
               <button
                 type="button"
-                className="btn btn-primary dropdown-toggle"
+                className="btn btn-primary dropdown-toggle disabled"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -44,19 +44,19 @@ const SitesBoard = props => {
                 More
               </button>
               <div className="dropdown-menu dropdown-menu-right">
-                <a className="dropdown-item" href="#">
+                <button type="button" className="btn dropdown-item">
                   <i className="fas fa-share fa-fw mr-2" /> Share
-                </a>
-                <a className="dropdown-item" href="#">
+                </button>
+                <button type="button" className="btn dropdown-item">
                   <i className="fas fa-print fa-fw mr-2" /> Print
-                </a>
-                <a className="dropdown-item" href="#">
+                </button>
+                <button type="button" className="dropdown-item">
                   <i className="fas fa-archive fa-fw mr-2" /> Archive
-                </a>
+                </button>
                 <div className="dropdown-divider" />
-                <a className="dropdown-item text-danger" href="#">
+                <button type="button" className="btn dropdown-item text-danger">
                   <i className="fas fa-trash fa-fw mr-2" /> Delete
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ const SitesBoard = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesBoard
+export default SitesBoard;

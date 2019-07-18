@@ -1,71 +1,67 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Api } from 'services/api'
-import { Session } from 'services/session'
+import Api from 'services/api';
+import Helper from 'services/helper';
+import Session from 'services/session';
 
-import Spinner from 'components/UI/Spinner'
+import Spinner from 'components/UI/Spinner';
 
 class AnnouncementsForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       announcement: { author: Session.getUser(), description: '' },
       isLoading: false,
       msg: '',
       status: ''
-    }
+    };
   }
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.announcement[name] !== value) {
-      const announcement = { ...this.state.announcement, [name]: value }
-
+  handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(this.state.announcement, e, (announcement) => {
       this.setState({
         announcement,
         msg: '',
         status: ''
-      })
-    }
-  }
+      });
+    });
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     if (this.state.announcement.description.length) {
       this.setState({
         isLoading: true
-      })
+      });
 
       Api.postData('announcements', { announcement: this.state.announcement })
-        .then(res => {
-          this.setState({ isLoading: false, status: '' })
-          this.props.addParentAnnouncement(res)
+        .then((res) => {
+          this.setState({ isLoading: false, status: '' });
+          this.props.addParentAnnouncement(res);
         })
-        .catch(err => {
+        .catch((err) => {
           this.setState({
             isLoading: false,
             status: 'is-invalid',
             msg: Api.handleHttpError(err)
-          })
-        })
+          });
+        });
     }
-  }
+  };
 
   render() {
-    const { isLoading, msg, status } = this.state
+    const { isLoading, msg, status } = this.state;
     return (
       <div className="AnnouncementsForm">
         <form onSubmit={this.handleSubmit}>
-          <label>Make new announcement</label>
+          <p>Make new announcement</p>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <div className="input-group-text">
                 <input
+                  id="test"
                   type="checkbox"
                   className="mr-1"
                   name="important"
@@ -83,7 +79,7 @@ class AnnouncementsForm extends Component {
               autoComplete="off"
             />
             <div className="input-group-append">
-              <button className="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 {isLoading ? <Spinner onBtn={true} /> : 'Submit'}
               </button>
             </div>
@@ -91,12 +87,12 @@ class AnnouncementsForm extends Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
 AnnouncementsForm.defaultProps = {
   updateParent: () => {}
-}
+};
 
-export default AnnouncementsForm
+export default AnnouncementsForm;

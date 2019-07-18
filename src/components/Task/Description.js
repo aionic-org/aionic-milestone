@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import RichEditor from 'components/UI/Input/RichEditor/'
+import RichEditor from 'components/UI/Input/RichEditor/';
 
-const TaskDescription = props => {
-  const { task, updateTask } = props
+const TaskDescription = (props) => {
+  const { task, updateTask } = props;
 
-  const updateDescription = description => {
-    updateTask({ ...task, description })
-  }
+  const updateDescription = (description) => {
+    updateTask({ ...task, description });
+  };
 
   return (
     <div className="TaskDescription mt-5">
@@ -16,7 +16,7 @@ const TaskDescription = props => {
 
       <RichEditor content={task.description} updateParent={updateDescription} />
     </div>
-  )
-}
+  );
+};
 
-export default TaskDescription
+export default TaskDescription;

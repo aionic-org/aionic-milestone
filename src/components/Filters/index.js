@@ -1,22 +1,22 @@
-import React from 'react'
-import InputSelect from '../UI/Input/Select'
+import React from 'react';
+import InputSelect from '../UI/Input/Select';
 
-const Filters = props => {
-  const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props
+const Filters = (props) => {
+  const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props;
 
-  const handleParamsChange = e => {
-    filterItemsByParams({ [e.target.name]: e.target.value })
-  }
+  const handleParamsChange = (e) => {
+    filterItemsByParams({ [e.target.name]: e.target.value });
+  };
 
-  const handleFilterChange = e => {
-    filterItemsByText(e.target.value)
-  }
+  const handleFilterChange = (e) => {
+    filterItemsByText(e.target.value);
+  };
 
   const sortDirectionsList = [
     { value: '', title: 'Direction' },
     { value: 'ASC', title: 'ASC' },
     { value: 'DESC', title: 'DESC' }
-  ]
+  ];
 
   const limitsList = [
     { value: '', title: 'Max results' },
@@ -24,7 +24,7 @@ const Filters = props => {
     { value: '3', title: '3' },
     { value: '5', title: '5' },
     { value: '10', title: '10' }
-  ]
+  ];
 
   return (
     <div className="Filters">
@@ -77,11 +77,11 @@ const Filters = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
 Filters.defaultProps = {
   orderByList: []
-}
+};
 
-export default Filters
+export default Filters;

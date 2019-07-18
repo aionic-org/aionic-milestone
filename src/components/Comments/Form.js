@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const CommentsForm = props => {
-  const { handleSubmit, handleInputChange } = props
+const CommentsForm = (props) => {
+  const { handleSubmit, handleInputChange } = props;
   return (
     <div className="CommentsForm">
       <form onSubmit={handleSubmit}>
@@ -14,7 +14,7 @@ const CommentsForm = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CommentsForm
+export default CommentsForm;

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const InputRadio = props => (
+const InputRadio = (props) => (
   <div className="InputRadio form-check form-check-inline">
     <input
       type="radio"
@@ -12,6 +12,6 @@ const InputRadio = props => (
     />
     <label className="form-check-label">{props.title}</label>
   </div>
-)
+);
 
-export default InputRadio
+export default InputRadio;

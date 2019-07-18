@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import Spinner from 'components/UI/Spinner'
-import Error from 'components/UI/Error'
+import Spinner from 'components/UI/Spinner';
+import Error from 'components/UI/Error';
 
-import TaskGit from '.'
+import TaskGit from '.';
 
 class TaskGitContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isLoading: true,
@@ -18,109 +18,112 @@ class TaskGitContainer extends Component {
         orgList: [],
         repoList: []
       }
-    }
+    };
   }
 
   componentDidMount = () => {
     Api.fetchData('git/organization')
-      .then(orgList => {
-        const organization = this.props.task.organization
+      .then((orgList) => {
+        const { task } = this.props;
+        const { organization } = task;
 
         if (organization && organization.id) {
           Api.fetchData(`git/${organization.id}/repository`)
-            .then(repoList => {
+            .then((repoList) => {
               this.setState({
                 isLoading: false,
                 lists: {
                   orgList,
                   repoList
                 }
-              })
+              });
             })
-            .catch(err => {
-              this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
-            })
+            .catch((err) => {
+              this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+            });
         } else {
           this.setState({
             isLoading: false,
             lists: {
               orgList
             }
-          })
+          });
         }
       })
-      .catch(err => {
-        this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
-      })
-  }
+      .catch((err) => {
+        this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+      });
+  };
 
-  handleOrgChange = e => {
-    const orgId = e.target.value
+  handleOrgChange = (e) => {
+    const orgId = e.target.value;
 
     if (orgId) {
       Api.fetchData(`git/${orgId}/repository`)
-        .then(repoList => {
-          this.setState({
+        .then((repoList) => {
+          this.setState((prevState) => ({
             isLoading: false,
             lists: {
-              ...this.state.lists,
+              ...prevState.lists,
               repoList
             }
-          })
+          }));
 
           this.props.updateTask({
             ...this.props.task,
             organization: { id: orgId },
             repository: null
-          })
+          });
         })
-        .catch(err => {
-          this.setState({ isLoading: false, msg: Api.handleHttpError(err) })
-        })
+        .catch((err) => {
+          this.setState({ isLoading: false, msg: Api.handleHttpError(err) });
+        });
     } else {
-      this.setState({
+      this.setState((prevState) => ({
         lists: {
-          ...this.state.lists,
+          ...prevState.lists,
           repoList: []
         }
-      })
+      }));
 
-      this.props.updateTask({ ...this.props.task, organization: null, repository: null })
+      this.props.updateTask({ ...this.props.task, organization: null, repository: null });
     }
-  }
+  };
 
-  handleRepoChange = e => {
-    const repoId = e.target.value
+  handleRepoChange = (e) => {
+    const repoId = e.target.value;
 
-    this.props.updateTask({ ...this.props.task, repository: { id: repoId } })
-  }
+    this.props.updateTask({ ...this.props.task, repository: { id: repoId } });
+  };
 
-  handleBranchChange = e => {
-    this.props.updateTask({ ...this.props.task, branch: e.target.value })
-  }
+  handleBranchChange = (e) => {
+    this.props.updateTask({ ...this.props.task, branch: e.target.value });
+  };
 
   render() {
-    const { task } = this.props
-    const { isLoading, msg, lists } = this.state
+    const { task } = this.props;
+    const { isLoading, msg, lists } = this.state;
 
     if (isLoading) {
-      return <Spinner showPadding={true} />
-    } else if (msg) {
-      return <Error message={msg} />
-    } else {
-      return (
-        <div className="TaskGitContainer">
-          <TaskGit
-            task={task}
-            handleOrgChange={this.handleOrgChange}
-            handleRepoChange={this.handleRepoChange}
-            handleBranchChange={this.handleBranchChange}
-            lists={lists}
-          />
-        </div>
-      )
+      return <Spinner showPadding={true} />;
     }
+
+    if (msg) {
+      return <Error message={msg} />;
+    }
+
+    return (
+      <div className="TaskGitContainer">
+        <TaskGit
+          task={task}
+          handleOrgChange={this.handleOrgChange}
+          handleRepoChange={this.handleRepoChange}
+          handleBranchChange={this.handleBranchChange}
+          lists={lists}
+        />
+      </div>
+    );
   }
 }
 
-export default TaskGitContainer
+export default TaskGitContainer;

@@ -1,13 +1,14 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from './serviceWorker';
 
-import './index.scss'
+import './index.scss';
 
-import App from './app'
+import App from './app';
 
-require('dotenv').config()
+require('dotenv').config();
 
-render(<App />, document.getElementById('root'))
-serviceWorker.unregister()
+// eslint-disable-next-line no-undef
+render(<App />, document.getElementById('root'));
+serviceWorker.unregister();

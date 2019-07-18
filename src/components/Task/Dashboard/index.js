@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Deck from 'components/Deck'
+import Deck from 'components/Deck';
 
-import TaskDashboardFilters from './Filters/'
+import TaskDashboardFilters from './Filters';
 
 class TaskDashboard extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       taskListFiltered: [],
@@ -14,57 +14,57 @@ class TaskDashboard extends Component {
       showTextFilter: false,
       statusFilter: null,
       textFilter: null
-    }
+    };
   }
 
-  toggleTextFilter = e => {
-    e.preventDefault()
+  toggleTextFilter = (e) => {
+    e.preventDefault();
     this.setState(
-      {
-        showTextFilter: !this.state.showTextFilter,
+      (prevState) => ({
+        showTextFilter: !prevState.showTextFilter,
         textFilter: null
-      },
+      }),
       () => {
-        this.filterTasks()
+        this.filterTasks();
       }
-    )
-  }
+    );
+  };
 
   filterTasks = () => {
     if (this.state.statusFilter !== null || this.state.textFilter !== null) {
-      const taskListFiltered = this.props.taskList.filter(task => {
+      const taskListFiltered = this.props.taskList.filter((task) => {
         const condStatus =
           this.state.statusFilter !== null
             ? task.status && task.status.id === this.state.statusFilter
-            : true
+            : true;
         const condText =
           this.state.textFilter !== null
             ? task.title.toLowerCase().includes(this.state.textFilter.toLowerCase())
-            : true
+            : true;
 
-        return condStatus && condText ? true : false
-      })
+        return condStatus && condText;
+      });
 
-      this.setState({ taskListFiltered, isFiltered: true })
+      this.setState({ taskListFiltered, isFiltered: true });
     } else {
-      this.setState({ taskListFiltered: [], isFiltered: false })
+      this.setState({ taskListFiltered: [], isFiltered: false });
     }
-  }
+  };
 
-  filterByStatus = statusId => {
-    this.setState({ statusFilter: statusId }, this.filterTasks)
-  }
+  filterByStatus = (statusId) => {
+    this.setState({ statusFilter: statusId }, this.filterTasks);
+  };
 
-  filterByText = e => {
-    const textSearch = e.target.value
-    this.setState({ textFilter: textSearch.length ? textSearch : null }, this.filterTasks)
-  }
+  filterByText = (e) => {
+    const textSearch = e.target.value;
+    this.setState({ textFilter: textSearch.length ? textSearch : null }, this.filterTasks);
+  };
 
   render() {
-    const { taskListFiltered, isFiltered, showTextFilter } = this.state
-    const { taskList, showStatusFilters, itemsPerRow } = this.props
+    const { taskListFiltered, isFiltered, showTextFilter } = this.state;
+    const { taskList, showStatusFilters, itemsPerRow } = this.props;
 
-    const itemList = isFiltered ? taskListFiltered : taskList
+    const itemList = isFiltered ? taskListFiltered : taskList;
 
     return (
       <div className="TaskDashboard">
@@ -72,9 +72,9 @@ class TaskDashboard extends Component {
           <TaskDashboardFilters handleStatusChange={this.filterByStatus} />
         ) : null}
 
-        <a href="#" className="d-inline-block float-right mb-2" onClick={this.toggleTextFilter}>
+        <button type="button" className="btn btn-link float-right" onClick={this.toggleTextFilter}>
           Toggle filters
-        </a>
+        </button>
 
         {showTextFilter ? (
           <div className="form-group">
@@ -83,7 +83,6 @@ class TaskDashboard extends Component {
               className="form-control form-control-sm"
               placeholder="Filter tasks..."
               onChange={this.filterByText}
-              autoFocus={true}
             />
           </div>
         ) : null}
@@ -94,7 +93,7 @@ class TaskDashboard extends Component {
           showItemsNumber={true}
         />
       </div>
-    )
+    );
   }
 }
 
@@ -102,6 +101,6 @@ TaskDashboard.defaultProps = {
   showStatusFilters: true,
   itemsPerRow: 3,
   updateParent: () => {}
-}
+};
 
-export default TaskDashboard
+export default TaskDashboard;

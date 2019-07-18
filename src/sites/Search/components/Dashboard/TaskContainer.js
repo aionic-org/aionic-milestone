@@ -1,73 +1,78 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import Spinner from 'components/UI/Spinner'
-import Error from 'components/UI/Error'
+import Spinner from 'components/UI/Spinner';
+import Error from 'components/UI/Error';
 
-import TaskDashboard from 'components/Task/Dashboard/'
+import TaskDashboard from 'components/Task/Dashboard/';
 
 class SearchDashboardTaskContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isLoading: false,
       msg: null,
       searchResult: []
-    }
+    };
   }
 
   componentDidMount = () => {
-    const searchParams = this.props.searchParams
-    for (const key in searchParams) {
-      if (searchParams.hasOwnProperty(key) && searchParams[key].length) {
-        this.doSearch()
-        break
+    const { searchParams } = this.props;
+
+    const searchParamsKeys = Object.keys(searchParams);
+
+    for (const key of searchParamsKeys) {
+      if (searchParams[key].length) {
+        this.doSearch();
+        break;
       }
     }
-  }
+  };
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (JSON.stringify(this.props.searchParams) !== JSON.stringify(prevProps.searchParams)) {
-      this.doSearch()
+      this.doSearch();
     }
-  }
+  };
 
   doSearch = () => {
-    const searchParams = this.props.searchParams
+    const { searchParams } = this.props;
 
     this.setState({
       isLoading: true
-    })
+    });
 
     Api.fetchData(`tasks`, searchParams)
-      .then(searchResult => {
-        this.setState({ isLoading: false, searchResult })
+      .then((searchResult) => {
+        this.setState({ isLoading: false, searchResult });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           isLoading: false,
           msg: Api.handleHttpError(err)
-        })
-      })
-  }
+        });
+      });
+  };
 
   render() {
-    const { isLoading, msg, searchResult } = this.state
+    const { isLoading, msg, searchResult } = this.state;
 
     if (isLoading) {
-      return <Spinner />
-    } else if (msg) {
-      return <Error message={msg} />
-    } else {
-      return (
-        <div className="SearchDashboardTaskContainer">
-          <TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
-        </div>
-      )
+      return <Spinner />;
     }
+
+    if (msg) {
+      return <Error message={msg} />;
+    }
+
+    return (
+      <div className="SearchDashboardTaskContainer">
+        <TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
+      </div>
+    );
   }
 }
 
-export default SearchDashboardTaskContainer
+export default SearchDashboardTaskContainer;

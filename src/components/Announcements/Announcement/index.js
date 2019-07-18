@@ -1,19 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-const Announcement = props => {
-  const { announcement, handleDelete } = props
+const Announcement = (props) => {
+  const { announcement, handleDelete } = props;
 
   const deleteAnnouncement = () => {
     Api.deleteData(`announcements/${announcement.id}`)
-      .then(res => {
-        handleDelete(announcement)
+      .then(() => {
+        handleDelete(announcement);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="Announcement card">
@@ -22,15 +22,20 @@ const Announcement = props => {
 
         <p className="card-text">
           <small className="text-muted">
-            {announcement.author.firstname} {announcement.author.lastname} @{announcement.created}
+            {announcement.author.firstname}
+            {announcement.author.lastname}@{announcement.created}
           </small>
-          <button className="btn btn-danger btn-sm float-right" onClick={deleteAnnouncement}>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm float-right"
+            onClick={deleteAnnouncement}
+          >
             Remove
           </button>
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Announcement
+export default Announcement;

@@ -1,20 +1,23 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
-import './Navbar.scss'
+import './Navbar.scss';
 
-import { Session } from 'services/session'
+import Session from 'services/session';
 
-import SearchBar from 'components/Search/Bar'
+import SearchBar from 'components/Search/Bar';
 
-const Navbar = props => {
-  const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0']
+const Navbar = (props) => {
+  const { toggleSidebar } = props;
+
+  const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0'];
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <button
+        type="button"
         className="btn btn-link mr-3"
-        onClick={props.toggleSidebar}
+        onClick={toggleSidebar}
         style={{ color: '#858796' }}
       >
         <i className="fa fa-bars" />
@@ -37,15 +40,15 @@ const Navbar = props => {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
+            <button
+              type="button"
+              className="btn btn-link nav-link dropdown-toggle"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
               <i className="fas fa-plus mr-1" /> Create
-            </a>
+            </button>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
               <div className="dropdown-header">Users & Boards</div>
               <NavLink to="/administration/user" className="dropdown-item">
@@ -72,15 +75,15 @@ const Navbar = props => {
           </li>
 
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
+            <button
+              type="button"
+              className="btn btn-link nav-link dropdown-toggle"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
               <i className="fas fa-user-tie mr-1" /> {Session.getUser().firstname}
-            </a>
+            </button>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
               <div className="dropdown-header">
                 {`${Session.getUser().firstname} ${Session.getUser().lastname}`}
@@ -104,7 +107,7 @@ const Navbar = props => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

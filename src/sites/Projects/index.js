@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import ProjectsWidgetbar from './components/Widgetbar'
+import CardDeck from 'components/Deck';
+import Filters from 'components/Filters/';
 
-import CardDeck from 'components/Deck'
-import Filters from 'components/Filters/'
+import ProjectCreate from './components/Create';
 
-import ProjectCreate from './components/Create'
+import ProjectsWidgetbar from './components/Widgetbar';
 
-const SitesProjects = props => {
-  const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props
-  const { all, fetched, filtered } = projects
+const SitesProjects = (props) => {
+  const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props;
+  const { all, fetched, filtered } = projects;
 
-  const projectsToShow = filters.text.length ? filtered : fetched
+  const projectsToShow = filters.text.length ? filtered : fetched;
 
   const orderByList = [
     { value: '', title: 'Order by' },
@@ -22,7 +22,7 @@ const SitesProjects = props => {
     { value: 'finished', title: 'Finished' },
     { value: 'title', title: 'Title' },
     { value: 'updated', title: 'Updated' }
-  ]
+  ];
 
   return (
     <div className="SitesProjects">
@@ -42,7 +42,7 @@ const SitesProjects = props => {
           <div className="col-12 col-xl-2">
             <ProjectCreate />
           </div>
-        </div>{' '}
+        </div>
         <div className="row">
           <div className="col-12">
             <CardDeck deckType="Project" itemList={projectsToShow} itemsPerRow={3} />
@@ -50,7 +50,7 @@ const SitesProjects = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesProjects
+export default SitesProjects;

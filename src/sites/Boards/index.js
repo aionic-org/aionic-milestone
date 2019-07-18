@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import CardDeck from 'components/Deck'
-import Filters from 'components/Filters/'
-import BoardsCreate from './components/Create'
+import CardDeck from 'components/Deck';
+import Filters from 'components/Filters/';
+import BoardsCreate from './components/Create';
 
-const SitesBoards = props => {
-  const { boards, filters, filterBoardsByParams, filterBoardsByText, resetFilters } = props
-  const { all, filtered } = boards
+const SitesBoards = (props) => {
+  const { boards, filters, filterBoardsByParams, filterBoardsByText, resetFilters } = props;
+  const { all, filtered } = boards;
 
-  const boardsToShow = filters.text.length ? filtered : all
+  const boardsToShow = filters.text.length ? filtered : all;
 
   const orderByList = [
     { value: '', title: 'Order by' },
     { value: 'created', title: 'Created' },
     { value: 'title', title: 'Title' },
     { value: 'updated', title: 'Updated' }
-  ]
+  ];
 
   return (
     <div className="SitesBoards">
@@ -45,7 +45,7 @@ const SitesBoards = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesBoards
+export default SitesBoards;

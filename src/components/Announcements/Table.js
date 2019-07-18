@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-import { Api } from 'services/api'
-import { Helper } from 'services/helper'
+import Api from 'services/api';
+import Helper from 'services/helper';
 
-const AnnouncementsTable = props => {
-  const { announcements, removeParentAnnouncement } = props
+const AnnouncementsTable = (props) => {
+  const { announcements, removeParentAnnouncement } = props;
 
-  const removeAnnouncement = announcementToRemove => {
+  const removeAnnouncement = (announcementToRemove) => {
     const announcement = announcements.find(
-      announcement => announcement.id === announcementToRemove.id
-    )
+      (_announcement) => _announcement.id === announcementToRemove.id
+    );
 
     if (announcement) {
       Api.deleteData(`announcements/${announcement.id}`).then(() => {
-        removeParentAnnouncement(announcement.id)
-      })
+        removeParentAnnouncement(announcement.id);
+      });
     }
-  }
+  };
 
   return (
     <div className="AnnouncementsTable">
@@ -33,8 +33,8 @@ const AnnouncementsTable = props => {
             </tr>
           </thead>
           <tbody>
-            {announcements.map((announcement, i) => (
-              <tr key={i}>
+            {announcements.map((announcement) => (
+              <tr key={announcement.id}>
                 <th scope="row">{announcement.id}</th>
                 <td>{`${announcement.author.firstname} ${announcement.author.lastname}`}</td>
                 <td>{announcement.description}</td>
@@ -43,8 +43,9 @@ const AnnouncementsTable = props => {
                 <td>
                   <button
                     className="btn btn-danger btn-sm"
+                    type="button"
                     onClick={() => {
-                      removeAnnouncement(announcement)
+                      removeAnnouncement(announcement);
                     }}
                   >
                     Remove
@@ -56,7 +57,7 @@ const AnnouncementsTable = props => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AnnouncementsTable
+export default AnnouncementsTable;

@@ -1,12 +1,12 @@
-import React from 'react'
-import InputSelect from 'components/UI/Input/Select'
+import React from 'react';
+import InputSelect from 'components/UI/Input/Select';
 
-const GitRepositorySelect = props => {
-  const { repoList, onChange, disabled, defaultValue } = props
+const GitRepositorySelect = (props) => {
+  const { repoList, onChange, disabled, defaultValue } = props;
 
-  const repos = repoList.map(repo => {
-    return { value: repo.id, title: repo.name }
-  })
+  const repos = repoList.map((repo) => {
+    return { value: repo.id, title: repo.name };
+  });
 
   return (
     <div className="GitRepositorySelect">
@@ -18,12 +18,12 @@ const GitRepositorySelect = props => {
         disabled={disabled}
       />
     </div>
-  )
-}
+  );
+};
 
 GitRepositorySelect.defaultProps = {
   repoList: [],
   defaultValue: ''
-}
+};
 
-export default GitRepositorySelect
+export default GitRepositorySelect;

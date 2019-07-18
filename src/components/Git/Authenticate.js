@@ -1,44 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Session } from 'services/session'
-import { Api } from 'services/api'
+import Api from 'services/api';
 
 class GitHubAuthenticate extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       showInput: false,
       token: null
-    }
+    };
   }
 
   doAuth = () => {
-    Api.fetchData('auth/github').then(url => {
-      window.open(url, '_blank')
+    Api.fetchData('auth/github').then((url) => {
+      // eslint-disable-next-line no-undef
+      window.open(url, '_blank');
 
       this.setState({
         showInput: true
-      })
-    })
-  }
+      });
+    });
+  };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     this.setState({
       token: e.target.value
-    })
-  }
+    });
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
-  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   render() {
-    const { showInput } = this.state
+    const { showInput, token } = this.state;
+
+    console.log(token);
+
     return (
       <div className="GitHubAuthenticate">
         <form onSubmit={this.handleSubmit}>
-          <button className="btn btn-primary" onClick={this.doAuth}>
+          <button type="button" className="btn btn-primary" onClick={this.doAuth}>
             GitHub Auth <i className="fab fa-github ml-1" />
           </button>
 
@@ -48,7 +51,6 @@ class GitHubAuthenticate extends Component {
                 type="text"
                 name="token"
                 className="form-control"
-                autoFocus
                 placeholder="Enter token"
                 onChange={this.handleInputChange}
               />
@@ -61,8 +63,8 @@ class GitHubAuthenticate extends Component {
           ) : null}
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default GitHubAuthenticate
+export default GitHubAuthenticate;

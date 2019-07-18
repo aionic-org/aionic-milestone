@@ -1,32 +1,31 @@
-import React, { useState } from 'react'
+/* eslint-disable react/no-array-index-key */
+import React, { useState } from 'react';
 
-const Navs = props => {
-  const { tabs, handleClick, preselectTabIdx } = props
-  const [activeTab, setActiveTab] = useState(preselectTabIdx)
+const Navs = (props) => {
+  const { tabs, handleClick, preselectTabIdx } = props;
+  const [activeTab, setActiveTab] = useState(preselectTabIdx);
 
-  const handleTabChange = e => {
-    const pos = Number(e.target.dataset.pos)
+  const handleTabChange = (e) => {
+    const pos = Number(e.target.dataset.pos);
 
     if (pos === activeTab) {
-      setActiveTab(null)
-      props.handleClick(null)
+      setActiveTab(null);
+      props.handleClick(null);
     } else {
-      setActiveTab(pos)
-      handleClick(tabs[pos].name, tabs[pos].id)
+      setActiveTab(pos);
+      handleClick(tabs[pos].name, tabs[pos].id);
     }
-  }
+  };
 
   return (
     <div className="Navs">
       <ul className="nav nav-tabs">
         {tabs.map((tab, i) => (
           <li className="nav-item" key={i}>
-            <a
-              className={`nav-link ${i === activeTab ? 'active' : ''}`}
-              onClick={e => {
-                e.preventDefault()
-                handleTabChange(e)
-              }}
+            <button
+              type="button"
+              className={`btn btn-link nav-link ${i === activeTab ? 'active' : ''}`}
+              onClick={handleTabChange}
               key={i}
               data-pos={i}
               data-id={tab.id}
@@ -34,17 +33,17 @@ const Navs = props => {
               href="#"
             >
               {tab.name}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 Navs.defaultProps = {
   tabs: [],
   preselectTabIdx: null
-}
+};
 
-export default Navs
+export default Navs;

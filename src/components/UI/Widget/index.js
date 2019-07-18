@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './Widget.scss'
+import './Widget.scss';
 
-const Widget = props => {
-  const { title, subtitle, icon, iconColor, subcontent } = props
+const Widget = (props) => {
+  const { title, subtitle, icon, iconColor, subcontent } = props;
 
   return (
     <div className="Widget">
@@ -22,8 +22,8 @@ const Widget = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 Widget.defaultProps = {
   title: '',
@@ -31,6 +31,6 @@ Widget.defaultProps = {
   icon: '',
   iconColor: '#636e72',
   subcontent: null
-}
+};
 
-export default Widget
+export default Widget;

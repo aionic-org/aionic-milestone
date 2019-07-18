@@ -1,63 +1,64 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router'
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Helper } from 'services/helper'
-import { Api } from 'services/api'
-import { Session } from 'services/session'
+import Helper from 'services/helper';
+import Api from 'services/api';
+import Session from 'services/session';
 
-import Error from 'components/UI/Error'
+import Error from 'components/UI/Error';
 
-import TaskSuggestion from 'components/Task/Suggestion'
+import TaskSuggestion from 'components/Task/Suggestion';
 
 class ProjectForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       msg: '',
       project: {
         author: Session.getUser()
       }
-    }
+    };
   }
 
-  handleInputChange = e => {
-    Helper.updateObjectPropByEvent(this.state.project, e, project => {
-      this.setState({ project })
-    })
-  }
+  handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(this.state.project, e, (project) => {
+      this.setState({ project });
+    });
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.createProject()
-  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.createProject();
+  };
 
-  updateProjectTasks = tasks => {
-    const project = { ...this.state.project, tasks }
-    this.setState({ project })
-  }
+  updateProjectTasks = (tasks) => {
+    this.setState((prevState) => {
+      return { project: { ...prevState.project, tasks } };
+    });
+  };
 
   createProject = () => {
-    const project = this.state.project
+    const { project } = this.state;
 
     Api.postData(`projects`, { project })
-      .then(res => {
-        this.props.history.push(`/project/${res.id}`)
+      .then((res) => {
+        this.props.history.push(`/project/${res.id}`);
       })
-      .catch(err => {
-        this.setState({ msg: Api.handleHttpError(err) })
-      })
-  }
+      .catch((err) => {
+        this.setState({ msg: Api.handleHttpError(err) });
+      });
+  };
 
   render() {
-    const { msg } = this.state
+    const { msg } = this.state;
 
     if (msg.length) {
       return (
         <div className="ProjectForm">
           <Error message={msg} />
         </div>
-      )
+      );
     }
 
     return (
@@ -93,8 +94,8 @@ class ProjectForm extends Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(ProjectForm)
+export default withRouter(ProjectForm);

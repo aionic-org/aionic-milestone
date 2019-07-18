@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import queryString from 'query-string';
 
-import BoardsForm from './Form';
+import UserForm from './Form';
 
-const BoardsCreate = (props) => {
+const UserCreate = (props) => {
   const { location } = props;
 
   const { create } = queryString.parse(location.search);
@@ -21,11 +21,11 @@ const BoardsCreate = (props) => {
   };
 
   return (
-    <div className="BoardsCreate">
+    <div className="UserCreate">
       <div className="form-group">
         <button type="button" className="btn btn-primary btn-block" onClick={handleOpenModal}>
           <i className="fas fa-plus mr-2" />
-          Create board
+          Create user
         </button>
       </div>
 
@@ -36,17 +36,17 @@ const BoardsCreate = (props) => {
         overlayClassName="Modal-Overlay"
       >
         <div className="modal-header">
-          <h5 className="modal-title">Create board</h5>
+          <h5 className="modal-title">Create user</h5>
           <button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div className="modal-body">
-          <BoardsForm />
+          <UserForm />
         </div>
       </ReactModal>
     </div>
   );
 };
 
-export default withRouter(BoardsCreate);
+export default withRouter(UserCreate);

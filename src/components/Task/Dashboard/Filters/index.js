@@ -1,36 +1,36 @@
-import React from 'react'
+import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher'
+import Fetcher from 'components/Utility/Fetcher';
 
-import Tabs from 'components/UI/Tabs'
+import Tabs from 'components/UI/Tabs';
 
-const TaskDashboardFilters = props => (
+const TaskDashboardFilters = (props) => (
   <Fetcher url="task-status">
-    {status => {
-      const { handleStatusChange } = props
+    {(status) => {
+      const { handleStatusChange } = props;
 
       const handleClick = (title, id) => {
         if (id) {
-          handleStatusChange(id)
+          handleStatusChange(id);
         } else {
-          handleStatusChange(null)
+          handleStatusChange(null);
         }
-      }
+      };
 
-      const tabTitles = status.map(status => {
+      const tabTitles = status.map((tabStatus) => {
         return {
-          id: status.id,
-          name: status.title
-        }
-      })
+          id: tabStatus.id,
+          name: tabStatus.title
+        };
+      });
 
       return (
         <div className="TaskDashboardFilters mb-4">
           <Tabs tabs={tabTitles} handleClick={handleClick} />
         </div>
-      )
+      );
     }}
   </Fetcher>
-)
+);
 
-export default TaskDashboardFilters
+export default TaskDashboardFilters;

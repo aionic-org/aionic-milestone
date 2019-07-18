@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const ProjectDescription = props => {
-  const { project, updateParentProjectState } = props
+const ProjectDescription = (props) => {
+  const { project, updateParentProjectState } = props;
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     if (e.target.value !== project.description) {
-      updateParentProjectState({ ...project, description: e.target.value })
+      updateParentProjectState({ ...project, description: e.target.value });
     }
-  }
+  };
 
   return (
     <div className="ProjectDescription">
@@ -21,7 +21,7 @@ const ProjectDescription = props => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectDescription
+export default ProjectDescription;

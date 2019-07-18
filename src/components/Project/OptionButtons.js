@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const ProjectOptionButtons = props => {
-  const { project, updateParentProjectState } = props
+const ProjectOptionButtons = (props) => {
+  const { project, updateParentProjectState } = props;
 
   const toggleComplete = () => {
-    updateParentProjectState({ ...project, completed: !project.completed })
-  }
+    updateParentProjectState({ ...project, completed: !project.completed });
+  };
 
   const completeBtn = project.completed ? (
     <button type="button" className="btn btn-warning" onClick={toggleComplete}>
@@ -16,7 +16,7 @@ const ProjectOptionButtons = props => {
       <i className="fas fa-check mr-2" />
       Mark complete
     </button>
-  )
+  );
 
   return (
     <div className="ProjectOptionButtons">
@@ -33,28 +33,28 @@ const ProjectOptionButtons = props => {
             More
           </button>
           <div className="dropdown-menu dropdown-menu-right">
-            <a className="dropdown-item" href="#">
+            <button type="button" className="btn dropdown-item">
               <i className="fas fa-share fa-fw mr-2" /> Share
-            </a>
-            <a className="dropdown-item" href="#">
+            </button>
+            <button type="button" className="btn dropdown-item">
               <i className="fas fa-print fa-fw mr-2" /> Print
-            </a>
-            <a className="dropdown-item" href="#">
+            </button>
+            <button type="button" className="dropdown-item">
               <i className="fas fa-archive fa-fw mr-2" /> Archive
-            </a>
+            </button>
             <div className="dropdown-divider" />
-            <a className="dropdown-item text-danger" href="#">
+            <button type="button" className="btn dropdown-item text-danger">
               <i className="fas fa-trash fa-fw mr-2" /> Delete
-            </a>
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 ProjectOptionButtons.defaultProps = {
   assignedClasses: []
-}
+};
 
-export default ProjectOptionButtons
+export default ProjectOptionButtons;

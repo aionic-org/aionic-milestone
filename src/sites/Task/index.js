@@ -1,23 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-import Content from 'components/UI/Content'
-import SitesTaskTabs from './components/Tabs'
+import Content from 'components/UI/Content';
 
-import TaskTitle from 'components/Task/Title'
-import TaskTags from 'components/Task/Tags'
-import TaskSummaryContainer from 'components/Task/Summary/container'
-import TaskDescription from 'components/Task/Description'
-import TaskOptionButtons from 'components/Task/OptionButtons'
-import TaskDates from '../../components/Task/Dates'
+import TaskTitle from 'components/Task/Title';
+import TaskTags from 'components/Task/Tags';
+import TaskSummaryContainer from 'components/Task/Summary/container';
+import TaskDescription from 'components/Task/Description';
+import TaskOptionButtons from 'components/Task/OptionButtons';
+import TaskDates from 'components/Task/Dates';
 
-const SitesTask = props => {
-  const { task, updateParentTaskState, isNewTask } = props
+import SitesTaskTabs from './components/Tabs';
 
-  const handleTitleChange = e => {
-    Helper.updateObjectPropByEvent(task, e, updateParentTaskState)
-  }
+const SitesTask = (props) => {
+  const { task, updateParentTaskState, isNewTask } = props;
+
+  const handleTitleChange = (e) => {
+    Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
+  };
 
   return (
     <div className="SitesTask">
@@ -53,7 +54,7 @@ const SitesTask = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesTask
+export default SitesTask;

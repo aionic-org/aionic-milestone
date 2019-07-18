@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import GitOrganizationSelect from 'components/Git/Organization/Select'
-import GitRepositorySelect from 'components/Git/Repository/Select'
-import GitCommitsContainer from 'components/Git/Commits/container'
+import GitOrganizationSelect from 'components/Git/Organization/Select';
+import GitRepositorySelect from 'components/Git/Repository/Select';
+import GitCommitsContainer from 'components/Git/Commits/container';
 
-const TaskGit = props => {
-  const { lists, task, handleOrgChange, handleRepoChange, handleBranchChange } = props
-  const { orgList, repoList } = lists
+const TaskGit = (props) => {
+  const { lists, task, handleOrgChange, handleRepoChange, handleBranchChange } = props;
+  const { orgList, repoList } = lists;
 
-  const allowCommitsShow = task.organization && task.repository && task.branch ? true : false
+  const allowCommitsShow = task.organization && task.repository && task.branch;
 
-  const [showCommits, setShowCommits] = useState(false)
+  const [showCommits, setShowCommits] = useState(false);
 
   const toggleCommits = () => {
     if (allowCommitsShow) {
-      setShowCommits(!showCommits)
+      setShowCommits(!showCommits);
     }
-  }
+  };
 
-  const commits = showCommits ? <GitCommitsContainer task={task} /> : null
+  const commits = showCommits ? <GitCommitsContainer task={task} /> : null;
 
   return (
     <div className="TaskGit">
@@ -53,6 +53,7 @@ const TaskGit = props => {
         </div>
       </div>
       <button
+        type="button"
         className={`btn btn-link d-block mx-auto mb-2 ${!allowCommitsShow ? ' disabled' : ''}`}
         onClick={toggleCommits}
       >
@@ -60,11 +61,11 @@ const TaskGit = props => {
       </button>
       {commits}
     </div>
-  )
-}
+  );
+};
 
 TaskGit.defaultProps = {
   isNewTask: false
-}
+};
 
-export default TaskGit
+export default TaskGit;

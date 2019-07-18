@@ -1,33 +1,33 @@
-import React from 'react'
+import React from 'react';
 
-import { Helper } from 'services/helper'
-import { Session } from 'services/session'
+import Helper from 'services/helper';
+import Session from 'services/session';
 
-import TaskSelectsStatus from 'components/Task/Selects/Status'
-import TaskSelectsPriority from 'components/Task/Selects/Priority'
-import TaskSelectsLabel from 'components/Task/Selects/Label'
-import TaskSelectsType from 'components/Task/Selects/Type'
+import TaskSelectsStatus from 'components/Task/Selects/Status';
+import TaskSelectsPriority from 'components/Task/Selects/Priority';
+import TaskSelectsLabel from 'components/Task/Selects/Label';
+import TaskSelectsType from 'components/Task/Selects/Type';
 
-import InputSuggestion from 'components/UI/Input/Suggestion'
+import InputSuggestion from 'components/UI/Input/Suggestion';
 
-const TaskSummary = props => {
-  const { lists, task, updateParentTaskState, isNewTask } = props
-  const { priorityList, statusList, typeList, userList } = lists
+const TaskSummary = (props) => {
+  const { lists, task, updateParentTaskState } = props;
+  const { priorityList, statusList, typeList, userList } = lists;
 
-  const userListPrepared = userList.map(user => {
+  const userListPrepared = userList.map((user) => {
     return {
       id: user.id,
       text: `${user.firstname} ${user.lastname}`
-    }
-  })
+    };
+  });
 
-  const handleInputSuggestion = element => {
-    updateParentTaskState({ ...task, [element.name]: element.id })
-  }
+  const handleInputSuggestion = (element) => {
+    updateParentTaskState({ ...task, [element.name]: element.id });
+  };
 
-  const handleInputChange = e => {
-    Helper.updateObjectPropByEvent(task, e, updateParentTaskState)
-  }
+  const handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
+  };
 
   return (
     <div className="TaskSummary mt-2">
@@ -90,7 +90,7 @@ const TaskSummary = props => {
               elementList={userListPrepared}
               name="author"
               placeholder="Enter username"
-              defaultValue={task.author ? task.author.id : isNewTask ? Session.getUser().id : ''}
+              defaultValue={task.author ? task.author.id || Session.getUser().id : ''}
               updateParent={handleInputSuggestion}
             />
           </div>
@@ -107,11 +107,11 @@ const TaskSummary = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 TaskSummary.defaultProps = {
   isNewTask: false
-}
+};
 
-export default TaskSummary
+export default TaskSummary;

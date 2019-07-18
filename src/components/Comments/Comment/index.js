@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import { Session } from 'services/session'
+import Session from 'services/session';
 
-const Comment = props => {
-  const { comment, deleteComment } = props
+const Comment = (props) => {
+  const { comment, deleteComment } = props;
 
   return (
     <div className="Comment list-group-item">
@@ -14,7 +14,7 @@ const Comment = props => {
             <i
               className="fas fa-times text-danger"
               onClick={() => {
-                deleteComment(comment.id)
+                deleteComment(comment.id);
               }}
               style={{ cursor: 'pointer' }}
             />
@@ -24,7 +24,7 @@ const Comment = props => {
       <p className="mb-1">{comment.text}</p>
       <small className="text-muted">{comment.created}</small>
     </div>
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;

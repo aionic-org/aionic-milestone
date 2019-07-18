@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router'
+/* eslint-disable no-undef */
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Api } from 'services/api'
-import { Session } from 'services/session'
+import Api from 'services/api';
+import Helper from 'services/helper';
+import Session from 'services/session';
 
-import Error from 'components/UI/Error'
-import Spinner from 'components/UI/Spinner'
-import Toast from 'components/UI/Toast'
+import Error from 'components/UI/Error';
+import Spinner from 'components/UI/Spinner';
+import Toast from 'components/UI/Toast';
 
-import SitesUser from '.'
+import SitesUser from '.';
 
 class SitesUserContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isLoading: true,
@@ -22,55 +24,50 @@ class SitesUserContainer extends Component {
         success: null,
         msg: null
       }
-    }
+    };
   }
 
   componentDidMount = () => {
     const id =
-      this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id
+      this.props.match.params.id === 'me' ? Session.getUser().id : this.props.match.params.id;
 
     Api.fetchData(`users/${id}`)
-      .then(user => {
+      .then((user) => {
         if (user) {
-          this.setState({ isLoading: false, user })
+          this.setState({ isLoading: false, user });
         } else {
-          this.setState({ isLoading: false, msg: 'Resource not found!' })
+          this.setState({ isLoading: false, msg: 'Resource not found!' });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           isLoading: false,
           msg: Api.handleHttpError(err)
-        })
-      })
-  }
+        });
+      });
+  };
 
-  handleInputChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
-
-    if (this.state.user[name] !== value) {
-      const user = { ...this.state.user, [name]: value }
-
+  handleInputChange = (e) => {
+    Helper.updateObjectPropByEvent(this.state.user, e, (user) => {
       this.setState({ user }, () => {
-        this.updateUser()
-      })
-    }
-  }
+        this.updateUser();
+      });
+    });
+  };
 
   updateUser = () => {
-    const user = this.state.user
+    const { user } = this.state;
 
     if (Session.isAdmin()) {
       Api.putData(`users/${user.id}`, { user })
-        .then(user => {
+        .then((updatedUser) => {
           this.setState({
+            user: updatedUser,
             userUpdate: {
               success: true,
               msg: 'User successfully updated!'
             }
-          })
+          });
 
           setTimeout(() => {
             this.setState({
@@ -78,63 +75,66 @@ class SitesUserContainer extends Component {
                 success: null,
                 msg: null
               }
-            })
-          }, 2000)
+            });
+          }, 2000);
         })
-        .catch(err => {
+        .catch(() => {
           this.setState({
             userUpdate: {
               success: false,
               msg: 'Failed to update user!'
             }
-          })
-        })
+          });
+        });
     }
-  }
+  };
 
   deleteUser = () => {
-    const confirmDelete = window.confirm('Are you sure?')
+    // eslint-disable-next-line no-alert
+    const confirmDelete = window.confirm('Are you sure?');
 
     if (confirmDelete && Session.isAdmin()) {
       Api.deleteData(`users/${this.state.user.id}`)
-        .then(res => {
-          this.props.history.push('/administration/user')
+        .then(() => {
+          this.props.history.push('/administration/user');
         })
-        .catch(err => {
+        .catch(() => {
           this.setState({
             userUpdate: {
               status: 'Error',
               msg: 'Failed to update user!'
             }
-          })
-        })
+          });
+        });
     }
-  }
+  };
 
   render() {
-    const { isLoading, msg, user, userUpdate } = this.state
+    const { isLoading, msg, user, userUpdate } = this.state;
 
     const alert = userUpdate.msg ? (
       <Toast msg={userUpdate.msg} success={userUpdate.success} />
-    ) : null
+    ) : null;
 
     if (isLoading) {
-      return <Spinner />
-    } else if (msg.length) {
-      return <Error message={msg} />
-    } else {
-      return (
-        <div className="SitesUserContainer">
-          {alert}
-          <SitesUser
-            user={user}
-            handleInputChange={this.handleInputChange}
-            deleteUser={this.deleteUser}
-          />
-        </div>
-      )
+      return <Spinner />;
     }
+
+    if (msg.length) {
+      return <Error message={msg} />;
+    }
+
+    return (
+      <div className="SitesUserContainer">
+        {alert}
+        <SitesUser
+          user={user}
+          handleInputChange={this.handleInputChange}
+          deleteUser={this.deleteUser}
+        />
+      </div>
+    );
   }
 }
 
-export default withRouter(SitesUserContainer)
+export default withRouter(SitesUserContainer);

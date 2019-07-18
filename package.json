@@ -10,7 +10,8 @@
     "start": "PORT=4200 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src"
   },
   "dependencies": {
     "axios": "^0.18.1",
@@ -25,12 +26,19 @@
     "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
+    "react-modal": "^3.9.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
-    "prettier": "^1.18.2",
-    "react-modal": "^3.9.1"
+    "@babel/runtime": "^7.5.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
+    "prettier": "^1.18.2"
   },
   "main": "index.js",
   "browserslist": {

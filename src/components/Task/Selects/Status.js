@@ -1,10 +1,10 @@
-import React from 'react'
-import InputSelect from 'components/UI/Input/Select'
+import React from 'react';
+import InputSelect from 'components/UI/Input/Select';
 
-const TaskSelectsStatus = props => {
-  const status = props.statusList.map(status => {
-    return { value: status.id, title: status.title }
-  })
+const TaskSelectsStatus = (props) => {
+  const status = props.statusList.map((taskStatus) => {
+    return { value: taskStatus.id, title: taskStatus.title };
+  });
 
   return (
     <div className="TaskSelectsStatus">
@@ -15,12 +15,12 @@ const TaskSelectsStatus = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 TaskSelectsStatus.defaultProps = {
   statusList: [],
   defaultValue: ''
-}
+};
 
-export default TaskSelectsStatus
+export default TaskSelectsStatus;

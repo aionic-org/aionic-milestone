@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import ProjectLabel from './Label'
+import ProjectLabel from './Label';
 
-const ProjectPreview = props => {
-  const { project } = props
+const ProjectPreview = (props) => {
+  const { project } = props;
 
   return (
     <Link to={`/project/${project.id}`} className="ProjectPreview CardLink card">
@@ -21,7 +21,7 @@ const ProjectPreview = props => {
         <small>Created: {project.created}</small>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default ProjectPreview
+export default ProjectPreview;

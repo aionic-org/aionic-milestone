@@ -1,10 +1,10 @@
-import React from 'react'
-import InputSelect from 'components/UI/Input/Select'
+import React from 'react';
+import InputSelect from 'components/UI/Input/Select';
 
-const UserSelect = props => {
-  const users = props.userList.map(user => {
-    return { id: user.id, title: `${user.firstname} ${user.lastname}` }
-  })
+const UserSelect = (props) => {
+  const users = props.userList.map((user) => {
+    return { id: user.id, title: `${user.firstname} ${user.lastname}` };
+  });
 
   return (
     <div className="UserSelect">
@@ -15,13 +15,13 @@ const UserSelect = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 UserSelect.defaultProps = {
   userList: [],
   onChange: () => {},
   defaultValue: ''
-}
+};
 
-export default UserSelect
+export default UserSelect;

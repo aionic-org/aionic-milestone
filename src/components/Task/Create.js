@@ -1,20 +1,20 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-const TaskCreate = props => {
-  const { task } = props
+const TaskCreate = (props) => {
+  const { task } = props;
 
   const createTask = () => {
     Api.postData('tasks', { task })
-      .then(res => {
-        props.history.push(`/task/${res.id}`)
+      .then((res) => {
+        props.history.push(`/task/${res.id}`);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="TaskCreate">
@@ -23,7 +23,7 @@ const TaskCreate = props => {
         Create and save
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default withRouter(TaskCreate)
+export default withRouter(TaskCreate);

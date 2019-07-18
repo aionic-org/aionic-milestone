@@ -1,31 +1,31 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
 function useCommentForm(endpoint, updateParent) {
-  const [comment, setComment] = useState({})
-  const [msg, setMsg] = useState('')
+  const [comment, setComment] = useState({});
+  const [msg, setMsg] = useState('');
 
-  const handleInputChange = e => {
-    const text = e.target.value
-    setComment({ text })
-  }
+  const handleInputChange = (e) => {
+    const text = e.target.value;
+    setComment({ text });
+  };
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     if (comment.text && comment.text.length) {
       Api.postData(endpoint, { comment })
-        .then(res => {
-          updateParent()
+        .then(() => {
+          updateParent();
         })
-        .catch(err => {
-          setMsg(Api.handleHttpError(err))
-        })
+        .catch((err) => {
+          setMsg(Api.handleHttpError(err));
+        });
     }
-  }
+  };
 
-  return [msg, handleInputChange, handleSubmit]
+  return [msg, handleInputChange, handleSubmit];
 }
 
-export default useCommentForm
+export default useCommentForm;

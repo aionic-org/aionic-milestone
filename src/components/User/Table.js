@@ -1,37 +1,37 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-const UserTable = props => {
-  const { users } = props
+const UserTable = (props) => {
+  const { users } = props;
 
-  const [filterText, setFilterText] = useState('')
-  const [usersFiltered, setUsersFiltered] = useState([])
+  const [filterText, setFilterText] = useState('');
+  const [usersFiltered, setUsersFiltered] = useState([]);
 
-  const filterUsers = e => {
-    const input = e.target.value
-    const keysLookup = ['id', 'firstname', 'lastname', 'email', 'created']
+  const filterUsers = (e) => {
+    const input = e.target.value;
+    const keysLookup = ['id', 'firstname', 'lastname', 'email', 'created'];
 
-    setFilterText(input)
+    setFilterText(input);
 
-    const usersFiltered = users.filter(user => {
+    const newUsersFiltered = users.filter((user) => {
       for (const key of keysLookup) {
         if (
           String(user[key])
             .toLowerCase()
             .includes(input.toLowerCase())
         ) {
-          return true
+          return true;
         }
       }
-      return false
-    })
+      return false;
+    });
 
-    setUsersFiltered(usersFiltered)
-  }
+    setUsersFiltered(newUsersFiltered);
+  };
 
-  const usersToShow = filterText.length ? usersFiltered : users
+  const usersToShow = filterText.length ? usersFiltered : users;
 
   return (
     <div className="UserTable">
@@ -40,7 +40,7 @@ const UserTable = props => {
         className="form-control form-control form-control-sm mb-2"
         placeholder="Filter..."
         onChange={filterUsers}
-      ></input>
+      />
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
@@ -56,20 +56,17 @@ const UserTable = props => {
             </tr>
           </thead>
           <tbody>
-            {usersToShow.map((user, i) => (
-              <tr key={i}>
+            {usersToShow.map((user) => (
+              <tr key={user.id}>
                 <th scope="row">{user.id}</th>
                 <td>{user.firstname}</td>
                 <td>{user.lastname}</td>
                 <td>{user.email}</td>
-                <td>{user.userRole.name}</td>
+                <td>{user.userRole ? user.userRole.name : '-'}</td>
                 <td>{String(user.active)}</td>
                 <td>{Helper.formatDate(user.created)}</td>
                 <td>
-                  <Link
-                    to={`/user/${user.id}`}
-                    className="fas fa-fw fa-external-link-square-alt"
-                  ></Link>
+                  <Link to={`/user/${user.id}`} className="fas fa-fw fa-external-link-square-alt" />
                 </td>
               </tr>
             ))}
@@ -77,7 +74,7 @@ const UserTable = props => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserTable
+export default UserTable;

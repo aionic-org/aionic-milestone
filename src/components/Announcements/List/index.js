@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import './List.scss'
+import './List.scss';
 
-const AnnouncementsList = props => {
-  const { announcementList } = props
+const AnnouncementsList = (props) => {
+  const { announcementList } = props;
 
   const content = announcementList.length ? (
-    announcementList.map((announcement, i) => (
+    announcementList.map((announcement) => (
       <li
-        key={i}
+        key={announcement.id}
         className={`list-group-item list-group-item-action ${
           announcement.important ? 'important' : ''
         }`}
@@ -21,17 +21,17 @@ const AnnouncementsList = props => {
     ))
   ) : (
     <li className="list-group-item text-center font-italic">There are no announcements yet!</li>
-  )
+  );
 
   return (
     <div className="AnnouncementsList">
       <ul className="list-group">{content}</ul>
     </div>
-  )
-}
+  );
+};
 
 AnnouncementsList.defaultProps = {
   announcementList: []
-}
+};
 
-export default AnnouncementsList
+export default AnnouncementsList;

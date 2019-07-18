@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { withRouter } from 'react-router'
-import ReactModal from 'react-modal'
-import queryString from 'query-string'
+import { withRouter } from 'react-router-dom';
+import ReactModal from 'react-modal';
+import queryString from 'query-string';
 
-import ProjectForm from './Form'
+import ProjectForm from './Form';
 
-const ProjectsCreate = props => {
-  const { location } = props
+const ProjectsCreate = (props) => {
+  const { location } = props;
 
-  const { create } = queryString.parse(location.search)
-  const [showModal, setShowModal] = useState(create === 'true') // query param is of type string
+  const { create } = queryString.parse(location.search);
+  const [showModal, setShowModal] = useState(create === 'true'); // query param is of type string
 
   const handleOpenModal = () => {
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
 
   const handleCloseModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   return (
     <div className="ProjectsCreate">
@@ -46,7 +46,7 @@ const ProjectsCreate = props => {
         </div>
       </ReactModal>
     </div>
-  )
-}
+  );
+};
 
-export default withRouter(ProjectsCreate)
+export default withRouter(ProjectsCreate);

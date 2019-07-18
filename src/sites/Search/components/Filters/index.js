@@ -1,19 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import UserSelect from 'components/User/Select'
-import TaskSelectsStatus from 'components/Task/Selects/Status'
-import TaskSelectsType from 'components/Task/Selects/Type'
-import GitOrganizationSelect from 'components/Git/Organization/Select'
+import UserSelect from 'components/User/Select';
+import TaskSelectsStatus from 'components/Task/Selects/Status';
+import TaskSelectsType from 'components/Task/Selects/Type';
+import GitOrganizationSelect from 'components/Git/Organization/Select';
 
 class SitesSearchFilter extends Component {
-  handleReset = e => {
-    document.getElementById('filterForm').reset()
-    this.props.resetFilters()
-  }
+  handleReset = () => {
+    // eslint-disable-next-line no-undef
+    document.getElementById('filterForm').reset();
+    this.props.resetFilters();
+  };
 
   render() {
-    const { searchParams, handleFilterChange, lists } = this.props
-    const { userList, statusList, typeList, orgList } = lists
+    const { searchParams, handleFilterChange, lists } = this.props;
+    const { userList, statusList, typeList, orgList } = lists;
 
     return (
       <div className="SitesSearchFilter">
@@ -100,8 +101,8 @@ class SitesSearchFilter extends Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default SitesSearchFilter
+export default SitesSearchFilter;

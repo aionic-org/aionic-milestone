@@ -1,57 +1,57 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import useTextFilter from 'components/Utility/Hooks/useTextFilter'
+import useTextFilter from 'components/Utility/Hooks/useTextFilter';
 
-import Spinner from 'components/UI/Spinner'
-import Tabs from 'components/UI/Tabs'
+import Spinner from 'components/UI/Spinner';
+import Tabs from 'components/UI/Tabs';
 
-import BoardStatus from './Status'
+import BoardStatus from './Status';
 
-const Board = props => {
-  const { userList, statusList } = props
+const Board = (props) => {
+  const { userList, statusList } = props;
 
-  const [userTasks, setUserTasks] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [userTasksFiltered, setUserTasksFiltered] = useTextFilter('title', userTasks)
+  const [userTasks, setUserTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [userTasksFiltered, setUserTasksFiltered] = useTextFilter('title', userTasks);
 
-  const tabTitles = userList.map(user => {
-    var userNameDuplicates = userList.filter(user2 => {
-      return user2.id !== user.id && user2.firstname === user.firstname
-    })
+  const tabTitles = userList.map((user) => {
+    const userNameDuplicates = userList.filter((user2) => {
+      return user2.id !== user.id && user2.firstname === user.firstname;
+    });
 
     return {
       id: user.id,
       name: userNameDuplicates.length
         ? `${user.firstname} ${user.lastname.charAt(0)}.`
         : user.firstname
-    }
-  })
+    };
+  });
+
+  const fetchUserTasks = (userId) => {
+    setIsLoading(true);
+    Api.fetchData(`users/${userId}/tasks`)
+      .then((taskList) => {
+        setIsLoading(false);
+        setUserTasks(taskList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleClick = (firstname, userId) => {
     if (userId) {
-      fetchUserTasks(userId)
+      fetchUserTasks(userId);
     } else {
-      setUserTasks([])
+      setUserTasks([]);
     }
-  }
+  };
 
-  const fetchUserTasks = userId => {
-    setIsLoading(true)
-    Api.fetchData(`users/${userId}/tasks`)
-      .then(taskList => {
-        setIsLoading(false)
-        setUserTasks(taskList)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
-  const filterTasks = e => {
-    setUserTasksFiltered(e.target.value)
-  }
+  const filterTasks = (e) => {
+    setUserTasksFiltered(e.target.value);
+  };
 
   const loadingSpinner = isLoading ? (
     <div className="row mt-3">
@@ -59,7 +59,7 @@ const Board = props => {
         <Spinner />
       </div>
     </div>
-  ) : null
+  ) : null;
 
   return (
     <div className="Board">
@@ -80,10 +80,10 @@ const Board = props => {
       </div>
       <div />
       <div className="row mt-2">
-        {statusList.map(status => {
+        {statusList.map((status) => {
           const tasks = (userTasksFiltered.length ? userTasksFiltered : userTasks).filter(
-            task => task.status.id === status.id
-          )
+            (task) => task.status.id === status.id
+          );
           return (
             <BoardStatus
               key={status.id}
@@ -91,12 +91,12 @@ const Board = props => {
               tasks={tasks}
               maxWidth={100 / statusList.length}
             />
-          )
+          );
         })}
       </div>
       {loadingSpinner}
     </div>
-  )
-}
+  );
+};
 
-export default Board
+export default Board;

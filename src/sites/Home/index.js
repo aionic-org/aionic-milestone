@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import './Home.css'
+import './Home.css';
 
-import { Session } from 'services/session'
+import Session from 'services/session';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container'
+import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
 
-const SitesHome = props => {
+const SitesHome = () => {
   return (
     <div className="SitesHome">
       <Content>
@@ -21,7 +21,7 @@ const SitesHome = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesHome
+export default SitesHome;

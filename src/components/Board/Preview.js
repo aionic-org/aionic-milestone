@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const BoardPreview = props => {
-  const { board } = props
+const BoardPreview = (props) => {
+  const { board } = props;
 
   return (
     <Link to={`/board/${board.id}`} className="BoardPreview CardLink card">
@@ -21,7 +21,7 @@ const BoardPreview = props => {
         <small>Updated: {board.updated} </small>
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default BoardPreview
+export default BoardPreview;

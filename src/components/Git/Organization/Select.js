@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import InputSelect from 'components/UI/Input/Select'
+import InputSelect from 'components/UI/Input/Select';
 
-const GitOrganizationSelect = props => {
-  const organizations = props.orgList.map(organization => {
-    return { value: organization.id, title: organization.name }
-  })
+const GitOrganizationSelect = (props) => {
+  const organizations = props.orgList.map((organization) => {
+    return { value: organization.id, title: organization.name };
+  });
 
   return (
     <div className="GitOrganizationSelect">
@@ -16,13 +16,13 @@ const GitOrganizationSelect = props => {
         onChange={props.onChange}
       />
     </div>
-  )
-}
+  );
+};
 
 GitOrganizationSelect.defaultProps = {
   orgList: [],
   onChange: () => {},
   defaultValue: ''
-}
+};
 
-export default GitOrganizationSelect
+export default GitOrganizationSelect;

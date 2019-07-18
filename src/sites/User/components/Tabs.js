@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Tabs from 'components/UI/Tabs'
+import Tabs from 'components/UI/Tabs';
 
-import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container'
+import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
 
 class SitesUserTabsContent extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { isLoading: false, msg: '', tab: '' }
+    this.state = { tab: '' };
   }
 
-  handleClick = tab => {
-    if (tab) {
-      this.setState({ tab: tab })
+  handleClick = (clickedTab) => {
+    if (clickedTab) {
+      this.setState({ tab: clickedTab });
     } else {
-      this.setState({ tab: null, msg: '' })
+      this.setState({ tab: null });
     }
-  }
+  };
 
   render() {
-    const { tab } = this.state
-    const { user } = this.props
+    const { tab } = this.state;
+    const { user } = this.props;
 
-    let content = null
+    let content = null;
 
     switch (tab) {
       case 'Dashboard':
-        content = <UserTaskDashboardContainer user={user} showTitle={false} />
-        break
+        content = <UserTaskDashboardContainer user={user} showTitle={false} />;
+        break;
       default:
-        break
+        break;
     }
 
-    const tabs = [{ name: 'Dashboard' }]
+    const tabs = [{ name: 'Dashboard' }];
 
     return (
       <div className="SitesUserTabs">
@@ -44,8 +44,8 @@ class SitesUserTabsContent extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default SitesUserTabsContent
+export default SitesUserTabsContent;

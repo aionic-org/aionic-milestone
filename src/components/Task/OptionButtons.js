@@ -1,19 +1,19 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import TaskCreate from './Create'
+import TaskCreate from './Create';
 
-const TaskOptionButtons = props => {
-  const { task, isNewTask, updateParentTaskState, history } = props
+const TaskOptionButtons = (props) => {
+  const { task, isNewTask, updateParentTaskState } = props;
 
   const toggleComplete = () => {
-    updateParentTaskState({ ...task, completed: !task.completed })
-  }
+    updateParentTaskState({ ...task, completed: !task.completed });
+  };
 
-  let statusBtn = null
-  let moreBtn = null
+  let statusBtn = null;
+  let moreBtn = null;
   if (isNewTask) {
-    statusBtn = <TaskCreate task={task} />
+    statusBtn = <TaskCreate task={task} />;
   } else {
     statusBtn = task.completed ? (
       <button type="button" className="btn btn-warning" onClick={toggleComplete}>
@@ -24,7 +24,7 @@ const TaskOptionButtons = props => {
         <i className="fas fa-check mr-2" />
         Mark complete
       </button>
-    )
+    );
     moreBtn = (
       <div className="btn-group ml-2">
         <button
@@ -37,22 +37,22 @@ const TaskOptionButtons = props => {
           More
         </button>
         <div className="dropdown-menu dropdown-menu-right">
-          <a className="dropdown-item" href="#">
+          <button type="button" className="btn dropdown-item">
             <i className="fas fa-share fa-fw mr-2" /> Share
-          </a>
-          <a className="dropdown-item" href="#">
+          </button>
+          <button type="button" className="btn dropdown-item">
             <i className="fas fa-print fa-fw mr-2" /> Print
-          </a>
-          <a className="dropdown-item" href="#">
+          </button>
+          <button type="button" className="dropdown-item">
             <i className="fas fa-archive fa-fw mr-2" /> Archive
-          </a>
+          </button>
           <div className="dropdown-divider" />
-          <a className="dropdown-item text-danger" href="#">
+          <button type="button" className="btn dropdown-item text-danger">
             <i className="fas fa-trash fa-fw mr-2" /> Delete
-          </a>
+          </button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -62,11 +62,11 @@ const TaskOptionButtons = props => {
         {moreBtn}
       </div>
     </div>
-  )
-}
+  );
+};
 
 TaskOptionButtons.defaultProps = {
   assignedClasses: []
-}
+};
 
-export default withRouter(TaskOptionButtons)
+export default withRouter(TaskOptionButtons);

@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
 function useFetcher(url) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setError(null)
-        setIsLoading(true)
+        setError(null);
+        setIsLoading(true);
 
-        const result = await Api.fetchData(url)
-        setData(result)
-        setIsLoading(false)
+        const result = await Api.fetchData(url);
+        setData(result);
+        setIsLoading(false);
       } catch (err) {
-        setError(Api.handleHttpError(err))
-        setIsLoading(false)
+        setError(Api.handleHttpError(err));
+        setIsLoading(false);
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
-  return [data, isLoading, error, setData]
+  return [data, isLoading, error, setData];
 }
 
-export default useFetcher
+export default useFetcher;

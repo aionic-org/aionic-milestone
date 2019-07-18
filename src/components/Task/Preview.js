@@ -1,17 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-import TaskPriorityIcon from './Priority'
-import TaskBadgeCompleted from './Badges/Completed'
+import TaskPriorityIcon from './Priority';
+import TaskBadgeCompleted from './Badges/Completed';
 
-const TaskPreview = props => {
-  const { task } = props
+const TaskPreview = (props) => {
+  const { task } = props;
 
   const type = task.type ? (
     <span className="small mr-1 text-secondary">{`${task.type.title} `}</span>
-  ) : null
+  ) : null;
 
   return (
     <Link to={`/task/${task.id}`} className="TaskPreview CardLink card">
@@ -30,18 +30,18 @@ const TaskPreview = props => {
       <div className="card-body">
         <p className="card-text text-muted">
           {task.status ? task.status.title : ''} (
-          {task.assignee ? task.assignee.firstname + ' ' + task.assignee.lastname : '-'})
+          {task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'})
         </p>
       </div>
       <div className="card-footer text-muted">
         <small>Updated: {Helper.formatDateTime(task.updated)} </small>
       </div>
     </Link>
-  )
-}
+  );
+};
 
 TaskPreview.defaultProps = {
   highlightAssignee: false
-}
+};
 
-export default TaskPreview
+export default TaskPreview;

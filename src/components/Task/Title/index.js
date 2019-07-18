@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './Title.scss'
+import './Title.scss';
 
-const TaskTitle = props => {
-  const { task, onBlur } = props
+const TaskTitle = (props) => {
+  const { task, onBlur } = props;
 
   const label = task.label ? (
     <div
@@ -12,7 +12,7 @@ const TaskTitle = props => {
         background: task.label
       }}
     />
-  ) : null
+  ) : null;
 
   return (
     <div className="TaskTitle">
@@ -27,7 +27,7 @@ const TaskTitle = props => {
         onBlur={onBlur}
       />
     </div>
-  )
-}
+  );
+};
 
-export default TaskTitle
+export default TaskTitle;

@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import Progress from 'components/UI/Progress'
-import Widget from 'components/UI/Widget'
+import Progress from 'components/UI/Progress';
+import Widget from 'components/UI/Widget';
 
-const ProjectsWidgetbar = props => {
-  const { allProjects } = props
+const ProjectsWidgetbar = (props) => {
+  const { allProjects } = props;
 
-  const openProjects = allProjects.filter(project => !project.completed)
-  const finishedProjects = allProjects.filter(project => project.completed)
+  const openProjects = allProjects.filter((project) => !project.completed);
+  const finishedProjects = allProjects.filter((project) => project.completed);
 
   return (
     <div className="ProjectsWidgetbar mb-5">
@@ -46,7 +46,7 @@ const ProjectsWidgetbar = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectsWidgetbar
+export default ProjectsWidgetbar;

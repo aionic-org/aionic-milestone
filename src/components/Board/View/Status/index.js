@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import './Status.scss'
+import './Status.scss';
 
-import TaskPreview from 'components/Task/Preview'
+import TaskPreview from 'components/Task/Preview';
 
-const BoardStatus = props => {
-  const { tasks, status, maxWidth } = props
+const BoardStatus = (props) => {
+  const { tasks, status, maxWidth } = props;
 
   return (
     <div className="BoardStatus p-2" style={{ flex: `0 0 ${maxWidth}%` }}>
@@ -13,12 +13,12 @@ const BoardStatus = props => {
         {status.title} <span className="badge badge-pill badge-secondary ml-2">{tasks.length}</span>
       </h6>
       <div className="mt-3">
-        {tasks.map(task => {
-          return <TaskPreview key={task.id} task={task} />
+        {tasks.map((task) => {
+          return <TaskPreview key={task.id} task={task} />;
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BoardStatus
+export default BoardStatus;

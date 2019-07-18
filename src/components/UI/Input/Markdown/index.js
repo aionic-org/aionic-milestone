@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 
-import './Markdown.scss'
+import './Markdown.scss';
 
-const InputMarkdown = props => {
-  const { content, name, rows, onBlurCb } = props
-  const [edit, setEdit] = useState(false)
+const InputMarkdown = (props) => {
+  const { content, name, rows, onBlurCb } = props;
+  const [edit, setEdit] = useState(false);
 
   const toggleEdit = (e, cb) => {
-    setEdit(!edit)
+    setEdit(!edit);
 
     if (typeof cb === 'function') {
-      cb(e)
+      cb(e);
     }
-  }
+  };
 
   const output = edit ? (
     <div className="EditMode form-group">
@@ -23,9 +23,8 @@ const InputMarkdown = props => {
         className="form-control"
         rows={rows}
         defaultValue={content}
-        autoFocus={true}
-        onBlur={e => {
-          toggleEdit(e, onBlurCb)
+        onBlur={(e) => {
+          toggleEdit(e, onBlurCb);
         }}
       />
     </div>
@@ -33,7 +32,7 @@ const InputMarkdown = props => {
     <div className="PreviewMode form-group" style={{ cursor: 'text' }}>
       <ReactMarkdown source={content} />
     </div>
-  )
+  );
 
   return (
     <div className="InputMarkdown">
@@ -47,12 +46,12 @@ const InputMarkdown = props => {
       <hr className="featurette-divider" />
       {output}
     </div>
-  )
-}
+  );
+};
 
 InputMarkdown.defaultProps = {
   rows: 5,
   onBlurCb: () => {}
-}
+};
 
-export default InputMarkdown
+export default InputMarkdown;

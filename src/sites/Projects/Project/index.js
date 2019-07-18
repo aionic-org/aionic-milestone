@@ -1,32 +1,32 @@
-import React from 'react'
+import React from 'react';
 
-import { Helper } from 'services/helper'
+import Helper from 'services/helper';
 
-import useTextFilter from 'components/Utility/Hooks/useTextFilter'
+import useTextFilter from 'components/Utility/Hooks/useTextFilter';
 
-import ProjectWidgetbar from './components/Widgetbar'
-import SitesProjectTabs from './components/Tabs'
+import Content from 'components/UI/Content';
+import InputTitle from 'components/UI/Input/Title/';
 
-import Content from 'components/UI/Content'
-import InputTitle from 'components/UI/Input/Title/'
+import CardDeck from 'components/Deck';
 
-import CardDeck from 'components/Deck'
+import ProjectOptionButtons from 'components/Project/OptionButtons';
 
-import ProjectOptionButtons from 'components/Project/OptionButtons'
+import ProjectWidgetbar from './components/Widgetbar';
+import SitesProjectTabs from './components/Tabs';
 
-const SitesProject = props => {
-  const { project, updateParentProjectState, deleteProject } = props
-  const [tasksFiltered, setTasksFiltered, filterText] = useTextFilter('title', project.tasks)
+const SitesProject = (props) => {
+  const { project, updateParentProjectState } = props;
+  const [tasksFiltered, setTasksFiltered, filterText] = useTextFilter('title', project.tasks);
 
-  const handleTitleChange = e => {
-    Helper.updateObjectPropByEvent(project, e, updateParentProjectState)
-  }
+  const handleTitleChange = (e) => {
+    Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
+  };
 
-  const filterTasks = e => {
-    setTasksFiltered(e.target.value)
-  }
+  const filterTasks = (e) => {
+    setTasksFiltered(e.target.value);
+  };
 
-  const tasksToShow = filterText.length ? tasksFiltered : project.tasks
+  const tasksToShow = filterText.length ? tasksFiltered : project.tasks;
 
   return (
     <div className="SitesProject">
@@ -35,7 +35,7 @@ const SitesProject = props => {
           <div className="col-12 col-md-7 col-xl-8">
             <InputTitle
               defaultValue={project.title}
-              placeholder={'Enter project title'}
+              placeholder="Enter project title"
               onBlur={handleTitleChange}
             />
           </div>
@@ -68,7 +68,7 @@ const SitesProject = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesProject
+export default SitesProject;

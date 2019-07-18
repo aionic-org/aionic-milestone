@@ -1,30 +1,28 @@
-import React, { useState } from 'react'
-import queryString from 'query-string'
+import React, { useState } from 'react';
+import queryString from 'query-string';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Helper from 'services/helper';
 
-import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer'
-import SitesSearchFilter from './components/Filters/container'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-const SitesSearch = props => {
-  const { location } = props
+import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer';
+import SitesSearchFilter from './components/Filters/container';
 
-  const [params, setParams] = useState({ ...queryString.parse(location.search) })
+const SitesSearch = (props) => {
+  const { location } = props;
 
-  const handleFilterChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
+  const [params, setParams] = useState({ ...queryString.parse(location.search) });
 
-    if (params[name] !== value) {
-      setParams({ ...params, [name]: value })
-    }
-  }
+  const handleFilterChange = (e) => {
+    Helper.updateObjectPropByEvent(params, e, (updatedParams) => {
+      setParams(updatedParams);
+    });
+  };
 
-  const resetFilters = e => {
-    setParams({})
-  }
+  const resetFilters = () => {
+    setParams({});
+  };
 
   return (
     <div className="SitesSearch">
@@ -44,7 +42,7 @@ const SitesSearch = props => {
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesSearch
+export default SitesSearch;
