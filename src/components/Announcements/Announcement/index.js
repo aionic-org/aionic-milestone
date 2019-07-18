@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Api } from 'services/api'
 
-const AnnouncementPreview = props => {
+const Announcement = props => {
   const { announcement, handleDelete } = props
 
   const deleteAnnouncement = () => {
@@ -16,7 +16,7 @@ const AnnouncementPreview = props => {
   }
 
   return (
-    <div className="AnnouncementPreview card">
+    <div className="Announcement card">
       <div className="card-body">
         <h5 className="card-title">{announcement.description}</h5>
 
@@ -33,4 +33,4 @@ const AnnouncementPreview = props => {
   )
 }
 
-export default AnnouncementPreview
+export default Announcement

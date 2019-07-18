@@ -5,7 +5,7 @@ import { Session } from 'services/session'
 
 import Spinner from 'components/UI/Spinner'
 
-class AnnouncementForm extends Component {
+class AnnouncementsForm extends Component {
   constructor(props) {
     super(props)
 
@@ -59,7 +59,7 @@ class AnnouncementForm extends Component {
   render() {
     const { isLoading, msg, status } = this.state
     return (
-      <div className="AnnouncementForm">
+      <div className="AnnouncementsForm">
         <form onSubmit={this.handleSubmit}>
           <label>Make new announcement</label>
           <div className="input-group mb-3">
@@ -95,8 +95,8 @@ class AnnouncementForm extends Component {
   }
 }
 
-AnnouncementForm.defaultProps = {
+AnnouncementsForm.defaultProps = {
   updateParent: () => {}
 }
 
-export default AnnouncementForm
+export default AnnouncementsForm

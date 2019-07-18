@@ -6,7 +6,7 @@ import TaskPreview from 'components/Task/Preview'
 import UserPreview from 'components/User/Preview'
 import ProjectPreview from 'components/Project/Preview'
 import GitOrganizationPreview from 'components/Git/Organization/Preview'
-import AnnouncementPreview from 'components/Announcements/Announcement/Preview'
+import AnnouncementPreview from 'components/Announcements/Announcement/'
 import BoardPreview from 'components/Board/Preview'
 
 const Deck = props => {

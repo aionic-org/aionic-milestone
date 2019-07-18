@@ -39,7 +39,10 @@ const ProjectWidgetbar = props => {
             iconColor="#00b894"
             subcontent={
               <div className="col">
-                <Progress progress="70" showPercent={true} />
+                <Progress
+                  progress={Math.round((finishedTasks.length / tasks.length) * 100)}
+                  showPercent={true}
+                />
               </div>
             }
           />

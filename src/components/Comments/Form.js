@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CommentForm = props => {
+const CommentsForm = props => {
   const { handleSubmit, handleInputChange } = props
   return (
-    <div className="CommentForm">
+    <div className="CommentsForm">
       <form onSubmit={handleSubmit}>
         <label>Write a comment</label>
         <textarea className="form-control" name="comment" rows="3" onChange={handleInputChange} />
@@ -17,4 +17,4 @@ const CommentForm = props => {
   )
 }
 
-export default CommentForm
+export default CommentsForm

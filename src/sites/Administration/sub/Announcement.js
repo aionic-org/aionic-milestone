@@ -5,7 +5,7 @@ import useFetcher from 'components/Utility/Hooks/useFetcher'
 import Error from 'components/UI/Error'
 import Spinner from 'components/UI/Spinner'
 
-import AnnouncementForm from 'components/Announcements/Announcement/Form'
+import AnnouncementForm from 'components/Announcements/Form'
 import AnnouncementsTable from 'components/Announcements/Table'
 
 const AdministrationAnnouncement = () => {

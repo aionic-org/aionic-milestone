@@ -44,15 +44,15 @@ body {
 }
 
 .badge-primary {
-  background-color: #6c5ce7;
+  background-color: $primary-color;
 }
 
 .badge-secondary {
-  background-color: #00b894;
+  background-color: $mint;
 }
 
 .text-muted {
-  color: #636e72 !important;
+  color: $text-grey !important;
 }
 
 .form-control:focus {

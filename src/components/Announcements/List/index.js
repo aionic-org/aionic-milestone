@@ -2,7 +2,7 @@ import React from 'react'
 
 import './List.scss'
 
-const AnnouncementList = props => {
+const AnnouncementsList = props => {
   const { announcementList } = props
 
   const content = announcementList.length ? (
@@ -24,14 +24,14 @@ const AnnouncementList = props => {
   )
 
   return (
-    <div className="AnnouncementList">
+    <div className="AnnouncementsList">
       <ul className="list-group">{content}</ul>
     </div>
   )
 }
 
-AnnouncementList.defaultProps = {
+AnnouncementsList.defaultProps = {
   announcementList: []
 }
 
-export default AnnouncementList
+export default AnnouncementsList

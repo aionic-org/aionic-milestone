@@ -25,6 +25,7 @@ const UserTable = props => {
           return true
         }
       }
+      return false
     })
 
     setUsersFiltered(usersFiltered)

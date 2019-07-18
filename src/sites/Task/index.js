@@ -13,7 +13,7 @@ import TaskOptionButtons from 'components/Task/OptionButtons'
 import TaskDates from '../../components/Task/Dates'
 
 const SitesTask = props => {
-  const { task, updateParentTaskState, isNewTask, createTask } = props
+  const { task, updateParentTaskState, isNewTask } = props
 
   const handleTitleChange = e => {
     Helper.updateObjectPropByEvent(task, e, updateParentTaskState)

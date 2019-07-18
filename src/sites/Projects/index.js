@@ -28,7 +28,7 @@ const SitesProjects = props => {
     <div className="SitesProjects">
       <Content>
         <Title title="Projects" />
-        <ProjectsWidgetbar allProjects={projects.all} />
+        <ProjectsWidgetbar allProjects={all} />
         <div className="row">
           <div className="col-12 col-xl-10">
             <Filters
