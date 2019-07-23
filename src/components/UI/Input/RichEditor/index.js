@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-string-refs */
 import React from 'react';
 import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
@@ -41,13 +42,13 @@ class RichEditor extends React.Component {
     };
     this.onChange = (editorState) => this.setState({ editorState });
 
-    this.handleKeyCommand = (command) => this.handleKeyCommand(command);
+    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this.onTab(e);
-    this.toggleBlockType = (type) => this.toggleBlockType(type);
-    this.toggleInlineStyle = (style) => this.toggleInlineStyle(style);
+    this.toggleBlockType = (type) => this._toggleBlockType(type);
+    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
   }
 
-  handleKeyCommand = (command) => {
+  _handleKeyCommand = (command) => {
     const { editorState } = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -62,11 +63,11 @@ class RichEditor extends React.Component {
     this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
   };
 
-  toggleBlockType = (blockType) => {
+  _toggleBlockType = (blockType) => {
     this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
   };
 
-  toggleInlineStyle = (inlineStyle) => {
+  _toggleInlineStyle = (inlineStyle) => {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
   };
 
