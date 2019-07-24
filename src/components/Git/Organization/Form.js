@@ -1,66 +1,68 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import Spinner from 'components/UI/Spinner'
+import Spinner from 'components/UI/Spinner';
 
 class GitOrganizationForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       name: '',
       isLoading: false,
       msg: '',
       status: ''
-    }
+    };
   }
 
-  handleInputChange = e => {
-    const value = e.target.value
+  handleInputChange = (e) => {
+    // eslint-disable-next-line prefer-destructuring
+    const value = e.target.value;
 
     this.setState({
       name: value,
       msg: '',
       status: ''
-    })
-  }
+    });
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
+  handleSubmit = (e) => {
+    e.preventDefault();
 
     if (this.state.name.length) {
       this.setState({
         isLoading: true
-      })
+      });
 
       Api.postData('git/organization', { name: this.state.name })
-        .then(res => {
-          this.setState({ isLoading: false, status: 'is-valid' })
-          this.props.updateParent(res)
+        .then((res) => {
+          this.setState({ isLoading: false, status: 'is-valid' });
+          this.props.updateParent(res);
         })
-        .catch(err => {
-          this.setState({ isLoading: false, status: 'is-invalid', msg: Api.handleHttpError(err) })
-        })
+        .catch((err) => {
+          this.setState({ isLoading: false, status: 'is-invalid', msg: Api.handleHttpError(err) });
+        });
     }
-  }
+  };
 
   render() {
-    const { isLoading, msg, status } = this.state
+    const { isLoading, msg, status } = this.state;
     return (
       <div className="GitOrganizationForm">
         <form onSubmit={this.handleSubmit}>
+          <p>Add new organization</p>
           <div className="input-group mb-3">
             <input
               type="text"
               name="name"
               className={`form-control ${status}`}
               onChange={this.handleInputChange}
-              placeholder="Organization name"
+              placeholder="Enter organization name"
               autoComplete="off"
             />
             <div className="input-group-append">
-              <button className="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 {isLoading ? <Spinner onBtn={true} /> : 'Submit'}
               </button>
             </div>
@@ -69,12 +71,12 @@ class GitOrganizationForm extends Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
 GitOrganizationForm.defaultProps = {
   updateParent: () => {}
-}
+};
 
-export default GitOrganizationForm
+export default GitOrganizationForm;

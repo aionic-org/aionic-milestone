@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import './Toast.css'
+import './Toast.scss';
 
-const Toast = props => (
+const Toast = (props) => (
   <div
     role="alert"
     aria-live="assertive"
@@ -27,10 +27,10 @@ const Toast = props => (
     </div>
     <div className="toast-body">{props.msg}</div>
   </div>
-)
+);
 
 Toast.defaultProps = {
   success: true
-}
+};
 
-export default Toast
+export default Toast;

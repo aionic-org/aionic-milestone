@@ -1,0 +1,60 @@
+/* Import global styles */
+@import './styles/variables';
+@import './styles/animations';
+@import './styles/buttons';
+@import './styles/cards';
+@import './styles/modal';
+@import './styles/nav';
+@import './styles/scrollbar';
+@import './styles/shadows';
+
+body {
+  overflow-x: hidden;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#page-content-wrapper {
+  padding-bottom: 15px;
+  margin-left: 0;
+  -webkit-transition: margin 0.25s ease;
+  -moz-transition: margin 0.25s ease;
+  -o-transition: margin 0.25s ease;
+  transition: margin 0.25s ease;
+  width: 100%;
+}
+
+#App.toggled #page-content-wrapper {
+  margin-left: 250px;
+}
+
+@media (min-width: 768px) {
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    margin-left: 250px;
+  }
+
+  #App.toggled #page-content-wrapper {
+    margin-left: 0;
+    -webkit-transition: margin 0.25s ease;
+    -moz-transition: margin 0.25s ease;
+    -o-transition: margin 0.25s ease;
+    transition: margin 0.25s ease;
+  }
+}
+
+.badge-primary {
+  background-color: $primary-color;
+}
+
+.badge-secondary {
+  background-color: $mint;
+}
+
+.text-muted {
+  color: $text-grey !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.1rem rgba(108, 92, 231, 0.3);
+}

@@ -1,58 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-import { Api } from 'services/api'
+import Error from 'components/UI/Error';
 
-import Error from 'components/UI/Error'
+import CommentForm from 'components/Comments/Form';
+import useCommentForm from '../../../Utility/Hooks/useCommentForm';
 
-import CommentForm from 'components/Comments/Comment/Form'
+const TaskCommentsFormContainer = (props) => {
+  const { taskId, updateParent } = props;
+  const [msg, handleInputChange, handleSubmit] = useCommentForm(
+    `tasks/${taskId}/comments`,
+    updateParent
+  );
 
-class TaskCommentsFormContainer extends Component {
-  constructor(props) {
-    super(props)
+  const msgHint = msg ? <Error message={msg} showIcon={false} assignedClasses={['mt-0']} /> : null;
 
-    this.state = { comment: {}, msg: '' }
-  }
-
-  handleInputChange = e => {
-    const text = e.target.value
-
-    this.setState({
-      comment: {
-        text
-      }
-    })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-
-    if (this.state.comment.text && this.state.comment.text.length) {
-      Api.postData(`tasks/${this.props.taskId}/comments`, { comment: this.state.comment })
-        .then(res => {
-          this.props.updateParent()
-        })
-        .catch(err => {
-          this.setState({ msg: Api.handleHttpError(err) })
-        })
-    }
-  }
-
-  render() {
-    const msg = this.state.msg ? (
-      <Error message={this.state.msg} showIcon={false} assignedClasses={['mt-0']} />
-    ) : null
-
-    return (
-      <div className="TaskCommentsFormContainer">
-        <CommentForm handleSubmit={this.handleSubmit} handleInputChange={this.handleInputChange} />
-        {msg}
-      </div>
-    )
-  }
-}
+  return (
+    <div className="TaskCommentsFormContainer">
+      <CommentForm handleSubmit={handleSubmit} handleInputChange={handleInputChange} />
+      {msgHint}
+    </div>
+  );
+};
 
 TaskCommentsFormContainer.defaultProps = {
   updateParent: () => {}
-}
+};
 
-export default TaskCommentsFormContainer
+export default TaskCommentsFormContainer;

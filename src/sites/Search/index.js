@@ -1,32 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import queryString from 'query-string';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Helper from 'services/helper';
 
-import Widget from 'components/Widget'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import SearchDashboardTaskContainer from 'components/Search/Dashboard/TaskContainer'
-import TaskFilterContainer from 'components/Task/Filter/container'
+import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer';
+import SitesSearchFilter from './components/Filters/container';
 
-const SitesSearch = props => {
-  const { match } = props
-  const [params, setParams] = useState({
-    searchTerm: match.params.searchTerm || ''
-  })
+const SitesSearch = (props) => {
+  const { location } = props;
 
-  const handleFilterChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.type === 'checkbox' ? target.checked : target.value
+  const [params, setParams] = useState({ ...queryString.parse(location.search) });
 
-    if (params[name] !== value) {
-      setParams({ ...params, [name]: value })
-    }
-  }
+  const handleFilterChange = (e) => {
+    Helper.updateObjectPropByEvent(params, e, (updatedParams) => {
+      setParams(updatedParams);
+    });
+  };
 
-  const resetFilters = e => {
-    setParams({})
-  }
+  const resetFilters = () => {
+    setParams({});
+  };
 
   return (
     <div className="SitesSearch">
@@ -34,23 +30,19 @@ const SitesSearch = props => {
         <Title title="Search" />
         <div className="row">
           <div className="col-12 col-xl-3">
-            <Widget title="Filters" icon="fas fa-filter" showLastUpdate={false}>
-              <TaskFilterContainer
-                searchParams={params}
-                handleFilterChange={handleFilterChange}
-                resetFilters={resetFilters}
-              />
-            </Widget>
+            <SitesSearchFilter
+              searchParams={params}
+              handleFilterChange={handleFilterChange}
+              resetFilters={resetFilters}
+            />
           </div>
           <div className="col-12 col-xl-9 mt-3 mt-md-0">
-            <Widget title="Results" icon="fas fa-clipboard-list">
-              <SearchDashboardTaskContainer searchParams={params} />
-            </Widget>
+            <SearchDashboardTaskContainer searchParams={params} />
           </div>
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesSearch
+export default SitesSearch;

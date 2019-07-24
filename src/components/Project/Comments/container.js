@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher'
+import Fetcher from 'components/Utility/Fetcher';
 
-import ProjectCommentsFormContainer from './Form/container'
+import Comments from 'components/Comments';
 
-import Comments from 'components/Comments'
+import ProjectCommentsFormContainer from './Form/container';
 
-const ProjectCommentsContainer = props => (
+const ProjectCommentsContainer = (props) => (
   <Fetcher url={`projects/${props.projectId}/comments`}>
     {(comments, fetchData) => {
-      const { projectId, showForm } = props
+      const { projectId, showForm } = props;
 
       return (
         <div className="ProjectCommentsContainer">
@@ -20,13 +20,13 @@ const ProjectCommentsContainer = props => (
             </div>
           ) : null}
         </div>
-      )
+      );
     }}
   </Fetcher>
-)
+);
 
 ProjectCommentsContainer.defaultProps = {
   showForm: true
-}
+};
 
-export default ProjectCommentsContainer
+export default ProjectCommentsContainer;

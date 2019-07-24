@@ -1,82 +1,46 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-import { Api } from 'services/api'
+import useFetcher from 'components/Utility/Hooks/useFetcher';
 
-import Error from 'components/UI/Error'
-import Spinner from 'components/UI/Spinner'
+import Error from 'components/UI/Error';
+import Spinner from 'components/UI/Spinner';
 
-import Widget from 'components/Widget'
+import AnnouncementForm from 'components/Announcements/Form';
+import AnnouncementsTable from 'components/Announcements/Table';
 
-import Deck from 'components/Deck'
+const AdministrationAnnouncement = () => {
+  const [announcements, isLoading, error, setAnnouncements] = useFetcher('announcements');
 
-import AnnouncementForm from 'components/Announcements/Announcement/Form'
+  const addAnnouncement = (announcement) => {
+    const announcementsCopy = announcements.slice();
+    announcementsCopy.push(announcement);
 
-export class AdministrationAnnouncement extends Component {
-  constructor(props) {
-    super(props)
+    setAnnouncements(announcementsCopy);
+  };
 
-    this.state = {
-      isLoading: false,
-      msg: '',
-      announcements: []
-    }
+  const removeAnnouncement = (id) => {
+    const newAnnouncements = announcements.slice().filter((announcement) => announcement.id !== id);
+    setAnnouncements(newAnnouncements);
+  };
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
-  componentDidMount = () => {
-    Api.fetchData('announcements')
-      .then(announcements => {
-        this.setState({ isLoading: false, announcements })
-      })
-      .catch(err => {
-        this.setState({
-          isLoading: false,
-          msg: Api.handleHttpError(err)
-        })
-      })
+  if (error) {
+    return <Error message={error} />;
   }
 
-  addAnnouncement = announcement => {
-    const announcements = this.state.announcements.slice()
-    announcements.push(announcement)
+  return (
+    <div className="AdministrationAnnouncement">
+      <AnnouncementForm addParentAnnouncement={addAnnouncement} />
+      <hr className="featurette-divider" />
+      <AnnouncementsTable
+        announcements={announcements}
+        removeParentAnnouncement={removeAnnouncement}
+      />
+    </div>
+  );
+};
 
-    this.setState({ announcements })
-  }
-
-  removeAnnouncement = announcement => {
-    const announcementIdx = this.state.announcements.findIndex(org => org.id === announcement.id)
-
-    if (announcementIdx >= 0) {
-      const announcements = this.state.announcements.slice()
-      announcements.splice(announcementIdx, 1)
-      this.setState({ announcements })
-    }
-  }
-
-  render() {
-    const { isLoading, msg, announcements } = this.state
-
-    if (isLoading) {
-      return <Spinner />
-    } else if (msg.length) {
-      return <Error message={msg} />
-    } else {
-      return (
-        <div className="AdministrationAnnouncement">
-          <Widget title="Announcements" icon="fas fa-bullhorn" wrapBody={true}>
-            <AnnouncementForm updateParent={this.addAnnouncement} />
-            <div className="GitOrganizationContainer">
-              <Deck
-                itemList={announcements}
-                deckType="Announcement"
-                itemsPerRow="1"
-                handleDelete={this.removeAnnouncement}
-              />
-            </div>
-          </Widget>
-        </div>
-      )
-    }
-  }
-}
-
-export default AdministrationAnnouncement
+export default AdministrationAnnouncement;

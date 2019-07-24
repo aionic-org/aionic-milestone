@@ -1,36 +1,56 @@
-import React from 'react'
+import React from 'react';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import Widget from 'components/Widget'
+import CardDeck from 'components/Deck';
+import Filters from 'components/Filters/';
 
-import CardDeck from 'components/Deck'
+import ProjectCreate from './components/Create';
 
-import SitesProjectsOverview from './components/Overview'
+import ProjectsWidgetbar from './components/Widgetbar';
 
-const SitesProjects = props => {
-  const { projects } = props
+const SitesProjects = (props) => {
+  const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props;
+  const { all, fetched, filtered } = projects;
+
+  const projectsToShow = filters.text.length ? filtered : fetched;
+
+  const orderByList = [
+    { value: '', title: 'Order by' },
+    { value: 'created', title: 'Created' },
+    { value: 'finished', title: 'Finished' },
+    { value: 'title', title: 'Title' },
+    { value: 'updated', title: 'Updated' }
+  ];
 
   return (
     <div className="SitesProjects">
       <Content>
         <Title title="Projects" />
+        <ProjectsWidgetbar allProjects={all} />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="All projects" icon="fas fa-table">
-              <CardDeck deckType="Project" itemList={projects} itemsPerRow={3} />
-            </Widget>
+          <div className="col-12 col-xl-10">
+            <Filters
+              filters={filters}
+              filterItemsByParams={filterProjectsByParams}
+              filterItemsByText={filterProjectsByText}
+              resetFilters={resetFilters}
+              orderByList={orderByList}
+            />
           </div>
-          <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Widget title="Overview" icon="fas fa-chart-bar">
-              <SitesProjectsOverview projects={projects} />
-            </Widget>
+          <div className="col-12 col-xl-2">
+            <ProjectCreate />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <CardDeck deckType="Project" itemList={projectsToShow} itemsPerRow={3} />
           </div>
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesProjects
+export default SitesProjects;

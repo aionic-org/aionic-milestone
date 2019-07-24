@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import Content from '../UI/Content'
+import React, { Component } from 'react';
+import Content from '../UI/Content';
 
 class ErrorBoundary extends Component {
   constructor(props) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true }
+    return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    console.log(error, info)
+    console.log(error, info);
   }
 
   render() {
@@ -25,11 +25,11 @@ class ErrorBoundary extends Component {
             <p>This was not planned</p>
           </div>
         </Content>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;

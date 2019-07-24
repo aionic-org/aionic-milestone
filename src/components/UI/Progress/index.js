@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './Progress.css'
+import './Progress.scss';
 
-const Progress = props => {
-  const { progress } = props
+const Progress = (props) => {
+  const { progress, showPercent } = props;
 
   return (
     <div className="progress">
@@ -14,9 +14,15 @@ const Progress = props => {
         aria-valuenow={progress}
         aria-valuemin={0}
         aria-valuemax={100}
-      />
+      >
+        {showPercent ? `${progress}%` : null}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Progress
+Progress.defaultProps = {
+  showPercent: false
+};
+
+export default Progress;

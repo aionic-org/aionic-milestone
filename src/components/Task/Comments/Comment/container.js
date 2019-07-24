@@ -1,28 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import Comment from 'components/Comments/Comment/Preview'
+import Comment from 'components/Comments/Comment/';
 
-class TaskCommentContainer extends Component {
-  deleteComment = id => {
-    Api.deleteData(`tasks/${this.props.taskId}/comments/${id}`)
-      .then(res => {
-        this.props.removeComment(id)
+const TaskCommentContainer = (props) => {
+  const { taskId, comment, removeComment } = props;
+
+  const deleteComment = (id) => {
+    Api.deleteData(`tasks/${taskId}/comments/${id}`)
+      .then(() => {
+        removeComment(id);
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  render() {
-    const { comment } = this.props
-    return (
-      <div className="TaskCommentContainer">
-        <Comment comment={comment} deleteComment={this.deleteComment} />
-      </div>
-    )
-  }
-}
+  return (
+    <div className="TaskCommentContainer">
+      <Comment comment={comment} deleteComment={deleteComment} />
+    </div>
+  );
+};
 
-export default TaskCommentContainer
+export default TaskCommentContainer;

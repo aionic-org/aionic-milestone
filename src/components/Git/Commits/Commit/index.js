@@ -1,21 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-const GitCommit = props => {
-  const { commit } = props
+const GitCommit = (props) => {
+  const { commit } = props;
 
   return (
-    <div className="GitCommit">
-      <a className="CardLink card" href={commit.url} target="_blank">
-        <div className="card-body">
-          <h5 className="card-title">{commit.message}</h5>
-          <p className="card-text">{commit.author}</p>
-          <p className="card-text">
-            <small className="text-muted">SHA: {commit.sha}</small>
-          </p>
-        </div>
-      </a>
-    </div>
-  )
-}
+    <a
+      className="GitCommit CardLink list-group-item"
+      href={commit.url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div className="d-flex w-100 justify-content-between">
+        <h5 className="mb-1">{commit.author}</h5>
+      </div>
+      <p className="mb-1">{commit.message}</p>
+      <small className="text-muted">SHA: {commit.sha}</small>
+    </a>
+  );
+};
 
-export default GitCommit
+export default GitCommit;

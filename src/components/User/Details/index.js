@@ -1,17 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import { Session } from 'services/session'
+import Session from 'services/session';
 
-import InputSelect from 'components/UI/Input/Select'
+import UserSelectsRole from '../Selects/Role';
+import UserSelectsActive from '../Selects/Active';
 
-const UserDetails = props => {
-  const { user, roles, handleInputChange } = props
+const UserDetails = (props) => {
+  const { user, roles, handleInputChange } = props;
 
-  const allowEdit = Session.isAdmin() ? true : false
-
-  const _roles = roles.map(role => {
-    return { id: role.id, optionTitle: role.name }
-  })
+  const allowEdit = Session.isAdmin();
 
   return (
     <div className="UserDetails">
@@ -57,11 +54,10 @@ const UserDetails = props => {
         </div>
         <label className="col-sm-2 col-form-label">Role</label>
         <div className="col-sm-4">
-          <InputSelect
-            optionList={_roles}
-            name="userRole"
-            defaultValue={user.userRole.id}
-            showDefault={false}
+          <UserSelectsRole
+            roleList={roles}
+            defaultValue={user.userRole ? user.userRole.id : 0}
+            showDefault={user.userRole}
             onChange={handleInputChange}
             disabled={!allowEdit}
           />
@@ -82,11 +78,8 @@ const UserDetails = props => {
         </div>
         <label className="col-sm-2 col-form-label">Active</label>
         <div className="col-sm-4">
-          <InputSelect
-            optionList={[{ id: 0, optionTitle: 'False' }, { id: 1, optionTitle: 'True' }]}
-            name="active"
-            defaultValue={user.active ? 1 : 0}
-            showDefault={false}
+          <UserSelectsActive
+            defaultValue={user.active}
             onChange={handleInputChange}
             disabled={!allowEdit}
           />
@@ -106,7 +99,7 @@ const UserDetails = props => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserDetails
+export default UserDetails;

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import './Spinner.css'
+import './Spinner.scss';
 
-const Spinner = props => {
-  const { onBtn, showPadding } = props
+const Spinner = (props) => {
+  const { onBtn, showPadding } = props;
 
   return (
     <div className={`Spinner ${onBtn ? 'onBtn' : ''} ${showPadding ? 'showPadding' : ''}`}>
@@ -11,12 +11,12 @@ const Spinner = props => {
       <div className="bounce2" />
       <div className="bounce3" />
     </div>
-  )
-}
+  );
+};
 
 Spinner.defaultProps = {
   onBtn: false,
   showPadding: false
-}
+};
 
-export default Spinner
+export default Spinner;

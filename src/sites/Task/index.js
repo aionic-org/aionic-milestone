@@ -1,93 +1,60 @@
-import React from 'react'
+import React from 'react';
 
-import { Session } from 'services/session'
+import Helper from 'services/helper';
 
-import InputTitle from 'components/UI/Input/Title'
+import Content from 'components/UI/Content';
 
-import Widget from 'components/Widget'
+import TaskTitle from 'components/Task/Title';
+import TaskTags from 'components/Task/Tags';
+import TaskSummaryContainer from 'components/Task/Summary/container';
+import TaskDescription from 'components/Task/Description';
+import TaskOptionButtons from 'components/Task/OptionButtons';
+import TaskDates from 'components/Task/Dates';
 
-import TaskDetails from 'components/Task/Details/'
+import SitesTaskTabs from './components/Tabs';
 
-import Content from 'components/UI/Content'
+const SitesTask = (props) => {
+  const { task, updateParentTaskState, isNewTask } = props;
 
-import SitesTaskTabs from './components/Tabs'
-import TaskDescription from 'components/Task/Description'
-import TaskScratchpad from 'components/Task/Scratchpad'
-import TaskSidebarContainer from 'components/Task/Sidebar/container'
-import TaskLinks from 'components/Task/Links'
-
-const SitesTask = props => {
-  const { task, isNewTask, handleInputChange, createTask, updateTask } = props
-
-  const taskFooter = isNewTask ? (
-    <div className="row">
-      <div className="col-9">
-        <button
-          className="btn btn-primary btn-block mt-2"
-          onClick={() => {
-            createTask()
-          }}
-        >
-          Create task
-        </button>
-      </div>
-    </div>
-  ) : (
-    <div className="row">
-      <div className="col-9">
-        <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
-          <SitesTaskTabs task={task} />
-        </Widget>
-      </div>
-    </div>
-  )
+  const handleTitleChange = (e) => {
+    Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
+  };
 
   return (
     <div className="SitesTask">
       <Content>
         <div className="row">
-          <div className="col-12">
-            <InputTitle
-              defaultValue={task.title}
-              onBlur={handleInputChange}
-              placeholder={'Enter task title'}
+          <div className="col-12 col-md-7 col-xl-8">
+            <TaskTitle task={task} onBlur={handleTitleChange} />
+          </div>
+          <div className="col-12 col-md-5 col-xl-4 mt-4 mt-md-0">
+            <TaskOptionButtons
+              task={task}
+              isNewTask={isNewTask}
+              updateParentTaskState={updateParentTaskState}
             />
           </div>
         </div>
+
         <div className="row">
-          <div className="col-9">
-            <Widget title="Details" icon="fas fa-info-circle">
-              <TaskDetails
-                handleInputChange={handleInputChange}
-                updateTask={updateTask}
-                task={task}
-              />
-            </Widget>
-            <Widget title="Description" icon="fas fa-map" showMargin={true}>
-              <TaskDescription task={task} updateTask={updateTask} />
-            </Widget>
-          </div>
-          <div className="col-3">
-            <Widget title="Assignment" icon="fas fa-user-tag">
-              <TaskSidebarContainer task={task} updateTask={updateTask} />
-            </Widget>
-            <Widget title="Linked tasks" icon="fas fa-tasks fa-fw" showMargin={true}>
-              <TaskLinks task={task} updateTask={updateTask} />
-            </Widget>
-            <Widget
-              title="My Scratchpad"
-              icon="fas fa-sticky-note"
-              showMargin={true}
-              showLastUpdate={false}
-            >
-              <TaskScratchpad task={task} user={Session.getUser()} />
-            </Widget>
+          <div className="col-auto">
+            <TaskTags task={task} updateTask={updateParentTaskState} />
           </div>
         </div>
-        {taskFooter}
+
+        <div className="row mt-4">
+          <div className="col-12 col-xl-8">
+            <TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
+            <TaskDates task={task} updateParentTaskState={updateParentTaskState} />
+            <TaskDescription task={task} updateTask={updateParentTaskState} />
+          </div>
+          <div className="col-12 col-xl-4 mt-3 mt-xl-0">
+            <SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
+          </div>
+        </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesTask
+export default SitesTask;

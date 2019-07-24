@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import './Suggestion.css'
+import './Suggestion.scss';
 
-import { Api } from 'services/api'
+import Api from 'services/api';
 
-import useSuggestion from '../../Utility/Hooks/useSuggestion'
+import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 
-const UserSuggestion = props => {
-  const { userListSelected, updateParent } = props
+const UserSuggestion = (props) => {
+  const { userListSelected, updateParent } = props;
 
   const [
     itemList,
@@ -17,24 +17,24 @@ const UserSuggestion = props => {
     setShowSuggestion,
     handleSelect,
     handleRemove
-  ] = useSuggestion(userListSelected, updateParent)
+  ] = useSuggestion(userListSelected, updateParent);
 
-  const handleInputChange = e => {
-    const searchTerm = e.target.value
+  const handleInputChange = async (e) => {
+    try {
+      const searchTerm = e.target.value;
 
-    if (searchTerm.length) {
-      Api.fetchData('users/search', { username: searchTerm })
-        .then(itemList => {
-          setItemList(itemList)
-          setShowSuggestion(itemList.length ? true : false)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    } else {
-      setShowSuggestion(false)
+      if (searchTerm.length) {
+        const updatedItemList = await Api.fetchData('users/search', { username: searchTerm });
+
+        setItemList(updatedItemList);
+        setShowSuggestion(updatedItemList.length);
+      } else {
+        setShowSuggestion(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   const suggestion = showSuggestion ? (
     <div className="suggestionList">
@@ -51,7 +51,7 @@ const UserSuggestion = props => {
         ))}
       </ul>
     </div>
-  ) : null
+  ) : null;
 
   const selected = itemListSelected.length ? (
     <div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
@@ -73,7 +73,7 @@ const UserSuggestion = props => {
       </ul>
       <span className="text-muted mt-2 d-block text-right">Count: {itemListSelected.length}</span>
     </div>
-  ) : null
+  ) : null;
 
   return (
     <div className="UserSuggestion">
@@ -81,23 +81,23 @@ const UserSuggestion = props => {
         type="text"
         className="form-control"
         name="title"
-        placeholder="Enter username"
+        placeholder="Enter username..."
         autoComplete="off"
         onChange={handleInputChange}
-        onKeyDown={e => {
-          if (e.keyCode === 27) setShowSuggestion(false)
+        onKeyDown={(e) => {
+          if (e.keyCode === 27) setShowSuggestion(false);
         }}
         id="suggestionInput"
       />
       {suggestion}
       {selected}
     </div>
-  )
-}
+  );
+};
 
 UserSuggestion.defaultProps = {
   userListSelected: [],
   updateParent: () => {}
-}
+};
 
-export default UserSuggestion
+export default UserSuggestion;

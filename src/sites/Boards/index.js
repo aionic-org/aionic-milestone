@@ -1,36 +1,51 @@
-import React from 'react'
+import React from 'react';
 
-import Content from 'components/UI/Content'
-import Title from 'components/UI/Title'
+import Content from 'components/UI/Content';
+import Title from 'components/UI/Title';
 
-import Widget from 'components/Widget'
+import CardDeck from 'components/Deck';
+import Filters from 'components/Filters/';
+import BoardsCreate from './components/Create';
 
-import CardDeck from 'components/Deck'
+const SitesBoards = (props) => {
+  const { boards, filters, filterBoardsByParams, filterBoardsByText, resetFilters } = props;
+  const { all, filtered } = boards;
 
-import SitesBoardOverview from './components/Overview'
+  const boardsToShow = filters.text.length ? filtered : all;
 
-const SitesBoards = props => {
-  const { boards } = props
+  const orderByList = [
+    { value: '', title: 'Order by' },
+    { value: 'created', title: 'Created' },
+    { value: 'title', title: 'Title' },
+    { value: 'updated', title: 'Updated' }
+  ];
 
   return (
     <div className="SitesBoards">
       <Content>
         <Title title="Boards" />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="All boards" icon="fas fa-chalkboard-teacher">
-              <CardDeck deckType="Board" itemList={boards} itemsPerRow={3} />
-            </Widget>
+          <div className="col-12 col-xl-10">
+            <Filters
+              filters={filters}
+              filterItemsByParams={filterBoardsByParams}
+              filterItemsByText={filterBoardsByText}
+              resetFilters={resetFilters}
+              orderByList={orderByList}
+            />
           </div>
-          <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Widget title="Overview" icon="fas fa-chart-bar">
-              <SitesBoardOverview boards={boards} />
-            </Widget>
+          <div className="col-12 col-xl-2">
+            <BoardsCreate />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <CardDeck deckType="Board" itemList={boardsToShow} itemsPerRow={2} />
           </div>
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesBoards
+export default SitesBoards;

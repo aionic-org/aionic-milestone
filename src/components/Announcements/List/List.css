@@ -1,8 +1,0 @@
-.AnnouncementList > ul {
-  max-height: 250px;
-  overflow-y: scroll;
-}
-
-.AnnouncementList > ul > li.important {
-  border-left: 3px solid #e17055;
-}

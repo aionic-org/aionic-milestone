@@ -1,51 +1,74 @@
-import React from 'react'
+import React from 'react';
 
-import Content from 'components/UI/Content'
-import InputTitle from 'components/UI/Input/Title/'
+import Helper from 'services/helper';
 
-import Widget from 'components/Widget'
+import useTextFilter from 'components/Utility/Hooks/useTextFilter';
 
-import CardDeck from 'components/Deck'
+import Content from 'components/UI/Content';
+import InputTitle from 'components/UI/Input/Title/';
 
-import SitesProjectDetails from './components/Details'
-import SitesProjectTabsContent from './components/Tabs'
+import CardDeck from 'components/Deck';
 
-const SitesProject = props => {
-  const { project, handleInputChange, toggleStatus, deleteProject, updateProjectTasks } = props
+import ProjectOptionButtons from 'components/Project/OptionButtons';
+
+import ProjectWidgetbar from './components/Widgetbar';
+import SitesProjectTabs from './components/Tabs';
+
+const SitesProject = (props) => {
+  const { project, updateParentProjectState } = props;
+  const [tasksFiltered, setTasksFiltered, filterText] = useTextFilter('title', project.tasks);
+
+  const handleTitleChange = (e) => {
+    Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
+  };
+
+  const filterTasks = (e) => {
+    setTasksFiltered(e.target.value);
+  };
+
+  const tasksToShow = filterText.length ? tasksFiltered : project.tasks;
 
   return (
     <div className="SitesProject">
       <Content>
-        <InputTitle
-          defaultValue={project.title}
-          placeholder={'Enter project title'}
-          onBlur={handleInputChange}
-        />
         <div className="row">
-          <div className="col-12 col-xl-8 order-last order-xl-first mt-3 mt-xl-0">
-            <Widget title="Project tasks" icon="fas fa-tasks">
-              <CardDeck deckType="Task" itemList={project.tasks} itemsPerRow={3} />
-            </Widget>
-
-            <Widget title="More" icon="fas fa-ellipsis-h" showMargin={true}>
-              <SitesProjectTabsContent project={project} />
-            </Widget>
+          <div className="col-12 col-md-7 col-xl-8">
+            <InputTitle
+              defaultValue={project.title}
+              placeholder="Enter project title"
+              onBlur={handleTitleChange}
+            />
           </div>
-          <div className="col-12 col-xl-4 order-first order-xl-last">
-            <Widget title="Details" icon="fas fa-info-circle">
-              <SitesProjectDetails
-                project={project}
-                handleInputChange={handleInputChange}
-                toggleStatus={toggleStatus}
-                deleteProject={deleteProject}
-                updateProjectTasks={updateProjectTasks}
+          <div className="col-12 col-md-5 col-xl-4">
+            <ProjectOptionButtons
+              project={project}
+              updateParentProjectState={updateParentProjectState}
+            />
+          </div>
+        </div>
+        <ProjectWidgetbar project={project} />
+        <div className="row">
+          <div className="col-12 col-xl-8">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Filter tasks..."
+                onChange={filterTasks}
               />
-            </Widget>
+            </div>
+            <CardDeck deckType="Task" itemList={tasksToShow} itemsPerRow={3} />
+          </div>
+          <div className="col-12 col-xl-4 mt-3 mt-xl-0">
+            <SitesProjectTabs
+              project={project}
+              updateParentProjectState={updateParentProjectState}
+            />
           </div>
         </div>
       </Content>
     </div>
-  )
-}
+  );
+};
 
-export default SitesProject
+export default SitesProject;
