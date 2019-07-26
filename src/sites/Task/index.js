@@ -14,47 +14,47 @@ import TaskDates from 'components/Task/Dates';
 import SitesTaskTabs from './components/Tabs';
 
 const SitesTask = (props) => {
-  const { task, updateParentTaskState, isNewTask } = props;
+	const { task, updateParentTaskState, isNewTask } = props;
 
-  const handleTitleChange = (e) => {
-    Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
-  };
+	const handleTitleChange = (e) => {
+		Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
+	};
 
-  return (
-    <div className="SitesTask">
-      <Content>
-        <div className="row">
-          <div className="col-12 col-md-7 col-xl-8">
-            <TaskTitle task={task} onBlur={handleTitleChange} />
-          </div>
-          <div className="col-12 col-md-5 col-xl-4 mt-4 mt-md-0">
-            <TaskOptionButtons
-              task={task}
-              isNewTask={isNewTask}
-              updateParentTaskState={updateParentTaskState}
-            />
-          </div>
-        </div>
+	return (
+		<div className="SitesTask">
+			<Content>
+				<div className="row">
+					<div className="col-12 col-md-7 col-xl-8">
+						<TaskTitle task={task} onBlur={handleTitleChange} />
+					</div>
+					<div className="col-12 col-md-5 col-xl-4 mt-4 mt-md-0">
+						<TaskOptionButtons
+							task={task}
+							isNewTask={isNewTask}
+							updateParentTaskState={updateParentTaskState}
+						/>
+					</div>
+				</div>
 
-        <div className="row">
-          <div className="col-auto">
-            <TaskTags task={task} updateTask={updateParentTaskState} />
-          </div>
-        </div>
+				<div className="row">
+					<div className="col-auto">
+						<TaskTags task={task} updateTask={updateParentTaskState} />
+					</div>
+				</div>
 
-        <div className="row mt-4">
-          <div className="col-12 col-xl-8">
-            <TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
-            <TaskDates task={task} updateParentTaskState={updateParentTaskState} />
-            <TaskDescription task={task} updateTask={updateParentTaskState} />
-          </div>
-          <div className="col-12 col-xl-4 mt-3 mt-xl-0">
-            <SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
-          </div>
-        </div>
-      </Content>
-    </div>
-  );
+				<div className="row mt-4">
+					<div className="col-12 col-xl-8">
+						<TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
+						<TaskDates task={task} updateParentTaskState={updateParentTaskState} />
+						<TaskDescription task={task} updateTask={updateParentTaskState} />
+					</div>
+					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
+						<SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
+					</div>
+				</div>
+			</Content>
+		</div>
+	);
 };
 
 export default SitesTask;

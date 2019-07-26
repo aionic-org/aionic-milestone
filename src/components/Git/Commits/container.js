@@ -9,39 +9,39 @@ import Error from 'components/UI/Error';
 import GitCommits from '.';
 
 const GitCommitsContainer = (props) => {
-  const { task } = props;
-  const { organization, repository, branch } = task;
+	const { task } = props;
+	const { organization, repository, branch } = task;
 
-  const [commits, isLoading, error] = useFetcher(
-    `git/${organization.id}/repository/${repository.id}/${branch}/commits`
-  );
+	const [commits, isLoading, error] = useFetcher(
+		`git/${organization.id}/repository/${repository.id}/${branch}/commits`
+	);
 
-  const [commitsFiltered, setCommitsFiltered, filterText] = useTextFilter('message', commits);
+	const [commitsFiltered, setCommitsFiltered, filterText] = useTextFilter('message', commits);
 
-  const filterCommits = (e) => {
-    setCommitsFiltered(e.target.value);
-  };
+	const filterCommits = (e) => {
+		setCommitsFiltered(e.target.value);
+	};
 
-  if (isLoading) {
-    return <Spinner showPadding={true} />;
-  }
+	if (isLoading) {
+		return <Spinner showPadding={true} />;
+	}
 
-  if (error) {
-    return <Error message={error} />;
-  }
-  const commitsToShow = filterText.length ? commitsFiltered : commits;
-  return (
-    <div className="GitCommitsContainer">
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Filter commits..."
-        onChange={filterCommits}
-      />
-      <GitCommits commitList={commitsToShow} />
-      <p className="text-muted text-center mt-2">Total: {commitsToShow.length}</p>
-    </div>
-  );
+	if (error) {
+		return <Error message={error} />;
+	}
+	const commitsToShow = filterText.length ? commitsFiltered : commits;
+	return (
+		<div className="GitCommitsContainer">
+			<input
+				type="text"
+				className="form-control"
+				placeholder="Filter commits..."
+				onChange={filterCommits}
+			/>
+			<GitCommits commitList={commitsToShow} />
+			<p className="text-muted text-center mt-2">Total: {commitsToShow.length}</p>
+		</div>
+	);
 };
 
 export default GitCommitsContainer;

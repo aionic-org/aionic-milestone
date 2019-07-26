@@ -9,89 +9,89 @@ import GitOrganizationForm from 'components/Git/Organization/Form';
 import Deck from 'components/Deck';
 
 class AdministrationGitHub extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      isLoading: true,
-      msg: '',
-      organizations: []
-    };
-  }
+		this.state = {
+			isLoading: true,
+			msg: '',
+			organizations: []
+		};
+	}
 
-  componentDidMount = async () => {
-    try {
-      const organizations = await Api.fetchData('git/organization');
-      this.setState({ isLoading: false, organizations });
-    } catch (err) {
-      this.setState({
-        isLoading: false,
-        msg: Api.handleHttpError(err)
-      });
-    }
-  };
+	componentDidMount = async () => {
+		try {
+			const organizations = await Api.fetchData('git/organization');
+			this.setState({ isLoading: false, organizations });
+		} catch (err) {
+			this.setState({
+				isLoading: false,
+				msg: Api.handleHttpError(err)
+			});
+		}
+	};
 
-  addOrganization = (organization) => {
-    this.setState((prevState) => {
-      const organizations = prevState.organizations.slice();
-      organizations.push(organization);
+	addOrganization = (organization) => {
+		this.setState((prevState) => {
+			const organizations = prevState.organizations.slice();
+			organizations.push(organization);
 
-      return { organizations };
-    });
-  };
+			return { organizations };
+		});
+	};
 
-  removeOrganization = (organization) => {
-    const organizationIdx = this.state.organizations.findIndex((org) => org.id === organization.id);
+	removeOrganization = (organization) => {
+		const organizationIdx = this.state.organizations.findIndex((org) => org.id === organization.id);
 
-    if (organizationIdx >= 0) {
-      this.setState((prevState) => {
-        const organizations = prevState.organizations.slice();
-        organizations.splice(organizationIdx, 1);
+		if (organizationIdx >= 0) {
+			this.setState((prevState) => {
+				const organizations = prevState.organizations.slice();
+				organizations.splice(organizationIdx, 1);
 
-        return { organizations };
-      });
-    }
-  };
+				return { organizations };
+			});
+		}
+	};
 
-  updateOrganization = (oldOrg, newOrg) => {
-    const organizationIdx = this.state.organizations.findIndex((org) => org.id === oldOrg.id);
+	updateOrganization = (oldOrg, newOrg) => {
+		const organizationIdx = this.state.organizations.findIndex((org) => org.id === oldOrg.id);
 
-    if (organizationIdx >= 0) {
-      this.setState((prevState) => {
-        const organizations = prevState.organizations.slice();
-        organizations[organizationIdx] = newOrg;
+		if (organizationIdx >= 0) {
+			this.setState((prevState) => {
+				const organizations = prevState.organizations.slice();
+				organizations[organizationIdx] = newOrg;
 
-        return { organizations };
-      });
-    }
-  };
+				return { organizations };
+			});
+		}
+	};
 
-  render() {
-    const { isLoading, msg, organizations } = this.state;
+	render() {
+		const { isLoading, msg, organizations } = this.state;
 
-    if (isLoading) {
-      return <Spinner />;
-    }
-    if (msg.length) {
-      return <Error message={msg} />;
-    }
+		if (isLoading) {
+			return <Spinner />;
+		}
+		if (msg.length) {
+			return <Error message={msg} />;
+		}
 
-    return (
-      <div className="AdministrationGitHub">
-        <GitOrganizationForm updateParent={this.addOrganization} />
-        <hr className="featurette-divider" />
-        <div className="GitOrganizationContainer">
-          <Deck
-            itemList={organizations}
-            deckType="Organization"
-            itemsPerRow="1"
-            handleDelete={this.removeOrganization}
-            handleSync={this.updateOrganization}
-          />
-        </div>
-      </div>
-    );
-  }
+		return (
+			<div className="AdministrationGitHub">
+				<GitOrganizationForm updateParent={this.addOrganization} />
+				<hr className="featurette-divider" />
+				<div className="GitOrganizationContainer">
+					<Deck
+						itemList={organizations}
+						deckType="Organization"
+						itemsPerRow="1"
+						handleDelete={this.removeOrganization}
+						handleSync={this.updateOrganization}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default AdministrationGitHub;

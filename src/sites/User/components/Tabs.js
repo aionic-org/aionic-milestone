@@ -5,47 +5,47 @@ import Tabs from 'components/UI/Tabs';
 import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
 
 class SitesUserTabsContent extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = { tab: '' };
-  }
+		this.state = { tab: '' };
+	}
 
-  handleClick = (clickedTab) => {
-    if (clickedTab) {
-      this.setState({ tab: clickedTab });
-    } else {
-      this.setState({ tab: null });
-    }
-  };
+	handleClick = (clickedTab) => {
+		if (clickedTab) {
+			this.setState({ tab: clickedTab });
+		} else {
+			this.setState({ tab: null });
+		}
+	};
 
-  render() {
-    const { tab } = this.state;
-    const { user } = this.props;
+	render() {
+		const { tab } = this.state;
+		const { user } = this.props;
 
-    let content = null;
+		let content = null;
 
-    switch (tab) {
-      case 'Dashboard':
-        content = <UserTaskDashboardContainer user={user} showTitle={false} />;
-        break;
-      default:
-        break;
-    }
+		switch (tab) {
+			case 'Dashboard':
+				content = <UserTaskDashboardContainer user={user} showTitle={false} />;
+				break;
+			default:
+				break;
+		}
 
-    const tabs = [{ name: 'Dashboard' }];
+		const tabs = [{ name: 'Dashboard' }];
 
-    return (
-      <div className="SitesUserTabs">
-        <div className="row">
-          <div className="col-12">
-            <Tabs tabs={tabs} handleClick={this.handleClick} />
-            <div className={`SitesUserTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+		return (
+			<div className="SitesUserTabs">
+				<div className="row">
+					<div className="col-12">
+						<Tabs tabs={tabs} handleClick={this.handleClick} />
+						<div className={`SitesUserTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default SitesUserTabsContent;

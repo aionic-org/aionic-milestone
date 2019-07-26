@@ -23,56 +23,56 @@ import SitesUserContainer from './User/container';
 import NotFound from './NotFound';
 
 const Routes = (props) => {
-  const AuthContainer = () => (
-    <div className="authentication">
-      <Route path="/signin" component={SitesSignin} />
-      <Route path="/register/:hash" component={SitesRegister} />
-    </div>
-  );
+	const AuthContainer = () => (
+		<div className="authentication">
+			<Route path="/signin" component={SitesSignin} />
+			<Route path="/register/:hash" component={SitesRegister} />
+		</div>
+	);
 
-  const DefaultContainer = () => (
-    <div className="d-flex" id="wrapper">
-      <Sidebar />
+	const DefaultContainer = () => (
+		<div className="d-flex" id="wrapper">
+			<Sidebar />
 
-      <div id="page-content-wrapper">
-        <Navbar toggleSidebar={props.toggleSidebar} />
+			<div id="page-content-wrapper">
+				<Navbar toggleSidebar={props.toggleSidebar} />
 
-        <div className="container-fluid">
-          <Switch>
-            <Route exact path="/" component={SitesHome} />
-            <Route
-              path="/signout"
-              render={() => {
-                Session.clearUser();
-                return <Redirect to="/signin" />;
-              }}
-            />
-            <Route exact path="/task" component={SitesTaskContainer} />
-            <Route exact path="/task/:id" component={SitesTaskContainer} />
-            <Route exact path="/search" component={SitesSearch} />
-            <Route path="/search/:searchTerm" component={SitesSearch} />
-            <Route path="/administration" component={SitesAdministration} />
-            <Route exact path="/project" component={SitesProjectsContainer} />
-            <Route exact path="/project/:id" component={SitesProjectContainer} />
-            <Route exact path="/board" component={SitesBoardsContainer} />
-            <Route exact path="/board/:id" component={SitesBoardContainer} />
-            <Route exact path="/user/:id" component={SitesUserContainer} />
-            <Route exact path="*" component={NotFound} />
-          </Switch>
-        </div>
-        <Footer />
-      </div>
-    </div>
-  );
+				<div className="container-fluid">
+					<Switch>
+						<Route exact path="/" component={SitesHome} />
+						<Route
+							path="/signout"
+							render={() => {
+								Session.clearUser();
+								return <Redirect to="/signin" />;
+							}}
+						/>
+						<Route exact path="/task" component={SitesTaskContainer} />
+						<Route exact path="/task/:id" component={SitesTaskContainer} />
+						<Route exact path="/search" component={SitesSearch} />
+						<Route path="/search/:searchTerm" component={SitesSearch} />
+						<Route path="/administration" component={SitesAdministration} />
+						<Route exact path="/project" component={SitesProjectsContainer} />
+						<Route exact path="/project/:id" component={SitesProjectContainer} />
+						<Route exact path="/board" component={SitesBoardsContainer} />
+						<Route exact path="/board/:id" component={SitesBoardContainer} />
+						<Route exact path="/user/:id" component={SitesUserContainer} />
+						<Route exact path="*" component={NotFound} />
+					</Switch>
+				</div>
+				<Footer />
+			</div>
+		</div>
+	);
 
-  return (
-    <Switch>
-      <Route path="(/signin|/register.*)" component={AuthContainer} />
-      <Route
-        render={() => (Session.isLoggedIn() ? <DefaultContainer /> : <Redirect to="/signin" />)}
-      />
-    </Switch>
-  );
+	return (
+		<Switch>
+			<Route path="(/signin|/register.*)" component={AuthContainer} />
+			<Route
+				render={() => (Session.isLoggedIn() ? <DefaultContainer /> : <Redirect to="/signin" />)}
+			/>
+		</Switch>
+	);
 };
 
 export default Routes;

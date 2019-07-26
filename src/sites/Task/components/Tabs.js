@@ -12,44 +12,44 @@ import TaskProjectsContainer from 'components/Task/Projects/container';
 import TaskLinks from 'components/Task/Links';
 
 const SitesTaskTabs = (props) => {
-  const { task, updateParentTaskState } = props;
-  const [tab, changeTab] = useTab('');
+	const { task, updateParentTaskState } = props;
+	const [tab, changeTab] = useTab('');
 
-  const tabs = [
-    { name: 'Comments' },
-    { name: 'GitHub' },
-    { name: 'Scratchpad' },
-    { name: 'Projects' },
-    { name: 'Links' }
-  ];
+	const tabs = [
+		{ name: 'Comments' },
+		{ name: 'GitHub' },
+		{ name: 'Scratchpad' },
+		{ name: 'Projects' },
+		{ name: 'Links' }
+	];
 
-  let content = <p className="text-muted text-center font-italic mt-2">No tab selected</p>;
-  switch (tab) {
-    case 'Comments':
-      content = <TaskCommentsContainer taskId={task.id} />;
-      break;
-    case 'GitHub':
-      content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />;
-      break;
-    case 'Scratchpad':
-      content = <TaskScratchpad task={task} user={Session.getUser()} />;
-      break;
-    case 'Projects':
-      content = <TaskProjectsContainer taskId={task.id} showDescription={true} />;
-      break;
-    case 'Links':
-      content = <TaskLinks task={task} updateTask={updateParentTaskState} />;
-      break;
-    default:
-      break;
-  }
+	let content = <p className="text-muted text-center font-italic mt-2">No tab selected</p>;
+	switch (tab) {
+		case 'Comments':
+			content = <TaskCommentsContainer taskId={task.id} />;
+			break;
+		case 'GitHub':
+			content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />;
+			break;
+		case 'Scratchpad':
+			content = <TaskScratchpad task={task} user={Session.getUser()} />;
+			break;
+		case 'Projects':
+			content = <TaskProjectsContainer taskId={task.id} showDescription={true} />;
+			break;
+		case 'Links':
+			content = <TaskLinks task={task} updateTask={updateParentTaskState} />;
+			break;
+		default:
+			break;
+	}
 
-  return (
-    <div className="SitesTaskTabs">
-      <Navs handleClick={changeTab} tabs={tabs} />
-      <div className={`SitesTaskTabs ${content ? 'mt-3' : ''}`}>{content}</div>
-    </div>
-  );
+	return (
+		<div className="SitesTaskTabs">
+			<Navs handleClick={changeTab} tabs={tabs} />
+			<div className={`SitesTaskTabs ${content ? 'mt-3' : ''}`}>{content}</div>
+		</div>
+	);
 };
 
 export default SitesTaskTabs;
