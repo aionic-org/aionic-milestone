@@ -73,7 +73,7 @@ class TaskDashboard extends Component {
 				) : null}
 
 				<button type="button" className="btn btn-link float-right" onClick={this.toggleTextFilter}>
-					Toggle filters
+					Toggle filter
 				</button>
 
 				{showTextFilter ? (

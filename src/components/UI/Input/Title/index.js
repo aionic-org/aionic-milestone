@@ -3,7 +3,7 @@ import React from 'react';
 import './Title.scss';
 
 const InputTitle = (props) => (
-	<div className="InputTitle mb-4">
+	<div className="InputTitle">
 		<input
 			type="text"
 			name="title"

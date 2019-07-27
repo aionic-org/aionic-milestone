@@ -13,7 +13,7 @@ const ProjectWidgetbar = (props) => {
 	const finishedTasks = tasks.filter((task) => task.completed);
 
 	return (
-		<div className="ProjectWidgetbar mb-5">
+		<div className="ProjectWidgetbar">
 			<div className="row">
 				<div className="col-12 col-xl-3 mt-3 mt-xl-0">
 					<Widget
@@ -49,7 +49,7 @@ const ProjectWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={Helper.formatDateTime(project.updated)}
+						title={Helper.formatDate(project.updated)}
 						subtitle="Last update"
 						icon="fas fa-history"
 						iconColor="#0984e3"

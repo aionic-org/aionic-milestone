@@ -61,6 +61,8 @@ const SitesBoard = (props) => {
 						</div>
 					</div>
 				</div>
+				<hr className="featurette-divider" />
+
 				<div className="row">
 					<div className="col-12">
 						<BoardContainer userList={board.users} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Suggestion.scss';
 
@@ -7,7 +8,7 @@ import Api from 'services/api';
 import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 
 const TaskSuggestion = (props) => {
-	const { taskListSelected, updateParent, maxHeight } = props;
+	const { taskListSelected, updateParent, maxHeight, label } = props;
 	const [
 		itemList,
 		itemListSelected,
@@ -50,14 +51,9 @@ const TaskSuggestion = (props) => {
 							<div className="col-5">
 								<span className="text-muted float-right">
 									{task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-									<a
+									<Link
 										className="fas fa-external-link-square-alt ml-2 fa-sm"
-										href={`/task/${task.id}`}
-										target="_blank"
-										rel="noopener noreferrer"
-										onClick={(e) => {
-											e.stopPropagation();
-										}}
+										to={`/task/${task.id}`}
 									/>
 								</span>
 							</div>
@@ -80,14 +76,9 @@ const TaskSuggestion = (props) => {
 							<div className="col-9">{task.title}</div>
 							<div className="col-3">
 								<small className="float-right mt-1">
-									<a
-										className="fas fa-external-link-square-alt"
-										href={`/task/${task.id}`}
-										target="_blank"
-										rel="noopener noreferrer"
-										onClick={(e) => {
-											e.stopPropagation();
-										}}
+									<Link
+										className="fas fa-external-link-square-alt ml-2 fa-sm"
+										to={`/task/${task.id}`}
 									/>
 									<i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
 								</small>
@@ -103,8 +94,11 @@ const TaskSuggestion = (props) => {
 		</div>
 	) : null;
 
+	const inputLabel = label.length ? <label>{label}</label> : null;
+
 	return (
 		<div className="TaskSuggestion">
+			{inputLabel}
 			<input
 				type="text"
 				className="form-control"
@@ -126,7 +120,8 @@ const TaskSuggestion = (props) => {
 TaskSuggestion.defaultProps = {
 	taskListSelected: [],
 	updateParent: () => {},
-	maxHeight: false
+	maxHeight: false,
+	label: ''
 };
 
 export default TaskSuggestion;

@@ -12,6 +12,7 @@ import TaskOptionButtons from 'components/Task/OptionButtons';
 import TaskDates from 'components/Task/Dates';
 
 import SitesTaskTabs from './components/Tabs';
+import TaskBadges from './components/Badges';
 
 const SitesTask = (props) => {
 	const { task, updateParentTaskState, isNewTask } = props;
@@ -23,11 +24,12 @@ const SitesTask = (props) => {
 	return (
 		<div className="SitesTask">
 			<Content>
+				<TaskBadges task={task} />
 				<div className="row">
-					<div className="col-12 col-md-7 col-xl-8">
+					<div className="col-12 col-md-7 col-xl">
 						<TaskTitle task={task} onBlur={handleTitleChange} />
 					</div>
-					<div className="col-12 col-md-5 col-xl-4 mt-4 mt-md-0">
+					<div className="col-12 col-md-5 col-xl-auto">
 						<TaskOptionButtons
 							task={task}
 							isNewTask={isNewTask}
@@ -35,6 +37,7 @@ const SitesTask = (props) => {
 						/>
 					</div>
 				</div>
+				<hr className="featurette-divider" />
 
 				<div className="row">
 					<div className="col-auto">
@@ -42,7 +45,7 @@ const SitesTask = (props) => {
 					</div>
 				</div>
 
-				<div className="row mt-4">
+				<div className="row mt-3">
 					<div className="col-12 col-xl-8">
 						<TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
 						<TaskDates task={task} updateParentTaskState={updateParentTaskState} />

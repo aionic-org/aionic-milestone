@@ -3,7 +3,7 @@ import React from 'react';
 import './Priority.scss';
 
 const TaskPriority = (props) => {
-	const { task } = props;
+	const { task, assignedClasses } = props;
 	const { priority } = task;
 
 	let icon = null;
@@ -26,7 +26,7 @@ const TaskPriority = (props) => {
 
 	return (
 		<span
-			className="TaskPriority float-right"
+			className={`TaskPriority ${assignedClasses.join(' ')}`}
 			data-toggle="tooltip"
 			data-placement="top"
 			title={title}
@@ -34,6 +34,10 @@ const TaskPriority = (props) => {
 			{icon}
 		</span>
 	);
+};
+
+TaskPriority.defaultProps = {
+	assignedClasses: []
 };
 
 export default TaskPriority;

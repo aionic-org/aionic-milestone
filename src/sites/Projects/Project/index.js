@@ -13,6 +13,7 @@ import ProjectOptionButtons from 'components/Project/OptionButtons';
 
 import ProjectWidgetbar from './components/Widgetbar';
 import SitesProjectTabs from './components/Tabs';
+import ProjectBadges from './components/Badges';
 
 const SitesProject = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -31,21 +32,24 @@ const SitesProject = (props) => {
 	return (
 		<div className="SitesProject">
 			<Content>
+				<ProjectBadges project={project} />
 				<div className="row">
-					<div className="col-12 col-md-7 col-xl-8">
+					<div className="col-12 col-md-7 col-xl">
 						<InputTitle
 							defaultValue={project.title}
 							placeholder="Enter project title"
 							onBlur={handleTitleChange}
 						/>
 					</div>
-					<div className="col-12 col-md-5 col-xl-4">
+					<div className="col-12 col-md-5 col-xl-auto">
 						<ProjectOptionButtons
 							project={project}
 							updateParentProjectState={updateParentProjectState}
 						/>
 					</div>
 				</div>
+				<hr className="featurette-divider" />
+
 				<ProjectWidgetbar project={project} />
 				<div className="row">
 					<div className="col-12 col-xl-8">

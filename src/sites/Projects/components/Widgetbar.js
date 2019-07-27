@@ -10,7 +10,7 @@ const ProjectsWidgetbar = (props) => {
 	const finishedProjects = allProjects.filter((project) => project.completed);
 
 	return (
-		<div className="ProjectsWidgetbar mb-5">
+		<div className="ProjectsWidgetbar">
 			<div className="row">
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
@@ -20,7 +20,7 @@ const ProjectsWidgetbar = (props) => {
 						iconColor="#d63031"
 					/>
 				</div>
-				<div className="col-12 col-xl-4 mt-2 mt-xl-0">
+				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
 						title={allProjects.length}
 						subtitle="Total projects"
@@ -28,7 +28,7 @@ const ProjectsWidgetbar = (props) => {
 						iconColor="#e17055"
 					/>
 				</div>
-				<div className="col-12 col-xl-4 mt-2 mt-xl-0">
+				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
 						title={finishedProjects.length}
 						subtitle="Finished projects"

@@ -27,7 +27,11 @@ const SitesProjectTabs = (props) => {
 			break;
 		case 'Tasks':
 			content = (
-				<TaskSuggestion taskListSelected={project.tasks} updateParent={updateProjectTasks} />
+				<TaskSuggestion
+					taskListSelected={project.tasks}
+					updateParent={updateProjectTasks}
+					label="Add or remove tasks to this project"
+				/>
 			);
 			break;
 		case 'Comments':
