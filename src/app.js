@@ -7,28 +7,28 @@ import ErrorBoundary from 'components/Utility/ErrorBoundary';
 import Routes from './sites/Routes';
 
 class App extends Component {
-  componentDidMount = () => {
-    ReactModal.setAppElement('body');
-  };
+	componentDidMount = () => {
+		ReactModal.setAppElement('body');
+	};
 
-  toggleSidebar = () => {
-    // eslint-disable-next-line no-undef
-    document.getElementById('App').classList.toggle('toggled');
-  };
+	toggleSidebar = () => {
+		// eslint-disable-next-line no-undef
+		document.getElementById('App').classList.toggle('toggled');
+	};
 
-  render() {
-    return (
-      <ErrorBoundary>
-        <BrowserRouter>
-          <div id="App">
-            <Switch>
-              <Routes toggleSidebar={this.toggleSidebar} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </ErrorBoundary>
-    );
-  }
+	render() {
+		return (
+			<ErrorBoundary>
+				<BrowserRouter>
+					<div id="App">
+						<Switch>
+							<Routes toggleSidebar={this.toggleSidebar} />
+						</Switch>
+					</div>
+				</BrowserRouter>
+			</ErrorBoundary>
+		);
+	}
 }
 
 export default App;

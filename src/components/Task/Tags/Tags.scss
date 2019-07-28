@@ -1,12 +1,12 @@
 .TaskTags {
-  margin-top: 25px;
+	margin-top: 1rem;
 
-  ul > li:not(:first-child).add-tag {
-    margin-left: 0.5em;
-  }
+	ul > li:not(:first-child).add-tag {
+		margin-left: 0.5em;
+	}
 
-  .fa-plus {
-    color: #e84393;
-    cursor: pointer;
-  }
+	.fa-plus {
+		color: #e84393;
+		cursor: pointer;
+	}
 }

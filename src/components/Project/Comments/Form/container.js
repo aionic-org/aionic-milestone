@@ -6,24 +6,24 @@ import CommentForm from 'components/Comments/Form';
 import useCommentForm from 'components/Utility/Hooks/useCommentForm';
 
 const ProjectCommentsFormContainer = (props) => {
-  const { projectId, updateParent } = props;
-  const [msg, handleInputChange, handleSubmit] = useCommentForm(
-    `projects/${projectId}/comments`,
-    updateParent
-  );
+	const { projectId, updateParent } = props;
+	const [msg, handleInputChange, handleSubmit] = useCommentForm(
+		`projects/${projectId}/comments`,
+		updateParent
+	);
 
-  const msgHint = msg ? <Error message={msg} showIcon={false} assignedClasses={['mt-0']} /> : null;
+	const msgHint = msg ? <Error message={msg} showIcon={false} assignedClasses={['mt-0']} /> : null;
 
-  return (
-    <div className="ProjectCommentsFormContainer">
-      <CommentForm handleSubmit={handleSubmit} handleInputChange={handleInputChange} />
-      {msgHint}
-    </div>
-  );
+	return (
+		<div className="ProjectCommentsFormContainer">
+			<CommentForm handleSubmit={handleSubmit} handleInputChange={handleInputChange} />
+			{msgHint}
+		</div>
+	);
 };
 
 ProjectCommentsFormContainer.defaultProps = {
-  updateParent: () => {}
+	updateParent: () => {}
 };
 
 export default ProjectCommentsFormContainer;
