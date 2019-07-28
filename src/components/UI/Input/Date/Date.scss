@@ -1,4 +1,11 @@
-.InputDate .react-datepicker-wrapper,
-.InputDate .react-datepicker__input-container {
-  display: block;
+@import '~react-datepicker/dist/react-datepicker.css';
+
+.InputDate {
+	.react-datepicker-wrapper,
+	.react-datepicker__input-container {
+		display: block;
+	}
+	.react-datepicker-popper {
+		width: max-content;
+	}
 }

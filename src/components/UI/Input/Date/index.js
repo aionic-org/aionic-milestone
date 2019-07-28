@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
-// hotfix for not loaded css: https://github.com/Hacker0x01/react-datepicker/issues/882
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import './Date.scss';
 
 const InputDate = (props) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Content = (props) => (
-	<div className="content p-2 pt-4" id="content">
+	<div className="content" id="content" style={{ padding: '1.25rem .5rem 0rem' }}>
 		{props.children}
 	</div>
 );
