@@ -1,18 +1,17 @@
 import React from 'react';
 
 const Badge = (props) => {
-	const { title, assignedClasses, large } = props;
-
-	const badge = <span className={`badge ${assignedClasses.join(' ')}`}>{title}</span>;
+	const { title, assignedClasses } = props;
 
 	return (
-		<div className="Badge text-uppercase">{large ? <h6 className="mb-0">{badge}</h6> : badge}</div>
+		<div className="Badge text-uppercase">
+			<span className={`badge ${assignedClasses.join(' ')}`}>{title}</span>
+		</div>
 	);
 };
 
 Badge.defaultProps = {
-	assignedClasses: [],
-	large: false
+	assignedClasses: []
 };
 
 export default Badge;
