@@ -14,7 +14,7 @@ const Board = (props) => {
 
 	const [userTasks, setUserTasks] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	const [userTasksFiltered, setUserTasksFiltered] = useTextFilter('title', userTasks);
+	const [userTasksFiltered, setUserTasksFiltered, filterText] = useTextFilter('title', userTasks);
 
 	const tabTitles = userList.map((user) => {
 		const userNameDuplicates = userList.filter((user2) => {
@@ -81,7 +81,7 @@ const Board = (props) => {
 			<div />
 			<div className="row mt-2">
 				{statusList.map((status) => {
-					const tasks = (userTasksFiltered.length ? userTasksFiltered : userTasks).filter(
+					const tasks = (filterText.length ? userTasksFiltered : userTasks).filter(
 						(task) => task.status.id === status.id
 					);
 					return (
