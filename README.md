@@ -10,9 +10,9 @@ Aionic offers a set of **open source products** for project management of any si
 
 Please keep in mind that we just develop the software and don't host the applications anywhere for public usage. That means you have to take care of the hosting for yourself.
 
-All products are built on top of the **Aionic Core** application, since this is the place where all your data is managed and distributed. So for the usage of any other application, you have to use at least [Aionice Core](https://github.com/Aionic-Apps/aionic-core/).
+All products are built on top of the **Aionic Core** application, since this is the place where all your data is managed and distributed. So for the usage of any other application, you have to use at least [Aionic Core](https://github.com/Aionic-Apps/aionic-core/).
 
-Some of the technologies we trust: _NodeJS, ReactJS, MySQL_
+Some of the technologies we trust: _Node.js, React, MySQL_
 
 ## Features
 
@@ -29,7 +29,7 @@ Some of the features included in this app:
 
 ## Prerequisites
 
-- NodeJS
+- Node.js
 
 ## Installation
 
@@ -54,7 +54,7 @@ In progress.
 
 > Our focus is on simplifying and accelerating the workflow for agile teams in the open source way.
 
-We try to help other people / companies realizing their ideas by offering highly maintainable project management softwares that everybody can **adjust as desired**.
+We try to help other people and companies realizing their ideas by offering highly maintainable project management softwares that everybody can **adjust as desired**.
 
 ## Community
 
