@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Navbar.scss';
 
@@ -51,26 +51,30 @@ const Navbar = (props) => {
 						</button>
 						<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
 							<div className="dropdown-header">Users & Boards</div>
-							<NavLink to="/administration/user" className="dropdown-item">
+							<Link to="/administration/user" className="dropdown-item">
 								<i className="far fa-envelope fa-fw mr-2" />
 								Invite user
-							</NavLink>
-							<NavLink exact to="/board?create=true" className="dropdown-item">
+							</Link>
+							<Link to="/administration/user?create=true" className="dropdown-item">
+								<i className="fas fa-user-plus fa-fw mr-2" />
+								Create user
+							</Link>
+							<Link to="/board?create=true" className="dropdown-item">
 								<i className="fas fa-chalkboard-teacher mr-2" />
 								Create board
-							</NavLink>
+							</Link>
 							<div className="dropdown-divider" />
 
 							<div className="dropdown-header">Tasks & Projects</div>
 
-							<NavLink exact to="/task" className="dropdown-item">
+							<Link to="/task" className="dropdown-item">
 								<i className="fas fa-tasks fa-fw mr-2" />
 								Create task
-							</NavLink>
-							<NavLink to="/project?create=true" className="dropdown-item">
+							</Link>
+							<Link to="/project?create=true" className="dropdown-item">
 								<i className="fas fa-table fa-fw mr-2" />
 								Create project
-							</NavLink>
+							</Link>
 						</div>
 					</li>
 
@@ -88,18 +92,18 @@ const Navbar = (props) => {
 							<div className="dropdown-header">
 								{`${Session.getUser().firstname} ${Session.getUser().lastname}`}
 							</div>
-							<NavLink to="/user/me" className="dropdown-item">
+							<Link to="/user/me" className="dropdown-item">
 								<i className="far fa-user-circle fa-fw mr-2" />
 								Account
-							</NavLink>
+							</Link>
 							{Session.isAdmin() ? (
-								<NavLink to="/administration" className="dropdown-item">
+								<Link to="/administration" className="dropdown-item">
 									<i className="fas fa-wrench fa-fw mr-2" />
 									Administration
-								</NavLink>
+								</Link>
 							) : null}
 							<div className="dropdown-divider" />
-							<Link to="/signout" className="dropdown-item">
+							<Link to="/signout" className="dropdown-item text-danger">
 								<i className="fas fa-sign-out-alt fa-fw mr-2" /> Signout
 							</Link>
 						</div>

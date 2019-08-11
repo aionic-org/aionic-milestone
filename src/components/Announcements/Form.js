@@ -56,7 +56,7 @@ class AnnouncementsForm extends Component {
 		return (
 			<div className="AnnouncementsForm">
 				<form onSubmit={this.handleSubmit}>
-					<p>Make new announcement</p>
+					<label>Make new announcement</label>
 					<div className="input-group mb-3">
 						<div className="input-group-prepend">
 							<div className="input-group-text">

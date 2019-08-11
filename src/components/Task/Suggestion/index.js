@@ -66,7 +66,7 @@ const TaskSuggestion = (props) => {
 
 	const selected = itemListSelected.length ? (
 		<div
-			className={`selectedList ${maxHeight ? ' max-height' : ``}`}
+			className={`selectedList ${maxHeight ? 'max-height' : ``}`}
 			style={{ opacity: showSuggestion ? 0.3 : 1 }}
 		>
 			<ul className="list-group">

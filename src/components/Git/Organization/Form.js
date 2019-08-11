@@ -51,8 +51,8 @@ class GitOrganizationForm extends Component {
 		return (
 			<div className="GitOrganizationForm">
 				<form onSubmit={this.handleSubmit}>
-					<p>Add new organization</p>
-					<div className="input-group mb-3">
+					<label>Add a new organization</label>
+					<div className="input-group">
 						<input
 							type="text"
 							name="name"
@@ -63,12 +63,16 @@ class GitOrganizationForm extends Component {
 						/>
 						<div className="input-group-append">
 							<button type="button" className="btn btn-primary">
-								{isLoading ? <Spinner onBtn={true} /> : 'Submit'}
+								{isLoading ? <Spinner onBtn={true} /> : 'Add'}
 							</button>
 						</div>
 						<div className="valid-feedback">Organization added!</div>
 						<div className="invalid-feedback">{msg}</div>
 					</div>
+					<small className="form-text text-muted">
+						You can assign your GitHub organizations and their repositories to single tasks and
+						fetch commits of the corresponding branches.
+					</small>
 				</form>
 			</div>
 		);
