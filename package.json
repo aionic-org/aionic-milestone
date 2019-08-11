@@ -1,11 +1,12 @@
 {
   "name": "aionic-milestone",
   "version": "0.0.1",
-  "description": "Aionic Milestone - Software products for project management",
+  "description": "Aionic Milestone - Applications for project management and collaboration",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
   "repository": "https://github.com/Aionic-Apps/aionic-milestone",
   "license": "MIT",
+  "homepage": "https://aionic-apps.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
