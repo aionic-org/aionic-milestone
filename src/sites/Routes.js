@@ -16,6 +16,7 @@ import SitesSearch from './Search';
 import SitesAdministration from './Administration';
 import SitesProjectsContainer from './Projects/container';
 import SitesProjectContainer from './Projects/Project/container';
+import SitesProjectKanbanContainer from './Projects/Project/Kanban/container';
 import SitesBoardsContainer from './Boards/container';
 import SitesBoardContainer from './Boards/Board/container';
 import SitesUserContainer from './User/container';
@@ -54,6 +55,7 @@ const Routes = (props) => {
 						<Route path="/administration" component={SitesAdministration} />
 						<Route exact path="/project" component={SitesProjectsContainer} />
 						<Route exact path="/project/:id" component={SitesProjectContainer} />
+						<Route exact path="/project/:id/kanban" component={SitesProjectKanbanContainer} />
 						<Route exact path="/board" component={SitesBoardsContainer} />
 						<Route exact path="/board/:id" component={SitesBoardContainer} />
 						<Route exact path="/user/:id" component={SitesUserContainer} />

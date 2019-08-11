@@ -20,7 +20,7 @@ const TaskOptionButtons = (props) => {
 				<i className="fas fa-redo mr-2" /> Reopen
 			</button>
 		) : (
-			<button type="button" className="btn btn-secondary" onClick={toggleComplete}>
+			<button type="button" className="btn btn-mint" onClick={toggleComplete}>
 				<i className="fas fa-check mr-2" />
 				Mark complete
 			</button>

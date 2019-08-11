@@ -6,7 +6,6 @@
 @import './styles/modal';
 @import './styles/nav';
 @import './styles/scrollbar';
-@import './styles/shadows';
 
 body {
 	overflow-x: hidden;
@@ -48,7 +47,7 @@ body {
 }
 
 .badge-primary {
-	background-color: $primary-color;
+	background-color: $violet;
 }
 
 .badge-secondary {

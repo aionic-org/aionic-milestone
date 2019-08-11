@@ -5,7 +5,7 @@ import Helper from 'services/helper';
 import Content from 'components/UI/Content';
 import InputTitle from 'components/UI/Input/Title/';
 
-import BoardContainer from 'components/Board/View/container';
+import KanbanContainer from 'components/Kanban/container';
 import BoardDetails from 'components/Board/Details';
 
 const SitesBoard = (props) => {
@@ -65,7 +65,7 @@ const SitesBoard = (props) => {
 
 				<div className="row">
 					<div className="col-12">
-						<BoardContainer userList={board.users} />
+						<KanbanContainer userList={board.users} showBody={false} />
 					</div>
 				</div>
 			</Content>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProjectOptionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -12,7 +13,7 @@ const ProjectOptionButtons = (props) => {
 			<i className="fas fa-redo mr-2" /> Reopen
 		</button>
 	) : (
-		<button type="button" className="btn btn-secondary" onClick={toggleComplete}>
+		<button type="button" className="btn btn-mint" onClick={toggleComplete}>
 			<i className="fas fa-check mr-2" />
 			Mark complete
 		</button>
@@ -21,6 +22,9 @@ const ProjectOptionButtons = (props) => {
 	return (
 		<div className="ProjectOptionButtons">
 			<div className="float-md-right">
+				<Link to={`${project.id}/kanban`} className="btn btn-link mr-2">
+					Kanban
+				</Link>
 				{completeBtn}
 				<div className="btn-group ml-2">
 					<button

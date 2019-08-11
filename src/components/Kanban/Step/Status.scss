@@ -1,0 +1,22 @@
+.KanbanStep {
+	border: 1px solid transparent;
+	position: relative;
+	padding: 5px 10px;
+
+	h6 {
+		font-weight: bold;
+		background: #dfe6e9;
+		padding: 8px;
+		border-radius: 4px;
+	}
+
+	.task-wrapper:not(:first-child) {
+		margin-top: 10px;
+	}
+}
+
+.KanbanStep:hover {
+	background-color: rgba(223, 230, 233, 0.1);
+	border-radius: 4px;
+	border-color: #dfe6e9;
+}

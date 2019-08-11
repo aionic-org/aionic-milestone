@@ -7,12 +7,12 @@ import useTextFilter from 'components/Utility/Hooks/useTextFilter';
 import Spinner from 'components/UI/Spinner';
 import Tabs from 'components/UI/Tabs';
 
-import BoardStatus from './Status';
+import BoardStep from './Step';
 
-const Board = (props) => {
-	const { userList, statusList } = props;
+const Kanban = (props) => {
+	const { taskList, userList, statusList } = props;
 
-	const [userTasks, setUserTasks] = useState([]);
+	const [userTasks, setUserTasks] = useState(taskList);
 	const [isLoading, setIsLoading] = useState(false);
 	const [userTasksFiltered, setUserTasksFiltered, filterText] = useTextFilter('title', userTasks);
 
@@ -32,10 +32,10 @@ const Board = (props) => {
 	const fetchUserTasks = async (userId) => {
 		try {
 			setIsLoading(true);
-			const taskList = await Api.fetchData(`users/${userId}/tasks`);
+			const userTaskList = await Api.fetchData(`users/${userId}/tasks`);
 
 			setIsLoading(false);
-			setUserTasks(taskList);
+			setUserTasks(userTaskList);
 		} catch (err) {
 			console.log(err);
 		}
@@ -61,14 +61,18 @@ const Board = (props) => {
 		</div>
 	) : null;
 
+	const tabs = tabTitles.length ? (
+		<div className="mb-4">
+			<Tabs tabs={tabTitles} handleClick={handleClick} />
+		</div>
+	) : null;
+
 	return (
-		<div className="Board">
+		<div className="Kanban">
 			<div className="row">
-				<div className="col-auto">
-					<Tabs tabs={tabTitles} handleClick={handleClick} />
-				</div>
+				<div className="col-auto">{tabs}</div>
 				<div className="col-12">
-					<div className="form-group mt-4 mb-0">
+					<div className="form-group mb-0">
 						<input
 							type="text"
 							className="form-control form-control-sm"
@@ -78,18 +82,18 @@ const Board = (props) => {
 					</div>
 				</div>
 			</div>
-			<div />
-			<div className="row mt-2">
+			<div className="row flex-nowrap overflow-auto mt-2" style={{ padding: '0px 15px' }}>
 				{statusList.map((status) => {
 					const tasks = (filterText.length ? userTasksFiltered : userTasks).filter(
 						(task) => task.status.id === status.id
 					);
 					return (
-						<BoardStatus
+						<BoardStep
 							key={status.id}
-							status={status}
+							title={status.title}
 							tasks={tasks}
-							maxWidth={100 / statusList.length}
+							maxWidth={Math.max(100 / statusList.length, 15)}
+							{...props}
 						/>
 					);
 				})}
@@ -99,4 +103,9 @@ const Board = (props) => {
 	);
 };
 
-export default Board;
+Kanban.defaultProps = {
+	taskList: [],
+	userList: []
+};
+
+export default Kanban;
