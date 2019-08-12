@@ -23,7 +23,7 @@ const ProjectOptionButtons = (props) => {
 		<div className="ProjectOptionButtons">
 			<div className="float-md-right">
 				<Link to={`${project.id}/kanban`} className="btn btn-link mr-2">
-					Kanban
+					Kanban View
 				</Link>
 				{completeBtn}
 				<div className="btn-group ml-2">

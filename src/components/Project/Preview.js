@@ -7,7 +7,7 @@ const ProjectPreview = (props) => {
 	const { project } = props;
 
 	return (
-		<Link to={`/project/${project.id}`} className="ProjectPreview CardLink card">
+		<Link to={`/projects/${project.id}`} className="ProjectPreview CardLink card">
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
@@ -21,7 +21,7 @@ const ProjectPreview = (props) => {
 				</div>
 			</div>
 			<div className="card-body">
-				<h6 className="card-subtitle mb-2 text-muted">
+				<h6 className="card-subtitle text-muted">
 					{project.author.firstname} {project.author.lastname}
 				</h6>
 				<p className="card-text">{project.description}</p>

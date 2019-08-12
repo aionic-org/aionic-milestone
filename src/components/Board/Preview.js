@@ -5,7 +5,7 @@ const BoardPreview = (props) => {
 	const { board } = props;
 
 	return (
-		<Link to={`/board/${board.id}`} className="BoardPreview CardLink card">
+		<Link to={`/boards/${board.id}`} className="BoardPreview CardLink card">
 			<div className="card-header font-weight-bold">
 				<span>
 					{board.title} ({board.users.length})

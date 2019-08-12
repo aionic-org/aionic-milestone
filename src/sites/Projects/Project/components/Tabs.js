@@ -5,14 +5,14 @@ import useTab from 'components/Utility/Hooks/useTab';
 import Navs from 'components/UI/Navs';
 
 import ProjectCommentsContainer from 'components/Project/Comments/container';
-import ProjectDescription from 'components/Project/Description';
 import TaskSuggestion from 'components/Task/Suggestion';
+import ProjectDetails from 'components/Project/Details';
 
 const SitesProjectTabs = (props) => {
 	const { project, updateParentProjectState } = props;
-	const [tab, changeTab] = useTab('Description');
+	const [tab, changeTab] = useTab('Details');
 
-	const tabs = [{ name: 'Description' }, { name: 'Tasks' }, { name: 'Comments' }];
+	const tabs = [{ name: 'Details' }, { name: 'Tasks' }, { name: 'Comments' }];
 
 	const updateProjectTasks = (tasks) => {
 		updateParentProjectState({ ...project, tasks });
@@ -20,9 +20,9 @@ const SitesProjectTabs = (props) => {
 
 	let content = <p className="text-muted text-center font-italic mt-2">No tab selected</p>;
 	switch (tab) {
-		case 'Description':
+		case 'Details':
 			content = (
-				<ProjectDescription project={project} updateParentProjectState={updateParentProjectState} />
+				<ProjectDetails project={project} updateParentProjectState={updateParentProjectState} />
 			);
 			break;
 		case 'Tasks':
@@ -44,7 +44,7 @@ const SitesProjectTabs = (props) => {
 	return (
 		<div className="SitesProjectTabs">
 			<Navs handleClick={changeTab} tabs={tabs} preselectTabIdx={0} />
-			<div className={`SitesProjectTabs ${content ? 'mt-3' : ''}`}>{content}</div>
+			<div className={`SitesProjectTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);
 };

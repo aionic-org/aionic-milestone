@@ -17,8 +17,8 @@ const SitesProjectKanban = (props) => {
 						<Title title={`Kanban - ${project.title}`} placeholder="Enter project title" />
 					</div>
 					<div className="col-12 col-md-5 col-xl-auto">
-						<Link to={`/project/${project.id}`} className="btn btn-link mr-2">
-							Project
+						<Link to={`/projects/${project.id}`} className="btn btn-link mr-2">
+							Project View
 						</Link>
 						<button type="button" className="btn btn-primary">
 							<i className="fas fa-share mr-2" />

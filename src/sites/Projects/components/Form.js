@@ -6,6 +6,7 @@ import Api from 'services/api';
 import Session from 'services/session';
 
 import Error from 'components/UI/Error';
+import InputDate from 'components/UI/Input/Date/';
 
 import TaskSuggestion from 'components/Task/Suggestion';
 
@@ -27,6 +28,12 @@ class ProjectForm extends Component {
 		});
 	};
 
+	updateDeadline = (deadline) => {
+		this.setState((prevState) => {
+			return { project: { ...prevState.project, deadline } };
+		});
+	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.createProject();
@@ -43,7 +50,7 @@ class ProjectForm extends Component {
 
 		Api.postData(`projects`, { project })
 			.then((res) => {
-				this.props.history.push(`/project/${res.id}`);
+				this.props.history.push(`/projects/${res.id}`);
 			})
 			.catch((err) => {
 				this.setState({ msg: Api.handleHttpError(err) });
@@ -73,6 +80,10 @@ class ProjectForm extends Component {
 							placeholder="Enter title"
 							onChange={this.handleInputChange}
 						/>
+					</div>
+					<div className="form-group">
+						<label>Deadline</label>
+						<InputDate name="deadline" startDate={Date.now()} updateParent={this.updateDeadline} />
 					</div>
 					<div className="form-group">
 						<label>Description</label>

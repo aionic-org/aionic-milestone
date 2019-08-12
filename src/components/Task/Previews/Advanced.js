@@ -30,7 +30,7 @@ const TaskPreviewsAdvanced = (props) => {
 	) : null;
 
 	return (
-		<Link to={`/task/${task.id}`} className="TaskPreviewsAdvanced CardLink card">
+		<Link to={`/tasks/${task.id}`} className="TaskPreviewsAdvanced CardLink card">
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">

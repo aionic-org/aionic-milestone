@@ -9,7 +9,7 @@ import UserInvitation from 'components/User/Invitation';
 import UserCreate from 'components/User/Create';
 import UserTable from 'components/User/Table';
 
-const AdministrationUser = () => {
+const AdministrationUsers = () => {
 	const [users, isLoading, error] = useFetcher('users');
 
 	if (isLoading) {
@@ -21,7 +21,7 @@ const AdministrationUser = () => {
 	}
 
 	return (
-		<div className="AdministrationUser">
+		<div className="AdministrationUsers">
 			<div className="row">
 				<div className="col-12">
 					<p className="mb-2">Invite or create a new user</p>
@@ -39,4 +39,4 @@ const AdministrationUser = () => {
 	);
 };
 
-export default AdministrationUser;
+export default AdministrationUsers;

@@ -49,7 +49,7 @@ class UserForm extends Component {
 
 		Api.postData(`users`, { user })
 			.then((newUser) => {
-				this.props.history.push(`/user/${newUser.id}`);
+				this.props.history.push(`/users/${newUser.id}`);
 			})
 			.catch((err) => {
 				this.setState({ msg: Api.handleHttpError(err) });

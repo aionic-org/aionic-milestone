@@ -47,7 +47,7 @@ const SitesTaskTabs = (props) => {
 	return (
 		<div className="SitesTaskTabs">
 			<Navs handleClick={changeTab} tabs={tabs} />
-			<div className={`SitesTaskTabs ${content ? 'mt-3' : ''}`}>{content}</div>
+			<div className={`SitesTaskTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);
 };

@@ -66,7 +66,10 @@ const UserTable = (props) => {
 								<td>{String(user.active)}</td>
 								<td>{Helper.formatDate(user.created)}</td>
 								<td>
-									<Link to={`/user/${user.id}`} className="fas fa-fw fa-external-link-square-alt" />
+									<Link
+										to={`/users/${user.id}`}
+										className="fas fa-fw fa-external-link-square-alt"
+									/>
 								</td>
 							</tr>
 						))}

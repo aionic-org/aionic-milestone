@@ -13,7 +13,9 @@ const TaskCommentsContainer = (props) => (
 			return (
 				<div className="TaskCommentsContainer">
 					{showForm ? <TaskCommentsFormContainer taskId={taskId} updateParent={fetchData} /> : null}
-					<Comments type="Task" typeId={taskId} commentList={comments} />
+					<div className="mt-3">
+						<Comments type="Task" typeId={taskId} commentList={comments} />
+					</div>
 				</div>
 			);
 		}}
