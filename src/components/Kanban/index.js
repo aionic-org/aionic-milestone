@@ -14,6 +14,7 @@ const Kanban = (props) => {
 
 	const [userTasks, setUserTasks] = useState(taskList);
 	const [isLoading, setIsLoading] = useState(false);
+	const [stretch, setStretch] = useState(false);
 	const [userTasksFiltered, setUserTasksFiltered, filterText] = useTextFilter('title', userTasks);
 
 	const tabTitles = userList.map((user) => {
@@ -53,6 +54,10 @@ const Kanban = (props) => {
 		setUserTasksFiltered(e.target.value);
 	};
 
+	const toggleStretch = (e) => {
+		setStretch(e.target.checked);
+	};
+
 	const loadingSpinner = isLoading ? (
 		<div className="row mt-3">
 			<div className="col-12">
@@ -62,16 +67,18 @@ const Kanban = (props) => {
 	) : null;
 
 	const tabs = tabTitles.length ? (
-		<div className="mb-4">
-			<Tabs tabs={tabTitles} handleClick={handleClick} />
+		<div className="row">
+			<div className="col-auto mb-4">
+				<Tabs tabs={tabTitles} handleClick={handleClick} />
+			</div>
 		</div>
 	) : null;
 
 	return (
 		<div className="Kanban">
+			{tabs}
 			<div className="row">
-				<div className="col-auto">{tabs}</div>
-				<div className="col-12">
+				<div className="col-4">
 					<div className="form-group mb-0">
 						<input
 							type="text"
@@ -81,8 +88,19 @@ const Kanban = (props) => {
 						/>
 					</div>
 				</div>
+				<div className="col-auto d-flex align-items-center">
+					<div className="form-check">
+						<input
+							type="checkbox"
+							className="form-check-input"
+							id="exampleCheck1"
+							onClick={toggleStretch}
+						/>
+						<label className="form-check-label">Stretch</label>
+					</div>
+				</div>
 			</div>
-			<div className="row flex-nowrap overflow-auto mt-2" style={{ padding: '0px 15px' }}>
+			<div className="row flex-nowrap overflow-auto mt-3" style={{ padding: '0px 15px' }}>
 				{statusList.map((status) => {
 					const tasks = (filterText.length ? userTasksFiltered : userTasks).filter(
 						(task) => task.status.id === status.id
@@ -92,7 +110,7 @@ const Kanban = (props) => {
 							key={status.id}
 							title={status.title}
 							tasks={tasks}
-							maxWidth={Math.max(100 / statusList.length, 15)}
+							maxWidth={stretch ? 25 : Math.max(100 / statusList.length, 15)}
 							{...props}
 						/>
 					);

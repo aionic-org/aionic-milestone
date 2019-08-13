@@ -30,7 +30,11 @@ const TaskPreviewsAdvanced = (props) => {
 	) : null;
 
 	return (
-		<Link to={`/tasks/${task.id}`} className="TaskPreviewsAdvanced CardLink card">
+		<Link
+			to={`/tasks/${task.id}`}
+			className="TaskPreviewsAdvanced CardLink card"
+			style={{ borderLeft: `6px solid ${task.label}` }}
+		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
