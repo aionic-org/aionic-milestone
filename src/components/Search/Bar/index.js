@@ -17,7 +17,6 @@ const SearchBar = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// eslint-disable-next-line no-undef
 		const newTerm = term || document.querySelector('.SearchBar input').value;
 
 		if (newTerm.length) {

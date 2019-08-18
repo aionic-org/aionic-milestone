@@ -2,20 +2,36 @@ import React, { useState } from 'react';
 
 import Api from 'services/api';
 
-import useTextFilter from 'components/Utility/Hooks/useTextFilter';
-
 import Spinner from 'components/UI/Spinner';
 import Tabs from 'components/UI/Tabs';
 
 import BoardStep from './Step';
+import KanbanFiltersContainer from './Filters/container';
 
 const Kanban = (props) => {
 	const { taskList, userList, statusList } = props;
 
-	const [userTasks, setUserTasks] = useState(taskList);
+	const [currentTasks, setCurrentTasks] = useState(taskList);
 	const [isLoading, setIsLoading] = useState(false);
 	const [stretch, setStretch] = useState(false);
-	const [userTasksFiltered, setUserTasksFiltered, filterText] = useTextFilter('title', userTasks);
+
+	const [taskFilters, setTaskFilters] = useState({
+		textFilter: '',
+		typeFilter: 0,
+		priorityFilter: 0
+	});
+
+	const filteredTasks = currentTasks.filter((task) => {
+		const condText = taskFilters.textFilter.length
+			? task.title.toLowerCase().includes(taskFilters.textFilter)
+			: true;
+		const condType = taskFilters.typeFilter ? task.type.id === taskFilters.typeFilter : true;
+		const condPrio = taskFilters.priorityFilter
+			? task.priority.value === taskFilters.priorityFilter
+			: true;
+
+		return condText && condType && condPrio;
+	});
 
 	const tabTitles = userList.map((user) => {
 		const userNameDuplicates = userList.filter((user2) => {
@@ -36,7 +52,7 @@ const Kanban = (props) => {
 			const userTaskList = await Api.fetchData(`users/${userId}/tasks`);
 
 			setIsLoading(false);
-			setUserTasks(userTaskList);
+			setCurrentTasks(userTaskList);
 		} catch (err) {
 			console.log(err);
 		}
@@ -46,12 +62,8 @@ const Kanban = (props) => {
 		if (userId) {
 			fetchUserTasks(userId);
 		} else {
-			setUserTasks([]);
+			setCurrentTasks([]);
 		}
-	};
-
-	const filterTasks = (e) => {
-		setUserTasksFiltered(e.target.value);
 	};
 
 	const toggleStretch = (e) => {
@@ -77,34 +89,14 @@ const Kanban = (props) => {
 	return (
 		<div className="Kanban">
 			{tabs}
-			<div className="row">
-				<div className="col-4">
-					<div className="form-group mb-0">
-						<input
-							type="text"
-							className="form-control form-control-sm"
-							placeholder="Filter tasks..."
-							onChange={filterTasks}
-						/>
-					</div>
-				</div>
-				<div className="col-auto d-flex align-items-center">
-					<div className="form-check">
-						<input
-							type="checkbox"
-							className="form-check-input"
-							id="exampleCheck1"
-							onClick={toggleStretch}
-						/>
-						<label className="form-check-label">Stretch</label>
-					</div>
-				</div>
-			</div>
-			<div className="row flex-nowrap overflow-auto mt-3" style={{ padding: '0px 15px' }}>
+			<KanbanFiltersContainer
+				toggleStretch={toggleStretch}
+				taskFilters={taskFilters}
+				setTaskFilters={setTaskFilters}
+			/>
+			<div className="row flex-nowrap overflow-auto mt-3" style={{ padding: '0px 5px' }}>
 				{statusList.map((status) => {
-					const tasks = (filterText.length ? userTasksFiltered : userTasks).filter(
-						(task) => task.status.id === status.id
-					);
+					const tasks = filteredTasks.filter((task) => task.status.id === status.id);
 					return (
 						<BoardStep
 							key={status.id}

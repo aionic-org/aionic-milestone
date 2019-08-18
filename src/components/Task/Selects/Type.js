@@ -8,19 +8,15 @@ const TaskSelectsType = (props) => {
 
 	return (
 		<div className="TaskSelectsType">
-			<InputSelect
-				optionList={types}
-				name="type"
-				defaultValue={props.defaultValue}
-				onChange={props.onChange}
-			/>
+			<InputSelect optionList={types} name="type" {...props} />
 		</div>
 	);
 };
 
 TaskSelectsType.defaultProps = {
 	typeList: [],
-	defaultValue: ''
+	defaultValue: '',
+	classes: []
 };
 
 export default TaskSelectsType;

@@ -12,7 +12,6 @@ class App extends Component {
 	};
 
 	toggleSidebar = () => {
-		// eslint-disable-next-line no-undef
 		document.getElementById('App').classList.toggle('toggled');
 	};
 

@@ -45,7 +45,7 @@ const SitesProjects = (props) => {
 				</div>
 				<div className="row">
 					<div className="col-12">
-						<CardDeck deckType="Project" itemList={projectsToShow} itemsPerRow={3} />
+						<CardDeck deckType="Project" itemList={projectsToShow} itemsPerRow={1} />
 					</div>
 				</div>
 			</Content>

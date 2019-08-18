@@ -7,7 +7,6 @@ import GitOrganizationSelect from 'components/Git/Organization/Select';
 
 class SitesSearchFilter extends Component {
 	handleReset = () => {
-		// eslint-disable-next-line no-undef
 		document.getElementById('filterForm').reset();
 		this.props.resetFilters();
 	};
