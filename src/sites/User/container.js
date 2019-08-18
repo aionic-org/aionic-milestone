@@ -96,7 +96,7 @@ class SitesUserContainer extends Component {
 		if (confirmDelete && Session.isAdmin()) {
 			Api.deleteData(`users/${this.state.user.id}`)
 				.then(() => {
-					this.props.history.push('/administration/user');
+					this.props.history.push('/administration/users');
 				})
 				.catch(() => {
 					this.setState({

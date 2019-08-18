@@ -9,19 +9,15 @@ const TaskSelectsPriority = (props) => {
 
 	return (
 		<div className="TaskSelectsPriority">
-			<InputSelect
-				optionList={priorities}
-				name="priority"
-				defaultValue={props.defaultValue}
-				onChange={props.onChange}
-			/>
+			<InputSelect optionList={priorities} name="priority" {...props} />
 		</div>
 	);
 };
 
 TaskSelectsPriority.defaultProps = {
 	priorityList: [],
-	defaultValue: ''
+	defaultValue: '',
+	classes: []
 };
 
 export default TaskSelectsPriority;

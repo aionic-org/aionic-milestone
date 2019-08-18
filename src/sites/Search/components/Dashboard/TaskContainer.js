@@ -69,7 +69,7 @@ class SearchDashboardTaskContainer extends Component {
 
 		return (
 			<div className="SearchDashboardTaskContainer">
-				<TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={3} />
+				<TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={1} />
 			</div>
 		);
 	}

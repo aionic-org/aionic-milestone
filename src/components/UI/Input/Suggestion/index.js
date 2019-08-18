@@ -52,7 +52,6 @@ class InputSuggestion extends Component {
 			name: this.props.name
 		};
 
-		// eslint-disable-next-line no-undef
 		document.getElementsByName(this.props.name)[0].value = newElement.text;
 
 		this.setState({ showSuggestion: false }, () => {

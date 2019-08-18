@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Deck.scss';
 
-import TaskPreview from 'components/Task/Preview';
+import TaskPreviewsAdvanced from 'components/Task/Previews/Advanced';
 import UserPreview from 'components/User/Preview';
 import ProjectPreview from 'components/Project/Preview';
 import GitOrganizationPreview from 'components/Git/Organization/Preview';
@@ -35,7 +35,7 @@ const Deck = (props) => {
 					{itemArr.map((item) => {
 						switch (deckType) {
 							case 'Task':
-								return <TaskPreview key={item.id} task={item} />;
+								return <TaskPreviewsAdvanced key={item.id} task={item} />;
 							case 'User':
 								return <UserPreview key={item.id} user={item} />;
 							case 'Project':

@@ -16,6 +16,7 @@ import SitesSearch from './Search';
 import SitesAdministration from './Administration';
 import SitesProjectsContainer from './Projects/container';
 import SitesProjectContainer from './Projects/Project/container';
+import SitesProjectKanbanContainer from './Projects/Project/Kanban/container';
 import SitesBoardsContainer from './Boards/container';
 import SitesBoardContainer from './Boards/Board/container';
 import SitesUserContainer from './User/container';
@@ -47,16 +48,17 @@ const Routes = (props) => {
 								return <Redirect to="/signin" />;
 							}}
 						/>
-						<Route exact path="/task" component={SitesTaskContainer} />
-						<Route exact path="/task/:id" component={SitesTaskContainer} />
+						<Route exact path="/tasks" component={SitesTaskContainer} />
+						<Route exact path="/tasks/:id" component={SitesTaskContainer} />
 						<Route exact path="/search" component={SitesSearch} />
 						<Route path="/search/:searchTerm" component={SitesSearch} />
 						<Route path="/administration" component={SitesAdministration} />
-						<Route exact path="/project" component={SitesProjectsContainer} />
-						<Route exact path="/project/:id" component={SitesProjectContainer} />
-						<Route exact path="/board" component={SitesBoardsContainer} />
-						<Route exact path="/board/:id" component={SitesBoardContainer} />
-						<Route exact path="/user/:id" component={SitesUserContainer} />
+						<Route exact path="/projects" component={SitesProjectsContainer} />
+						<Route exact path="/projects/:id" component={SitesProjectContainer} />
+						<Route exact path="/projects/:id/kanban" component={SitesProjectKanbanContainer} />
+						<Route exact path="/boards" component={SitesBoardsContainer} />
+						<Route exact path="/boards/:id" component={SitesBoardContainer} />
+						<Route exact path="/users/:id" component={SitesUserContainer} />
 						<Route exact path="*" component={NotFound} />
 					</Switch>
 				</div>

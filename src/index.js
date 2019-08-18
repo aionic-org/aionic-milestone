@@ -9,6 +9,5 @@ import App from './app';
 
 require('dotenv').config();
 
-// eslint-disable-next-line no-undef
 render(<App />, document.getElementById('root'));
 serviceWorker.unregister();

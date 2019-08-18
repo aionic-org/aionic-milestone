@@ -12,7 +12,7 @@ const TaskLinks = (props) => {
 
 	return (
 		<div className="TaskLinks">
-			<p className="text-muted">Other tasks this one is linked with:</p>
+			<label>Other tasks linked with this one:</label>
 			<TaskSuggestion updateParent={handleChange} taskListSelected={task.links} maxHeight={true} />
 		</div>
 	);

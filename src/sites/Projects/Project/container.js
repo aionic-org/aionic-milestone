@@ -76,7 +76,7 @@ class SitesProjectContainer extends Component {
 	deleteProject = () => {
 		Api.deleteData(`projects/${this.state.project.id}`)
 			.then(() => {
-				this.props.history.push('/project');
+				this.props.history.push('/projects');
 			})
 			.catch(() => {
 				this.setState({

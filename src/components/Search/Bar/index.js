@@ -17,7 +17,6 @@ const SearchBar = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// eslint-disable-next-line no-undef
 		const newTerm = term || document.querySelector('.SearchBar input').value;
 
 		if (newTerm.length) {
@@ -37,7 +36,7 @@ const SearchBar = (props) => {
 					defaultValue={termFromUrl}
 				/>
 				<div className="input-group-append">
-					<button className="btn btn-secondary" type="submit">
+					<button className="btn btn-mint" type="submit">
 						<i className="fas fa-search fa-sm" />
 					</button>
 				</div>

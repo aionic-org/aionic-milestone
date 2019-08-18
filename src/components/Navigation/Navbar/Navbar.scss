@@ -1,17 +1,19 @@
-.navbar {
-  background-color: #f8f9fa;
-  min-height: 4.375rem;
-  border-bottom: 1px solid #dfe6e9;
+@import 'styles/variables';
 
-  .navbar-nav a.nav-link {
-    padding: 10px 15px;
-  }
+.navbar {
+	background-color: $bg-grey;
+	min-height: 4.375rem;
+	border-bottom: 1px solid #dfe6e9;
+
+	.navbar-nav a.nav-link {
+		padding: 10px 15px;
+	}
 }
 
 .navbar #wrapper.toggled .navbar .fa-chevron-left {
-  display: none;
+	display: none;
 }
 
 #wrapper:not(.toggled) .navbar .fa-chevron-right {
-  display: none;
+	display: none;
 }

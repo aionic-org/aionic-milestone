@@ -11,7 +11,8 @@ const ProjectDescription = (props) => {
 
 	return (
 		<div className="ProjectDescription">
-			<div className="form-group mb-0">
+			<div className="form-group">
+				<label>Description</label>
 				<textarea
 					className="form-control"
 					name="description"

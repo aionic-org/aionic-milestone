@@ -51,15 +51,15 @@ const Navbar = (props) => {
 						</button>
 						<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
 							<div className="dropdown-header">Users & Boards</div>
-							<Link to="/administration/user" className="dropdown-item">
+							<Link to="/administration/users" className="dropdown-item">
 								<i className="far fa-envelope fa-fw mr-2" />
 								Invite user
 							</Link>
-							<Link to="/administration/user?create=true" className="dropdown-item">
+							<Link to="/administration/users?create=true" className="dropdown-item">
 								<i className="fas fa-user-plus fa-fw mr-2" />
 								Create user
 							</Link>
-							<Link to="/board?create=true" className="dropdown-item">
+							<Link to="/boards?create=true" className="dropdown-item">
 								<i className="fas fa-chalkboard-teacher mr-2" />
 								Create board
 							</Link>
@@ -67,11 +67,11 @@ const Navbar = (props) => {
 
 							<div className="dropdown-header">Tasks & Projects</div>
 
-							<Link to="/task" className="dropdown-item">
+							<Link to="/tasks" className="dropdown-item">
 								<i className="fas fa-tasks fa-fw mr-2" />
 								Create task
 							</Link>
-							<Link to="/project?create=true" className="dropdown-item">
+							<Link to="/projects?create=true" className="dropdown-item">
 								<i className="fas fa-table fa-fw mr-2" />
 								Create project
 							</Link>
@@ -92,7 +92,7 @@ const Navbar = (props) => {
 							<div className="dropdown-header">
 								{`${Session.getUser().firstname} ${Session.getUser().lastname}`}
 							</div>
-							<Link to="/user/me" className="dropdown-item">
+							<Link to="/users/me" className="dropdown-item">
 								<i className="far fa-user-circle fa-fw mr-2" />
 								Account
 							</Link>

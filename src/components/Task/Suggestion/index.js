@@ -53,7 +53,7 @@ const TaskSuggestion = (props) => {
 									{task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
 									<Link
 										className="fas fa-external-link-square-alt ml-2 fa-sm"
-										to={`/task/${task.id}`}
+										to={`/tasks/${task.id}`}
 									/>
 								</span>
 							</div>
@@ -78,7 +78,7 @@ const TaskSuggestion = (props) => {
 								<small className="float-right mt-1">
 									<Link
 										className="fas fa-external-link-square-alt ml-2 fa-sm"
-										to={`/task/${task.id}`}
+										to={`/tasks/${task.id}`}
 									/>
 									<i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
 								</small>

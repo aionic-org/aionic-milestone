@@ -6,7 +6,6 @@ const TaskTagForm = (props) => {
 	const addTag = (e) => {
 		e.preventDefault();
 
-		// eslint-disable-next-line no-undef
 		const value = document.querySelector('.tag-value').value.toLowerCase();
 		if (value.length && !tagList.includes(value)) {
 			const tagListCopy = tagList.slice();

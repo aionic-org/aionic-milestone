@@ -23,7 +23,7 @@ const TaskGit = (props) => {
 	return (
 		<div className="TaskGit">
 			<div className="form-group row">
-				<div className="col-4">
+				<div className="col-12">
 					<label>Organization</label>
 					<GitOrganizationSelect
 						orgList={orgList}
@@ -31,8 +31,9 @@ const TaskGit = (props) => {
 						onChange={handleOrgChange}
 					/>
 				</div>
-
-				<div className="col-4">
+			</div>
+			<div className="form-group row">
+				<div className="col-12">
 					<label>Repository</label>
 					<GitRepositorySelect
 						repoList={repoList}
@@ -40,8 +41,9 @@ const TaskGit = (props) => {
 						onChange={handleRepoChange}
 					/>
 				</div>
-
-				<div className="col-4">
+			</div>
+			<div className="form-group row">
+				<div className="col-12">
 					<label>Branch</label>
 					<input
 						type="text"

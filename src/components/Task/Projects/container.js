@@ -8,9 +8,7 @@ const TaskProjectsContainer = (props) => (
 	<Fetcher url={`tasks/${props.taskId}/projects`} showSpinnerPadding={true}>
 		{(projects) => (
 			<div className="TaskProjectsContainer">
-				{props.showDescription ? (
-					<p className="text-muted">This task is part of the following projects:</p>
-				) : null}
+				{props.showDescription ? <label>This task is part of the following projects:</label> : null}
 				<CardDeck deckType="Project" itemList={projects} itemsPerRow={1} />
 			</div>
 		)}

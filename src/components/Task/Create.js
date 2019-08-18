@@ -9,7 +9,7 @@ const TaskCreate = (props) => {
 	const createTask = () => {
 		Api.postData('tasks', { task })
 			.then((res) => {
-				props.history.push(`/task/${res.id}`);
+				props.history.push(`/tasks/${res.id}`);
 			})
 			.catch((err) => {
 				console.log(err);

@@ -61,7 +61,7 @@ const SitesProject = (props) => {
 								onChange={filterTasks}
 							/>
 						</div>
-						<CardDeck deckType="Task" itemList={tasksToShow} itemsPerRow={3} />
+						<CardDeck deckType="Task" itemList={tasksToShow} itemsPerRow={1} />
 					</div>
 					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 						<SitesProjectTabs

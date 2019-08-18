@@ -2,46 +2,74 @@
 
 .btn-primary,
 .btn-primary.disabled {
-  background-color: $blue;
-  border-color: $blue;
+	background-color: $blue;
+	border-color: $blue;
 }
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
-  background-color: $blue-dark !important;
-  border-color: $blue-dark !important;
+	background-color: $blue-dark !important;
+	border-color: $blue-dark !important;
 }
 
 .btn-secondary,
 .btn-secondary.disabled {
-  background-color: $mint;
-  border-color: $mint;
+	background-color: $grey;
+	border-color: $grey-dark;
 }
 .btn-secondary:hover,
 .btn-secondary:active,
 .btn-secondary:focus {
-  background-color: $mint-dark !important;
-  border-color: $mint-dark !important;
+	background-color: $grey-dark !important;
+	border-color: $grey-dark !important;
 }
 
 .btn-danger,
 .btn-danger.disabled {
-  background-color: $red;
-  border-color: $red;
+	background-color: $red;
+	border-color: $red;
 }
 .btn-danger:hover,
 .btn-danger:active,
 .btn-danger:focus {
-  background-color: $red-dark !important;
-  border-color: $red-dark !important;
+	background-color: $red-dark !important;
+	border-color: $red-dark !important;
+}
+
+.btn-mint,
+.btn-mint.disabled {
+	background-color: $mint;
+	border-color: $mint-dark;
+	color: white;
+}
+.btn-mint:hover,
+.btn-mint:active,
+.btn-mint:focus {
+	background-color: $mint-dark !important;
+	border-color: $mint-dark !important;
+	color: white;
+}
+
+.btn-violet,
+.btn-violet.disabled {
+	background-color: $violet;
+	border-color: $violet-dark;
+	color: white;
+}
+.btn-violet:hover,
+.btn-violet:active,
+.btn-violet:focus {
+	background-color: $violet-dark !important;
+	border-color: $violet-dark !important;
+	color: white;
 }
 
 a,
 .btn-link {
-  color: $purple;
+	color: $pink;
 }
 
 a:hover,
 .btn-link:hover {
-  color: $purple-dark;
+	color: $pink-dark;
 }

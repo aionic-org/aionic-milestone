@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useState } from 'react';
 
-function useSuggestion(initialItemListSelected, updateParent) {
+function useSuggestion(initialItemListSelected, updateParent, multiSelect) {
 	const [showSuggestion, setShowSuggestion] = useState(false);
 	const [itemList, setItemList] = useState([]);
 	const [itemListSelected, setItemListSelected] = useState(initialItemListSelected);
@@ -15,14 +15,22 @@ function useSuggestion(initialItemListSelected, updateParent) {
 
 			document.getElementById('suggestionInput').value = '';
 
-			if (itemIdx === -1) {
-				itemListSelected.push(newItem);
+			if (multiSelect) {
+				if (itemIdx === -1) {
+					itemListSelected.push(newItem);
 
+					setItemListSelected(itemListSelected);
+					setShowSuggestion(false);
+					updateParent(itemListSelected);
+				} else {
+					setShowSuggestion(false);
+				}
+			} else {
+				document.getElementById('suggestionInput').value = e.currentTarget.innerHTML;
+				itemListSelected[0] = newItem;
 				setItemListSelected(itemListSelected);
 				setShowSuggestion(false);
 				updateParent(itemListSelected);
-			} else {
-				setShowSuggestion(false);
 			}
 		} else {
 			document.getElementById('suggestionInput').value = '';

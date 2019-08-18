@@ -75,7 +75,7 @@ class SitesBoardContainer extends Component {
 	deleteBoard = () => {
 		Api.deleteData(`boards/${this.state.board.id}`)
 			.then(() => {
-				this.props.history.push('/board');
+				this.props.history.push('/boards');
 			})
 			.catch(() => {
 				this.setState({

@@ -1,48 +1,49 @@
 {
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "plugins": ["react"],
-  "rules": {
-    "no-console": "off",
-    "import/no-unresolved": 0,
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
-    "no-restricted-syntax": "off",
-    "import/no-cycle": [3, { "maxDepth": 1 }],
-    "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/label-has-for": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
-    "jsx-a11y/no-static-element-interactions": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "jsx-a11y/anchor-has-content": "off",
-    "react/button-has-type": ["error", { "reset": true }],
-    "react/destructuring-assignment": "off",
-    "react/jsx-boolean-value": "off",
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ]
-  }
+	"env": {
+		"es6": true,
+		"node": true,
+		"browser": true
+	},
+	"extends": ["airbnb", "prettier", "prettier/react"],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"rules": {
+		"no-console": "off",
+		"import/no-unresolved": 0,
+		"no-plusplus": [
+			"error",
+			{
+				"allowForLoopAfterthoughts": true
+			}
+		],
+		"no-restricted-syntax": "off",
+		"import/no-cycle": [3, { "maxDepth": 1 }],
+		"jsx-a11y/label-has-associated-control": "off",
+		"jsx-a11y/label-has-for": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-static-element-interactions": "off",
+		"jsx-a11y/no-noninteractive-element-interactions": "off",
+		"jsx-a11y/anchor-has-content": "off",
+		"react/button-has-type": ["error", { "reset": true }],
+		"react/destructuring-assignment": "off",
+		"react/jsx-boolean-value": "off",
+		"react/prop-types": "off",
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".jsx"]
+			}
+		]
+	}
 }

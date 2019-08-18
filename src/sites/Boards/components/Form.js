@@ -42,7 +42,7 @@ class BoardsForm extends Component {
 
 		Api.postData(`boards`, { board })
 			.then((res) => {
-				this.props.history.push(`/board/${res.id}`);
+				this.props.history.push(`/boards/${res.id}`);
 			})
 			.catch((err) => {
 				this.setState({ msg: Api.handleHttpError(err) });
@@ -85,7 +85,7 @@ class BoardsForm extends Component {
 
 					<div className="form-group">
 						<label>Users</label>
-						<UserSuggestion updateParent={this.updateBoardUsers} />
+						<UserSuggestion updateParent={this.updateBoardUsers} multiSelect={false} />
 					</div>
 
 					<button type="submit" className="btn btn-primary float-right">

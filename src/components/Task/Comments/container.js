@@ -12,8 +12,12 @@ const TaskCommentsContainer = (props) => (
 
 			return (
 				<div className="TaskCommentsContainer">
-					{showForm ? <TaskCommentsFormContainer taskId={taskId} updateParent={fetchData} /> : null}
 					<Comments type="Task" typeId={taskId} commentList={comments} />
+					{showForm ? (
+						<div className="mt-4">
+							<TaskCommentsFormContainer taskId={taskId} updateParent={fetchData} />
+						</div>
+					) : null}
 				</div>
 			);
 		}}
