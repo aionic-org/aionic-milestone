@@ -1,0 +1,11 @@
+@import 'styles/variables';
+
+.Feedback {
+	.status-valid {
+		color: green;
+	}
+
+	.status-invalid {
+		color: red;
+	}
+}

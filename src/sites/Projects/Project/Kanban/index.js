@@ -20,10 +20,6 @@ const SitesProjectKanban = (props) => {
 						<Link to={`/projects/${project.id}`} className="btn btn-link mr-2">
 							Project View
 						</Link>
-						<button type="button" className="btn btn-primary">
-							<i className="fas fa-share mr-2" />
-							Share
-						</button>
 					</div>
 				</div>
 				<KanbanContainer taskList={project.tasks} />

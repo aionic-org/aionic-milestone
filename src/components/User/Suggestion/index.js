@@ -7,7 +7,7 @@ import Api from 'services/api';
 import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 
 const UserSuggestion = (props) => {
-	const { userListSelected, updateParent } = props;
+	const { userListSelected, updateParent, multiSelect, classes } = props;
 
 	const [
 		itemList,
@@ -17,7 +17,7 @@ const UserSuggestion = (props) => {
 		setShowSuggestion,
 		handleSelect,
 		handleRemove
-	] = useSuggestion(userListSelected, updateParent);
+	] = useSuggestion(userListSelected, updateParent, multiSelect);
 
 	const handleInputChange = async (e) => {
 		try {
@@ -53,33 +53,34 @@ const UserSuggestion = (props) => {
 		</div>
 	) : null;
 
-	const selected = itemListSelected.length ? (
-		<div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
-			<ul className="list-group">
-				{itemListSelected.map((user, i) => (
-					<li className="list-group-item list-group-item-action" key={user.id}>
-						<div className="row">
-							<div className="col-9">
-								{user.firstname} {user.lastname}
+	const selected =
+		multiSelect && itemListSelected.length ? (
+			<div className="selectedList" style={{ opacity: showSuggestion ? 0.3 : 1 }}>
+				<ul className="list-group">
+					{itemListSelected.map((user, i) => (
+						<li className="list-group-item list-group-item-action" key={user.id}>
+							<div className="row">
+								<div className="col-9">
+									{user.firstname} {user.lastname}
+								</div>
+								<div className="col-3">
+									<small className="float-right mt-1">
+										<i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
+									</small>
+								</div>
 							</div>
-							<div className="col-3">
-								<small className="float-right mt-1">
-									<i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
-								</small>
-							</div>
-						</div>
-					</li>
-				))}
-			</ul>
-			<span className="text-muted mt-2 d-block text-right">Count: {itemListSelected.length}</span>
-		</div>
-	) : null;
+						</li>
+					))}
+				</ul>
+				<span className="text-muted mt-2 d-block text-right">Count: {itemListSelected.length}</span>
+			</div>
+		) : null;
 
 	return (
 		<div className="UserSuggestion">
 			<input
 				type="text"
-				className="form-control"
+				className={`form-control ${classes.join(' ')}`}
 				name="title"
 				placeholder="Enter username..."
 				autoComplete="off"
@@ -97,7 +98,9 @@ const UserSuggestion = (props) => {
 
 UserSuggestion.defaultProps = {
 	userListSelected: [],
-	updateParent: () => {}
+	updateParent: () => {},
+	multiSelect: true,
+	classes: []
 };
 
 export default UserSuggestion;
