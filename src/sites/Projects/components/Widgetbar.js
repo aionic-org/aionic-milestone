@@ -37,7 +37,11 @@ const ProjectsWidgetbar = (props) => {
 						subcontent={
 							<div className="col">
 								<Progress
-									progress={Math.round((finishedProjects.length / allProjects.length) * 100)}
+									progress={
+										allProjects.length
+											? Math.round((finishedProjects.length / allProjects.length) * 100)
+											: 0
+									}
 									showPercent={true}
 								/>
 							</div>

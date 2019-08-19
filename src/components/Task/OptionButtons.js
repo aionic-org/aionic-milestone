@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 
+import Api from 'services/api';
+
 import MiscShare from 'components//Misc/Share';
 
 import TaskCreate from './Create';
@@ -23,6 +25,16 @@ const TaskOptionButtons = (props) => {
 
 	const toggleComplete = () => {
 		updateParentTaskState({ ...task, completed: !task.completed });
+	};
+
+	const deleteTask = () => {
+		Api.deleteData(`tasks/${task.id}`)
+			.then(() => {
+				props.history.push(`/`);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	let statusBtn = null;
@@ -62,7 +74,7 @@ const TaskOptionButtons = (props) => {
 						<i className="fas fa-archive fa-fw mr-2" /> Archive
 					</button>
 					<div className="dropdown-divider" />
-					<button type="button" className="btn dropdown-item text-danger">
+					<button type="button" className="btn dropdown-item text-danger" onClick={deleteTask}>
 						<i className="fas fa-trash fa-fw mr-2" /> Delete
 					</button>
 				</div>

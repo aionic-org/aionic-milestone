@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-import MiscShare from 'components//Misc/Share';
+import Api from 'services/api';
+
+import MiscShare from 'components/Misc/Share';
 
 const ProjectOptionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -21,6 +23,16 @@ const ProjectOptionButtons = (props) => {
 
 	const toggleComplete = () => {
 		updateParentProjectState({ ...project, completed: !project.completed });
+	};
+
+	const deleteProject = () => {
+		Api.deleteData(`projects/${project.id}`)
+			.then(() => {
+				props.history.push(`/projects`);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const completeBtn = project.completed ? (
@@ -62,7 +74,7 @@ const ProjectOptionButtons = (props) => {
 							<i className="fas fa-archive fa-fw mr-2" /> Archive
 						</button>
 						<div className="dropdown-divider" />
-						<button type="button" className="btn dropdown-item text-danger">
+						<button type="button" className="btn dropdown-item text-danger" onClick={deleteProject}>
 							<i className="fas fa-trash fa-fw mr-2" /> Delete
 						</button>
 					</div>
@@ -90,4 +102,4 @@ ProjectOptionButtons.defaultProps = {
 	assignedClasses: []
 };
 
-export default ProjectOptionButtons;
+export default withRouter(ProjectOptionButtons);

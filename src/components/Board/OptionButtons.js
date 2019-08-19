@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
+import Api from 'services/api';
 
 import MiscShare from 'components//Misc/Share';
 
@@ -17,6 +19,16 @@ const BoardOptionButtons = (props) => {
 
 	const handleCloseModal = () => {
 		setShowModal(false);
+	};
+
+	const deleteBoard = () => {
+		Api.deleteData(`boards/${board.id}`)
+			.then(() => {
+				props.history.push(`/boards`);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
@@ -42,7 +54,7 @@ const BoardOptionButtons = (props) => {
 						<i className="fas fa-archive fa-fw mr-2" /> Archive
 					</button>
 					<div className="dropdown-divider" />
-					<button type="button" className="btn dropdown-item text-danger">
+					<button type="button" className="btn dropdown-item text-danger" onClick={deleteBoard}>
 						<i className="fas fa-trash fa-fw mr-2" /> Delete
 					</button>
 				</div>
@@ -69,4 +81,4 @@ BoardOptionButtons.defaultProps = {
 	assignedClasses: []
 };
 
-export default BoardOptionButtons;
+export default withRouter(BoardOptionButtons);

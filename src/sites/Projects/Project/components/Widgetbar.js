@@ -20,7 +20,7 @@ const ProjectWidgetbar = (props) => {
 						title={openTasks.length}
 						subtitle="Open tasks"
 						icon="fas fa-list"
-						iconColor="#d63031"
+						iconColor="#6c5ce7"
 					/>
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">

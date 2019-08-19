@@ -17,7 +17,7 @@ const TaskSuggestion = (props) => {
 		setShowSuggestion,
 		handleSelect,
 		handleRemove
-	] = useSuggestion(taskListSelected, updateParent);
+	] = useSuggestion(taskListSelected, updateParent, true);
 
 	const handleInputChange = async (e) => {
 		try {

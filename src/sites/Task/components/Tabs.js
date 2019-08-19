@@ -17,8 +17,8 @@ const SitesTaskTabs = (props) => {
 
 	const tabs = [
 		{ name: 'Comments' },
-		{ name: 'GitHub' },
 		{ name: 'Scratchpad' },
+		{ name: 'GitHub' },
 		{ name: 'Projects' },
 		{ name: 'Links' }
 	];
@@ -28,11 +28,11 @@ const SitesTaskTabs = (props) => {
 		case 'Comments':
 			content = <TaskCommentsContainer taskId={task.id} />;
 			break;
-		case 'GitHub':
-			content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />;
-			break;
 		case 'Scratchpad':
 			content = <TaskScratchpad task={task} user={Session.getUser()} />;
+			break;
+		case 'GitHub':
+			content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />;
 			break;
 		case 'Projects':
 			content = <TaskProjectsContainer taskId={task.id} showDescription={true} />;
