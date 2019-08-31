@@ -70,9 +70,6 @@ const TaskOptionButtons = (props) => {
 					<button type="button" className="btn dropdown-item">
 						<i className="fas fa-print fa-fw mr-2" /> Print
 					</button>
-					<button type="button" className="dropdown-item">
-						<i className="fas fa-archive fa-fw mr-2" /> Archive
-					</button>
 					<div className="dropdown-divider" />
 					<button type="button" className="btn dropdown-item text-danger" onClick={deleteTask}>
 						<i className="fas fa-trash fa-fw mr-2" /> Delete

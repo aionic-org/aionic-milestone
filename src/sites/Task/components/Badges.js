@@ -21,7 +21,7 @@ const TaskBadges = (props) => {
 						<Badge
 							title="Expiring"
 							assignedClasses={['badge-warning']}
-							info="Task expires in the next 12 hours"
+							info="Task expires within the next 12 hours"
 						/>
 					</div>
 				) : null}

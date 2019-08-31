@@ -12,6 +12,28 @@ const Navbar = (props) => {
 
 	const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0'];
 
+	const toggleFullscreen = () => {
+		if (
+			!document.fullscreenElement &&
+			!document.mozFullScreenElement &&
+			!document.webkitFullscreenElement
+		) {
+			if (document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen();
+			} else if (document.documentElement.mozRequestFullScreen) {
+				document.documentElement.mozRequestFullScreen();
+			} else if (document.documentElement.webkitRequestFullscreen) {
+				document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+			}
+		} else if (document.cancelFullScreen) {
+			document.cancelFullScreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+	};
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light">
 			<button
@@ -102,6 +124,9 @@ const Navbar = (props) => {
 									Administration
 								</Link>
 							) : null}
+							<button type="button" className="btn dropdown-item" onClick={toggleFullscreen}>
+								<i className="fas fa-compress fa-fw mr-2" /> Toggle fullscreen
+							</button>
 							<div className="dropdown-divider" />
 							<Link to="/signout" className="dropdown-item text-danger">
 								<i className="fas fa-sign-out-alt fa-fw mr-2" /> Signout

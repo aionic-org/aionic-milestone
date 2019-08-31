@@ -8,8 +8,8 @@
 	background-color: $bg-grey;
 	color: white;
 	width: 100%;
-	max-width: 250px;
-	margin-left: -250px;
+	max-width: 230px;
+	margin-left: -230px;
 	border-right: 1px solid #dfe6e9;
 	-webkit-transition: margin 0.25s ease;
 	-moz-transition: margin 0.25s ease;
@@ -19,10 +19,8 @@
 	.sidebar-heading {
 		padding: 0.8rem 0rem;
 		font-size: 1.2rem;
-	}
-
-	.list-group {
-		margin-top: 15px;
+		min-height: 4.375rem;
+		max-height: 4.375rem;
 	}
 
 	.list-group a {
@@ -39,14 +37,6 @@
 
 	.list-group a:hover {
 		color: #6c5ce7;
-	}
-
-	.list-group a.active::after {
-		display: block;
-		float: right;
-		content: '\f054';
-		font-family: 'Font Awesome 5 Free';
-		font-weight: 900;
 	}
 }
 

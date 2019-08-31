@@ -17,42 +17,40 @@ const ProjectWidgetbar = (props) => {
 			<div className="row">
 				<div className="col-12 col-xl-3 mt-3 mt-xl-0">
 					<Widget
-						title={openTasks.length}
-						subtitle="Open tasks"
+						title={`Open tasks: ${openTasks.length}`}
 						icon="fas fa-list"
-						iconColor="#6c5ce7"
+						iconBackground="#6c5ce7"
 					/>
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={tasks.length}
-						subtitle="Total tasks"
+						title={`Total tasks: ${tasks.length}`}
 						icon="fas fa-table"
-						iconColor="#e17055"
+						iconBackground="#636e72"
 					/>
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={finishedTasks.length}
-						subtitle="Completed tasks"
 						icon="fas fa-check"
-						iconColor="#00b894"
-						subcontent={
-							<div className="col">
-								<Progress
-									progress={Math.round((finishedTasks.length / tasks.length) * 100)}
-									showPercent={true}
-								/>
+						iconBackground="#00b894"
+						title={
+							<div className="row d-flex align-items-center">
+								<div className="col-auto">Finished tasks: {finishedTasks.length}</div>
+								<div className="col">
+									<Progress
+										progress={Math.round((finishedTasks.length / tasks.length) * 100)}
+										showPercent={true}
+									/>
+								</div>
 							</div>
 						}
 					/>
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={Helper.formatDate(project.updated)}
-						subtitle="Last update"
+						title={`Last update: ${Helper.formatDate(project.updated)}`}
 						icon="fas fa-history"
-						iconColor="#0984e3"
+						iconBackground="#e17055"
 					/>
 				</div>
 			</div>

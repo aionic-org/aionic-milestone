@@ -16,6 +16,16 @@ const ProjectDetails = (props) => {
 	return (
 		<div className="ProjectDetails">
 			<div className="form-group">
+				<label>Author</label>
+				<input
+					type="text"
+					name="created"
+					className="form-control"
+					value={project.author ? `${project.author.firstname} ${project.author.lastname}` : '-'}
+					disabled
+				/>
+			</div>
+			<div className="form-group">
 				<label>Created</label>
 				<input
 					type="text"

@@ -9,8 +9,8 @@ import UILogo from 'components/UI/Logo';
 
 const Sidebar = () => {
 	const logoStyle = {
-		height: '50px',
-		width: '50px'
+		height: '44px',
+		width: '44px'
 	};
 
 	const logoClasses = ['d-inline-block', 'align-top'];

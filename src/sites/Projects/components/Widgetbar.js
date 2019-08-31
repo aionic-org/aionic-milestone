@@ -12,38 +12,39 @@ const ProjectsWidgetbar = (props) => {
 	return (
 		<div className="ProjectsWidgetbar">
 			<div className="row">
-				<div className="col-12 col-xl-4 mt-xl-0">
+				<div className="col-12 col-xl-4 mt-xl-0 mb-3">
 					<Widget
-						title={openProjects.length}
+						title={`Open projects: ${openProjects.length}`}
 						subtitle="Open projects"
 						icon="fas fa-list"
-						iconColor="#6c5ce7"
+						iconBackground="#6c5ce7"
 					/>
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={allProjects.length}
-						subtitle="Total projects"
+						title={`Total projects: ${allProjects.length}`}
 						icon="fas fa-table"
-						iconColor="#e17055"
+						iconBackground="#636e72"
 					/>
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={finishedProjects.length}
 						subtitle="Finished projects"
 						icon="fas fa-check"
-						iconColor="#00b894"
-						subcontent={
-							<div className="col">
-								<Progress
-									progress={
-										allProjects.length
-											? Math.round((finishedProjects.length / allProjects.length) * 100)
-											: 0
-									}
-									showPercent={true}
-								/>
+						iconBackground="#00b894"
+						title={
+							<div className="row d-flex align-items-center">
+								<div className="col-auto">Finished projects: {finishedProjects.length}</div>
+								<div className="col">
+									<Progress
+										progress={
+											allProjects.length
+												? Math.round((finishedProjects.length / allProjects.length) * 100)
+												: 0
+										}
+										showPercent={true}
+									/>
+								</div>
 							</div>
 						}
 					/>

@@ -49,9 +49,6 @@ const ProjectOptionButtons = (props) => {
 	return (
 		<div className="ProjectOptionButtons">
 			<div className="float-md-right">
-				<Link to={`${project.id}/kanban`} className="btn btn-link mr-2">
-					Kanban View
-				</Link>
 				{completeBtn}
 				<div className="btn-group ml-2">
 					<button
@@ -70,9 +67,9 @@ const ProjectOptionButtons = (props) => {
 						<button type="button" className="btn dropdown-item">
 							<i className="fas fa-print fa-fw mr-2" /> Print
 						</button>
-						<button type="button" className="dropdown-item">
-							<i className="fas fa-archive fa-fw mr-2" /> Archive
-						</button>
+						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-2">
+							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban View
+						</Link>
 						<div className="dropdown-divider" />
 						<button type="button" className="btn dropdown-item text-danger" onClick={deleteProject}>
 							<i className="fas fa-trash fa-fw mr-2" /> Delete

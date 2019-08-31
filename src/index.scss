@@ -23,14 +23,14 @@ body {
 }
 
 #App.toggled #page-content-wrapper {
-	margin-left: 250px;
+	margin-left: 230px;
 }
 
 @media (min-width: 768px) {
 	#page-content-wrapper {
 		min-width: 0;
 		width: 100%;
-		margin-left: 250px;
+		margin-left: 230px;
 	}
 
 	#App.toggled #page-content-wrapper {

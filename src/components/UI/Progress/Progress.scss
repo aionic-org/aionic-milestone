@@ -1,9 +1,7 @@
 @import 'styles/variables.scss';
 
 .progress {
-  margin-top: 10px;
-
-  .progress-bar {
-    background-color: $mint;
-  }
+	.progress-bar {
+		background-color: $mint;
+	}
 }

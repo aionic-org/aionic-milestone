@@ -21,10 +21,14 @@ const ProjectPreview = (props) => {
 				</div>
 			</div>
 			<div className="card-body">
-				<h6 className="card-subtitle text-muted">
+				<h6 className="card-subtitle text-muted mt-0">
 					{project.author.firstname} {project.author.lastname}
 				</h6>
-				<p className="card-text">{project.description}</p>
+				<p
+					className={`card-text ${project.description && project.description.length ? 'mt-1' : ''}`}
+				>
+					{project.description}
+				</p>
 			</div>
 			<div className="card-footer text-muted">
 				<small>Created: {project.created}</small>

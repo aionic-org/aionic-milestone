@@ -2,32 +2,22 @@ import React from 'react';
 
 import Helper from 'services/helper';
 
-import useTextFilter from 'components/Utility/Hooks/useTextFilter';
-
 import Content from 'components/UI/Content';
 import InputTitle from 'components/UI/Input/Title/';
-
-import CardDeck from 'components/Deck';
 
 import ProjectOptionButtons from 'components/Project/OptionButtons';
 
 import ProjectWidgetbar from './components/Widgetbar';
 import SitesProjectTabs from './components/Tabs';
 import ProjectBadges from './components/Badges';
+import ProjectTaskTable from './components/Task/Table';
 
 const SitesProject = (props) => {
 	const { project, updateParentProjectState } = props;
-	const [tasksFiltered, setTasksFiltered, filterText] = useTextFilter('title', project.tasks);
 
 	const handleTitleChange = (e) => {
 		Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
 	};
-
-	const filterTasks = (e) => {
-		setTasksFiltered(e.target.value);
-	};
-
-	const tasksToShow = filterText.length ? tasksFiltered : project.tasks;
 
 	return (
 		<div className="SitesProject">
@@ -53,15 +43,7 @@ const SitesProject = (props) => {
 				<ProjectWidgetbar project={project} />
 				<div className="row">
 					<div className="col-12 col-xl-8">
-						<div className="form-group">
-							<input
-								type="text"
-								className="form-control"
-								placeholder="Filter tasks..."
-								onChange={filterTasks}
-							/>
-						</div>
-						<CardDeck deckType="Task" itemList={tasksToShow} itemsPerRow={1} />
+						<ProjectTaskTable tasks={project.tasks} />
 					</div>
 					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 						<SitesProjectTabs
