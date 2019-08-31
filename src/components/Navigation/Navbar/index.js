@@ -75,15 +75,15 @@ const Navbar = (props) => {
 							<div className="dropdown-header">Users & Boards</div>
 							<Link to="/administration/users" className="dropdown-item">
 								<i className="far fa-envelope fa-fw mr-2" />
-								Invite user
+								Invite User
 							</Link>
 							<Link to="/administration/users?create=true" className="dropdown-item">
 								<i className="fas fa-user-plus fa-fw mr-2" />
-								Create user
+								Create User
 							</Link>
 							<Link to="/boards?create=true" className="dropdown-item">
 								<i className="fas fa-chalkboard-teacher mr-2" />
-								Create board
+								Create Board
 							</Link>
 							<div className="dropdown-divider" />
 
@@ -91,11 +91,11 @@ const Navbar = (props) => {
 
 							<Link to="/tasks" className="dropdown-item">
 								<i className="fas fa-tasks fa-fw mr-2" />
-								Create task
+								Create Task
 							</Link>
 							<Link to="/projects?create=true" className="dropdown-item">
 								<i className="fas fa-table fa-fw mr-2" />
-								Create project
+								Create Project
 							</Link>
 						</div>
 					</li>
@@ -125,7 +125,7 @@ const Navbar = (props) => {
 								</Link>
 							) : null}
 							<button type="button" className="btn dropdown-item" onClick={toggleFullscreen}>
-								<i className="fas fa-compress fa-fw mr-2" /> Toggle fullscreen
+								<i className="fas fa-compress fa-fw mr-2" /> Toggle Fullscreen
 							</button>
 							<div className="dropdown-divider" />
 							<Link to="/signout" className="dropdown-item text-danger">

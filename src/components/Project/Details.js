@@ -19,7 +19,7 @@ const ProjectDetails = (props) => {
 				<label>Author</label>
 				<input
 					type="text"
-					name="created"
+					name="author"
 					className="form-control"
 					value={project.author ? `${project.author.firstname} ${project.author.lastname}` : '-'}
 					disabled
@@ -32,6 +32,16 @@ const ProjectDetails = (props) => {
 					name="created"
 					className="form-control"
 					value={Helper.formatDateTime(project.created)}
+					disabled
+				/>
+			</div>
+			<div className="form-group">
+				<label>Updated</label>
+				<input
+					type="text"
+					name="updated"
+					className="form-control"
+					value={Helper.formatDateTime(project.updated)}
 					disabled
 				/>
 			</div>

@@ -17,14 +17,14 @@ const ProjectWidgetbar = (props) => {
 			<div className="row">
 				<div className="col-12 col-xl-3 mt-3 mt-xl-0">
 					<Widget
-						title={`Open tasks: ${openTasks.length}`}
+						title={`Open Tasks: ${openTasks.length}`}
 						icon="fas fa-list"
 						iconBackground="#6c5ce7"
 					/>
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={`Total tasks: ${tasks.length}`}
+						title={`Total Tasks: ${tasks.length}`}
 						icon="fas fa-table"
 						iconBackground="#636e72"
 					/>
@@ -35,7 +35,7 @@ const ProjectWidgetbar = (props) => {
 						iconBackground="#00b894"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Finished tasks: {finishedTasks.length}</div>
+								<div className="col-auto">Finished Tasks: {finishedTasks.length}</div>
 								<div className="col">
 									<Progress
 										progress={Math.round((finishedTasks.length / tasks.length) * 100)}
@@ -48,8 +48,8 @@ const ProjectWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={`Last update: ${Helper.formatDate(project.updated)}`}
-						icon="fas fa-history"
+						title={`Deadline: ${Helper.formatDateTime(project.deadline)}`}
+						icon="fas fa-calendar-times"
 						iconBackground="#e17055"
 					/>
 				</div>

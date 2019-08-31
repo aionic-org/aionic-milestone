@@ -12,9 +12,9 @@ const ProjectsWidgetbar = (props) => {
 	return (
 		<div className="ProjectsWidgetbar">
 			<div className="row">
-				<div className="col-12 col-xl-4 mt-xl-0 mb-3">
+				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={`Open projects: ${openProjects.length}`}
+						title={`Open Projects: ${openProjects.length}`}
 						subtitle="Open projects"
 						icon="fas fa-list"
 						iconBackground="#6c5ce7"
@@ -22,19 +22,18 @@ const ProjectsWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={`Total projects: ${allProjects.length}`}
+						title={`Total Projects: ${allProjects.length}`}
 						icon="fas fa-table"
 						iconBackground="#636e72"
 					/>
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						subtitle="Finished projects"
 						icon="fas fa-check"
 						iconBackground="#00b894"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Finished projects: {finishedProjects.length}</div>
+								<div className="col-auto">Finished Projects: {finishedProjects.length}</div>
 								<div className="col">
 									<Progress
 										progress={
