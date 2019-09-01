@@ -1,53 +1,50 @@
-/* eslint-disable no-undef */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function useSuggestion(initialItemListSelected, updateParent, multiSelect) {
+function useSuggestion(initialItemListSelected, updateParent, autoClearOnSelect, inputID) {
 	const [showSuggestion, setShowSuggestion] = useState(false);
 	const [itemList, setItemList] = useState([]);
 	const [itemListSelected, setItemListSelected] = useState(initialItemListSelected);
 
+	useEffect(() => {
+		setItemListSelected(initialItemListSelected);
+	}, [initialItemListSelected]);
+
 	const handleSelect = (e) => {
 		const target = e.currentTarget;
-		const newItem = itemList[Number(target.dataset.pos)];
 
-		if (newItem) {
-			const itemIdx = itemListSelected.findIndex((item) => item.id === newItem.id);
+		// Check if item is already selected
+		const newItemID = Number(target.dataset.id);
+		const itemIdx = itemListSelected.findIndex((item) => item.id === newItemID);
 
-			document.getElementById('suggestionInput').value = '';
+		if (itemIdx === -1) {
+			const newItem = itemList.find((item) => item.id === newItemID);
 
-			if (multiSelect) {
-				if (itemIdx === -1) {
-					itemListSelected.push(newItem);
+			const newItems = itemListSelected.slice();
+			newItems.push(newItem);
 
-					setItemListSelected(itemListSelected);
-					setShowSuggestion(false);
-					updateParent(itemListSelected);
-				} else {
-					setShowSuggestion(false);
-				}
-			} else {
-				document.getElementById('suggestionInput').value = e.currentTarget.innerHTML;
-				itemListSelected[0] = newItem;
-				setItemListSelected(itemListSelected);
-				setShowSuggestion(false);
-				updateParent(itemListSelected);
-			}
+			setItemListSelected(newItems);
+			setShowSuggestion(false);
+			updateParent(newItems);
+
+			document.getElementById(inputID).value = autoClearOnSelect ? '' : target.dataset.displayname;
 		} else {
-			document.getElementById('suggestionInput').value = '';
+			document.getElementById(inputID).value = '';
 			setShowSuggestion(false);
 		}
 	};
 
 	const handleRemove = (e) => {
 		const target = e.currentTarget;
-		const itemToRemove = itemListSelected[Number(target.dataset.pos)];
 
-		const itemIdx = itemListSelected.findIndex((item) => Number(item.id) === itemToRemove.id);
+		const itemToRemoveID = Number(target.dataset.id);
+		const itemToRemoveIdx = itemListSelected.findIndex((item) => item.id === itemToRemoveID);
 
-		if (itemIdx >= 0) {
-			itemListSelected.splice(itemIdx, 1);
-			setItemListSelected(itemListSelected);
-			updateParent(itemListSelected);
+		if (itemToRemoveIdx >= 0) {
+			const newItems = itemListSelected.slice();
+			newItems.splice(itemToRemoveIdx, 1);
+
+			setItemListSelected(newItems);
+			updateParent(newItems);
 		}
 	};
 

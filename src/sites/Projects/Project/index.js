@@ -19,6 +19,10 @@ const SitesProject = (props) => {
 		Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
 	};
 
+	const updateProjectTasks = (tasks) => {
+		updateParentProjectState({ ...project, tasks });
+	};
+
 	return (
 		<div className="SitesProject">
 			<Content>
@@ -43,7 +47,7 @@ const SitesProject = (props) => {
 				<ProjectWidgetbar project={project} />
 				<div className="row">
 					<div className="col-12 col-xl-8">
-						<ProjectTaskTable tasks={project.tasks} />
+						<ProjectTaskTable tasks={project.tasks} updateProjectTasks={updateProjectTasks} />
 					</div>
 					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 						<SitesProjectTabs

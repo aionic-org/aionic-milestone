@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Helper from 'services/helper';
+
 import Badge from 'components/UI/Badge';
 
 const ProjectPreview = (props) => {
@@ -31,7 +33,7 @@ const ProjectPreview = (props) => {
 				</p>
 			</div>
 			<div className="card-footer text-muted">
-				<small>Created: {project.created}</small>
+				<small>Created: {Helper.formatDate(project.created)}</small>
 			</div>
 		</Link>
 	);

@@ -94,12 +94,10 @@ class ProjectForm extends Component {
 							rows="3"
 						/>
 					</div>
-
 					<div className="form-group">
 						<label>Tasks</label>
 						<TaskSuggestion updateParent={this.updateProjectTasks} />
 					</div>
-
 					<button type="submit" className="btn btn-primary float-right">
 						Create
 					</button>

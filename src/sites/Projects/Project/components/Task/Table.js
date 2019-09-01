@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 import Helper from 'services/helper';
 
+import TaskSuggestion from 'components/Task/Suggestion/';
+
 const ProjectTaskTable = (props) => {
-	const { tasks } = props;
+	const { tasks, updateProjectTasks } = props;
 
 	const [filterText, setFilterText] = useState('');
 	const [tasksFiltered, setTasksFiltered] = useState([]);
@@ -31,6 +33,24 @@ const ProjectTaskTable = (props) => {
 		setTasksFiltered(newTasksFiltered);
 	};
 
+	const removeTask = (e) => {
+		const taskToRemoveID = Number(e.target.dataset.id);
+		const newTasks = tasks.filter((task) => task.id !== taskToRemoveID);
+
+		updateProjectTasks(newTasks);
+	};
+
+	const addTask = (newTasks) => {
+		const existingTask = tasks.find((task) => task.id === newTasks.id);
+
+		if (existingTask === undefined) {
+			const tasksCopy = tasks.slice();
+			tasksCopy.push(newTasks[newTasks.length - 1]);
+
+			updateProjectTasks(newTasks);
+		}
+	};
+
 	const tasksToShow = filterText.length ? tasksFiltered : tasks;
 
 	return (
@@ -51,14 +71,16 @@ const ProjectTaskTable = (props) => {
 							<th scope="col">Assignee</th>
 							<th scope="col">Deadline</th>
 							<th scope="col">Completed</th>
-							<th scope="col">Link</th>
+							<th scope="col">Remove</th>
 						</tr>
 					</thead>
 					<tbody>
 						{tasksToShow.map((task) => (
 							<tr key={task.id}>
 								<th scope="row">{task.id}</th>
-								<td>{task.title}</td>
+								<td>
+									<Link to={`/tasks/${task.id}`}>{task.title}</Link>
+								</td>
 								<td>{task.status ? task.status.title : '-'}</td>
 								<td>
 									{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}
@@ -66,9 +88,11 @@ const ProjectTaskTable = (props) => {
 								<td>{Helper.formatDate(task.deadline)}</td>
 								<td>{String(task.completed)}</td>
 								<td>
-									<Link
-										to={`/tasks/${task.id}`}
-										className="fas fa-fw fa-external-link-square-alt"
+									<i
+										className="fas fa-times"
+										style={{ cursor: 'pointer', color: '#d63031' }}
+										onClick={removeTask}
+										data-id={task.id}
 									/>
 								</td>
 							</tr>
@@ -76,6 +100,14 @@ const ProjectTaskTable = (props) => {
 					</tbody>
 				</table>
 			</div>
+			<label>Add new tasks</label>
+			<TaskSuggestion
+				taskListSelected={tasks}
+				multiSelect={false}
+				autoClear={true}
+				smallInput={true}
+				updateParent={addTask}
+			/>
 		</div>
 	);
 };

@@ -8,7 +8,14 @@ import Api from 'services/api';
 import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 
 const TaskSuggestion = (props) => {
-	const { taskListSelected, updateParent, maxHeight, label } = props;
+	const { taskListSelected, updateParent, multiSelect, autoClear, maxHeight, smallInput } = props;
+
+	const inputID = `suggestion-input-${Math.random()
+		.toString(36)
+		.substring(7)}`;
+
+	const autoClearOnSelect = multiSelect ? true : autoClear;
+
 	const [
 		itemList,
 		itemListSelected,
@@ -17,7 +24,7 @@ const TaskSuggestion = (props) => {
 		setShowSuggestion,
 		handleSelect,
 		handleRemove
-	] = useSuggestion(taskListSelected, updateParent, true);
+	] = useSuggestion(taskListSelected, updateParent, autoClearOnSelect, inputID);
 
 	const handleInputChange = async (e) => {
 		try {
@@ -39,14 +46,15 @@ const TaskSuggestion = (props) => {
 	const suggestion = showSuggestion ? (
 		<div className="suggestionList">
 			<ul className="list-group">
-				{itemList.map((task, i) => (
+				{itemList.map((task) => (
 					<li
 						className="list-group-item list-group-item-action"
 						key={task.id}
-						data-pos={i}
+						data-id={task.id}
+						data-displayname={task.title}
 						onClick={handleSelect}
 					>
-						<div className="row" data-pos={i}>
+						<div className="row" data-id={task.id}>
 							<div className="col-7">{task.title}</div>
 							<div className="col-5">
 								<span className="text-muted float-right">
@@ -64,44 +72,44 @@ const TaskSuggestion = (props) => {
 		</div>
 	) : null;
 
-	const selected = itemListSelected.length ? (
-		<div
-			className={`selectedList ${maxHeight ? 'max-height' : ``}`}
-			style={{ opacity: showSuggestion ? 0.3 : 1 }}
-		>
-			<ul className="list-group">
-				{itemListSelected.map((task, i) => (
-					<li className="list-group-item list-group-item-action" key={task.id}>
-						<div className="row">
-							<div className="col-9">{task.title}</div>
-							<div className="col-3">
-								<small className="float-right mt-1">
-									<Link
-										className="fas fa-external-link-square-alt ml-2 fa-sm"
-										to={`/tasks/${task.id}`}
-									/>
-									<i className="fas fa-times ml-2" data-pos={i} onClick={handleRemove} />
-								</small>
+	const selected =
+		multiSelect && itemListSelected.length ? (
+			<div
+				className={`selectedList ${maxHeight ? 'max-height' : ``}`}
+				style={{ opacity: showSuggestion ? 0.3 : 1 }}
+			>
+				<ul className="list-group">
+					{itemListSelected.map((task) => (
+						<li className="list-group-item list-group-item-action" key={task.id}>
+							<div className="row">
+								<div className="col-9">{task.title}</div>
+								<div className="col-3">
+									<small className="float-right mt-1">
+										<Link
+											className="fas fa-external-link-square-alt ml-2 fa-sm"
+											to={`/tasks/${task.id}`}
+										/>
+										<i className="fas fa-times ml-2" data-id={task.id} onClick={handleRemove} />
+									</small>
+								</div>
 							</div>
-						</div>
-						<small className="text-muted">
-							{task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
-						</small>
-					</li>
-				))}
-			</ul>
-			<span className="text-muted mt-2 d-block text-center">Total: {itemListSelected.length}</span>
-		</div>
-	) : null;
-
-	const inputLabel = label.length ? <label>{label}</label> : null;
+							<small className="text-muted">
+								{task.author ? `${task.author.firstname} ${task.author.lastname}` : null}
+							</small>
+						</li>
+					))}
+				</ul>
+				<span className="text-muted mt-2 d-block text-center">
+					Total: {itemListSelected.length}
+				</span>
+			</div>
+		) : null;
 
 	return (
 		<div className="TaskSuggestion">
-			{inputLabel}
 			<input
 				type="text"
-				className="form-control"
+				className={`form-control ${smallInput ? 'form-control-sm' : ''}`}
 				name="title"
 				placeholder="Enter task title..."
 				autoComplete="off"
@@ -109,7 +117,7 @@ const TaskSuggestion = (props) => {
 				onKeyDown={(e) => {
 					if (e.keyCode === 27) setShowSuggestion(false);
 				}}
-				id="suggestionInput"
+				id={inputID}
 			/>
 			{suggestion}
 			{selected}
@@ -120,8 +128,10 @@ const TaskSuggestion = (props) => {
 TaskSuggestion.defaultProps = {
 	taskListSelected: [],
 	updateParent: () => {},
+	multiSelect: true,
+	autoClear: false,
 	maxHeight: false,
-	label: ''
+	smallInput: false
 };
 
 export default TaskSuggestion;

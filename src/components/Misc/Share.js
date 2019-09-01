@@ -37,7 +37,7 @@ const MiscShare = (props) => {
 		<div className="MiscShare">
 			<div className="form-group">
 				<label>Users</label>
-				<UserSuggestion updateParent={updateUserIDs} userListSelected={[]} />
+				<UserSuggestion updateParent={updateUserIDs} />
 				<Feedback valid={valid} message={msg} />
 			</div>
 
