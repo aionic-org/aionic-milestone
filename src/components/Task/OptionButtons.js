@@ -1,30 +1,70 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Api from 'services/api';
+import Session from 'services/session';
 
 import MiscShare from 'components//Misc/Share';
 
 import TaskCreate from './Create';
+import TaskMove from './Move';
+import TaskPlugins from './Plugins';
 
 const TaskOptionButtons = (props) => {
 	const { task, isNewTask, updateParentTaskState } = props;
 
 	const [showModal, setShowModal] = useState(false);
-	const [modalContent, setModalContent] = useState(null);
+	const [modalContent, setModalContent] = useState({ title: null, content: null });
+
+	const assignToMe = () => {
+		updateParentTaskState({ ...task, assignee: Session.getUser() });
+	};
+
+	const toggleComplete = () => {
+		updateParentTaskState({ ...task, completed: !task.completed });
+	};
+
+	const cloneTask = () => {
+		const newTask = { ...task, title: `CLONE: ${task.title}` };
+
+		delete newTask.id;
+
+		Api.postData('tasks', { task: newTask })
+			.then((res) => {
+				props.history.push(`/tasks/${res.id}`);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
 	const openShareModal = () => {
-		setModalContent(<MiscShare endpoint={`tasks/${task.id}/share`} />);
+		setModalContent({
+			title: 'Share task',
+			content: <MiscShare endpoint={`tasks/${task.id}/share`} />
+		});
+		setShowModal(true);
+	};
+
+	const openPluginsModal = () => {
+		setModalContent({
+			title: 'Plugins',
+			content: <TaskPlugins task={task} updateParentTaskState={updateParentTaskState} />
+		});
+		setShowModal(true);
+	};
+
+	const openMoveTaskModal = () => {
+		setModalContent({
+			title: 'Move task',
+			content: <TaskMove task={task} updateParentTaskState={updateParentTaskState} />
+		});
 		setShowModal(true);
 	};
 
 	const handleCloseModal = () => {
 		setShowModal(false);
-	};
-
-	const toggleComplete = () => {
-		updateParentTaskState({ ...task, completed: !task.completed });
 	};
 
 	const deleteTask = () => {
@@ -42,34 +82,64 @@ const TaskOptionButtons = (props) => {
 	if (isNewTask) {
 		statusBtn = <TaskCreate task={task} />;
 	} else {
-		statusBtn = task.completed ? (
-			<button type="button" className="btn btn-warning" onClick={toggleComplete}>
-				<i className="fas fa-redo mr-2" /> Reopen
-			</button>
-		) : (
-			<button type="button" className="btn btn-mint" onClick={toggleComplete}>
-				<i className="fas fa-check mr-2" />
-				Mark complete
-			</button>
-		);
+		statusBtn =
+			!task.assignee || (task.assignee && task.assignee.id !== Session.getUser().id) ? (
+				<button type="button" className="btn btn-light" onClick={assignToMe}>
+					Assign to me
+				</button>
+			) : null;
 		moreBtn = (
-			<div className="btn-group ml-2">
+			<div className="ml-2">
 				<button
 					type="button"
-					className="btn btn-primary dropdown-toggle"
+					className="btn btn-primary"
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false"
 				>
-					More
+					<i className="fas fa-ellipsis-h" />
 				</button>
 				<div className="dropdown-menu dropdown-menu-right">
+					<h6 className="dropdown-header">Actions</h6>
+					{task.completed ? (
+						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
+							<i className="fas fa-redo fa-fw mr-2" /> Reopen
+						</button>
+					) : (
+						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
+							<i className="fas fa-check fa-fw mr-2" /> Complete
+						</button>
+					)}
+					<button type="button" className="btn dropdown-item" onClick={cloneTask}>
+						<i className="fas fa-clone fa-fw mr-2" /> Clone
+					</button>
+
+					<h6 className="dropdown-header">Project</h6>
+					<button type="button" className="btn dropdown-item" onClick={openMoveTaskModal}>
+						<i className="fas fa-exchange-alt fa-fw mr-2" /> Move
+					</button>
+					{task.project ? (
+						<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-2">
+							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
+						</Link>
+					) : null}
+
+					<h6 className="dropdown-header">Share</h6>
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-2" /> Share
 					</button>
 					<button type="button" className="btn dropdown-item">
 						<i className="fas fa-print fa-fw mr-2" /> Print
 					</button>
+					<button type="button" className="btn dropdown-item">
+						<i className="fas fa-binoculars fa-fw mr-2" /> Watch
+					</button>
+
+					<h6 className="dropdown-header">More</h6>
+					<button type="button" className="btn dropdown-item" onClick={openPluginsModal}>
+						<i className="fas fa-plug fa-fw mr-2" /> Plugins
+					</button>
+
 					<div className="dropdown-divider" />
 					<button type="button" className="btn dropdown-item text-danger" onClick={deleteTask}>
 						<i className="fas fa-trash fa-fw mr-2" /> Delete
@@ -82,12 +152,12 @@ const TaskOptionButtons = (props) => {
 					overlayClassName="Modal-Overlay"
 				>
 					<div className="modal-header">
-						<h5 className="modal-title">Share task</h5>
+						<h5 className="modal-title">{modalContent.title}</h5>
 						<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
 							<span aria-hidden="true">×</span>
 						</button>
 					</div>
-					<div className="modal-body">{modalContent}</div>
+					<div className="modal-body">{modalContent.content}</div>
 				</ReactModal>
 			</div>
 		);
@@ -95,7 +165,7 @@ const TaskOptionButtons = (props) => {
 
 	return (
 		<div className="TaskOptionButtons">
-			<div className="float-md-right">
+			<div className="float-md-right btn-toolbar">
 				{statusBtn}
 				{moreBtn}
 			</div>

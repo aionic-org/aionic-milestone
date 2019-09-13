@@ -26,7 +26,6 @@ class SitesSearchFiltersContainer extends Component {
 		const requests = [
 			Api.fetchData('users'),
 			Api.fetchData('task-status'),
-			Api.fetchData('task-type'),
 			Api.fetchData('git/organization')
 		];
 
@@ -37,8 +36,7 @@ class SitesSearchFiltersContainer extends Component {
 					lists: {
 						userList: res[0],
 						statusList: res[1],
-						typeList: res[2],
-						orgList: res[3]
+						orgList: res[2]
 					}
 				});
 			})

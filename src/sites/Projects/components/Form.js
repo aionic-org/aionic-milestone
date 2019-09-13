@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 import Helper from 'services/helper';
 import Api from 'services/api';
@@ -83,7 +84,11 @@ class ProjectForm extends Component {
 					</div>
 					<div className="form-group">
 						<label>Deadline</label>
-						<InputDate name="deadline" startDate={Date.now()} updateParent={this.updateDeadline} />
+						<InputDate
+							name="deadline"
+							startDate={moment(new Date()).add(7, 'days')}
+							updateParent={this.updateDeadline}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Description</label>

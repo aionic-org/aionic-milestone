@@ -22,7 +22,7 @@ export default class Helper {
 
 	static formatDateTime(_date) {
 		const date = _date ? moment(_date) : '';
-		return date ? date.format('YYYY-MM-DD / hh:mm a') : '-';
+		return date ? date.format('YYYY-MM-DD hh:mm a') : '-';
 	}
 
 	static formatDate(_date) {

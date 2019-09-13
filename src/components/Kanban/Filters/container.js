@@ -15,7 +15,6 @@ class KanbanFiltersContainer extends Component {
 			isLoading: true,
 			msg: null,
 			lists: {
-				typeList: [],
 				priorityList: []
 			}
 		};
@@ -23,13 +22,11 @@ class KanbanFiltersContainer extends Component {
 
 	componentDidMount = async () => {
 		try {
-			const typeList = await Api.fetchData('task-type');
 			const priorityList = await Api.fetchData('task-priorities');
 
-			typeList.unshift({ id: 0, title: 'Task Type' });
 			priorityList.unshift({ id: 0, title: 'Task Priority' });
 
-			this.setState({ isLoading: false, lists: { typeList, priorityList } });
+			this.setState({ isLoading: false, lists: { priorityList } });
 		} catch (err) {
 			this.setState({
 				isLoading: false,

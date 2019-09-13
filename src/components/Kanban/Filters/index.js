@@ -1,17 +1,12 @@
 import React from 'react';
 
-import TaskSelectsType from 'components/Task/Selects/Type';
 import TaskSelectsPriority from 'components/Task/Selects/Priority';
 
 const KanbanFilters = (props) => {
-	const { toggleStretch, taskFilters, setTaskFilters, typeList, priorityList } = props;
+	const { toggleStretch, taskFilters, setTaskFilters, priorityList } = props;
 
 	const updateTextFilter = (e) => {
 		setTaskFilters({ ...taskFilters, textFilter: e.target.value });
-	};
-
-	const updateTypeFilter = (e) => {
-		setTaskFilters({ ...taskFilters, typeFilter: parseInt(e.target.value, 10) });
 	};
 
 	const updatePriorityFilter = (e) => {
@@ -38,16 +33,6 @@ const KanbanFilters = (props) => {
 								className="form-control form-control-sm"
 								placeholder="Filter tasks..."
 								onChange={updateTextFilter}
-							/>
-						</div>
-					</div>
-					<div className="col-2">
-						<div className="form-group mb-0">
-							<TaskSelectsType
-								typeList={typeList}
-								classes={['form-control-sm']}
-								showDefault={false}
-								onChange={updateTypeFilter}
 							/>
 						</div>
 					</div>

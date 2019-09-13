@@ -12,6 +12,21 @@ const ProjectOptionButtons = (props) => {
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState(null);
 
+	const cloneProject = () => {
+		const newProject = { ...project, title: `CLONE: ${project.title}` };
+
+		delete newProject.id;
+		delete newProject.tasks;
+
+		Api.postData('projects', { project: newProject })
+			.then((res) => {
+				props.history.push(`/projects/${res.id}`);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	const openShareModal = () => {
 		setModalContent(<MiscShare endpoint={`projects/${project.id}/share`} />);
 		setShowModal(true);
@@ -35,41 +50,46 @@ const ProjectOptionButtons = (props) => {
 			});
 	};
 
-	const completeBtn = project.completed ? (
-		<button type="button" className="btn btn-warning" onClick={toggleComplete}>
-			<i className="fas fa-redo mr-2" /> Reopen
-		</button>
-	) : (
-		<button type="button" className="btn btn-mint" onClick={toggleComplete}>
-			<i className="fas fa-check mr-2" />
-			Mark complete
-		</button>
-	);
-
 	return (
 		<div className="ProjectOptionButtons">
 			<div className="float-md-right">
-				{completeBtn}
-				<div className="btn-group ml-2">
+				<div>
 					<button
 						type="button"
-						className="btn btn-primary dropdown-toggle"
+						className="btn btn-primary"
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false"
 					>
-						More
+						<i className="fas fa-ellipsis-h" />
 					</button>
 					<div className="dropdown-menu dropdown-menu-right">
+						<h6 className="dropdown-header">Actions</h6>
+						{project.completed ? (
+							<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
+								<i className="fas fa-redo fa-fw mr-2" /> Reopen
+							</button>
+						) : (
+							<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
+								<i className="fas fa-check fa-fw mr-2" /> Complete
+							</button>
+						)}
+						<button type="button" className="btn dropdown-item" onClick={cloneProject}>
+							<i className="fas fa-clone fa-fw mr-2" /> Clone
+						</button>
+
+						<h6 className="dropdown-header">Views</h6>
+						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-2">
+							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
+						</Link>
+
+						<h6 className="dropdown-header">Share</h6>
 						<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 							<i className="fas fa-share fa-fw mr-2" /> Share
 						</button>
 						<button type="button" className="btn dropdown-item">
 							<i className="fas fa-print fa-fw mr-2" /> Print
 						</button>
-						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-2">
-							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban View
-						</Link>
 						<div className="dropdown-divider" />
 						<button type="button" className="btn dropdown-item text-danger" onClick={deleteProject}>
 							<i className="fas fa-trash fa-fw mr-2" /> Delete

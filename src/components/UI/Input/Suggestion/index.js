@@ -7,14 +7,28 @@ class InputSuggestion extends Component {
 		super(props);
 
 		this.state = {
-			searchTerm: '',
+			searchTerm: props.defaultValue
+				? props.elementList.filter((element) => element.id === this.props.defaultValue)[0].text
+				: '',
 			matchList: [],
 			showSuggestion: false
 		};
 	}
 
+	componentDidUpdate = (prevProps) => {
+		if (prevProps.defaultValue !== this.props.defaultValue) {
+			// eslint-disable-next-line react/no-did-update-set-state
+			this.setState({
+				searchTerm: this.props.defaultValue
+					? this.props.elementList.filter((element) => element.id === this.props.defaultValue)[0]
+							.text
+					: ''
+			});
+		}
+	};
+
 	handleInputChange = (e) => {
-		const searchTerm = e.target.value.toLowerCase();
+		const searchTerm = e.target.value;
 
 		if (searchTerm.length) {
 			this.setState(
@@ -23,7 +37,7 @@ class InputSuggestion extends Component {
 				},
 				() => {
 					const matchList = this.props.elementList.filter((element) =>
-						element.text.toLowerCase().includes(this.state.searchTerm)
+						element.text.toLowerCase().includes(this.state.searchTerm.toLowerCase())
 					);
 
 					this.setState({
@@ -33,7 +47,7 @@ class InputSuggestion extends Component {
 				}
 			);
 		} else {
-			this.setState({ showSuggestion: false });
+			this.setState({ showSuggestion: false, searchTerm: '' });
 		}
 	};
 
@@ -52,21 +66,13 @@ class InputSuggestion extends Component {
 			name: this.props.name
 		};
 
-		document.getElementsByName(this.props.name)[0].value = newElement.text;
-
-		this.setState({ showSuggestion: false }, () => {
+		this.setState({ showSuggestion: false, searchTerm: newElement.text }, () => {
 			this.props.updateParent(newElement);
 		});
 	};
 
-	getDefaultValue = () => {
-		const { defaultValue, elementList } = this.props;
-
-		return defaultValue ? elementList.filter((element) => element.id === defaultValue)[0].text : '';
-	};
-
 	render() {
-		const { matchList, showSuggestion } = this.state;
+		const { matchList, showSuggestion, searchTerm } = this.state;
 		const { name, placeholder } = this.props;
 
 		const suggestion = showSuggestion ? (
@@ -96,7 +102,7 @@ class InputSuggestion extends Component {
 					autoComplete="off"
 					onChange={this.handleInputChange}
 					onBlur={this.handleInputBlur}
-					defaultValue={this.getDefaultValue()}
+					value={searchTerm}
 					onKeyDown={(e) => {
 						if (e.keyCode === 27) this.setState({ showSuggestion: false });
 					}}

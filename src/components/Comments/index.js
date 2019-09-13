@@ -45,7 +45,6 @@ const Comments = (props) => {
 					}
 				})}
 			</div>
-			<p className="text-muted text-center mt-2">Total: {comments.length}</p>
 		</div>
 	);
 };

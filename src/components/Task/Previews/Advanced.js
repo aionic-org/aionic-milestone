@@ -10,10 +10,6 @@ import TaskPriorityIcon from '../Priority';
 const TaskPreviewsAdvanced = (props) => {
 	const { task, showBody, showFooter } = props;
 
-	const type = task.type ? (
-		<span className="small mr-2 text-secondary" title="Type">{`${task.type.title} `}</span>
-	) : null;
-
 	const body = showBody ? (
 		<div className="card-body">
 			<p className="card-text text-muted">
@@ -41,7 +37,6 @@ const TaskPreviewsAdvanced = (props) => {
 						<span>{task.title}</span>
 					</div>
 					<div className="col-auto d-flex align-items-center">
-						{type}
 						<TaskPriorityIcon task={task} />
 						{task.completed ? (
 							<Badge title="Completed" assignedClasses={['badge-primary', 'ml-2']} />

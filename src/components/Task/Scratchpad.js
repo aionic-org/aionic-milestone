@@ -76,21 +76,16 @@ class TaskScratchpad extends Component {
 
 		return (
 			<div className="UserStatus">
-				<div className="form-group mb-0">
-					<textarea
-						className={`form-control ${status}`}
-						name="text"
-						rows="3"
-						defaultValue={scratchpad.text}
-						onBlur={this.handleInputChange}
-					/>
-					<small className="form-text text-muted">
-						Your personal scratchpad for this task (only visible for you).
-					</small>
-
-					<div className="valid-feedback">Scratchpad updated!</div>
-					<div className="invalid-feedback">{msg}</div>
-				</div>
+				<label> Your personal scratchpad for this task</label>
+				<textarea
+					className={`form-control ${status}`}
+					name="text"
+					rows="3"
+					defaultValue={scratchpad.text}
+					onBlur={this.handleInputChange}
+				/>
+				<div className="valid-feedback">Scratchpad updated!</div>
+				<div className="invalid-feedback">{msg}</div>
 			</div>
 		);
 	}

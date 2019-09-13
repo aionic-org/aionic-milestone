@@ -6,10 +6,6 @@ import TaskPriorityIcon from '../Priority';
 const TaskPreview = (props) => {
 	const { task, showBody } = props;
 
-	const type = task.type ? (
-		<span className="small mr-3 text-secondary" title="Type">{`${task.type.title} `}</span>
-	) : null;
-
 	const body = showBody ? (
 		<div className="card-body">
 			<p className="card-text text-muted">
@@ -34,7 +30,6 @@ const TaskPreview = (props) => {
 			{body}
 			<div className="card-footer text-muted">
 				<div className="d-flex align-items-center">
-					{type}
 					<TaskPriorityIcon task={task} />
 				</div>
 			</div>

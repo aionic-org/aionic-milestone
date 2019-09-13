@@ -24,7 +24,7 @@ const Tabs = (props) => {
 						className={`btn btn-link nav-item nav-link ${i === activeTab ? 'active' : ''}`}
 						onClick={handleTabChange}
 						type="button"
-						key={tab.id}
+						key={tab.id || i}
 						data-pos={i}
 						data-id={tab.id}
 						disabled={tab.disabled === undefined ? false : tab.disabled}

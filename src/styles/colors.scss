@@ -1,0 +1,10 @@
+@import './styles/variables';
+
+.badge-primary {
+	background-color: $violet;
+}
+
+.badge-mint {
+	background-color: $mint;
+	color: white;
+}

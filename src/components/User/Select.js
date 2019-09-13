@@ -3,7 +3,7 @@ import InputSelect from 'components/UI/Input/Select';
 
 const UserSelect = (props) => {
 	const users = props.userList.map((user) => {
-		return { id: user.id, title: `${user.firstname} ${user.lastname}` };
+		return { value: user.id, title: `${user.firstname} ${user.lastname}` };
 	});
 
 	return (

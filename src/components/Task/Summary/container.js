@@ -22,7 +22,6 @@ class TaskSummaryContainer extends Component {
 		const requests = [
 			Api.fetchData('task-priorities'),
 			Api.fetchData('task-status'),
-			Api.fetchData('task-type'),
 			Api.fetchData('users')
 		];
 
@@ -33,8 +32,7 @@ class TaskSummaryContainer extends Component {
 					lists: {
 						priorityList: res[0],
 						statusList: res[1],
-						typeList: res[2],
-						userList: res[3]
+						userList: res[2]
 					}
 				});
 			})

@@ -6,17 +6,33 @@ import Badge from 'components/UI/Badge';
 const TaskBadges = (props) => {
 	const { task } = props;
 
-	const taskIsExpired = moment(task.deadline).diff(moment(), 'minutes') <= 0;
+	const taskIsExpired = task.deadline
+		? moment(task.deadline).diff(moment(), 'minutes') <= 0
+		: false;
 
 	return (
 		<div className="TaskBadges Badges">
 			<div className="list-inline">
-				{task.completed ? (
+				{task.project ? (
 					<div className="list-inline-item">
-						<Badge title="Completed" assignedClasses={['badge-primary']} />
+						<Badge
+							title={task.project.title}
+							assignedClasses={['badge-secondary']}
+							info="Task is part of the following project"
+						/>
 					</div>
 				) : null}
-				{!task.completed && !taskIsExpired && moment(task.deadline).diff(moment(), 'hours') < 12 ? ( // Task will expire in < 12h
+
+				{task.completed ? (
+					<div className="list-inline-item">
+						<Badge title="Completed" assignedClasses={['badge-mint']} />
+					</div>
+				) : null}
+
+				{task.deadline &&
+				!task.completed &&
+				!taskIsExpired &&
+				moment(task.deadline).diff(moment(), 'hours') < 12 ? ( // Task will expire in < 12h
 					<div className="list-inline-item">
 						<Badge
 							title="Expiring"
@@ -25,6 +41,7 @@ const TaskBadges = (props) => {
 						/>
 					</div>
 				) : null}
+
 				{!task.completed && taskIsExpired ? ( // Task is expired
 					<div className="list-inline-item">
 						<Badge title="Expired" assignedClasses={['badge-danger']} />

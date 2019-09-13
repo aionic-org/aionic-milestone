@@ -9,7 +9,6 @@ import TaskTags from 'components/Task/Tags';
 import TaskSummaryContainer from 'components/Task/Summary/container';
 import TaskDescription from 'components/Task/Description';
 import TaskOptionButtons from 'components/Task/OptionButtons';
-import TaskDates from 'components/Task/Dates';
 
 import SitesTaskTabs from './components/Tabs';
 import TaskBadges from './components/Badges';
@@ -48,11 +47,16 @@ const SitesTask = (props) => {
 				<div className="row mt-3">
 					<div className="col-12 col-xl-8">
 						<TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
-						<TaskDates task={task} updateParentTaskState={updateParentTaskState} />
 						<TaskDescription task={task} updateTask={updateParentTaskState} />
 					</div>
 					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 						<SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
+						<p className="text-muted mt-4 mb-0">
+							Created: {Helper.formatDateTime(task.created || Date.now())}
+						</p>
+						<p className="text-muted">
+							Updated: {Helper.formatDateTime(task.updated || Date.now())}
+						</p>
 					</div>
 				</div>
 			</Content>

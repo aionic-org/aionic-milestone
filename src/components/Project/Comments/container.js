@@ -15,7 +15,7 @@ const ProjectCommentsContainer = (props) => (
 				<div className="ProjectCommentsContainer">
 					<Comments type="Project" typeId={projectId} commentList={comments} />
 					{showForm ? (
-						<div className="mt-4">
+						<div className={comments.length ? 'mt-4' : ''}>
 							<ProjectCommentsFormContainer projectId={projectId} updateParent={fetchData} />
 						</div>
 					) : null}

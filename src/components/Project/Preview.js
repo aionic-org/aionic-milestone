@@ -17,7 +17,7 @@ const ProjectPreview = (props) => {
 					</div>
 					<div className="col-auto d-flex align-items-center">
 						{project.completed ? (
-							<Badge title="Completed" assignedClasses={['badge-primary', 'ml-2']} />
+							<Badge title="Completed" assignedClasses={['badge-mint', 'ml-2']} />
 						) : null}
 					</div>
 				</div>

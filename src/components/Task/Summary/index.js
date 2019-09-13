@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import Helper from 'services/helper';
 import Session from 'services/session';
@@ -6,13 +7,13 @@ import Session from 'services/session';
 import TaskSelectsStatus from 'components/Task/Selects/Status';
 import TaskSelectsPriority from 'components/Task/Selects/Priority';
 import TaskSelectsLabel from 'components/Task/Selects/Label';
-import TaskSelectsType from 'components/Task/Selects/Type';
 
 import InputSuggestion from 'components/UI/Input/Suggestion';
+import InputDate from 'components/UI/Input/Date/';
 
 const TaskSummary = (props) => {
 	const { lists, task, updateParentTaskState } = props;
-	const { priorityList, statusList, typeList, userList } = lists;
+	const { priorityList, statusList, userList } = lists;
 
 	const userListPrepared = userList.map((user) => {
 		return {
@@ -29,23 +30,16 @@ const TaskSummary = (props) => {
 		Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
 	};
 
+	const updateDeadline = (deadline) => {
+		updateParentTaskState({ ...task, deadline });
+	};
+
 	return (
-		<div className="TaskSummary mt-2">
-			<p className="text-muted">Summary</p>
+		<div className="TaskSummary">
+			<p className="text-muted font-weight-bold">Summary</p>
 			<hr className="featurette-divider" />
 
 			<div className="form-group row">
-				<div className="col-12 col-md-4">
-					<label className="col-12 col-form-label">Type</label>
-					<div className="col-12">
-						<TaskSelectsType
-							typeList={typeList}
-							defaultValue={task.type ? task.type.id : undefined}
-							onChange={handleInputChange}
-						/>
-					</div>
-				</div>
-
 				<div className="col-12 col-md-4">
 					<label className="col-12 col-form-label">Status</label>
 					<div className="col-12">
@@ -63,6 +57,16 @@ const TaskSummary = (props) => {
 						<TaskSelectsPriority
 							priorityList={priorityList}
 							defaultValue={task.priority ? task.priority.value : undefined}
+							onChange={handleInputChange}
+						/>
+					</div>
+				</div>
+
+				<div className="col-12 col-md-4">
+					<label className="col-12 col-form-label">Label</label>
+					<div className="col-12">
+						<TaskSelectsLabel
+							defaultValue={task.label ? task.label : undefined}
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -97,11 +101,14 @@ const TaskSummary = (props) => {
 				</div>
 
 				<div className="col-12 col-md-4">
-					<label className="col-12 col-form-label">Label</label>
+					<label className="col-12 col-form-label">Deadline</label>
 					<div className="col-12">
-						<TaskSelectsLabel
-							defaultValue={task.label ? task.label : undefined}
-							onChange={handleInputChange}
+						<InputDate
+							name="deadline"
+							startDate={Helper.formatDateTime(
+								task.deadline ? task.deadline : moment(new Date()).add(7, 'days')
+							)}
+							updateParent={updateDeadline}
 						/>
 					</div>
 				</div>

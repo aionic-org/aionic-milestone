@@ -19,7 +19,7 @@ const InputDate = (props) => {
 				className="form-control"
 				selected={new Date(date)}
 				onChange={handleChange}
-				dateFormat="yyyy-MM-dd / hh:mm a"
+				dateFormat="yyyy-MM-dd hh:mm a"
 				showTimeSelect
 				timeFormat="HH:mm"
 				timeIntervals={60}

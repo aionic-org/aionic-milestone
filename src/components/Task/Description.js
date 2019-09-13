@@ -11,9 +11,8 @@ const TaskDescription = (props) => {
 
 	return (
 		<div className="TaskDescription mt-5">
-			<p className="text-muted">Description</p>
+			<p className="text-muted font-weight-bold">Description</p>
 			<hr className="featurette-divider" />
-
 			<RichEditor content={task.description} updateParent={updateDescription} />
 		</div>
 	);

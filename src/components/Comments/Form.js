@@ -6,9 +6,9 @@ const CommentsForm = (props) => {
 		<div className="CommentsForm">
 			<form onSubmit={handleSubmit}>
 				<label>Write a comment</label>
-				<textarea className="form-control" name="comment" rows="3" onChange={handleInputChange} />
+				<textarea className="form-control" name="comment" rows="2" onChange={handleInputChange} />
 				<div className="d-flex justify-content-end">
-					<button className="btn btn-md btn-primary mt-2" type="submit">
+					<button className="btn btn-sm btn-primary mt-2" type="submit">
 						<i className="fas fa-sign-in-alt mr-1" /> Post
 					</button>
 				</div>

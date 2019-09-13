@@ -10,7 +10,7 @@ const ProjectBadges = (props) => {
 			<div className="list-inline">
 				{project.completed ? (
 					<div className="list-inline-item">
-						<Badge title="Completed" assignedClasses={['badge-primary']} />
+						<Badge title="Completed" assignedClasses={['badge-mint']} />
 					</div>
 				) : null}
 			</div>

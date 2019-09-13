@@ -1,37 +1,43 @@
 .Modal {
-  max-width: 500px;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
-  border-radius: 4px;
-  padding: 5px 10px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 6rem;
-  opacity: 1;
-  -webkit-animation: fadein 0.5s;
-  -moz-animation: fadein 0.5s;
-  -ms-animation: fadein 0.5s;
-  animation: fadein 0.5s;
+	max-width: 500px;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	border: 1px solid rgb(204, 204, 204);
+	background: rgb(255, 255, 255);
+	border-radius: 4px;
+	padding: 5px 10px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-top: 5rem;
+	opacity: 1;
+	-webkit-animation: fadein 0.5s;
+	-moz-animation: fadein 0.5s;
+	-ms-animation: fadein 0.5s;
+	animation: fadein 0.5s;
+}
+
+.Modal .modal-body {
+	overflow-y: auto;
+	max-height: calc(100vh - 200px);
 }
 
 @media (max-device-width: 768px) {
-  .Modal {
-    max-width: 350px;
-  }
+	.Modal {
+		max-width: 350px;
+		margin-top: 4rem;
+	}
 }
 
 .Modal-Overlay {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 10;
 }

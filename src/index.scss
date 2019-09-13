@@ -3,6 +3,7 @@
 @import './styles/animations';
 @import './styles/buttons';
 @import './styles/cards';
+@import './styles/colors';
 @import './styles/modal';
 @import './styles/nav';
 @import './styles/scrollbar';
@@ -23,14 +24,14 @@ body {
 }
 
 #App.toggled #page-content-wrapper {
-	margin-left: 230px;
+	margin-left: 250px;
 }
 
 @media (min-width: 768px) {
 	#page-content-wrapper {
 		min-width: 0;
 		width: 100%;
-		margin-left: 230px;
+		margin-left: 250px;
 	}
 
 	#App.toggled #page-content-wrapper {
@@ -44,14 +45,6 @@ body {
 
 .Badges .Badge {
 	margin-bottom: 1rem;
-}
-
-.badge-primary {
-	background-color: $violet;
-}
-
-.badge-secondary {
-	background-color: $mint;
 }
 
 .text-muted {

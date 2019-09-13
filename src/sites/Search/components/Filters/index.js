@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import UserSelect from 'components/User/Select';
 import TaskSelectsStatus from 'components/Task/Selects/Status';
-import TaskSelectsType from 'components/Task/Selects/Type';
 import GitOrganizationSelect from 'components/Git/Organization/Select';
 
 class SitesSearchFilter extends Component {
@@ -13,7 +12,7 @@ class SitesSearchFilter extends Component {
 
 	render() {
 		const { searchParams, handleFilterChange, lists } = this.props;
-		const { userList, statusList, typeList, orgList } = lists;
+		const { userList, statusList, orgList } = lists;
 
 		return (
 			<div className="SitesSearchFilter">
@@ -27,14 +26,6 @@ class SitesSearchFilter extends Component {
 							name="searchTerm"
 							onBlur={handleFilterChange}
 							defaultValue={searchParams.term ? searchParams.term : ''}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Type</label>
-						<TaskSelectsType
-							typeList={typeList}
-							defaultValue={searchParams.type ? searchParams.type.id : undefined}
-							onChange={handleFilterChange}
 						/>
 					</div>
 					<div className="form-group">

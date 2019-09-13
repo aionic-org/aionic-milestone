@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Session from 'services/session';
+import Helper from 'services/helper';
 
 const Comment = (props) => {
 	const { comment, deleteComment } = props;
@@ -22,7 +23,7 @@ const Comment = (props) => {
 				</small>
 			</div>
 			<p className="mb-1">{comment.text}</p>
-			<small className="text-muted">{comment.created}</small>
+			<small className="text-muted">{Helper.formatDateTime(comment.created)}</small>
 		</div>
 	);
 };

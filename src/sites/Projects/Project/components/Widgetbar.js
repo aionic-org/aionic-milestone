@@ -25,7 +25,7 @@ const ProjectWidgetbar = (props) => {
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
 						title={`Total Tasks: ${tasks.length}`}
-						icon="fas fa-table"
+						icon="fas fa-tasks"
 						iconBackground="#636e72"
 					/>
 				</div>
