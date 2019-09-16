@@ -5,8 +5,7 @@ import queryString from 'query-string';
 
 import './Form.scss';
 
-import Api from 'services/api';
-import Session from 'services/session';
+import { Api, Session } from 'aionic-shared/js/';
 
 import Spinner from 'components/UI/Spinner/';
 

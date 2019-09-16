@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Navbar.scss';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
 
 import SearchBar from 'components/Search/Bar';
 

@@ -1,12 +1,8 @@
 /* Import global styles */
-@import './styles/variables';
-@import './styles/animations';
-@import './styles/buttons';
+
 @import './styles/cards';
-@import './styles/colors';
-@import './styles/modal';
-@import './styles/nav';
-@import './styles/scrollbar';
+
+@import 'aionic-shared/scss/index.scss';
 
 body {
 	overflow-x: hidden;

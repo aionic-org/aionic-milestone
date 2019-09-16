@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import Session from 'services/session';
-import Api from 'services/api';
+import { Api, Session } from 'aionic-shared/js/';
 
 import Error from 'components/UI/Error';
 import Spinner from 'components/UI/Spinner';

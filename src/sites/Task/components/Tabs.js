@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
+
 import useTab from 'components/Utility/Hooks/useTab';
 
 import Navs from 'components/UI/Navs';

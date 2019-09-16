@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Api from 'services/api';
+import { Api } from 'aionic-shared/js/';
 
 function useCommentForm(endpoint, updateParent) {
 	const [comment, setComment] = useState({});

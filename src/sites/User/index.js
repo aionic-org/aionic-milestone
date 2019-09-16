@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
 
 import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';

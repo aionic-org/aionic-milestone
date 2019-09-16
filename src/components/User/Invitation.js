@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Api from 'services/api';
+import { Api } from 'aionic-shared/js/';
 
 class UserInvitation extends Component {
 	constructor(props) {

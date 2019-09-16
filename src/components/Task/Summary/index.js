@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
 
+import { Session } from 'aionic-shared/js/';
+
 import Helper from 'services/helper';
-import Session from 'services/session';
 
 import TaskSelectsStatus from 'components/Task/Selects/Status';
 import TaskSelectsPriority from 'components/Task/Selects/Priority';

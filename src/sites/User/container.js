@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Api from 'services/api';
+import { Api, Session } from 'aionic-shared/js/';
+
 import Helper from 'services/helper';
-import Session from 'services/session';
 
 import Error from 'components/UI/Error';
 import Spinner from 'components/UI/Spinner';

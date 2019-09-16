@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Api from 'services/api';
+import { Api } from 'aionic-shared/js/';
 
 import Error from 'components/UI/Error';
 import Spinner from 'components/UI/Spinner';

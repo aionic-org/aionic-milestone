@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
 
 import UserSelectsRole from '../Selects/Role';
 import UserSelectsActive from '../Selects/Active';

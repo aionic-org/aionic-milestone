@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
+import { Api, Session } from 'aionic-shared/js/';
+
 import Helper from 'services/helper';
-import Api from 'services/api';
-import Session from 'services/session';
 
 import Error from 'components/UI/Error';
 import InputDate from 'components/UI/Input/Date/';

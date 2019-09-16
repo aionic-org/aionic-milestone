@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
 
 import Navbar from 'components/Navigation/Navbar/';
 import Sidebar from 'components/Navigation/Sidebar';

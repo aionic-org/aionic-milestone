@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Session from 'services/session';
+import { Session } from 'aionic-shared/js/';
+
 import Helper from 'services/helper';
 
 const Comment = (props) => {

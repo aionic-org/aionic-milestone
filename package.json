@@ -16,6 +16,7 @@
     "prettier": "prettier --config ./.prettierrc --write src/**/*.js"
   },
   "dependencies": {
+    "aionic-shared": "https://github.com/Aionic-Apps/aionic-shared",
     "axios": "^0.18.1",
     "dotenv": "^6.2.0",
     "draft-js": "^0.10.5",
