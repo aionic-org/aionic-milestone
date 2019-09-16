@@ -1,7 +1,7 @@
 {
   "name": "aionic-milestone",
   "version": "0.0.1",
-  "description": "Aionic Milestone - Applications for project management and collaboration",
+  "description": "Aionic Milestone - Applications for project management",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
   "repository": "https://github.com/Aionic-Apps/aionic-milestone",

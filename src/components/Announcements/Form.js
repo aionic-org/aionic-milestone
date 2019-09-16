@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import { Api, Session } from 'aionic-shared/js/';
+import { Api, Session, Spinner } from 'aionic-shared';
 
 import Helper from 'services/helper';
-
-import Spinner from 'components/UI/Spinner';
 
 class AnnouncementsForm extends Component {
 	constructor(props) {

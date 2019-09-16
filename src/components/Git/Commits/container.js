@@ -1,9 +1,10 @@
 import React from 'react';
 
+import { Spinner } from 'aionic-shared';
+
 import useFetcher from 'components/Utility/Hooks/useFetcher';
 import useTextFilter from 'components/Utility/Hooks/useTextFilter';
 
-import Spinner from 'components/UI/Spinner';
 import Error from 'components/UI/Error';
 
 import GitCommits from '.';

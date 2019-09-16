@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import { Session } from 'aionic-shared/js/';
+import { Session } from 'aionic-shared';
 
 import Helper from 'services/helper';
 

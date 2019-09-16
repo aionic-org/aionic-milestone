@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './Register.scss';
 
-import { Api } from 'aionic-shared/js/';
+import { Api } from 'aionic-shared';
 
 import Logo from 'components/UI/Logo';
 

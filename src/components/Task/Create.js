@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api } from 'aionic-shared/js/';
+import { Api } from 'aionic-shared';
 
 const TaskCreate = (props) => {
 	const { task } = props;

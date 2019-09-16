@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api } from 'aionic-shared/js/';
+import { Api, Spinner } from 'aionic-shared';
 
-import Spinner from 'components/UI/Spinner/';
 import Feedback from 'components/UI/Feedback/';
 import UserSuggestion from 'components/User/Suggestion';
 

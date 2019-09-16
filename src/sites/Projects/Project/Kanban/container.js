@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api } from 'aionic-shared/js/';
+import { Api, Spinner } from 'aionic-shared';
 
 import Error from 'components/UI/Error';
-import Spinner from 'components/UI/Spinner';
 
 import SitesProjectKanban from '.';
 

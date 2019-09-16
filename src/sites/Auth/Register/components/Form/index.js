@@ -5,9 +5,7 @@ import queryString from 'query-string';
 
 import './Form.scss';
 
-import { Api, Session } from 'aionic-shared/js/';
-
-import Spinner from 'components/UI/Spinner/';
+import { Api, Session, Spinner } from 'aionic-shared';
 
 class RegisterForm extends Component {
 	constructor(props) {

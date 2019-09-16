@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Api } from 'aionic-shared/js/';
+import { Api } from 'aionic-shared';
 
 function useFetcher(url) {
 	const [isLoading, setIsLoading] = useState(true);

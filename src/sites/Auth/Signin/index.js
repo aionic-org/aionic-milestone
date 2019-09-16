@@ -4,7 +4,7 @@ import './Signin.scss';
 
 import UILogo from 'components/UI/Logo';
 
-import SigninForm from './components/Form';
+import { SigninForm } from 'aionic-shared';
 
 const SitesSignin = () => {
 	const logoStyle = {

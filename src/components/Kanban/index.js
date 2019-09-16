@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-import { Api } from 'aionic-shared/js/';
+import { Api, Spinner } from 'aionic-shared';
 
-import Spinner from 'components/UI/Spinner';
 import Tabs from 'components/UI/Tabs';
 
 import BoardStep from './Step';

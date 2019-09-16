@@ -2,12 +2,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Session } from 'aionic-shared/js/';
+import { Api, Session, Spinner } from 'aionic-shared';
 
 import Helper from 'services/helper';
 
 import Error from 'components/UI/Error';
-import Spinner from 'components/UI/Spinner';
 import Toast from 'components/UI/Toast';
 
 import SitesUser from '.';

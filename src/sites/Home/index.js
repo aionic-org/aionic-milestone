@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Home.css';
 
-import { Session } from 'aionic-shared/js/';
+import { Session } from 'aionic-shared';
 
 import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';

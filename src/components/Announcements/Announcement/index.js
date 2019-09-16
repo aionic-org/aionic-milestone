@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Api } from 'aionic-shared/js/';
+import { Api } from 'aionic-shared';
 
 const Announcement = (props) => {
 	const { announcement, handleDelete } = props;

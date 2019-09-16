@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Suggestion.scss';
 
-import { Api } from 'aionic-shared/js/';
+import { Api } from 'aionic-shared';
 
 import useSuggestion from 'components/Utility/Hooks/useSuggestion';
 

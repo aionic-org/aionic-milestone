@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import { Link, withRouter } from 'react-router-dom';
 
-import { Api, Session } from 'aionic-shared/js/';
+import { Api, Session } from 'aionic-shared';
 
 import MiscShare from 'components//Misc/Share';
 

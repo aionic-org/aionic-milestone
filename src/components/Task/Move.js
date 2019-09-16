@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Spinner } from 'aionic-shared';
+
 import useFetcher from 'components/Utility/Hooks/useFetcher';
 
-import Spinner from 'components/UI/Spinner';
 import Error from 'components/UI/Error';
 
 import ProjectSelect from '../Project/Select';

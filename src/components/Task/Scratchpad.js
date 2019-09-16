@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import { Api } from 'aionic-shared/js/';
+import { Api, Spinner } from 'aionic-shared';
 
 import Helper from 'services/helper';
-
-import Spinner from 'components/UI/Spinner';
 
 class TaskScratchpad extends Component {
 	constructor(props) {
