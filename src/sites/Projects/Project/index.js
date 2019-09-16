@@ -5,7 +5,7 @@ import Helper from 'services/helper';
 import Content from 'components/UI/Content';
 import InputTitle from 'components/UI/Input/Title/';
 
-import ProjectOptionButtons from 'components/Project/OptionButtons';
+import ProjectActionButtons from 'components/Project/ActionButtons';
 
 import ProjectWidgetbar from './components/Widgetbar';
 import SitesProjectTabs from './components/Tabs';
@@ -36,7 +36,7 @@ const SitesProject = (props) => {
 						/>
 					</div>
 					<div className="col-12 col-md-5 col-xl-auto">
-						<ProjectOptionButtons
+						<ProjectActionButtons
 							project={project}
 							updateParentProjectState={updateParentProjectState}
 						/>

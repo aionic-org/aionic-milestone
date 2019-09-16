@@ -80,7 +80,7 @@ class SitesProjectsContainer extends Component {
 	};
 
 	resetFilters = () => {
-		this.setState({ filters: { params: {}, text: '' } }, () => this.fetchBoards);
+		this.setState({ filters: { params: {}, text: '' } }, this.fetchProjects);
 	};
 
 	render() {

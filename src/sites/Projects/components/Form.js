@@ -83,6 +83,17 @@ class ProjectForm extends Component {
 						/>
 					</div>
 					<div className="form-group">
+						<label>Key</label>
+						<input
+							type="text"
+							className="form-control"
+							name="key"
+							placeholder="Enter key"
+							onChange={this.handleInputChange}
+						/>
+						<small className="form-text text-muted">Unique key used to identify project</small>
+					</div>
+					<div className="form-group">
 						<label>Deadline</label>
 						<InputDate
 							name="deadline"

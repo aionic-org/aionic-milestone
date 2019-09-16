@@ -8,7 +8,7 @@ import TaskTitle from 'components/Task/Title';
 import TaskTags from 'components/Task/Tags';
 import TaskSummaryContainer from 'components/Task/Summary/container';
 import TaskDescription from 'components/Task/Description';
-import TaskOptionButtons from 'components/Task/OptionButtons';
+import TaskActionButtons from 'components/Task/ActionButtons';
 
 import SitesTaskTabs from './components/Tabs';
 import TaskBadges from './components/Badges';
@@ -29,7 +29,7 @@ const SitesTask = (props) => {
 						<TaskTitle task={task} onBlur={handleTitleChange} />
 					</div>
 					<div className="col-12 col-md-5 col-xl-auto">
-						<TaskOptionButtons
+						<TaskActionButtons
 							task={task}
 							isNewTask={isNewTask}
 							updateParentTaskState={updateParentTaskState}

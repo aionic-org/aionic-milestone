@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Helper from 'services/helper';
 
 import TaskSuggestion from 'components/Task/Suggestion/';
-import TaskPriorityIcon from 'components/Task/Priority';
 
 const ProjectTaskTable = (props) => {
 	const { tasks, updateProjectTasks } = props;
@@ -67,7 +66,6 @@ const ProjectTaskTable = (props) => {
 					<thead>
 						<tr>
 							<th scope="col">Title</th>
-							<th scope="col">Priority</th>
 							<th scope="col">Status</th>
 							<th scope="col">Assignee</th>
 							<th scope="col">Deadline</th>
@@ -81,7 +79,6 @@ const ProjectTaskTable = (props) => {
 								<td>
 									<Link to={`/tasks/${task.id}`}>{task.title}</Link>
 								</td>
-								<td>{task.priority ? <TaskPriorityIcon task={task} /> : '-'}</td>
 								<td>{task.status ? task.status.title : '-'}</td>
 								<td>
 									{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}

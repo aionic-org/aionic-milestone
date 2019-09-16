@@ -10,8 +10,9 @@ import MiscShare from 'components//Misc/Share';
 import TaskCreate from './Create';
 import TaskMove from './Move';
 import TaskPlugins from './Plugins';
+import TaskWatch from './Watch';
 
-const TaskOptionButtons = (props) => {
+const TaskActionButtons = (props) => {
 	const { task, isNewTask, updateParentTaskState } = props;
 
 	const [showModal, setShowModal] = useState(false);
@@ -26,7 +27,7 @@ const TaskOptionButtons = (props) => {
 	};
 
 	const cloneTask = () => {
-		const newTask = { ...task, title: `CLONE: ${task.title}` };
+		const newTask = { ...task, title: `CLONE: ${task.title}`, isClone: true };
 
 		delete newTask.id;
 
@@ -110,30 +111,35 @@ const TaskOptionButtons = (props) => {
 							<i className="fas fa-check fa-fw mr-2" /> Complete
 						</button>
 					)}
-					<button type="button" className="btn dropdown-item" onClick={cloneTask}>
-						<i className="fas fa-clone fa-fw mr-2" /> Clone
-					</button>
+					{!task.isClone ? (
+						<button type="button" className="btn dropdown-item" onClick={cloneTask}>
+							<i className="fas fa-clone fa-fw mr-2" /> Clone
+						</button>
+					) : null}
 
 					<h6 className="dropdown-header">Project</h6>
+					{task.project ? (
+						<div>
+							<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-2">
+								<i className="fas fa-table fa-fw mr-2" /> Open
+							</Link>
+							<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-2">
+								<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
+							</Link>
+						</div>
+					) : null}
 					<button type="button" className="btn dropdown-item" onClick={openMoveTaskModal}>
 						<i className="fas fa-exchange-alt fa-fw mr-2" /> Move
 					</button>
-					{task.project ? (
-						<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-2">
-							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
-						</Link>
-					) : null}
 
 					<h6 className="dropdown-header">Share</h6>
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-2" /> Share
 					</button>
-					<button type="button" className="btn dropdown-item">
+					<button type="button" className="btn dropdown-item" onClick={window.print}>
 						<i className="fas fa-print fa-fw mr-2" /> Print
 					</button>
-					<button type="button" className="btn dropdown-item">
-						<i className="fas fa-binoculars fa-fw mr-2" /> Watch
-					</button>
+					<TaskWatch task={task} />
 
 					<h6 className="dropdown-header">More</h6>
 					<button type="button" className="btn dropdown-item" onClick={openPluginsModal}>
@@ -164,7 +170,7 @@ const TaskOptionButtons = (props) => {
 	}
 
 	return (
-		<div className="TaskOptionButtons">
+		<div className="TaskActionButtons">
 			<div className="float-md-right btn-toolbar">
 				{statusBtn}
 				{moreBtn}
@@ -173,8 +179,8 @@ const TaskOptionButtons = (props) => {
 	);
 };
 
-TaskOptionButtons.defaultProps = {
+TaskActionButtons.defaultProps = {
 	assignedClasses: []
 };
 
-export default withRouter(TaskOptionButtons);
+export default withRouter(TaskActionButtons);

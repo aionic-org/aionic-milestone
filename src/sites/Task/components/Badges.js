@@ -13,6 +13,12 @@ const TaskBadges = (props) => {
 	return (
 		<div className="TaskBadges Badges">
 			<div className="list-inline">
+				{task.isClone ? (
+					<div className="list-inline-item">
+						<Badge title="Clone" assignedClasses={['badge-info']} />
+					</div>
+				) : null}
+
 				{task.project ? (
 					<div className="list-inline-item">
 						<Badge

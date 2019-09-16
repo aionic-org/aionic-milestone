@@ -79,7 +79,7 @@ class SitesBoardsContainer extends Component {
 	};
 
 	resetFilters = () => {
-		this.setState({ filters: { params: {}, text: '' } }, () => this.fetchBoards);
+		this.setState({ filters: { params: {}, text: '' } }, this.fetchBoards);
 	};
 
 	render = () => {

@@ -6,14 +6,20 @@ import Api from 'services/api';
 
 import MiscShare from 'components/Misc/Share';
 
-const ProjectOptionButtons = (props) => {
+const ProjectActionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
 
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState(null);
 
 	const cloneProject = () => {
-		const newProject = { ...project, title: `CLONE: ${project.title}` };
+		const newProject = {
+			...project,
+			title: `CLONE: ${project.title}`,
+			isClone: true,
+			tasks: [],
+			key: null
+		};
 
 		delete newProject.id;
 		delete newProject.tasks;
@@ -51,7 +57,7 @@ const ProjectOptionButtons = (props) => {
 	};
 
 	return (
-		<div className="ProjectOptionButtons">
+		<div className="ProjectActionButtons">
 			<div className="float-md-right">
 				<div>
 					<button
@@ -74,9 +80,11 @@ const ProjectOptionButtons = (props) => {
 								<i className="fas fa-check fa-fw mr-2" /> Complete
 							</button>
 						)}
-						<button type="button" className="btn dropdown-item" onClick={cloneProject}>
-							<i className="fas fa-clone fa-fw mr-2" /> Clone
-						</button>
+						{!project.isClone ? (
+							<button type="button" className="btn dropdown-item" onClick={cloneProject}>
+								<i className="fas fa-clone fa-fw mr-2" /> Clone
+							</button>
+						) : null}
 
 						<h6 className="dropdown-header">Views</h6>
 						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-2">
@@ -87,7 +95,7 @@ const ProjectOptionButtons = (props) => {
 						<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 							<i className="fas fa-share fa-fw mr-2" /> Share
 						</button>
-						<button type="button" className="btn dropdown-item">
+						<button type="button" className="btn dropdown-item" onClick={window.print}>
 							<i className="fas fa-print fa-fw mr-2" /> Print
 						</button>
 						<div className="dropdown-divider" />
@@ -115,8 +123,8 @@ const ProjectOptionButtons = (props) => {
 	);
 };
 
-ProjectOptionButtons.defaultProps = {
+ProjectActionButtons.defaultProps = {
 	assignedClasses: []
 };
 
-export default withRouter(ProjectOptionButtons);
+export default withRouter(ProjectActionButtons);

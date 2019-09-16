@@ -4,11 +4,10 @@ import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';
 
 import CardDeck from 'components/Deck';
-import Filters from 'components/Filters/';
-
-import ProjectCreate from './components/Create';
 
 import ProjectsWidgetbar from './components/Widgetbar';
+import Filters from './components/Filters';
+import ProjectCreate from './components/Create';
 
 const SitesProjects = (props) => {
 	const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props;

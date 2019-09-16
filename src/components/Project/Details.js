@@ -9,12 +9,26 @@ import ProjectDescription from './Description';
 const ProjectDetails = (props) => {
 	const { project, updateParentProjectState } = props;
 
+	const handleInputChange = (e) => {
+		Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
+	};
+
 	const updateDeadline = (deadline) => {
 		updateParentProjectState({ ...project, deadline });
 	};
 
 	return (
 		<div className="ProjectDetails">
+			<div className="form-group">
+				<label>Key</label>
+				<input
+					type="text"
+					name="key"
+					className="form-control"
+					value={project.key}
+					onChange={handleInputChange}
+				/>
+			</div>
 			<div className="form-group">
 				<label>Author</label>
 				<input

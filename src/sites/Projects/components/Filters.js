@@ -1,7 +1,8 @@
 import React from 'react';
-import InputSelect from '../UI/Input/Select';
 
-const Filters = (props) => {
+import InputSelect from 'components/UI/Input/Select';
+
+const ProjectsFilters = (props) => {
 	const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props;
 
 	const handleParamsChange = (e) => {
@@ -11,6 +12,12 @@ const Filters = (props) => {
 	const handleFilterChange = (e) => {
 		filterItemsByText(e.target.value);
 	};
+
+	const completedList = [
+		{ value: '', title: 'Completed' },
+		{ value: '1', title: 'Yes' },
+		{ value: '0', title: 'No' }
+	];
 
 	const sortDirectionsList = [
 		{ value: '', title: 'Direction' },
@@ -27,16 +34,26 @@ const Filters = (props) => {
 	];
 
 	return (
-		<div className="Filters">
+		<div className="ProjectsFilters">
 			<form>
 				<div className="row">
-					<div className="col-12 col-xl-5">
+					<div className="col-12 col-xl">
 						<div className="form-group">
 							<input
 								type="text"
 								className="form-control"
 								placeholder="Filter..."
 								onChange={handleFilterChange}
+							/>
+						</div>
+					</div>
+					<div className="col-12 col-xl-auto">
+						<div className="form-group">
+							<InputSelect
+								name="completed"
+								onChange={handleParamsChange}
+								optionList={completedList}
+								showDefault={false}
 							/>
 						</div>
 					</div>
@@ -67,7 +84,7 @@ const Filters = (props) => {
 							/>
 						</div>
 					</div>
-					<div className="col">
+					<div className="col-12 col-xl-2">
 						<div className="form-group">
 							<button type="reset" className="btn btn-block btn-warning" onClick={resetFilters}>
 								Reset filters
@@ -80,8 +97,8 @@ const Filters = (props) => {
 	);
 };
 
-Filters.defaultProps = {
+ProjectsFilters.defaultProps = {
 	orderByList: []
 };
 
-export default Filters;
+export default ProjectsFilters;

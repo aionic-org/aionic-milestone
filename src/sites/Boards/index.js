@@ -4,7 +4,8 @@ import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';
 
 import CardDeck from 'components/Deck';
-import Filters from 'components/Filters/';
+
+import Filters from './components/Filters';
 import BoardsCreate from './components/Create';
 
 const SitesBoards = (props) => {

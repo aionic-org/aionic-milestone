@@ -7,7 +7,7 @@ import InputTitle from 'components/UI/Input/Title/';
 
 import KanbanContainer from 'components/Kanban/container';
 import BoardDetails from 'components/Board/Details';
-import BoardOptionButtons from 'components/Board/OptionButtons';
+import BoardActionButtons from 'components/Board/ActionButtons';
 
 const SitesBoard = (props) => {
 	const { board, updateParentBoardState, deleteBoard } = props;
@@ -35,7 +35,7 @@ const SitesBoard = (props) => {
 							classes={['d-inline-block']}
 						/>
 						<div className="btn-group">
-							<BoardOptionButtons board={board} />
+							<BoardActionButtons board={board} />
 						</div>
 					</div>
 				</div>

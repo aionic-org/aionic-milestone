@@ -6,7 +6,7 @@ import Api from 'services/api';
 
 import MiscShare from 'components//Misc/Share';
 
-const BoardOptionButtons = (props) => {
+const BoardActionButtons = (props) => {
 	const { board } = props;
 
 	const [showModal, setShowModal] = useState(false);
@@ -32,7 +32,7 @@ const BoardOptionButtons = (props) => {
 	};
 
 	return (
-		<div className="BoardOptionButtons">
+		<div className="BoardActionButtons">
 			<div className="btn-group ml-2">
 				<button
 					type="button"
@@ -74,8 +74,8 @@ const BoardOptionButtons = (props) => {
 	);
 };
 
-BoardOptionButtons.defaultProps = {
+BoardActionButtons.defaultProps = {
 	assignedClasses: []
 };
 
-export default withRouter(BoardOptionButtons);
+export default withRouter(BoardActionButtons);

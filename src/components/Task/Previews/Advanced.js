@@ -34,7 +34,10 @@ const TaskPreviewsAdvanced = (props) => {
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
-						<span>{task.title}</span>
+						<span>
+							{task.project && task.project.key ? `${task.project.key} - ` : ''}
+							{task.title}
+						</span>
 					</div>
 					<div className="col-auto d-flex align-items-center">
 						<TaskPriorityIcon task={task} />
