@@ -1,5 +1,6 @@
 import React from 'react';
-import InputSelect from 'components/UI/Input/Select';
+
+import { InputSelect } from 'aionic-shared';
 
 const UserSelectsRole = (props) => {
 	const roles = props.roleList.map((role) => {

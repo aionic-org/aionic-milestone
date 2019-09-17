@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
 
-import { Api, Session } from 'aionic-shared';
-import Helper from 'services/helper';
+import { Api, Session, Error } from 'aionic-shared';
 
-import Error from 'components/UI/Error';
+import Helper from 'services/helper';
 
 import UserSuggestion from 'components/User/Suggestion';
 

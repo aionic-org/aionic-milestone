@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher';
-
-import Tabs from 'components/UI/Tabs';
+import { Fetcher, Pills } from 'aionic-shared';
 
 const TaskDashboardFilters = (props) => (
 	<Fetcher url="task-status">
@@ -26,7 +24,7 @@ const TaskDashboardFilters = (props) => (
 
 			return (
 				<div className="TaskDashboardFilters mb-4">
-					<Tabs tabs={tabTitles} handleClick={handleClick} />
+					<Pills tabs={tabTitles} handleClick={handleClick} />
 				</div>
 			);
 		}}

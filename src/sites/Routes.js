@@ -1,11 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Session } from 'aionic-shared';
+import { Session, Footer } from 'aionic-shared';
 
 import Navbar from 'components/Navigation/Navbar/';
 import Sidebar from 'components/Navigation/Sidebar';
-import Footer from 'components/Navigation/Footer/';
 
 import SitesSignin from './Auth/Signin';
 import SitesRegister from './Auth/Register';

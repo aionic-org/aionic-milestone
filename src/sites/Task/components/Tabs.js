@@ -1,10 +1,6 @@
 import React from 'react';
 
-import { Session } from 'aionic-shared';
-
-import useTab from 'components/Utility/Hooks/useTab';
-
-import Navs from 'components/UI/Navs';
+import { Session, Tabs, useTab } from 'aionic-shared';
 
 import TaskCommentsContainer from 'components/Task/Comments/container';
 import TaskScratchpad from 'components/Task/Scratchpad';
@@ -33,7 +29,7 @@ const SitesTaskTabs = (props) => {
 
 	return (
 		<div className="SitesTaskTabs">
-			<Navs handleClick={changeTab} tabs={tabs} />
+			<Tabs handleClick={changeTab} tabs={tabs} />
 			<div className={`SitesTaskTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);

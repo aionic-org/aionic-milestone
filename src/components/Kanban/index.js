@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-import { Api, Spinner } from 'aionic-shared';
-
-import Tabs from 'components/UI/Tabs';
+import { Api, Spinner, Pills } from 'aionic-shared';
 
 import BoardStep from './Step';
 import KanbanFiltersContainer from './Filters/container';
@@ -80,7 +78,7 @@ const Kanban = (props) => {
 	const tabs = tabTitles.length ? (
 		<div className="row">
 			<div className="col-auto mb-4">
-				<Tabs tabs={tabTitles} handleClick={handleClick} />
+				<Pills tabs={tabTitles} handleClick={handleClick} />
 			</div>
 		</div>
 	) : null;

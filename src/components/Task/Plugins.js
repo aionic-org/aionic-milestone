@@ -1,8 +1,6 @@
 import React from 'react';
 
-import useTab from 'components/Utility/Hooks/useTab';
-
-import Tabs from 'components/UI/Tabs';
+import { useTab, Pills } from 'aionic-shared';
 
 import TaskGitContainer from 'components/Task/Git/container';
 
@@ -24,7 +22,7 @@ const TaskPlugins = (props) => {
 
 	return (
 		<div className="TaskPlugins">
-			<Tabs handleClick={changeTab} tabs={tabs} />
+			<Pills handleClick={changeTab} tabs={tabs} />
 			<div className={`px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);

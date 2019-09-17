@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner } from 'aionic-shared';
-
-import Error from 'components/UI/Error';
+import { Api, Spinner, Error } from 'aionic-shared';
 
 import TaskGit from '.';
 

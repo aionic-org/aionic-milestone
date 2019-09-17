@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Spinner } from 'aionic-shared';
-
-import Error from 'components/UI/Error';
-import Toast from 'components/UI/Toast';
+import { Api, Spinner, Error, Toast } from 'aionic-shared';
 
 import SitesBoard from '.';
 

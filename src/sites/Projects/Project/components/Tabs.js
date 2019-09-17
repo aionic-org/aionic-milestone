@@ -1,8 +1,6 @@
 import React from 'react';
 
-import useTab from 'components/Utility/Hooks/useTab';
-
-import Navs from 'components/UI/Navs';
+import { useTab, Tabs } from 'aionic-shared';
 
 import ProjectCommentsContainer from 'components/Project/Comments/container';
 import ProjectDetails from 'components/Project/Details';
@@ -29,7 +27,7 @@ const SitesProjectTabs = (props) => {
 
 	return (
 		<div className="SitesProjectTabs">
-			<Navs handleClick={changeTab} tabs={tabs} preselectTabIdx={0} />
+			<Tabs handleClick={changeTab} tabs={tabs} preselectTabIdx={0} />
 			<div className={`SitesProjectTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);

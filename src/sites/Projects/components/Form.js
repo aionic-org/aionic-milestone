@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
-import { Api, Session } from 'aionic-shared';
+import { Api, Session, Error } from 'aionic-shared';
 
 import Helper from 'services/helper';
 
-import Error from 'components/UI/Error';
 import InputDate from 'components/UI/Input/Date/';
 
 import TaskSuggestion from 'components/Task/Suggestion';

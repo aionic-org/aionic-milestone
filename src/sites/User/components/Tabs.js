@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Tabs from 'components/UI/Tabs';
+import { Pills } from 'aionic-shared';
 
 import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
 
@@ -39,7 +39,7 @@ class SitesUserTabsContent extends Component {
 			<div className="SitesUserTabs">
 				<div className="row">
 					<div className="col-12">
-						<Tabs tabs={tabs} handleClick={this.handleClick} />
+						<Pills tabs={tabs} handleClick={this.handleClick} />
 						<div className={`SitesUserTabContent ${content ? 'mt-3' : ''}`}>{content}</div>
 					</div>
 				</div>

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Spinner } from 'aionic-shared';
+import { Api, Spinner, Error } from 'aionic-shared';
 
 import Helper from 'services/helper';
-
-import Error from 'components/UI/Error';
 
 import UserSelectsRole from './Selects/Role';
 import UserSelectsActive from './Selects/Active';

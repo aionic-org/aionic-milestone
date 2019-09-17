@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Fetcher from 'components/Utility/Fetcher';
+import { Fetcher } from 'aionic-shared';
 
 import Board from '.';
 

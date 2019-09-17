@@ -1,10 +1,6 @@
 import React from 'react';
 
-import { Spinner } from 'aionic-shared';
-
-import useFetcher from 'components/Utility/Hooks/useFetcher';
-
-import Error from 'components/UI/Error';
+import { Spinner, Error, useFetcher } from 'aionic-shared';
 
 import UserInvitation from 'components/User/Invitation';
 import UserCreate from 'components/User/Create';

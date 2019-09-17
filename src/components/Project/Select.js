@@ -1,5 +1,6 @@
 import React from 'react';
-import InputSelect from 'components/UI/Input/Select';
+
+import { InputSelect } from 'aionic-shared';
 
 const ProjectSelect = (props) => {
 	const projects = props.projectList.map((project) => {
