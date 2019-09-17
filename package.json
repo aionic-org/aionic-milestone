@@ -4,7 +4,7 @@
   "description": "Aionic Milestone - Applications for project management",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": "https://github.com/Aionic-Apps/aionic-milestone",
+  "repository": "https://github.com/Aionic-Apps/aionic-milestone#develop",
   "license": "MIT",
   "homepage": "https://aionic-apps.com",
   "scripts": {
