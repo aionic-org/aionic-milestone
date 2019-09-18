@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-shared';
+import { Api, Spinner, Error } from 'aionic-library';
 
 import GitOrganizationForm from 'components/Git/Organization/Form';
 import Deck from 'components/Deck';

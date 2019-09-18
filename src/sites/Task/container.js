@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Session, Spinner, Error, Toast } from 'aionic-shared';
+import { Api, Session, Spinner, Error, Toast } from 'aionic-library';
 
 import SitesTask from '.';
 

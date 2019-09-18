@@ -1,12 +1,11 @@
-.TaskTag {
-  color: #e84393;
-}
+@import 'aionic-library/scss/components/variables';
 
 .TaskTag.list-inline-item {
-  background-color: #e3ebf6;
-  border-radius: 4px;
-  margin-right: 0.75rem;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  padding: 2px 10px;
+	background-color: $bg-grey;
+	border: 1px solid $grey-light;
+	border-radius: 4px;
+	margin-right: 0.75rem;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding: 2px 10px;
 }

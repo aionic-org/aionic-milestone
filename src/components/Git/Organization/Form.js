@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner } from 'aionic-shared';
+import { Api, Spinner } from 'aionic-library';
 
 class GitOrganizationForm extends Component {
 	constructor(props) {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import { Link, withRouter } from 'react-router-dom';
 
-import { Api } from 'aionic-shared';
+import { Api } from 'aionic-library';
 
 import MiscShare from 'components/Misc/Share';
 
@@ -62,7 +62,7 @@ const ProjectActionButtons = (props) => {
 				<div>
 					<button
 						type="button"
-						className="btn btn-primary"
+						className="button button-primary"
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false"
@@ -112,7 +112,7 @@ const ProjectActionButtons = (props) => {
 				overlayClassName="Modal-Overlay"
 			>
 				<div className="modal-header">
-					<h5 className="modal-title">Share project</h5>
+					<h5 className="modal-title">Share</h5>
 					<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
 						<span aria-hidden="true">×</span>
 					</button>

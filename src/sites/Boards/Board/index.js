@@ -28,14 +28,16 @@ const SitesBoard = (props) => {
 						/>
 					</div>
 					<div className="col-auto">
-						<BoardDetails
-							board={board}
-							updateParentBoardState={updateParentBoardState}
-							deleteBoard={deleteBoard}
-							classes={['d-inline-block']}
-						/>
-						<div className="btn-group">
-							<BoardActionButtons board={board} />
+						<div className="btn-toolbar">
+							<BoardDetails
+								board={board}
+								updateParentBoardState={updateParentBoardState}
+								deleteBoard={deleteBoard}
+								classes={['d-inline-block']}
+							/>
+							<div className="ml-2">
+								<BoardActionButtons board={board} />
+							</div>
 						</div>
 					</div>
 				</div>

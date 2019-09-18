@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Fetcher } from 'aionic-shared';
+import { Fetcher } from 'aionic-library';
 
 import UserDetails from './index';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Spinner, Error, useFetcher } from 'aionic-shared';
+import { Spinner, Error, useFetcher } from 'aionic-library';
 
 import AnnouncementForm from 'components/Announcements/Form';
 import AnnouncementsTable from 'components/Announcements/Table';

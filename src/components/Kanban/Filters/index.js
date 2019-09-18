@@ -27,39 +27,34 @@ const KanbanFilters = (props) => {
 			<form id="kanban-filters-form">
 				<div className="row">
 					<div className="col-4">
-						<div className="form-group mb-0">
+						<div className="form-group">
 							<input
 								type="text"
-								className="form-control form-control-sm"
+								className="form-control"
 								placeholder="Filter tasks..."
 								onChange={updateTextFilter}
 							/>
 						</div>
 					</div>
-					<div className="col-2">
-						<div className="form-group mb-0">
+					<div className="col-12 col-xl-auto">
+						<div className="form-group">
 							<TaskSelectsPriority
 								priorityList={priorityList}
-								classes={['form-control-sm']}
 								defaultValue={0}
 								showDefault={false}
 								onChange={updatePriorityFilter}
 							/>
 						</div>
 					</div>
-					<div className="col-2">
-						<div className="form-group mb-0">
-							<button
-								type="reset"
-								className="btn btn-sm btn-block btn-warning"
-								onClick={resetFilters}
-							>
-								Reset filters
+					<div className="col-auto">
+						<div className="form-group">
+							<button type="reset" className="button button-warning" onClick={resetFilters}>
+								Reset
 							</button>
 						</div>
 					</div>
 					<div className="col-auto d-flex align-items-center">
-						<div className="form-check">
+						<div className="form-group ml-3">
 							<input
 								type="checkbox"
 								className="form-check-input"

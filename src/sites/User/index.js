@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Session } from 'aionic-shared';
+import { Session } from 'aionic-library';
 
 import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';

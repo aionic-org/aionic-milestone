@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import ReactModal from 'react-modal';
 import queryString from 'query-string';
 
+import { Button } from 'aionic-library';
+
 import ProjectForm from './Form';
 
 const ProjectsCreate = (props) => {
@@ -23,10 +25,7 @@ const ProjectsCreate = (props) => {
 	return (
 		<div className="ProjectsCreate">
 			<div className="form-group">
-				<button type="button" className="btn btn-primary btn-block" onClick={handleOpenModal}>
-					<i className="fas fa-plus mr-2" />
-					Create project
-				</button>
+				<Button label="Create" icon="fas fa-plus" onClickHandler={handleOpenModal} />
 			</div>
 
 			<ReactModal
@@ -36,7 +35,7 @@ const ProjectsCreate = (props) => {
 				overlayClassName="Modal-Overlay"
 			>
 				<div className="modal-header">
-					<h5 className="modal-title">Create project</h5>
+					<h5 className="modal-title">Create new project</h5>
 					<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
 						<span aria-hidden="true">×</span>
 					</button>

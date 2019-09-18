@@ -36,7 +36,7 @@ const SearchBar = (props) => {
 					defaultValue={termFromUrl}
 				/>
 				<div className="input-group-append">
-					<button className="btn btn-violet" type="submit">
+					<button className="btn button button-violet" type="submit">
 						<i className="fas fa-search fa-sm" />
 					</button>
 				</div>

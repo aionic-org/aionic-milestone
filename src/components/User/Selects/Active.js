@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputSelect } from 'aionic-shared';
+import { InputSelect } from 'aionic-library';
 
 const UserSelectsActive = (props) => {
 	const status = [{ value: false, title: 'False' }, { value: true, title: 'True' }];

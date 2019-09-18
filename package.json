@@ -1,10 +1,10 @@
 {
   "name": "aionic-milestone",
   "version": "0.0.1",
-  "description": "Aionic Milestone - Applications for project management",
+  "description": "Aionic Milestone - A web application for project management and collaboration",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": "https://github.com/Aionic-Apps/aionic-milestone#develop",
+  "repository": "https://github.com/Aionic-Apps/aionic-milestone",
   "license": "MIT",
   "homepage": "https://aionic-apps.com",
   "scripts": {
@@ -16,7 +16,7 @@
     "prettier": "prettier --config ./.prettierrc --write src/**/*.js"
   },
   "dependencies": {
-    "aionic-shared": "https://github.com/Aionic-Apps/aionic-shared",
+    "aionic-library": "https://github.com/Aionic-Apps/aionic-library#develop",
     "axios": "^0.18.1",
     "dotenv": "^6.2.0",
     "draft-js": "^0.10.5",
@@ -26,9 +26,7 @@
     "node-sass": "^4.12.0",
     "query-string": "^6.8.1",
     "react": "^16.9.0",
-    "react-datepicker": "^2.8.0",
     "react-dom": "^16.9.0",
-    "react-markdown": "^4.1.0",
     "react-modal": "^3.9.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"

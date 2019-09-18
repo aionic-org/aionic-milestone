@@ -3,6 +3,8 @@ import ReactModal from 'react-modal';
 
 import Helper from 'services/helper';
 
+import { Button } from 'aionic-library';
+
 import UserSuggestion from 'components/User/Suggestion';
 
 const BoardDetails = (props) => {
@@ -28,9 +30,7 @@ const BoardDetails = (props) => {
 
 	return (
 		<div className={`BoardDetails ${classes.join(' ')}`}>
-			<button type="button" className="btn btn-secondary" onClick={handleOpenModal}>
-				<i className="fas fa-cog" />
-			</button>
+			<Button icon="fas fa-cog" type="secondary" onClickHandler={handleOpenModal} />
 			<ReactModal
 				isOpen={showModal}
 				contentLabel="Minimal Modal Example"
@@ -55,11 +55,9 @@ const BoardDetails = (props) => {
 
 					<p className="text-muted font-weight-bold mt-4">Users</p>
 					<UserSuggestion userListSelected={board.users} updateParent={updateBoardUsers} />
-					<small className="text-muted d-block text-right mt-3">Updated: {board.updated} </small>
+					<p className="text-muted d-block text-right mt-3">Updated: {board.updated} </p>
 
-					<button type="button" className="btn btn-block btn-danger" onClick={deleteBoard}>
-						Delete
-					</button>
+					<Button label="Delete" type="danger" block={true} onClickHandler={deleteBoard} />
 				</div>
 			</ReactModal>
 		</div>

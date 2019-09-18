@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ReactModal from 'react-modal';
 import { Link, withRouter } from 'react-router-dom';
 
-import { Api, Session } from 'aionic-shared';
+import ReactModal from 'react-modal';
+
+import { Api, Session, Button } from 'aionic-library';
 
 import MiscShare from 'components//Misc/Share';
 
@@ -41,7 +42,7 @@ const TaskActionButtons = (props) => {
 
 	const openShareModal = () => {
 		setModalContent({
-			title: 'Share task',
+			title: 'Share',
 			content: <MiscShare endpoint={`tasks/${task.id}/share`} />
 		});
 		setShowModal(true);
@@ -57,7 +58,7 @@ const TaskActionButtons = (props) => {
 
 	const openMoveTaskModal = () => {
 		setModalContent({
-			title: 'Move task',
+			title: 'Move',
 			content: <TaskMove task={task} updateParentTaskState={updateParentTaskState} />
 		});
 		setShowModal(true);
@@ -84,15 +85,13 @@ const TaskActionButtons = (props) => {
 	} else {
 		statusBtn =
 			!task.assignee || (task.assignee && task.assignee.id !== Session.getUser().id) ? (
-				<button type="button" className="btn btn-light" onClick={assignToMe}>
-					Assign to me
-				</button>
+				<Button label="Assign to me" type="secondary" onClickHandler={assignToMe} />
 			) : null;
 		moreBtn = (
 			<div className="ml-2">
 				<button
 					type="button"
-					className="btn btn-primary"
+					className="button button-primary"
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false"
@@ -120,7 +119,7 @@ const TaskActionButtons = (props) => {
 					{task.project ? (
 						<div>
 							<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-2">
-								<i className="fas fa-table fa-fw mr-2" /> Open
+								<i className="fas fa-table fa-fw mr-2" /> View
 							</Link>
 							<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-2">
 								<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban

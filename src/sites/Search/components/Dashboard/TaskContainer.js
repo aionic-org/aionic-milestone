@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-shared';
+import { Api, Spinner, Error } from 'aionic-library';
 
 import TaskDashboard from 'components/Task/Dashboard/';
 

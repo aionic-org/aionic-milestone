@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Fetcher } from 'aionic-shared';
+import { Fetcher } from 'aionic-library';
 
 import TaskDashboard from 'components/Task/Dashboard/';
 

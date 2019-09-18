@@ -5,7 +5,7 @@ const UserPreview = (props) => {
 	const { user } = props;
 
 	return (
-		<Link to={`/users/${props.user.id}`} className="UserPreview CardLink card">
+		<Link to={`/users/${props.user.id}`} className="UserPreview card-link card">
 			<div className="card-body">
 				<h5 className="card-title">
 					{props.user.firstname} {props.user.lastname}

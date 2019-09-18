@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Status.scss';
+import './Step.scss';
 
 import TaskPreviewsBasic from 'components/Task/Previews/Basic';
 

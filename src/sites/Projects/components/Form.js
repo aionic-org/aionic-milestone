@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
-import { Api, Session, Error } from 'aionic-shared';
+import { Api, Session, Error, InputDate } from 'aionic-library';
 
 import Helper from 'services/helper';
-
-import InputDate from 'components/UI/Input/Date/';
 
 import TaskSuggestion from 'components/Task/Suggestion';
 
@@ -114,7 +112,7 @@ class ProjectForm extends Component {
 						<TaskSuggestion updateParent={this.updateProjectTasks} />
 					</div>
 					<button type="submit" className="btn btn-primary float-right">
-						Create
+						Save
 					</button>
 				</form>
 			</div>

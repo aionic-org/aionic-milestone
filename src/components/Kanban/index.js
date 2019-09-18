@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Api, Spinner, Pills } from 'aionic-shared';
+import { Api, Spinner, Pills } from 'aionic-library';
 
 import BoardStep from './Step';
 import KanbanFiltersContainer from './Filters/container';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Pills } from 'aionic-shared';
+import { Pills } from 'aionic-library';
 
 import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
 

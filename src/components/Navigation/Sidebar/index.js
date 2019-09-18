@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import './Sidebar.scss';
 
-import { Session } from 'aionic-shared';
+import { Session } from 'aionic-library';
 
 import UILogo from 'components/UI/Logo';
 

@@ -5,7 +5,7 @@ const GitCommit = (props) => {
 
 	return (
 		<a
-			className="GitCommit CardLink list-group-item"
+			className="GitCommit card-link list-group-item"
 			href={commit.url}
 			target="_blank"
 			rel="noopener noreferrer"

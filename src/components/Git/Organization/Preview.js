@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Api, Spinner } from 'aionic-shared';
+import { Api, Spinner } from 'aionic-library';
 
 const GitOrganizationPreview = (props) => {
 	const { org, handleDelete, handleSync } = props;

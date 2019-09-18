@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Helper from 'services/helper';
+import { InputDate } from 'aionic-library';
 
-import InputDate from 'components/UI/Input/Date/';
+import Helper from 'services/helper';
 
 import ProjectDescription from './Description';
 
@@ -25,7 +25,7 @@ const ProjectDetails = (props) => {
 					type="text"
 					name="key"
 					className="form-control"
-					value={project.key}
+					value={project.key || ''}
 					onChange={handleInputChange}
 				/>
 			</div>

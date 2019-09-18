@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api } from 'aionic-shared';
+import { Api } from 'aionic-library';
 
 class GitHubAuthenticate extends Component {
 	constructor(props) {

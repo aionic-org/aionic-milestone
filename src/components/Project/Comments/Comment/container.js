@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Api } from 'aionic-shared';
+import { Api } from 'aionic-library';
 
 import Comment from 'components/Comments/Comment/';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTab, Tabs } from 'aionic-shared';
+import { useTab, Tabs } from 'aionic-library';
 
 import ProjectCommentsContainer from 'components/Project/Comments/container';
 import ProjectDetails from 'components/Project/Details';

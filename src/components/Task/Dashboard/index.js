@@ -11,38 +11,16 @@ class TaskDashboard extends Component {
 		this.state = {
 			taskListFiltered: [],
 			isFiltered: false,
-			showTextFilter: false,
-			statusFilter: null,
-			textFilter: null
+			statusFilter: null
 		};
 	}
 
-	toggleTextFilter = (e) => {
-		e.preventDefault();
-		this.setState(
-			(prevState) => ({
-				showTextFilter: !prevState.showTextFilter,
-				textFilter: null
-			}),
-			() => {
-				this.filterTasks();
-			}
-		);
-	};
-
 	filterTasks = () => {
-		if (this.state.statusFilter !== null || this.state.textFilter !== null) {
+		if (this.state.statusFilter !== null) {
 			const taskListFiltered = this.props.taskList.filter((task) => {
-				const condStatus =
-					this.state.statusFilter !== null
-						? task.status && task.status.id === this.state.statusFilter
-						: true;
-				const condText =
-					this.state.textFilter !== null
-						? task.title.toLowerCase().includes(this.state.textFilter.toLowerCase())
-						: true;
-
-				return condStatus && condText;
+				return this.state.statusFilter !== null
+					? task.status && task.status.id === this.state.statusFilter
+					: true;
 			});
 
 			this.setState({ taskListFiltered, isFiltered: true });
@@ -55,13 +33,8 @@ class TaskDashboard extends Component {
 		this.setState({ statusFilter: statusId }, this.filterTasks);
 	};
 
-	filterByText = (e) => {
-		const textSearch = e.target.value;
-		this.setState({ textFilter: textSearch.length ? textSearch : null }, this.filterTasks);
-	};
-
 	render() {
-		const { taskListFiltered, isFiltered, showTextFilter } = this.state;
+		const { taskListFiltered, isFiltered } = this.state;
 		const { taskList, showStatusFilters, itemsPerRow } = this.props;
 
 		const itemList = isFiltered ? taskListFiltered : taskList;
@@ -72,20 +45,6 @@ class TaskDashboard extends Component {
 					<TaskDashboardFilters handleStatusChange={this.filterByStatus} />
 				) : null}
 
-				<button type="button" className="btn btn-link float-right" onClick={this.toggleTextFilter}>
-					Toggle filter
-				</button>
-
-				{showTextFilter ? (
-					<div className="form-group">
-						<input
-							type="text"
-							className="form-control form-control-sm"
-							placeholder="Filter tasks..."
-							onChange={this.filterByText}
-						/>
-					</div>
-				) : null}
 				<Deck
 					itemList={itemList}
 					deckType="Task"

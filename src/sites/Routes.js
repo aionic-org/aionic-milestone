@@ -1,13 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Session, Footer } from 'aionic-shared';
+import { Session, Footer } from 'aionic-library';
 
 import Navbar from 'components/Navigation/Navbar/';
 import Sidebar from 'components/Navigation/Sidebar';
 
-import SitesSignin from './Auth/Signin';
-import SitesRegister from './Auth/Register';
+import SitesSignin from './Signin';
 
 import SitesHome from './Home';
 import SitesTaskContainer from './Task/container';
@@ -26,7 +25,6 @@ const Routes = (props) => {
 	const AuthContainer = () => (
 		<div className="authentication">
 			<Route path="/signin" component={SitesSignin} />
-			<Route path="/register/:hash" component={SitesRegister} />
 		</div>
 	);
 

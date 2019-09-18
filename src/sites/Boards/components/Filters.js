@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputSelect } from 'aionic-shared';
+import { InputSelect } from 'aionic-library';
 
 const BoardsFilters = (props) => {
 	const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props;
@@ -20,7 +20,7 @@ const BoardsFilters = (props) => {
 	];
 
 	const limitsList = [
-		{ value: '', title: 'Max results' },
+		{ value: '', title: 'Results' },
 		{ value: '1', title: '1' },
 		{ value: '3', title: '3' },
 		{ value: '5', title: '5' },
@@ -31,7 +31,7 @@ const BoardsFilters = (props) => {
 		<div className="BoardsFilters">
 			<form>
 				<div className="row">
-					<div className="col-12 col-xl-5">
+					<div className="col-12 col-xl">
 						<div className="form-group">
 							<input
 								type="text"
@@ -68,10 +68,10 @@ const BoardsFilters = (props) => {
 							/>
 						</div>
 					</div>
-					<div className="col">
+					<div className="col-12 col-xl-auto">
 						<div className="form-group">
-							<button type="reset" className="btn btn-block btn-warning" onClick={resetFilters}>
-								Reset filters
+							<button type="reset" className="button button-warning" onClick={resetFilters}>
+								Reset
 							</button>
 						</div>
 					</div>

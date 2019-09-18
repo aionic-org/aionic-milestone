@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Fetcher, Pills } from 'aionic-shared';
+import { Fetcher, Pills } from 'aionic-library';
 
 const TaskDashboardFilters = (props) => (
 	<Fetcher url="task-status">

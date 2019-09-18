@@ -26,7 +26,7 @@ const SitesBoards = (props) => {
 			<Content>
 				<Title title="Boards" />
 				<div className="row">
-					<div className="col-12 col-xl-10">
+					<div className="col-12 col-xl">
 						<Filters
 							filters={filters}
 							filterItemsByParams={filterBoardsByParams}
@@ -35,7 +35,7 @@ const SitesBoards = (props) => {
 							orderByList={orderByList}
 						/>
 					</div>
-					<div className="col-12 col-xl-2">
+					<div className="col-12 col-xl-auto">
 						<BoardsCreate />
 					</div>
 				</div>

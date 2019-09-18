@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputSelect } from 'aionic-shared';
+import { InputSelect } from 'aionic-library';
 
 const TaskSelectsLabel = (props) => {
 	// https://flatuicolors.com/palette/us

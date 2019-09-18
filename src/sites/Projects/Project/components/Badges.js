@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Badge from 'components/UI/Badge';
+import { Badge } from 'aionic-library';
 
 const ProjectBadges = (props) => {
 	const { project } = props;
@@ -10,12 +10,12 @@ const ProjectBadges = (props) => {
 			<div className="list-inline">
 				{project.isClone ? (
 					<div className="list-inline-item">
-						<Badge title="Clone" assignedClasses={['badge-info']} />
+						<Badge label="Clone" />
 					</div>
 				) : null}
 				{project.completed ? (
 					<div className="list-inline-item">
-						<Badge title="Completed" assignedClasses={['badge-mint']} />
+						<Badge label="Completed" type="success" />
 					</div>
 				) : null}
 			</div>

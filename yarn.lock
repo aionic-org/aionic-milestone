@@ -1539,13 +1539,15 @@ address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
   integrity sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA==
 
-"aionic-shared@https://github.com/Aionic-Apps/aionic-shared":
+"aionic-library@https://github.com/Aionic-Apps/aionic-library":
   version "0.0.1"
-  resolved "https://github.com/Aionic-Apps/aionic-shared#9ed2194e22416224b9ea06d12838245c1ad0a251"
+  resolved "https://github.com/Aionic-Apps/aionic-library#32d61809ae89e4b15cd202a965aa655ac2884939"
   dependencies:
     axios "^0.19.0"
     jwt-decode "^2.2.0"
-    react "^16.9.0"
+    moment "^2.24.0"
+    react-datepicker "^2.9.6"
+    react-markdown "^4.2.2"
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -8546,7 +8548,7 @@ react-app-polyfill@^1.0.1:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
-react-datepicker@^2.8.0:
+react-datepicker@^2.9.6:
   version "2.9.6"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-2.9.6.tgz#26190c9f71692149d0d163398aa19e08626444b1"
   integrity sha512-PLiVhyAr567gWuLMZwIH9WpTIZOZVLhEFyuUzSx3kmQdiikjrYpdNlxsfbbgaxRnee5y08KJZequaqRsNySXmw==
@@ -8613,7 +8615,7 @@ react-lifecycles-compat@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-markdown@^4.1.0:
+react-markdown@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-4.2.2.tgz#b378774fcffb354653db8749153fc8740f9ed2f1"
   integrity sha512-/STJiRFmJuAIUdeBPp/VyO5bcenTIqP3LXuC3gYvregmYGKjnszGiFc2Ph0LsWC17Un3y/CT8TfxnwJT7v9EJw==

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Fetcher } from 'aionic-shared';
+import { Fetcher } from 'aionic-library';
 
 import Comments from 'components/Comments';
 

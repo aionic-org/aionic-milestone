@@ -15,30 +15,21 @@ const SitesProjects = (props) => {
 
 	const projectsToShow = filters.text.length ? filtered : fetched;
 
-	const orderByList = [
-		{ value: '', title: 'Order by' },
-		{ value: 'created', title: 'Created' },
-		{ value: 'finished', title: 'Finished' },
-		{ value: 'title', title: 'Title' },
-		{ value: 'updated', title: 'Updated' }
-	];
-
 	return (
 		<div className="SitesProjects">
 			<Content>
 				<Title title="Projects" />
 				<ProjectsWidgetbar allProjects={all} />
 				<div className="row">
-					<div className="col-12 col-xl-10">
+					<div className="col-12 col-xl">
 						<Filters
 							filters={filters}
 							filterItemsByParams={filterProjectsByParams}
 							filterItemsByText={filterProjectsByText}
 							resetFilters={resetFilters}
-							orderByList={orderByList}
 						/>
 					</div>
-					<div className="col-12 col-xl-2">
+					<div className="col-12 col-xl-auto">
 						<ProjectCreate />
 					</div>
 				</div>

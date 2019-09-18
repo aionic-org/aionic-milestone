@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Api, Session } from 'aionic-shared';
+import { Api, Session } from 'aionic-library';
 
 const TaskWatch = (props) => {
 	const { task } = props;

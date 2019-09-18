@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-
 import { withRouter } from 'react-router-dom';
+
 import ReactModal from 'react-modal';
 import queryString from 'query-string';
+
+import { Button } from 'aionic-library';
 
 import BoardsForm from './Form';
 
@@ -23,10 +25,7 @@ const BoardsCreate = (props) => {
 	return (
 		<div className="BoardsCreate">
 			<div className="form-group">
-				<button type="button" className="btn btn-primary btn-block" onClick={handleOpenModal}>
-					<i className="fas fa-plus mr-2" />
-					Create board
-				</button>
+				<Button label="Create" icon="fas fa-plus" onClickHandler={handleOpenModal} />
 			</div>
 
 			<ReactModal
@@ -36,7 +35,7 @@ const BoardsCreate = (props) => {
 				overlayClassName="Modal-Overlay"
 			>
 				<div className="modal-header">
-					<h5 className="modal-title">Create board</h5>
+					<h5 className="modal-title">Create new board</h5>
 					<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
 						<span aria-hidden="true">×</span>
 					</button>

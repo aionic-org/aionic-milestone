@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Suggestion.scss';
 
-import { Api, useSuggestion } from 'aionic-shared';
+import { Api, useSuggestion } from 'aionic-library';
 
 const UserSuggestion = (props) => {
 	const { userListSelected, updateParent, multiSelect, autoClear, classes } = props;

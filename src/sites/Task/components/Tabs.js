@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Session, Tabs, useTab } from 'aionic-shared';
+import { Session, Tabs, useTab } from 'aionic-library';
 
 import TaskCommentsContainer from 'components/Task/Comments/container';
 import TaskScratchpad from 'components/Task/Scratchpad';

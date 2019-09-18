@@ -1,4 +1,4 @@
-@import 'aionic-shared/scss/components/variables.scss';
+@import 'aionic-library/scss/components/variables.scss';
 
 .KanbanStep {
 	position: relative;
@@ -12,7 +12,7 @@
 
 	h6 {
 		font-weight: bold;
-		background: #dfe6e9;
+		background: $grey-light;
 		padding: 8px;
 	}
 

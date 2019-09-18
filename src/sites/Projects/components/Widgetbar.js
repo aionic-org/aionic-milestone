@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Progress from 'components/UI/Progress';
-import Widget from 'components/UI/Widget';
+import { Progress, Widget } from 'aionic-library';
 
 const ProjectsWidgetbar = (props) => {
 	const { allProjects } = props;
@@ -15,7 +14,6 @@ const ProjectsWidgetbar = (props) => {
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
 						title={`Open Projects: ${openProjects.length}`}
-						subtitle="Open projects"
 						icon="fas fa-list"
 						iconBackground="#6c5ce7"
 					/>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Spinner, useFetcher, Error } from 'aionic-shared';
+import { Spinner, useFetcher, Error } from 'aionic-library';
 
 import ProjectSelect from '../Project/Select';
 

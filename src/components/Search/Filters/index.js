@@ -4,7 +4,7 @@ import UserSelect from 'components/User/Select';
 import TaskSelectsStatus from 'components/Task/Selects/Status';
 import GitOrganizationSelect from 'components/Git/Organization/Select';
 
-class SitesSearchFilter extends Component {
+class SearchFilters extends Component {
 	handleReset = () => {
 		document.getElementById('filterForm').reset();
 		this.props.resetFilters();
@@ -15,7 +15,7 @@ class SitesSearchFilter extends Component {
 		const { userList, statusList, orgList } = lists;
 
 		return (
-			<div className="SitesSearchFilter">
+			<div className="SearchFilters">
 				<form id="filterForm">
 					<div className="form-group">
 						<label>Seach term</label>
@@ -86,7 +86,11 @@ class SitesSearchFilter extends Component {
 							defaultValue={searchParams.branch}
 						/>
 					</div>
-					<button type="button" className="btn btn-primary btn-block" onClick={this.handleReset}>
+					<button
+						type="button"
+						className="button button-warning btn-block"
+						onClick={this.handleReset}
+					>
 						Reset
 					</button>
 				</form>
@@ -95,4 +99,4 @@ class SitesSearchFilter extends Component {
 	}
 }
 
-export default SitesSearchFilter;
+export default SearchFilters;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Session } from 'aionic-shared';
+import { Session } from 'aionic-library';
 
 import Helper from 'services/helper';
 

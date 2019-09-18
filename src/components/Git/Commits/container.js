@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Spinner, Error, useFetcher, useTextFilter } from 'aionic-shared';
+import { Spinner, Error, useFetcher, useTextFilter } from 'aionic-library';
 
 import GitCommits from '.';
 

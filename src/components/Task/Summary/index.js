@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import { Session } from 'aionic-shared';
+import { Session, InputDate } from 'aionic-library';
 
 import Helper from 'services/helper';
 
@@ -10,7 +10,6 @@ import TaskSelectsPriority from 'components/Task/Selects/Priority';
 import TaskSelectsLabel from 'components/Task/Selects/Label';
 
 import InputSuggestion from 'components/UI/Input/Suggestion';
-import InputDate from 'components/UI/Input/Date/';
 
 const TaskSummary = (props) => {
 	const { lists, task, updateParentTaskState } = props;

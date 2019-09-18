@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Helper from 'services/helper';
+import { Progress, Widget } from 'aionic-library';
 
-import Progress from 'components/UI/Progress';
-import Widget from 'components/UI/Widget';
+import Helper from 'services/helper';
 
 const ProjectWidgetbar = (props) => {
 	const { project } = props;

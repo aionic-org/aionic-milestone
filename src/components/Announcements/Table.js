@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Api } from 'aionic-shared';
+import { Api } from 'aionic-library';
 
 import Helper from 'services/helper';
 

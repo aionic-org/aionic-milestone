@@ -1,8 +1,5 @@
 /* Import global styles */
-
-@import './styles/cards';
-
-@import 'aionic-shared/scss/index.scss';
+@import 'aionic-library/scss/index.scss';
 
 body {
 	overflow-x: hidden;
@@ -37,16 +34,4 @@ body {
 		-o-transition: margin 0.25s ease;
 		transition: margin 0.25s ease;
 	}
-}
-
-.Badges .Badge {
-	margin-bottom: 1rem;
-}
-
-.text-muted {
-	color: $text-grey !important;
-}
-
-.form-control:focus {
-	box-shadow: 0 0 0 0.1rem rgba(108, 92, 231, 0.3);
 }

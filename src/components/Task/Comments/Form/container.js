@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Error } from 'aionic-shared';
+import { Error } from 'aionic-library';
 
 import CommentForm from 'components/Comments/Form';
 import useCommentForm from '../../../Utility/Hooks/useCommentForm';

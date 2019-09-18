@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { InputSelect } from 'aionic-shared';
+import { InputSelect } from 'aionic-library';
 
 const ProjectsFilters = (props) => {
-	const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props;
+	const { filterItemsByParams, filterItemsByText, resetFilters } = props;
 
 	const handleParamsChange = (e) => {
 		filterItemsByParams({ [e.target.name]: e.target.value });
@@ -19,6 +19,14 @@ const ProjectsFilters = (props) => {
 		{ value: '0', title: 'No' }
 	];
 
+	const orderByList = [
+		{ value: '', title: 'Order by' },
+		{ value: 'created', title: 'Created' },
+		{ value: 'deadline', title: 'Deadline' },
+		{ value: 'title', title: 'Title' },
+		{ value: 'updated', title: 'Updated' }
+	];
+
 	const sortDirectionsList = [
 		{ value: '', title: 'Direction' },
 		{ value: 'ASC', title: 'ASC' },
@@ -26,7 +34,7 @@ const ProjectsFilters = (props) => {
 	];
 
 	const limitsList = [
-		{ value: '', title: 'Max results' },
+		{ value: '', title: 'Results' },
 		{ value: '1', title: '1' },
 		{ value: '3', title: '3' },
 		{ value: '5', title: '5' },
@@ -84,10 +92,10 @@ const ProjectsFilters = (props) => {
 							/>
 						</div>
 					</div>
-					<div className="col-12 col-xl-2">
+					<div className="col-12 col-xl-auto">
 						<div className="form-group">
-							<button type="reset" className="btn btn-block btn-warning" onClick={resetFilters}>
-								Reset filters
+							<button type="reset" className="button button-warning" onClick={resetFilters}>
+								Reset
 							</button>
 						</div>
 					</div>

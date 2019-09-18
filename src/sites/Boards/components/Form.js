@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
 
-import { Api, Session, Error } from 'aionic-shared';
+import { Api, Session, Error } from 'aionic-library';
 
 import Helper from 'services/helper';
 

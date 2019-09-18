@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTab, Pills } from 'aionic-shared';
+import { useTab, Pills } from 'aionic-library';
 
 import TaskGitContainer from 'components/Task/Git/container';
 

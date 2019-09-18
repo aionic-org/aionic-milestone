@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-shared';
+import { Api, Spinner, Error } from 'aionic-library';
 
 import TaskFilter from '.';
 
-class SitesSearchFiltersContainer extends Component {
+class SearchFiltersContainer extends Component {
 	constructor(props) {
 		super(props);
 
@@ -54,11 +54,11 @@ class SitesSearchFiltersContainer extends Component {
 		}
 
 		return (
-			<div className="SitesSearchFiltersContainer">
+			<div className="SearchFiltersContainer">
 				<TaskFilter lists={lists} {...this.props} />
 			</div>
 		);
 	}
 }
 
-export default SitesSearchFiltersContainer;
+export default SearchFiltersContainer;

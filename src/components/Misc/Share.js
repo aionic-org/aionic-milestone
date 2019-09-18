@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Spinner } from 'aionic-shared';
+import { Api, Spinner } from 'aionic-library';
 
 import Feedback from 'components/UI/Feedback/';
 import UserSuggestion from 'components/User/Suggestion';
@@ -40,7 +40,7 @@ const MiscShare = (props) => {
 				<Feedback valid={valid} message={msg} />
 			</div>
 
-			<button type="button" className="btn btn-primary btn-block" onClick={share}>
+			<button type="button" className="button button-primary btn-block" onClick={share}>
 				{isLoading ? (
 					<Spinner onBtn={true} />
 				) : (

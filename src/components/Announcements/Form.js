@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Session, Spinner } from 'aionic-shared';
+import { Api, Session, Spinner } from 'aionic-library';
 
 import Helper from 'services/helper';
 

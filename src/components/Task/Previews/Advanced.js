@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Helper from 'services/helper';
+import { Badge } from 'aionic-library';
 
-import Badge from 'components/UI/Badge';
+import Helper from 'services/helper';
 
 import TaskPriorityIcon from '../Priority';
 
@@ -28,7 +28,7 @@ const TaskPreviewsAdvanced = (props) => {
 	return (
 		<Link
 			to={`/tasks/${task.id}`}
-			className="TaskPreviewsAdvanced CardLink card"
+			className="TaskPreviewsAdvanced card-link card"
 			style={{ borderLeft: `6px solid ${task.label}` }}
 		>
 			<div className="card-header font-weight-bold">
@@ -42,7 +42,9 @@ const TaskPreviewsAdvanced = (props) => {
 					<div className="col-auto d-flex align-items-center">
 						<TaskPriorityIcon task={task} />
 						{task.completed ? (
-							<Badge title="Completed" assignedClasses={['badge-primary', 'ml-2']} />
+							<div className="ml-2">
+								<Badge label="Completed" type="success" />{' '}
+							</div>
 						) : null}
 					</div>
 				</div>

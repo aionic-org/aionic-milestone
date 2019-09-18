@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputSelect } from 'aionic-shared';
+import { InputSelect } from 'aionic-library';
 
 const TaskSelectsPriority = (props) => {
 	const priorities = props.priorityList.map((priority) => {
