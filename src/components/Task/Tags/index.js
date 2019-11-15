@@ -6,7 +6,7 @@ import TaskTag from './Tag';
 import TaskTagForm from './Form';
 
 const TaskTags = (props) => {
-	const { task, updateTask } = props;
+	const { task, updateParentTaskState } = props;
 
 	const [showForm, setShowForm] = useState(false);
 	const [tagList, setTagList] = useState(task.tags ? task.tags.split(',') : []);
@@ -17,7 +17,7 @@ const TaskTags = (props) => {
 
 	const updateTagList = (newTagList, doToggle) => {
 		setTagList(newTagList);
-		updateTask({ ...task, tags: newTagList.join(',') });
+		updateParentTaskState({ ...task, tags: newTagList.join(',') });
 
 		if (doToggle) {
 			toggleForm();

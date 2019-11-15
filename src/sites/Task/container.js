@@ -116,7 +116,6 @@ class SitesTaskContainer extends Component {
 					isNewTask={isNewTask}
 					task={task}
 					updateParentTaskState={this.updateParentTaskState}
-					updateTask={this.updateTask}
 				/>
 			</div>
 		);

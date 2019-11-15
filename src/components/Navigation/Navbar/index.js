@@ -72,26 +72,13 @@ const Navbar = (props) => {
 							<i className="fas fa-plus mr-1" /> Create
 						</button>
 						<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-							<div className="dropdown-header">Users & Boards</div>
-							<Link to="/administration/users" className="dropdown-item">
-								<i className="far fa-envelope fa-fw mr-2" />
-								Invite User
-							</Link>
-							<Link to="/administration/users?create=true" className="dropdown-item">
-								<i className="fas fa-user-plus fa-fw mr-2" />
-								Create User
+							<Link to="/tasks" className="dropdown-item">
+								<i className="fas fa-tasks fa-fw mr-2" />
+								Create Task
 							</Link>
 							<Link to="/boards?create=true" className="dropdown-item">
 								<i className="fas fa-chalkboard-teacher mr-2" />
 								Create Board
-							</Link>
-							<div className="dropdown-divider" />
-
-							<div className="dropdown-header">Tasks & Projects</div>
-
-							<Link to="/tasks" className="dropdown-item">
-								<i className="fas fa-tasks fa-fw mr-2" />
-								Create Task
 							</Link>
 							<Link to="/projects?create=true" className="dropdown-item">
 								<i className="fas fa-table fa-fw mr-2" />

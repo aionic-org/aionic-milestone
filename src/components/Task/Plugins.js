@@ -14,7 +14,7 @@ const TaskPlugins = (props) => {
 	let content = null;
 	switch (tab) {
 		case 'GitHub':
-			content = <TaskGitContainer task={task} updateTask={updateParentTaskState} />;
+			content = <TaskGitContainer task={task} updateParentTaskState={updateParentTaskState} />;
 			break;
 		default:
 			break;

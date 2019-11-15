@@ -20,6 +20,16 @@ const SitesTask = (props) => {
 		Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
 	};
 
+	const taskSidebar = isNewTask ? null : (
+		<div className="col-12 col-xl-4 mt-3 mt-xl-0">
+			<SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
+			<p className="text-muted mt-4 mb-0">
+				Created: {Helper.formatDateTime(task.created || Date.now())}
+			</p>
+			<p className="text-muted">Updated: {Helper.formatDateTime(task.updated || Date.now())}</p>
+		</div>
+	);
+
 	return (
 		<div className="SitesTask">
 			<Content>
@@ -40,24 +50,16 @@ const SitesTask = (props) => {
 
 				<div className="row">
 					<div className="col-auto">
-						<TaskTags task={task} updateTask={updateParentTaskState} />
+						<TaskTags task={task} updateParentTaskState={updateParentTaskState} />
 					</div>
 				</div>
 
 				<div className="row mt-3">
 					<div className="col-12 col-xl-8">
 						<TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
-						<TaskDescription task={task} updateTask={updateParentTaskState} />
+						<TaskDescription task={task} updateParentTaskState={updateParentTaskState} />
 					</div>
-					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
-						<SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
-						<p className="text-muted mt-4 mb-0">
-							Created: {Helper.formatDateTime(task.created || Date.now())}
-						</p>
-						<p className="text-muted">
-							Updated: {Helper.formatDateTime(task.updated || Date.now())}
-						</p>
-					</div>
+					{taskSidebar}
 				</div>
 			</Content>
 		</div>

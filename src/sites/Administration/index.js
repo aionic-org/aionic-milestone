@@ -5,8 +5,6 @@ import Title from 'components/UI/Title';
 import Content from 'components/UI/Content';
 
 import AdministrationGeneral from './sub/General';
-import AdministrationUsers from './sub/Users';
-import AdministrationGitHub from './sub/GitHub';
 import AdministrationAnnouncement from './sub/Announcement';
 
 const SitesAdministration = () => {
@@ -24,12 +22,6 @@ const SitesAdministration = () => {
 							<NavLink exact to="/administration" className="nav-link" activeClassName="active">
 								General
 							</NavLink>
-							<NavLink to="/administration/users" className="nav-link" activeClassName="active">
-								Users
-							</NavLink>
-							<NavLink to="/administration/github" className="nav-link" activeClassName="active">
-								GitHub
-							</NavLink>
 							<NavLink
 								to="/administration/announcement"
 								className="nav-link"
@@ -42,8 +34,6 @@ const SitesAdministration = () => {
 					<div className="col-12 col-xl-10 mt-3 mt-xl-0">
 						<Switch>
 							<Route exact path="/administration" component={AdministrationGeneral} />
-							<Route path="/administration/users" component={AdministrationUsers} />
-							<Route path="/administration/github" component={AdministrationGitHub} />
 							<Route path="/administration/announcement" component={AdministrationAnnouncement} />
 						</Switch>
 					</div>

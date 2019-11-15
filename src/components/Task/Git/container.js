@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-library';
+import { Api, Helper, Spinner, Error } from 'aionic-library';
 
 import TaskGit from '.';
 
@@ -63,7 +63,7 @@ class TaskGitContainer extends Component {
 					}
 				}));
 
-				this.props.updateTask({
+				this.props.updateParentTaskState({
 					...this.props.task,
 					organization: { id: orgId },
 					repository: null,
@@ -77,7 +77,7 @@ class TaskGitContainer extends Component {
 					}
 				}));
 
-				this.props.updateTask({
+				this.props.updateParentTaskState({
 					...this.props.task,
 					organization: null,
 					repository: null,
@@ -92,11 +92,17 @@ class TaskGitContainer extends Component {
 	handleRepoChange = (e) => {
 		const repoId = e.target.value || null;
 
-		this.props.updateTask({ ...this.props.task, repository: { id: repoId }, branch: null });
+		this.props.updateParentTaskState({
+			...this.props.task,
+			repository: { id: repoId },
+			branch: null
+		});
 	};
 
 	handleBranchChange = (e) => {
-		this.props.updateTask({ ...this.props.task, branch: e.target.value });
+		Helper.updateObjectPropByEvent(this.props.task, e, (task) => {
+			this.props.updateParentTaskState(task);
+		});
 	};
 
 	render() {
