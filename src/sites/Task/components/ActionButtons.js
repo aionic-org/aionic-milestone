@@ -5,12 +5,12 @@ import ReactModal from 'react-modal';
 
 import { Api, Session, Button } from 'aionic-library';
 
-import MiscShare from 'components//Misc/Share';
+import MiscShare from '../../../components/Misc/Share';
 
-import TaskCreate from './Create';
-import TaskMove from './Move';
-import TaskPlugins from './Plugins';
-import TaskWatch from './Watch';
+import TaskCreate from '../../../components/Task/Create';
+import TaskMove from '../../../components/Task/Move';
+import TaskPlugins from '../../../components/Task/Plugins';
+import TaskWatch from '../../../components/Task/Watch';
 
 const TaskActionButtons = (props) => {
 	const { task, isNewTask, updateParentTaskState } = props;
@@ -80,6 +80,7 @@ const TaskActionButtons = (props) => {
 
 	let statusBtn = null;
 	let moreBtn = null;
+
 	if (isNewTask) {
 		statusBtn = <TaskCreate task={task} />;
 	} else {

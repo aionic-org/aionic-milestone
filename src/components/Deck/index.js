@@ -1,13 +1,10 @@
 import React from 'react';
 
-import './Deck.scss';
+import TaskPreviewsAdvanced from '../Task/Previews/Advanced';
+import ProjectPreview from '../Project/Preview';
+import BoardPreview from '../Board/Preview';
 
-import TaskPreviewsAdvanced from 'components/Task/Previews/Advanced';
-import UserPreview from 'components/User/Preview';
-import ProjectPreview from 'components/Project/Preview';
-import GitOrganizationPreview from 'components/Git/Organization/Preview';
-import AnnouncementPreview from 'components/Announcements/Announcement/';
-import BoardPreview from 'components/Board/Preview';
+import './Deck.scss';
 
 const Deck = (props) => {
 	const { itemList, itemsPerRow, deckType, showItemsNumber } = props;
@@ -34,17 +31,11 @@ const Deck = (props) => {
 				<div className="card-deck" key={i}>
 					{itemArr.map((item) => {
 						switch (deckType) {
-							case 'Task':
+							case 'task':
 								return <TaskPreviewsAdvanced key={item.id} task={item} />;
-							case 'User':
-								return <UserPreview key={item.id} user={item} />;
-							case 'Project':
+							case 'project':
 								return <ProjectPreview key={item.id} project={item} />;
-							case 'Organization':
-								return <GitOrganizationPreview key={item.id} org={item} {...props} />;
-							case 'Announcement':
-								return <AnnouncementPreview key={item.id} announcement={item} {...props} />;
-							case 'Board':
+							case 'board':
 								return <BoardPreview key={item.id} board={item} {...props} />;
 							default:
 								return null;

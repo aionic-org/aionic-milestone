@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RichEditor from 'components/UI/Input/RichEditor/';
+import RichEditor from '../UI/Input/RichEditor';
 
 const TaskDescription = (props) => {
 	const { task, updateParentTaskState } = props;

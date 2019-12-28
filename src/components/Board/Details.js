@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 
-import Helper from 'services/helper';
-
 import { Button } from 'aionic-library';
 
-import UserSuggestion from 'components/User/Suggestion';
+import Helper from '../../services/helper';
+
+import UserSuggestion from '../User/Suggestion';
 
 const BoardDetails = (props) => {
 	const { board, updateParentBoardState, deleteBoard, classes } = props;

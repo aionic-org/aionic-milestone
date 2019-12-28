@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Helper from 'services/helper';
+import Helper from '../../services/helper';
 
 const UserTable = (props) => {
 	const { users } = props;

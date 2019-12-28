@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Session } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../../services/helper';
 
 const Comment = (props) => {
 	const { comment, deleteComment } = props;

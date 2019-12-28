@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import UserSelect from 'components/User/Select';
-import TaskSelectsStatus from 'components/Task/Selects/Status';
-import GitOrganizationSelect from 'components/Git/Organization/Select';
+import UserSelect from '../../User/Select';
+import TaskSelectsStatus from '../../Task/Selects/Status';
+import GitOrganizationSelect from '../../Git/Organization/Select';
 
 class SearchFilters extends Component {
 	handleReset = () => {

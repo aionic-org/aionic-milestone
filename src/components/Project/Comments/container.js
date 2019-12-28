@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Fetcher } from 'aionic-library';
 
-import Comments from 'components/Comments';
+import Comments from '../../Comments';
 
 import ProjectCommentsFormContainer from './Form/container';
 

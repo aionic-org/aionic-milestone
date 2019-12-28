@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Api, Spinner, Pills } from 'aionic-library';
 
-import BoardStep from './Step';
+import KanbanStatus from './Status';
 import KanbanFiltersContainer from './Filters/container';
 
 const Kanban = (props) => {
@@ -95,7 +95,7 @@ const Kanban = (props) => {
 				{statusList.map((status) => {
 					const tasks = filteredTasks.filter((task) => task.status.id === status.id);
 					return (
-						<BoardStep
+						<KanbanStatus
 							key={status.id}
 							title={status.title}
 							tasks={tasks}

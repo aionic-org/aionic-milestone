@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Suggestion.scss';
-
 import { Api, useSuggestion } from 'aionic-library';
+
+import './Suggestion.scss';
 
 const TaskSuggestion = (props) => {
 	const { taskListSelected, updateParent, multiSelect, autoClear, maxHeight, smallInput } = props;

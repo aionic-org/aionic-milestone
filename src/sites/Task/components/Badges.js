@@ -15,7 +15,7 @@ const TaskBadges = (props) => {
 			<div className="list-inline">
 				{task.isClone ? (
 					<div className="list-inline-item">
-						<Badge label="Clone" assignedClasses={['badge-info']} />
+						<Badge label="Clone" type="primary" margin={true} />
 					</div>
 				) : null}
 
@@ -25,13 +25,14 @@ const TaskBadges = (props) => {
 							label={task.project.title}
 							type="secondary"
 							info="Task is part of the following project"
+							margin={true}
 						/>
 					</div>
 				) : null}
 
 				{task.completed ? (
 					<div className="list-inline-item">
-						<Badge label="Completed" type="success" />
+						<Badge label="Completed" type="success" margin={true} />
 					</div>
 				) : null}
 
@@ -40,13 +41,18 @@ const TaskBadges = (props) => {
 				!taskIsExpired &&
 				moment(task.deadline).diff(moment(), 'hours') < 12 ? ( // Task will expire in < 12h
 					<div className="list-inline-item">
-						<Badge label="Expiring" type="warning" info="Task expires within the next 12 hours" />
+						<Badge
+							label="Expiring"
+							type="warning"
+							info="Task expires within the next 12 hours"
+							margin={true}
+						/>
 					</div>
 				) : null}
 
 				{!task.completed && taskIsExpired ? ( // Task is expired
 					<div className="list-inline-item">
-						<Badge label="Expired" type="danger" />
+						<Badge label="Expired" type="danger" margin={true} />
 					</div>
 				) : null}
 			</div>

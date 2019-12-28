@@ -2,16 +2,16 @@ import React from 'react';
 
 import Helper from 'services/helper';
 
-import Content from 'components/UI/Content';
+import Content from '../../components/UI/Content';
 
-import TaskTitle from 'components/Task/Title';
-import TaskTags from 'components/Task/Tags';
-import TaskSummaryContainer from 'components/Task/Summary/container';
-import TaskDescription from 'components/Task/Description';
-import TaskActionButtons from 'components/Task/ActionButtons';
+import TaskTitle from '../../components/Task/Title';
+import TaskTags from '../../components/Task/Tags';
+import TaskSummaryContainer from '../../components/Task/Summary/container';
+import TaskDescription from '../../components/Task/Description';
 
-import SitesTaskTabs from './components/Tabs';
+import TaskActionButtons from './components/ActionButtons';
 import TaskBadges from './components/Badges';
+import TaskSidebar from './components/Sidebar';
 
 const SitesTask = (props) => {
 	const { task, updateParentTaskState, isNewTask } = props;
@@ -22,11 +22,7 @@ const SitesTask = (props) => {
 
 	const taskSidebar = isNewTask ? null : (
 		<div className="col-12 col-xl-4 mt-3 mt-xl-0">
-			<SitesTaskTabs task={task} updateParentTaskState={updateParentTaskState} />
-			<p className="text-muted mt-4 mb-0">
-				Created: {Helper.formatDateTime(task.created || Date.now())}
-			</p>
-			<p className="text-muted">Updated: {Helper.formatDateTime(task.updated || Date.now())}</p>
+			<TaskSidebar task={task} updateParentTaskState={updateParentTaskState} />
 		</div>
 	);
 
@@ -46,6 +42,7 @@ const SitesTask = (props) => {
 						/>
 					</div>
 				</div>
+
 				<hr className="featurette-divider" />
 
 				<div className="row">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Api, Spinner } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../services/helper';
 
 class TaskScratchpad extends Component {
 	constructor(props) {
@@ -68,6 +68,8 @@ class TaskScratchpad extends Component {
 
 	render() {
 		const { isLoading, msg, scratchpad, status } = this.state;
+
+		console.log(scratchpad);
 
 		if (isLoading) {
 			return <Spinner showPadding={true} />;

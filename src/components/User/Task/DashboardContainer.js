@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Fetcher } from 'aionic-library';
 
-import TaskDashboard from 'components/Task/Dashboard/';
+import TaskDashboard from '../../Task/Dashboard';
 
 const UserTaskDashboardContainer = (props) => (
 	<Fetcher url={`users/${props.user.id}/tasks`}>

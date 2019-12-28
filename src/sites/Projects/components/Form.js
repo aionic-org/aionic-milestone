@@ -8,7 +8,7 @@ import Helper from 'services/helper';
 
 import TaskSuggestion from 'components/Task/Suggestion';
 
-class ProjectForm extends Component {
+class ProjectsForm extends Component {
 	constructor(props) {
 		super(props);
 
@@ -60,14 +60,14 @@ class ProjectForm extends Component {
 
 		if (msg.length) {
 			return (
-				<div className="ProjectForm">
+				<div className="ProjectsForm">
 					<Error message={msg} />
 				</div>
 			);
 		}
 
 		return (
-			<div className="ProjectForm">
+			<div className="ProjectsForm">
 				<form onSubmit={this.handleSubmit} method="POST">
 					<div className="form-group">
 						<label>Title</label>
@@ -120,4 +120,4 @@ class ProjectForm extends Component {
 	}
 }
 
-export default withRouter(ProjectForm);
+export default withRouter(ProjectsForm);

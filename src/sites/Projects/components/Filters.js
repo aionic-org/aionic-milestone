@@ -2,6 +2,8 @@ import React from 'react';
 
 import { InputSelect } from 'aionic-library';
 
+import Helper from '../../../services/helper';
+
 const ProjectsFilters = (props) => {
 	const { filterItemsByParams, filterItemsByText, resetFilters } = props;
 
@@ -13,11 +15,7 @@ const ProjectsFilters = (props) => {
 		filterItemsByText(e.target.value);
 	};
 
-	const completedList = [
-		{ value: '', title: 'Completed' },
-		{ value: '1', title: 'Yes' },
-		{ value: '0', title: 'No' }
-	];
+	const { completeStatus, resultLimits, sortDirections } = Helper.getFilterLists();
 
 	const orderByList = [
 		{ value: '', title: 'Order by' },
@@ -25,20 +23,6 @@ const ProjectsFilters = (props) => {
 		{ value: 'deadline', title: 'Deadline' },
 		{ value: 'title', title: 'Title' },
 		{ value: 'updated', title: 'Updated' }
-	];
-
-	const sortDirectionsList = [
-		{ value: '', title: 'Direction' },
-		{ value: 'ASC', title: 'ASC' },
-		{ value: 'DESC', title: 'DESC' }
-	];
-
-	const limitsList = [
-		{ value: '', title: 'Results' },
-		{ value: '1', title: '1' },
-		{ value: '3', title: '3' },
-		{ value: '5', title: '5' },
-		{ value: '10', title: '10' }
 	];
 
 	return (
@@ -60,7 +44,7 @@ const ProjectsFilters = (props) => {
 							<InputSelect
 								name="completed"
 								onChange={handleParamsChange}
-								optionList={completedList}
+								optionList={completeStatus}
 								showDefault={false}
 							/>
 						</div>
@@ -77,7 +61,7 @@ const ProjectsFilters = (props) => {
 								name="orderdir"
 								classes={['ml-2']}
 								onChange={handleParamsChange}
-								optionList={sortDirectionsList}
+								optionList={sortDirections}
 								showDefault={false}
 							/>
 						</div>
@@ -87,7 +71,7 @@ const ProjectsFilters = (props) => {
 							<InputSelect
 								name="limit"
 								onChange={handleParamsChange}
-								optionList={limitsList}
+								optionList={resultLimits}
 								showDefault={false}
 							/>
 						</div>

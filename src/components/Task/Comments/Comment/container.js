@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Api } from 'aionic-library';
 
-import Comment from 'components/Comments/Comment/';
+import Comment from '../../../Comments/Comment';
 
 const TaskCommentContainer = (props) => {
 	const { taskId, comment, removeComment } = props;

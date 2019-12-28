@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 
 import { Api, Session, Error } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../../services/helper';
 
-import UserSuggestion from 'components/User/Suggestion';
+import UserSuggestion from '../../../components/User/Suggestion';
 
 class BoardsForm extends Component {
 	constructor(props) {

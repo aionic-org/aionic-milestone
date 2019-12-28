@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import './Sidebar.scss';
-
 import { Session } from 'aionic-library';
 
-import UILogo from 'components/UI/Logo';
+import UILogo from '../../UI/Logo';
+
+import './Sidebar.scss';
 
 const Sidebar = () => {
 	const logoStyle = {

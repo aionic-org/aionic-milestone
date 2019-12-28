@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import GitOrganizationSelect from 'components/Git/Organization/Select';
-import GitRepositorySelect from 'components/Git/Repository/Select';
-import GitCommitsContainer from 'components/Git/Commits/container';
+import GitOrganizationSelect from '../../Git/Organization/Select';
+import GitRepositorySelect from '../../Git/Repository/Select';
+import GitCommitsContainer from '../../Git/Commits/container';
 
 const TaskGit = (props) => {
 	const { lists, task, handleOrgChange, handleRepoChange, handleBranchChange } = props;

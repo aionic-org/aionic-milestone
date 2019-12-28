@@ -1,13 +1,14 @@
 import React from 'react';
 
-import Helper from 'services/helper';
+import Helper from '../../../services/helper';
 
-import Content from 'components/UI/Content';
-import InputTitle from 'components/UI/Input/Title/';
+import Content from '../../../components/UI/Content';
+import InputTitle from '../../../components/UI/Input/Title';
 
-import KanbanContainer from 'components/Kanban/container';
-import BoardDetails from 'components/Board/Details';
-import BoardActionButtons from 'components/Board/ActionButtons';
+import KanbanContainer from '../../../components/Kanban/container';
+import BoardDetails from '../../../components/Board/Details';
+
+import BoardActionButtons from './components/ActionButtons';
 
 const SitesBoard = (props) => {
 	const { board, updateParentBoardState, deleteBoard } = props;
@@ -41,6 +42,7 @@ const SitesBoard = (props) => {
 						</div>
 					</div>
 				</div>
+
 				<hr className="featurette-divider" />
 
 				<div className="row">

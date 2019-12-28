@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Error } from 'aionic-library';
 
-import CommentForm from 'components/Comments/Form';
-import useCommentForm from 'components/Utility/Hooks/useCommentForm';
+import CommentForm from '../../../Comments/Form';
+import useCommentForm from '../../../Utility/Hooks/useCommentForm';
 
 const ProjectCommentsFormContainer = (props) => {
 	const { projectId, updateParent } = props;

@@ -3,13 +3,13 @@ import moment from 'moment';
 
 import { Session, InputDate } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../../services/helper';
 
-import TaskSelectsStatus from 'components/Task/Selects/Status';
-import TaskSelectsPriority from 'components/Task/Selects/Priority';
-import TaskSelectsLabel from 'components/Task/Selects/Label';
+import InputSuggestion from '../../UI/Input/Suggestion';
 
-import InputSuggestion from 'components/UI/Input/Suggestion';
+import TaskSelectsStatus from '../Selects/Status';
+import TaskSelectsPriority from '../Selects/Priority';
+import TaskSelectsLabel from '../Selects/Label';
 
 const TaskSummary = (props) => {
 	const { lists, task, updateParentTaskState } = props;

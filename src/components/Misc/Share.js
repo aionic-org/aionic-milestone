@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import { Api, Spinner } from 'aionic-library';
 
-import Feedback from 'components/UI/Feedback/';
-import UserSuggestion from 'components/User/Suggestion';
+import Feedback from '../UI/Feedback';
+import UserSuggestion from '../User/Suggestion';
 
 const MiscShare = (props) => {
 	const { endpoint } = props;

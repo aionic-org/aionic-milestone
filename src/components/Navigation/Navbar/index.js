@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Navbar.scss';
-
 import { Session } from 'aionic-library';
 
-import SearchBar from 'components/Search/Bar';
+import SearchBar from '../../Search/Bar';
+
+import './Navbar.scss';
 
 const Navbar = (props) => {
 	const { toggleSidebar } = props;
@@ -72,13 +72,13 @@ const Navbar = (props) => {
 							<i className="fas fa-plus mr-1" /> Create
 						</button>
 						<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
-							<Link to="/tasks" className="dropdown-item">
-								<i className="fas fa-tasks fa-fw mr-2" />
-								Create Task
-							</Link>
 							<Link to="/boards?create=true" className="dropdown-item">
 								<i className="fas fa-chalkboard-teacher mr-2" />
 								Create Board
+							</Link>
+							<Link to="/tasks" className="dropdown-item">
+								<i className="fas fa-tasks fa-fw mr-2" />
+								Create Task
 							</Link>
 							<Link to="/projects?create=true" className="dropdown-item">
 								<i className="fas fa-table fa-fw mr-2" />

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './Step.scss';
+import TaskPreviewsBasic from '../../Task/Previews/Basic';
 
-import TaskPreviewsBasic from 'components/Task/Previews/Basic';
+import './Status.scss';
 
-const KanbanStep = (props) => {
+const KanbanStatus = (props) => {
 	const { tasks, title, maxWidth, showBody, showFooter } = props;
 
 	return (
-		<div className="KanbanStep" style={{ flex: `0 0 ${maxWidth}%` }}>
+		<div className="KanbanStatus" style={{ flex: `0 0 ${maxWidth}%` }}>
 			<div className="step-content">
 				<h6 className="text-center text-uppercase">
 					{title} <span className="badge badge-pill badge-secondary ml-2">{tasks.length}</span>
@@ -27,4 +27,4 @@ const KanbanStep = (props) => {
 	);
 };
 
-export default KanbanStep;
+export default KanbanStatus;

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { Api } from 'aionic-library';
 
-import MiscShare from 'components//Misc/Share';
+import MiscShare from '../../../../components/Misc/Share';
 
 const BoardActionButtons = (props) => {
 	const { board } = props;

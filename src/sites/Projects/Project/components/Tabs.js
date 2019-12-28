@@ -5,7 +5,7 @@ import { useTab, Tabs } from 'aionic-library';
 import ProjectCommentsContainer from 'components/Project/Comments/container';
 import ProjectDetails from 'components/Project/Details';
 
-const SitesProjectTabs = (props) => {
+const ProjectTabs = (props) => {
 	const { project, updateParentProjectState } = props;
 	const [tab, changeTab] = useTab('Details');
 
@@ -26,11 +26,11 @@ const SitesProjectTabs = (props) => {
 	}
 
 	return (
-		<div className="SitesProjectTabs">
+		<div className="ProjectTabs">
 			<Tabs handleClick={changeTab} tabs={tabs} preselectTabIdx={0} />
-			<div className={`SitesProjectTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
+			<div className={`ProjectTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);
 };
 
-export default SitesProjectTabs;
+export default ProjectTabs;

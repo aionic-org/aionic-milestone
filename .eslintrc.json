@@ -21,6 +21,7 @@
 	"rules": {
 		"no-console": "off",
 		"import/no-unresolved": 0,
+		"import/extensions": "never",
 		"no-plusplus": [
 			"error",
 			{

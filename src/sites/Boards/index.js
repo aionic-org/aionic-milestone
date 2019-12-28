@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Content from 'components/UI/Content';
-import Title from 'components/UI/Title';
+import Content from '../../components/UI/Content';
+import Title from '../../components/UI/Title';
 
-import CardDeck from 'components/Deck';
+import CardDeck from '../../components/Deck';
 
-import Filters from './components/Filters';
+import BoardsFilters from './components/Filters';
 import BoardsCreate from './components/Create';
 
 const SitesBoards = (props) => {
@@ -14,25 +14,17 @@ const SitesBoards = (props) => {
 
 	const boardsToShow = filters.text.length ? filtered : all;
 
-	const orderByList = [
-		{ value: '', title: 'Order by' },
-		{ value: 'created', title: 'Created' },
-		{ value: 'title', title: 'Title' },
-		{ value: 'updated', title: 'Updated' }
-	];
-
 	return (
 		<div className="SitesBoards">
 			<Content>
 				<Title title="Boards" />
 				<div className="row">
 					<div className="col-12 col-xl">
-						<Filters
+						<BoardsFilters
 							filters={filters}
 							filterItemsByParams={filterBoardsByParams}
 							filterItemsByText={filterBoardsByText}
 							resetFilters={resetFilters}
-							orderByList={orderByList}
 						/>
 					</div>
 					<div className="col-12 col-xl-auto">
@@ -41,7 +33,7 @@ const SitesBoards = (props) => {
 				</div>
 				<div className="row">
 					<div className="col-12">
-						<CardDeck deckType="Board" itemList={boardsToShow} itemsPerRow={2} />
+						<CardDeck deckType="board" itemList={boardsToShow} itemsPerRow={2} />
 					</div>
 				</div>
 			</Content>

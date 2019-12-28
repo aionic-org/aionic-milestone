@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Helper from 'services/helper';
+import Helper from '../../../../../services/helper';
 
-import TaskSuggestion from 'components/Task/Suggestion/';
+import TaskSuggestion from '../../../../../components/Task/Suggestion';
 
 const ProjectTaskTable = (props) => {
 	const { tasks, updateProjectTasks } = props;

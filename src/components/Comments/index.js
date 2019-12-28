@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import './Comments.scss';
-
 import TaskCommentContainer from '../Task/Comments/Comment/container';
 import ProjectCommentContainer from '../Project/Comments/Comment/container';
+
+import './Comments.scss';
 
 const Comments = (props) => {
 	const { type, typeId, commentList } = props;

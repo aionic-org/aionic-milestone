@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Badge } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../services/helper';
 
 const ProjectPreview = (props) => {
 	const { project } = props;

@@ -47,7 +47,7 @@ class TaskDashboard extends Component {
 
 				<Deck
 					itemList={itemList}
-					deckType="Task"
+					deckType="task"
 					itemsPerRow={itemsPerRow}
 					showItemsNumber={true}
 				/>

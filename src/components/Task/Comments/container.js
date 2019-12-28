@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Fetcher } from 'aionic-library';
 
-import TaskCommentsFormContainer from './Form/container';
 import Comments from '../../Comments';
+
+import TaskCommentsFormContainer from './Form/container';
 
 const TaskCommentsContainer = (props) => (
 	<Fetcher url={`tasks/${props.taskId}/comments`} showSpinnerPadding={true}>

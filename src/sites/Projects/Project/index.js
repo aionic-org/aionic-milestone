@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Helper from 'services/helper';
+import Helper from '../../../services/helper';
 
-import Content from 'components/UI/Content';
-import InputTitle from 'components/UI/Input/Title/';
+import Content from '../../../components/UI/Content';
+import InputTitle from '../../../components/UI/Input/Title';
 
-import ProjectActionButtons from 'components/Project/ActionButtons';
-
+import ProjectActionButtons from './components/ActionButtons';
 import ProjectWidgetbar from './components/Widgetbar';
-import SitesProjectTabs from './components/Tabs';
+import ProjectTabs from './components/Tabs';
 import ProjectBadges from './components/Badges';
 import ProjectTaskTable from './components/Task/Table';
 
@@ -45,15 +44,13 @@ const SitesProject = (props) => {
 				<hr className="featurette-divider" />
 
 				<ProjectWidgetbar project={project} />
+
 				<div className="row">
 					<div className="col-12 col-xl-8">
 						<ProjectTaskTable tasks={project.tasks} updateProjectTasks={updateProjectTasks} />
 					</div>
 					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
-						<SitesProjectTabs
-							project={project}
-							updateParentProjectState={updateParentProjectState}
-						/>
+						<ProjectTabs project={project} updateParentProjectState={updateParentProjectState} />
 					</div>
 				</div>
 			</Content>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TaskSelectsPriority from 'components/Task/Selects/Priority';
+import TaskSelectsPriority from '../../Task/Selects/Priority';
 
 const KanbanFilters = (props) => {
 	const { toggleStretch, taskFilters, setTaskFilters, priorityList } = props;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Pills } from 'aionic-library';
 
-import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
+import UserTaskDashboardContainer from '../../../components/User/Task/DashboardContainer';
 
 class SitesUserTabsContent extends Component {
 	constructor(props) {

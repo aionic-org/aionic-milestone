@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Api, Spinner } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../services/helper';
 
 class UserStatus extends Component {
 	constructor(props) {

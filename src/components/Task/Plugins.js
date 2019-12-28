@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTab, Pills } from 'aionic-library';
 
-import TaskGitContainer from 'components/Task/Git/container';
+import TaskGitContainer from './Git/container';
 
 const TaskPlugins = (props) => {
 	const { task, updateParentTaskState } = props;

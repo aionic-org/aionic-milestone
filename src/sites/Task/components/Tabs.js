@@ -6,7 +6,7 @@ import TaskCommentsContainer from 'components/Task/Comments/container';
 import TaskScratchpad from 'components/Task/Scratchpad';
 import TaskLinks from 'components/Task/Links';
 
-const SitesTaskTabs = (props) => {
+const TaskTabs = (props) => {
 	const { task, updateParentTaskState } = props;
 	const [tab, changeTab] = useTab('');
 
@@ -28,11 +28,11 @@ const SitesTaskTabs = (props) => {
 	}
 
 	return (
-		<div className="SitesTaskTabs">
+		<div className="TaskTabs">
 			<Tabs handleClick={changeTab} tabs={tabs} />
-			<div className={`SitesTaskTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
+			<div className={`TaskTabs px-2 ${content ? 'mt-3' : ''}`}>{content}</div>
 		</div>
 	);
 };
 
-export default SitesTaskTabs;
+export default TaskTabs;

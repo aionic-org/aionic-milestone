@@ -2,7 +2,7 @@ import React from 'react';
 
 import { InputDate } from 'aionic-library';
 
-import Helper from 'services/helper';
+import Helper from '../../services/helper';
 
 import ProjectDescription from './Description';
 

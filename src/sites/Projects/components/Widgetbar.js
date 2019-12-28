@@ -3,10 +3,10 @@ import React from 'react';
 import { Progress, Widget } from 'aionic-library';
 
 const ProjectsWidgetbar = (props) => {
-	const { allProjects } = props;
+	const { projects } = props;
 
-	const openProjects = allProjects.filter((project) => !project.completed);
-	const finishedProjects = allProjects.filter((project) => project.completed);
+	const openProjects = projects.filter((project) => !project.completed);
+	const finishedProjects = projects.filter((project) => project.completed);
 
 	return (
 		<div className="ProjectsWidgetbar">
@@ -20,7 +20,7 @@ const ProjectsWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={`Total Projects: ${allProjects.length}`}
+						title={`Total Projects: ${projects.length}`}
 						icon="fas fa-table"
 						iconBackground="#636e72"
 					/>
@@ -35,8 +35,8 @@ const ProjectsWidgetbar = (props) => {
 								<div className="col">
 									<Progress
 										progress={
-											allProjects.length
-												? Math.round((finishedProjects.length / allProjects.length) * 100)
+											projects.length
+												? Math.round((finishedProjects.length / projects.length) * 100)
 												: 0
 										}
 										showPercent={true}
@@ -49,6 +49,10 @@ const ProjectsWidgetbar = (props) => {
 			</div>
 		</div>
 	);
+};
+
+ProjectsWidgetbar.defaultProps = {
+	projects: []
 };
 
 export default ProjectsWidgetbar;

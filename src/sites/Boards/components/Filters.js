@@ -2,8 +2,10 @@ import React from 'react';
 
 import { InputSelect } from 'aionic-library';
 
+import Helper from '../../../services/helper';
+
 const BoardsFilters = (props) => {
-	const { filterItemsByParams, filterItemsByText, resetFilters, orderByList } = props;
+	const { filterItemsByParams, filterItemsByText, resetFilters } = props;
 
 	const handleParamsChange = (e) => {
 		filterItemsByParams({ [e.target.name]: e.target.value });
@@ -13,18 +15,13 @@ const BoardsFilters = (props) => {
 		filterItemsByText(e.target.value);
 	};
 
-	const sortDirectionsList = [
-		{ value: '', title: 'Direction' },
-		{ value: 'ASC', title: 'ASC' },
-		{ value: 'DESC', title: 'DESC' }
-	];
+	const { sortDirections, resultLimits } = Helper.getFilterLists();
 
-	const limitsList = [
-		{ value: '', title: 'Results' },
-		{ value: '1', title: '1' },
-		{ value: '3', title: '3' },
-		{ value: '5', title: '5' },
-		{ value: '10', title: '10' }
+	const orderByList = [
+		{ value: '', title: 'Order by' },
+		{ value: 'created', title: 'Created' },
+		{ value: 'title', title: 'Title' },
+		{ value: 'updated', title: 'Updated' }
 	];
 
 	return (
@@ -53,7 +50,7 @@ const BoardsFilters = (props) => {
 								name="orderdir"
 								classes={['ml-2']}
 								onChange={handleParamsChange}
-								optionList={sortDirectionsList}
+								optionList={sortDirections}
 								showDefault={false}
 							/>
 						</div>
@@ -63,7 +60,7 @@ const BoardsFilters = (props) => {
 							<InputSelect
 								name="limit"
 								onChange={handleParamsChange}
-								optionList={limitsList}
+								optionList={resultLimits}
 								showDefault={false}
 							/>
 						</div>
@@ -79,10 +76,6 @@ const BoardsFilters = (props) => {
 			</form>
 		</div>
 	);
-};
-
-BoardsFilters.defaultProps = {
-	orderByList: []
 };
 
 export default BoardsFilters;

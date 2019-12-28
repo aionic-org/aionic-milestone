@@ -4,10 +4,10 @@ import './Home.css';
 
 import { Session } from 'aionic-library';
 
-import Content from 'components/UI/Content';
-import Title from 'components/UI/Title';
+import Content from '../../components/UI/Content';
+import Title from '../../components/UI/Title';
 
-import UserTaskDashboardContainer from 'components/User/Task/Dashboard/container';
+import UserTaskDashboardContainer from '../../components/User/Task/DashboardContainer';
 
 const SitesHome = () => {
 	return (

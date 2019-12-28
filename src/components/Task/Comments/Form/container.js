@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Error } from 'aionic-library';
 
-import CommentForm from 'components/Comments/Form';
 import useCommentForm from '../../../Utility/Hooks/useCommentForm';
+
+import CommentForm from '../../../Comments/Form';
 
 const TaskCommentsFormContainer = (props) => {
 	const { taskId, updateParent } = props;
