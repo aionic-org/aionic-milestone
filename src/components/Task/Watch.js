@@ -21,10 +21,13 @@ const TaskWatch = (props) => {
 			setIsTaskWatched(true);
 		}
 
+		const user = { ...Session.getUser(), tasksWatched };
+
 		await Api.putData(`users/${Session.getUser().id}`, {
-			user: { ...Session.getUser(), tasksWatched }
+			user
 		});
-		Session.setUser({ ...Session.getUser(), tasksWatched });
+
+		Session.setUser(user);
 	};
 
 	return (

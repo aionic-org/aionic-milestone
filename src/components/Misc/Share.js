@@ -19,17 +19,21 @@ const MiscShare = (props) => {
 	};
 
 	const share = async () => {
-		setIsLoading(true);
-
-		try {
-			await Api.postData(endpoint, { userIDs });
-			setValid(true);
-			setMsg(`Shared with ${userIDs.length} user(s)!`);
-		} catch (err) {
-			setValid(false);
-			setMsg(Api.handleHttpError(err));
+		if (!userIDs.length) {
+			setMsg('Please enter an username');
+		} else {
+			try {
+				setIsLoading(true);
+				await Api.postData(endpoint, { userIDs });
+				setValid(true);
+				setMsg(`Shared with ${userIDs.length} user(s)!`);
+			} catch (err) {
+				setValid(false);
+				setMsg(Api.handleHttpError(err));
+			} finally {
+				setIsLoading(false);
+			}
 		}
-		setIsLoading(false);
 	};
 
 	return (

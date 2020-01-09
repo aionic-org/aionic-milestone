@@ -15,7 +15,7 @@ const Deck = (props) => {
 	for (let i = 0; i < itemList.length; i++) {
 		if (i % itemsPerRow === 0 || i === 0) {
 			tmpArr[count] = [];
-			count += 1;
+			count++;
 		}
 		tmpArr[count - 1].push(itemList[i]);
 	}
