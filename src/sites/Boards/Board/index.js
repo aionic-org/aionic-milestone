@@ -47,7 +47,7 @@ const SitesBoard = (props) => {
 
 				<div className="row">
 					<div className="col-12">
-						<KanbanContainer userList={board.users} showBody={false} />
+						<KanbanContainer userList={board.users} />
 					</div>
 				</div>
 			</Content>

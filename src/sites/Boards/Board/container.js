@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Spinner, Error, Toast } from 'aionic-library';
+import { Api, Error, Toast } from 'aionic-library';
+
+import BoardLoader from './components/Loader';
 
 import SitesBoard from '.';
 
@@ -95,7 +97,7 @@ class SitesBoardContainer extends Component {
 		) : null;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <BoardLoader />;
 		}
 
 		if (msg) {

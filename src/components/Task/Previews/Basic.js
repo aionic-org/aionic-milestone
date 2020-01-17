@@ -4,15 +4,7 @@ import { Link } from 'react-router-dom';
 import TaskPriorityIcon from '../Priority';
 
 const TaskPreview = (props) => {
-	const { task, showBody } = props;
-
-	const body = showBody ? (
-		<div className="card-body">
-			<p className="card-text text-muted">
-				{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}
-			</p>
-		</div>
-	) : null;
+	const { task } = props;
 
 	return (
 		<Link
@@ -27,7 +19,11 @@ const TaskPreview = (props) => {
 					</div>
 				</div>
 			</div>
-			{body}
+			<div className="card-body">
+				<p className="card-text text-muted">
+					{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}
+				</p>
+			</div>
 			<div className="card-footer text-muted">
 				<div className="d-flex align-items-center">
 					<TaskPriorityIcon task={task} />
@@ -35,10 +31,6 @@ const TaskPreview = (props) => {
 			</div>
 		</Link>
 	);
-};
-
-TaskPreview.defaultProps = {
-	showBody: true
 };
 
 export default TaskPreview;

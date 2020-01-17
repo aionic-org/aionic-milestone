@@ -3,6 +3,8 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 
+import { Helper } from 'aionic-library';
+
 import './RichEditor.scss';
 
 // Custom overrides for "code" style.
@@ -28,8 +30,8 @@ class RichEditor extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			editorState: this.props.content
-				? EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.content)))
+			editorState: Helper.isJson(props.content)
+				? EditorState.createWithContent(convertFromRaw(JSON.parse(props.content)))
 				: EditorState.createEmpty()
 		};
 
