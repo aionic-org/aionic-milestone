@@ -11,7 +11,7 @@ const ProjectTaskTable = (props) => {
 	const [filterText, setFilterText] = useState('');
 	const [tasksFiltered, setTasksFiltered] = useState([]);
 
-	const filterTasks = (e) => {
+	/*const filterTasks = (e) => {
 		const input = e.target.value;
 		const keysLookup = ['id', 'title', 'deadline'];
 
@@ -31,7 +31,7 @@ const ProjectTaskTable = (props) => {
 		});
 
 		setTasksFiltered(newTasksFiltered);
-	};
+	};*/
 
 	const removeTask = (e) => {
 		const taskToRemoveID = Number(e.target.dataset.id);
@@ -55,14 +55,8 @@ const ProjectTaskTable = (props) => {
 
 	return (
 		<div className="ProjectTaskTable">
-			<input
-				type="text"
-				className="form-control form-control-sm mb-2"
-				placeholder="Filter tasks..."
-				onChange={filterTasks}
-			/>
 			<div className="table-responsive">
-				<table className="table table-striped">
+				<table className="table table-hover table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Title</th>
@@ -104,6 +98,7 @@ const ProjectTaskTable = (props) => {
 				autoClear={true}
 				smallInput={true}
 				updateParent={addTask}
+				placeholder="Add new task"
 			/>
 		</div>
 	);

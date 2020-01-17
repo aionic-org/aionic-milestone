@@ -6,7 +6,15 @@ import { Api, useSuggestion } from 'aionic-library';
 import './Suggestion.scss';
 
 const TaskSuggestion = (props) => {
-	const { taskListSelected, updateParent, multiSelect, autoClear, maxHeight, smallInput } = props;
+	const {
+		taskListSelected,
+		updateParent,
+		multiSelect,
+		autoClear,
+		maxHeight,
+		smallInput,
+		placeholder
+	} = props;
 
 	const inputID = `suggestion-input-${Math.random()
 		.toString(36)
@@ -109,7 +117,7 @@ const TaskSuggestion = (props) => {
 				type="text"
 				className={`form-control ${smallInput ? 'form-control-sm' : ''}`}
 				name="title"
-				placeholder="Enter task title..."
+				placeholder={placeholder}
 				autoComplete="off"
 				onChange={handleInputChange}
 				onKeyDown={(e) => {
@@ -129,7 +137,8 @@ TaskSuggestion.defaultProps = {
 	multiSelect: true,
 	autoClear: false,
 	maxHeight: false,
-	smallInput: false
+	smallInput: false,
+	placeholder: 'Enter task title...'
 };
 
 export default TaskSuggestion;

@@ -22,7 +22,7 @@ const SitesHome = () => {
 				</div>
 				<div className="row mt-5">
 					<div className="col-12">
-						<p class="d-inline-block text-muted font-weight-bold">
+						<p className="d-inline-block text-muted font-weight-bold">
 							Tasks watched: {Session.getUser().tasksWatched.length}
 						</p>
 						<TaskTable tasks={Session.getUser().tasksWatched} />

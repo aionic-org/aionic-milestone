@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Api, Spinner, Error, Toast } from 'aionic-library';
 
 import SitesProject from '.';
+import ProjectLoader from './components/Loader';
 
 class SitesProjectContainer extends Component {
 	constructor(props) {
@@ -96,7 +97,7 @@ class SitesProjectContainer extends Component {
 		) : null;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <ProjectLoader />;
 		}
 
 		if (msg) {

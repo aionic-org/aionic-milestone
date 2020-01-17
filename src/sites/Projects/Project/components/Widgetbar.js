@@ -9,7 +9,7 @@ const ProjectWidgetbar = (props) => {
 	const { tasks } = project;
 
 	const openTasks = tasks.filter((task) => !task.completed);
-	const finishedTasks = tasks.filter((task) => task.completed);
+	const completedTasks = tasks.filter((task) => task.completed);
 
 	return (
 		<div className="ProjectWidgetbar">
@@ -34,10 +34,10 @@ const ProjectWidgetbar = (props) => {
 						iconBackground="#00b894"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Finished Tasks: {finishedTasks.length}</div>
+								<div className="col-auto">Completed Tasks: {completedTasks.length}</div>
 								<div className="col">
 									<Progress
-										progress={Math.round((finishedTasks.length / tasks.length) * 100)}
+										progress={Math.round((completedTasks.length / tasks.length) * 100)}
 										showPercent={true}
 									/>
 								</div>

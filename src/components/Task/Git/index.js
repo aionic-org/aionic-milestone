@@ -8,8 +8,6 @@ const TaskGit = (props) => {
 	const { lists, task, handleOrgChange, handleRepoChange, handleBranchChange } = props;
 	const { orgList, repoList } = lists;
 
-	console.log(task);
-
 	const allowCommitsShow = task.organization && task.repository && task.branch;
 
 	const [showCommits, setShowCommits] = useState(false);

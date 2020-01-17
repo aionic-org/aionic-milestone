@@ -69,8 +69,6 @@ class TaskScratchpad extends Component {
 	render() {
 		const { isLoading, msg, scratchpad, status } = this.state;
 
-		console.log(scratchpad);
-
 		if (isLoading) {
 			return <Spinner showPadding={true} />;
 		}

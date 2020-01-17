@@ -64,7 +64,7 @@ const Navbar = (props) => {
 					<li className="nav-item dropdown">
 						<button
 							type="button"
-							className="btn btn-link nav-link dropdown-toggle"
+							className="btn btn-link nav-link dropdown-toggle font-weight-bold"
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false"
@@ -90,7 +90,7 @@ const Navbar = (props) => {
 					<li className="nav-item dropdown">
 						<button
 							type="button"
-							className="btn btn-link nav-link dropdown-toggle"
+							className="btn btn-link nav-link dropdown-toggle font-weight-bold"
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false"

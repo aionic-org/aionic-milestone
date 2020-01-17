@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-library';
+import { Api, Error } from 'aionic-library';
 
 import SitesProjects from '.';
+import ProjectsLoader from './components/Loader';
 
 class SitesProjectsContainer extends Component {
 	constructor(props) {
@@ -84,7 +85,7 @@ class SitesProjectsContainer extends Component {
 		const { isLoading, msg, projects, filters } = this.state;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <ProjectsLoader />;
 		}
 
 		if (msg) {

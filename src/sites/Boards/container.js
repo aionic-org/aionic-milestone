@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-library';
+import { Api, Error } from 'aionic-library';
+
+import BoardsLoader from './components/Loader';
 
 import SitesBoards from '.';
 
@@ -83,7 +85,7 @@ class SitesBoardsContainer extends Component {
 		const { isLoading, msg, boards, filters } = this.state;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <BoardsLoader />;
 		}
 
 		if (msg) {

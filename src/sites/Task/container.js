@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { Api, Session, Spinner, Error, Toast } from 'aionic-library';
+import { Api, Session, Error, Toast } from 'aionic-library';
+
+import TaskLoader from './components/Loader';
 
 import SitesTask from '.';
 
@@ -102,7 +104,7 @@ class SitesTaskContainer extends Component {
 		) : null;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <TaskLoader />;
 		}
 
 		if (msg) {

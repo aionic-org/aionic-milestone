@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { Api, Spinner, Pills } from 'aionic-library';
+import { Api, Pills } from 'aionic-library';
+
+import KanbanLoader from './Loader';
 
 import KanbanStatus from './Status';
 import KanbanFiltersContainer from './Filters/container';
@@ -44,6 +46,8 @@ const Kanban = (props) => {
 	});
 
 	const fetchUserTasks = async (userId) => {
+		setCurrentTasks([]);
+
 		try {
 			setIsLoading(true);
 			const userTaskList = await Api.fetchData(`users/${userId}/tasks`);
@@ -70,7 +74,7 @@ const Kanban = (props) => {
 	const loadingSpinner = isLoading ? (
 		<div className="row mt-3">
 			<div className="col-12">
-				<Spinner />
+				<KanbanLoader />
 			</div>
 		</div>
 	) : null;
