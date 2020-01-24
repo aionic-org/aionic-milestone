@@ -1,34 +1,34 @@
 import React from 'react';
 
-import { Fetcher, Pills } from 'aionic-library';
+import { Pills } from 'aionic-library';
 
-const TaskDashboardFilters = (props) => (
-	<Fetcher url="task-status">
-		{(status) => {
-			const { handleStatusChange } = props;
+import Helper from '../../../../services/helper';
 
-			const handleClick = (title, id) => {
-				if (id) {
-					handleStatusChange(id);
-				} else {
-					handleStatusChange(null);
-				}
-			};
+const TaskDashboardFilters = (props) => {
+	const { handleStatusChange } = props;
 
-			const tabTitles = status.map((tabStatus) => {
-				return {
-					id: tabStatus.id,
-					name: tabStatus.title
-				};
-			});
+	const status = Helper.getTaskStatus();
 
-			return (
-				<div className="TaskDashboardFilters mb-4">
-					<Pills tabs={tabTitles} handleClick={handleClick} />
-				</div>
-			);
-		}}
-	</Fetcher>
-);
+	const handleClick = (title, id) => {
+		if (id) {
+			handleStatusChange(id);
+		} else {
+			handleStatusChange(null);
+		}
+	};
+
+	const tabTitles = status.map((tabStatus) => {
+		return {
+			id: tabStatus.id,
+			name: tabStatus.title
+		};
+	});
+
+	return (
+		<div className="TaskDashboardFilters mb-4">
+			<Pills tabs={tabTitles} handleClick={handleClick} />
+		</div>
+	);
+};
 
 export default TaskDashboardFilters;

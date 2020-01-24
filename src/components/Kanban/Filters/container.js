@@ -2,28 +2,36 @@ import React, { Component } from 'react';
 
 import { Api, Spinner, Error } from 'aionic-library';
 
+import Helper from '../../../services/helper';
+
 import KanbanFilters from '.';
 
 class KanbanFiltersContainer extends Component {
 	constructor(props) {
 		super(props);
 
+		const priorityList = Helper.getTaskPriorities() || [];
+		priorityList.unshift({ id: 0, title: 'Task Priority' });
+
 		this.state = {
-			isLoading: true,
+			isLoading: false,
 			msg: null,
 			lists: {
-				priorityList: []
+				priorityList: priorityList
 			}
 		};
 	}
 
+	// Fallback
 	componentDidMount = async () => {
 		try {
-			const priorityList = await Api.fetchData('task-priorities');
+			if (this.state.lists.priorityList.length === 1) {
+				this.setState({ isLoading: true });
 
-			priorityList.unshift({ id: 0, title: 'Task Priority' });
+				const priorityList = await Api.fetchData('task-priorities');
 
-			this.setState({ isLoading: false, lists: { priorityList } });
+				this.setState({ isLoading: false, lists: { priorityList } });
+			}
 		} catch (err) {
 			this.setState({
 				isLoading: false,
