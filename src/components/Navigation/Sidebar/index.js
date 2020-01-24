@@ -16,7 +16,7 @@ const Sidebar = () => {
 	const logoClasses = ['d-inline-block', 'align-top'];
 
 	return (
-		<div className="Sidebar">
+		<div className="Sidebar d-print-none">
 			<div className="sidebar-heading text-center">
 				<NavLink to="/">
 					<UILogo assignedStyle={logoStyle} assignedClasses={logoClasses} />

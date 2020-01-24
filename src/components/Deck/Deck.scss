@@ -1,3 +1,15 @@
-.Deck .card-decks .card-deck:not(:first-child) {
-  margin-top: 20px;
+.Deck .card-decks {
+	.card-deck:not(:first-child) {
+		margin-top: 15px;
+	}
+
+	.TaskPreviewsAdvanced {
+		.card-header {
+			flex: 1 1 auto;
+		}
+
+		.card-body {
+			flex: none;
+		}
+	}
 }

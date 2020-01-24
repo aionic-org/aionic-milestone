@@ -31,7 +31,7 @@ const ProjectsWidgetbar = (props) => {
 						iconBackground="#00b894"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Finished Projects: {finishedProjects.length}</div>
+								<div className="col-auto">Completed Projects: {finishedProjects.length}</div>
 								<div className="col">
 									<Progress
 										progress={

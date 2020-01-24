@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Api, Spinner, Error, Toast } from 'aionic-library';
+import { Api, Error, Toast } from 'aionic-library';
 
 import SitesProject from '.';
 import ProjectLoader from './components/Loader';

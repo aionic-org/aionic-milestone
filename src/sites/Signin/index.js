@@ -25,7 +25,7 @@ const SitesSignin = () => {
 				rel="noopener noreferrer"
 				className="mt-4 text-muted d-block"
 			>
-				Aionic Apps
+				Aionic
 			</a>
 		</div>
 	);

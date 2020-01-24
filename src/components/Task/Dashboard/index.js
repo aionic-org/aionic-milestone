@@ -58,7 +58,7 @@ class TaskDashboard extends Component {
 
 TaskDashboard.defaultProps = {
 	showStatusFilters: true,
-	itemsPerRow: 3,
+	itemsPerRow: 2,
 	updateParent: () => {}
 };
 

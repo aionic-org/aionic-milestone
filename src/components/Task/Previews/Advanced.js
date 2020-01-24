@@ -6,6 +6,7 @@ import { Badge } from 'aionic-library';
 import Helper from '../../../services/helper';
 
 import TaskPriorityIcon from '../Priority';
+import TaskPreviewActionMenu from '../PreviewActionMenu';
 
 const TaskPreviewsAdvanced = (props) => {
 	const { task, showBody, showFooter } = props;
@@ -26,18 +27,18 @@ const TaskPreviewsAdvanced = (props) => {
 	) : null;
 
 	return (
-		<Link
+		<div
 			to={`/tasks/${task.id}`}
-			className="TaskPreviewsAdvanced card-link card"
+			className="TaskPreviewsAdvanced card"
 			style={{ borderLeft: `6px solid ${task.label}` }}
 		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
-						<span>
+						<Link to={`/tasks/${task.id}`}>
 							{task.project && task.project.key ? `${task.project.key} - ` : ''}
 							{task.title}
-						</span>
+						</Link>
 					</div>
 					<div className="col-auto d-flex align-items-center">
 						<TaskPriorityIcon task={task} />
@@ -46,12 +47,13 @@ const TaskPreviewsAdvanced = (props) => {
 								<Badge label="Completed" type="success" />{' '}
 							</div>
 						) : null}
+						<TaskPreviewActionMenu task={task} />
 					</div>
 				</div>
 			</div>
 			{body}
 			{footer}
-		</Link>
+		</div>
 	);
 };
 

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { Api, Session } from 'aionic-library';
 
-const TaskWatch = (props) => {
-	const { task } = props;
+const TaskActionWatch = (props) => {
+	const { task, updateParentLoading } = props;
 
 	const [isTaskWatched, setIsTaskWatched] = useState(
 		Session.getUser().tasksWatched.find((wTask) => wTask.id === task.id)
@@ -23,26 +23,33 @@ const TaskWatch = (props) => {
 
 		const user = { ...Session.getUser(), tasksWatched };
 
+		updateParentLoading(true);
+
 		await Api.putData(`users/${Session.getUser().id}`, {
 			user
 		});
 
 		Session.setUser(user);
+		updateParentLoading(false);
 	};
 
 	return (
-		<div className="TaskWatch">
+		<div className="TaskActionWatch">
 			{isTaskWatched ? (
 				<button type="button" className="btn dropdown-item" onClick={toggleWatchTask}>
-					<i className="far fa-heart fa-fw mr-2" /> Unwatch
+					<i className="far fa-heart fa-fw mr-1" /> Unwatch
 				</button>
 			) : (
 				<button type="button" className="btn dropdown-item" onClick={toggleWatchTask}>
-					<i className="fas fa-heart fa-fw mr-2" /> Watch
+					<i className="fas fa-heart fa-fw mr-1" /> Watch
 				</button>
 			)}
 		</div>
 	);
 };
 
-export default TaskWatch;
+TaskActionWatch.defaultProps = {
+	updateParentLoading: () => {}
+};
+
+export default TaskActionWatch;

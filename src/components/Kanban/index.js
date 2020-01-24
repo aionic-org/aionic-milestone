@@ -97,7 +97,7 @@ const Kanban = (props) => {
 			/>
 			<div className="row flex-nowrap overflow-auto mt-3" style={{ padding: '0px 5px' }}>
 				{statusList.map((status) => {
-					const tasks = filteredTasks.filter((task) => task.status.id === status.id);
+					const tasks = filteredTasks.filter((task) => task.status && task.status.id === status.id);
 					return (
 						<KanbanStatus
 							key={status.id}

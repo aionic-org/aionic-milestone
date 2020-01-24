@@ -44,14 +44,14 @@ const BoardActionButtons = (props) => {
 			</button>
 			<div className="dropdown-menu dropdown-menu-right">
 				<button type="button" className="btn dropdown-item" onClick={openShareModal}>
-					<i className="fas fa-share fa-fw mr-2" /> Share
+					<i className="fas fa-share fa-fw mr-1" /> Share
 				</button>
 				<button type="button" className="btn dropdown-item">
-					<i className="fas fa-print fa-fw mr-2" /> Print
+					<i className="fas fa-print fa-fw mr-1" /> Print
 				</button>
 				<div className="dropdown-divider" />
 				<button type="button" className="btn dropdown-item text-danger" onClick={deleteBoard}>
-					<i className="fas fa-trash fa-fw mr-2" /> Delete
+					<i className="fas fa-trash fa-fw mr-1" /> Delete
 				</button>
 			</div>
 			<ReactModal

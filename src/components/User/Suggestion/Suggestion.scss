@@ -1,28 +1,24 @@
 .UserSuggestion {
-  position: relative;
+	position: relative;
 
-  .suggestionList {
-    position: absolute;
-    max-width: 100%;
-    margin-top: 8px;
-    border-radius: 4px;
-    width: 100%;
-    z-index: 2;
-  }
+	.suggestionList {
+		position: absolute;
+		max-width: 100%;
+		margin-top: 8px;
+		border-radius: 4px;
+		width: 100%;
+		z-index: 2;
+	}
 
-  .selectedList {
-    max-height: 200px;
-    overflow-y: scroll;
-    padding: 0px 10px 10px;
-    margin-top: 10px;
+	.selectedList {
+		max-height: 200px;
+		overflow-y: scroll;
+		padding: 0px 10px 10px;
+		margin-top: 10px;
+	}
 
-    ul > li:not(:first-child) {
-      margin-top: 8px;
-    }
-  }
-
-  .suggestionList ul > li,
-  .selectedList ul > li {
-    cursor: pointer;
-  }
+	.suggestionList ul > li,
+	.selectedList ul > li {
+		cursor: pointer;
+	}
 }

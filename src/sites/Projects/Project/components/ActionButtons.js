@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { Api } from 'aionic-library';
 
-import MiscShare from 'components/Misc/Share';
+import MiscShare from '../../../../components/Misc/Share';
 
 const ProjectActionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -73,34 +73,34 @@ const ProjectActionButtons = (props) => {
 						<h6 className="dropdown-header">Actions</h6>
 						{project.completed ? (
 							<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-								<i className="fas fa-redo fa-fw mr-2" /> Reopen
+								<i className="fas fa-redo fa-fw mr-1" /> Reopen
 							</button>
 						) : (
 							<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-								<i className="fas fa-check fa-fw mr-2" /> Complete
+								<i className="fas fa-check fa-fw mr-1" /> Complete
 							</button>
 						)}
 						{!project.isClone ? (
 							<button type="button" className="btn dropdown-item" onClick={cloneProject}>
-								<i className="fas fa-clone fa-fw mr-2" /> Clone
+								<i className="fas fa-clone fa-fw mr-1" /> Clone
 							</button>
 						) : null}
 
 						<h6 className="dropdown-header">Views</h6>
-						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-2">
-							<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
+						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-1">
+							<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
 						</Link>
 
 						<h6 className="dropdown-header">Share</h6>
 						<button type="button" className="btn dropdown-item" onClick={openShareModal}>
-							<i className="fas fa-share fa-fw mr-2" /> Share
+							<i className="fas fa-share fa-fw mr-1" /> Share
 						</button>
 						<button type="button" className="btn dropdown-item" onClick={window.print}>
-							<i className="fas fa-print fa-fw mr-2" /> Print
+							<i className="fas fa-print fa-fw mr-1" /> Print
 						</button>
 						<div className="dropdown-divider" />
 						<button type="button" className="btn dropdown-item text-danger" onClick={deleteProject}>
-							<i className="fas fa-trash fa-fw mr-2" /> Delete
+							<i className="fas fa-trash fa-fw mr-1" /> Delete
 						</button>
 					</div>
 				</div>

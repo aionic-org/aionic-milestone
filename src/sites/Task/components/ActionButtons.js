@@ -8,9 +8,9 @@ import { Api, Session, Button } from 'aionic-library';
 import MiscShare from '../../../components/Misc/Share';
 
 import TaskCreate from '../../../components/Task/Create';
-import TaskMove from '../../../components/Task/Move';
 import TaskPlugins from '../../../components/Task/Plugins';
-import TaskWatch from '../../../components/Task/Watch';
+import TaskActionsMove from '../../../components/Task/Actions/Move';
+import TaskActionsWatch from '../../../components/Task/Actions/Watch';
 
 const TaskActionButtons = (props) => {
 	const { task, isNewTask, updateParentTaskState } = props;
@@ -59,7 +59,7 @@ const TaskActionButtons = (props) => {
 	const openMoveTaskModal = () => {
 		setModalContent({
 			title: 'Move',
-			content: <TaskMove task={task} updateParentTaskState={updateParentTaskState} />
+			content: <TaskActionsMove task={task} updateParentTaskState={updateParentTaskState} />
 		});
 		setShowModal(true);
 	};
@@ -103,51 +103,51 @@ const TaskActionButtons = (props) => {
 					<h6 className="dropdown-header">Actions</h6>
 					{task.completed ? (
 						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-							<i className="fas fa-redo fa-fw mr-2" /> Reopen
+							<i className="fas fa-redo fa-fw mr-1" /> Reopen
 						</button>
 					) : (
 						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-							<i className="fas fa-check fa-fw mr-2" /> Complete
+							<i className="fas fa-check fa-fw mr-1" /> Complete
 						</button>
 					)}
 					{!task.isClone ? (
 						<button type="button" className="btn dropdown-item" onClick={cloneTask}>
-							<i className="fas fa-clone fa-fw mr-2" /> Clone
+							<i className="fas fa-clone fa-fw mr-1" /> Clone
 						</button>
 					) : null}
 
 					<h6 className="dropdown-header">Project</h6>
 					{task.project ? (
 						<div>
-							<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-2">
-								<i className="fas fa-table fa-fw mr-2" /> View
+							<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-1">
+								<i className="fas fa-table fa-fw mr-1" /> View
 							</Link>
-							<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-2">
-								<i className="fas fa-grip-horizontal fa-fw mr-2" /> Kanban
+							<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-1">
+								<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
 							</Link>
 						</div>
 					) : null}
 					<button type="button" className="btn dropdown-item" onClick={openMoveTaskModal}>
-						<i className="fas fa-exchange-alt fa-fw mr-2" /> Move
+						<i className="fas fa-exchange-alt fa-fw mr-1" /> Move
 					</button>
 
 					<h6 className="dropdown-header">Share</h6>
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
-						<i className="fas fa-share fa-fw mr-2" /> Share
+						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
 					<button type="button" className="btn dropdown-item" onClick={window.print}>
-						<i className="fas fa-print fa-fw mr-2" /> Print
+						<i className="fas fa-print fa-fw mr-1" /> Print
 					</button>
-					<TaskWatch task={task} />
+					<TaskActionsWatch task={task} />
 
 					<h6 className="dropdown-header">More</h6>
 					<button type="button" className="btn dropdown-item" onClick={openPluginsModal}>
-						<i className="fas fa-plug fa-fw mr-2" /> Plugins
+						<i className="fas fa-plug fa-fw mr-1" /> Plugins
 					</button>
 
 					<div className="dropdown-divider" />
 					<button type="button" className="btn dropdown-item text-danger" onClick={deleteTask}>
-						<i className="fas fa-trash fa-fw mr-2" /> Delete
+						<i className="fas fa-trash fa-fw mr-1" /> Delete
 					</button>
 				</div>
 				<ReactModal
