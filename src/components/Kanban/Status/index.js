@@ -17,7 +17,7 @@ const KanbanStatus = (props) => {
 					{tasks.map((task) => {
 						return (
 							<div className="task-wrapper shadow-sm" key={task.id}>
-								<TaskPreviewsBasic task={task} showBody={showBody} showFooter={showFooter} />
+								<TaskPreviewsBasic task={task} />
 							</div>
 						);
 					})}

@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+
 import { Link } from 'react-router-dom';
 
 import { Badge } from 'aionic-library';
@@ -9,22 +11,7 @@ import TaskPriorityIcon from '../Priority';
 import TaskPreviewActionMenu from '../PreviewActionMenu';
 
 const TaskPreviewsAdvanced = (props) => {
-	const { task, showBody, showFooter } = props;
-
-	const body = showBody ? (
-		<div className="card-body">
-			<p className="card-text text-muted">
-				{task.status ? task.status.title : ''} (
-				{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'})
-			</p>
-		</div>
-	) : null;
-
-	const footer = showFooter ? (
-		<div className="card-footer text-muted">
-			<small>Updated: {Helper.formatDateTime(task.updated)} </small>
-		</div>
-	) : null;
+	const { task } = props;
 
 	return (
 		<div
@@ -44,22 +31,29 @@ const TaskPreviewsAdvanced = (props) => {
 						<TaskPriorityIcon task={task} />
 						{task.completed ? (
 							<div className="ml-2">
-								<Badge label="Completed" type="success" />{' '}
+								<Badge label="Completed" type="success" />
 							</div>
 						) : null}
 						<TaskPreviewActionMenu task={task} />
 					</div>
 				</div>
 			</div>
-			{body}
-			{footer}
+			<div className="card-body">
+				<p className="card-text text-muted">
+					{task.status ? task.status.title : ''} (
+					{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : 'Unassigned'})
+				</p>
+			</div>
+			<div className="card-footer text-muted">
+				<small>
+					Updated:
+					{moment(moment()).diff(task.updated, 'minutes') <= 30
+						? ` ${moment(moment()).diff(task.updated, 'minutes')} minutes ago`
+						: ` ${Helper.formatDateTime(task.updated)}`}
+				</small>
+			</div>
 		</div>
 	);
-};
-
-TaskPreviewsAdvanced.defaultProps = {
-	showBody: true,
-	showFooter: true
 };
 
 export default TaskPreviewsAdvanced;

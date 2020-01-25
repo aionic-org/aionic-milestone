@@ -4,7 +4,7 @@ import { Spinner, useFetcher, Error } from 'aionic-library';
 
 import ProjectSelect from '../../Project/Select';
 
-const TaskActionMove = (props) => {
+const TaskActionsMove = (props) => {
 	const { task, updateParentTaskState } = props;
 
 	const [projects, isLoading, error] = useFetcher('projects');
@@ -22,7 +22,7 @@ const TaskActionMove = (props) => {
 	}
 
 	return (
-		<div className="TaskActionMove">
+		<div className="TaskActionsMove">
 			<label>Move this task to another project</label>
 			<ProjectSelect
 				projectList={projects}
@@ -33,4 +33,4 @@ const TaskActionMove = (props) => {
 	);
 };
 
-export default TaskActionMove;
+export default TaskActionsMove;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Api, Session } from 'aionic-library';
 
-const TaskActionWatch = (props) => {
+const TaskActionsWatch = (props) => {
 	const { task, updateParentLoading } = props;
 
 	const [isTaskWatched, setIsTaskWatched] = useState(
@@ -34,7 +34,7 @@ const TaskActionWatch = (props) => {
 	};
 
 	return (
-		<div className="TaskActionWatch">
+		<div className="TaskActionsWatch">
 			{isTaskWatched ? (
 				<button type="button" className="btn dropdown-item" onClick={toggleWatchTask}>
 					<i className="far fa-heart fa-fw mr-1" /> Unwatch
@@ -48,8 +48,8 @@ const TaskActionWatch = (props) => {
 	);
 };
 
-TaskActionWatch.defaultProps = {
+TaskActionsWatch.defaultProps = {
 	updateParentLoading: () => {}
 };
 
-export default TaskActionWatch;
+export default TaskActionsWatch;

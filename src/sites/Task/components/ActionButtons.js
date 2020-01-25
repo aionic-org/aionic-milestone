@@ -9,8 +9,12 @@ import MiscShare from '../../../components/Misc/Share';
 
 import TaskCreate from '../../../components/Task/Create';
 import TaskPlugins from '../../../components/Task/Plugins';
+
+import TaskActionsClone from '../../../components/Task/Actions/Clone';
+import TaskActionsComplete from '../../../components/Task/Actions/Complete';
 import TaskActionsMove from '../../../components/Task/Actions/Move';
 import TaskActionsWatch from '../../../components/Task/Actions/Watch';
+import TaskActionsProject from '../../../components/Task/Actions/Project';
 
 const TaskActionButtons = (props) => {
 	const { task, isNewTask, updateParentTaskState } = props;
@@ -20,24 +24,6 @@ const TaskActionButtons = (props) => {
 
 	const assignToMe = () => {
 		updateParentTaskState({ ...task, assignee: Session.getUser() });
-	};
-
-	const toggleComplete = () => {
-		updateParentTaskState({ ...task, completed: !task.completed });
-	};
-
-	const cloneTask = () => {
-		const newTask = { ...task, title: `CLONE: ${task.title}`, isClone: true };
-
-		delete newTask.id;
-
-		Api.postData('tasks', { task: newTask })
-			.then((res) => {
-				props.history.push(`/tasks/${res.id}`);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
 	};
 
 	const openShareModal = () => {
@@ -101,35 +87,10 @@ const TaskActionButtons = (props) => {
 				</button>
 				<div className="dropdown-menu dropdown-menu-right">
 					<h6 className="dropdown-header">Actions</h6>
-					{task.completed ? (
-						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-							<i className="fas fa-redo fa-fw mr-1" /> Reopen
-						</button>
-					) : (
-						<button type="button" className="btn dropdown-item" onClick={toggleComplete}>
-							<i className="fas fa-check fa-fw mr-1" /> Complete
-						</button>
-					)}
-					{!task.isClone ? (
-						<button type="button" className="btn dropdown-item" onClick={cloneTask}>
-							<i className="fas fa-clone fa-fw mr-1" /> Clone
-						</button>
-					) : null}
+					<TaskActionsComplete task={task} updateParentTaskState={updateParentTaskState} />
+					<TaskActionsClone task={task} />
 
-					<h6 className="dropdown-header">Project</h6>
-					{task.project ? (
-						<div>
-							<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-1">
-								<i className="fas fa-table fa-fw mr-1" /> View
-							</Link>
-							<Link to={`/projects/${task.project.id}/kanban`} className="btn dropdown-item mr-1">
-								<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
-							</Link>
-						</div>
-					) : null}
-					<button type="button" className="btn dropdown-item" onClick={openMoveTaskModal}>
-						<i className="fas fa-exchange-alt fa-fw mr-1" /> Move
-					</button>
+					<TaskActionsProject task={task} openMoveTaskModal={openMoveTaskModal} />
 
 					<h6 className="dropdown-header">Share</h6>
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
@@ -138,6 +99,7 @@ const TaskActionButtons = (props) => {
 					<button type="button" className="btn dropdown-item" onClick={window.print}>
 						<i className="fas fa-print fa-fw mr-1" /> Print
 					</button>
+
 					<TaskActionsWatch task={task} />
 
 					<h6 className="dropdown-header">More</h6>
