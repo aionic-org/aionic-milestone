@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-library';
+import { Api, Error } from 'aionic-library';
 
 import TaskFilter from '.';
+import SearchFiltersLoader from './Loader';
 
 class SearchFiltersContainer extends Component {
 	constructor(props) {
@@ -46,7 +47,7 @@ class SearchFiltersContainer extends Component {
 		const { isLoading, msg, lists } = this.state;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <SearchFiltersLoader />;
 		}
 
 		if (msg) {

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import { Api, Spinner, Error } from 'aionic-library';
+import { Api, Error } from 'aionic-library';
 
-import TaskDashboard from 'components/Task/Dashboard/';
+import Deck from '../../../components/Deck';
 
-class SearchDashboardTaskContainer extends Component {
+import SearchLoader from './Loader';
+
+class SearchTaskContainer extends Component {
 	constructor(props) {
 		super(props);
 
@@ -57,7 +59,7 @@ class SearchDashboardTaskContainer extends Component {
 		const { isLoading, msg, searchResult } = this.state;
 
 		if (isLoading) {
-			return <Spinner />;
+			return <SearchLoader />;
 		}
 
 		if (msg) {
@@ -65,11 +67,11 @@ class SearchDashboardTaskContainer extends Component {
 		}
 
 		return (
-			<div className="SearchDashboardTaskContainer">
-				<TaskDashboard taskList={searchResult} showStatusFilters={false} itemsPerRow={1} />
+			<div className="SearchTaskContainer">
+				<Deck itemList={searchResult} deckType="task" itemsPerRow={1} showItemsNumber={true} />
 			</div>
 		);
 	}
 }
 
-export default SearchDashboardTaskContainer;
+export default SearchTaskContainer;

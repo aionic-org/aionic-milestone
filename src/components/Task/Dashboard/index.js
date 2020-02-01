@@ -1,64 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+
+import { useFetcher } from 'aionic-library';
 
 import Deck from 'components/Deck';
 
 import TaskDashboardFilters from './Filters';
+import TaskDashboardLoader from './Loader';
 
-class TaskDashboard extends Component {
-	constructor(props) {
-		super(props);
+const TaskDashboard = (props) => {
+	const { userId } = props;
 
-		this.state = {
-			taskListFiltered: [],
-			isFiltered: false,
-			statusFilter: null
-		};
-	}
+	const [tasks, isLoading, error] = useFetcher(`users/${userId}/tasks`);
+	const [tasksFiltered, setTasksFiltered] = useState([]);
+	const [statusFilterId, setStatusFilterId] = useState(null);
 
-	filterTasks = () => {
-		if (this.state.statusFilter !== null) {
-			const taskListFiltered = this.props.taskList.filter((task) => {
-				return this.state.statusFilter !== null
-					? task.status && task.status.id === this.state.statusFilter
-					: true;
-			});
+	const filterTasksByStatus = (_statusId) => {
+		setStatusFilterId(_statusId);
 
-			this.setState({ taskListFiltered, isFiltered: true });
+		if (_statusId !== null) {
+			setTasksFiltered(tasks.filter((task) => task.status && task.status.id === _statusId));
 		} else {
-			this.setState({ taskListFiltered: [], isFiltered: false });
+			setTasksFiltered([]);
 		}
 	};
 
-	filterByStatus = (statusId) => {
-		this.setState({ statusFilter: statusId }, this.filterTasks);
-	};
+	const tasksToShow = statusFilterId !== null ? tasksFiltered : tasks;
 
-	render() {
-		const { taskListFiltered, isFiltered } = this.state;
-		const { taskList, showStatusFilters, itemsPerRow } = this.props;
+	const content = isLoading ? (
+		<TaskDashboardLoader />
+	) : (
+		<Deck itemList={tasksToShow} deckType="task" itemsPerRow={2} showItemsNumber={true} />
+	);
 
-		const itemList = isFiltered ? taskListFiltered : taskList;
-
-		return (
-			<div className="TaskDashboard">
-				{showStatusFilters ? (
-					<TaskDashboardFilters handleStatusChange={this.filterByStatus} />
-				) : null}
-
-				<Deck
-					itemList={itemList}
-					deckType="task"
-					itemsPerRow={itemsPerRow}
-					showItemsNumber={true}
-				/>
-			</div>
-		);
-	}
-}
+	return (
+		<div className="TaskDashboard">
+			<TaskDashboardFilters handleStatusChange={filterTasksByStatus} />
+			{content}
+		</div>
+	);
+};
 
 TaskDashboard.defaultProps = {
-	showStatusFilters: true,
-	itemsPerRow: 2,
 	updateParent: () => {}
 };
 

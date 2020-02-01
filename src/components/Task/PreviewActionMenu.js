@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ReactModal from 'react-modal';
 
@@ -67,6 +68,9 @@ const TaskPreviewActionMenu = (props) => {
 					{icon}
 				</i>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<Link to={`/tasks/${task.id}`} className="btn dropdown-item" target="_blank">
+						<i className="fas fa-external-link-square-alt fa-fw mr-1" /> New tab
+					</Link>
 					{assignBtn}
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share

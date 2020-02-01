@@ -5,7 +5,7 @@ import TaskPreviewsBasic from '../../Task/Previews/Basic';
 import './Status.scss';
 
 const KanbanStatus = (props) => {
-	const { tasks, title, maxWidth, showBody, showFooter } = props;
+	const { tasks, title, maxWidth } = props;
 
 	return (
 		<div className="KanbanStatus" style={{ flex: `0 0 ${maxWidth}%` }}>

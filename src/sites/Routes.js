@@ -17,7 +17,6 @@ import SitesProjectContainer from './Projects/Project/container';
 import SitesProjectKanbanContainer from './Projects/Project/Kanban/container';
 import SitesBoardsContainer from './Boards/container';
 import SitesBoardContainer from './Boards/Board/container';
-import SitesUserContainer from './User/container';
 
 import NotFound from './NotFound';
 
@@ -55,7 +54,6 @@ const Routes = (props) => {
 						<Route exact path="/projects/:id/kanban" component={SitesProjectKanbanContainer} />
 						<Route exact path="/boards" component={SitesBoardsContainer} />
 						<Route exact path="/boards/:id" component={SitesBoardContainer} />
-						<Route exact path="/users/:id" component={SitesUserContainer} />
 						<Route exact path="*" component={NotFound} />
 					</Switch>
 				</div>

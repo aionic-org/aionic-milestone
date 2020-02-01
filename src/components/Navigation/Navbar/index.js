@@ -101,10 +101,6 @@ const Navbar = (props) => {
 							<div className="dropdown-header">
 								{`${Session.getUser().firstname} ${Session.getUser().lastname}`}
 							</div>
-							<Link to="/users/me" className="dropdown-item">
-								<i className="far fa-user-circle fa-fw mr-2" />
-								Account
-							</Link>
 							{Session.isAdmin() ? (
 								<Link to="/administration" className="dropdown-item">
 									<i className="fas fa-wrench fa-fw mr-2" />

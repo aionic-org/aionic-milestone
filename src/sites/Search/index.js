@@ -6,9 +6,9 @@ import Helper from 'services/helper';
 import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';
 
-import SearchFiltersContainer from 'components/Search/Filters/container';
+import SearchFiltersContainer from '../../components/Search/Filters/container';
 
-import SearchDashboardTaskContainer from './components/Dashboard/TaskContainer';
+import SearchTaskContainer from './components/TaskContainer';
 
 const SitesSearch = (props) => {
 	const { location } = props;
@@ -38,7 +38,7 @@ const SitesSearch = (props) => {
 						/>
 					</div>
 					<div className="col-12 col-xl-9 mt-3 mt-md-0">
-						<SearchDashboardTaskContainer searchParams={params} />
+						<SearchTaskContainer searchParams={params} />
 					</div>
 				</div>
 			</Content>

@@ -6,9 +6,9 @@ import Content from '../../components/UI/Content';
 import Title from '../../components/UI/Title';
 
 import TaskTable from '../../components/Task/Table';
-import UserTaskDashboardContainer from '../../components/User/Task/DashboardContainer';
 
 import './Home.css';
+import TaskDashboard from 'components/Task/Dashboard';
 
 const SitesHome = () => {
 	return (
@@ -17,7 +17,7 @@ const SitesHome = () => {
 				<Title title={`Welcome back, ${Session.getUser().firstname}!`} />
 				<div className="row">
 					<div className="col-12">
-						<UserTaskDashboardContainer user={Session.getUser()} />
+						<TaskDashboard userId={Session.getUser().id} />
 					</div>
 				</div>
 				<div className="row mt-5">

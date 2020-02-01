@@ -33,6 +33,9 @@ const ProjectPreviewActionMenu = (props) => {
 					<i className="fas fa-ellipsis-v"></i>
 				</i>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<Link to={`/projects/${project.id}`} className="btn dropdown-item" target="_blank">
+						<i className="fas fa-external-link-square-alt fa-fw mr-1" /> New tab
+					</Link>
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
