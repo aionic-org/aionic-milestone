@@ -8,7 +8,7 @@ import ContentLoader from 'react-content-loader';
 const ProjectsLoader = () => (
 	<Content>
 		<Title title="Projects" />
-		<ContentLoader height={155} width={400} speed={1} ariaLabel="Loading projects...">
+		<ContentLoader viewBox="0 0 400 155" speed={1} title="Loading projects...">
 			<rect x="0" y="0" rx="0" ry="0" width="125" height="35" />
 			<rect x="135" y="0" rx="0" ry="0" width="125" height="35" />
 			<rect x="270" y="0" rx="0" ry="0" width="125" height="35" />

@@ -6,7 +6,7 @@ import ContentLoader from 'react-content-loader';
 
 const BoardLoader = () => (
 	<Content>
-		<ContentLoader height={115} width={400} speed={1} ariaLabel="Loading project...">
+		<ContentLoader viewBox="0 0 400 105" speed={1} title="Loading board...">
 			<rect x="0" y="0" rx="4" ry="4" width="260" height="10" />
 
 			<rect x="0" y="30" rx="4" ry="4" width="30" height="10" />

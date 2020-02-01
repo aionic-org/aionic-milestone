@@ -6,7 +6,7 @@ import ContentLoader from 'react-content-loader';
 
 const TaskLoader = () => (
 	<Content>
-		<ContentLoader height={190} width={400} speed={1} ariaLabel="Loading task...">
+		<ContentLoader viewBox="0 0 400 190" speed={1} title="Loading task...">
 			<rect x="0" y="5" rx="4" ry="4" width="35" height="8" />
 			<rect x="40" y="5" rx="4" ry="4" width="35" height="8" />
 
