@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Content from '../../../components/UI/Content';
-import Title from '../../../components/UI/Title';
+import Loader from '../../../components/UI/Loader';
 
 import ContentLoader from 'react-content-loader';
 
 const ProjectsLoader = () => (
-	<Content>
-		<Title title="Projects" />
+	<Loader title="Projects">
 		<ContentLoader viewBox="0 0 400 155" speed={1} title="Loading projects...">
 			<rect x="0" y="0" rx="0" ry="0" width="125" height="35" />
 			<rect x="135" y="0" rx="0" ry="0" width="125" height="35" />
@@ -21,7 +19,7 @@ const ProjectsLoader = () => (
 			<rect x="0" y="55" rx="4" ry="4" width="400" height="45" />
 			<rect x="0" y="110" rx="4" ry="4" width="400" height="45" />
 		</ContentLoader>
-	</Content>
+	</Loader>
 );
 
 export default ProjectsLoader;

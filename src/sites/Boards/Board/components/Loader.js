@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Content from '../../../../components/UI/Content';
+import Loader from '../../../../components/UI/Loader';
 
 import ContentLoader from 'react-content-loader';
 
 const BoardLoader = () => (
-	<Content>
+	<Loader>
 		<ContentLoader viewBox="0 0 400 105" speed={1} title="Loading board...">
 			<rect x="0" y="0" rx="4" ry="4" width="260" height="10" />
 
@@ -21,7 +21,7 @@ const BoardLoader = () => (
 			<rect x="246" y="70" rx="0" ry="0" width="70" height="35" />
 			<rect x="328" y="70" rx="0" ry="0" width="70" height="35" />
 		</ContentLoader>
-	</Content>
+	</Loader>
 );
 
 export default BoardLoader;

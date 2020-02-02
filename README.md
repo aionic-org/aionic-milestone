@@ -1,4 +1,4 @@
-# Aionic Milestone
+# aionic-milestone
 
 ![alt text](https://avatars0.githubusercontent.com/u/42389304?s=100&v=4 'Aionic Logo')
 
