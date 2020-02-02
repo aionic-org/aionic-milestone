@@ -78,7 +78,11 @@ const ProjectsFilters = (props) => {
 					</div>
 					<div className="col-12 col-xl-auto">
 						<div className="form-group">
-							<button type="reset" className="button button-warning" onClick={resetFilters}>
+							<button
+								type="reset"
+								className="button button-warning btn-block"
+								onClick={resetFilters}
+							>
 								Reset
 							</button>
 						</div>

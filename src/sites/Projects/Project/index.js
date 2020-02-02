@@ -27,14 +27,14 @@ const SitesProject = (props) => {
 			<Content>
 				<ProjectBadges project={project} />
 				<div className="row">
-					<div className="col-12 col-md-7 col-xl">
+					<div className="col-10 col-md">
 						<InputTitle
 							defaultValue={project.title}
 							placeholder="Enter project title"
 							onBlur={handleTitleChange}
 						/>
 					</div>
-					<div className="col-12 col-md-5 col-xl-auto">
+					<div className="col-2 col-md-auto">
 						<ProjectActionButtons
 							project={project}
 							updateParentProjectState={updateParentProjectState}

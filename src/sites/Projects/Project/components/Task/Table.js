@@ -92,14 +92,16 @@ const ProjectTaskTable = (props) => {
 					</tbody>
 				</table>
 			</div>
-			<TaskSuggestion
-				taskListSelected={tasks}
-				multiSelect={false}
-				autoClear={true}
-				smallInput={true}
-				updateParent={addTask}
-				placeholder="Add new task"
-			/>
+			<div className="mt-2 mt-md-0">
+				<TaskSuggestion
+					taskListSelected={tasks}
+					multiSelect={false}
+					autoClear={true}
+					smallInput={true}
+					updateParent={addTask}
+					placeholder="Add new task"
+				/>
+			</div>
 		</div>
 	);
 };

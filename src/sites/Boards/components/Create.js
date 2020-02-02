@@ -25,7 +25,7 @@ const BoardsCreate = (props) => {
 	return (
 		<div className="BoardsCreate">
 			<div className="form-group">
-				<Button label="Create" icon="fas fa-plus" onClickHandler={handleOpenModal} />
+				<Button label="Create" icon="fas fa-plus" block={true} onClickHandler={handleOpenModal} />
 			</div>
 
 			<ReactModal
