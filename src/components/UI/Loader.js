@@ -18,7 +18,7 @@ const Loader = (props) => {
 		</div>
 	);
 
-	return wrapContent ? <Content>content</Content> : content;
+	return wrapContent ? <Content>{content}</Content> : content;
 };
 
 Loader.defaultProps = {
