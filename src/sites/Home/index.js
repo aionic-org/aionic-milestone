@@ -9,6 +9,7 @@ import TaskTable from '../../components/Task/Table';
 
 import './Home.css';
 import TaskDashboard from 'components/Task/Dashboard';
+import ProjectTable from 'components/Project/Table';
 
 const SitesHome = () => {
 	return (
@@ -22,10 +23,18 @@ const SitesHome = () => {
 				</div>
 				<div className="row mt-5">
 					<div className="col-12">
-						<p className="d-inline-block text-muted font-weight-bold">
-							Tasks watched: {Session.getUser().tasksWatched.length}
-						</p>
-						<TaskTable tasks={Session.getUser().tasksWatched} />
+						<TaskTable
+							tasks={Session.getUser().tasksWatched}
+							title={`Tasks watched: ${Session.getUser().tasksWatched.length}`}
+						/>
+					</div>
+				</div>
+				<div className="row mt-3">
+					<div className="col-12">
+						<ProjectTable
+							projects={Session.getUser().projectsWatched}
+							title={`Projects watched: ${Session.getUser().projectsWatched.length}`}
+						/>
 					</div>
 				</div>
 			</Content>

@@ -7,7 +7,7 @@ import { Api, Session } from 'aionic-library';
 
 import MiscShare from '../Misc/Share';
 
-import TaskWatch from './Actions/Watch';
+import TaskActionsWatch from './Actions/Watch';
 
 const TaskPreviewActionMenu = (props) => {
 	const { task } = props;
@@ -75,7 +75,7 @@ const TaskPreviewActionMenu = (props) => {
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
-					<TaskWatch task={task} updateParentLoading={handleTaskWatch} />
+					<TaskActionsWatch task={task} updateParentLoading={handleTaskWatch} />
 				</div>
 			</div>
 			<ReactModal

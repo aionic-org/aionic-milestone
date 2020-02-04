@@ -5,11 +5,18 @@ import ReactModal from 'react-modal';
 
 import MiscShare from '../Misc/Share';
 
+import ProjectActionsWatch from './Actions/Watch';
+
 const ProjectPreviewActionMenu = (props) => {
 	const { project } = props;
 
+	const [isLoading, setIsLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState(null);
+
+	const handleProjectWatch = (isLoading) => {
+		setIsLoading(isLoading);
+	};
 
 	const openShareModal = (e) => {
 		e.preventDefault();
@@ -21,6 +28,12 @@ const ProjectPreviewActionMenu = (props) => {
 		setShowModal(false);
 	};
 
+	const icon = isLoading ? (
+		<i className="fas fa-spinner fa-spin"></i>
+	) : (
+		<i className="fas fa-ellipsis-v cursor-pointer"></i>
+	);
+
 	return (
 		<div className="ProjectPreviewActionMenu">
 			<div className="dropdown dropleft ml-3 cursor-pointer">
@@ -30,7 +43,7 @@ const ProjectPreviewActionMenu = (props) => {
 					aria-haspopup="true"
 					aria-expanded="false"
 				>
-					<i className="fas fa-ellipsis-v"></i>
+					{icon}
 				</i>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<Link to={`/projects/${project.id}`} className="btn dropdown-item" target="_blank">
@@ -42,6 +55,7 @@ const ProjectPreviewActionMenu = (props) => {
 					<Link to={`projects/${project.id}/kanban`} className="btn dropdown-item mr-2">
 						<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
 					</Link>
+					<ProjectActionsWatch project={project} updateParentLoading={handleProjectWatch} />
 				</div>
 			</div>
 			<ReactModal
