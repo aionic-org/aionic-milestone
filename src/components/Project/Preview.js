@@ -11,7 +11,7 @@ const ProjectPreview = (props) => {
 	const { project } = props;
 
 	return (
-		<div className="card">
+		<div className="ProjectPreview card">
 			<div className="card-body">
 				<h5 className="card-title">
 					<div className="row">

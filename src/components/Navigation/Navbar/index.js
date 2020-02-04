@@ -95,7 +95,7 @@ const Navbar = (props) => {
 							aria-haspopup="true"
 							aria-expanded="false"
 						>
-							<i className="fas fa-user-tie mr-1" /> {Session.getUser().firstname}
+							<i className="fas fa-user-circle mr-1" /> {Session.getUser().firstname}
 						</button>
 						<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
 							<div className="dropdown-header">

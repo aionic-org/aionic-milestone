@@ -14,11 +14,7 @@ const TaskPreviewsAdvanced = (props) => {
 	const { task } = props;
 
 	return (
-		<div
-			to={`/tasks/${task.id}`}
-			className="TaskPreviewsAdvanced card"
-			style={{ borderLeft: `6px solid ${task.label}` }}
-		>
+		<div className="TaskPreviewsAdvanced card" style={{ borderLeft: `6px solid ${task.label}` }}>
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
