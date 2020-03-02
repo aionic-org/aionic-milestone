@@ -4,22 +4,31 @@
 
 Aionic offers open source applications for project management and collaboration. Our focus is on simplifying and accelerating the workflow of agile teams.
 
+## About Aionic
+
+We provide a set of **open source products** for project management, collarboration, productivity and more. All our products are released under the [MIT](https://opensource.org/licenses/MIT) license, so feel free to customize them according to your team’s wishes.
+
+Please keep in mind that we just develop the software and don't host the applications anywhere for public usage. That means you have to take care of the hosting for yourself. You can use a Linux cloud server with nginx for example.
+
+All our products are built on top of [aionic-core](https://github.com/aionic-org/aionic-core/), since this is the place where all your data is maintained and distributed. So for the usage of any other application, you have to use at least aionic-core.
+
+Moreover we highly advice to use [aionic-backend](https://github.com/aionic-org/aionic-backend/) for managing and configuring the data of your Aionic applications.
+
+Installation and usage guides and be found at the GitHub repositories of the individual products.
+
+Some of the technologies we use to build our software:
+
+- Node.js
+- React
+- MySQL
+- Redis
+
+---
+
 ## Description
 
-Aionic offers a set of **open source products** for project management of any size. All our products are released under the [MIT](https://opensource.org/licenses/MIT) license, so feel free to customize it and share it with others!
-
-Please keep in mind that we just develop the software and don't host the applications anywhere for public usage. That means you have to take care of the hosting for yourself.
-
-All products are built on top of the **Aionic Core** application, since this is the place where all your data is managed and distributed. So for the usage of any other application, you have to use at least [Aionic Core](https://github.com/Aionic-Apps/aionic-core/).
-
-Moreover we highly recommend [Aionic Manager](https://github.com/Aionic-Apps/aionic-manager/) which makes your data management much easier.
-
-Some of the technologies we trust: _Node.js, React, MySQL_
-
-## Features
-
-**Aionic Milestone** is a web application for project management. It helps you to plan your projects and tasks with other team members.
-The application is a SPA based on ReactJS written in JavaScript.
+**aionic-milestone** is a web application for project management. It helps you to plan your team's projects and tasks.
+The application is a SPA based on React written in JavaScript.
 
 Some of the features included in this app:
 
@@ -31,13 +40,16 @@ Some of the features included in this app:
 
 ## Prerequisites
 
+- aionic-core
 - Node.js
 
 ## Installation
 
-First of all, rename the following files and enter your credentials / infos:
+First of all, copy the environment file and enter your secret information:
 
-- .env.example -> .env
+```bash
+cp .env.example .env
+```
 
 Afterward, run the following commands to start the application
 
@@ -46,25 +58,23 @@ yarn install
 yarn start
 ```
 
-NOTE: You can also use [npm](https://www.npmjs.com/).
-
 ## User Guide
 
 In progress.
 
 ## Philosophy
 
-> Our focus is on simplifying and accelerating the workflow for agile teams in the open source way.
+> Our focus is on simplifying and accelerating the workflow of agile teams.
 
-We try to help other people and companies realizing their ideas by offering highly maintainable project management softwares that everybody can **adjust as desired**.
+We try to help other teams to realize their ideas by offering highly maintainable software for project management and collaboration.
 
 ## Community
 
 - [Author](https://github.com/larswaechter)
-- [Website](https://aionic-apps.com)
-- [GitHub](https://github.com/Aionic-Apps)
-- [Twitter](https://twitter.com/AionicApps)
+- [Website](https://aionic.org)
+- [GitHub](https://github.com/aionic-org)
+- [Twitter](https://twitter.com/aionic_org)
 
 ## License
 
-Aionic Milestone is released under [MIT](https://github.com/Aionic-Apps/aionic-milestone/blob/master/LICENSE) license.
+aionic-milestone is released under [MIT](https://github.com/aionic-org/aionic-milestone/blob/master/LICENSE) license.

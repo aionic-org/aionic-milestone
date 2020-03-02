@@ -4,9 +4,9 @@
   "description": "A web application for project management and collaboration",
   "author": "Lars Wächter <lars97.waechter@gmail.com>",
   "private": true,
-  "repository": "https://github.com/Aionic-Apps/aionic-milestone",
+  "repository": "https://github.com/aionic-org/aionic-milestone",
   "license": "MIT",
-  "homepage": "https://aionic-apps.com",
+  "homepage": "https://aionic.org",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -16,7 +16,7 @@
     "prettier": "prettier --config ./.prettierrc --write src/**/*.js"
   },
   "dependencies": {
-    "aionic-library": "https://github.com/Aionic-Apps/aionic-library#master",
+    "aionic-library": "https://github.com/aionic-org/aionic-library#master",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.4",
