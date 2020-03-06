@@ -1,57 +1,57 @@
 {
-  "name": "aionic-milestone",
-  "version": "0.0.1",
-  "description": "A web application for project management and collaboration",
-  "author": "Lars Wächter <lars97.waechter@gmail.com>",
-  "private": true,
-  "repository": "https://github.com/aionic-org/aionic-milestone",
-  "license": "MIT",
-  "homepage": "https://aionic.org",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint ./src",
-    "prettier": "prettier --config ./.prettierrc --write src/**/*.js"
-  },
-  "dependencies": {
-    "aionic-library": "https://github.com/aionic-org/aionic-library#master",
-    "axios": "^0.19.2",
-    "dotenv": "^8.2.0",
-    "draft-js": "^0.11.4",
-    "jwt-decode": "^2.2.0",
-    "marked": "^0.8.0",
-    "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
-    "query-string": "^6.10.1",
-    "react": "^16.12.0",
-    "react-content-loader": "^5.0.1",
-    "react-dom": "^16.12.0",
-    "react-modal": "^3.11.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.1"
-  },
-  "devDependencies": {
-    "@babel/runtime": "^7.8.4",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.0",
-    "prettier": "^1.19.1"
-  },
-  "main": "index.js",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "aionic-milestone",
+	"version": "0.0.1",
+	"description": "A web application for project management and collaboration",
+	"author": "Lars Wächter <lars97.waechter@gmail.com>",
+	"private": true,
+	"repository": "https://github.com/aionic-org/aionic-milestone",
+	"license": "MIT",
+	"homepage": "https://aionic.org",
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"lint": "eslint ./src",
+		"prettier": "prettier --config ./.prettierrc --write src/**/*.js"
+	},
+	"dependencies": {
+		"aionic-library": "https://github.com/aionic-org/aionic-library#master",
+		"axios": "^0.19.2",
+		"dotenv": "^8.2.0",
+		"draft-js": "^0.11.4",
+		"jwt-decode": "^2.2.0",
+		"marked": "^0.8.0",
+		"moment": "^2.24.0",
+		"node-sass": "^4.13.1",
+		"query-string": "^6.10.1",
+		"react": "^16.12.0",
+		"react-content-loader": "^5.0.1",
+		"react-dom": "^16.12.0",
+		"react-modal": "^3.11.1",
+		"react-router-dom": "^5.1.2",
+		"react-scripts": "^3.2.0"
+	},
+	"devDependencies": {
+		"@babel/runtime": "^7.8.4",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-config-prettier": "^6.10.0",
+		"eslint-plugin-import": "^2.20.0",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-react": "^7.18.0",
+		"prettier": "^1.19.1"
+	},
+	"main": "index.js",
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

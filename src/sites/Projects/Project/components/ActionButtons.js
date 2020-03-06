@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import ReactModal from 'react-modal';
 import { Link, withRouter } from 'react-router-dom';
+
+import ReactModal from 'react-modal';
 
 import { Api } from 'aionic-library';
 
 import MiscShare from '../../../../components/Misc/Share';
+import ProjectActionsWatch from 'components/Project/Actions/Watch';
 
 const ProjectActionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -85,6 +87,8 @@ const ProjectActionButtons = (props) => {
 								<i className="fas fa-clone fa-fw mr-1" /> Clone
 							</button>
 						) : null}
+
+						<ProjectActionsWatch project={project} />
 
 						<h6 className="dropdown-header">Views</h6>
 						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-1">
