@@ -47,7 +47,7 @@ const ProjectWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
-						title={`Deadline: ${Helper.formatDateTime(project.deadline)}`}
+						title={`Deadline: ${Helper.formatDate(project.deadline)}`}
 						icon="fas fa-calendar-times"
 						iconBackground="#e17055"
 					/>

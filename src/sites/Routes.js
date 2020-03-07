@@ -28,37 +28,32 @@ const Routes = (props) => {
 	);
 
 	const DefaultContainer = () => (
-		<div className="d-flex" id="wrapper">
-			<Sidebar />
-
-			<div id="page-content-wrapper">
-				<Navbar toggleSidebar={props.toggleSidebar} />
-
-				<div className="container-fluid">
-					<Switch>
-						<Route exact path="/" component={SitesHome} />
-						<Route
-							path="/signout"
-							render={() => {
-								Session.clearUser();
-								return <Redirect to="/signin" />;
-							}}
-						/>
-						<Route exact path="/tasks" component={SitesTaskContainer} />
-						<Route exact path="/tasks/:id" component={SitesTaskContainer} />
-						<Route exact path="/search" component={SitesSearch} />
-						<Route path="/search/:searchTerm" component={SitesSearch} />
-						<Route path="/administration" component={SitesAdministration} />
-						<Route exact path="/projects" component={SitesProjectsContainer} />
-						<Route exact path="/projects/:id" component={SitesProjectContainer} />
-						<Route exact path="/projects/:id/kanban" component={SitesProjectKanbanContainer} />
-						<Route exact path="/boards" component={SitesBoardsContainer} />
-						<Route exact path="/boards/:id" component={SitesBoardContainer} />
-						<Route exact path="*" component={NotFound} />
-					</Switch>
-				</div>
-				<Footer />
+		<div id="page-content-wrapper">
+			<Navbar toggleSidebar={props.toggleSidebar} />
+			<div className="container">
+				<Switch>
+					<Route exact path="/" component={SitesHome} />
+					<Route
+						path="/signout"
+						render={() => {
+							Session.clearUser();
+							return <Redirect to="/signin" />;
+						}}
+					/>
+					<Route exact path="/tasks" component={SitesTaskContainer} />
+					<Route exact path="/tasks/:id" component={SitesTaskContainer} />
+					<Route exact path="/search" component={SitesSearch} />
+					<Route path="/search/:searchTerm" component={SitesSearch} />
+					<Route path="/administration" component={SitesAdministration} />
+					<Route exact path="/projects" component={SitesProjectsContainer} />
+					<Route exact path="/projects/:id" component={SitesProjectContainer} />
+					<Route exact path="/projects/:id/kanban" component={SitesProjectKanbanContainer} />
+					<Route exact path="/boards" component={SitesBoardsContainer} />
+					<Route exact path="/boards/:id" component={SitesBoardContainer} />
+					<Route exact path="*" component={NotFound} />
+				</Switch>
 			</div>
+			<Footer />
 		</div>
 	);
 

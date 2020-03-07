@@ -138,7 +138,7 @@ TaskSuggestion.defaultProps = {
 	autoClear: false,
 	maxHeight: false,
 	smallInput: false,
-	placeholder: 'Enter task title...'
+	placeholder: 'Enter task title'
 };
 
 export default TaskSuggestion;

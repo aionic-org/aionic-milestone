@@ -13,14 +13,14 @@ const ProjectsWidgetbar = (props) => {
 			<div className="row">
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={`Open Projects: ${openProjects.length}`}
+						title={`Open: ${openProjects.length}`}
 						icon="fas fa-list"
 						iconBackground="#6c5ce7"
 					/>
 				</div>
 				<div className="col-12 col-xl-4 mt-xl-0">
 					<Widget
-						title={`Total Projects: ${projects.length}`}
+						title={`Total: ${projects.length}`}
 						icon="fas fa-table"
 						iconBackground="#636e72"
 					/>
@@ -31,7 +31,7 @@ const ProjectsWidgetbar = (props) => {
 						iconBackground="#00b894"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Completed Projects: {finishedProjects.length}</div>
+								<div className="col-auto">Completed: {finishedProjects.length}</div>
 								<div className="col">
 									<Progress
 										progress={

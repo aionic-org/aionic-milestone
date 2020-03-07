@@ -1,13 +1,13 @@
 .InputTitle {
-  input {
-    margin: -5px;
-    background: transparent;
-    border: none;
-    color: #2d3436;
-    padding: 5px 5px;
-  }
+	input {
+		margin: -5px;
+		background: transparent;
+		border: none;
+		color: #2d3436;
+		padding: 5px 5px;
+	}
 
-  input:focus {
-    background: white;
-  }
+	input:focus {
+		outline: none;
+	}
 }

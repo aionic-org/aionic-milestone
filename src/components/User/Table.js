@@ -38,7 +38,7 @@ const UserTable = (props) => {
 			<input
 				type="text"
 				className="form-control form-control form-control-sm mb-2"
-				placeholder="Filter..."
+				placeholder="Filter"
 				onChange={filterUsers}
 			/>
 			<div className="table-responsive">

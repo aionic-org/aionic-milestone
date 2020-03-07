@@ -1,37 +1,19 @@
-/* Import global styles */
 @import 'aionic-library/scss/index.scss';
 
 body {
+	background-color: #f9f9f9;
 	overflow-x: hidden;
 	font-family: 'Lexend Deca', sans-serif;
 }
 
 #page-content-wrapper {
 	padding-bottom: 15px;
-	margin-left: 0;
-	-webkit-transition: margin 0.25s ease;
-	-moz-transition: margin 0.25s ease;
-	-o-transition: margin 0.25s ease;
-	transition: margin 0.25s ease;
-	width: 100%;
-}
 
-#App.toggled #page-content-wrapper {
-	margin-left: 250px;
-}
+	> .container {
+		padding: 20px 20px 0px;
 
-@media (min-width: 768px) {
-	#page-content-wrapper {
-		min-width: 0;
-		width: 100%;
-		margin-left: 250px;
-	}
-
-	#App.toggled #page-content-wrapper {
-		margin-left: 0;
-		-webkit-transition: margin 0.25s ease;
-		-moz-transition: margin 0.25s ease;
-		-o-transition: margin 0.25s ease;
-		transition: margin 0.25s ease;
+		/*.page-content {
+			padding: 10px 25px 0px;
+		}*/
 	}
 }

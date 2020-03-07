@@ -2,7 +2,6 @@ import React from 'react';
 
 import Helper from '../../../services/helper';
 
-import Content from '../../../components/UI/Content';
 import InputTitle from '../../../components/UI/Input/Title';
 
 import ProjectActionButtons from './components/ActionButtons';
@@ -24,36 +23,34 @@ const SitesProject = (props) => {
 
 	return (
 		<div className="SitesProject">
-			<Content>
-				<ProjectBadges project={project} />
-				<div className="row">
-					<div className="col-10 col-md">
-						<InputTitle
-							defaultValue={project.title}
-							placeholder="Enter project title"
-							onBlur={handleTitleChange}
-						/>
-					</div>
-					<div className="col-2 col-md-auto">
-						<ProjectActionButtons
-							project={project}
-							updateParentProjectState={updateParentProjectState}
-						/>
-					</div>
+			<ProjectBadges project={project} />
+			<div className="row">
+				<div className="col-10 col-md">
+					<InputTitle
+						defaultValue={project.title}
+						placeholder="Enter project title"
+						onBlur={handleTitleChange}
+						margin={true}
+					/>
 				</div>
-				<hr className="featurette-divider" />
-
-				<ProjectWidgetbar project={project} />
-
-				<div className="row">
-					<div className="col-12 col-xl-8">
-						<ProjectTaskTable tasks={project.tasks} updateProjectTasks={updateProjectTasks} />
-					</div>
-					<div className="col-12 col-xl-4 mt-3 mt-xl-0">
-						<ProjectTabs project={project} updateParentProjectState={updateParentProjectState} />
-					</div>
+				<div className="col-2 col-md-auto">
+					<ProjectActionButtons
+						project={project}
+						updateParentProjectState={updateParentProjectState}
+					/>
 				</div>
-			</Content>
+			</div>
+
+			<ProjectWidgetbar project={project} />
+
+			<div className="row">
+				<div className="col-12 col-xl-8">
+					<ProjectTaskTable tasks={project.tasks} updateProjectTasks={updateProjectTasks} />
+				</div>
+				<div className="col-12 col-xl-4 mt-3 mt-xl-0">
+					<ProjectTabs project={project} updateParentProjectState={updateParentProjectState} />
+				</div>
+			</div>
 		</div>
 	);
 };

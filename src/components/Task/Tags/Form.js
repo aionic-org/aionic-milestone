@@ -23,7 +23,7 @@ const TaskTagForm = (props) => {
 				<input
 					className="form-control form-control-sm tag-value"
 					type="text"
-					placeholder="Enter tag..."
+					placeholder="Enter tag"
 					onBlur={addTag}
 					// eslint-disable-next-line jsx-a11y/no-autofocus
 					autoFocus={true}

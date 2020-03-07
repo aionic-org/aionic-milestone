@@ -30,7 +30,7 @@ const SearchBar = (props) => {
 				<input
 					className="form-control"
 					type="text"
-					placeholder="Search for tasks..."
+					placeholder="Search tasks"
 					aria-label="Search"
 					onChange={handleInputChange}
 					defaultValue={termFromUrl}

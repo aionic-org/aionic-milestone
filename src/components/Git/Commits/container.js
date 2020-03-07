@@ -31,7 +31,7 @@ const GitCommitsContainer = (props) => {
 			<input
 				type="text"
 				className="form-control"
-				placeholder="Filter commits..."
+				placeholder="Filter commits"
 				onChange={filterCommits}
 			/>
 			<GitCommits commitList={commitsToShow} />

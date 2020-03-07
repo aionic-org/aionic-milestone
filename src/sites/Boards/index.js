@@ -16,27 +16,25 @@ const SitesBoards = (props) => {
 
 	return (
 		<div className="SitesBoards">
-			<Content>
-				<Title title="Boards" />
-				<div className="row">
-					<div className="col-12 col-xl">
-						<BoardsFilters
-							filters={filters}
-							filterItemsByParams={filterBoardsByParams}
-							filterItemsByText={filterBoardsByText}
-							resetFilters={resetFilters}
-						/>
-					</div>
-					<div className="col-12 col-xl-auto">
-						<BoardsCreate />
-					</div>
+			<Title title="Boards" />
+			<div className="row">
+				<div className="col-12 col-xl">
+					<BoardsFilters
+						filters={filters}
+						filterItemsByParams={filterBoardsByParams}
+						filterItemsByText={filterBoardsByText}
+						resetFilters={resetFilters}
+					/>
 				</div>
-				<div className="row">
-					<div className="col-12">
-						<CardDeck deckType="board" itemList={boardsToShow} itemsPerRow={2} />
-					</div>
+				<div className="col-12 col-xl-auto">
+					<BoardsCreate />
 				</div>
-			</Content>
+			</div>
+			<div className="row">
+				<div className="col-12">
+					<CardDeck deckType="board" itemList={boardsToShow} itemsPerRow={2} />
+				</div>
+			</div>
 		</div>
 	);
 };

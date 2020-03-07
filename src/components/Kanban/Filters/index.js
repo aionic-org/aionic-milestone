@@ -31,7 +31,7 @@ const KanbanFilters = (props) => {
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Filter tasks..."
+								placeholder="Filter tasks"
 								onChange={updateTextFilter}
 							/>
 						</div>

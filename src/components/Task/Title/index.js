@@ -21,7 +21,7 @@ const TaskTitle = (props) => {
 				type="text"
 				name="title"
 				className="h3 mb-0"
-				placeholder="Enter task title..."
+				placeholder="Enter task title"
 				autoComplete="off"
 				defaultValue={task.title}
 				onBlur={onBlur}

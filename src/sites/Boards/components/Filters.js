@@ -33,7 +33,7 @@ const BoardsFilters = (props) => {
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Filter..."
+								placeholder="Filter boards"
 								onChange={handleFilterChange}
 							/>
 						</div>

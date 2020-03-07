@@ -11,19 +11,17 @@ const SitesProjectKanban = (props) => {
 
 	return (
 		<div className="SitesProjectKanban">
-			<Content>
-				<div className="row">
-					<div className="col-12 col-md-7 col-xl">
-						<Title title={`Kanban - ${project.title}`} placeholder="Enter project title" />
-					</div>
-					<div className="col-12 col-md-5 col-xl-auto">
-						<Link to={`/projects/${project.id}`} className="button button-link mr-2">
-							Project View
-						</Link>
-					</div>
+			<div className="row">
+				<div className="col-12 col-md-7 col-xl">
+					<Title title={`Kanban: ${project.title}`} placeholder="Enter project title" />
 				</div>
-				<KanbanContainer taskList={project.tasks} />
-			</Content>
+				<div className="col-12 col-md-5 col-xl-auto">
+					<Link to={`/projects/${project.id}`} className="button button-link mr-2">
+						Project View
+					</Link>
+				</div>
+			</div>
+			<KanbanContainer taskList={project.tasks} />
 		</div>
 	);
 };

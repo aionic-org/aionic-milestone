@@ -19,38 +19,35 @@ const SitesBoard = (props) => {
 
 	return (
 		<div className="SitesBoard">
-			<Content>
-				<div className="row">
-					<div className="col">
-						<InputTitle
-							defaultValue={board.title}
-							placeholder="Enter board title"
-							onBlur={handleTitleChange}
+			<div className="row">
+				<div className="col">
+					<InputTitle
+						defaultValue={board.title}
+						placeholder="Enter board title"
+						onBlur={handleTitleChange}
+						margin={true}
+					/>
+				</div>
+				<div className="col-auto">
+					<div className="btn-toolbar">
+						<BoardDetails
+							board={board}
+							updateParentBoardState={updateParentBoardState}
+							deleteBoard={deleteBoard}
+							classes={['d-inline-block']}
 						/>
-					</div>
-					<div className="col-auto">
-						<div className="btn-toolbar">
-							<BoardDetails
-								board={board}
-								updateParentBoardState={updateParentBoardState}
-								deleteBoard={deleteBoard}
-								classes={['d-inline-block']}
-							/>
-							<div className="ml-2">
-								<BoardActionButtons board={board} />
-							</div>
+						<div className="ml-2">
+							<BoardActionButtons board={board} />
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<hr className="featurette-divider" />
-
-				<div className="row">
-					<div className="col-12">
-						<KanbanContainer userList={board.users} />
-					</div>
+			<div className="row">
+				<div className="col-12">
+					<KanbanContainer userList={board.users} />
 				</div>
-			</Content>
+			</div>
 		</div>
 	);
 };

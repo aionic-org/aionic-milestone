@@ -27,21 +27,19 @@ const SitesSearch = (props) => {
 
 	return (
 		<div className="SitesSearch">
-			<Content>
-				<Title title="Search" />
-				<div className="row">
-					<div className="col-12 col-xl-3">
-						<SearchFiltersContainer
-							searchParams={params}
-							handleFilterChange={handleFilterChange}
-							resetFilters={resetFilters}
-						/>
-					</div>
-					<div className="col-12 col-xl-9 mt-3 mt-md-0">
-						<SearchTaskContainer searchParams={params} />
-					</div>
+			<Title title="Search" />
+			<div className="row">
+				<div className="col-12 col-xl-3">
+					<SearchFiltersContainer
+						searchParams={params}
+						handleFilterChange={handleFilterChange}
+						resetFilters={resetFilters}
+					/>
 				</div>
-			</Content>
+				<div className="col-12 col-xl-9 mt-3 mt-md-0">
+					<SearchTaskContainer searchParams={params} />
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -34,7 +34,7 @@ const ProjectsFilters = (props) => {
 							<input
 								type="text"
 								className="form-control"
-								placeholder="Filter..."
+								placeholder="Filter projects"
 								onChange={handleFilterChange}
 							/>
 						</div>

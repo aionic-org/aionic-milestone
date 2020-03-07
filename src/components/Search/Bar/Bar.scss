@@ -1,6 +1,9 @@
+@import 'aionic-library/scss/components/variables.scss';
+@import 'aionic-library/scss/components/variables.scss';
+
 .SearchBar {
 	.input-group input {
-		background-color: #eee;
+		background-color: $bg-grey;
 		border: none;
 		-webkit-transition: width 0.5s; /* For Safari 3.1 to 6.0 */
 		transition: width 0.5s;
@@ -14,7 +17,7 @@
 		}
 
 		.input-group input:focus {
-			width: 20rem;
+			width: 15rem;
 		}
 	}
 }

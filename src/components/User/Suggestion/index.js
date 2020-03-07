@@ -87,7 +87,7 @@ const UserSuggestion = (props) => {
 				type="text"
 				className={`form-control ${classes.join(' ')}`}
 				name="title"
-				placeholder="Enter username..."
+				placeholder="Enter username"
 				autoComplete="off"
 				onChange={handleInputChange}
 				onKeyDown={(e) => {

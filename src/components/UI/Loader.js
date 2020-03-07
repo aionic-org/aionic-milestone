@@ -2,13 +2,12 @@ import React from 'react';
 
 import { Spinner } from 'aionic-library';
 
-import Content from './Content';
 import Title from './Title';
 
 const Loader = (props) => {
-	const { title, wrapContent, children } = props;
+	const { title, children } = props;
 
-	const content = (
+	return (
 		<div>
 			{title.length ? <Title title={title} /> : null}
 			<div className="d-md-none">
@@ -17,8 +16,6 @@ const Loader = (props) => {
 			<div className="d-none d-md-block">{children}</div>
 		</div>
 	);
-
-	return wrapContent ? <Content>{content}</Content> : content;
 };
 
 Loader.defaultProps = {
