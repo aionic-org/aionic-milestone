@@ -3,13 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { Session } from 'aionic-library';
 
-import SearchBar from '../../Search/Bar';
+import SearchBar from '../Search/Bar';
 
 import './Navbar.scss';
 
 const Navbar = (props) => {
-	const { toggleSidebar } = props;
-
 	const searchbarClasses = ['form-inline', 'mt-3', 'mt-md-0'];
 
 	const toggleFullscreen = () => {
@@ -53,7 +51,7 @@ const Navbar = (props) => {
 					<span className="navbar-toggler-icon" />
 				</button>
 
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
+				<div className="collapse navbar-collapse">
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item">
 							<NavLink exact={true} to="/" className="nav-link">
@@ -72,31 +70,22 @@ const Navbar = (props) => {
 						</li>
 
 						<li className="nav-item dropdown">
-							<a
-								className="nav-link dropdown-toggle"
-								href="#"
-								id="navbarDropdown"
-								role="button"
+							<button
+								className="btn btn-link nav-link"
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false"
 							>
-								More
-							</a>
+								<i className="fas fa-ellipsis-v"></i>
+							</button>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
 								<Link exact="true" to="/search" className="dropdown-item">
 									<i className="fas fa-search fa-fw mr-2" />
 									Search
 								</Link>
-								<div className="dropdown-divider" />
-								<h6 className="dropdown-header">Plugins</h6>
-								<Link to="/plugins/github" className="dropdown-item">
-									<i className="fab fa-github fa-fw mr-2" />
-									GitHub
-								</Link>
-								<Link to="/plugins/gitlab" className="dropdown-item">
-									<i className="fab fa-gitlab fa-fw mr-2" />
-									GitLab
+								<Link exact="true" to="/statistics" className="dropdown-item">
+									<i className="fas fa-chart-bar fa-fw mr-2" />
+									Statistics
 								</Link>
 							</div>
 						</li>
@@ -107,25 +96,25 @@ const Navbar = (props) => {
 						<li className="nav-item dropdown">
 							<button
 								type="button"
-								className="btn btn-link nav-link dropdown-toggle font-weight-bold"
+								className="btn btn-link nav-link font-weight-bold"
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false"
 							>
-								<i className="fas fa-plus" /> Create
+								<i className="fas fa-plus" />
 							</button>
 							<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown07">
 								<Link to="/boards?create=true" className="dropdown-item">
 									<i className="fas fa-chalkboard-teacher mr-2" />
 									Create Board
 								</Link>
-								<Link to="/tasks" className="dropdown-item">
-									<i className="fas fa-tasks fa-fw mr-2" />
-									Create Task
-								</Link>
 								<Link to="/projects?create=true" className="dropdown-item">
 									<i className="fas fa-table fa-fw mr-2" />
 									Create Project
+								</Link>
+								<Link to="/tasks" className="dropdown-item">
+									<i className="fas fa-tasks fa-fw mr-2" />
+									Create Task
 								</Link>
 							</div>
 						</li>

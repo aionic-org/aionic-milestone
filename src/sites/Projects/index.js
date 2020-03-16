@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Content from '../../components/UI/Content';
 import Title from '../../components/UI/Title';
 
 import CardDeck from '../../components/Deck';

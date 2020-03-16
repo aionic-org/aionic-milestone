@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import TaskPriorityIcon from '../Priority';
-import TaskPreviewActionMenu from '../PreviewActionMenu';
+import TaskPreviewDropdown from '../PreviewDropdown';
 
 const TaskPreview = (props) => {
 	const { task } = props;
@@ -27,7 +27,7 @@ const TaskPreview = (props) => {
 						<TaskPriorityIcon task={task} />
 					</div>
 					<div className="col-auto d-flex align-items-center">
-						<TaskPreviewActionMenu task={task} />
+						<TaskPreviewDropdown task={task} />
 					</div>
 				</div>
 			</div>

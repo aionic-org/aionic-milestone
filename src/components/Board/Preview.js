@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Helper from '../../services/helper';
 
-import BoardPreviewActionMenu from './PreviewActionMenu';
+import BoardPreviewDropdown from './PreviewDropdown';
 
 const BoardPreview = (props) => {
 	const { board } = props;
@@ -19,7 +19,7 @@ const BoardPreview = (props) => {
 							</Link>
 						</div>
 						<div className="col-auto d-flex align-items-center">
-							<BoardPreviewActionMenu board={board} />
+							<BoardPreviewDropdown board={board} />
 						</div>
 					</div>
 				</h5>

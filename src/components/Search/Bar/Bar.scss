@@ -1,5 +1,4 @@
 @import 'aionic-library/scss/components/variables.scss';
-@import 'aionic-library/scss/components/variables.scss';
 
 .SearchBar {
 	.input-group input {
@@ -18,6 +17,8 @@
 
 		.input-group input:focus {
 			width: 15rem;
+			outline: none;
+			box-shadow: none;
 		}
 	}
 }

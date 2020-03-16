@@ -5,7 +5,7 @@ import { Badge } from 'aionic-library';
 
 import Helper from '../../services/helper';
 
-import ProjectPreviewActionMenu from './PreviewActionMenu';
+import ProjectPreviewDropdown from './PreviewDropdown';
 
 const ProjectPreview = (props) => {
 	const { project } = props;
@@ -22,7 +22,7 @@ const ProjectPreview = (props) => {
 						</div>
 						<div className="col-auto d-flex align-items-center">
 							{project.completed ? <Badge label="Completed" type="success" /> : null}
-							<ProjectPreviewActionMenu project={project} />
+							<ProjectPreviewDropdown project={project} />
 						</div>
 					</div>
 				</h5>

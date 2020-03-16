@@ -5,8 +5,13 @@ import Loader from '../../UI/Loader';
 import ContentLoader from 'react-content-loader';
 
 const SearchFiltersLoader = () => (
-	<Loader wrapContent={false}>
-		<ContentLoader viewBox="0 0 100 115" speed={1} title="Loading filters...">
+	<Loader>
+		<ContentLoader
+			backgroundColor="#e1e1e1"
+			foregroundColor="#eeeeee"
+			viewBox="0 0 100 115"
+			title="Loading filters"
+		>
 			<rect x="0" y="0" rx="2" ry="2" width="100" height="15" />
 			<rect x="0" y="25" rx="2" ry="2" width="100" height="15" />
 			<rect x="0" y="50" rx="2" ry="2" width="100" height="15" />

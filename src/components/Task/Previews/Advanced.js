@@ -8,7 +8,7 @@ import { Badge } from 'aionic-library';
 import Helper from '../../../services/helper';
 
 import TaskPriorityIcon from '../Priority';
-import TaskPreviewActionMenu from '../PreviewActionMenu';
+import TaskPreviewDropdown from '../PreviewDropdown';
 
 const TaskPreviewsAdvanced = (props) => {
 	const { task } = props;
@@ -30,7 +30,7 @@ const TaskPreviewsAdvanced = (props) => {
 								<Badge label="Completed" type="success" />
 							</div>
 						) : null}
-						<TaskPreviewActionMenu task={task} />
+						<TaskPreviewDropdown task={task} />
 					</div>
 				</div>
 			</div>

@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 
 import { Api, Pills } from 'aionic-library';
 
+import Helper from '../../services/helper';
+
 import KanbanLoader from './Loader';
 
 import KanbanStatus from './Status';
-import KanbanFiltersContainer from './Filters/container';
+import KanbanFilters from './Filters';
 
 const Kanban = (props) => {
 	const { taskList, userList, statusList } = props;
@@ -67,8 +69,8 @@ const Kanban = (props) => {
 		}
 	};
 
-	const toggleStretch = (e) => {
-		setStretch(e.target.checked);
+	const toggleStretch = () => {
+		setStretch(!stretch);
 	};
 
 	const loadingSpinner = isLoading ? (
@@ -90,7 +92,7 @@ const Kanban = (props) => {
 	return (
 		<div className="Kanban">
 			{tabs}
-			<KanbanFiltersContainer
+			<KanbanFilters
 				toggleStretch={toggleStretch}
 				taskFilters={taskFilters}
 				setTaskFilters={setTaskFilters}
@@ -116,7 +118,8 @@ const Kanban = (props) => {
 
 Kanban.defaultProps = {
 	taskList: [],
-	userList: []
+	userList: [],
+	statusList: Helper.getTaskStatus()
 };
 
 export default Kanban;

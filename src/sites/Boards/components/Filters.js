@@ -2,7 +2,8 @@ import React from 'react';
 
 import { InputSelect } from 'aionic-library';
 
-import Helper from '../../../services/helper';
+import FiltersDirection from '../../../components/Filters/Direction';
+import FiltersResults from '../../../components/Filters/Results';
 
 const BoardsFilters = (props) => {
 	const { filterItemsByParams, filterItemsByText, resetFilters } = props;
@@ -14,8 +15,6 @@ const BoardsFilters = (props) => {
 	const handleFilterChange = (e) => {
 		filterItemsByText(e.target.value);
 	};
-
-	const { sortDirections, resultLimits } = Helper.getFilterLists();
 
 	const orderByList = [
 		{ value: '', title: 'Order by' },
@@ -39,30 +38,19 @@ const BoardsFilters = (props) => {
 						</div>
 					</div>
 					<div className="col-12 col-xl-auto">
-						<div className="input-group form-group">
+						<div className="input-group">
 							<InputSelect
 								name="orderby"
 								onChange={handleParamsChange}
 								optionList={orderByList}
 								showDefault={false}
 							/>
-							<InputSelect
-								name="orderdir"
-								classes={['ml-2']}
-								onChange={handleParamsChange}
-								optionList={sortDirections}
-								showDefault={false}
-							/>
+							<FiltersDirection classes={['ml-2']} onChange={handleParamsChange} />
 						</div>
 					</div>
 					<div className="col-12 col-xl-auto">
 						<div className="form-group">
-							<InputSelect
-								name="limit"
-								onChange={handleParamsChange}
-								optionList={resultLimits}
-								showDefault={false}
-							/>
+							<FiltersResults onChange={handleParamsChange} />
 						</div>
 					</div>
 					<div className="col-12 col-xl-auto">

@@ -2,7 +2,9 @@ import React from 'react';
 
 import { InputSelect } from 'aionic-library';
 
-import Helper from '../../../services/helper';
+import FiltersComplete from '../../../components/Filters/Complete';
+import FiltersDirection from '../../../components/Filters/Direction';
+import FiltersResults from '../../../components/Filters/Results';
 
 const ProjectsFilters = (props) => {
 	const { filterItemsByParams, filterItemsByText, resetFilters } = props;
@@ -14,8 +16,6 @@ const ProjectsFilters = (props) => {
 	const handleFilterChange = (e) => {
 		filterItemsByText(e.target.value);
 	};
-
-	const { completeStatus, resultLimits, sortDirections } = Helper.getFilterLists();
 
 	const orderByList = [
 		{ value: '', title: 'Order by' },
@@ -40,52 +40,26 @@ const ProjectsFilters = (props) => {
 						</div>
 					</div>
 					<div className="col-12 col-xl-auto">
-						<div className="form-group">
-							<InputSelect
-								name="completed"
-								onChange={handleParamsChange}
-								optionList={completeStatus}
-								showDefault={false}
-							/>
-						</div>
+						<FiltersComplete onChange={handleParamsChange} />
 					</div>
 					<div className="col-12 col-xl-auto">
-						<div className="input-group form-group">
+						<div className="input-group">
 							<InputSelect
 								name="orderby"
 								onChange={handleParamsChange}
 								optionList={orderByList}
 								showDefault={false}
 							/>
-							<InputSelect
-								name="orderdir"
-								classes={['ml-2']}
-								onChange={handleParamsChange}
-								optionList={sortDirections}
-								showDefault={false}
-							/>
+							<FiltersDirection classes={['ml-2']} onChange={handleParamsChange} />
 						</div>
 					</div>
 					<div className="col-12 col-xl-auto">
-						<div className="form-group">
-							<InputSelect
-								name="limit"
-								onChange={handleParamsChange}
-								optionList={resultLimits}
-								showDefault={false}
-							/>
-						</div>
+						<FiltersResults onChange={handleParamsChange} />
 					</div>
 					<div className="col-12 col-xl-auto">
-						<div className="form-group">
-							<button
-								type="reset"
-								className="button button-warning btn-block"
-								onClick={resetFilters}
-							>
-								Reset
-							</button>
-						</div>
+						<button type="reset" className="button button-warning btn-block" onClick={resetFilters}>
+							Reset
+						</button>
 					</div>
 				</div>
 			</form>

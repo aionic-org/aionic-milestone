@@ -1,24 +1,24 @@
 import React from 'react';
 
-const TaskTagForm = (props) => {
-	const { tagList, updateTagList, toggleForm } = props;
+const TagsForm = (props) => {
+	const { tags, updateTags, toggleForm } = props;
 
 	const addTag = (e) => {
 		e.preventDefault();
 
 		const value = document.querySelector('.tag-value').value.toLowerCase();
-		if (value.length && !tagList.includes(value)) {
-			const tagListCopy = tagList.slice();
-			tagListCopy.push(value);
+		if (value.length && !tags.includes(value)) {
+			const tagsCopy = tags.slice();
+			tagsCopy.push(value);
 
-			updateTagList(tagListCopy, true);
+			updateTags(tagsCopy, true);
 		} else {
 			toggleForm();
 		}
 	};
 
 	return (
-		<div className="TaskTagForm">
+		<div className="TagsForm">
 			<form onSubmit={addTag}>
 				<input
 					className="form-control form-control-sm tag-value"
@@ -33,4 +33,4 @@ const TaskTagForm = (props) => {
 	);
 };
 
-export default TaskTagForm;
+export default TagsForm;

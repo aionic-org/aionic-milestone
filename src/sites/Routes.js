@@ -3,8 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Session, Footer } from 'aionic-library';
 
-import Navbar from 'components/Navigation/Navbar/';
-import Sidebar from 'components/Navigation/Sidebar';
+import Navbar from 'components/Navbar';
 
 import SitesSignin from './Signin';
 
@@ -29,7 +28,7 @@ const Routes = (props) => {
 
 	const DefaultContainer = () => (
 		<div id="page-content-wrapper">
-			<Navbar toggleSidebar={props.toggleSidebar} />
+			<Navbar />
 			<div className="container">
 				<Switch>
 					<Route exact path="/" component={SitesHome} />

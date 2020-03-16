@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Content from 'components/UI/Content';
 import Title from 'components/UI/Title/';
 
-import KanbanContainer from 'components/Kanban/container';
+import Kanban from 'components/Kanban/';
 
 const SitesProjectKanban = (props) => {
 	const { project } = props;
@@ -21,7 +20,7 @@ const SitesProjectKanban = (props) => {
 					</Link>
 				</div>
 			</div>
-			<KanbanContainer taskList={project.tasks} />
+			<Kanban taskList={project.tasks} />
 		</div>
 	);
 };

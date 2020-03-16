@@ -6,7 +6,12 @@ import ContentLoader from 'react-content-loader';
 
 const ProjectLoader = () => (
 	<Loader>
-		<ContentLoader viewBox="0 0 400 115" speed={1} title="Loading project...">
+		<ContentLoader
+			backgroundColor="#e1e1e1"
+			foregroundColor="#eeeeee"
+			viewBox="0 0 400 115"
+			title="Loading project"
+		>
 			<rect x="0" y="0" rx="4" ry="4" width="260" height="10" />
 
 			<rect x="0" y="20" rx="0" ry="0" width="90" height="35" />

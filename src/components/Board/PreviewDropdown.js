@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 
 import MiscShare from '../Misc/Share';
 
-const BoardPreviewActionMenu = (props) => {
+const BoardPreviewDropdown = (props) => {
 	const { board } = props;
 
 	const [showModal, setShowModal] = useState(false);
@@ -22,7 +22,7 @@ const BoardPreviewActionMenu = (props) => {
 	};
 
 	return (
-		<div className="BoardPreviewActionMenu">
+		<div className="BoardPreviewDropdown">
 			<div className="dropdown dropleft ml-3 cursor-pointer">
 				<i
 					id="dropdownMenuButton"
@@ -59,6 +59,6 @@ const BoardPreviewActionMenu = (props) => {
 	);
 };
 
-BoardPreviewActionMenu.defaultProps = {};
+BoardPreviewDropdown.defaultProps = {};
 
-export default BoardPreviewActionMenu;
+export default BoardPreviewDropdown;

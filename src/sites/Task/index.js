@@ -2,8 +2,9 @@ import React from 'react';
 
 import Helper from 'services/helper';
 
+import Tags from '../../components/Tags';
+
 import TaskTitle from '../../components/Task/Title';
-import TaskTags from '../../components/Task/Tags';
 import TaskSummaryContainer from '../../components/Task/Summary/container';
 import TaskDescription from '../../components/Task/Description';
 
@@ -16,6 +17,10 @@ const SitesTask = (props) => {
 
 	const handleTitleChange = (e) => {
 		Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
+	};
+
+	const updateTaskTags = (tags) => {
+		updateParentTaskState({ ...task, tags });
 	};
 
 	const taskSidebar = isNewTask ? null : (
@@ -41,7 +46,7 @@ const SitesTask = (props) => {
 
 			<div className="row">
 				<div className="col-auto">
-					<TaskTags task={task} updateParentTaskState={updateParentTaskState} />
+					<Tags tags={task.tags} updateParentState={updateTaskTags} />
 				</div>
 			</div>
 

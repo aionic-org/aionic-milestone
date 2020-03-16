@@ -1,9 +1,11 @@
 import React from 'react';
 
-import TaskSelectsPriority from '../../Task/Selects/Priority';
+import Helper from '../../services/helper';
+
+import TaskSelectsPriority from '../Task/Selects/Priority';
 
 const KanbanFilters = (props) => {
-	const { toggleStretch, taskFilters, setTaskFilters, priorityList } = props;
+	const { toggleStretch, taskFilters, setTaskFilters } = props;
 
 	const updateTextFilter = (e) => {
 		setTaskFilters({ ...taskFilters, textFilter: e.target.value });
@@ -12,6 +14,9 @@ const KanbanFilters = (props) => {
 	const updatePriorityFilter = (e) => {
 		setTaskFilters({ ...taskFilters, priorityFilter: parseInt(e.target.value, 10) });
 	};
+
+	const priorityList = Helper.getTaskPriorities() || [];
+	priorityList.unshift({ id: 0, title: 'Task Priority' });
 
 	const resetFilters = () => {
 		document.getElementById('kanban-filters-form').reset();
@@ -51,17 +56,9 @@ const KanbanFilters = (props) => {
 							<button type="reset" className="button button-warning" onClick={resetFilters}>
 								Reset
 							</button>
-						</div>
-					</div>
-					<div className="col-auto d-flex align-items-center">
-						<div className="form-group ml-3">
-							<input
-								type="checkbox"
-								className="form-check-input"
-								id="exampleCheck1"
-								onClick={toggleStretch}
-							/>
-							<label className="form-check-label">Stretch</label>
+							<button type="reset" className="button button-secondary ml-2" onClick={toggleStretch}>
+								<i class="fas fa-arrows-alt-h"></i>
+							</button>
 						</div>
 					</div>
 				</div>

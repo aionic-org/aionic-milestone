@@ -19,7 +19,6 @@ const Loader = (props) => {
 };
 
 Loader.defaultProps = {
-	wrapContent: true,
 	title: ''
 };
 

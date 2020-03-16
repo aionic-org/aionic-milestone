@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Content from '../UI/Content';
 
 class ErrorBoundary extends Component {
 	constructor(props) {
@@ -19,12 +18,10 @@ class ErrorBoundary extends Component {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<Content>
-					<div className="text-center mt-5">
-						<h1>Oooppsyy!</h1>
-						<p>This was not planned</p>
-					</div>
-				</Content>
+				<div className="text-center mt-5">
+					<h1>Oooppsyy!</h1>
+					<p>This was not planned</p>
+				</div>
 			);
 		}
 

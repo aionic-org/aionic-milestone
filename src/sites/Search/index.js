@@ -3,7 +3,6 @@ import queryString from 'query-string';
 
 import Helper from 'services/helper';
 
-import Content from 'components/UI/Content';
 import Title from 'components/UI/Title';
 
 import SearchFiltersContainer from '../../components/Search/Filters/container';
