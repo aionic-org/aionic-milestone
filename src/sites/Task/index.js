@@ -36,11 +36,14 @@ const SitesTask = (props) => {
 
 	const completeAlert =
 		task.status && task.status.title.toLowerCase() === 'done' && !task.completed ? (
-			<div className="alert alert-warning" role="alert">
+			<div className="alert alert-warning alert-dismissible fade show" role="alert">
 				This task seems to be done -{' '}
 				<a href="#" onClick={markComplete}>
 					Mark complete
 				</a>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
 		) : null;
 

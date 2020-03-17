@@ -3,14 +3,14 @@ import React from 'react';
 import './Title.scss';
 
 const InputTitle = (props) => {
-	const { placeholder, defaultValue, onBlur, margin } = props;
+	const { placeholder, defaultValue, onBlur, completed } = props;
 
 	return (
 		<div className="InputTitle">
 			<input
 				type="text"
 				name="title"
-				className={`h3 w-100 ${margin ? 'mb-4' : ''}`}
+				className={`h3 w-100 mb-4 ${completed ? 'completed' : ''}`}
 				placeholder={placeholder}
 				autoComplete="off"
 				defaultValue={defaultValue}
@@ -21,8 +21,8 @@ const InputTitle = (props) => {
 };
 
 InputTitle.defaultProps = {
-	placeholder: '',
-	margin: false
+	completed: false,
+	placeholder: ''
 };
 
 export default InputTitle;

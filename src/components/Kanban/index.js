@@ -77,7 +77,9 @@ const Kanban = (props) => {
 		if (taskToUpdate.status.id !== statusID) {
 			taskToUpdate.status = statusList.find((status) => status.id === statusID);
 
-			currentTasksCopy[taskIdx] = await Api.putData(`tasks/${taskToUpdate.id}`, {
+			currentTasksCopy[taskIdx] = taskToUpdate;
+
+			await Api.putData(`tasks/${taskToUpdate.id}`, {
 				task: taskToUpdate
 			});
 			setCurrentTasks(currentTasksCopy);

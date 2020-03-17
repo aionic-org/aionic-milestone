@@ -21,6 +21,32 @@ const SitesProject = (props) => {
 		updateParentProjectState({ ...project, tasks });
 	};
 
+	const markComplete = (e) => {
+		e.preventDefault();
+		updateParentProjectState({ ...project, completed: true });
+	};
+
+	let allTasksCompleted = true;
+	for (const task of project.tasks) {
+		if (!task.completed) {
+			allTasksCompleted = false;
+			break;
+		}
+	}
+
+	const completeAlert =
+		!project.completed && allTasksCompleted ? (
+			<div className="alert alert-warning alert-dismissible fade show" role="alert">
+				All tasks seem to be done -{' '}
+				<a href="#" onClick={markComplete}>
+					Mark complete
+				</a>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		) : null;
+
 	return (
 		<div className="SitesProject">
 			<ProjectBadges project={project} />
@@ -30,7 +56,7 @@ const SitesProject = (props) => {
 						defaultValue={project.title}
 						placeholder="Enter project title"
 						onBlur={handleTitleChange}
-						margin={true}
+						completed={project.completed}
 					/>
 				</div>
 				<div className="col-2 col-md-auto">
@@ -42,6 +68,8 @@ const SitesProject = (props) => {
 			</div>
 
 			<ProjectWidgetbar project={project} />
+
+			{completeAlert}
 
 			<div className="row">
 				<div className="col-12 col-xl-8">

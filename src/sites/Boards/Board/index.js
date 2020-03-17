@@ -24,7 +24,6 @@ const SitesBoard = (props) => {
 						defaultValue={board.title}
 						placeholder="Enter board title"
 						onBlur={handleTitleChange}
-						margin={true}
 					/>
 				</div>
 				<div className="col-auto">

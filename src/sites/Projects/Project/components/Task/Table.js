@@ -44,7 +44,7 @@ const ProjectTaskTable = (props) => {
 					<tbody>
 						{tasksCopy.map((task) => (
 							<tr key={task.id}>
-								<td>
+								<td style={{ textDecoration: task.completed ? 'line-through' : 'unset' }}>
 									<Link to={`/tasks/${task.id}`}>{task.title}</Link>
 								</td>
 								<td>
