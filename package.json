@@ -27,6 +27,7 @@
 		"query-string": "^6.10.1",
 		"react": "^16.12.0",
 		"react-content-loader": "^5.0.1",
+		"react-dnd": "^10.0.2",
 		"react-dom": "^16.12.0",
 		"react-modal": "^3.11.1",
 		"react-router-dom": "^5.1.2",

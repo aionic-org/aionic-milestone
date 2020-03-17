@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Helper from '../../../../../services/helper';
@@ -8,30 +8,7 @@ import TaskSuggestion from '../../../../../components/Task/Suggestion';
 const ProjectTaskTable = (props) => {
 	const { tasks, updateProjectTasks } = props;
 
-	const [filterText, setFilterText] = useState('');
-	const [tasksFiltered, setTasksFiltered] = useState([]);
-
-	/*const filterTasks = (e) => {
-		const input = e.target.value;
-		const keysLookup = ['id', 'title', 'deadline'];
-
-		setFilterText(input);
-
-		const newTasksFiltered = tasks.filter((task) => {
-			for (const key of keysLookup) {
-				if (
-					String(task[key])
-						.toLowerCase()
-						.includes(input.toLowerCase())
-				) {
-					return true;
-				}
-			}
-			return false;
-		});
-
-		setTasksFiltered(newTasksFiltered);
-	};*/
+	const tasksCopy = tasks.slice().sort((a, b) => (a.status.sort < b.status.sort ? -1 : 1));
 
 	const removeTask = (e) => {
 		const taskToRemoveID = Number(e.target.dataset.id);
@@ -51,35 +28,42 @@ const ProjectTaskTable = (props) => {
 		}
 	};
 
-	const tasksToShow = filterText.length ? tasksFiltered : tasks;
-
 	return (
 		<div className="ProjectTaskTable">
 			<div className="table-responsive">
-				<table className="table table-hover table-borderless">
+				<table className="table table-striped table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Title</th>
 							<th scope="col">Status</th>
 							<th scope="col">Assignee</th>
 							<th scope="col">Deadline</th>
-							<th scope="col">Completed</th>
 							<th scope="col">Remove</th>
 						</tr>
 					</thead>
 					<tbody>
-						{tasksToShow.map((task) => (
+						{tasksCopy.map((task) => (
 							<tr key={task.id}>
 								<td>
 									<Link to={`/tasks/${task.id}`}>{task.title}</Link>
 								</td>
-								<td>{task.status ? task.status.title : '-'}</td>
+								<td>
+									{task.status ? (
+										<span
+											className="badge text-white"
+											style={{ backgroundColor: `${task.status.color}` }}
+										>
+											{task.status.title}
+										</span>
+									) : (
+										'-'
+									)}
+								</td>
 								<td>
 									{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}
 								</td>
 								<td>{Helper.formatDate(task.deadline)}</td>
-								<td>{String(task.completed)}</td>
-								<td>
+								<td className="text-center">
 									<i
 										className="fas fa-times"
 										style={{ cursor: 'pointer', color: '#d63031' }}
@@ -99,7 +83,7 @@ const ProjectTaskTable = (props) => {
 					autoClear={true}
 					smallInput={true}
 					updateParent={addTask}
-					placeholder="Add new task"
+					placeholder="Add task"
 				/>
 			</div>
 		</div>
