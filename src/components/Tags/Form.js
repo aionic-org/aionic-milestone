@@ -12,8 +12,6 @@ const TagsForm = (props) => {
 			tagsCopy.push(value);
 
 			updateTags(tagsCopy, true);
-		} else {
-			toggleForm();
 		}
 	};
 
@@ -24,7 +22,7 @@ const TagsForm = (props) => {
 					className="form-control form-control-sm tag-value"
 					type="text"
 					placeholder="Enter tag"
-					onBlur={addTag}
+					onBlur={toggleForm}
 					// eslint-disable-next-line jsx-a11y/no-autofocus
 					autoFocus={true}
 				/>

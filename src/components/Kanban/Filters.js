@@ -57,7 +57,7 @@ const KanbanFilters = (props) => {
 								Reset
 							</button>
 							<button type="reset" className="button button-secondary ml-2" onClick={toggleStretch}>
-								<i class="fas fa-arrows-alt-h"></i>
+								<i className="fas fa-arrows-alt-h"></i>
 							</button>
 						</div>
 					</div>

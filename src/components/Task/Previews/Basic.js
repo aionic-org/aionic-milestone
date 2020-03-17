@@ -8,7 +8,10 @@ const TaskPreview = (props) => {
 	const { task } = props;
 
 	return (
-		<div className="TaskPreviewsBasic card" style={{ borderLeft: `6px solid ${task.label}` }}>
+		<div
+			className="TaskPreviewsBasic card"
+			style={{ borderLeft: `6px solid ${task.status.color}` }}
+		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
@@ -25,6 +28,11 @@ const TaskPreview = (props) => {
 				<div className="row">
 					<div className="col d-flex align-items-center">
 						<TaskPriorityIcon task={task} />
+						{task.project && task.project.key ? (
+							<span className="ml-2" title="Project">
+								{task.project.key}
+							</span>
+						) : null}
 					</div>
 					<div className="col-auto d-flex align-items-center">
 						<TaskPreviewDropdown task={task} />

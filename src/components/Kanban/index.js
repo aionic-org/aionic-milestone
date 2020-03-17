@@ -65,7 +65,7 @@ const Kanban = (props) => {
 		if (userId) {
 			fetchUserTasks(userId);
 		} else {
-			setCurrentTasks([]);
+			setCurrentTasks(taskList);
 		}
 	};
 
@@ -105,7 +105,9 @@ const Kanban = (props) => {
 							key={status.id}
 							title={status.title}
 							tasks={tasks}
-							maxWidth={stretch ? 25 : Math.max(100 / statusList.length, 15)}
+							max={status.max}
+							maxWidth={stretch ? 30 : Math.max(100 / statusList.length, 15)}
+							color={status.color}
 							{...props}
 						/>
 					);

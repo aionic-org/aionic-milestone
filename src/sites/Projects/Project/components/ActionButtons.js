@@ -91,6 +91,9 @@ const ProjectActionButtons = (props) => {
 						<ProjectActionsWatch project={project} />
 
 						<h6 className="dropdown-header">Views</h6>
+						<Link to={`${project.id}/charts`} className="btn dropdown-item mr-1">
+							<i className="fas fa-chart-pie fa-fw mr-1" /> Charts
+						</Link>
 						<Link to={`${project.id}/kanban`} className="btn dropdown-item mr-1">
 							<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
 						</Link>

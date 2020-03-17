@@ -9,7 +9,7 @@ const TaskTitle = (props) => {
 		<div
 			className="label"
 			style={{
-				background: task.label
+				background: task.status.color
 			}}
 		/>
 	) : null;
@@ -20,7 +20,7 @@ const TaskTitle = (props) => {
 			<input
 				type="text"
 				name="title"
-				className="h3 mb-0"
+				className={`h3 mb-0 ${task.completed ? 'completed' : ''}`}
 				placeholder="Enter task title"
 				autoComplete="off"
 				defaultValue={task.title}

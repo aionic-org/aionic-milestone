@@ -31,7 +31,10 @@ const ProjectPreview = (props) => {
 				</h6>
 				<p className="card-text">{project.description}</p>
 				<p className="card-text">
-					<small className="text-muted">Created: {Helper.formatDate(project.created)}</small>
+					<small className="text-muted">
+						Created / Deadline: {Helper.formatDate(project.created)} /{' '}
+						{Helper.formatDate(project.deadline)}
+					</small>
 				</p>
 			</div>
 		</div>

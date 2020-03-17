@@ -14,14 +14,18 @@ const TaskPreviewsAdvanced = (props) => {
 	const { task } = props;
 
 	return (
-		<div className="TaskPreviewsAdvanced card" style={{ borderLeft: `6px solid ${task.label}` }}>
+		<div
+			className="TaskPreviewsAdvanced card"
+			style={{ borderLeft: `6px solid ${task.status.color}` }}
+		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
 					<div className="col">
-						<Link to={`/tasks/${task.id}`}>
-							{task.project && task.project.key ? `${task.project.key} - ` : ''}
-							{task.title}
-						</Link>
+						{task.project && task.project.key ? (
+							<span className="badge badge-secondary mr-2">{task.project.key}</span>
+						) : null}
+
+						<Link to={`/tasks/${task.id}`}>{task.title}</Link>
 					</div>
 					<div className="col-auto d-flex align-items-center">
 						<TaskPriorityIcon task={task} />

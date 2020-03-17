@@ -9,7 +9,6 @@ import InputSuggestion from '../../UI/Input/Suggestion';
 
 import TaskSelectsStatus from '../Selects/Status';
 import TaskSelectsPriority from '../Selects/Priority';
-import TaskSelectsLabel from '../Selects/Label';
 
 const TaskSummary = (props) => {
 	const { lists, task, updateParentTaskState } = props;
@@ -63,11 +62,14 @@ const TaskSummary = (props) => {
 				</div>
 
 				<div className="col-12 col-md-4">
-					<label className="col-12 col-form-label">Label</label>
+					<label className="col-12 col-form-label">Project</label>
 					<div className="col-12">
-						<TaskSelectsLabel
-							defaultValue={task.label ? task.label : undefined}
-							onChange={handleInputChange}
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Project"
+							readOnly="true"
+							value={`${task.project ? task.project.key : '-'}`}
 						/>
 					</div>
 				</div>

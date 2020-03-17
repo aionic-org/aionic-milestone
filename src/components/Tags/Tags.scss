@@ -1,3 +1,5 @@
+@import 'aionic-library/scss/components/variables';
+
 .Tags {
 	margin-top: 1rem;
 
@@ -8,5 +10,13 @@
 	.fa-plus {
 		color: #e84393;
 		cursor: pointer;
+	}
+
+	.TagsForm {
+		input {
+			border-color: $grey-light-dark;
+			box-shadow: none;
+			outline: none;
+		}
 	}
 }

@@ -14,9 +14,7 @@ const BoardPreview = (props) => {
 				<h5 className="card-title">
 					<div className="row">
 						<div className="col">
-							<Link to={`/boards/${board.id}`}>
-								{board.title} ({board.users.length})
-							</Link>
+							<Link to={`/boards/${board.id}`}>{board.title}</Link>
 						</div>
 						<div className="col-auto d-flex align-items-center">
 							<BoardPreviewDropdown board={board} />

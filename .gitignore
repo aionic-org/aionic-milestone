@@ -21,6 +21,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Ideas
+.idea/
+
 # dotenv environment variables file
 .env
 .env.test

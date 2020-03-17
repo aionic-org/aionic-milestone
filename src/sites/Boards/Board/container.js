@@ -24,7 +24,10 @@ class SitesBoardContainer extends Component {
 
 	componentDidMount = async () => {
 		try {
-			const board = await Api.fetchData(`boards/${this.props.match.params.id}`);
+			let board = await Api.fetchData(`boards/${this.props.match.params.id}`);
+			const tasks = await Api.fetchData(`boards/${this.props.match.params.id}/tasks`);
+
+			board = { ...board, tasks };
 
 			if (board) {
 				this.setState({ isLoading: false, board });

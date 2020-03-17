@@ -19,6 +19,10 @@
 		width: 100%;
 	}
 
+	input.completed {
+		text-decoration: line-through;
+	}
+
 	input:focus {
 		outline: none;
 	}

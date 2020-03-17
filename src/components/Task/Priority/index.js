@@ -25,12 +25,7 @@ const TaskPriority = (props) => {
 	}
 
 	return (
-		<span
-			className={`TaskPriority ${assignedClasses.join(' ')}`}
-			data-toggle="tooltip"
-			data-placement="top"
-			title={title}
-		>
+		<span className={`TaskPriority ${assignedClasses.join(' ')}`} title={title}>
 			{icon}
 		</span>
 	);

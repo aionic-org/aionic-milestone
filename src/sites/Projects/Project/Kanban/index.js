@@ -16,7 +16,7 @@ const SitesProjectKanban = (props) => {
 				</div>
 				<div className="col-12 col-md-5 col-xl-auto">
 					<Link to={`/projects/${project.id}`} className="button button-link mr-2">
-						Project View
+						<i className="fas fa-caret-left" /> Project
 					</Link>
 				</div>
 			</div>
