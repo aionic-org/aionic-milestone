@@ -1,15 +1,29 @@
 import React from 'react';
+import { useDrop } from 'react-dnd';
 
-import TaskPreviewsBasic from '../../Task/Previews/Basic';
+import { ItemTypes } from 'services/constants';
+
+import TaskPreviewDragable from '../../Task/Previews/Dragable';
 
 import './Status.scss';
 
 const KanbanStatus = (props) => {
-	const { tasks, max, title, maxWidth, color } = props;
+	const { status, tasks, maxWidth, handleTaskDrop } = props;
+	const { id, title, max, color } = status;
+
+	const [{ isOver }, drop] = useDrop({
+		accept: ItemTypes.TASK,
+		drop: (task) => {
+			handleTaskDrop(task.id, id);
+		},
+		collect: (monitor) => ({
+			isOver: !!monitor.isOver()
+		})
+	});
 
 	return (
-		<div className="KanbanStatus" style={{ flex: `0 0 ${maxWidth}%` }}>
-			<div className="step-content">
+		<div className="KanbanStatus" style={{ flex: `0 0 ${maxWidth}%` }} ref={drop}>
+			<div className="step-content" style={{ background: isOver ? '#eee' : 'inherit' }}>
 				<h6 className="text-center text-uppercase">
 					{title}
 					<span
@@ -21,7 +35,7 @@ const KanbanStatus = (props) => {
 					{tasks.map((task) => {
 						return (
 							<div className="task-wrapper shadow-sm" key={task.id}>
-								<TaskPreviewsBasic task={task} />
+								<TaskPreviewDragable task={task} />
 							</div>
 						);
 					})}

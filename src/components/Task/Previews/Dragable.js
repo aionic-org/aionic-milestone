@@ -1,16 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDrag } from 'react-dnd';
 
 import TaskPriorityIcon from '../Priority';
 import TaskPreviewDropdown from '../PreviewDropdown';
+import { ItemTypes } from 'services/constants';
 
-const TaskPreview = (props) => {
+const TaskPreviewDragable = (props) => {
 	const { task } = props;
+
+	const [{ isDragging }, drag] = useDrag({
+		item: { type: ItemTypes.TASK, id: task.id },
+		collect: (monitor) => ({
+			isDragging: !!monitor.isDragging()
+		})
+	});
 
 	return (
 		<div
-			className="TaskPreviewsBasic card"
-			style={{ borderLeft: `6px solid ${task.status.color}` }}
+			className="TaskPreviewDragable card"
+			style={{
+				borderLeft: `6px solid ${task.status.color}`,
+				opacity: isDragging ? 0.5 : 1,
+				cursor: 'move'
+			}}
+			ref={drag}
 		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
@@ -43,4 +57,4 @@ const TaskPreview = (props) => {
 	);
 };
 
-export default TaskPreview;
+export default TaskPreviewDragable;
