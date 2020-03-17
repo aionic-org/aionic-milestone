@@ -66,10 +66,10 @@ const TaskSummary = (props) => {
 					<div className="col-12">
 						<input
 							type="text"
-							class="form-control"
+							className="form-control"
 							placeholder="Project"
-							readOnly="true"
-							value={`${task.project ? task.project.key : '-'}`}
+							readOnly={true}
+							value={`${task.project !== null ? task.project.key : '-'}`}
 						/>
 					</div>
 				</div>

@@ -23,11 +23,26 @@ const SitesTask = (props) => {
 		updateParentTaskState({ ...task, tags });
 	};
 
+	const markComplete = (e) => {
+		e.preventDefault();
+		updateParentTaskState({ ...task, completed: true });
+	};
+
 	const taskSidebar = isNewTask ? null : (
 		<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 			<TaskSidebar task={task} updateParentTaskState={updateParentTaskState} />
 		</div>
 	);
+
+	const completeAlert =
+		task.status && task.status.title.toLowerCase() === 'done' && !task.completed ? (
+			<div className="alert alert-warning" role="alert">
+				This task seems to be done -{' '}
+				<a href="#" onClick={markComplete}>
+					Mark complete
+				</a>
+			</div>
+		) : null;
 
 	return (
 		<div className="SitesTask">
@@ -49,6 +64,8 @@ const SitesTask = (props) => {
 					<Tags tags={task.tags} updateParentState={updateTaskTags} />
 				</div>
 			</div>
+
+			{completeAlert}
 
 			<div className="row mt-3">
 				<div className="col-12 col-xl-8">

@@ -1,21 +1,21 @@
 @import 'aionic-library/scss/components/variables.scss';
 
 .KanbanStatus {
-	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding: 0 10px;
+	position: relative;
 
 	.step-content {
 		height: 100%;
 	}
 
 	h6 {
-		font-weight: bold;
 		background: $grey-light;
+		font-weight: bold;
 		padding: 8px;
 	}
 
-	.task-wrapper:not(:first-child) {
+	.wrapper {
 		margin-top: 10px;
 	}
 }

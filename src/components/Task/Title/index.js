@@ -5,7 +5,7 @@ import './Title.scss';
 const TaskTitle = (props) => {
 	const { task, onBlur } = props;
 
-	const label = task.label ? (
+	const label = task.status ? (
 		<div
 			className="label"
 			style={{

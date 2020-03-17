@@ -14,13 +14,6 @@ const ProjectWidgetbar = (props) => {
 	return (
 		<div className="ProjectWidgetbar">
 			<div className="row">
-				<div className="col-12 col-xl-3 mt-3 mt-xl-0">
-					<Widget
-						title={`Open Tasks: ${openTasks.length}`}
-						icon="fas fa-list"
-						iconBackground="#6c5ce7"
-					/>
-				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
 						title={`Total Tasks: ${tasks.length}`}
@@ -30,8 +23,15 @@ const ProjectWidgetbar = (props) => {
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
+						title={`Open Tasks: ${openTasks.length}`}
+						icon="fas fa-list"
+						iconBackground="#0984E3"
+					/>
+				</div>
+				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
+					<Widget
 						icon="fas fa-check"
-						iconBackground="#00b894"
+						iconBackground="#6c5ce7"
 						title={
 							<div className="row d-flex align-items-center">
 								<div className="col-auto">Completed Tasks: {completedTasks.length}</div>

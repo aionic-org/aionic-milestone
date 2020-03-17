@@ -31,15 +31,13 @@ const KanbanStatus = (props) => {
 						className="badge badge-pill ml-2 badge-secondary"
 					>{`${tasks.length} ${max > 0 ? `/ ${max}` : ''}`}</span>
 				</h6>
-				<div className="mt-3">
-					{tasks.map((task) => {
-						return (
-							<div className="task-wrapper shadow-sm" key={task.id}>
-								<TaskPreviewDragable task={task} />
-							</div>
-						);
-					})}
-				</div>
+				{tasks.map((task) => {
+					return (
+						<div className="wrapper shadow-sm" key={task.id}>
+							<TaskPreviewDragable task={task} />
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
