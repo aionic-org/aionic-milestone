@@ -32,10 +32,10 @@ The application is a SPA based on React written in JavaScript.
 
 Some of the features included in this app:
 
-- Login / Registration
-- User / Task Management
-- Kaban Boards
+- Task Management
+- Kanban Boards
 - Projects
+- Charts
 - GitHub API integration
 
 ## Prerequisites

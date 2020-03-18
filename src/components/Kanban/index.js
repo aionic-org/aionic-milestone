@@ -6,7 +6,6 @@ import { Api, Pills } from 'aionic-library';
 
 import Helper from '../../services/helper';
 
-import KanbanLoader from './Loader';
 import KanbanStatus from './Status';
 import KanbanFilters from './Filters';
 
@@ -14,24 +13,13 @@ const Kanban = (props) => {
 	const { taskList, userList, statusList } = props;
 
 	const [currentTasks, setCurrentTasks] = useState(taskList);
-	const [isLoading, setIsLoading] = useState(false);
 	const [stretch, setStretch] = useState(false);
 
-	const [taskFilters, setTaskFilters] = useState({
-		textFilter: '',
-		priorityFilter: 0
-	});
+	const [taskFilter, setTaskFilter] = useState('');
 
-	const filteredTasks = currentTasks.filter((task) => {
-		const condText = taskFilters.textFilter.length
-			? task.title.toLowerCase().includes(taskFilters.textFilter)
-			: true;
-		const condPrio = taskFilters.priorityFilter
-			? task.priority.value === taskFilters.priorityFilter
-			: true;
-
-		return condText && condPrio;
-	});
+	const filteredTasks = currentTasks.filter((task) =>
+		task.title.toLowerCase().includes(taskFilter)
+	);
 
 	const tabTitles = userList.map((user) => {
 		const userNameDuplicates = userList.filter((user2) => {
@@ -49,14 +37,10 @@ const Kanban = (props) => {
 	const handleUserChange = async (firstname, userID) => {
 		if (userID) {
 			try {
-				setCurrentTasks([]);
-				setIsLoading(true);
-
 				const userTaskList = await Api.fetchData(`users/${userID}/tasks`);
-
 				setCurrentTasks(userTaskList);
-				setIsLoading(false);
 			} catch (err) {
+				setCurrentTasks([]);
 				console.log(err);
 			}
 		} else {
@@ -86,32 +70,22 @@ const Kanban = (props) => {
 		}
 	};
 
-	const loadingSpinner = isLoading ? (
-		<div className="row mt-3">
-			<div className="col-12">
-				<KanbanLoader />
-			</div>
-		</div>
-	) : null;
-
 	const tabs = tabTitles.length ? (
-		<div className="row">
-			<div className="col-auto mb-4">
-				<Pills tabs={tabTitles} handleClick={handleUserChange} />
-			</div>
+		<div className="col-auto">
+			<Pills tabs={tabTitles} handleClick={handleUserChange} />
 		</div>
 	) : null;
 
 	return (
 		<div className="Kanban">
-			{tabs}
-			<KanbanFilters
-				toggleStretch={toggleStretch}
-				taskFilters={taskFilters}
-				setTaskFilters={setTaskFilters}
-			/>
+			<div className="row">
+				<div className="col-3 d-flex align-items-center">
+					<KanbanFilters setTaskFilter={setTaskFilter} toggleStretch={toggleStretch} />
+				</div>
+				{tabs}
+			</div>
 			<DndProvider backend={Backend}>
-				<div className="row flex-nowrap overflow-auto mt-3" style={{ padding: '0px 5px' }}>
+				<div className="row flex-nowrap overflow-auto mt-4" style={{ padding: '0px 5px' }}>
 					{statusList.map((status) => {
 						const tasks = filteredTasks.filter(
 							(task) => task.status && task.status.id === status.id
@@ -123,12 +97,12 @@ const Kanban = (props) => {
 								tasks={tasks}
 								maxWidth={stretch ? 30 : Math.max(100 / statusList.length, 15)}
 								handleTaskDrop={handleTaskDrop}
+								stretch={stretch}
 							/>
 						);
 					})}
 				</div>
 			</DndProvider>
-			{loadingSpinner}
 		</div>
 	);
 };

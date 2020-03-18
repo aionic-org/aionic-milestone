@@ -111,7 +111,7 @@ class ProjectsForm extends Component {
 						<label>Tasks</label>
 						<TaskSuggestion updateParent={this.updateProjectTasks} />
 					</div>
-					<button type="submit" className="btn btn-primary float-right">
+					<button type="submit" className="button button-primary float-right">
 						Save
 					</button>
 				</form>

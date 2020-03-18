@@ -8,7 +8,7 @@ import TaskPreviewDragable from '../../Task/Previews/Dragable';
 import './Status.scss';
 
 const KanbanStatus = (props) => {
-	const { status, tasks, maxWidth, handleTaskDrop } = props;
+	const { status, tasks, maxWidth, handleTaskDrop, stretch } = props;
 	const { id, title, max, color } = status;
 
 	const [{ isOver }, drop] = useDrop({
@@ -22,7 +22,11 @@ const KanbanStatus = (props) => {
 	});
 
 	return (
-		<div className="KanbanStatus" style={{ flex: `0 0 ${maxWidth}%` }} ref={drop}>
+		<div
+			className={`KanbanStatus ${stretch ? 'stretch' : ''}`}
+			style={{ flex: `0 0 ${maxWidth}%` }}
+			ref={drop}
+		>
 			<div className="step-content" style={{ background: isOver ? '#eee' : 'inherit' }}>
 				<h6 className="text-center text-uppercase">
 					{title}

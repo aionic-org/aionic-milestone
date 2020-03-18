@@ -55,7 +55,9 @@ const BoardDetails = (props) => {
 
 					<p className="text-muted font-weight-bold mt-4">Users</p>
 					<UserSuggestion userListSelected={board.users} updateParent={updateBoardUsers} />
-					<p className="text-muted d-block text-right mt-3">Updated: {board.updated} </p>
+					<p className="text-muted d-block text-right mt-3">
+						Updated: {Helper.formatDateTime(board.updated)}
+					</p>
 
 					<Button label="Delete" type="danger" block={true} onClickHandler={deleteBoard} />
 				</div>
