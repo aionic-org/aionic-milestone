@@ -22,7 +22,9 @@ const TaskPreviewsAdvanced = (props) => {
 				<div className="row">
 					<div className="col">
 						{task.project && task.project.key ? (
-							<span className="badge badge-secondary mr-2">{task.project.key}</span>
+							<span className="badge badge-secondary mr-2" title="Project">
+								{task.project.key}
+							</span>
 						) : null}
 
 						<Link to={`/tasks/${task.id}`}>{task.title}</Link>

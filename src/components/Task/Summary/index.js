@@ -69,7 +69,7 @@ const TaskSummary = (props) => {
 							className="form-control"
 							placeholder="Project"
 							readOnly={true}
-							value={`${task.project !== null ? task.project.key : '-'}`}
+							value={`${task.project ? task.project.key : '-'}`}
 						/>
 					</div>
 				</div>

@@ -5,14 +5,15 @@ import './Title.scss';
 const TaskTitle = (props) => {
 	const { task, onBlur } = props;
 
-	const label = task.status ? (
-		<div
-			className="label"
-			style={{
-				background: task.status.color
-			}}
-		/>
-	) : null;
+	const label =
+		task.status && task.status.color ? (
+			<div
+				className="label"
+				style={{
+					background: task.status.color
+				}}
+			/>
+		) : null;
 
 	return (
 		<div className="TaskTitle">
