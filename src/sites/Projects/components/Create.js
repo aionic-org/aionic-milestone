@@ -25,7 +25,7 @@ const ProjectsCreate = (props) => {
 	return (
 		<div className="ProjectsCreate">
 			<div className="form-group">
-				<Button label="Create" icon="fas fa-plus" block={true} onClickHandler={handleOpenModal} />
+				<Button label="Create project" block={true} onClickHandler={handleOpenModal} />
 			</div>
 
 			<ReactModal

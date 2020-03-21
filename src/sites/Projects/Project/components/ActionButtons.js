@@ -5,8 +5,10 @@ import ReactModal from 'react-modal';
 
 import { Api } from 'aionic-library';
 
+import { WatchedItems } from '../../../../services/constants';
+
 import MiscShare from '../../../../components/Misc/Share';
-import ProjectActionsWatch from 'components/Project/Actions/Watch';
+import MiscWatch from '../../../../components/Misc/Watch';
 
 const ProjectActionButtons = (props) => {
 	const { project, updateParentProjectState } = props;
@@ -64,7 +66,7 @@ const ProjectActionButtons = (props) => {
 				<div>
 					<button
 						type="button"
-						className="button button-primary"
+						className="button button-secondary"
 						data-toggle="dropdown"
 						aria-haspopup="true"
 						aria-expanded="false"
@@ -88,7 +90,7 @@ const ProjectActionButtons = (props) => {
 							</button>
 						) : null}
 
-						<ProjectActionsWatch project={project} />
+						<MiscWatch item={project} itemType={WatchedItems.PROJECT} />
 
 						<h6 className="dropdown-header">Views</h6>
 						<Link to={`${project.id}/charts`} className="btn dropdown-item mr-1">

@@ -5,6 +5,7 @@ import Title from 'components/UI/Title';
 
 import AdministrationGeneral from './sub/General';
 import AdministrationAnnouncement from './sub/Announcement';
+import AdministrationTasks from './sub/Tasks';
 
 const SitesAdministration = () => {
 	return (
@@ -16,8 +17,11 @@ const SitesAdministration = () => {
 						<NavLink exact to="/administration" className="nav-link" activeClassName="active">
 							General
 						</NavLink>
+						<NavLink to="/administration/tasks" className="nav-link" activeClassName="active">
+							Tasks
+						</NavLink>
 						<NavLink
-							to="/administration/announcement"
+							to="/administration/announcements"
 							className="nav-link"
 							activeClassName="active"
 						>
@@ -28,7 +32,8 @@ const SitesAdministration = () => {
 				<div className="col-12 col-xl-10 mt-3 mt-xl-0">
 					<Switch>
 						<Route exact path="/administration" component={AdministrationGeneral} />
-						<Route path="/administration/announcement" component={AdministrationAnnouncement} />
+						<Route path="/administration/announcements" component={AdministrationAnnouncement} />
+						<Route path="/administration/tasks" component={AdministrationTasks} />
 					</Switch>
 				</div>
 			</div>

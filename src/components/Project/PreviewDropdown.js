@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom';
 import ReactModal from 'react-modal';
 
 import MiscShare from '../Misc/Share';
+import MiscWatch from '../Misc/Watch';
 
-import ProjectActionsWatch from './Actions/Watch';
+import { WatchedItems } from '../../services/constants';
 
 const ProjectPreviewDropdown = (props) => {
-	const { project } = props;
+	const { project, handleWatch } = props;
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState(null);
-
-	const handleProjectWatch = (isLoading) => {
-		setIsLoading(isLoading);
-	};
 
 	const openShareModal = (e) => {
 		e.preventDefault();
@@ -31,7 +28,7 @@ const ProjectPreviewDropdown = (props) => {
 	const icon = isLoading ? (
 		<i className="fas fa-spinner fa-spin"></i>
 	) : (
-		<i className="fas fa-ellipsis-v cursor-pointer"></i>
+		<i className="fas fa-ellipsis-v fa-sm"></i>
 	);
 
 	return (
@@ -55,7 +52,7 @@ const ProjectPreviewDropdown = (props) => {
 					<Link to={`projects/${project.id}/kanban`} className="btn dropdown-item mr-2">
 						<i className="fas fa-grip-horizontal fa-fw mr-1" /> Kanban
 					</Link>
-					<ProjectActionsWatch project={project} updateParentLoading={handleProjectWatch} />
+					<MiscWatch item={project} itemType={WatchedItems.PROJECT} handleWatch={handleWatch} />
 				</div>
 			</div>
 			<ReactModal
@@ -76,6 +73,8 @@ const ProjectPreviewDropdown = (props) => {
 	);
 };
 
-ProjectPreviewDropdown.defaultProps = {};
+ProjectPreviewDropdown.defaultProps = {
+	handleWatch: () => {}
+};
 
 export default ProjectPreviewDropdown;

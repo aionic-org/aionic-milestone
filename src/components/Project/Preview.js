@@ -8,7 +8,7 @@ import Helper from '../../services/helper';
 import ProjectPreviewDropdown from './PreviewDropdown';
 
 const ProjectPreview = (props) => {
-	const { project } = props;
+	const { project, handleWatch } = props;
 
 	return (
 		<div className="ProjectPreview card">
@@ -16,20 +16,17 @@ const ProjectPreview = (props) => {
 				<h5 className="card-title">
 					<div className="row">
 						<div className="col">
-							<Link to={`/projects/${project.id}`}>
-								{project.title} ({project.tasks.length})
-							</Link>
+							<Link to={`/projects/${project.id}`}>{project.title}</Link>
 						</div>
 						<div className="col-auto d-flex align-items-center">
 							{project.completed ? <Badge label="Completed" type="success" /> : null}
-							<ProjectPreviewDropdown project={project} />
+							<ProjectPreviewDropdown project={project} handleWatch={handleWatch} />
 						</div>
 					</div>
 				</h5>
 				<h6 className="card-subtitle mb-2 text-muted">
 					{project.author.firstname} {project.author.lastname}
 				</h6>
-				<p className="card-text">{project.description}</p>
 				<p className="card-text">
 					<small className="text-muted">
 						Created / Deadline: {Helper.formatDate(project.created)} /{' '}
@@ -39,6 +36,10 @@ const ProjectPreview = (props) => {
 			</div>
 		</div>
 	);
+};
+
+ProjectPreview.defaultProps = {
+	handleWatch: () => {}
 };
 
 export default ProjectPreview;

@@ -38,7 +38,7 @@ const ProjectTaskTable = (props) => {
 							<th scope="col">Status</th>
 							<th scope="col">Assignee</th>
 							<th scope="col">Deadline</th>
-							<th scope="col">Remove</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,7 +63,7 @@ const ProjectTaskTable = (props) => {
 									{task.assignee ? `${task.assignee.firstname} ${task.assignee.lastname}` : '-'}
 								</td>
 								<td>{Helper.formatDate(task.deadline)}</td>
-								<td className="text-center">
+								<td>
 									<i
 										className="fas fa-times"
 										style={{ cursor: 'pointer', color: '#d63031' }}

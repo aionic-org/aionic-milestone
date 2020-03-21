@@ -25,8 +25,8 @@ const ProjectDetails = (props) => {
 					type="text"
 					name="key"
 					className="form-control"
-					value={project.key || ''}
-					onChange={handleInputChange}
+					defaultValue={project.key || ''}
+					onBlur={handleInputChange}
 				/>
 			</div>
 			<div className="form-group">

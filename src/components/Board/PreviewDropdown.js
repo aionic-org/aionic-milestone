@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import ReactModal from 'react-modal';
 
 import MiscShare from '../Misc/Share';
+import MiscWatch from '../Misc/Watch';
+
+import { WatchedItems } from '../../services/constants';
 
 const BoardPreviewDropdown = (props) => {
-	const { board } = props;
+	const { board, handleWatch } = props;
 
 	const [showModal, setShowModal] = useState(false);
 	const [modalContent, setModalContent] = useState(null);
@@ -30,7 +33,7 @@ const BoardPreviewDropdown = (props) => {
 					aria-haspopup="true"
 					aria-expanded="false"
 				>
-					<i className="fas fa-ellipsis-v"></i>
+					<i className="fas fa-ellipsis-v fa-sm"></i>
 				</i>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<Link to={`/boards/${board.id}`} className="btn dropdown-item" target="_blank">
@@ -39,6 +42,7 @@ const BoardPreviewDropdown = (props) => {
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
+					<MiscWatch item={board} itemType={WatchedItems.BOARD} handleWatch={handleWatch} />
 				</div>
 			</div>
 			<ReactModal
@@ -59,6 +63,8 @@ const BoardPreviewDropdown = (props) => {
 	);
 };
 
-BoardPreviewDropdown.defaultProps = {};
+BoardPreviewDropdown.defaultProps = {
+	handleWatch: () => {}
+};
 
 export default BoardPreviewDropdown;

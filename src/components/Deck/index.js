@@ -34,7 +34,7 @@ const Deck = (props) => {
 							case 'task':
 								return <TaskPreviewsAdvanced key={item.id} task={item} />;
 							case 'project':
-								return <ProjectPreview key={item.id} project={item} />;
+								return <ProjectPreview key={item.id} project={item} {...props} />;
 							case 'board':
 								return <BoardPreview key={item.id} board={item} {...props} />;
 							default:

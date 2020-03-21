@@ -34,7 +34,7 @@ const SitesTask = (props) => {
 		</div>
 	);
 
-	const completeAlert =
+	const completeHint =
 		task.status &&
 		task.status.title &&
 		task.status.title.toLowerCase() === 'done' &&
@@ -71,7 +71,7 @@ const SitesTask = (props) => {
 				</div>
 			</div>
 
-			{completeAlert}
+			{completeHint}
 
 			<div className="row mt-3">
 				<div className="col-12 col-xl-8">

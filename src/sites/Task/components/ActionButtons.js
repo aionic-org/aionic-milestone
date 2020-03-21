@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import ReactModal from 'react-modal';
 
 import { Api, Session, Button } from 'aionic-library';
 
+import { WatchedItems } from '../../../services/constants';
+
 import MiscShare from '../../../components/Misc/Share';
+import MiscWatch from '../../../components/Misc/Watch';
 
 import TaskCreate from '../../../components/Task/Create';
 import TaskPlugins from '../../../components/Task/Plugins';
@@ -13,7 +16,6 @@ import TaskPlugins from '../../../components/Task/Plugins';
 import TaskActionsClone from '../../../components/Task/Actions/Clone';
 import TaskActionsComplete from '../../../components/Task/Actions/Complete';
 import TaskActionsMove from '../../../components/Task/Actions/Move';
-import TaskActionsWatch from '../../../components/Task/Actions/Watch';
 import TaskActionsProject from '../../../components/Task/Actions/Project';
 
 const TaskActionButtons = (props) => {
@@ -72,13 +74,13 @@ const TaskActionButtons = (props) => {
 	} else {
 		statusBtn =
 			!task.assignee || (task.assignee && task.assignee.id !== Session.getUser().id) ? (
-				<Button label="Assign to me" type="secondary" onClickHandler={assignToMe} />
+				<Button label="Assign to me" type="primary" onClickHandler={assignToMe} />
 			) : null;
 		moreBtn = (
 			<div className="ml-2">
 				<button
 					type="button"
-					className="button button-primary"
+					className="button button-secondary"
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false"
@@ -100,7 +102,7 @@ const TaskActionButtons = (props) => {
 						<i className="fas fa-print fa-fw mr-1" /> Print
 					</button>
 
-					<TaskActionsWatch task={task} />
+					<MiscWatch item={task} itemType={WatchedItems.TASK} />
 
 					<h6 className="dropdown-header">More</h6>
 					<button type="button" className="btn dropdown-item" onClick={openPluginsModal}>

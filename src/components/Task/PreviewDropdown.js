@@ -6,11 +6,12 @@ import ReactModal from 'react-modal';
 import { Api, Session } from 'aionic-library';
 
 import MiscShare from '../Misc/Share';
+import MiscWatch from '../Misc/Watch';
 
-import TaskActionsWatch from './Actions/Watch';
+import { WatchedItems } from '../../services/constants';
 
 const TaskPreviewDropdown = (props) => {
-	const { task } = props;
+	const { task, handleWatch } = props;
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
@@ -75,7 +76,7 @@ const TaskPreviewDropdown = (props) => {
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
-					<TaskActionsWatch task={task} updateParentLoading={handleTaskWatch} />
+					<MiscWatch item={task} itemType={WatchedItems.TASK} handleWatch={handleWatch} />
 				</div>
 			</div>
 			<ReactModal
@@ -96,6 +97,8 @@ const TaskPreviewDropdown = (props) => {
 	);
 };
 
-TaskPreviewDropdown.defaultProps = {};
+TaskPreviewDropdown.defaultProps = {
+	handleWatch: () => {}
+};
 
 export default TaskPreviewDropdown;

@@ -35,7 +35,7 @@ const BoardActionButtons = (props) => {
 		<div className="BoardActionButtons">
 			<button
 				type="button"
-				className="button button-primary"
+				className="button button-secondary"
 				data-toggle="dropdown"
 				aria-haspopup="true"
 				aria-expanded="false"

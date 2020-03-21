@@ -37,7 +37,10 @@ const TaskSuggestion = (props) => {
 			const searchTerm = e.target.value;
 
 			if (searchTerm.length) {
-				const itemListFiltered = await Api.fetchData('tasks', { title: searchTerm });
+				const itemListFiltered = await Api.fetchData('tasks', {
+					title: searchTerm,
+					completed: false
+				});
 
 				setItemList(itemListFiltered);
 				setShowSuggestion(itemListFiltered.length);

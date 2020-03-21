@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDrag } from 'react-dnd';
 
+import { ItemTypes } from '../../../services/constants';
+
 import TaskPriorityIcon from '../Priority';
 import TaskPreviewDropdown from '../PreviewDropdown';
-import { ItemTypes } from 'services/constants';
+
+import './Dragable.scss';
 
 const TaskPreviewDragable = (props) => {
 	const { task } = props;
@@ -20,7 +23,7 @@ const TaskPreviewDragable = (props) => {
 		<div
 			className="TaskPreviewDragable card"
 			style={{
-				borderLeft: `6px solid ${task.status.color}`,
+				borderLeft: `5px solid ${task.status.color}`,
 				opacity: isDragging ? 0.5 : 1,
 				cursor: 'move'
 			}}

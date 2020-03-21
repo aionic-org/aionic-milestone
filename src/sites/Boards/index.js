@@ -6,6 +6,7 @@ import CardDeck from '../../components/Deck';
 
 import BoardsFilters from './components/Filters';
 import BoardsCreate from './components/Create';
+import BoardsWatched from './components/Watched';
 
 const SitesBoards = (props) => {
 	const { boards, filters, filterBoardsByParams, filterBoardsByText, resetFilters } = props;
@@ -15,7 +16,17 @@ const SitesBoards = (props) => {
 
 	return (
 		<div className="SitesBoards">
-			<Title title="Boards" />
+			<div className="row">
+				<div className="col">
+					<Title title="Boards" />
+				</div>
+				<div className="col-auto">
+					<BoardsCreate />
+				</div>
+			</div>
+
+			<BoardsWatched />
+
 			<div className="row">
 				<div className="col-12 col-xl">
 					<BoardsFilters
@@ -24,9 +35,6 @@ const SitesBoards = (props) => {
 						filterItemsByText={filterBoardsByText}
 						resetFilters={resetFilters}
 					/>
-				</div>
-				<div className="col-12 col-xl-auto">
-					<BoardsCreate />
 				</div>
 			</div>
 			<div className="row">

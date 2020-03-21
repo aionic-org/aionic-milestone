@@ -1,0 +1,22 @@
+@import 'aionic-library/scss/components/variables.scss';
+
+.TaskSearch {
+	position: relative;
+
+	.results {
+		position: absolute;
+		max-width: 100%;
+		border-radius: 4px;
+		width: 100%;
+		z-index: 2;
+
+		ul > li {
+			font-size: 14px;
+			padding: 0.75rem;
+		}
+
+		ul > li.selected {
+			background-color: $grey-light;
+		}
+	}
+}

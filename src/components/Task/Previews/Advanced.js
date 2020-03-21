@@ -16,7 +16,7 @@ const TaskPreviewsAdvanced = (props) => {
 	return (
 		<div
 			className="TaskPreviewsAdvanced card"
-			style={{ borderLeft: `6px solid ${task.status.color}` }}
+			style={{ borderLeft: `5px solid ${task.status.color}` }}
 		>
 			<div className="card-header font-weight-bold">
 				<div className="row">
