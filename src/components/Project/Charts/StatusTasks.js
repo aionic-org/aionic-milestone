@@ -18,7 +18,7 @@ const ProjectChartsStatusTasks = (props) => {
 	});
 
 	return (
-		<div className="ProjectChartsStatusTasks" style={{ width: '100%', height: 350 }}>
+		<div className="ProjectChartsStatusTasks" style={{ width: '100%', height: 320 }}>
 			<p className="text-muted text-center">Tasks Status</p>
 			<ResponsiveContainer>
 				<PieChart>
@@ -37,10 +37,14 @@ const ProjectChartsStatusTasks = (props) => {
 					</Pie>
 					<Tooltip />
 					<Legend
+						verticalAlign="bottom"
+						chartHeight={2000}
+						wrapperStyle={{ bottom: '2rem' }}
 						payload={data.map((item) => ({
 							id: item.name,
 							type: 'square',
-							value: `${item.name} (${item.value})`
+							value: `${item.name} (${item.value})`,
+							color: item.color
 						}))}
 					/>
 				</PieChart>
