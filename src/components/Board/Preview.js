@@ -6,10 +6,10 @@ import Helper from '../../services/helper';
 import BoardPreviewDropdown from './PreviewDropdown';
 
 const BoardPreview = (props) => {
-	const { board } = props;
+	const { board, handleWatch, _ref, _style } = props;
 
 	return (
-		<div className="BoardPreview card">
+		<div className="BoardPreview card" ref={_ref} style={_style}>
 			<div className="card-body">
 				<h5 className="card-title">
 					<div className="row">
@@ -17,7 +17,7 @@ const BoardPreview = (props) => {
 							<Link to={`/boards/${board.id}`}>{board.title}</Link>
 						</div>
 						<div className="col-auto d-flex align-items-center">
-							<BoardPreviewDropdown board={board} />
+							<BoardPreviewDropdown board={board} handleWatch={handleWatch} />
 						</div>
 					</div>
 				</h5>
@@ -30,6 +30,12 @@ const BoardPreview = (props) => {
 			</div>
 		</div>
 	);
+};
+
+BoardPreview.defaultProps = {
+	handleWatch: () => {},
+	_ref: null,
+	_style: {}
 };
 
 export default BoardPreview;

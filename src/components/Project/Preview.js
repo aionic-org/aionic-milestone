@@ -8,10 +8,10 @@ import Helper from '../../services/helper';
 import ProjectPreviewDropdown from './PreviewDropdown';
 
 const ProjectPreview = (props) => {
-	const { project, handleWatch } = props;
+	const { project, handleWatch, _ref, _style } = props;
 
 	return (
-		<div className="ProjectPreview card">
+		<div className="ProjectPreview card" ref={_ref} style={_style}>
 			<div className="card-body">
 				<h5 className="card-title">
 					<div className="row">
@@ -39,7 +39,9 @@ const ProjectPreview = (props) => {
 };
 
 ProjectPreview.defaultProps = {
-	handleWatch: () => {}
+	handleWatch: () => {},
+	_ref: null,
+	_style: {}
 };
 
 export default ProjectPreview;
