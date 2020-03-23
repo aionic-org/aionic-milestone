@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveContainer, PieChart, Pie, Tooltip } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 import Helper from 'services/helper';
 
@@ -12,7 +12,8 @@ const ProjectChartsStatusTasks = (props) => {
 	taskStatus.map((status) => {
 		data.push({
 			name: status.title,
-			value: tasks.filter((task) => task.status.id === status.id).length
+			value: tasks.filter((task) => task.status.id === status.id).length,
+			color: status.color
 		});
 	});
 
@@ -21,8 +22,27 @@ const ProjectChartsStatusTasks = (props) => {
 			<p className="text-muted text-center">Tasks Status</p>
 			<ResponsiveContainer>
 				<PieChart>
-					<Pie dataKey="value" data={data} fill="#6c5ce7" label cy={175} />
+					<Pie
+						dataKey="value"
+						data={data}
+						cy={125}
+						label
+						innerRadius={60}
+						outerRadius={80}
+						paddingAngle={5}
+					>
+						{data.map((status, i) => (
+							<Cell fill={status.color} key={i} />
+						))}
+					</Pie>
 					<Tooltip />
+					<Legend
+						payload={data.map((item) => ({
+							id: item.name,
+							type: 'square',
+							value: `${item.name} (${item.value})`
+						}))}
+					/>
 				</PieChart>
 			</ResponsiveContainer>
 		</div>

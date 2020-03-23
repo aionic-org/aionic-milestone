@@ -31,8 +31,8 @@ class BoardsForm extends Component {
 		this.createBoard();
 	};
 
-	updateBoardUsers = (users) => {
-		this.setState((prevState) => ({ board: { ...prevState.board, users } }));
+	updateMembers = (members) => {
+		this.setState((prevState) => ({ board: { ...prevState.board, members } }));
 	};
 
 	createBoard = () => {
@@ -80,12 +80,10 @@ class BoardsForm extends Component {
 							rows="3"
 						/>
 					</div>
-
 					<div className="form-group">
-						<label>Users</label>
-						<UserSuggestion updateParent={this.updateBoardUsers} multiSelect={true} />
+						<label>Members</label>
+						<UserSuggestion updateParent={this.updateMembers} multiSelect={true} />
 					</div>
-
 					<button type="submit" className="button button-primary float-right">
 						Create
 					</button>

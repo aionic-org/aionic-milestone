@@ -21,7 +21,7 @@ const Deck = (props) => {
 	}
 
 	const itemsNumber = showItemsNumber ? (
-		<p className="d-inline-block text-muted font-weight-bold">Number of tasks: {itemList.length}</p>
+		<small className="d-block text-muted font-weight-bold mb-2">Count: {itemList.length}</small>
 	) : null;
 
 	const content = tmpArr.length ? (

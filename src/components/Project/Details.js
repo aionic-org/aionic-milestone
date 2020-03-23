@@ -40,16 +40,6 @@ const ProjectDetails = (props) => {
 				/>
 			</div>
 			<div className="form-group">
-				<label>Created</label>
-				<input
-					type="text"
-					name="created"
-					className="form-control"
-					value={Helper.formatDateTime(project.created)}
-					disabled
-				/>
-			</div>
-			<div className="form-group">
 				<label>Updated</label>
 				<input
 					type="text"
@@ -59,9 +49,21 @@ const ProjectDetails = (props) => {
 					disabled
 				/>
 			</div>
-			<div className="form-group">
-				<label>Deadline</label>
-				<InputDate name="deadline" startDate={project.deadline} updateParent={updateDeadline} />
+			<div className="form-group row">
+				<div className="col-12 col-md-6">
+					<label>Created</label>
+					<input
+						type="text"
+						name="created"
+						className="form-control"
+						value={Helper.formatDate(project.created)}
+						disabled
+					/>
+				</div>
+				<div className="col-12 col-md-6">
+					<label>Deadline</label>
+					<InputDate name="deadline" startDate={project.deadline} updateParent={updateDeadline} />
+				</div>
 			</div>
 			<ProjectDescription project={project} updateParentProjectState={updateParentProjectState} />
 		</div>

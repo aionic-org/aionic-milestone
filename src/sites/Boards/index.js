@@ -39,7 +39,7 @@ const SitesBoards = (props) => {
 			</div>
 			<div className="row">
 				<div className="col-12">
-					<CardDeck deckType="board" itemList={boardsToShow} itemsPerRow={2} />
+					<CardDeck deckType="board" itemList={boardsToShow} itemsPerRow={1} />
 				</div>
 			</div>
 		</div>

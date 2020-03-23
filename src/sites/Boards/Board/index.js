@@ -43,7 +43,7 @@ const SitesBoard = (props) => {
 
 			<div className="row">
 				<div className="col-12">
-					<Kanban taskList={board.tasks} userList={board.users} />
+					<Kanban taskList={board.tasks} userList={board.members} />
 				</div>
 			</div>
 		</div>

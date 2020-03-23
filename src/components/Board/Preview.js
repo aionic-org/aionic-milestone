@@ -24,7 +24,6 @@ const BoardPreview = (props) => {
 				<h6 className="card-subtitle mb-2 text-muted">
 					{board.author.firstname} {board.author.lastname}
 				</h6>
-				<p className="card-text">{board.description}</p>
 				<p className="card-text">
 					<small className="text-muted">Created: {Helper.formatDate(board.created)}</small>
 				</p>

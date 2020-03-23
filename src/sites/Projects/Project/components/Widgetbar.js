@@ -15,18 +15,10 @@ const ProjectWidgetbar = (props) => {
 		<div className="ProjectWidgetbar">
 			<div className="row">
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
-					<Widget
-						title={`Total Tasks: ${tasks.length}`}
-						icon="fas fa-tasks"
-						iconBackground="#636e72"
-					/>
+					<Widget title={`Total: ${tasks.length}`} icon="fas fa-tasks" iconBackground="#636e72" />
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
-					<Widget
-						title={`Open Tasks: ${openTasks.length}`}
-						icon="fas fa-list"
-						iconBackground="#0984E3"
-					/>
+					<Widget title={`Open: ${openTasks.length}`} icon="fas fa-list" iconBackground="#0984E3" />
 				</div>
 				<div className="col-12 col-xl-3 mt-2 mt-xl-0">
 					<Widget
@@ -34,7 +26,7 @@ const ProjectWidgetbar = (props) => {
 						iconBackground="#6c5ce7"
 						title={
 							<div className="row d-flex align-items-center">
-								<div className="col-auto">Completed Tasks: {completedTasks.length}</div>
+								<div className="col-auto">Completed: {completedTasks.length}</div>
 								<div className="col">
 									<Progress
 										progress={Math.round((completedTasks.length / tasks.length) * 100)}

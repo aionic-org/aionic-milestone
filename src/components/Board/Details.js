@@ -20,8 +20,8 @@ const BoardDetails = (props) => {
 		setShowModal(false);
 	};
 
-	const updateBoardUsers = (users) => {
-		updateParentBoardState({ ...board, users });
+	const updateMembers = (members) => {
+		updateParentBoardState({ ...board, members });
 	};
 
 	const handleInputChange = (e) => {
@@ -44,21 +44,24 @@ const BoardDetails = (props) => {
 					</button>
 				</div>
 				<div className="modal-body">
-					<p className="text-muted font-weight-bold">Description</p>
-					<textarea
-						name="description"
-						className="form-control mt-2"
-						rows="3"
-						defaultValue={board.description}
-						onBlur={handleInputChange}
-					/>
+					<div className="form-group">
+						<label>Description</label>
+						<textarea
+							name="description"
+							className="form-control mt-2"
+							rows="3"
+							defaultValue={board.description}
+							onBlur={handleInputChange}
+						/>
+					</div>
 
-					<p className="text-muted font-weight-bold mt-4">Users</p>
-					<UserSuggestion userListSelected={board.users} updateParent={updateBoardUsers} />
+					<div className="form-group">
+						<label>Users</label>
+						<UserSuggestion userListSelected={board.members} updateParent={updateMembers} />
+					</div>
 					<p className="text-muted d-block text-right mt-3">
 						Updated: {Helper.formatDateTime(board.updated)}
 					</p>
-
 					<Button label="Delete" type="danger" block={true} onClickHandler={deleteBoard} />
 				</div>
 			</ReactModal>

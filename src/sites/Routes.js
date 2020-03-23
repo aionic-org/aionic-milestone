@@ -30,9 +30,9 @@ const Routes = (props) => {
 	);
 
 	const DefaultContainer = () => (
-		<div id="page-content-wrapper">
+		<div id="page-wrapper">
 			<Navbar />
-			<div className="container">
+			<div className="container content">
 				<Switch>
 					<Route exact path="/" component={SitesHome} />
 					<Route

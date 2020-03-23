@@ -16,7 +16,7 @@ const ProjectsWatched = (props) => {
 		setData(data.filter((project) => projectIDs.includes(project.id)));
 	};
 
-	return !isLoading && Session.getWatchedItems(WatchedItems.PROJECT).length ? (
+	return !isLoading && data.length && Session.getWatchedItems(WatchedItems.PROJECT).length ? (
 		<div className="ProjectsWatched mb-3">
 			<small>Watched</small>
 			<div className="row">
