@@ -13,7 +13,7 @@ import TaskBadges from './components/Badges';
 import TaskSidebar from './components/Sidebar';
 
 const SitesTask = (props) => {
-	const { task, updateParentTaskState, isNewTask } = props;
+	const { task, updateParentTaskState } = props;
 
 	const handleTitleChange = (e) => {
 		Helper.updateObjectPropByEvent(task, e, updateParentTaskState);
@@ -27,12 +27,6 @@ const SitesTask = (props) => {
 		e.preventDefault();
 		updateParentTaskState({ ...task, completed: true });
 	};
-
-	const taskSidebar = isNewTask ? null : (
-		<div className="col-12 col-xl-4 mt-3 mt-xl-0">
-			<TaskSidebar task={task} updateParentTaskState={updateParentTaskState} />
-		</div>
-	);
 
 	const completeHint =
 		task.status &&
@@ -52,16 +46,13 @@ const SitesTask = (props) => {
 
 	return (
 		<div className="SitesTask">
+			<TaskBadges task={task} />
 			<div className="row">
-				<div className="col-12 col-md-7 col-xl">
+				<div className="col">
 					<TaskTitle task={task} onBlur={handleTitleChange} />
 				</div>
-				<div className="col-12 col-md-5 col-xl-auto">
-					<TaskActionButtons
-						task={task}
-						isNewTask={isNewTask}
-						updateParentTaskState={updateParentTaskState}
-					/>
+				<div className="col-auto">
+					<TaskActionButtons task={task} updateParentTaskState={updateParentTaskState} />
 				</div>
 			</div>
 
@@ -78,7 +69,9 @@ const SitesTask = (props) => {
 					<TaskSummaryContainer task={task} updateParentTaskState={updateParentTaskState} />
 					<TaskDescription task={task} updateParentTaskState={updateParentTaskState} />
 				</div>
-				{taskSidebar}
+				<div className="col-12 col-xl-4 mt-3 mt-xl-0">
+					<TaskSidebar task={task} updateParentTaskState={updateParentTaskState} />
+				</div>
 			</div>
 		</div>
 	);

@@ -9,7 +9,7 @@ const Tags = (props) => {
 	const { tags, updateParentState } = props;
 
 	const [showForm, setShowForm] = useState(false);
-	const [tagList, setTagList] = useState(tags.length ? tags.split(',') : []);
+	const [tagList, setTagList] = useState(tags && tags.length ? tags.split(',') : []);
 
 	const toggleForm = () => {
 		setShowForm(!showForm);

@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Helper from '../../../../../services/helper';
+import Session from '../../../../../services/session';
 
 import TaskSuggestion from '../../../../../components/Task/Suggestion';
+import TaskFormModal from '../../../../../components/Task/Form/Modal';
 
 const ProjectTaskTable = (props) => {
-	const { tasks, updateProjectTasks } = props;
+	const { project, tasks, updateProjectTasks } = props;
 
 	const tasksCopy = tasks.slice().sort((a, b) => (a.status.sort < b.status.sort ? -1 : 1));
 
@@ -26,6 +28,12 @@ const ProjectTaskTable = (props) => {
 
 			updateProjectTasks(newTasks);
 		}
+	};
+
+	const addCreatedTask = (newTask) => {
+		const tasksCopy = tasks.slice();
+		tasksCopy.push(newTask);
+		updateProjectTasks(tasksCopy);
 	};
 
 	return (
@@ -76,15 +84,23 @@ const ProjectTaskTable = (props) => {
 					</tbody>
 				</table>
 			</div>
-			<div className="mt-2 mt-md-0">
-				<TaskSuggestion
-					taskListSelected={tasks}
-					multiSelect={false}
-					autoClear={true}
-					smallInput={true}
-					updateParent={addTask}
-					placeholder="Add task"
-				/>
+			<div className="row mt-2 md-md-0 d-flex align-items-center">
+				<div className="col">
+					<TaskSuggestion
+						taskListSelected={tasks}
+						multiSelect={false}
+						autoClear={true}
+						smallInput={true}
+						updateParent={addTask}
+						placeholder="Add task"
+					/>
+				</div>
+				<div className="col-auto">
+					<TaskFormModal
+						initialTask={{ project, author: Session.getUser() }}
+						addTask={addCreatedTask}
+					/>
+				</div>
 			</div>
 		</div>
 	);

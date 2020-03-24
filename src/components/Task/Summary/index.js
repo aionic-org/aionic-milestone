@@ -119,8 +119,4 @@ const TaskSummary = (props) => {
 	);
 };
 
-TaskSummary.defaultProps = {
-	isNewTask: false
-};
-
 export default TaskSummary;

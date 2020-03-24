@@ -42,7 +42,7 @@ const Routes = (props) => {
 							return <Redirect to="/signin" />;
 						}}
 					/>
-					<Route exact path="/tasks" component={SitesTaskContainer} />
+					<Route exact path="/tasks/create" component={SitesTaskContainer} />
 					<Route exact path="/tasks/:id" component={SitesTaskContainer} />
 					<Route exact path="/search" component={SitesSearch} />
 					<Route path="/search/:searchTerm" component={SitesSearch} />

@@ -40,6 +40,7 @@ class TaskSummaryContainer extends Component {
 
 	render() {
 		const { isLoading, msg, lists } = this.state;
+		const { task, updateParentTaskState } = this.props;
 
 		if (isLoading) {
 			return <Spinner />;
@@ -51,7 +52,7 @@ class TaskSummaryContainer extends Component {
 
 		return (
 			<div className="TaskSummaryContainer">
-				<TaskSummary lists={lists} {...this.props} />
+				<TaskSummary lists={lists} task={task} updateParentTaskState={updateParentTaskState} />
 			</div>
 		);
 	}

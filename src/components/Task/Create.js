@@ -4,23 +4,28 @@ import { withRouter } from 'react-router-dom';
 import { Api, Button } from 'aionic-library';
 
 const TaskCreate = (props) => {
-	const { task } = props;
+	const { task, label, block, handleCreate } = props;
 
-	const createTask = () => {
-		Api.postData('tasks', { task })
-			.then((res) => {
-				props.history.push(`/tasks/${res.id}`);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	const createTask = async () => {
+		const newTask = await Api.postData('tasks', { task });
+
+		if (typeof handleCreate === 'function') {
+			handleCreate(newTask);
+		} else {
+			props.history.push(`/tasks/${newTask.id}`);
+		}
 	};
 
 	return (
 		<div className="TaskCreate">
-			<Button label="Create" icon="fas fa-plus" onClickHandler={createTask} />
+			<Button label={label} onClickHandler={createTask} block={block} />
 		</div>
 	);
+};
+
+TaskCreate.defaultProps = {
+	label: 'Save',
+	block: false
 };
 
 export default withRouter(TaskCreate);

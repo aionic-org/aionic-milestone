@@ -73,7 +73,11 @@ const SitesProject = (props) => {
 
 			<div className="row">
 				<div className="col-12 col-xl-8">
-					<ProjectTaskTable tasks={project.tasks} updateProjectTasks={updateProjectTasks} />
+					<ProjectTaskTable
+						tasks={project.tasks}
+						updateProjectTasks={updateProjectTasks}
+						project={project}
+					/>
 				</div>
 				<div className="col-12 col-xl-4 mt-3 mt-xl-0">
 					<ProjectTabs project={project} updateParentProjectState={updateParentProjectState} />

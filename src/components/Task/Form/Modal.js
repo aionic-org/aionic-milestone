@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-
 import ReactModal from 'react-modal';
-import queryString from 'query-string';
 
 import { Button } from 'aionic-library';
 
-import BoardsForm from './Form';
+import TaskForm from './';
 
-const BoardsCreate = (props) => {
-	const { location } = props;
+const TaskFormModal = (props) => {
+	const { initialTask, addTask } = props;
 
-	const { create } = queryString.parse(location.search);
-	const [showModal, setShowModal] = useState(create === 'true'); // query param is of type string
+	const [showModal, setShowModal] = useState(false);
 
 	const handleOpenModal = () => {
 		setShowModal(true);
@@ -22,30 +18,41 @@ const BoardsCreate = (props) => {
 		setShowModal(false);
 	};
 
-	return (
-		<div className="BoardsCreate">
-			<div className="form-group">
-				<Button label="Create board" block={true} onClickHandler={handleOpenModal} />
-			</div>
+	const createTask = (newTask) => {
+		addTask(newTask);
+		setShowModal(false);
+	};
 
+	return (
+		<div className="TaskFormModal">
+			<Button
+				label="Create task"
+				block={true}
+				onClickHandler={handleOpenModal}
+				small={true}
+			></Button>
 			<ReactModal
 				isOpen={showModal}
 				contentLabel="Minimal Modal Example"
-				className="Modal"
+				className="Modal large"
 				overlayClassName="Modal-Overlay"
 			>
 				<div className="modal-header">
-					<h5 className="modal-title">Create board</h5>
+					<h5 className="modal-title">Create task</h5>
 					<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
 				<div className="modal-body">
-					<BoardsForm />
+					<TaskForm initialTask={initialTask} handleCreate={createTask} />
 				</div>
 			</ReactModal>
 		</div>
 	);
 };
 
-export default withRouter(BoardsCreate);
+TaskFormModal.defaultProps = {
+	initialTask: {}
+};
+
+export default TaskFormModal;

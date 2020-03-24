@@ -8,12 +8,16 @@ const TaskSidebar = (props) => {
 	const { task, updateParentTaskState } = props;
 
 	return (
-		<div className="TaskSidebar">
+		<div className="TaskSidebar h-100 d-flex flex-column">
 			<TaskTabs task={task} updateParentTaskState={updateParentTaskState} />
-			<p className="text-muted mt-4 mb-0">
-				Created: {Helper.formatDateTime(task.created || Date.now())}
-			</p>
-			<p className="text-muted">Updated: {Helper.formatDateTime(task.updated || Date.now())}</p>
+			<div className="mt-xl-auto text-right pt-4">
+				<p className="text-muted mb-0">
+					Created: {Helper.formatDateTime(task.created || Date.now())}
+				</p>
+				<p className="text-muted mb-0">
+					Updated: {Helper.formatDateTime(task.updated || Date.now())}
+				</p>
+			</div>
 		</div>
 	);
 };

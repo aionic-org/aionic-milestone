@@ -28,10 +28,7 @@ const ProjectPreview = (props) => {
 					{project.author.firstname} {project.author.lastname}
 				</h6>
 				<p className="card-text">
-					<small className="text-muted">
-						Created / Deadline: {Helper.formatDate(project.created)} /{' '}
-						{Helper.formatDate(project.deadline)}
-					</small>
+					<small className="text-muted">Deadline: {Helper.formatDate(project.deadline)}</small>
 				</p>
 			</div>
 		</div>

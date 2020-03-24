@@ -112,7 +112,7 @@ const Navbar = (props) => {
 									<i className="fas fa-table fa-fw mr-2" />
 									Create Project
 								</Link>
-								<Link to="/tasks" className="dropdown-item">
+								<Link to="/tasks/create" className="dropdown-item">
 									<i className="fas fa-tasks fa-fw mr-2" />
 									Create Task
 								</Link>

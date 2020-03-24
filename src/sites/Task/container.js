@@ -5,6 +5,7 @@ import { Api, Session, Error, Toast } from 'aionic-library';
 import TaskLoader from './components/Loader';
 
 import SitesTask from '.';
+import TaskForm from 'components/Task/Form';
 
 class SitesTaskContainer extends Component {
 	constructor(props) {
@@ -29,8 +30,7 @@ class SitesTaskContainer extends Component {
 		if (taskId === undefined) {
 			this.setState({
 				isLoading: false,
-				isNewTask: true,
-				task: { author: Session.getUser() }
+				isNewTask: true
 			});
 		} else {
 			// Fetch existing task
@@ -53,47 +53,33 @@ class SitesTaskContainer extends Component {
 	};
 
 	updateTask = (task) => {
-		const taskToUpdate = task || this.state.task;
-
-		if (!this.state.isNewTask) {
-			Api.putData(`tasks/${taskToUpdate.id}`, { task: taskToUpdate })
-				.then((updatedTask) => {
-					this.setState({
-						task: updatedTask,
-						taskUpdate: {
-							success: true,
-							msg: 'Task successfully updated!'
-						}
-					});
-
-					setTimeout(() => {
-						this.setState({
-							taskUpdate: {
-								success: null,
-								msg: null
-							}
-						});
-					}, 2000);
-				})
-				.catch(() => {
-					this.setState({
-						taskUpdate: {
-							success: false,
-							msg: 'Failed to update task!'
-						}
-					});
+		Api.putData(`tasks/${task.id}`, { task })
+			.then((updatedTask) => {
+				this.setState({
+					task: updatedTask,
+					taskUpdate: {
+						success: true,
+						msg: 'Task successfully updated!'
+					}
 				});
-		} else {
-			this.setState({ task: taskToUpdate });
-		}
-	};
 
-	updateParentTaskState = (task) => {
-		if (this.state.isNewTask) {
-			this.setState({ task });
-		} else {
-			this.updateTask(task);
-		}
+				setTimeout(() => {
+					this.setState({
+						taskUpdate: {
+							success: null,
+							msg: null
+						}
+					});
+				}, 2000);
+			})
+			.catch(() => {
+				this.setState({
+					taskUpdate: {
+						success: false,
+						msg: 'Failed to update task!'
+					}
+				});
+			});
 	};
 
 	render() {
@@ -111,14 +97,14 @@ class SitesTaskContainer extends Component {
 			return <Error message={msg} />;
 		}
 
+		if (isNewTask) {
+			return <TaskForm initialTask={{ author: Session.getUser() }} />;
+		}
+
 		return (
 			<div className="SitesTaskContainer">
 				{alert}
-				<SitesTask
-					isNewTask={isNewTask}
-					task={task}
-					updateParentTaskState={this.updateParentTaskState}
-				/>
+				<SitesTask task={task} updateParentTaskState={this.updateTask} />
 			</div>
 		);
 	}
