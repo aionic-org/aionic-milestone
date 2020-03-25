@@ -85,7 +85,7 @@ class BoardsForm extends Component {
 						<UserSuggestion updateParent={this.updateMembers} multiSelect={true} />
 					</div>
 					<button type="submit" className="button button-primary float-right">
-						Create
+						Save
 					</button>
 				</form>
 			</div>

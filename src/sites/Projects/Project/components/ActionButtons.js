@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import ReactModal from 'react-modal';
-
-import { Api } from 'aionic-library';
+import { Api, Modal } from 'aionic-library';
 
 import { WatchedItems } from '../../../../services/constants';
 
@@ -114,20 +112,9 @@ const ProjectActionButtons = (props) => {
 					</div>
 				</div>
 			</div>
-			<ReactModal
-				isOpen={showModal}
-				contentLabel="Minimal Modal Example"
-				className="Modal"
-				overlayClassName="Modal-Overlay"
-			>
-				<div className="modal-header">
-					<h5 className="modal-title">Share</h5>
-					<button type="button" className="close" aria-label="Close" onClick={handleCloseModal}>
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div className="modal-body">{modalContent}</div>
-			</ReactModal>
+			<Modal title="Share" isOpen={showModal} handleClose={handleCloseModal}>
+				{modalContent}
+			</Modal>
 		</div>
 	);
 };
