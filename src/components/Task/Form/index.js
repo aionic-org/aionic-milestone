@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
 import { Api, Button } from 'aionic-library';
@@ -14,7 +15,7 @@ import TaskSummaryContainer from '../Summary/container';
 const TaskForm = (props) => {
 	const { initialTask, handleCreate } = props;
 
-	const [task, setTask] = useState({ ...initialTask });
+	const [task, setTask] = useState({ deadline: moment(new Date()).add(7, 'days'), ...initialTask });
 
 	const handleTitleChange = (e) => {
 		Helper.updateObjectPropByEvent(task, e, setTask);
