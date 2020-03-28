@@ -14,18 +14,13 @@ class SearchFiltersContainer extends Component {
 			msg: null,
 			lists: {
 				userList: [],
-				statusList: [],
-				orgList: []
+				statusList: []
 			}
 		};
 	}
 
 	componentDidMount = () => {
-		const requests = [
-			Api.fetchData('users'),
-			Api.fetchData('task-status'),
-			Api.fetchData('git/organization')
-		];
+		const requests = [Api.fetchData('users'), Api.fetchData('task-status')];
 
 		Promise.all(requests)
 			.then((res) => {

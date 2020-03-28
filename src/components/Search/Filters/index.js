@@ -2,14 +2,13 @@ import React from 'react';
 
 import UserSelect from '../../User/Select';
 import TaskSelectsStatus from '../../Task/Selects/Status';
-import GitOrganizationSelect from '../../Git/Organization/Select';
 
 const SearchFilters = (props) => {
-	const { searchParams, handleFilterChange, lists, resetFilters } = props;
-	const { userList, statusList, orgList } = lists;
+	const { searchParams, lists, handleFilterChange, resetFilters } = props;
+	const { term } = searchParams;
+	const { userList, statusList } = lists;
 
 	const handleReset = () => {
-		document.getElementById('filterForm').reset();
 		resetFilters();
 	};
 
@@ -22,9 +21,9 @@ const SearchFilters = (props) => {
 						type="text"
 						className="form-control"
 						placeholder="Enter search term"
-						name="searchTerm"
-						onBlur={handleFilterChange}
-						defaultValue={searchParams.term ? searchParams.term : ''}
+						name="term"
+						onChange={handleFilterChange}
+						value={term ? term : ''}
 					/>
 				</div>
 				<div className="form-group">
@@ -66,25 +65,6 @@ const SearchFilters = (props) => {
 					/>
 				</div>
 
-				<div className="form-group">
-					<label>Git Organization</label>
-					<GitOrganizationSelect
-						orgList={orgList}
-						defaultValue={searchParams.organization ? searchParams.organization : undefined}
-						onChange={handleFilterChange}
-					/>
-				</div>
-				<div className="form-group">
-					<label>Git Branch</label>
-					<input
-						type="text"
-						className="form-control"
-						placeholder="Enter Git branch"
-						name="branch"
-						onBlur={handleFilterChange}
-						defaultValue={searchParams.branch}
-					/>
-				</div>
 				<button type="button" className="button button-warning btn-block" onClick={handleReset}>
 					Reset
 				</button>

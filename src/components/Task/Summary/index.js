@@ -107,7 +107,7 @@ const TaskSummary = (props) => {
 					<div className="col-12">
 						<InputDate
 							name="deadline"
-							startDate={Helper.formatDateTime(task.deadline)}
+							startDate={Helper.formatDateTime(task.deadline ? task.deadline : new Date())}
 							updateParent={updateDeadline}
 						/>
 					</div>

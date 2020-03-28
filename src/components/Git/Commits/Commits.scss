@@ -1,3 +1,3 @@
-.GitCommits > .list-group > .GitCommit {
-  margin-top: 10px;
+.GitCommits > .list-group > .GitCommit:first-child {
+	margin-top: 10px;
 }

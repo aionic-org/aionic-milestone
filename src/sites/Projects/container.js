@@ -13,7 +13,6 @@ class SitesProjectsContainer extends Component {
 			isLoading: true,
 			msg: null,
 			projects: {
-				all: [],
 				fetched: [],
 				filtered: []
 			},
@@ -25,10 +24,10 @@ class SitesProjectsContainer extends Component {
 	}
 
 	componentDidMount = () => {
-		this.fetchProjects(null, true);
+		this.fetchProjects(null);
 	};
 
-	fetchProjects = async (_params, initial) => {
+	fetchProjects = async (_params) => {
 		try {
 			const params = _params || this.state.filters.params;
 			const projects = await Api.fetchData('projects', params);
@@ -38,10 +37,6 @@ class SitesProjectsContainer extends Component {
 				filters: { ...this.state.filters, params },
 				projects: { ...this.state.projects, fetched: projects, filtered: [] }
 			};
-
-			if (initial) {
-				newState = { ...newState, projects: { ...newState.projects, all: projects } };
-			}
 
 			this.setState(newState, () => {
 				this.filterProjectsByText(this.state.filters.text);

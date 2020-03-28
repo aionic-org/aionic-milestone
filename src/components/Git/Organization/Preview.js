@@ -45,7 +45,12 @@ const GitOrganizationPreview = (props) => {
 					Remove
 				</button>
 
-				<a href={org.htmlUrl} target="_blank" rel="noopener noreferrer" className="card-link ml-3">
+				<a
+					href={org.htmlUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="card-link-custom ml-3"
+				>
 					Open
 				</a>
 

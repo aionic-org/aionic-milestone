@@ -66,8 +66,7 @@ class TaskGitContainer extends Component {
 				this.props.updateParentTaskState({
 					...this.props.task,
 					organization: { id: orgId },
-					repository: null,
-					branch: null
+					repository: null
 				});
 			} else {
 				this.setState((prevState) => ({
@@ -80,8 +79,7 @@ class TaskGitContainer extends Component {
 				this.props.updateParentTaskState({
 					...this.props.task,
 					organization: null,
-					repository: null,
-					branch: null
+					repository: null
 				});
 			}
 		} catch (err) {
@@ -90,19 +88,14 @@ class TaskGitContainer extends Component {
 	};
 
 	handleRepoChange = (e) => {
-		const repoId = e.target.value || null;
-
 		this.props.updateParentTaskState({
 			...this.props.task,
-			repository: { id: repoId },
-			branch: null
+			repository: { id: e.target.value }
 		});
 	};
 
 	handleBranchChange = (e) => {
-		Helper.updateObjectPropByEvent(this.props.task, e, (task) => {
-			this.props.updateParentTaskState(task);
-		});
+		Helper.updateObjectPropByEvent(this.props.task, e, this.props.updateParentTaskState);
 	};
 
 	render() {

@@ -13,12 +13,10 @@ const TaskGit = (props) => {
 	const [showCommits, setShowCommits] = useState(false);
 
 	const toggleCommits = () => {
-		if (allowCommitsShow) {
-			setShowCommits(!showCommits);
-		}
+		setShowCommits(!showCommits);
 	};
 
-	const commits = showCommits ? <GitCommitsContainer task={task} /> : null;
+	const commits = allowCommitsShow && showCommits ? <GitCommitsContainer task={task} /> : null;
 
 	return (
 		<div className="TaskGit">
@@ -59,7 +57,7 @@ const TaskGit = (props) => {
 				className={`btn btn-link d-block mx-auto mb-2 ${!allowCommitsShow ? ' disabled' : ''}`}
 				onClick={toggleCommits}
 			>
-				{`${showCommits ? 'Hide' : 'Fetch'}`} commits
+				{`${allowCommitsShow && showCommits ? 'Hide' : 'Fetch'}`} commits
 			</button>
 			{commits}
 		</div>

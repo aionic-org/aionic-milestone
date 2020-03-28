@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Api, useSuggestion } from 'aionic-library';
+import { Api, Badge, useSuggestion } from 'aionic-library';
 
 import './Suggestion.scss';
 
@@ -64,7 +64,16 @@ const TaskSuggestion = (props) => {
 						onClick={handleSelect}
 					>
 						<div className="row" data-id={task.id}>
-							<div className="col-7">{task.title}</div>
+							<div className="col-7">
+								{task.title}{' '}
+								{task.project ? (
+									<Badge
+										label={task.project.key}
+										type="secondary"
+										classes={['d-inline-block', ['ml-2']]}
+									/>
+								) : null}
+							</div>
 							<div className="col-5">
 								<span className="text-muted float-right">
 									{task.author ? `${task.author.firstname} ${task.author.lastname}` : null}

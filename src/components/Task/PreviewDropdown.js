@@ -55,6 +55,12 @@ const TaskPreviewDropdown = (props) => {
 			</button>
 		) : null;
 
+	const projectBtn = task.project ? (
+		<Link to={`/projects/${task.project.id}`} className="btn dropdown-item mr-1">
+			<i className="fas fa-columns fa-fw mr-1" /> Project
+		</Link>
+	) : null;
+
 	return (
 		<div className="TaskPreviewDropdown">
 			<div className="dropdown dropleft ml-3">
@@ -71,6 +77,7 @@ const TaskPreviewDropdown = (props) => {
 						<i className="fas fa-external-link-square-alt fa-fw mr-1" /> New tab
 					</Link>
 					{assignBtn}
+					{projectBtn}
 					<button type="button" className="btn dropdown-item" onClick={openShareModal}>
 						<i className="fas fa-share fa-fw mr-1" /> Share
 					</button>
