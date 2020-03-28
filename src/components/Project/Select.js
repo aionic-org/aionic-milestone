@@ -3,7 +3,9 @@ import React from 'react';
 import { InputSelect } from 'aionic-library';
 
 const ProjectSelect = (props) => {
-	const projects = props.projectList.map((project) => {
+	const { projectList, name, defaultValue, value, onChange } = props;
+
+	const projects = projectList.map((project) => {
 		return { value: project.id, title: project.title };
 	});
 
@@ -11,18 +13,17 @@ const ProjectSelect = (props) => {
 		<div className="ProjectSelect">
 			<InputSelect
 				optionList={projects}
-				name={props.name}
-				defaultValue={props.defaultValue}
-				onChange={props.onChange}
+				name={name}
+				defaultValue={defaultValue}
+				value={value}
+				onChange={onChange}
 			/>
 		</div>
 	);
 };
 
 ProjectSelect.defaultProps = {
-	projectList: [],
-	onChange: () => {},
-	defaultValue: ''
+	projectList: []
 };
 
 export default ProjectSelect;

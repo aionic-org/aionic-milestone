@@ -19,11 +19,10 @@ class SearchTaskContainer extends Component {
 
 	componentDidMount = () => {
 		const { searchParams } = this.props;
-
 		const searchParamsKeys = Object.keys(searchParams);
 
 		for (const key of searchParamsKeys) {
-			if (searchParams[key].length) {
+			if (searchParams[key] && searchParams[key].length) {
 				this.doSearch();
 				break;
 			}
@@ -40,13 +39,17 @@ class SearchTaskContainer extends Component {
 		try {
 			const { searchParams } = this.props;
 
-			this.setState({
-				isLoading: true
-			});
+			if (Object.keys(searchParams).length) {
+				this.setState({
+					isLoading: true
+				});
 
-			const searchResult = await Api.fetchData(`tasks`, searchParams);
+				const searchResult = await Api.fetchData(`tasks`, searchParams);
 
-			this.setState({ isLoading: false, searchResult });
+				this.setState({ isLoading: false, searchResult });
+			} else {
+				this.setState({ searchResult: [] });
+			}
 		} catch (err) {
 			this.setState({
 				isLoading: false,

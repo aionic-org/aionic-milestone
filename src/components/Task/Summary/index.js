@@ -43,7 +43,7 @@ const TaskSummary = (props) => {
 					<div className="col-12">
 						<TaskSelectsStatus
 							statusList={statusList}
-							defaultValue={task.status ? task.status.id : undefined}
+							defaultValue={task.status ? task.status.id : 0}
 							onChange={handleInputChange}
 						/>
 					</div>
@@ -54,7 +54,7 @@ const TaskSummary = (props) => {
 					<div className="col-12">
 						<TaskSelectsPriority
 							priorityList={priorityList}
-							defaultValue={task.priority ? task.priority.value : undefined}
+							defaultValue={task.priority ? task.priority.value : 0}
 							onChange={handleInputChange}
 						/>
 					</div>

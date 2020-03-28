@@ -1,16 +1,12 @@
 import React from 'react';
 
-import UserSelect from '../../User/Select';
+import UserSelectsUsername from '../../User/Selects/Username';
 import TaskSelectsStatus from '../../Task/Selects/Status';
 
 const SearchFilters = (props) => {
 	const { searchParams, lists, handleFilterChange, resetFilters } = props;
-	const { term } = searchParams;
+	const { term, status, assignee, author, tag } = searchParams;
 	const { userList, statusList } = lists;
-
-	const handleReset = () => {
-		resetFilters();
-	};
 
 	return (
 		<div className="SearchFilters">
@@ -23,36 +19,35 @@ const SearchFilters = (props) => {
 						placeholder="Enter search term"
 						name="term"
 						onChange={handleFilterChange}
-						value={term ? term : ''}
+						value={term || ''}
 					/>
 				</div>
 				<div className="form-group">
 					<label>Status</label>
 					<TaskSelectsStatus
 						statusList={statusList}
-						defaultValue={searchParams.status ? searchParams.status.id : undefined}
+						value={status || 0}
 						onChange={handleFilterChange}
 					/>
 				</div>
 				<div className="form-group">
 					<label>Assignee</label>
-					<UserSelect
+					<UserSelectsUsername
 						name="assignee"
 						userList={userList}
-						defaultValue={searchParams.assignee ? searchParams.assignee : undefined}
+						value={assignee || 0}
 						onChange={handleFilterChange}
 					/>
 				</div>
 				<div className="form-group">
 					<label>Author</label>
-					<UserSelect
+					<UserSelectsUsername
 						name="author"
 						userList={userList}
-						defaultValue={searchParams.author ? searchParams.author : undefined}
+						value={author || 0}
 						onChange={handleFilterChange}
 					/>
 				</div>
-
 				<div className="form-group">
 					<label>Tag</label>
 					<input
@@ -60,12 +55,12 @@ const SearchFilters = (props) => {
 						className="form-control"
 						placeholder="Enter tag"
 						name="tag"
-						onBlur={handleFilterChange}
-						defaultValue={searchParams.tag}
+						onChange={handleFilterChange}
+						value={tag || ''}
 					/>
 				</div>
 
-				<button type="button" className="button button-warning btn-block" onClick={handleReset}>
+				<button type="button" className="button button-warning btn-block" onClick={resetFilters}>
 					Reset
 				</button>
 			</form>

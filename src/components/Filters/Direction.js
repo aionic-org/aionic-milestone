@@ -4,25 +4,20 @@ import { InputSelect } from 'aionic-library';
 
 import Helper from '../../services/helper';
 
-const FiltersDirection = (props) => {
-	const { onChange, name, classes } = props;
-
-	const sortDirections = Helper.getFilterLists('sortDirections');
-
-	return (
-		<div className="FiltersDirection">
-			<InputSelect
-				name={name}
-				classes={classes}
-				onChange={onChange}
-				optionList={sortDirections}
-				showDefault={false}
-			/>
-		</div>
-	);
-};
+const FiltersDirection = ({ sortDirections, name, classes, onChange }) => (
+	<div className="FiltersDirection">
+		<InputSelect
+			name={name}
+			classes={classes}
+			onChange={onChange}
+			optionList={sortDirections}
+			showDefault={false}
+		/>
+	</div>
+);
 
 FiltersDirection.defaultProps = {
+	sortDirections: Helper.getFilterLists('sortDirections'),
 	name: 'orderdir',
 	classes: []
 };

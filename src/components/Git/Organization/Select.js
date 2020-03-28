@@ -3,26 +3,27 @@ import React from 'react';
 import { InputSelect } from 'aionic-library';
 
 const GitOrganizationSelect = (props) => {
-	const organizations = props.orgList.map((organization) => {
+	const { orgList, defaultValue, value, onChange } = props;
+
+	const options = orgList.map((organization) => {
 		return { value: organization.id, title: organization.name };
 	});
 
 	return (
 		<div className="GitOrganizationSelect">
 			<InputSelect
-				optionList={organizations}
+				optionList={options}
 				name="organization"
-				defaultValue={props.defaultValue}
-				onChange={props.onChange}
+				defaultValue={defaultValue}
+				value={value}
+				onChange={onChange}
 			/>
 		</div>
 	);
 };
 
 GitOrganizationSelect.defaultProps = {
-	orgList: [],
-	onChange: () => {},
-	defaultValue: ''
+	orgList: []
 };
 
 export default GitOrganizationSelect;

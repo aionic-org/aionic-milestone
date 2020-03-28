@@ -8,6 +8,7 @@ import CommentForm from '../../../Comments/Form';
 
 const TaskCommentsFormContainer = (props) => {
 	const { taskId, updateParent } = props;
+
 	const [msg, handleInputChange, handleSubmit] = useCommentForm(
 		`tasks/${taskId}/comments`,
 		updateParent
