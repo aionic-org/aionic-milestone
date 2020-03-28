@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Alert } from 'aionic-library';
+
 import Helper from '../../../services/helper';
 
 import InputTitle from '../../../components/UI/Input/Title';
@@ -12,6 +14,7 @@ import ProjectTaskTable from './components/Task/Table';
 
 const SitesProject = (props) => {
 	const { project, updateParentProjectState } = props;
+	const { title, completed, tasks } = project;
 
 	const handleTitleChange = (e) => {
 		Helper.updateObjectPropByEvent(project, e, updateParentProjectState);
@@ -26,25 +29,16 @@ const SitesProject = (props) => {
 		updateParentProjectState({ ...project, completed: true });
 	};
 
-	let allTasksCompleted = true;
-	for (const task of project.tasks) {
-		if (!task.completed) {
-			allTasksCompleted = false;
-			break;
-		}
-	}
+	const allTasksCompleted = tasks.length ? tasks.every((task) => task.completed) : false;
 
 	const completeAlert =
-		!project.completed && allTasksCompleted ? (
-			<div className="alert alert-warning alert-dismissible fade show" role="alert">
+		!completed && allTasksCompleted ? (
+			<Alert type="warning" dismissible={true}>
 				All tasks seem to be done -{' '}
 				<a href="#" onClick={markComplete}>
 					Mark complete
 				</a>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
+			</Alert>
 		) : null;
 
 	return (
@@ -53,10 +47,10 @@ const SitesProject = (props) => {
 			<div className="row">
 				<div className="col-10 col-md">
 					<InputTitle
-						defaultValue={project.title}
+						defaultValue={title}
 						placeholder="Enter project title"
 						onBlur={handleTitleChange}
-						completed={project.completed}
+						completed={completed}
 					/>
 				</div>
 				<div className="col-2 col-md-auto">
@@ -74,7 +68,7 @@ const SitesProject = (props) => {
 			<div className="row">
 				<div className="col-12 col-xl-8">
 					<ProjectTaskTable
-						tasks={project.tasks}
+						tasks={tasks}
 						updateProjectTasks={updateProjectTasks}
 						project={project}
 					/>

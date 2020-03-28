@@ -10,7 +10,7 @@ import { WatchedItems } from '../../services/constants';
 const TaskTable = (props) => {
 	const { tasks, taskIDs, title } = props;
 
-	const [fetchedTasks, isLoading, error] = useFetcher(taskIDs.length ? 'tasks' : '', {
+	const [fetchedTasks, isLoading, error] = useFetcher(taskIDs && taskIDs.length ? 'tasks' : '', {
 		ids: Session.getWatchedItems(WatchedItems.TASK).join(',')
 	});
 
@@ -18,7 +18,7 @@ const TaskTable = (props) => {
 		return <Spinner margin={true} />;
 	} else {
 		// Order by task status
-		const tasksToShow = (tasks.length ? tasks : fetchedTasks)
+		const tasksToShow = (tasks.length ? tasks : taskIDs.length ? fetchedTasks : [])
 			.slice()
 			.sort((a, b) => (a.status.sort < b.status.sort ? -1 : 1));
 

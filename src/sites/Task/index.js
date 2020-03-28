@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Helper from 'services/helper';
+import { Alert } from 'aionic-library';
+
+import Helper from '../../services/helper';
 
 import Tags from '../../components/Tags';
 
@@ -29,19 +31,16 @@ const SitesTask = (props) => {
 	};
 
 	const completeHint =
+		!task.completed &&
 		task.status &&
 		task.status.title &&
-		task.status.title.toLowerCase() === 'done' &&
-		!task.completed ? (
-			<div className="alert alert-warning alert-dismissible fade show" role="alert">
+		task.status.title.toLowerCase() === 'done' ? (
+			<Alert type="warning" dismissible={true}>
 				This task seems to be done -{' '}
 				<a href="#" onClick={markComplete}>
 					Mark complete
 				</a>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
+			</Alert>
 		) : null;
 
 	return (
