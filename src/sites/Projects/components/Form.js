@@ -15,7 +15,8 @@ class ProjectsForm extends Component {
 		this.state = {
 			msg: '',
 			project: {
-				author: Session.getUser()
+				author: Session.getUser(),
+				deadline: moment(new Date()).add(7, 'days')
 			}
 		};
 	}
@@ -94,7 +95,7 @@ class ProjectsForm extends Component {
 						<label>Deadline</label>
 						<InputDate
 							name="deadline"
-							startDate={moment(new Date()).add(7, 'days')}
+							startDate={this.state.project.deadline}
 							updateParent={this.updateDeadline}
 						/>
 					</div>
