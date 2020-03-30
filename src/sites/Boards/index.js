@@ -1,11 +1,10 @@
 import React from 'react';
 
 import Title from '../../components/UI/Title';
-
 import CardDeck from '../../components/Deck';
+import BoardFormModal from '../../components/Board/Form/Modal';
 
 import BoardsFilters from './components/Filters';
-import BoardsCreate from './components/Create';
 import BoardsWatched from './components/Watched';
 
 const SitesBoards = (props) => {
@@ -21,7 +20,7 @@ const SitesBoards = (props) => {
 					<Title title="Boards" />
 				</div>
 				<div className="col-auto">
-					<BoardsCreate />
+					<BoardFormModal />
 				</div>
 			</div>
 

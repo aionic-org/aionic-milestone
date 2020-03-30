@@ -4,9 +4,9 @@ import Title from '../../components/UI/Title';
 
 import CardDeck from '../../components/Deck';
 
-import ProjectsCreate from './components/Create';
 import ProjectsFilters from './components/Filters';
 import ProjectsWatched from './components/Watched';
+import ProjectFormModal from 'components/Project/Form/Modal';
 
 const SitesProjects = (props) => {
 	const { projects, filters, filterProjectsByParams, filterProjectsByText, resetFilters } = props;
@@ -21,7 +21,7 @@ const SitesProjects = (props) => {
 					<Title title="Projects" />
 				</div>
 				<div className="col-auto">
-					<ProjectsCreate />
+					<ProjectFormModal />
 				</div>
 			</div>
 
