@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "aionic-library": "https://github.com/aionic-org/aionic-library#master",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.4",
     "jwt-decode": "^2.2.0",
