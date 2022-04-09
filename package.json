@@ -22,7 +22,7 @@
     "draft-js": "^0.11.4",
     "jwt-decode": "^2.2.0",
     "marked": "^0.8.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.1",
     "query-string": "^6.10.1",
     "react": "^16.12.0",
